@@ -1,0 +1,2 @@
+FROM swebench-oc-django11999
+COPY dist/index.mjs /app/dist/extensions/symbol-locator/index.js

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "paths": {
+      "openclaw/plugin-sdk/*": ["../openclaw/src/plugin-sdk/*"],
+      "openclaw/plugin-sdk/plugin-entry": ["../openclaw/src/plugin-sdk/plugin-entry.ts"]
+    }
+  },
+  "include": ["index.ts", "api.ts", "src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,92 @@
+{
+  "id": "symbol-locator",
+  "name": "Symbol Locator",
+  "activation": {
+    "onStartup": false
+  },
+  "description": "Precise Python symbol location for agents — LSP-powered workspace indexing with LLM-based disambiguation.",
+  "contracts": {
+    "tools": ["find_symbol", "more_symbols", "reset_symbols"]
+  },
+  "toolMetadata": {
+    "find_symbol": { "replaySafe": true },
+    "more_symbols": { "replaySafe": true },
+    "reset_symbols": { "replaySafe": false }
+  },
+  "skills": ["./skills"],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "scorer": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "仅 independent scorer 使用的模型提示；scorerLlm.enabled=false 时会忽略并使用 Agent 模型。"
+          },
+          "concurrency": {
+            "type": "number",
+            "default": 10,
+            "description": "并发打分上限。"
+          },
+          "threshold": {
+            "type": "number",
+            "default": 75,
+            "description": "分数低于此值的候选被丢弃。"
+          },
+          "snippetLines": {
+            "type": "number",
+            "default": 15,
+            "description": "打分时提供给 LLM 的源码上下文行数。"
+          }
+        }
+      },
+      "scorerLlm": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "独立 LLM — 开启后打分绕过 openclaw 宿主模型。",
+        "properties": {
+          "enabled": { "type": "boolean", "default": false },
+          "baseUrl": {
+            "type": "string",
+            "default": "https://api.openai.com/v1"
+          },
+          "apiKey": { "type": "string" },
+          "model": { "type": "string", "default": "gpt-4o-mini" },
+          "timeoutMs": { "type": "number", "default": 30000 }
+        }
+      },
+      "lsp": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "maxWorkspaces": {
+            "type": "number",
+            "default": 4,
+            "description": "同时保活的 pyright 进程上限。"
+          },
+          "idleTimeoutMs": {
+            "type": "number",
+            "default": 1800000,
+            "description": "agent_end 未触发时的兜底空闲关闭时间（毫秒）。"
+          },
+          "initTimeoutMs": {
+            "type": "number",
+            "default": 60000,
+            "description": "pyright 首次索引超时（毫秒）。"
+          }
+        }
+      },
+      "cache": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "maxEntries": { "type": "number", "default": 256 },
+          "ttlMs": { "type": "number", "default": 1800000 }
+        }
+      }
+    }
+  }
+}
