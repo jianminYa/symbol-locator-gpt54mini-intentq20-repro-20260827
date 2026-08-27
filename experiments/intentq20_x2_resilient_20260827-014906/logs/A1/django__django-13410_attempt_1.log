@@ -1,0 +1,2 @@
+2026-08-27T03:12:48.793081+00:00 case_start face=A1 instance=django__django-13410 attempt=1
+2026-08-27T03:20:01.402502+00:00 case_end face=A1 instance=django__django-13410 attempt=1 elapsed=432.608 category=success

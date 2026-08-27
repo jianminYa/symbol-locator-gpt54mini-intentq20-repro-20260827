@@ -1,0 +1,2 @@
+2026-08-27T10:32:25.781136+00:00 case_start face=B2 instance=scikit-learn__scikit-learn-14141 attempt=1
+2026-08-27T10:41:59.325907+00:00 case_end face=B2 instance=scikit-learn__scikit-learn-14141 attempt=1 elapsed=573.54 category=success

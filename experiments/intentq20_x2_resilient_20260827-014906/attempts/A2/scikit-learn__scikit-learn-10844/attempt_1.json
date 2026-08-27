@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-08-27T09:29:49.846734+00:00",
+  "face": "A2",
+  "instance_id": "scikit-learn__scikit-learn-10844",
+  "attempt": 1,
+  "elapsed_seconds": 399.145,
+  "return_code": 0,
+  "category": "success",
+  "timeout": false,
+  "output_written": true,
+  "pyright_seen": false,
+  "pyright_warmup_success": false,
+  "pyright_warmup_failure": false,
+  "find_symbol_seen": false,
+  "find_symbol_nonempty": false,
+  "symbol_locator_installed": false
+}

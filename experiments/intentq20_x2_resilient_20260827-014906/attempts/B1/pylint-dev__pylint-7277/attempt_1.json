@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-08-27T06:17:15.903854+00:00",
+  "face": "B1",
+  "instance_id": "pylint-dev__pylint-7277",
+  "attempt": 1,
+  "elapsed_seconds": 507.685,
+  "return_code": 0,
+  "category": "success",
+  "timeout": false,
+  "output_written": true,
+  "pyright_seen": false,
+  "pyright_warmup_success": false,
+  "pyright_warmup_failure": false,
+  "find_symbol_seen": false,
+  "find_symbol_nonempty": false,
+  "symbol_locator_installed": false
+}

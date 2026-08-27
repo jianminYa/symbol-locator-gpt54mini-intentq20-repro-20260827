@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-08-27T10:17:56.801255+00:00",
+  "face": "A2",
+  "instance_id": "django__django-14752",
+  "attempt": 1,
+  "elapsed_seconds": 374.765,
+  "return_code": 0,
+  "category": "success",
+  "timeout": false,
+  "output_written": true,
+  "pyright_seen": false,
+  "pyright_warmup_success": false,
+  "pyright_warmup_failure": false,
+  "find_symbol_seen": false,
+  "find_symbol_nonempty": false,
+  "symbol_locator_installed": false
+}

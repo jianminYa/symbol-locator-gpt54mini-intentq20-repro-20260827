@@ -1,0 +1,21 @@
+PATH /data/workspace/symbol-locator-handoff-20260823-065432/symbol-locator-handoff
+$ git -C /data/workspace/symbol-locator-handoff-20260823-065432/symbol-locator-handoff rev-parse --show-toplevel
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+$ git -C /data/workspace/symbol-locator-handoff-20260823-065432/symbol-locator-handoff rev-parse HEAD
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+$ git -C /data/workspace/symbol-locator-handoff-20260823-065432/symbol-locator-handoff status --short --branch
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+
+PATH /data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench
+$ git -C /data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench rev-parse --show-toplevel
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+$ git -C /data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench rev-parse HEAD
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+$ git -C /data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench status --short --branch
+fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).

@@ -1,0 +1,2 @@
+2026-08-27T06:22:10.812868+00:00 case_start face=B1 instance=sphinx-doc__sphinx-8621 attempt=1
+2026-08-27T06:25:52.375204+00:00 case_end face=B1 instance=sphinx-doc__sphinx-8621 attempt=1 elapsed=221.561 category=success

@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-08-27T12:36:17.744601+00:00",
+  "stage": "finished",
+  "face": null,
+  "completed_id_count": 0,
+  "last_successful_api_time": "2026-08-27T12:29:45.342600+00:00",
+  "current_retry_count": 0,
+  "disk_summary": {
+    "data_free_bytes": 85193465856,
+    "data_free_gib": 79.34
+  },
+  "memory_summary": {
+    "MemAvailable": "10514404 kB",
+    "MemTotal": "12251928 kB",
+    "SwapTotal": "4194300 kB",
+    "SwapFree": "3261416 kB"
+  },
+  "active_case": null,
+  "active_pgid": null,
+  "status": "COMPLETE"
+}

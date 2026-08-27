@@ -1,0 +1,712 @@
+diff --git a/SWE-Explore-Bench/explorers/_locagent_shim.py b/SWE-Explore-Bench/explorers/_locagent_shim.py
+index c1dce13..2c69fcb 100644
+--- a/SWE-Explore-Bench/explorers/_locagent_shim.py
++++ b/SWE-Explore-Bench/explorers/_locagent_shim.py
+@@ -53,6 +53,20 @@ _ca.MODEL_COST_PER_INPUT = _input_defaults
+ _ca.MODEL_COST_PER_OUTPUT = _output_defaults
+ 
+ # Patch 6: Use local repo via symlink instead of GitHub cloning
++def _replace_local_repo_link(local_repo, repo_dir):
++    """Replace an existing repo path, including a dangling symlink."""
++    import shutil
++
++    if os.path.lexists(repo_dir):
++        if os.path.islink(repo_dir):
++            os.unlink(repo_dir)
++        elif os.path.isdir(repo_dir):
++            shutil.rmtree(repo_dir)
++        else:
++            os.remove(repo_dir)
++    os.symlink(local_repo, repo_dir)
++
++
+ _local_repo = os.environ.get('LOCAL_REPO_PATH', '')
+ if _local_repo:
+     import shutil
+@@ -63,9 +77,7 @@ if _local_repo:
+         """Create symlink to local repo instead of cloning from GitHub."""
+         if not os.path.exists(os.path.join(repo_dir, '.git')):
+             os.makedirs(os.path.dirname(repo_dir), exist_ok=True)
+-            if os.path.exists(repo_dir):
+-                shutil.rmtree(repo_dir)
+-            os.symlink(_local_repo, repo_dir)
++            _replace_local_repo_link(_local_repo, repo_dir)
+         # else: already exists, skip
+     _grm.maybe_clone = _patched_maybe_clone
+ 
+diff --git a/SWE-Explore-Bench/explorers/subprocess_utils.py b/SWE-Explore-Bench/explorers/subprocess_utils.py
+index 0d6a93a..bc72752 100644
+--- a/SWE-Explore-Bench/explorers/subprocess_utils.py
++++ b/SWE-Explore-Bench/explorers/subprocess_utils.py
+@@ -66,18 +66,12 @@ def run_in_conda(
+         except OSError:
+             process.kill()
+         stdout, stderr = process.communicate()
+-        raise subprocess.TimeoutExpired(
+-            full_cmd, timeout, output=stdout, stderr=stderr)
++        # Do not propagate captured child output: it may contain provider
++        # response bodies or other sensitive text.
++        raise subprocess.TimeoutExpired(full_cmd, timeout)
+     result = subprocess.CompletedProcess(
+         full_cmd, process.returncode, stdout, stderr)
+ 
+     if result.returncode != 0:
+-        stderr_preview = (result.stderr or "")[:2000]
+-        stdout_preview = (result.stdout or "")[:2000]
+-        detail = stderr_preview
+-        if stdout_preview:
+-            detail = f"STDOUT:\n{stdout_preview}\nSTDERR:\n{stderr_preview}"
+-        raise RuntimeError(
+-            f"conda run -n {conda_env} failed (rc={result.returncode}):\n{detail}"
+-        )
++        raise RuntimeError(f"conda run -n {conda_env} failed rc={result.returncode}")
+     return result
+diff --git a/SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py b/SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py
+index b49e87c..2adc68f 100644
+--- a/SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py
++++ b/SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py
+@@ -47,6 +47,7 @@ from util.runtime.fn_call_converter import (
+     convert_non_fncall_messages_to_fncall_messages,
+     STOP_WORDS as NON_FNCALL_STOP_WORDS
+ )
++from util.runtime import process_control
+ # litellm.set_verbose=True
+ # os.environ['LITELLM_LOG'] = 'DEBUG
+ 
+@@ -111,6 +112,30 @@ def get_task_instruction(instance: dict, task: str = 'auto_search', include_pr=F
+     return instruction
+ 
+ 
++class AgentLoopLimitError(RuntimeError):
++    pass
++
++
++class AgentProcessError(RuntimeError):
++    def __init__(self, error_type: str, status_code: str, stage: str,
++                 tracepoint: dict | None = None):
++        self.error_type = error_type
++        self.status_code = status_code
++        self.stage = stage
++        self.tracepoint = tracepoint or {}
++        super().__init__(f"agent process {error_type} ({status_code})")
++
++
++class AgentAuthenticationError(AgentProcessError):
++    pass
++
++
++def _guarded_auto_search_process(result_queue, **kwargs):
++    target_kwargs = dict(kwargs)
++    target_kwargs['result_queue'] = result_queue
++    process_control.guarded_call(result_queue, _auto_search_process_impl, target_kwargs)
++
++
+ def auto_search_process(result_queue,
+                         model_name, messages, fake_user_msg,
+                         tools = None,
+@@ -118,6 +143,41 @@ def auto_search_process(result_queue,
+                         temp=1.0,
+                         max_iteration_num=20,
+                         use_function_calling=True):
++    return _auto_search_process_impl(
++        result_queue=result_queue,
++        model_name=model_name,
++        messages=messages,
++        fake_user_msg=fake_user_msg,
++        tools=tools,
++        traj_data=traj_data,
++        temp=temp,
++        max_iteration_num=max_iteration_num,
++        use_function_calling=use_function_calling,
++    )
++
++
++def _auto_search_process_impl(result_queue,
++                         model_name, messages, fake_user_msg,
++                         tools = None,
++                         traj_data=None,
++                         temp=1.0,
++                         max_iteration_num=20,
++                         use_function_calling=True):
++    try:
++        configured_limit = int(os.environ.get('LOCAGENT_MAX_ITER', max_iteration_num))
++    except (TypeError, ValueError):
++        configured_limit = max_iteration_num
++    try:
++        hard_limit = int(os.environ.get('LOCAGENT_HARD_MAX_ITER', configured_limit))
++    except (TypeError, ValueError):
++        hard_limit = configured_limit
++    max_iteration_num = max(1, min(configured_limit, hard_limit))
++
++    if os.environ.get('SYMBOL_LOCATOR_ENABLED') == '1':
++        from symbol_locator import core as _symbol_core
++        _symbol_core.reset_after_fork()
++        _symbol_core.warmup_workspace()
++
+     if tools and ('hosted_vllm' in model_name or 'qwen' in model_name.lower() 
+     #             #   or model_name=='azure/gpt-4o' 
+     #             #   or model_name == 'litellm_proxy/o3-mini-2025-01-31'
+@@ -220,7 +280,12 @@ def auto_search_process(result_queue,
+                 continue 
+                 
+         last_message = response.choices[0].message.content
+-        print(response.choices[0].message)
++        response_message = response.choices[0].message
++        logging.info(
++            "agent response received content_present=%s tool_calls=%d",
++            response_message.content is not None,
++            len(response_message.tool_calls or []),
++        )
+         messages.append(convert_to_json(raw_response.choices[0].message))
+         traj_msgs.append(convert_to_json(raw_response.choices[0].message))
+         prompt_tokens += response.usage.prompt_tokens
+@@ -234,7 +299,7 @@ def auto_search_process(result_queue,
+             if action.action_type == ActionType.FINISH:
+                 final_output = action.thought
+                 logging.info('='*15)
+-                logging.info("\nFinal Response:=\n" + final_output)
++                logging.info("Final response generated content_length=%d", len(final_output or ""))
+                 finish = True # break
+             elif action.action_type == ActionType.MESSAGE:
+                 logging.debug("thought:\n" + action.content)
+@@ -280,6 +345,9 @@ def auto_search_process(result_queue,
+                 logging.warning('Error Action!')
+                 # return
+ 
++        if not finish and cur_interation_num >= max_iteration_num:
++            raise AgentLoopLimitError('agent iteration hard limit reached')
++
+     # save traj
+     traj_data = {
+         'messages': traj_msgs,
+@@ -293,6 +361,40 @@ def auto_search_process(result_queue,
+     result_queue.put((final_output, messages, traj_data))
+ 
+ 
++def _run_agent_child(ctx, kwargs, timeout_s):
++    manager = ctx.Manager()
++    result_queue = manager.Queue()
++    process = ctx.Process(target=_guarded_auto_search_process, kwargs={
++        'result_queue': result_queue,
++        **kwargs,
++    })
++    result = None
++    try:
++        process.start()
++        result = process_control.wait_for_result(
++            process, result_queue,
++            join_timeout=timeout_s,
++            result_timeout=min(10.0, max(1.0, timeout_s)),
++        )
++    finally:
++        if process.pid is not None and process.is_alive():
++            process_control.terminate_child(process)
++        manager.shutdown()
++    if isinstance(result, dict) and result.get('status') == 'error':
++        error_type = str(result.get('error_type', 'ChildError'))
++        status_code = str(result.get('status_code', 'unknown'))
++        stage = str(result.get('stage', 'agent_process'))
++        tracepoint = result.get('tracepoint')
++        if not isinstance(tracepoint, dict):
++            tracepoint = {}
++        if status_code == '4xx' or error_type in {'AuthenticationError', 'AuthenticationFailure'}:
++            raise AgentAuthenticationError(error_type, status_code, stage, tracepoint)
++        raise AgentProcessError(error_type, status_code, stage, tracepoint)
++    if not isinstance(result, tuple) or len(result) != 3:
++        raise AgentProcessError('invalid_child_result', 'unknown', 'result_validation')
++    return result
++
++
+ def run_localize(rank, args, bug_queue, log_queue, output_file_lock, traj_file_lock):
+     queue_handler = logging.handlers.QueueHandler(log_queue)
+     logger = logging.getLogger()
+@@ -360,8 +462,7 @@ def run_localize(rank, args, bug_queue, log_queue, output_file_lock, traj_file_l
+                         "content": get_task_instruction(bug, include_pr=True, include_hint=True),
+                     })
+                     
+-                    ctx = mp.get_context('fork')  # use fork to inherit context!!
+-                    result_queue = ctx.Manager().Queue()
++                    ctx = mp.get_context('fork')
+                     tools = None
+                     if args.use_function_calling:
+                         tools = function_calling.get_tools(
+@@ -370,47 +471,88 @@ def run_localize(rank, args, bug_queue, log_queue, output_file_lock, traj_file_l
+                             codeact_enable_tree_structure_traverser=True,
+                             simple_desc = args.simple_desc,
+                         )
+-                    process = ctx.Process(target=auto_search_process, kwargs={
+-                        'result_queue': result_queue,
+-                        'model_name': args.model,
+-                        'messages': messages,
+-                        'fake_user_msg': auto_search.FAKE_USER_MSG_FOR_LOC,
+-                        'temp': 1,
+-                        'tools': tools,
+-                        'use_function_calling': args.use_function_calling,
+-                    })
+-                    process.start()
+-                    process.join(timeout=args.timeout)
+-                    if process.is_alive():
+-                        logger.warning(f"{instance_id} attempt {max_attempt_num} execution flow "
+-                                        f"reconstruction exceeded timeout. Terminating.")
+-                        process.terminate()
+-                        process.join()
+-                        raise TimeoutError
+-                    
+-                    # loc_result, messages, traj_data = result_queue.get()
+-                    result = result_queue.get()
+-                    if isinstance(result, dict) and 'error' in result and result['type'] == 'BadRequestError':
+-                        raise litellm.BadRequestError(result['error'], args.model, args.model.split('/')[0])
+-                        # print(f"Error occurred in subprocess: {result['error']}")
+-                    else:
+-                        loc_result, messages, traj_data = result
+-                        
+-                except litellm.BadRequestError as e:
+-                    logger.warning(f'{e}. Try again.')
++                    if os.environ.get('SYMBOL_LOCATOR_ENABLED') == '1':
++                        from symbol_locator import core as _symbol_core
++                        _symbol_core.prepare_for_fork()
++                    loc_result, messages, traj_data = _run_agent_child(
++                        ctx,
++                        {
++                            'model_name': args.model,
++                            'messages': messages,
++                            'fake_user_msg': auto_search.FAKE_USER_MSG_FOR_LOC,
++                            'temp': 1,
++                            'tools': tools,
++                            'max_iteration_num': int(os.environ.get('LOCAGENT_MAX_ITER', '20')),
++                            'use_function_calling': args.use_function_calling,
++                        },
++                        timeout_s=args.timeout,
++                    )
++                
++                except AgentAuthenticationError as e:
++                    trace_chain = ">".join(
++                        "%s:%s:%s" % (
++                            frame.get('file', 'unknown'),
++                            frame.get('line', 0),
++                            frame.get('function', 'unknown'),
++                        )
++                        for frame in e.tracepoint.get('frames', [])
++                        if isinstance(frame, dict)
++                    ) or 'unknown'
++                    logger.error(
++                        "Agent authentication failure type=%s status=%s trace_file=%s trace_line=%s trace_function=%s trace_chain=%s; no retry.",
++                        e.error_type, e.status_code,
++                        e.tracepoint.get('file', 'unknown'),
++                        e.tracepoint.get('line', 0),
++                        e.tracepoint.get('function', 'unknown'),
++                        trace_chain,
++                    )
++                    max_attempt_num = 0
++                    break
++                except AgentProcessError as e:
++                    trace_chain = ">".join(
++                        "%s:%s:%s" % (
++                            frame.get('file', 'unknown'),
++                            frame.get('line', 0),
++                            frame.get('function', 'unknown'),
++                        )
++                        for frame in e.tracepoint.get('frames', [])
++                        if isinstance(frame, dict)
++                    ) or 'unknown'
++                    logger.warning(
++                        "Agent child failure type=%s status=%s stage=%s trace_file=%s trace_line=%s trace_function=%s trace_chain=%s; retry budget decremented.",
++                        e.error_type, e.status_code, e.stage,
++                        e.tracepoint.get('file', 'unknown'),
++                        e.tracepoint.get('line', 0),
++                        e.tracepoint.get('function', 'unknown'),
++                        trace_chain,
++                    )
++                    max_attempt_num -= 1
++                    continue
++                except process_control.ChildExecutionError as e:
++                    logger.warning(f"Agent child control failure kind={e.kind} status={e.status_code}; retry budget decremented.")
++                    max_attempt_num -= 1
++                    continue
++                except litellm.BadRequestError:
++                    logger.warning("BadRequestError from agent; retry budget decremented.")
++                    max_attempt_num -= 1
+                     continue
+                 except APITimeoutError:
+-                    logger.warning(f"APITimeoutError. Try again.")
+-                    sleep(10)
++                    logger.warning("APITimeoutError; retry budget decremented.")
++                    max_attempt_num -= 1
++                    sleep(min(10, max(0, max_attempt_num)))
+                     continue
+                 except TimeoutError:
+-                    logger.warning(f"Processing time exceeded 15 minutes. Try again.")
++                    logger.warning("Agent execution timeout; retry budget decremented.")
+                     max_attempt_num = max_attempt_num - 1
+                     continue
+-                except litellm.exceptions.ContextWindowExceededError as e:
+-                    logger.warning(f'{e}. Try again.')
++                except litellm.exceptions.ContextWindowExceededError:
++                    logger.warning("ContextWindowExceededError; retry budget decremented.")
+                     max_attempt_num = max_attempt_num - 1
+                     continue
++                except Exception as e:
++                    logger.warning(f"Agent attempt failure type={type(e).__name__}; retry budget decremented.")
++                    max_attempt_num -= 1
++                    continue
+ 
+                 loc_end_time = time.time()
+                 if not loc_result:
+diff --git a/SWE-Explore-Bench/third_party/LocAgent/util/actions/action_parser.py b/SWE-Explore-Bench/third_party/LocAgent/util/actions/action_parser.py
+index f68c77c..5d628da 100644
+--- a/SWE-Explore-Bench/third_party/LocAgent/util/actions/action_parser.py
++++ b/SWE-Explore-Bench/third_party/LocAgent/util/actions/action_parser.py
+@@ -21,11 +21,10 @@ class ResponseParser:
+     def parse(self, response) -> Union[List[Action], Action]:
+         # using tool calling
+         if response.choices[0].message.tool_calls:
+-            try:
+-                actions = parse_tool_calls_to_actions(response)
+-                return actions
+-            except:
+-                logging.info("Un know tools")
++            # A malformed tool call is a structured execution error. Do not
++            # silently reinterpret it as ordinary assistant prose: that turns
++            # a missing/empty finish payload into a misleading empty result.
++            return parse_tool_calls_to_actions(response)
+         
+         # using code to call tools
+         action_str = self.parse_response(response)
+@@ -148,4 +147,3 @@ class CodeActActionParserFinish:
+         return FinishAction(raw_content=action_str, thought=thought)
+ 
+ 
+-
+diff --git a/SWE-Explore-Bench/third_party/LocAgent/util/runtime/finish.py b/SWE-Explore-Bench/third_party/LocAgent/util/runtime/finish.py
+index 9f362ef..c512f2e 100644
+--- a/SWE-Explore-Bench/third_party/LocAgent/util/runtime/finish.py
++++ b/SWE-Explore-Bench/third_party/LocAgent/util/runtime/finish.py
+@@ -4,12 +4,23 @@ from litellm import (
+ )
+ 
+ 
+-_FINISH_DESCRIPTION = """Finish the interaction when the task is complete OR if the assistant cannot proceed further with the task."""
++_FINISH_DESCRIPTION = """Finish the interaction when the task is complete OR if the assistant cannot proceed further with the task. Put the final candidate locations in the required locations string, one file:QualifiedName per line, ordered by relevance."""
+ 
+ FinishTool = ChatCompletionToolParam(
+     type='function',
+-    function=ChatCompletionToolParamFunctionChunk(
+-        name='finish',
+-        description=_FINISH_DESCRIPTION,
+-    ),
+-)
+\ No newline at end of file
++        function=ChatCompletionToolParamFunctionChunk(
++            name='finish',
++            description=_FINISH_DESCRIPTION,
++            parameters={
++                'type': 'object',
++                'properties': {
++                    'locations': {
++                        'type': 'string',
++                        'description': 'Final candidate locations, one file:QualifiedName per line, ordered by relevance.',
++                    },
++                },
++                'required': ['locations'],
++                'additionalProperties': False,
++            },
++        ),
++)
+diff --git a/SWE-Explore-Bench/third_party/LocAgent/util/runtime/function_calling.py b/SWE-Explore-Bench/third_party/LocAgent/util/runtime/function_calling.py
+index 1803bac..c04cf83 100644
+--- a/SWE-Explore-Bench/third_party/LocAgent/util/runtime/function_calling.py
++++ b/SWE-Explore-Bench/third_party/LocAgent/util/runtime/function_calling.py
+@@ -21,6 +21,10 @@ from .content_tools import SearchEntityTool, SearchRepoTool
+ import logging
+ logger = logging.getLogger()
+ 
++
++class FinishContractError(RuntimeError):
++    """The finish tool was called without its required structured output."""
++
+ ALL_FUNCTIONS = ['explore_tree_structure', 'search_code_snippets', 'get_entity_contents']
+ 
+ SYSTEM_PROMPT = """You are a helpful assistant that can interact with a computer to solve tasks.
+@@ -55,17 +59,18 @@ def response_to_actions(response: ModelResponse) -> list[Action]:
+         # Process each tool call to OpenHands action
+         for i, tool_call in enumerate(assistant_msg.tool_calls):
+             action: Action
++            raw_arguments = tool_call.function.arguments
+             try:
+-                arguments = json.loads(tool_call.function.arguments)
+-            except json.decoder.JSONDecodeError as e:
+-                raise RuntimeError(
+-                    f'Failed to parse tool call arguments: {tool_call.function.arguments}'
+-                ) from e
++                arguments = json.loads(raw_arguments) if isinstance(raw_arguments, str) else raw_arguments
++            except (json.decoder.JSONDecodeError, TypeError) as e:
++                raise RuntimeError('tool call arguments are not valid JSON') from e
++            if not isinstance(arguments, dict):
++                raise RuntimeError('tool call arguments must be an object')
+             if tool_call.function.name == 'finish':
+-                if list(arguments.values()):
+-                    action = FinishAction(thought=list(arguments.values())[0])
+-                else:
+-                    action = FinishAction()
++                locations = arguments.get('locations')
++                if not isinstance(locations, str) or not locations.strip():
++                    raise FinishContractError('finish.locations is required and must be non-empty')
++                action = FinishAction(thought=locations.strip())
+                 
+             elif tool_call.function.name in ALL_FUNCTIONS:
+                 # We implement this in agent_skills, which can be used via Jupyter
+@@ -79,7 +84,7 @@ def response_to_actions(response: ModelResponse) -> list[Action]:
+                 raise RuntimeError(f'Unknown tool call: {tool_call.function.name}')
+ 
+             # We only add thought to the first action
+-            if i == 0:
++            if i == 0 and not isinstance(action, FinishAction):
+                 action = combine_thought(action, thought)
+ 
+             actions.append(action)
+@@ -113,4 +118,3 @@ def get_tools(
+             tools.append(ExploreTreeStructure)
+     return tools
+ 
+-
+diff --git a/SWE-Explore-Bench/third_party/LocAgent/util/runtime/process_control.py b/SWE-Explore-Bench/third_party/LocAgent/util/runtime/process_control.py
+new file mode 100644
+index 0000000..c240d27
+--- /dev/null
++++ b/SWE-Explore-Bench/third_party/LocAgent/util/runtime/process_control.py
+@@ -0,0 +1,101 @@
++"""Bounded child-process control for the LocAgent agent loop.
++
++This module deliberately carries only exception type/category metadata across
++the multiprocessing boundary.  Exception text can contain provider response
++details, so it is never placed in the result queue.
++"""
++from __future__ import annotations
++
++import os
++import signal
++import traceback
++from queue import Empty
++
++
++class ChildExecutionError(RuntimeError):
++    def __init__(self, kind: str, status_code: str = "unknown") -> None:
++        self.kind = kind
++        self.status_code = status_code
++        super().__init__(f"child execution {kind} ({status_code})")
++
++
++def _status_category(exc: BaseException) -> str:
++    for obj in (exc, getattr(exc, "response", None)):
++        code = getattr(obj, "status_code", None)
++        if isinstance(code, int):
++            return f"{code // 100}xx"
++    return "unknown"
++
++
++def _safe_tracepoint(exc: BaseException) -> dict:
++    """Return only traceback coordinates, never source or exception text."""
++    frames = traceback.extract_tb(exc.__traceback__) if exc.__traceback__ else []
++    safe_frames = [
++        {
++            "file": os.path.basename(frame.filename),
++            "line": int(frame.lineno),
++            "function": frame.name,
++        }
++        for frame in frames
++    ]
++    if not frames:
++        return {
++            "file": "unknown",
++            "line": 0,
++            "function": "unknown",
++            "frames": [],
++        }
++    frame = frames[-1]
++    return {
++        "file": os.path.basename(frame.filename),
++        "line": int(frame.lineno),
++        "function": frame.name,
++        "frames": safe_frames,
++    }
++
++
++def safe_error_result(exc: BaseException, stage: str = "agent_process") -> dict:
++    """Return a response-safe structured error without exception text."""
++    return {
++        "status": "error",
++        "stage": stage,
++        "error_type": type(exc).__name__,
++        "status_code": _status_category(exc),
++        "pid": os.getpid(),
++        "tracepoint": _safe_tracepoint(exc),
++    }
++
++
++def guarded_call(result_queue, target, kwargs: dict) -> None:
++    """Run a child target and always try to publish a structured result."""
++    try:
++        target(**kwargs)
++    except Exception as exc:
++        result_queue.put(safe_error_result(exc))
++
++
++def terminate_child(process, grace_s: float = 2.0) -> None:
++    """Terminate one exact child and wait; escalate only if still alive."""
++    if not process.is_alive():
++        process.join(timeout=grace_s)
++        return
++    process.terminate()
++    process.join(timeout=grace_s)
++    if process.is_alive():
++        process.kill()
++        process.join(timeout=grace_s)
++
++
++def wait_for_result(process, result_queue, join_timeout: float, result_timeout: float = 5.0):
++    """Join a child and boundedly collect its one result."""
++    process.join(timeout=join_timeout)
++    if process.is_alive():
++        terminate_child(process)
++        raise ChildExecutionError("timeout", "unknown")
++    exitcode = process.exitcode
++    if exitcode not in (0, None):
++        raise ChildExecutionError("child_exit", "unknown")
++    try:
++        return result_queue.get(timeout=result_timeout)
++    except Empty as exc:
++        raise ChildExecutionError("empty_queue", "unknown") from exc
+diff --git a/symbol-locator-locagent/symbol_locator/core.py b/symbol-locator-locagent/symbol_locator/core.py
+index 6e994f7..3ec54c1 100644
+--- a/symbol-locator-locagent/symbol_locator/core.py
++++ b/symbol-locator-locagent/symbol_locator/core.py
+@@ -29,6 +29,7 @@ from .scorer import score_batch
+ # force num_processes=1 via the shim), so a plain dict is fine.
+ _CLIENTS: dict[str, PyrightClient] = {}
+ _CLIENTS_LOCK = threading.Lock()
++_CLIENT_OWNER_PID = os.getpid()
+ 
+ _CACHE = CandidateCache(
+     max_entries=int(os.environ.get("SYMBOL_LOCATOR_CACHE_MAX_ENTRIES", "512")),
+@@ -45,6 +46,7 @@ def _log(msg: str) -> None:
+ 
+ 
+ def _get_client(workspace: str) -> PyrightClient:
++    reset_after_fork()
+     workspace = os.path.abspath(workspace)
+     with _CLIENTS_LOCK:
+         c = _CLIENTS.get(workspace)
+@@ -88,12 +90,40 @@ def warmup_workspace(workspace: Optional[str] = None) -> str:
+     ws = workspace or _resolve_workspace()
+     client = _get_client(ws)
+     report = client.warmup()
++    if report.get('failed', 0):
++        raise RuntimeError(f"pyright warmup failed: {report['failed']}/{report['files_found']}")
+     return (
+         f"warmup: workspace={ws} files={report['files_found']} "
+         f"indexed={report['files_indexed']} failed={report['failed']}"
+     )
+ 
+ 
++def prepare_for_fork() -> None:
++    """Close parent-owned clients before an Agent fork."""
++    global _CLIENTS
++    with _CLIENTS_LOCK:
++        clients = list(_CLIENTS.values())
++        _CLIENTS = {}
++    for client in clients:
++        client.shutdown()
++    _CACHE.clear()
++
++
++def reset_after_fork() -> None:
++    """Give a fork child fresh locks, cache and Pyright ownership."""
++    global _CLIENTS, _CLIENTS_LOCK, _CLIENT_OWNER_PID
++    pid = os.getpid()
++    if _CLIENT_OWNER_PID == pid:
++        return
++    inherited = list(_CLIENTS.values())
++    _CLIENTS = {}
++    _CLIENTS_LOCK = threading.Lock()
++    _CLIENT_OWNER_PID = pid
++    _CACHE.clear()
++    for client in inherited:
++        client.close_after_fork()
++
++
+ def _score_and_snippet(
+     client: PyrightClient,
+     page: list,
+diff --git a/symbol-locator-locagent/symbol_locator/lsp.py b/symbol-locator-locagent/symbol_locator/lsp.py
+index 2cd0d00..80d30e9 100644
+--- a/symbol-locator-locagent/symbol_locator/lsp.py
++++ b/symbol-locator-locagent/symbol_locator/lsp.py
+@@ -152,6 +152,28 @@ class PyrightClient:
+         except Exception:
+             self._proc.kill()
+ 
++    def close_after_fork(self) -> None:
++        """Drop inherited handles without signalling the parent's server.
++
++        The child must never call ``shutdown`` on a Popen object inherited from
++        its parent: the PID refers to the parent's server. Close only the
++        child's duplicate stdio descriptors and discard all inherited state;
++        the child will create and warm a new client.
++        """
++        proc = self._proc
++        self._proc = None
++        if proc is not None:
++            for stream in (proc.stdin, proc.stdout, proc.stderr):
++                try:
++                    if stream is not None:
++                        stream.close()
++                except Exception:
++                    pass
++        self._pending = {}
++        self._opened = set()
++        self._initialized = threading.Event()
++        self._warmed = False
++
+     # ── LSP calls ──────────────────────────────────────────────────────
+     def workspace_symbol(self, query: str) -> list[PlainSymbol]:
+         """Serialized — only one workspace/symbol at a time."""
+@@ -198,16 +220,16 @@ class PyrightClient:
+         with self._warmup_lock:
+             if self._warmed:
+                 return {"files_found": 0, "files_indexed": 0, "failed": 0, "note": "already-warmed"}
+-            self._warmed = True
+-
+-        files = self._collect_py_files()
+-        failed = 0
+-        for f in files:
+-            try:
+-                self.document_symbol(f)
+-            except Exception:
+-                failed += 1
+-        return {"files_found": len(files), "files_indexed": len(files) - failed, "failed": failed}
++            files = self._collect_py_files()
++            failed = 0
++            for f in files:
++                try:
++                    self.document_symbol(f)
++                except Exception:
++                    failed += 1
++            report = {"files_found": len(files), "files_indexed": len(files) - failed, "failed": failed}
++            self._warmed = failed == 0
++            return report
+ 
+     # ── internals ──────────────────────────────────────────────────────
+     def _collect_py_files(self) -> list[str]:
+diff --git a/symbol-locator-locagent/symbol_locator/scorer.py b/symbol-locator-locagent/symbol_locator/scorer.py
+index a375fa4..e3d5ca1 100644
+--- a/symbol-locator-locagent/symbol_locator/scorer.py
++++ b/symbol-locator-locagent/symbol_locator/scorer.py
+@@ -119,7 +119,7 @@ def score_batch(
+         except Exception as _u_e:
+             on_log(f"[scorer] usage-read failed: {_u_e}")
+     except Exception as e:
+-        on_log(f"[scorer] LLM call failed: {e} — using score=50")
++        on_log(f"[scorer] LLM call failed type={type(e).__name__} — using score=50")
+         return [50] * n
+ 
+     parsed = parse_batch(text, n)

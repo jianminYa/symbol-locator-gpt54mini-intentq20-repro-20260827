@@ -1,0 +1,10 @@
+# Publication guardrails: credentials and machine-local runtime material never belong in Git.
+.env*
+.secrets/
+**/.claude/
+**/__pycache__/
+**/cache/
+**/tmp/
+*.pid
+*.lock
+!.github/workflows/*.lock

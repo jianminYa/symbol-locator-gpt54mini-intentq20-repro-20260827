@@ -1,0 +1,336 @@
+--- /data/workspace/symbol-locator-repair-20260826-083933/experiments/intentq20_x2_resilient_20260827-014906/night_supervisor.py.before_b1_validation_resume_fix_20260827-042700	2026-08-27 01:49:06.603740000 +0000
++++ /data/workspace/symbol-locator-repair-20260826-083933/experiments/intentq20_x2_resilient_20260827-014906/night_supervisor.py	2026-08-27 04:34:59.080553220 +0000
+@@ -65,6 +65,7 @@
+ FACES = ["A1", "B1", "A2", "B2"]
+ EXCLUDED_PARTS = {"experiments", "results", "logs", "tmp", "cache", "diagnostics"}
+ SECRET_PARTS = {".secrets", ".env"}
++RESUME_REQUESTED = os.environ.get("SYMBOL_LOCATOR_ORCHESTRATION_RESUME") == "1"
+ 
+ 
+ class PermanentStop(RuntimeError):
+@@ -87,6 +88,18 @@
+     return h.hexdigest()
+ 
+ 
++def preserve_or_write(path: Path, content: str, keep_existing: bool = False) -> None:
++    """Write a new artifact, or require an existing resume artifact to match."""
++    if path.exists():
++        if keep_existing:
++            return
++        if path.read_text(encoding="utf-8", errors="replace") != content:
++            raise PermanentStop(f"RESUME_ARTIFACT_CHANGED:{path.name}")
++        return
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(content, encoding="utf-8")
++
++
+ def is_secret_path(path: Path) -> bool:
+     return any(part in SECRET_PARTS or part.startswith(".env") for part in path.parts)
+ 
+@@ -319,8 +332,16 @@
+     data_target = RUN_ROOT / "data/intentq20.jsonl"
+     issue_target = RUN_ROOT / "data/issue_map.json"
+     import shutil
+-    shutil.copy2(CANONICAL_DATA, data_target)
+-    shutil.copy2(CANONICAL_ISSUE, issue_target)
++    if data_target.exists():
++        if digest_file(data_target) != digest_file(CANONICAL_DATA):
++            raise PermanentStop("RESUME_DATA_TARGET_CHANGED")
++    else:
++        shutil.copy2(CANONICAL_DATA, data_target)
++    if issue_target.exists():
++        if digest_file(issue_target) != digest_file(CANONICAL_ISSUE):
++            raise PermanentStop("RESUME_ISSUE_MAP_TARGET_CHANGED")
++    else:
++        shutil.copy2(CANONICAL_ISSUE, issue_target)
+     data = load_jsonl(data_target)
+     handoff = load_jsonl(HANDOFF_DATA)
+     source_tree = PROJECT_ROOT.parent if PROJECT_ROOT else Path("/")
+@@ -346,11 +367,12 @@
+             and checks["handoff_order_match"] and checks["source_narrow20_order_match"]
+             and checks["handoff_issue_map_20_20"] and checks["all_repo_dirs_are_repos_instance"]):
+         raise PermanentStop("DATA_ORDER_OR_ISSUE_MAP_INVALID")
+-    (RUN_ROOT / "data/instance_ids.txt").write_text("\n".join(ids) + "\n", encoding="utf-8")
+-    (DIAG / "data_copy_hashes.json").write_text(json.dumps({
++    preserve_or_write(RUN_ROOT / "data/instance_ids.txt", "\n".join(ids) + "\n")
++    data_hashes = json.dumps({
+         "data": {"source": str(CANONICAL_DATA), "source_sha256": digest_file(CANONICAL_DATA), "target_sha256": digest_file(data_target)},
+         "issue_map": {"source": str(CANONICAL_ISSUE), "source_sha256": digest_file(CANONICAL_ISSUE), "target_sha256": digest_file(issue_target)},
+-    }, indent=2) + "\n", encoding="utf-8")
++    }, indent=2) + "\n"
++    preserve_or_write(DIAG / "data_copy_hashes.json", data_hashes)
+     return checks
+ 
+ 
+@@ -370,13 +392,13 @@
+             "exists": bool(resolved and resolved.exists()),
+             "is_dir": bool(resolved and resolved.is_dir()),
+         })
+-    with (DIAG / "repo_preflight.tsv").open("w", encoding="utf-8") as fh:
+-        fh.write("instance_id\toriginal_repo_dir\tresolved_path\texists\tis_dir\n")
+-        for row in rows:
+-            fh.write("\t".join([
+-                row["instance_id"], row["original_repo_dir"], row["resolved_path"],
+-                str(row["exists"]), str(row["is_dir"]),
+-            ]) + "\n")
++    repo_tsv = "instance_id\toriginal_repo_dir\tresolved_path\texists\tis_dir\n"
++    for row in rows:
++        repo_tsv += "\t".join([
++            row["instance_id"], row["original_repo_dir"], row["resolved_path"],
++            str(row["exists"]), str(row["is_dir"]),
++        ]) + "\n"
++    preserve_or_write(DIAG / "repo_preflight.tsv", repo_tsv)
+     expected_repos = PROJECT_ROOT / "repos"
+     resolved_paths = [Path(r["resolved_path"]) for r in rows if r["resolved_path"] != "<NONE>"]
+     summary = {
+@@ -390,7 +412,7 @@
+         "contains_repos_repos": any("/repos/repos/" in str(p) for p in resolved_paths),
+         "resolved_paths": rows,
+     }
+-    (DIAG / "repo_preflight_summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
++    preserve_or_write(DIAG / "repo_preflight_summary.json", json.dumps(summary, indent=2) + "\n")
+     if not (summary["rows"] == 20 and summary["unique_ids"] == 20 and summary["exists"] == 20
+             and summary["is_dir"] == 20 and summary["project_root_exists"]
+             and summary["all_under_project_repos"] and not summary["contains_repos_repos"]):
+@@ -418,7 +440,7 @@
+             raise PermanentStop("COMMAND_PREFLIGHT_FAILED")
+         for path in (output.parent, Path(tmp).parent, Path(cache).parent):
+             path.resolve().relative_to(RUN_ROOT.resolve())
+-    (DIAG / "command_preflight_redacted.md").write_text(
++    command_text = (
+         "# Command preflight (redacted)\n\n"
+         f"- PROJECT_ROOT: `{PROJECT_ROOT}`\n"
+         f"- LOCAGENT_PATH: `{LOCAGENT_PATH}`\n"
+@@ -428,9 +450,9 @@
+         "- child environment exports absolute CONDA_EXE and LOCAGENT_PATH; TMPDIR uses a short alias whose resolved target is the per-attempt RUN_ROOT tmp directory.\n"
+         f"- model: `{AGENT_MODEL}`; scorer model env: `{SCORER_MODEL}`; temperature: agent source fixed at `1`; top-k: `{TOP_K}`; workers: `{WORKERS}`\n"
+         "- output/cache/tmp paths are per-face and under RUN_ROOT.\n\n"
+-        + "\n".join(f"## {c['face']}\n\n```text\n{c['command']}\n```\n- tmp: `{c['tmp']}`\n- cache: `{c['cache']}`\n" for c in commands),
+-        encoding="utf-8",
++        + "\n".join(f"## {c['face']}\n\n```text\n{c['command']}\n```\n- tmp: `{c['tmp']}`\n- cache: `{c['cache']}`\n" for c in commands)
+     )
++    preserve_or_write(DIAG / "command_preflight_redacted.md", command_text)
+ 
+ 
+ def process_group_members(pgid: int) -> list[int]:
+@@ -500,7 +522,23 @@
+         self.last_api_success: float | None = None
+         self.last_case_call_success = False
+         self.current_retry_count = 0
+-        self.completed_faces: list[str] = []
++        prior_state = {}
++        prior_state_path = RUN_ROOT / "state/state.json"
++        if prior_state_path.is_file():
++            try:
++                loaded = json.loads(prior_state_path.read_text(encoding="utf-8"))
++                if isinstance(loaded, dict):
++                    prior_state = loaded
++            except (OSError, json.JSONDecodeError):
++                prior_state = {}
++        self.resume_mode = bool(
++            RESUME_REQUESTED
++            and prior_state.get("status") == "PERMANENT_STOP"
++            and prior_state.get("reason") == "B1_FIRST_CASE_PYRIGHT_OR_FIND_SYMBOL_VALIDATION_FAILED"
++        )
++        self.completed_faces: list[str] = [
++            face for face in prior_state.get("completed_faces", []) if face in FACES
++        ]
+         self.face_started: dict[str, float] = {}
+         self.face_finished: dict[str, float] = {}
+         self.face_failures: dict[str, list[str]] = {face: [] for face in FACES}
+@@ -520,6 +558,19 @@
+             "api_canary_attempts": 0,
+             "last_successful_api_time": None,
+         }
++        if self.resume_mode:
++            self.state.update(prior_state)
++        self.state.update({
++            "status": "STARTING",
++            "run_root": str(RUN_ROOT),
++            "tmux_session": os.environ.get("TMUX_SESSION") or self.state.get("tmux_session"),
++            "supervisor_pid": os.getpid(),
++            "supervisor_pgid": os.getpgrp(),
++            "stage": "startup",
++            "face": None,
++            "completed_faces": list(self.completed_faces),
++            "permanent_reasons": [],
++        })
+ 
+     def log(self, event: str, detail: str = "") -> None:
+         line = f"{now_utc()} event={event}"
+@@ -751,6 +802,7 @@
+                 if "warmup" in low:
+                     if re.search(r"failed\s*[=:]\s*0", low):
+                         flags["warmup_success"] = True
++                        flags["pyright_seen"] = True
+                         markers.append("pyright_warmup_success")
+                     elif "failed" in low or "error" in low or "fatal" in low:
+                         flags["warmup_failure"] = True
+@@ -770,9 +822,44 @@
+                 for marker in sorted(set(markers)):
+                     fh.write(f"{now_utc()} stream={kind} signal={marker}\n")
+ 
++    def validate_existing_b1_first_case(self, iid: str) -> None:
++        """Validate the preserved successful B1 first case without rerunning it."""
++        trace_root = RUN_ROOT / f"faces/B1/traces/{iid}_attempt_1"
++        trace_lines = []
++        if trace_root.is_dir():
++            for trace_file in trace_root.rglob("*"):
++                if trace_file.is_file():
++                    try:
++                        trace_lines.extend(trace_file.read_text(encoding="utf-8", errors="ignore").lower().splitlines())
++                    except OSError:
++                        pass
++        warmup_success = any(re.search(r"warmup[^\n]*failed\s*[=:]\s*0", line) for line in trace_lines)
++        warmup_failure = any(
++            "warmup" in line
++            and not re.search(r"warmup[^\n]*failed\s*[=:]\s*0", line)
++            and re.search(r"failed|fatal|error", line)
++            for line in trace_lines
++        )
++        find_symbol_nonempty = any(
++            "find_symbol" in line and re.search(r"found\s+[1-9][0-9]*\s+candidate", line)
++            for line in trace_lines
++        )
++        process_evidence = DIAG / "b1_first_case_process_evidence.md"
++        pyright_process_observed = process_evidence.is_file() and "pyright-langserver" in process_evidence.read_text(
++            encoding="utf-8", errors="ignore"
++        ).lower()
++        if not (pyright_process_observed and warmup_success and find_symbol_nonempty and not warmup_failure):
++            raise PermanentStop("B1_FIRST_CASE_PYRIGHT_OR_FIND_SYMBOL_VALIDATION_FAILED")
++        self.log(
++            "b1_first_existing_validation_pass",
++            "pyright_process=1 warmup_success=1 warmup_failure=0 find_symbol_nonempty=1 rerun=0",
++        )
++
+     def run_case(self, face: str, iid: str, row: dict) -> bool:
+         existing = self.face_completed_ids(face)
+         if iid in existing:
++            if face == "B1" and iid == EXPECTED_IDS[0]:
++                self.validate_existing_b1_first_case(iid)
+             return True
+         case_dir = RUN_ROOT / f"attempts/{face}/{iid}"
+         existing_attempts = sorted(case_dir.glob("attempt_*.json")) if case_dir.is_dir() else []
+@@ -893,10 +980,13 @@
+                 low_trace = trace_text.lower()
+                 if "pyright" in low_trace:
+                     flags["pyright_seen"] = True
+-                if re.search(r"warmup[^\n]*failed\s*[=:]\s*0", low_trace):
+-                    flags["warmup_success"] = True
+-                if "warmup" in low_trace and ("failed" in low_trace or "fatal" in low_trace):
+-                    flags["warmup_failure"] = True
++                for trace_line in low_trace.splitlines():
++                    warmup_success = bool(re.search(r"warmup[^\n]*failed\s*[=:]\s*0", trace_line))
++                    if warmup_success:
++                        flags["warmup_success"] = True
++                        flags["pyright_seen"] = True
++                    elif "warmup" in trace_line and re.search(r"failed|fatal|error", trace_line):
++                        flags["warmup_failure"] = True
+                 if "find_symbol" in low_trace and re.search(r"found\s+[1-9][0-9]*\s+candidate", low_trace):
+                     flags["find_symbol_seen"] = True
+                     flags["find_symbol_nonempty"] = True
+@@ -983,8 +1073,13 @@
+     def run_faces(self) -> None:
+         rows = load_jsonl(RUN_ROOT / "data/intentq20.jsonl")
+         self.update_state(stage="formal", face=None)
+-        self.api_ready("before_A1")
++        pending_faces = [face for face in FACES if face not in self.completed_faces]
++        if not pending_faces:
++            return
++        self.api_ready(f"before_{pending_faces[0]}")
+         for face in FACES:
++            if face in self.completed_faces:
++                continue
+             self.active_face = face
+             self.face_started[face] = time.time()
+             self.update_state(stage="face", face=face)
+@@ -1000,7 +1095,8 @@
+             report = self.write_face_report(face)
+             if report["rows"] != 20 or report["unique_ids"] != 20 or report["execution_failures"] > 2:
+                 raise PermanentStop(f"FACE_GATE_FAILED_{face}")
+-            self.completed_faces.append(face)
++            if face not in self.completed_faces:
++                self.completed_faces.append(face)
+             self.update_state(completed_faces=list(self.completed_faces), completed_case_ids={f: self.face_completed_ids(f) for f in FACES})
+             self.log("face_complete", f"face={face} rows={report['rows']}")
+             self.active_face = None
+@@ -1100,12 +1196,16 @@
+             except Exception:
+                 (DIAG / f"{face}_report.md").write_text(f"# {face} report\n\nNot started or incomplete: `{status}` — `{reason}`.\n", encoding="utf-8")
+         missing = {face: [iid for iid in EXPECTED_IDS if iid not in self.face_completed_ids(face)] for face in FACES}
+-        (DIAG / "resume_and_recovery_log.md").write_text(
+-            "# Resume and recovery log\n\n"
+-            "Each case attempt is recorded under `attempts/<face>/<instance_id>/`; no successful JSONL row is deleted or rewritten.\n\n"
+-            + json.dumps({"status": status, "reason": reason, "completed_faces": self.completed_faces, "missing_ids": missing}, indent=2, ensure_ascii=False) + "\n",
+-            encoding="utf-8",
+-        )
++        resume_log = DIAG / "resume_and_recovery_log.md"
++        if not resume_log.exists():
++            resume_log.write_text(
++                "# Resume and recovery log\n\n"
++                "Each case attempt is recorded under `attempts/<face>/<instance_id>/`; no successful JSONL row is deleted or rewritten.\n",
++                encoding="utf-8",
++            )
++        with resume_log.open("a", encoding="utf-8") as fh:
++            fh.write("\n## Stop record\n\n")
++            fh.write(json.dumps({"status": status, "reason": reason, "completed_faces": self.completed_faces, "missing_ids": missing}, indent=2, ensure_ascii=False) + "\n")
+         (DIAG / "process_cleanup.md").write_text(
+             "# Process cleanup\n\n"
+             f"- active exact PGID after finalization: `{self.active_pgid}`\n"
+@@ -1145,8 +1245,14 @@
+     def run(self) -> int:
+         global PROJECT_ROOT, LOCAGENT_PATH, SYMBOL_LOCATOR_PATH
+         DIAG.mkdir(parents=True, exist_ok=True)
+-        (DIAG / "supervisor_timeline.md").write_text(f"# Supervisor timeline\n\n- {now_utc()} supervisor started.\n", encoding="utf-8")
+-        (DIAG / "api_canary_attempts.jsonl").write_text("", encoding="utf-8")
++        if self.resume_mode:
++            self.log(
++                "supervisor_resume_started",
++                "reason=orchestration_validator_false_positive preserve_existing_artifacts=1",
++            )
++        else:
++            preserve_or_write(DIAG / "supervisor_timeline.md", f"# Supervisor timeline\n\n- {now_utc()} supervisor started.\n")
++            preserve_or_write(DIAG / "api_canary_attempts.jsonl", "")
+         atomic_json(RUN_ROOT / "state/state.json", self.state)
+         self.heartbeat()
+         thread = threading.Thread(target=self.heartbeat_loop, daemon=True)
+@@ -1158,7 +1264,7 @@
+             PROJECT_ROOT, SYMBOL_LOCATOR_PATH, candidates = discover_project()
+             LOCAGENT_PATH = PROJECT_ROOT / "third_party/LocAgent"
+             checks = source_hash_checks(PROJECT_ROOT, SYMBOL_LOCATOR_PATH)
+-            (DIAG / "source_key_hash_checks.json").write_text(json.dumps(checks, indent=2) + "\n", encoding="utf-8")
++            preserve_or_write(DIAG / "source_key_hash_checks.json", json.dumps(checks, indent=2) + "\n")
+             self.state["project_root"] = str(PROJECT_ROOT)
+             self.state["locagent_path"] = str(LOCAGENT_PATH)
+             self.state["symbol_locator_path"] = str(SYMBOL_LOCATOR_PATH)
+@@ -1172,23 +1278,23 @@
+             data_checks = copy_and_validate_data()
+             repo_checks = repo_preflight()
+             command_audit()
+-            (DIAG / "project_root_discovery.md").write_text(
++            project_discovery_text = (
+                 "# Project root discovery\n\n"
+                 f"- search root: `{SOURCE_COPY}`\n- search depth: `<=8`\n"
+                 f"- candidates discovered: `{json.dumps([{**c, 'path': str(c['path'])} for c in candidates], ensure_ascii=False)}`\n"
+                 f"- PROJECT_ROOT: `{PROJECT_ROOT}`\n- LOCAGENT_PATH: `{LOCAGENT_PATH}`\n- SYMBOL_LOCATOR_PATH: `{SYMBOL_LOCATOR_PATH}`\n"
+                 f"- source key hash checks: `{len([c for c in checks if c['match']])}/{len(checks)}`\n"
+                 "- same-tree symbol-locator directories: `1`\n"
+-                "- only the unique candidate passed all three V2 validation layers.\n",
+-                encoding="utf-8",
++                "- only the unique candidate passed all three V2 validation layers.\n"
+             )
+-            (DIAG / "preflight.md").write_text(
++            preserve_or_write(DIAG / "project_root_discovery.md", project_discovery_text, keep_existing=self.resume_mode)
++            preflight_text = (
+                 "# Preflight\n\n"
+                 f"- RUN_ROOT: `{RUN_ROOT}`\n- PROJECT_ROOT: `{PROJECT_ROOT}`\n- LOCAGENT_PATH: `{LOCAGENT_PATH}`\n- SYMBOL_LOCATOR_PATH: `{SYMBOL_LOCATOR_PATH}`\n"
+                 f"- data checks: `{json.dumps(data_checks, ensure_ascii=False)}`\n- repo checks: rows={repo_checks['rows']}, unique={repo_checks['unique_ids']}, exists={repo_checks['exists']}, is_dir={repo_checks['is_dir']}\n"
+-                "- conflict scan: pass\n- API canary: pending\n- no expanded datasets permitted or selected\n",
+-                encoding="utf-8",
++                "- conflict scan: pass\n- API canary: pending\n- no expanded datasets permitted or selected\n"
+             )
++            preserve_or_write(DIAG / "preflight.md", preflight_text, keep_existing=self.resume_mode)
+             self.update_state(stage="preflight_passed", status="RUNNING")
+             self.run_faces()
+             status, reason = "COMPLETE", "A1_B1_A2_B2_COMPLETE"
+

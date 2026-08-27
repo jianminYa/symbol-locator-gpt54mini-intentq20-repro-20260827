@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-08-27T12:32:21.133996+00:00",
+  "face": "B2",
+  "instance_id": "pytest-dev__pytest-7205",
+  "attempt": 1,
+  "elapsed_seconds": 77.267,
+  "return_code": 0,
+  "category": "success",
+  "timeout": false,
+  "output_written": true,
+  "pyright_seen": false,
+  "pyright_warmup_success": false,
+  "pyright_warmup_failure": false,
+  "find_symbol_seen": false,
+  "find_symbol_nonempty": false,
+  "symbol_locator_installed": false
+}

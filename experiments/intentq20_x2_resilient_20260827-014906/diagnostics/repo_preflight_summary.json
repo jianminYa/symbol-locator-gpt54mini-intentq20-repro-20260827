@@ -1,0 +1,152 @@
+{
+  "rows": 20,
+  "unique_ids": 20,
+  "exists": 20,
+  "is_dir": 20,
+  "project_root": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench",
+  "project_root_exists": true,
+  "all_under_project_repos": true,
+  "contains_repos_repos": false,
+  "resolved_paths": [
+    {
+      "instance_id": "django__django-11206",
+      "original_repo_dir": "repos/django__django-11206",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-11206",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-14141",
+      "original_repo_dir": "repos/scikit-learn__scikit-learn-14141",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-14141",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "django__django-11066",
+      "original_repo_dir": "repos/django__django-11066",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-11066",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "django__django-12304",
+      "original_repo_dir": "repos/django__django-12304",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-12304",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "django__django-10999",
+      "original_repo_dir": "repos/django__django-10999",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-10999",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "matplotlib__matplotlib-24026",
+      "original_repo_dir": "repos/matplotlib__matplotlib-24026",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/matplotlib__matplotlib-24026",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "django__django-15104",
+      "original_repo_dir": "repos/django__django-15104",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-15104",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "sympy__sympy-13647",
+      "original_repo_dir": "repos/sympy__sympy-13647",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/sympy__sympy-13647",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "pylint-dev__pylint-7277",
+      "original_repo_dir": "repos/pylint-dev__pylint-7277",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/pylint-dev__pylint-7277",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "scikit-learn__scikit-learn-10844",
+      "original_repo_dir": "repos/scikit-learn__scikit-learn-10844",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "pylint-dev__pylint-4661",
+      "original_repo_dir": "repos/pylint-dev__pylint-4661",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/pylint-dev__pylint-4661",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "sphinx-doc__sphinx-8621",
+      "original_repo_dir": "repos/sphinx-doc__sphinx-8621",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/sphinx-doc__sphinx-8621",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "django__django-13410",
+      "original_repo_dir": "repos/django__django-13410",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-13410",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "django__django-11099",
+      "original_repo_dir": "repos/django__django-11099",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-11099",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "pytest-dev__pytest-6202",
+      "original_repo_dir": "repos/pytest-dev__pytest-6202",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/pytest-dev__pytest-6202",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "django__django-10973",
+      "original_repo_dir": "repos/django__django-10973",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-10973",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "django__django-15572",
+      "original_repo_dir": "repos/django__django-15572",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-15572",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "django__django-14752",
+      "original_repo_dir": "repos/django__django-14752",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/django__django-14752",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "pytest-dev__pytest-5809",
+      "original_repo_dir": "repos/pytest-dev__pytest-5809",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/pytest-dev__pytest-5809",
+      "exists": true,
+      "is_dir": true
+    },
+    {
+      "instance_id": "pytest-dev__pytest-7205",
+      "original_repo_dir": "repos/pytest-dev__pytest-7205",
+      "resolved_path": "/data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/repos/pytest-dev__pytest-7205",
+      "exists": true,
+      "is_dir": true
+    }
+  ]
+}

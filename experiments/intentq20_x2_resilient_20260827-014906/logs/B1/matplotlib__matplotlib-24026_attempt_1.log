@@ -1,0 +1,2 @@
+2026-08-27T05:16:02.359149+00:00 case_start face=B1 instance=matplotlib__matplotlib-24026 attempt=1
+2026-08-27T05:24:18.284875+00:00 case_end face=B1 instance=matplotlib__matplotlib-24026 attempt=1 elapsed=495.924 category=success

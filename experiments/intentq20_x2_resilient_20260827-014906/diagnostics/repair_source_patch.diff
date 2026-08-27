@@ -1,0 +1,124 @@
+--- SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py ---
+--- /data/workspace/symbol-locator-repair-20260825-155119/source_copy/SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py	2026-08-25 16:21:42.110158005 +0000
++++ /data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py	2026-08-26 09:04:59.608625435 +0000
+@@ -117,10 +117,12 @@
+ 
+ 
+ class AgentProcessError(RuntimeError):
+-    def __init__(self, error_type: str, status_code: str, stage: str):
++    def __init__(self, error_type: str, status_code: str, stage: str,
++                 tracepoint: dict | None = None):
+         self.error_type = error_type
+         self.status_code = status_code
+         self.stage = stage
++        self.tracepoint = tracepoint or {}
+         super().__init__(f"agent process {error_type} ({status_code})")
+ 
+ 
+@@ -129,7 +131,9 @@
+ 
+ 
+ def _guarded_auto_search_process(result_queue, **kwargs):
+-    process_control.guarded_call(result_queue, _auto_search_process_impl, kwargs)
++    target_kwargs = dict(kwargs)
++    target_kwargs['result_queue'] = result_queue
++    process_control.guarded_call(result_queue, _auto_search_process_impl, target_kwargs)
+ 
+ 
+ def auto_search_process(result_queue,
+@@ -380,9 +384,12 @@
+         error_type = str(result.get('error_type', 'ChildError'))
+         status_code = str(result.get('status_code', 'unknown'))
+         stage = str(result.get('stage', 'agent_process'))
++        tracepoint = result.get('tracepoint')
++        if not isinstance(tracepoint, dict):
++            tracepoint = {}
+         if status_code == '4xx' or error_type in {'AuthenticationError', 'AuthenticationFailure'}:
+-            raise AgentAuthenticationError(error_type, status_code, stage)
+-        raise AgentProcessError(error_type, status_code, stage)
++            raise AgentAuthenticationError(error_type, status_code, stage, tracepoint)
++        raise AgentProcessError(error_type, status_code, stage, tracepoint)
+     if not isinstance(result, tuple) or len(result) != 3:
+         raise AgentProcessError('invalid_child_result', 'unknown', 'result_validation')
+     return result
+@@ -482,11 +489,43 @@
+                     )
+                 
+                 except AgentAuthenticationError as e:
+-                    logger.error(f"Agent authentication failure type={e.error_type} status={e.status_code}; no retry.")
++                    trace_chain = ">".join(
++                        "%s:%s:%s" % (
++                            frame.get('file', 'unknown'),
++                            frame.get('line', 0),
++                            frame.get('function', 'unknown'),
++                        )
++                        for frame in e.tracepoint.get('frames', [])
++                        if isinstance(frame, dict)
++                    ) or 'unknown'
++                    logger.error(
++                        "Agent authentication failure type=%s status=%s trace_file=%s trace_line=%s trace_function=%s trace_chain=%s; no retry.",
++                        e.error_type, e.status_code,
++                        e.tracepoint.get('file', 'unknown'),
++                        e.tracepoint.get('line', 0),
++                        e.tracepoint.get('function', 'unknown'),
++                        trace_chain,
++                    )
+                     max_attempt_num = 0
+                     break
+                 except AgentProcessError as e:
+-                    logger.warning(f"Agent child failure type={e.error_type} status={e.status_code} stage={e.stage}; retry budget decremented.")
++                    trace_chain = ">".join(
++                        "%s:%s:%s" % (
++                            frame.get('file', 'unknown'),
++                            frame.get('line', 0),
++                            frame.get('function', 'unknown'),
++                        )
++                        for frame in e.tracepoint.get('frames', [])
++                        if isinstance(frame, dict)
++                    ) or 'unknown'
++                    logger.warning(
++                        "Agent child failure type=%s status=%s stage=%s trace_file=%s trace_line=%s trace_function=%s trace_chain=%s; retry budget decremented.",
++                        e.error_type, e.status_code, e.stage,
++                        e.tracepoint.get('file', 'unknown'),
++                        e.tracepoint.get('line', 0),
++                        e.tracepoint.get('function', 'unknown'),
++                        trace_chain,
++                    )
+                     max_attempt_num -= 1
+                     continue
+                 except process_control.ChildExecutionError as e:
+--- SWE-Explore-Bench/explorers/_locagent_shim.py ---
+--- /data/workspace/symbol-locator-repair-20260825-155119/source_copy/SWE-Explore-Bench/explorers/_locagent_shim.py	2026-08-18 06:20:22.000000000 +0000
++++ /data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/explorers/_locagent_shim.py	2026-08-26 09:13:15.621514596 +0000
+@@ -53,6 +53,20 @@
+ _ca.MODEL_COST_PER_OUTPUT = _output_defaults
+ 
+ # Patch 6: Use local repo via symlink instead of GitHub cloning
++def _replace_local_repo_link(local_repo, repo_dir):
++    """Replace an existing repo path, including a dangling symlink."""
++    import shutil
++
++    if os.path.lexists(repo_dir):
++        if os.path.islink(repo_dir):
++            os.unlink(repo_dir)
++        elif os.path.isdir(repo_dir):
++            shutil.rmtree(repo_dir)
++        else:
++            os.remove(repo_dir)
++    os.symlink(local_repo, repo_dir)
++
++
+ _local_repo = os.environ.get('LOCAL_REPO_PATH', '')
+ if _local_repo:
+     import shutil
+@@ -63,9 +77,7 @@
+         """Create symlink to local repo instead of cloning from GitHub."""
+         if not os.path.exists(os.path.join(repo_dir, '.git')):
+             os.makedirs(os.path.dirname(repo_dir), exist_ok=True)
+-            if os.path.exists(repo_dir):
+-                shutil.rmtree(repo_dir)
+-            os.symlink(_local_repo, repo_dir)
++            _replace_local_repo_link(_local_repo, repo_dir)
+         # else: already exists, skip
+     _grm.maybe_clone = _patched_maybe_clone
+ 

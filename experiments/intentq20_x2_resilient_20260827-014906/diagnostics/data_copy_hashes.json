@@ -1,0 +1,12 @@
+{
+  "data": {
+    "source": "/data/workspace/symbol-locator-repair-20260826-083933/data/intentq20/intentq20.jsonl",
+    "source_sha256": "f582a424bd8e2b6f6f91319986a483d6112265b338432b55b0bca72067886110",
+    "target_sha256": "f582a424bd8e2b6f6f91319986a483d6112265b338432b55b0bca72067886110"
+  },
+  "issue_map": {
+    "source": "/data/workspace/symbol-locator-repair-20260826-083933/data/intentq20/issue_map.json",
+    "source_sha256": "75296d398d52ef64d4d93cb6e6557adf60e6285157a23729628bc9a6c586f5d5",
+    "target_sha256": "75296d398d52ef64d4d93cb6e6557adf60e6285157a23729628bc9a6c586f5d5"
+  }
+}
