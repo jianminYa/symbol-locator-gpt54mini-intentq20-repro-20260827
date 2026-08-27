@@ -21,11 +21,10 @@ class ResponseParser:
     def parse(self, response) -> Union[List[Action], Action]:
         # using tool calling
         if response.choices[0].message.tool_calls:
-            try:
-                actions = parse_tool_calls_to_actions(response)
-                return actions
-            except:
-                logging.info("Un know tools")
+            # A malformed tool call is a structured execution error. Do not
+            # silently reinterpret it as ordinary assistant prose: that turns
+            # a missing/empty finish payload into a misleading empty result.
+            return parse_tool_calls_to_actions(response)
         
         # using code to call tools
         action_str = self.parse_response(response)
@@ -146,6 +145,5 @@ class CodeActActionParserFinish:
         ), 'self.finish_command should not be None when parse is called'
         thought = action_str.replace(self.finish_command.group(0), '').strip()
         return FinishAction(raw_content=action_str, thought=thought)
-
 
 

@@ -66,18 +66,12 @@ def run_in_conda(
         except OSError:
             process.kill()
         stdout, stderr = process.communicate()
-        raise subprocess.TimeoutExpired(
-            full_cmd, timeout, output=stdout, stderr=stderr)
+        # Do not propagate captured child output: it may contain provider
+        # response bodies or other sensitive text.
+        raise subprocess.TimeoutExpired(full_cmd, timeout)
     result = subprocess.CompletedProcess(
         full_cmd, process.returncode, stdout, stderr)
 
     if result.returncode != 0:
-        stderr_preview = (result.stderr or "")[:2000]
-        stdout_preview = (result.stdout or "")[:2000]
-        detail = stderr_preview
-        if stdout_preview:
-            detail = f"STDOUT:\n{stdout_preview}\nSTDERR:\n{stderr_preview}"
-        raise RuntimeError(
-            f"conda run -n {conda_env} failed (rc={result.returncode}):\n{detail}"
-        )
+        raise RuntimeError(f"conda run -n {conda_env} failed rc={result.returncode}")
     return result

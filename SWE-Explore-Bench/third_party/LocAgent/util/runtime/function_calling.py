@@ -21,6 +21,10 @@ from .content_tools import SearchEntityTool, SearchRepoTool
 import logging
 logger = logging.getLogger()
 
+
+class FinishContractError(RuntimeError):
+    """The finish tool was called without its required structured output."""
+
 ALL_FUNCTIONS = ['explore_tree_structure', 'search_code_snippets', 'get_entity_contents']
 
 SYSTEM_PROMPT = """You are a helpful assistant that can interact with a computer to solve tasks.
@@ -55,17 +59,18 @@ def response_to_actions(response: ModelResponse) -> list[Action]:
         # Process each tool call to OpenHands action
         for i, tool_call in enumerate(assistant_msg.tool_calls):
             action: Action
+            raw_arguments = tool_call.function.arguments
             try:
-                arguments = json.loads(tool_call.function.arguments)
-            except json.decoder.JSONDecodeError as e:
-                raise RuntimeError(
-                    f'Failed to parse tool call arguments: {tool_call.function.arguments}'
-                ) from e
+                arguments = json.loads(raw_arguments) if isinstance(raw_arguments, str) else raw_arguments
+            except (json.decoder.JSONDecodeError, TypeError) as e:
+                raise RuntimeError('tool call arguments are not valid JSON') from e
+            if not isinstance(arguments, dict):
+                raise RuntimeError('tool call arguments must be an object')
             if tool_call.function.name == 'finish':
-                if list(arguments.values()):
-                    action = FinishAction(thought=list(arguments.values())[0])
-                else:
-                    action = FinishAction()
+                locations = arguments.get('locations')
+                if not isinstance(locations, str) or not locations.strip():
+                    raise FinishContractError('finish.locations is required and must be non-empty')
+                action = FinishAction(thought=locations.strip())
                 
             elif tool_call.function.name in ALL_FUNCTIONS:
                 # We implement this in agent_skills, which can be used via Jupyter
@@ -79,7 +84,7 @@ def response_to_actions(response: ModelResponse) -> list[Action]:
                 raise RuntimeError(f'Unknown tool call: {tool_call.function.name}')
 
             # We only add thought to the first action
-            if i == 0:
+            if i == 0 and not isinstance(action, FinishAction):
                 action = combine_thought(action, thought)
 
             actions.append(action)
@@ -112,5 +117,4 @@ def get_tools(
         else:
             tools.append(ExploreTreeStructure)
     return tools
-
 

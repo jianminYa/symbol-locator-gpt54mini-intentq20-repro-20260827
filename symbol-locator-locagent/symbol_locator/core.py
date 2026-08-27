@@ -29,6 +29,7 @@ from .scorer import score_batch
 # force num_processes=1 via the shim), so a plain dict is fine.
 _CLIENTS: dict[str, PyrightClient] = {}
 _CLIENTS_LOCK = threading.Lock()
+_CLIENT_OWNER_PID = os.getpid()
 
 _CACHE = CandidateCache(
     max_entries=int(os.environ.get("SYMBOL_LOCATOR_CACHE_MAX_ENTRIES", "512")),
@@ -45,6 +46,7 @@ def _log(msg: str) -> None:
 
 
 def _get_client(workspace: str) -> PyrightClient:
+    reset_after_fork()
     workspace = os.path.abspath(workspace)
     with _CLIENTS_LOCK:
         c = _CLIENTS.get(workspace)
@@ -88,10 +90,38 @@ def warmup_workspace(workspace: Optional[str] = None) -> str:
     ws = workspace or _resolve_workspace()
     client = _get_client(ws)
     report = client.warmup()
+    if report.get('failed', 0):
+        raise RuntimeError(f"pyright warmup failed: {report['failed']}/{report['files_found']}")
     return (
         f"warmup: workspace={ws} files={report['files_found']} "
         f"indexed={report['files_indexed']} failed={report['failed']}"
     )
+
+
+def prepare_for_fork() -> None:
+    """Close parent-owned clients before an Agent fork."""
+    global _CLIENTS
+    with _CLIENTS_LOCK:
+        clients = list(_CLIENTS.values())
+        _CLIENTS = {}
+    for client in clients:
+        client.shutdown()
+    _CACHE.clear()
+
+
+def reset_after_fork() -> None:
+    """Give a fork child fresh locks, cache and Pyright ownership."""
+    global _CLIENTS, _CLIENTS_LOCK, _CLIENT_OWNER_PID
+    pid = os.getpid()
+    if _CLIENT_OWNER_PID == pid:
+        return
+    inherited = list(_CLIENTS.values())
+    _CLIENTS = {}
+    _CLIENTS_LOCK = threading.Lock()
+    _CLIENT_OWNER_PID = pid
+    _CACHE.clear()
+    for client in inherited:
+        client.close_after_fork()
 
 
 def _score_and_snippet(

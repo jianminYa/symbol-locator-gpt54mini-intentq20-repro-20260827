@@ -47,6 +47,7 @@ from util.runtime.fn_call_converter import (
     convert_non_fncall_messages_to_fncall_messages,
     STOP_WORDS as NON_FNCALL_STOP_WORDS
 )
+from util.runtime import process_control
 # litellm.set_verbose=True
 # os.environ['LITELLM_LOG'] = 'DEBUG
 
@@ -111,6 +112,30 @@ def get_task_instruction(instance: dict, task: str = 'auto_search', include_pr=F
     return instruction
 
 
+class AgentLoopLimitError(RuntimeError):
+    pass
+
+
+class AgentProcessError(RuntimeError):
+    def __init__(self, error_type: str, status_code: str, stage: str,
+                 tracepoint: dict | None = None):
+        self.error_type = error_type
+        self.status_code = status_code
+        self.stage = stage
+        self.tracepoint = tracepoint or {}
+        super().__init__(f"agent process {error_type} ({status_code})")
+
+
+class AgentAuthenticationError(AgentProcessError):
+    pass
+
+
+def _guarded_auto_search_process(result_queue, **kwargs):
+    target_kwargs = dict(kwargs)
+    target_kwargs['result_queue'] = result_queue
+    process_control.guarded_call(result_queue, _auto_search_process_impl, target_kwargs)
+
+
 def auto_search_process(result_queue,
                         model_name, messages, fake_user_msg,
                         tools = None,
@@ -118,6 +143,41 @@ def auto_search_process(result_queue,
                         temp=1.0,
                         max_iteration_num=20,
                         use_function_calling=True):
+    return _auto_search_process_impl(
+        result_queue=result_queue,
+        model_name=model_name,
+        messages=messages,
+        fake_user_msg=fake_user_msg,
+        tools=tools,
+        traj_data=traj_data,
+        temp=temp,
+        max_iteration_num=max_iteration_num,
+        use_function_calling=use_function_calling,
+    )
+
+
+def _auto_search_process_impl(result_queue,
+                         model_name, messages, fake_user_msg,
+                         tools = None,
+                         traj_data=None,
+                         temp=1.0,
+                         max_iteration_num=20,
+                         use_function_calling=True):
+    try:
+        configured_limit = int(os.environ.get('LOCAGENT_MAX_ITER', max_iteration_num))
+    except (TypeError, ValueError):
+        configured_limit = max_iteration_num
+    try:
+        hard_limit = int(os.environ.get('LOCAGENT_HARD_MAX_ITER', configured_limit))
+    except (TypeError, ValueError):
+        hard_limit = configured_limit
+    max_iteration_num = max(1, min(configured_limit, hard_limit))
+
+    if os.environ.get('SYMBOL_LOCATOR_ENABLED') == '1':
+        from symbol_locator import core as _symbol_core
+        _symbol_core.reset_after_fork()
+        _symbol_core.warmup_workspace()
+
     if tools and ('hosted_vllm' in model_name or 'qwen' in model_name.lower() 
     #             #   or model_name=='azure/gpt-4o' 
     #             #   or model_name == 'litellm_proxy/o3-mini-2025-01-31'
@@ -220,7 +280,12 @@ def auto_search_process(result_queue,
                 continue 
                 
         last_message = response.choices[0].message.content
-        print(response.choices[0].message)
+        response_message = response.choices[0].message
+        logging.info(
+            "agent response received content_present=%s tool_calls=%d",
+            response_message.content is not None,
+            len(response_message.tool_calls or []),
+        )
         messages.append(convert_to_json(raw_response.choices[0].message))
         traj_msgs.append(convert_to_json(raw_response.choices[0].message))
         prompt_tokens += response.usage.prompt_tokens
@@ -234,7 +299,7 @@ def auto_search_process(result_queue,
             if action.action_type == ActionType.FINISH:
                 final_output = action.thought
                 logging.info('='*15)
-                logging.info("\nFinal Response:=\n" + final_output)
+                logging.info("Final response generated content_length=%d", len(final_output or ""))
                 finish = True # break
             elif action.action_type == ActionType.MESSAGE:
                 logging.debug("thought:\n" + action.content)
@@ -280,6 +345,9 @@ def auto_search_process(result_queue,
                 logging.warning('Error Action!')
                 # return
 
+        if not finish and cur_interation_num >= max_iteration_num:
+            raise AgentLoopLimitError('agent iteration hard limit reached')
+
     # save traj
     traj_data = {
         'messages': traj_msgs,
@@ -291,6 +359,40 @@ def auto_search_process(result_queue,
     }
     # return final_output, messages, traj_data
     result_queue.put((final_output, messages, traj_data))
+
+
+def _run_agent_child(ctx, kwargs, timeout_s):
+    manager = ctx.Manager()
+    result_queue = manager.Queue()
+    process = ctx.Process(target=_guarded_auto_search_process, kwargs={
+        'result_queue': result_queue,
+        **kwargs,
+    })
+    result = None
+    try:
+        process.start()
+        result = process_control.wait_for_result(
+            process, result_queue,
+            join_timeout=timeout_s,
+            result_timeout=min(10.0, max(1.0, timeout_s)),
+        )
+    finally:
+        if process.pid is not None and process.is_alive():
+            process_control.terminate_child(process)
+        manager.shutdown()
+    if isinstance(result, dict) and result.get('status') == 'error':
+        error_type = str(result.get('error_type', 'ChildError'))
+        status_code = str(result.get('status_code', 'unknown'))
+        stage = str(result.get('stage', 'agent_process'))
+        tracepoint = result.get('tracepoint')
+        if not isinstance(tracepoint, dict):
+            tracepoint = {}
+        if status_code == '4xx' or error_type in {'AuthenticationError', 'AuthenticationFailure'}:
+            raise AgentAuthenticationError(error_type, status_code, stage, tracepoint)
+        raise AgentProcessError(error_type, status_code, stage, tracepoint)
+    if not isinstance(result, tuple) or len(result) != 3:
+        raise AgentProcessError('invalid_child_result', 'unknown', 'result_validation')
+    return result
 
 
 def run_localize(rank, args, bug_queue, log_queue, output_file_lock, traj_file_lock):
@@ -360,8 +462,7 @@ def run_localize(rank, args, bug_queue, log_queue, output_file_lock, traj_file_l
                         "content": get_task_instruction(bug, include_pr=True, include_hint=True),
                     })
                     
-                    ctx = mp.get_context('fork')  # use fork to inherit context!!
-                    result_queue = ctx.Manager().Queue()
+                    ctx = mp.get_context('fork')
                     tools = None
                     if args.use_function_calling:
                         tools = function_calling.get_tools(
@@ -370,46 +471,87 @@ def run_localize(rank, args, bug_queue, log_queue, output_file_lock, traj_file_l
                             codeact_enable_tree_structure_traverser=True,
                             simple_desc = args.simple_desc,
                         )
-                    process = ctx.Process(target=auto_search_process, kwargs={
-                        'result_queue': result_queue,
-                        'model_name': args.model,
-                        'messages': messages,
-                        'fake_user_msg': auto_search.FAKE_USER_MSG_FOR_LOC,
-                        'temp': 1,
-                        'tools': tools,
-                        'use_function_calling': args.use_function_calling,
-                    })
-                    process.start()
-                    process.join(timeout=args.timeout)
-                    if process.is_alive():
-                        logger.warning(f"{instance_id} attempt {max_attempt_num} execution flow "
-                                        f"reconstruction exceeded timeout. Terminating.")
-                        process.terminate()
-                        process.join()
-                        raise TimeoutError
-                    
-                    # loc_result, messages, traj_data = result_queue.get()
-                    result = result_queue.get()
-                    if isinstance(result, dict) and 'error' in result and result['type'] == 'BadRequestError':
-                        raise litellm.BadRequestError(result['error'], args.model, args.model.split('/')[0])
-                        # print(f"Error occurred in subprocess: {result['error']}")
-                    else:
-                        loc_result, messages, traj_data = result
-                        
-                except litellm.BadRequestError as e:
-                    logger.warning(f'{e}. Try again.')
+                    if os.environ.get('SYMBOL_LOCATOR_ENABLED') == '1':
+                        from symbol_locator import core as _symbol_core
+                        _symbol_core.prepare_for_fork()
+                    loc_result, messages, traj_data = _run_agent_child(
+                        ctx,
+                        {
+                            'model_name': args.model,
+                            'messages': messages,
+                            'fake_user_msg': auto_search.FAKE_USER_MSG_FOR_LOC,
+                            'temp': 1,
+                            'tools': tools,
+                            'max_iteration_num': int(os.environ.get('LOCAGENT_MAX_ITER', '20')),
+                            'use_function_calling': args.use_function_calling,
+                        },
+                        timeout_s=args.timeout,
+                    )
+                
+                except AgentAuthenticationError as e:
+                    trace_chain = ">".join(
+                        "%s:%s:%s" % (
+                            frame.get('file', 'unknown'),
+                            frame.get('line', 0),
+                            frame.get('function', 'unknown'),
+                        )
+                        for frame in e.tracepoint.get('frames', [])
+                        if isinstance(frame, dict)
+                    ) or 'unknown'
+                    logger.error(
+                        "Agent authentication failure type=%s status=%s trace_file=%s trace_line=%s trace_function=%s trace_chain=%s; no retry.",
+                        e.error_type, e.status_code,
+                        e.tracepoint.get('file', 'unknown'),
+                        e.tracepoint.get('line', 0),
+                        e.tracepoint.get('function', 'unknown'),
+                        trace_chain,
+                    )
+                    max_attempt_num = 0
+                    break
+                except AgentProcessError as e:
+                    trace_chain = ">".join(
+                        "%s:%s:%s" % (
+                            frame.get('file', 'unknown'),
+                            frame.get('line', 0),
+                            frame.get('function', 'unknown'),
+                        )
+                        for frame in e.tracepoint.get('frames', [])
+                        if isinstance(frame, dict)
+                    ) or 'unknown'
+                    logger.warning(
+                        "Agent child failure type=%s status=%s stage=%s trace_file=%s trace_line=%s trace_function=%s trace_chain=%s; retry budget decremented.",
+                        e.error_type, e.status_code, e.stage,
+                        e.tracepoint.get('file', 'unknown'),
+                        e.tracepoint.get('line', 0),
+                        e.tracepoint.get('function', 'unknown'),
+                        trace_chain,
+                    )
+                    max_attempt_num -= 1
+                    continue
+                except process_control.ChildExecutionError as e:
+                    logger.warning(f"Agent child control failure kind={e.kind} status={e.status_code}; retry budget decremented.")
+                    max_attempt_num -= 1
+                    continue
+                except litellm.BadRequestError:
+                    logger.warning("BadRequestError from agent; retry budget decremented.")
+                    max_attempt_num -= 1
                     continue
                 except APITimeoutError:
-                    logger.warning(f"APITimeoutError. Try again.")
-                    sleep(10)
+                    logger.warning("APITimeoutError; retry budget decremented.")
+                    max_attempt_num -= 1
+                    sleep(min(10, max(0, max_attempt_num)))
                     continue
                 except TimeoutError:
-                    logger.warning(f"Processing time exceeded 15 minutes. Try again.")
+                    logger.warning("Agent execution timeout; retry budget decremented.")
                     max_attempt_num = max_attempt_num - 1
                     continue
-                except litellm.exceptions.ContextWindowExceededError as e:
-                    logger.warning(f'{e}. Try again.')
+                except litellm.exceptions.ContextWindowExceededError:
+                    logger.warning("ContextWindowExceededError; retry budget decremented.")
                     max_attempt_num = max_attempt_num - 1
+                    continue
+                except Exception as e:
+                    logger.warning(f"Agent attempt failure type={type(e).__name__}; retry budget decremented.")
+                    max_attempt_num -= 1
                     continue
 
                 loc_end_time = time.time()
