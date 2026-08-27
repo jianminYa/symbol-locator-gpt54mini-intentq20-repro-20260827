@@ -53,6 +53,20 @@ _ca.MODEL_COST_PER_INPUT = _input_defaults
 _ca.MODEL_COST_PER_OUTPUT = _output_defaults
 
 # Patch 6: Use local repo via symlink instead of GitHub cloning
+def _replace_local_repo_link(local_repo, repo_dir):
+    """Replace an existing repo path, including a dangling symlink."""
+    import shutil
+
+    if os.path.lexists(repo_dir):
+        if os.path.islink(repo_dir):
+            os.unlink(repo_dir)
+        elif os.path.isdir(repo_dir):
+            shutil.rmtree(repo_dir)
+        else:
+            os.remove(repo_dir)
+    os.symlink(local_repo, repo_dir)
+
+
 _local_repo = os.environ.get('LOCAL_REPO_PATH', '')
 if _local_repo:
     import shutil
@@ -63,9 +77,7 @@ if _local_repo:
         """Create symlink to local repo instead of cloning from GitHub."""
         if not os.path.exists(os.path.join(repo_dir, '.git')):
             os.makedirs(os.path.dirname(repo_dir), exist_ok=True)
-            if os.path.exists(repo_dir):
-                shutil.rmtree(repo_dir)
-            os.symlink(_local_repo, repo_dir)
+            _replace_local_repo_link(_local_repo, repo_dir)
         # else: already exists, skip
     _grm.maybe_clone = _patched_maybe_clone
 

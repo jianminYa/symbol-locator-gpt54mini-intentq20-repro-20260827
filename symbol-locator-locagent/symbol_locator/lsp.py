@@ -152,6 +152,28 @@ class PyrightClient:
         except Exception:
             self._proc.kill()
 
+    def close_after_fork(self) -> None:
+        """Drop inherited handles without signalling the parent's server.
+
+        The child must never call ``shutdown`` on a Popen object inherited from
+        its parent: the PID refers to the parent's server. Close only the
+        child's duplicate stdio descriptors and discard all inherited state;
+        the child will create and warm a new client.
+        """
+        proc = self._proc
+        self._proc = None
+        if proc is not None:
+            for stream in (proc.stdin, proc.stdout, proc.stderr):
+                try:
+                    if stream is not None:
+                        stream.close()
+                except Exception:
+                    pass
+        self._pending = {}
+        self._opened = set()
+        self._initialized = threading.Event()
+        self._warmed = False
+
     # ── LSP calls ──────────────────────────────────────────────────────
     def workspace_symbol(self, query: str) -> list[PlainSymbol]:
         """Serialized — only one workspace/symbol at a time."""
@@ -198,16 +220,16 @@ class PyrightClient:
         with self._warmup_lock:
             if self._warmed:
                 return {"files_found": 0, "files_indexed": 0, "failed": 0, "note": "already-warmed"}
-            self._warmed = True
-
-        files = self._collect_py_files()
-        failed = 0
-        for f in files:
-            try:
-                self.document_symbol(f)
-            except Exception:
-                failed += 1
-        return {"files_found": len(files), "files_indexed": len(files) - failed, "failed": failed}
+            files = self._collect_py_files()
+            failed = 0
+            for f in files:
+                try:
+                    self.document_symbol(f)
+                except Exception:
+                    failed += 1
+            report = {"files_found": len(files), "files_indexed": len(files) - failed, "failed": failed}
+            self._warmed = failed == 0
+            return report
 
     # ── internals ──────────────────────────────────────────────────────
     def _collect_py_files(self) -> list[str]:

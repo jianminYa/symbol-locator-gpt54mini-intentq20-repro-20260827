@@ -119,7 +119,7 @@ def score_batch(
         except Exception as _u_e:
             on_log(f"[scorer] usage-read failed: {_u_e}")
     except Exception as e:
-        on_log(f"[scorer] LLM call failed: {e} — using score=50")
+        on_log(f"[scorer] LLM call failed type={type(e).__name__} — using score=50")
         return [50] * n
 
     parsed = parse_batch(text, n)

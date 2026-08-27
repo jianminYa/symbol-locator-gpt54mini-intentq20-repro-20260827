@@ -1,7 +1,10 @@
 """Shared output-parsing utilities for agentic explorers."""
 from __future__ import annotations
 
+import os
+import posixpath
 import re
+from pathlib import Path
 from typing import List
 
 from .base import ContextRegion, ExplorerResult
@@ -11,30 +14,95 @@ _SRC_EXTS = r"py|js|ts|java|go|rs|c|cpp|h|rb|php|md|txt|toml|yaml|yml|json|rst|c
 
 # Known absolute prefixes that agents may return (e.g. /opt/swe-explore/data/repos/xxx/...)
 _ABS_REPO_PATTERN = re.compile(
-    r"^/(?:opt|home|root|tmp|workspace|testbed)/.+?/repos/[^/]+/"
+    r"^/.+?/repos/(?P<repo>[^/]+)/"
 )
 
 
 def _normalize_path(path: str, repo_path: str = "") -> str:
-    """Strip absolute repo prefixes to get a relative path.
+    """Normalize a model path to a safe POSIX path relative to *repo_path*.
 
     Handles patterns like:
       /opt/swe-explore/data/repos/text2num/text_to_num/parsers.py -> text_to_num/parsers.py
       /testbed/src/foo.py -> src/foo.py
       /workspace/repo/bar.py -> bar.py
       org__repo-N/file.py -> file.py  (repo_dir basename prefix)
+
+    When a repository is supplied, absolute paths are accepted only when the
+    resulting candidate is inside that repository.  An empty return value is
+    a rejected/unsafe path.  The no-repository form retains the historical
+    compatibility behavior for parsers that do not have repository context.
     """
-    path = path.strip()
+    path = str(path).strip().replace("\\", "/")
+    if not path:
+        return ""
+
+    def safe_relative(candidate: str, *, require_exists: bool = False) -> str:
+        candidate = posixpath.normpath(candidate)
+        if candidate in {"", ".", ".."} or candidate.startswith("../") or candidate.startswith("/"):
+            return ""
+        if not repo_path:
+            return candidate
+        repo = Path(repo_path).resolve()
+        target = (repo / Path(candidate)).resolve(strict=False)
+        try:
+            target.relative_to(repo)
+        except ValueError:
+            return ""
+        if require_exists and not target.exists():
+            return ""
+        return candidate
+
     # Strip repo_dir basename prefix for relative paths (e.g. CoSIL output)
     if repo_path and not path.startswith("/"):
-        import os
         repo_basename = os.path.basename(repo_path)
         if repo_basename and path.startswith(repo_basename + "/"):
             path = path[len(repo_basename) + 1:]
     if not path.startswith("/"):
-        return path
+        return safe_relative(path)
 
-    # Pattern 1: .../repos/<repo_name>/relative_path
+    # With repository context, prefer a real filesystem-relative conversion.
+    # This handles arbitrary roots such as /data/.../repos/<instance>/file.py.
+    if repo_path:
+        repo = Path(repo_path).resolve()
+        try:
+            direct = Path(path).resolve(strict=False).relative_to(repo).as_posix()
+        except ValueError:
+            direct = ""
+        if direct:
+            normalized = safe_relative(direct)
+            if normalized:
+                return normalized
+
+        candidates: list[tuple[str, bool]] = []
+        # Pattern 1: .../repos/<repo_name>/relative_path.
+        m = _ABS_REPO_PATTERN.match(path)
+        if m and m.group("repo") == repo.name:
+            candidates.append((path[m.end():], False))
+
+        # Pattern 2: /testbed/relative_path.
+        if path.startswith("/testbed/"):
+            candidates.append((path[len("/testbed/"):], False))
+
+        # Pattern 3: /workspace/<repo>/relative_path or /workspace/relative_path.
+        if path.startswith("/workspace/"):
+            rest = path[len("/workspace/"):]
+            parts = rest.split("/", 1)
+            if len(parts) == 2 and not parts[0].endswith((".py", ".js", ".ts")):
+                candidates.append((parts[1], False))
+            candidates.append((rest, False))
+
+        # Some model finishes use a leading slash for a repository-root path,
+        # e.g. /django/db/models.py.  Accept this only when the file exists
+        # inside the known repository; never blindly strip a leading slash.
+        candidates.append((path.lstrip("/"), True))
+        for candidate, require_exists in candidates:
+            normalized = safe_relative(candidate, require_exists=require_exists)
+            if normalized:
+                return normalized
+        return ""
+
+    # Historical compatibility for callers that do not have repository
+    # context.  parse_locagent_jsonl always supplies repo_path below.
     m = _ABS_REPO_PATTERN.match(path)
     if m:
         return path[m.end():]
@@ -250,7 +318,9 @@ def parse_locagent_jsonl(
             if ":" not in entity_str:
                 continue
             fpath, ename = entity_str.split(":", 1)
-            fpath = _normalize_path(fpath)
+            fpath = _normalize_path(fpath, repo_path)
+            if not fpath:
+                continue
             rng = resolve_entity_lines(repo_path, fpath, ename)
             if rng:
                 regions.append(ContextRegion(path=fpath, start=rng[0], end=rng[1]))
@@ -291,7 +361,9 @@ def parse_locagent_jsonl(
                         continue
                     if ename.isdigit():  # path:123 is a line number, not an entity — let A2 handle it
                         continue
-                    fpath_n = _normalize_path(fpath)
+                    fpath_n = _normalize_path(fpath, repo_path)
+                    if not fpath_n:
+                        continue
                     key = (fpath_n, ename)
                     if key in seen:
                         continue
@@ -340,7 +412,9 @@ def parse_locagent_jsonl(
                             break
                     if m is None or cur_file is None or not m or any(c.isspace() for c in m):
                         continue
-                    fpath_n = _normalize_path(cur_file)
+                    fpath_n = _normalize_path(cur_file, repo_path)
+                    if not fpath_n:
+                        continue
                     key = (fpath_n, m)
                     if key in seen:
                         continue
@@ -362,7 +436,9 @@ def parse_locagent_jsonl(
             if files and isinstance(files[0], list):
                 files = [f for sub in files for f in sub]
             for fp in files:
-                fp = _normalize_path(fp)
+                fp = _normalize_path(fp, repo_path)
+                if not fp:
+                    continue
                 regions.append(ContextRegion(path=fp, start=1, end=-1))
 
         if regions:
