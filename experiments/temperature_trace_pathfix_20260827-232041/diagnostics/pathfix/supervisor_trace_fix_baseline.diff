@@ -1,0 +1,611 @@
+--- /data/workspace/symbol-locator-repair-20260826-083933/experiments/intentq20_x2_resilient_20260827-014906/night_supervisor.py	2026-08-27 04:34:59.080553220 +0000
++++ /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_study_20260827-152310/night_supervisor.py	2026-08-27 15:53:41.172755897 +0000
+@@ -16,6 +16,7 @@
+ import re
+ import shlex
+ import signal
++import shutil
+ import statistics
+ import subprocess
+ import sys
+@@ -27,21 +28,22 @@
+ 
+ 
+ BASE = Path("/data/workspace/symbol-locator-repair-20260826-083933")
+-SOURCE_COPY = BASE / "source_copy"
+-HANDOFF = Path("/data/workspace/symbol-locator-handoff-20260823-065432/symbol-locator-handoff")
+ SECRET_FILE = Path("/data/workspace/.secrets/symbol-locator-gpt54mini.env")
+ RUN_ROOT = Path(__file__).resolve().parent
++STUDY_ROOT = Path(os.environ.get("TEMPERATURE_STUDY_ROOT", str(RUN_ROOT.parent))).resolve()
++SOURCE_COPY = STUDY_ROOT / "source"
++HANDOFF = BASE / "source_copy" / "source_copy"
+ DIAG = RUN_ROOT / "diagnostics"
+ PROJECT_ROOT: Path | None = None
+ LOCAGENT_PATH: Path | None = None
+ SYMBOL_LOCATOR_PATH: Path | None = None
+ 
+-CANONICAL_DATA = BASE / "data/intentq20/intentq20.jsonl"
+-CANONICAL_ISSUE = BASE / "data/intentq20/issue_map.json"
+-HANDOFF_DATA = HANDOFF / "symbol-locator-locagent/bench.narrow20.jsonl"
+-HANDOFF_ISSUE = HANDOFF / "symbol-locator-locagent/issue_map_narrow20.json"
+-SAVED_SOURCE_MANIFEST = BASE / "experiments/intentq20_x2_corrected_20260826-150125-4167273/diagnostics/source_manifest_before.tsv"
+-SAVED_KEY_HASHES = BASE / "diagnostics/source_before_after.sha256"
++CANONICAL_DATA = STUDY_ROOT / "data/intentq20.jsonl"
++CANONICAL_ISSUE = STUDY_ROOT / "data/issue_map.json"
++HANDOFF_DATA = SOURCE_COPY / "symbol-locator-locagent/bench.narrow20.jsonl"
++HANDOFF_ISSUE = SOURCE_COPY / "symbol-locator-locagent/issue_map_narrow20.json"
++SAVED_SOURCE_MANIFEST = STUDY_ROOT / "diagnostics/source_key_hashes_runtime.tsv"
++SAVED_KEY_HASHES = Path("/dev/null/temperature-study-no-secondary-hash-file")
+ 
+ CONDA_EXE = Path("/data/workspace/miniforge3-symbol-locator-20260823-065758/bin/conda")
+ LOCAGENT_ENV = Path("/data/workspace/miniforge3-symbol-locator-20260823-065758/envs/locagent")
+@@ -57,12 +59,15 @@
+ RECOVERY_WINDOW_S = 2 * 60 * 60
+ FRESH_API_MAX_AGE_S = 30 * 60
+ EXPECTED_IDS: list[str] = []
++RUN_IDS: list[str] = []
+ METRICS = [
+     "precision", "recall", "f1_score", "hit_file_rate", "hit_region_rate",
+     "noise_file_rate", "noise_region_rate", "weighted_core_coverage",
+     "context_efficiency",
+ ]
+-FACES = ["A1", "B1", "A2", "B2"]
++PHASE = os.environ.get("TEMPERATURE_STUDY_PHASE", "formal").strip().lower()
++FACES = ["B1"] if PHASE == "focused" else ["A1", "B1", "A2", "B2"]
++FOCUSED_IDS = ["django__django-14752", "django__django-15572"]
+ EXCLUDED_PARTS = {"experiments", "results", "logs", "tmp", "cache", "diagnostics"}
+ SECRET_PARTS = {".secrets", ".env"}
+ RESUME_REQUESTED = os.environ.get("SYMBOL_LOCATOR_ORCHESTRATION_RESUME") == "1"
+@@ -104,11 +109,12 @@
+     return any(part in SECRET_PARTS or part.startswith(".env") for part in path.parts)
+ 
+ 
+-def safe_manifest(root: Path, destination: Path) -> dict:
++def safe_manifest(root: Path, destination: Path, skip_root_names: set[str] | None = None) -> dict:
+     """Write a manifest without opening any secret file and without following symlinks."""
+     destination.parent.mkdir(parents=True, exist_ok=True)
+     count = 0
+     total = 0
++    skip_root_names = skip_root_names or set()
+     with destination.open("w", encoding="utf-8") as out:
+         out.write("path\ttype\tsize\tmtime_ns\tsha256_or_link\n")
+         if not root.exists():
+@@ -116,7 +122,7 @@
+             return {"root": str(root), "files": 0, "bytes": 0, "missing": True}
+         for current, dirs, files in os.walk(root, topdown=True, followlinks=False):
+             current_path = Path(current)
+-            dirs[:] = sorted(d for d in dirs if not is_secret_path(current_path / d))
++            dirs[:] = sorted(d for d in dirs if d not in skip_root_names and not is_secret_path(current_path / d))
+             for name in sorted(files):
+                 path = current_path / name
+                 if is_secret_path(path):
+@@ -260,6 +266,8 @@
+             "required": present,
+             "all_required": all(present.values()),
+         })
++        if all(present.values()):
++            dirs[:] = [d for d in dirs if d != "repos"]
+     valid = [item for item in candidates if item["all_required"]]
+     if len(valid) != 1:
+         raise PermanentStop("PROJECT_ROOT_AMBIGUOUS_OR_MISSING")
+@@ -273,6 +281,8 @@
+             dirs[:] = []
+             continue
+         dirs[:] = sorted(d for d in dirs if d not in EXCLUDED_PARTS and d not in SECRET_PARTS)
++        if current_path == project:
++            dirs[:] = [d for d in dirs if d != "repos"]
+         if current_path.name == "symbol_locator" and current_path.parent.name == "symbol-locator-locagent":
+             symbol_candidates.append(current_path.parent.resolve())
+     if len(symbol_candidates) != 1:
+@@ -326,7 +336,7 @@
+ 
+ 
+ def copy_and_validate_data() -> list[dict]:
+-    global EXPECTED_IDS
++    global EXPECTED_IDS, RUN_IDS
+     if not CANONICAL_DATA.is_file() or not CANONICAL_ISSUE.is_file():
+         raise PermanentStop("CANONICAL_DATA_MISSING")
+     data_target = RUN_ROOT / "data/intentq20.jsonl"
+@@ -353,6 +363,9 @@
+     handoff_ids = [str(row.get("instance_id", "")) for row in handoff]
+     source_ids = [str(row.get("instance_id", "")) for row in source_data]
+     EXPECTED_IDS = ids
++    RUN_IDS = list(FOCUSED_IDS) if PHASE == "focused" else list(ids)
++    if PHASE == "focused" and set(RUN_IDS) - set(ids):
++        raise PermanentStop("FOCUSED_IDS_NOT_IN_FIXED_DATA")
+     checks = {
+         "data_rows": len(data),
+         "unique_ids": len(set(ids)),
+@@ -367,7 +380,7 @@
+             and checks["handoff_order_match"] and checks["source_narrow20_order_match"]
+             and checks["handoff_issue_map_20_20"] and checks["all_repo_dirs_are_repos_instance"]):
+         raise PermanentStop("DATA_ORDER_OR_ISSUE_MAP_INVALID")
+-    preserve_or_write(RUN_ROOT / "data/instance_ids.txt", "\n".join(ids) + "\n")
++    preserve_or_write(RUN_ROOT / "data/instance_ids.txt", "\n".join(RUN_IDS) + "\n")
+     data_hashes = json.dumps({
+         "data": {"source": str(CANONICAL_DATA), "source_sha256": digest_file(CANONICAL_DATA), "target_sha256": digest_file(data_target)},
+         "issue_map": {"source": str(CANONICAL_ISSUE), "source_sha256": digest_file(CANONICAL_ISSUE), "target_sha256": digest_file(issue_target)},
+@@ -448,7 +461,7 @@
+         "- `--repos` is exactly PROJECT_ROOT, never PROJECT_ROOT/repos.\n"
+         "- `--academic-api-key` is absent. API credentials are environment-only.\n"
+         "- child environment exports absolute CONDA_EXE and LOCAGENT_PATH; TMPDIR uses a short alias whose resolved target is the per-attempt RUN_ROOT tmp directory.\n"
+-        f"- model: `{AGENT_MODEL}`; scorer model env: `{SCORER_MODEL}`; temperature: agent source fixed at `1`; top-k: `{TOP_K}`; workers: `{WORKERS}`\n"
++        f"- model: `{AGENT_MODEL}`; scorer model env: `{SCORER_MODEL}`; `LOCAGENT_TEMPERATURE={1.0 if PHASE == 'focused' else 0.0}`; top-k: `{TOP_K}`; workers: `{WORKERS}`\n"
+         "- output/cache/tmp paths are per-face and under RUN_ROOT.\n\n"
+         + "\n".join(f"## {c['face']}\n\n```text\n{c['command']}\n```\n- tmp: `{c['tmp']}`\n- cache: `{c['cache']}`\n" for c in commands)
+     )
+@@ -478,7 +491,9 @@
+                 continue
+             raw = (entry / "cmdline").read_bytes().replace(b"\0", b" ").decode("utf-8", "replace")
+             low = raw.lower()
+-            if any(term in low for term in ("eval_runner", "locagent", "intentq20", "pyright")):
++            if any(term in low for term in (
++                    "eval_runner.py", "auto_search_main.py", "_locagent_shim.py",
++                    "pyright-langserver", "pyright/node_modules/.bin/pyright")):
+                 result.append({"pid": pid, "cmd_class": "candidate-process"})
+         except (OSError, ValueError):
+             continue
+@@ -520,6 +535,8 @@
+         self.active_case: str | None = None
+         self.active_pgid: int | None = None
+         self.last_api_success: float | None = None
++        self.last_api_temperature: float | None = None
++        self.phase_temperature = 1.0 if PHASE == "focused" else 0.0
+         self.last_case_call_success = False
+         self.current_retry_count = 0
+         prior_state = {}
+@@ -696,6 +713,7 @@
+             "elapsed_seconds": round(float(result.get("elapsed_s", 0.0)), 3),
+             "status_category": result.get("http_status_class", "unknown"),
+             "error_type": result.get("error_type") or result.get("category", "unknown"),
++            "temperature": result.get("temperature"),
+         }
+         with (DIAG / "api_canary_attempts.jsonl").open("a", encoding="utf-8") as fh:
+             fh.write(json.dumps(record, ensure_ascii=False) + "\n")
+@@ -725,12 +743,16 @@
+             value = json.loads((stdout or "").strip().splitlines()[-1])
+             if not isinstance(value, dict):
+                 raise ValueError
++            if "--temperature" in args:
++                value.setdefault("temperature", args[args.index("--temperature") + 1])
+             return value
+         except (ValueError, IndexError, json.JSONDecodeError):
+             return {"category": "permanent", "error_type": "canary_invalid_helper_output", "http_status_class": "unknown", "elapsed_s": 0.0}
+ 
+-    def canary_once(self) -> dict:
+-        result = self.run_sourced_helper(["--canary"], 90)
++    def canary_once(self, temperature: float | None = None) -> dict:
++        if temperature is None:
++            temperature = 1.0 if PHASE == "focused" else 0.0
++        result = self.run_sourced_helper(["--canary", "--temperature", str(temperature)], 90)
+         self.append_canary_record(result)
+         cfg = result.get("config")
+         if isinstance(cfg, dict):
+@@ -743,22 +765,25 @@
+             )
+         if result.get("category") == "success":
+             self.last_api_success = time.time()
++            self.last_api_temperature = temperature
+             self.last_case_call_success = True
+             self.update_state(last_successful_api_time=now_utc())
+         return result
+ 
+     def api_ready(self, reason: str) -> bool:
+-        if self.last_api_success is not None and time.time() - self.last_api_success <= FRESH_API_MAX_AGE_S and self.last_case_call_success:
++        if (self.last_api_success is not None and time.time() - self.last_api_success <= FRESH_API_MAX_AGE_S
++                and self.last_case_call_success and self.last_api_temperature == self.phase_temperature):
+             return True
+-        result = self.canary_once()
++        result = self.canary_once(self.phase_temperature)
+         if result.get("category") == "success":
+             self.log("api_canary_success", f"reason={reason}")
+             return True
+         if result.get("category") == "permanent":
+             raise PermanentStop(str(result.get("error_type", "API_CANARY_PERMANENT")))
+-        return self.recover_api(reason, first_result=result)
++        return self.recover_api(reason, first_result=result, temperature=self.phase_temperature)
+ 
+-    def recover_api(self, reason: str, first_result: dict | None = None) -> bool:
++    def recover_api(self, reason: str, first_result: dict | None = None,
++                    temperature: float | None = None) -> bool:
+         started = time.monotonic()
+         delays = [30, 60, 120, 300, 600]
+         attempt = 0
+@@ -779,7 +804,7 @@
+                 self.stop_event.wait(min(30, wait_until - time.monotonic()))
+                 if self.stop_event.is_set():
+                     raise PermanentStop("SUPERVISOR_STOPPED")
+-            result = self.canary_once()
++            result = self.canary_once(temperature)
+             if result.get("category") == "success":
+                 self.log("api_recovery_success", f"reason={reason} retry={attempt + 1}")
+                 self.current_retry_count = 0
+@@ -788,10 +813,15 @@
+                 raise PermanentStop(str(result.get("error_type", "API_CANARY_PERMANENT")))
+             attempt += 1
+ 
+-    def stream_case_output(self, stream, kind: str, flags: dict, log_path: Path) -> None:
++    def stream_case_output(self, stream, kind: str, flags: dict, log_path: Path, capture_path: Path) -> None:
+         markers = []
++        capture = None
+         try:
++            capture_path.parent.mkdir(parents=True, exist_ok=True)
++            capture = capture_path.open("a", encoding="utf-8")
+             for line in stream:
++                capture.write(line)
++                capture.flush()
+                 low = line.lower()
+                 if "pyright" in low:
+                     flags["pyright_seen"] = True
+@@ -814,6 +844,11 @@
+                     markers.append("find_symbol_nonempty")
+         finally:
+             try:
++                if capture is not None:
++                    capture.close()
++            except Exception:
++                pass
++            try:
+                 stream.close()
+             except Exception:
+                 pass
+@@ -855,13 +890,97 @@
+             "pyright_process=1 warmup_success=1 warmup_failure=0 find_symbol_nonempty=1 rerun=0",
+         )
+ 
++    def trace_integrity(self, face: str, iid: str, attempt: int, trace_root: Path,
++                        tmp: Path, return_code: int | None, timed_out: bool,
++                        category: str) -> dict:
++        """Validate and inventory a case trace without emitting its contents."""
++        trace_root = trace_root.resolve()
++        trace_root.relative_to(RUN_ROOT.resolve())
++        trace_root.mkdir(parents=True, exist_ok=True)
++        payload = trace_root / iid
++        if not payload.is_dir():
++            payload = trace_root
++        if not any(p.is_file() for p in trace_root.rglob("*")) and tmp.is_dir():
++            snapshot = trace_root / "_supervisor_tmp_snapshot"
++            shutil.copytree(tmp, snapshot, symlinks=True, dirs_exist_ok=True)
++            if not (trace_root / iid).is_dir():
++                payload = trace_root
++
++        jsonl_files = []
++        jsonl_valid = True
++        jsonl_records = 0
++        instance_ids = []
++        for path in sorted(trace_root.rglob("*.jsonl")):
++            try:
++                path.resolve().relative_to(RUN_ROOT.resolve())
++                records = []
++                for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
++                    if not line.strip():
++                        continue
++                    value = json.loads(line)
++                    records.append(value)
++                    if isinstance(value, dict) and isinstance(value.get("instance_id"), str):
++                        instance_ids.append(value["instance_id"])
++                jsonl_records += len(records)
++                jsonl_files.append({"path": str(path.relative_to(trace_root)), "size": path.stat().st_size,
++                                    "valid": True, "records": len(records)})
++            except (OSError, ValueError, json.JSONDecodeError):
++                jsonl_valid = False
++                try:
++                    size = path.stat().st_size
++                except OSError:
++                    size = 0
++                jsonl_files.append({"path": str(path.relative_to(trace_root)), "size": size,
++                                    "valid": False, "records": 0})
++
++        expected = [
++            "instance.jsonl", "output/args.json", "output/loc_trajs.jsonl",
++            "output/loc_outputs.jsonl", "output/localize.log",
++        ]
++        merged_names = ["output/merged_loc_outputs.jsonl", "output/merged_loc_outputs_mrr.jsonl"]
++        present = {name: (payload / name).is_file() for name in expected}
++        present["output/merged_output"] = any((payload / name).is_file() for name in merged_names)
++        present["output/scorer_usage.json"] = (payload / "output/scorer_usage.json").is_file()
++        instance_id_correct = bool(instance_ids) and all(value == iid for value in instance_ids)
++        trajectory_present = any(item["valid"] and item["records"] > 0 and item["path"].endswith("loc_trajs.jsonl")
++                                 for item in jsonl_files)
++        failure_path = trace_root / "trace_failure.json"
++        structured_failure = failure_path.is_file()
++        if category != "success" or return_code not in (0, None) or timed_out:
++            if not structured_failure:
++                atomic_json(failure_path, {
++                    "face": face, "instance_id": iid, "attempt": attempt,
++                    "kind": "case_execution_failure", "category": category,
++                    "return_code": return_code, "timed_out": timed_out,
++                })
++                structured_failure = True
++        required_present = all(present[name] for name in expected) and present["output/merged_output"]
++        trace_complete = bool(jsonl_valid and instance_id_correct and
++                              ((category == "success" and required_present and trajectory_present) or
++                               (category != "success" and structured_failure)))
++        summary = {
++            "face": face, "instance_id": iid, "attempt": attempt,
++            "trace_root": str(trace_root), "payload_root": str(payload),
++            "category": category, "return_code": return_code, "timed_out": timed_out,
++            "instance_id_correct": instance_id_correct, "jsonl_valid": jsonl_valid,
++            "jsonl_files": jsonl_files, "jsonl_records": jsonl_records,
++            "expected_files": present, "trajectory_present": trajectory_present,
++            "structured_failure": structured_failure, "trace_complete": trace_complete,
++        }
++        atomic_json(trace_root / "trace_integrity.json", summary)
++        return summary
++
+     def run_case(self, face: str, iid: str, row: dict) -> bool:
+         existing = self.face_completed_ids(face)
+         if iid in existing:
+             if face == "B1" and iid == EXPECTED_IDS[0]:
+                 self.validate_existing_b1_first_case(iid)
++            trace_paths = sorted((RUN_ROOT / f"faces/{face}/traces").glob(f"{iid}_attempt_*/trace_integrity.json"))
++            if not any(json.loads(p.read_text(encoding="utf-8")).get("trace_complete") for p in trace_paths):
++                raise PermanentStop(f"TRACE_INTEGRITY_ON_EXISTING_{face}_{iid}")
+             return True
+         case_dir = RUN_ROOT / f"attempts/{face}/{iid}"
++        case_dir.mkdir(parents=True, exist_ok=True)
+         existing_attempts = sorted(case_dir.glob("attempt_*.json")) if case_dir.is_dir() else []
+         max_attempts = 2
+         if len(existing_attempts) >= max_attempts:
+@@ -875,7 +994,7 @@
+                 raise PermanentStop("RESOURCE_PRESSURE_DATA_FREE_BELOW_20_GIB")
+             tmp = (RUN_ROOT / f"tmp/{face}/attempt_{iid}_{attempt}").resolve()
+             cache = (RUN_ROOT / f"cache/{face}/attempt_{iid}_{attempt}").resolve()
+-            keep_trace = face == "B1" and iid == EXPECTED_IDS[0]
++            keep_trace = True
+             trace_root = (RUN_ROOT / f"faces/{face}/traces/{iid}_attempt_{attempt}").resolve()
+             tmp.mkdir(parents=True, exist_ok=False)
+             cache.mkdir(parents=True, exist_ok=False)
+@@ -887,6 +1006,8 @@
+             output = (RUN_ROOT / f"faces/{face}/output/locagent_top5.jsonl").resolve()
+             output.parent.mkdir(parents=True, exist_ok=True)
+             log_path = RUN_ROOT / f"logs/{face}/{iid}_attempt_{attempt}.log"
++            stdout_capture = case_dir / f"attempt_{attempt}.stdout.log"
++            stderr_capture = case_dir / f"attempt_{attempt}.stderr.log"
+             flags = {"pyright_seen": False, "warmup_success": False, "warmup_failure": False,
+                      "find_symbol_seen": False, "find_symbol_nonempty": False, "installed": False}
+             if PROJECT_ROOT is None or LOCAGENT_PATH is None or SYMBOL_LOCATOR_PATH is None:
+@@ -940,8 +1061,8 @@
+                                     text=True, errors="replace", start_new_session=True)
+             pgid = os.getpgid(proc.pid)
+             self.active_pgid = pgid
+-            out_thread = threading.Thread(target=self.stream_case_output, args=(proc.stdout, "stdout", flags, log_path), daemon=True)
+-            err_thread = threading.Thread(target=self.stream_case_output, args=(proc.stderr, "stderr", flags, log_path), daemon=True)
++            out_thread = threading.Thread(target=self.stream_case_output, args=(proc.stdout, "stdout", flags, log_path, stdout_capture), daemon=True)
++            err_thread = threading.Thread(target=self.stream_case_output, args=(proc.stderr, "stderr", flags, log_path, stderr_capture), daemon=True)
+             out_thread.start(); err_thread.start()
+             timed_out = False
+             try:
+@@ -994,6 +1115,8 @@
+             if flags["warmup_failure"] and not output_ok:
+                 category = "pyright_warmup_failure"
+                 self.pyright_warmup_failures.append(iid)
++            trace = self.trace_integrity(face, iid, attempt, trace_root, tmp,
++                                         proc.returncode, timed_out, category)
+             self.last_case_call_success = output_ok
+             self.write_attempt(face, iid, attempt, {
+                 "timestamp": now_utc(), "face": face, "instance_id": iid, "attempt": attempt,
+@@ -1002,12 +1125,17 @@
+                 "pyright_seen": flags["pyright_seen"], "pyright_warmup_success": flags["warmup_success"],
+                 "pyright_warmup_failure": flags["warmup_failure"], "find_symbol_seen": flags["find_symbol_seen"],
+                 "find_symbol_nonempty": flags["find_symbol_nonempty"], "symbol_locator_installed": flags["installed"],
++                "trace_root": str(trace_root), "trace_complete": trace["trace_complete"],
++                "trace_jsonl_valid": trace["jsonl_valid"], "trace_instance_id_correct": trace["instance_id_correct"],
++                "stdout_path": str(stdout_capture), "stderr_path": str(stderr_capture),
+             })
+             with log_path.open("a", encoding="utf-8") as fh:
+                 fh.write(f"{now_utc()} case_end face={face} instance={iid} attempt={attempt} elapsed={elapsed} category={category}\n")
+             self.log("case_end", f"face={face} instance={iid} attempt={attempt} elapsed={elapsed} category={category}")
++            if category == "success" and not trace["trace_complete"]:
++                raise PermanentStop(f"TRACE_INTEGRITY_FAILED_{face}_{iid}")
+             if output_ok:
+-                if face == "B1" and iid == EXPECTED_IDS[0]:
++                if PHASE == "formal" and face == "B1" and iid == EXPECTED_IDS[0]:
+                     if not (flags["pyright_seen"] and flags["warmup_success"] and flags["find_symbol_nonempty"]):
+                         raise PermanentStop("B1_FIRST_CASE_PYRIGHT_OR_FIND_SYMBOL_VALIDATION_FAILED")
+                 return True
+@@ -1039,10 +1167,10 @@
+             ranges[metric] = [min(vals), max(vals)] if vals else None
+         return {
+             "face": face,
+-            "expected": 20,
++            "expected": len(RUN_IDS),
+             "rows": len(rows),
+             "unique_ids": len({r.get("instance_id") for r in rows}),
+-            "missing_ids": [iid for iid in EXPECTED_IDS if iid not in {r.get("instance_id") for r in rows}],
++            "missing_ids": [iid for iid in RUN_IDS if iid not in {r.get("instance_id") for r in rows}],
+             "model_valid_empty_results": sum(int(r.get("num_regions", 0)) == 0 for r in rows),
+             "attempts": len(attempts),
+             "success_attempts": sum(a.get("category") == "success" for a in attempts),
+@@ -1071,7 +1199,8 @@
+         return report
+ 
+     def run_faces(self) -> None:
+-        rows = load_jsonl(RUN_ROOT / "data/intentq20.jsonl")
++        rows_by_id = {str(row.get("instance_id", "")): row for row in load_jsonl(RUN_ROOT / "data/intentq20.jsonl")}
++        rows = [rows_by_id[iid] for iid in RUN_IDS]
+         self.update_state(stage="formal", face=None)
+         pending_faces = [face for face in FACES if face not in self.completed_faces]
+         if not pending_faces:
+@@ -1093,7 +1222,7 @@
+                     self.log("case_recorded_failure", f"face={face} instance={iid}")
+             self.face_finished[face] = time.time()
+             report = self.write_face_report(face)
+-            if report["rows"] != 20 or report["unique_ids"] != 20 or report["execution_failures"] > 2:
++            if report["rows"] != len(RUN_IDS) or report["unique_ids"] != len(RUN_IDS) or report["execution_failures"] > 2:
+                 raise PermanentStop(f"FACE_GATE_FAILED_{face}")
+             if face not in self.completed_faces:
+                 self.completed_faces.append(face)
+@@ -1101,7 +1230,15 @@
+             self.log("face_complete", f"face={face} rows={report['rows']}")
+             self.active_face = None
+             self.active_case = None
+-        self.write_comparison()
++        if PHASE == "formal":
++            self.write_comparison()
++        else:
++            (DIAG / "focused_trace_status.md").write_text(
++                "# Focused trace status\n\n"
++                f"- cases: `{len(RUN_IDS)}`\n- face: `B1`\n"
++                "- These cases are diagnostic-only and are excluded from formal means.\n",
++                encoding="utf-8",
++            )
+ 
+     def write_comparison(self) -> None:
+         reports = {face: self.face_report(face) for face in FACES}
+@@ -1160,21 +1297,21 @@
+         return not matches
+ 
+     def finalize_protected(self) -> bool:
+-        roots = {"original": HANDOFF, "repair_source": SOURCE_COPY}
+-        roots.update({p.name: p for p in sorted((BASE / "experiments").iterdir()) if p.is_dir() and p.resolve() != RUN_ROOT.resolve()})
++        before = DIAG / "manifest_protected_before.tsv"
++        after = DIAG / "manifest_protected_after.tsv"
++        all_equal = before.is_file()
+         before_after = {}
+-        all_equal = True
+-        for label, root in roots.items():
+-            before = DIAG / f"manifest_before_{label}.tsv"
+-            after = DIAG / f"manifest_after_{label}.tsv"
+-            if not before.is_file():
+-                all_equal = False
+-                continue
+-            safe_manifest(root, after)
++        if all_equal:
++            safe_manifest(BASE, after, skip_root_names={STUDY_ROOT.name})
+             equal = before.read_bytes() == after.read_bytes()
+-            before_after[label] = {"before_sha256": digest_file(before), "after_sha256": digest_file(after), "byte_identical": equal}
+-            all_equal = all_equal and equal
+-        after_git = "\n\n".join(git_snapshot(path) for path in (HANDOFF, PROJECT_ROOT or SOURCE_COPY)) + "\n"
++            before_after["protected_workspace"] = {
++                "before_sha256": digest_file(before), "after_sha256": digest_file(after),
++                "byte_identical": equal,
++            }
++            all_equal = equal
++        git_paths = [HANDOFF / "SWE-Explore-Bench", HANDOFF / "symbol-locator-locagent",
++                     BASE / "experiments/intentq20_x2_resilient_20260827-014906"]
++        after_git = "\n\n".join(git_snapshot(path) for path in git_paths) + "\n"
+         (DIAG / "git_status_after.txt").write_text(after_git, encoding="utf-8")
+         before_git = (DIAG / "git_status_before.txt").read_text(encoding="utf-8") if (DIAG / "git_status_before.txt").is_file() else ""
+         git_equal = before_git == after_git
+@@ -1195,7 +1332,7 @@
+                 self.write_face_report(face)
+             except Exception:
+                 (DIAG / f"{face}_report.md").write_text(f"# {face} report\n\nNot started or incomplete: `{status}` — `{reason}`.\n", encoding="utf-8")
+-        missing = {face: [iid for iid in EXPECTED_IDS if iid not in self.face_completed_ids(face)] for face in FACES}
++        missing = {face: [iid for iid in RUN_IDS if iid not in self.face_completed_ids(face)] for face in FACES}
+         resume_log = DIAG / "resume_and_recovery_log.md"
+         if not resume_log.exists():
+             resume_log.write_text(
+@@ -1245,6 +1382,12 @@
+     def run(self) -> int:
+         global PROJECT_ROOT, LOCAGENT_PATH, SYMBOL_LOCATOR_PATH
+         DIAG.mkdir(parents=True, exist_ok=True)
++        for directory in ("attempts", "logs", "tmp", "cache", "faces", "state"):
++            (RUN_ROOT / directory).mkdir(parents=True, exist_ok=True)
++        for face in FACES:
++            for directory in (f"logs/{face}", f"tmp/{face}", f"cache/{face}",
++                              f"faces/{face}/output", f"faces/{face}/traces"):
++                (RUN_ROOT / directory).mkdir(parents=True, exist_ok=True)
+         if self.resume_mode:
+             self.log(
+                 "supervisor_resume_started",
+@@ -1260,6 +1403,9 @@
+         status = "PERMANENT_STOP"
+         reason = "UNKNOWN"
+         try:
++            conflicts = relevant_processes()
++            if conflicts:
++                raise PermanentStop("CONFLICTING_EVALUATOR_PROCESS")
+             self.log("conflict_scan_pass", "no running eval_runner/LocAgent/IntentQ20/Pyright process")
+             PROJECT_ROOT, SYMBOL_LOCATOR_PATH, candidates = discover_project()
+             LOCAGENT_PATH = PROJECT_ROOT / "third_party/LocAgent"
+@@ -1268,13 +1414,13 @@
+             self.state["project_root"] = str(PROJECT_ROOT)
+             self.state["locagent_path"] = str(LOCAGENT_PATH)
+             self.state["symbol_locator_path"] = str(SYMBOL_LOCATOR_PATH)
+-            # Baselines are captured before any formal case.
+-            roots = {"original": HANDOFF, "repair_source": SOURCE_COPY}
+-            roots.update({p.name: p for p in sorted((BASE / "experiments").iterdir()) if p.is_dir() and p.resolve() != RUN_ROOT.resolve()})
+-            summary = {}
+-            for label, root in roots.items():
+-                summary[label] = safe_manifest(root, DIAG / f"manifest_before_{label}.tsv")
+-            (DIAG / "git_status_before.txt").write_text("\n\n".join(git_snapshot(path) for path in (HANDOFF, PROJECT_ROOT)) + "\n", encoding="utf-8")
++            # The protected baseline was captured before this study was created.
++            baseline = STUDY_ROOT / "diagnostics/manifest_protected_before.tsv"
++            if not (DIAG / "manifest_protected_before.tsv").is_file():
++                shutil.copy2(baseline, DIAG / "manifest_protected_before.tsv")
++            protected_git = STUDY_ROOT / "diagnostics/git_status_before.txt"
++            if not (DIAG / "git_status_before.txt").is_file() and protected_git.is_file():
++                shutil.copy2(protected_git, DIAG / "git_status_before.txt")
+             data_checks = copy_and_validate_data()
+             repo_checks = repo_preflight()
+             command_audit()
+@@ -1292,12 +1438,22 @@
+                 "# Preflight\n\n"
+                 f"- RUN_ROOT: `{RUN_ROOT}`\n- PROJECT_ROOT: `{PROJECT_ROOT}`\n- LOCAGENT_PATH: `{LOCAGENT_PATH}`\n- SYMBOL_LOCATOR_PATH: `{SYMBOL_LOCATOR_PATH}`\n"
+                 f"- data checks: `{json.dumps(data_checks, ensure_ascii=False)}`\n- repo checks: rows={repo_checks['rows']}, unique={repo_checks['unique_ids']}, exists={repo_checks['exists']}, is_dir={repo_checks['is_dir']}\n"
++                f"- phase: `{PHASE}`; configured phase temperature: `{1.0 if PHASE == 'focused' else 0.0}`\n"
+                 "- conflict scan: pass\n- API canary: pending\n- no expanded datasets permitted or selected\n"
+             )
+             preserve_or_write(DIAG / "preflight.md", preflight_text, keep_existing=self.resume_mode)
+             self.update_state(stage="preflight_passed", status="RUNNING")
++            for probe_temperature in (1.0, 0.0):
++                probe = self.canary_once(probe_temperature)
++                if probe.get("category") == "success":
++                    self.log("temperature_canary_success", f"temperature={probe_temperature}")
++                elif probe.get("category") == "permanent":
++                    raise PermanentStop(str(probe.get("error_type", "TEMPERATURE_CANARY_PERMANENT")))
++                else:
++                    self.recover_api(f"temperature_{probe_temperature}", first_result=probe,
++                                     temperature=probe_temperature)
+             self.run_faces()
+-            status, reason = "COMPLETE", "A1_B1_A2_B2_COMPLETE"
++            status, reason = "COMPLETE", "FOCUSED_B1_COMPLETE" if PHASE == "focused" else "A1_B1_A2_B2_COMPLETE"
+         except TransientUnavailable as exc:
+             status, reason = "TRANSIENT_API_UNAVAILABLE_2H", str(exc)
+         except PermanentStop as exc:
+@@ -1332,7 +1488,7 @@
+             self.update_state(status=status, reason=reason, stage="finished", face=None,
+                               completed_faces=list(self.completed_faces),
+                               completed_case_ids={f: self.face_completed_ids(f) for f in FACES},
+-                              missing_case_ids={f: [iid for iid in EXPECTED_IDS if iid not in self.face_completed_ids(f)] for f in FACES},
++                              missing_case_ids={f: [iid for iid in RUN_IDS if iid not in self.face_completed_ids(f)] for f in FACES},
+                               protected_paths_no_differences=protected, sensitive_scan_pass=scan_ok)
+             self.heartbeat()
+         return 0 if status == "COMPLETE" else 1
+@@ -1342,6 +1498,16 @@
+     """Run inside the sourced locagent environment; only emit redacted JSON."""
+     import httpx
+     started = time.monotonic()
++    temperature = 1.0
++    if "--temperature" in sys.argv:
++        try:
++            temperature = float(sys.argv[sys.argv.index("--temperature") + 1])
++        except (IndexError, TypeError, ValueError):
++            print(json.dumps({"category": "permanent", "error_type": "INVALID_CANARY_TEMPERATURE", "http_status_class": "unknown", "elapsed_s": time.monotonic() - started, "temperature": None}))
++            return 0
++        if not math.isfinite(temperature):
++            print(json.dumps({"category": "permanent", "error_type": "INVALID_CANARY_TEMPERATURE", "http_status_class": "unknown", "elapsed_s": time.monotonic() - started, "temperature": None}))
++            return 0
+     key = os.environ.get("LLM_API_KEY", "")
+     base = os.environ.get("LLM_API_BASE", "")
+     academic_key = os.environ.get("ACADEMIC_API_KEY", "")
+@@ -1416,7 +1582,7 @@
+             if not any(mid == MODEL or mid.endswith("/" + MODEL) for mid in model_ids):
+                 print(json.dumps({"category": "permanent", "error_type": "model_not_advertised", "http_status_class": str(models.status_code), "elapsed_s": time.monotonic() - started, "config": cfg}))
+                 return 0
+-            body = {"model": MODEL, "messages": [{"role": "user", "content": "OK"}], "temperature": 1, "max_tokens": 5}
++            body = {"model": MODEL, "messages": [{"role": "user", "content": "OK"}], "temperature": temperature, "max_tokens": 5}
+             chat = client.post(chat_url, headers=headers, json=body)
+             cat, err = classify(chat.status_code, chat.text, "chat")
+             if cat != "success":
+@@ -1436,7 +1602,7 @@
+             if not valid_structure:
+                 print(json.dumps({"category": "permanent", "error_type": "chat_response_structure_invalid", "http_status_class": str(chat.status_code), "elapsed_s": time.monotonic() - started, "config": cfg}))
+                 return 0
+-            print(json.dumps({"category": "success", "error_type": None, "http_status_class": "2xx", "elapsed_s": time.monotonic() - started, "response_model": MODEL, "usage_status_present": usage_status is not None, "config": cfg}))
++            print(json.dumps({"category": "success", "error_type": None, "http_status_class": "2xx", "elapsed_s": time.monotonic() - started, "response_model": MODEL, "usage_status_present": usage_status is not None, "temperature": temperature, "config": cfg}))
+             return 0
+     except httpx.TimeoutException as exc:
+         print(json.dumps({"category": "transient", "error_type": type(exc).__name__, "http_status_class": "unknown", "elapsed_s": time.monotonic() - started, "config": cfg}))

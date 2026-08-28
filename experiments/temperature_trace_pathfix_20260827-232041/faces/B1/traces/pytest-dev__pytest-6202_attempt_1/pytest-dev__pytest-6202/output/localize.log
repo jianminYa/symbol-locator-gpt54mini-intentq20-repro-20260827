@@ -1,0 +1,1389 @@
+2026-08-28 04:38:21 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 04:38:21 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 04:38:21 auto_search_main.py INFO ============================================================
+2026-08-28 04:38:21 auto_search_main.py INFO ==== rank 0 setup localize pytest-dev__pytest-6202 ====
+2026-08-28 04:38:21 install.py INFO hook: set_current_issue fired
+2026-08-28 04:38:21 git_repo_manager.py INFO Clone Github repo https://github.com/pytest-dev/pytest.git to playground/43579d68-f82f-4fbb-b8a1-caa1a30a8088/pytest-dev_pytest and checkout commit HEAD
+2026-08-28 04:38:21 git_repo_manager.py INFO Directory 'playground/43579d68-f82f-4fbb-b8a1-caa1a30a8088/pytest-dev_pytest' was created.
+2026-08-28 04:38:21 install.py INFO setup_repo returned: playground/43579d68-f82f-4fbb-b8a1-caa1a30a8088/pytest-dev_pytest -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pytest-dev__pytest-6202
+2026-08-28 04:38:24 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pytest-dev__pytest-6202 files=203 indexed=203 failed=0
+2026-08-28 04:38:33 repo_ops.py INFO [0] Processed pytest-dev__pytest-6202
+2026-08-28 04:38:33 auto_search_main.py INFO ============================================================
+2026-08-28 04:38:33 auto_search_main.py INFO ==== rank 0 begin localizing pytest-dev__pytest-6202 ====
+2026-08-28 04:38:33 auto_search_main.py INFO ============================================================
+2026-08-28 04:38:33 auto_search_main.py INFO ==== pytest-dev__pytest-6202 Count down: attempt 1 ====
+2026-08-28 04:38:33 auto_search_main.py INFO ==== pytest-dev__pytest-6202 start auto search ====
+2026-08-28 04:38:36 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:38:44 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:38:44 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:38:44 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 04:38:44 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'getmodpath', 'context': 'pytest headline / node id formatting issue', 'kind_filter': [12, 6, 5], 'top_k': 10}))
+```
+2026-08-28 04:38:44 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:38:46 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:38:46 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:38:46 auto_search_main.py INFO OBSERVATION:
+Found 2 candidates for `getmodpath`. Showing top 2 by relevance:
+1. [score=82] PyobjMixin.getmodpath
+   src/_pytest/python.py:271
+               self._obj = obj = self._getobj()
+               # XXX evil hack
+               # used to avoid Instance collector marker duplication
+               if self._ALLOW_MARKERS:
+                   self.own_markers.extend(get_unpacked_marks(self.obj))
+           return obj
+   
+       @obj.setter
+       def obj(self, value):
+           self._obj = value
+   
+       def _getobj(self):
+           """Gets the underlying Python object. May be overwritten by subclasses."""
+           return getattr(self.parent.obj, self.name)
+   
+       def getmodpath(self, stopatmodule=True, includemodule=False):
+           """ return python path relative to the containing module. """
+           chain = self.listchain()
+           chain.reverse()
+           parts = []
+           for node in chain:
+               if isinstance(node, Instance):
+                   continue
+               name = node.name
+               if isinstance(node, Module):
+                   name = os.path.splitext(name)[0]
+                   if stopatmodule:
+                       if includemodule:
+                           parts.append(name)
+                       break
+               parts.append(name)
+2. [score=18] TestRequestBasic.test_request_getmodulepath
+   testing/python/fixtures.py:782
+               @pytest.fixture
+               def excepts(subrequest):
+                   subrequest.addfinalizer(lambda: _excepts('excepts'))
+                   subrequest.addfinalizer(lambda: values.append(3))
+               def test_first(something, excepts):
+                   pass
+               def test_second():
+                   assert values == [3, 2, 1]
+           """
+           )
+           result = testdir.runpytest()
+           result.stdout.fnmatch_lines(
+               ["*Exception: Error in excepts fixture", "* 2 passed, 1 error in *"]
+           )
+   
+       def test_request_getmodulepath(self, testdir):
+           modcol = testdir.getmodulecol("def test_somefunc(): pass")
+           item, = testdir.genitems([modcol])
+           req = fixtures.FixtureRequest(item)
+           assert req.fspath == modcol.fspath
+   
+       def test_request_fixturenames(self, testdir):
+           testdir.makepyfile(
+               """
+               import pytest
+               from _pytest.pytester import get_public_names
+               @pytest.fixture()
+               def arg1():
+                   pass
+               @pytest.fixture()
+               def farg(arg1):
+[symbol-locator] [scorer] usage pid=835380 calls=1 p=5379 c=11
+[symbol-locator] [scorer] parsed 2/2 scores from LLM
+
+2026-08-28 04:38:46 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'repr_failure', 'context': 'pytest long report headline generation', 'kind_filter': [12, 6, 5], 'top_k': 10}))
+```
+2026-08-28 04:38:46 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:38:49 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:38:49 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:38:49 auto_search_main.py INFO OBSERVATION:
+Found 16 candidates for `repr_failure`. Showing top 10 by relevance:
+1. [score=92] TestReportContents.test_longreprtext_failure
+   testing/test_runner.py:950
+       """
+   
+       def getrunner(self):
+           return lambda item: runner.runtestprotocol(item, log=False)
+   
+       def test_longreprtext_pass(self, testdir):
+           reports = testdir.runitem(
+               """
+               def test_func():
+                   pass
+           """
+           )
+           rep = reports[1]
+           assert rep.longreprtext == ""
+   
+       def test_longreprtext_failure(self, testdir):
+           reports = testdir.runitem(
+               """
+               def test_func():
+                   x = 1
+                   assert x == 4
+           """
+           )
+           rep = reports[1]
+           assert "assert 1 == 4" in rep.longreprtext
+   
+       def test_captured_text(self, testdir):
+           reports = testdir.runitem(
+               """
+               import pytest
+               import sys
+2. [score=35] DoctestItem.repr_failure
+   src/_pytest/doctest.py:219
+               raise MultipleDoctestFailures(failures)
+   
+       def _disable_output_capturing_for_darwin(self):
+           """
+           Disable output capturing. Otherwise, stdout is lost to doctest (#985)
+           """
+           if platform.system() != "Darwin":
+               return
+           capman = self.config.pluginmanager.getplugin("capturemanager")
+           if capman:
+               capman.suspend_global_capture(in_=True)
+               out, err = capman.read_global_capture()
+               sys.stdout.write(out)
+               sys.stderr.write(err)
+   
+       def repr_failure(self, excinfo):
+           import doctest
+   
+           failures = None
+           if excinfo.errisinstance((doctest.DocTestFailure, doctest.UnexpectedException)):
+               failures = [excinfo.value]
+           elif excinfo.errisinstance(MultipleDoctestFailures):
+               failures = excinfo.value.failures
+   
+           if failures is not None:
+               reprlocation_lines = []
+               for failure in failures:
+                   example = failure.example
+                   test = failure.test
+                   filename = test.filename
+                   if test.lineno is None:
+3. [score=28] FunctionMixin.repr_failure
+   src/_pytest/python.py:813
+               if ntraceback == traceback:
+                   ntraceback = ntraceback.cut(path=path)
+                   if ntraceback == traceback:
+                       ntraceback = ntraceback.filter(filter_traceback)
+                       if not ntraceback:
+                           ntraceback = traceback
+   
+               excinfo.traceback = ntraceback.filter()
+               # issue364: mark all but first and last frames to
+               # only show a single-line message for each frame
+               if self.config.getoption("tbstyle", "auto") == "auto":
+                   if len(excinfo.traceback) > 2:
+                       for entry in excinfo.traceback[1:-1]:
+                           entry.set_repr_style("short")
+   
+       def repr_failure(self, excinfo, outerr=None):
+           assert outerr is None, "XXX outerr usage is deprecated"
+           style = self.config.getoption("tbstyle", "auto")
+           if style == "auto":
+               style = "long"
+           return self._repr_failure_py(excinfo, style=style)
+   
+   
+   def hasinit(obj):
+       init = getattr(obj, "__init__", None)
+       if init:
+           return init != object.__init__
+   
+   
+   def hasnew(obj):
+       new = getattr(obj, "__new__", None)
+4. [score=22] TestCaptureFixture.test_capture_is_represented_on_failure_issue128
+   testing/test_capture.py:494
+           )
+   
+       def test_capsyscapfdbinary(self, testdir):
+           p = testdir.makepyfile(
+               """\
+               def test_one(capsys, capfdbinary):
+                   pass
+               """
+           )
+           result = testdir.runpytest(p)
+           result.stdout.fnmatch_lines(
+               ["*ERROR*setup*test_one*", "E*capfdbinary*capsys*same*time*", "*1 error*"]
+           )
+   
+       @pytest.mark.parametrize("method", ["sys", "fd"])
+       def test_capture_is_represented_on_failure_issue128(self, testdir, method):
+           p = testdir.makepyfile(
+               """\
+               def test_hello(cap{}):
+                   print("xxx42xxx")
+                   assert 0
+               """.format(
+                   method
+               )
+           )
+           result = testdir.runpytest(p)
+           result.stdout.fnmatch_lines(["xxx42xxx"])
+   
+       @needsosdup
+       def test_stdfd_functional(self, testdir):
+           reprec = testdir.inline_runsource(
+5. [score=18] TestPrunetraceback.test_custom_repr_failure
+   testing/test_collection.py:271
+       def test_pytest_collect_directory(self, testdir):
+           wascalled = []
+   
+           class Plugin:
+               def pytest_collect_directory(self, path, parent):
+                   wascalled.append(path.basename)
+   
+           testdir.mkdir("hello")
+           testdir.mkdir("world")
+           pytest.main(testdir.tmpdir, plugins=[Plugin()])
+           assert "hello" in wascalled
+           assert "world" in wascalled
+   
+   
+   class TestPrunetraceback:
+       def test_custom_repr_failure(self, testdir):
+           p = testdir.makepyfile(
+               """
+               import not_exists
+           """
+           )
+           testdir.makeconftest(
+               """
+               import pytest
+               def pytest_collect_file(path, parent):
+                   return MyFile(path, parent)
+               class MyError(Exception):
+                   pass
+               class MyFile(pytest.File):
+                   def collect(self):
+                       raise MyError()
+6. [score=15] TestDoctestReportingOption.test_doctest_report_none_or_only_first_failure
+   testing/test_doctest.py:1336
+       def test_doctest_report_ndiff(self, testdir):
+           result = self._run_doctest_report(testdir, "ndiff")
+           result.stdout.fnmatch_lines(
+               [
+                   "         a  b",
+                   "      0  1  4",
+                   "    - 1  2  4",
+                   "    ?       ^",
+                   "    + 1  2  5",
+                   "    ?       ^",
+                   "      2  3  6",
+               ]
+           )
+   
+       @pytest.mark.parametrize("format", ["none", "only_first_failure"])
+       def test_doctest_report_none_or_only_first_failure(self, testdir, format):
+           result = self._run_doctest_report(testdir, format)
+           result.stdout.fnmatch_lines(
+               [
+                   "Expected:",
+                   "       a  b",
+                   "    0  1  4",
+                   "    1  2  4",
+                   "    2  3  6",
+                   "Got:",
+                   "       a  b",
+                   "    0  1  4",
+                   "    1  2  5",
+                   "    2  3  6",
+               ]
+           )
+7. [score=12] Collector.repr_failure
+   src/_pytest/nodes.py:338
+   
+   class Collector(Node):
+       """ Collector instances create children through collect()
+           and thus iteratively build a tree.
+       """
+   
+       class CollectError(Exception):
+           """ an error during collection, contains a custom message. """
+   
+       def collect(self):
+           """ returns a list of children (items and collectors)
+               for this collection node.
+           """
+           raise NotImplementedError("abstract")
+   
+       def repr_failure(self, excinfo):
+           """ represent a collection failure. """
+           if excinfo.errisinstance(self.CollectError):
+               exc = excinfo.value
+               return str(exc.args[0])
+   
+           # Respect explicit tbstyle option, but default to "short"
+           # (None._repr_failure_py defaults to "long" without "fulltrace" option).
+           tbstyle = self.config.getoption("tbstyle", "auto")
+           if tbstyle == "auto":
+               tbstyle = "short"
+   
+           return self._repr_failure_py(excinfo, style=tbstyle)
+   
+       def _prunetraceback(self, excinfo):
+           if hasattr(self, "fspath"):
+8. [score=10] Node._repr_failure_py
+   src/_pytest/nodes.py:258
+           in a setup chain, for example during self.setup().
+           """
+           self.session._setupstate.addfinalizer(fin, self)
+   
+       def getparent(self, cls):
+           """ get the next parent node (including ourself)
+           which is an instance of the given class"""
+           current = self
+           while current and not isinstance(current, cls):
+               current = current.parent
+           return current
+   
+       def _prunetraceback(self, excinfo):
+           pass
+   
+       def _repr_failure_py(self, excinfo, style=None):
+           # Type ignored: see comment where fail.Exception is defined.
+           if excinfo.errisinstance(fail.Exception):  # type: ignore
+               if not excinfo.value.pytrace:
+                   return str(excinfo.value)
+           fm = self.session._fixturemanager
+           if excinfo.errisinstance(fm.FixtureLookupError):
+               return excinfo.value.formatrepr()
+           if self.config.getoption("fulltrace", False):
+               style = "long"
+           else:
+               tb = _pytest._code.Traceback([excinfo.traceback[-1]])
+               self._prunetraceback(excinfo)
+               if len(excinfo.traceback) == 0:
+                   excinfo.traceback = tb
+               if style == "auto":
+9. [score=9] TestFormattedExcinfo.test_repr_source_failing_fullsource
+   testing/code/test_excinfo.py:494
+               """
+   a = 1
+   raise ValueError()
+   """,
+               "",
+               "exec",
+           )
+           try:
+               exec(co)
+           except ValueError:
+               excinfo = _pytest._code.ExceptionInfo.from_current()
+           repr = pr.repr_excinfo(excinfo)
+           assert repr.reprtraceback.reprentries[1].lines[0] == ">   ???"
+           assert repr.chain[0][0].reprentries[1].lines[0] == ">   ???"
+   
+       def test_repr_source_failing_fullsource(self):
+           pr = FormattedExcinfo()
+   
+           class FakeCode:
+               class raw:
+                   co_filename = "?"
+   
+               path = "?"
+               firstlineno = 5
+   
+               def fullsource(self):
+                   return None
+   
+               fullsource = property(fullsource)
+   
+           class FakeFrame:
+10. [score=8] Node.repr_failure
+   src/_pytest/nodes.py:302
+           try:
+               os.getcwd()
+               abspath = False
+           except OSError:
+               abspath = True
+   
+           return excinfo.getrepr(
+               funcargs=True,
+               abspath=abspath,
+               showlocals=self.config.getoption("showlocals", False),
+               style=style,
+               tbfilter=False,  # pruned already, or in --fulltrace mode.
+               truncate_locals=truncate_locals,
+           )
+   
+       def repr_failure(self, excinfo, style=None):
+           return self._repr_failure_py(excinfo, style)
+   
+   
+   def get_fslocation_from_item(item):
+       """Tries to extract the actual location from an item, depending on available attributes:
+   
+       * "fslocation": a pair (path, lineno)
+       * "obj": a Python object that the item wraps.
+       * "fspath": just a path
+   
+       :rtype: a tuple of (str|LocalPath, int) with filename and line number.
+       """
+       result = getattr(item, "location", None)
+       if result is not None:
+           return result[:2]
+
+6 more candidates cached. Call `more_symbols(name="repr_failure")` for the next batch.
+[symbol-locator] [scorer] usage pid=835380 calls=2 p=14929 c=78
+[symbol-locator] [scorer] parsed 16/16 scores from LLM
+
+2026-08-28 04:38:49 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'reportinfo', 'context': 'pytest node location and headline generation', 'kind_filter': [12, 6, 5], 'top_k': 10}))
+```
+2026-08-28 04:38:49 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:38:51 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:38:51 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:38:51 auto_search_main.py INFO OBSERVATION:
+Found 13 candidates for `reportinfo`. Showing top 10 by relevance:
+1. [score=97] TestReportInfo.test_func_reportinfo
+   testing/python/collect.py:1034
+           testdir.makeconftest(
+               """
+               import pytest
+               class MyFunction(pytest.Function):
+                   def reportinfo(self):
+                       return "ABCDE", 42, "custom"
+               def pytest_pycollect_makeitem(collector, name, obj):
+                   if name == "test_func":
+                       return MyFunction(name, parent=collector)
+           """
+           )
+           item = testdir.getitem("def test_func(): pass")
+           item.config.pluginmanager.getplugin("runner")
+           assert item.location == ("ABCDE", 42, "custom")
+   
+       def test_func_reportinfo(self, testdir):
+           item = testdir.getitem("def test_func(): pass")
+           fspath, lineno, modpath = item.reportinfo()
+           assert fspath == item.fspath
+           assert lineno == 0
+           assert modpath == "test_func"
+   
+       def test_class_reportinfo(self, testdir):
+           modcol = testdir.getmodulecol(
+               """
+               # lineno 0
+               class TestClass(object):
+                   def test_hello(self): pass
+           """
+           )
+           classcol = testdir.collect_by_name(modcol, "TestClass")
+2. [score=95] Item.reportinfo
+   src/_pytest/nodes.py:429
+   
+               item.add_report_section("call", "stdout", "report section contents")
+   
+           :param str when:
+               One of the possible capture states, ``"setup"``, ``"call"``, ``"teardown"``.
+           :param str key:
+               Name of the section, can be customized at will. Pytest uses ``"stdout"`` and
+               ``"stderr"`` internally.
+   
+           :param str content:
+               The full contents as a string.
+           """
+           if content:
+               self._report_sections.append((when, key, content))
+   
+       def reportinfo(self):
+           return self.fspath, None, ""
+   
+       @property
+       def location(self):
+           try:
+               return self._location
+           except AttributeError:
+               location = self.reportinfo()
+               fspath = self.session._node_location_to_relpath(location[0])
+               location = (fspath, location[1], str(location[2]))
+               self._location = location
+               return location
+   
+3. [score=94] TestReportInfo.test_class_reportinfo
+   testing/python/collect.py:1041
+                   if name == "test_func":
+                       return MyFunction(name, parent=collector)
+           """
+           )
+           item = testdir.getitem("def test_func(): pass")
+           item.config.pluginmanager.getplugin("runner")
+           assert item.location == ("ABCDE", 42, "custom")
+   
+       def test_func_reportinfo(self, testdir):
+           item = testdir.getitem("def test_func(): pass")
+           fspath, lineno, modpath = item.reportinfo()
+           assert fspath == item.fspath
+           assert lineno == 0
+           assert modpath == "test_func"
+   
+       def test_class_reportinfo(self, testdir):
+           modcol = testdir.getmodulecol(
+               """
+               # lineno 0
+               class TestClass(object):
+                   def test_hello(self): pass
+           """
+           )
+           classcol = testdir.collect_by_name(modcol, "TestClass")
+           fspath, lineno, msg = classcol.reportinfo()
+           assert fspath == modcol.fspath
+           assert lineno == 1
+           assert msg == "TestClass"
+   
+       @pytest.mark.filterwarnings(
+           "ignore:usage of Generator.Function is deprecated, please use pytest.Function instead"
+4. [score=92] PyobjMixin.reportinfo
+   src/_pytest/python.py:291
+           for node in chain:
+               if isinstance(node, Instance):
+                   continue
+               name = node.name
+               if isinstance(node, Module):
+                   name = os.path.splitext(name)[0]
+                   if stopatmodule:
+                       if includemodule:
+                           parts.append(name)
+                       break
+               parts.append(name)
+           parts.reverse()
+           s = ".".join(parts)
+           return s.replace(".[", "[")
+   
+       def reportinfo(self):
+           # XXX caching?
+           obj = self.obj
+           compat_co_firstlineno = getattr(obj, "compat_co_firstlineno", None)
+           if isinstance(compat_co_firstlineno, int):
+               # nose compatibility
+               fspath = sys.modules[obj.__module__].__file__
+               if fspath.endswith(".pyc"):
+                   fspath = fspath[:-1]
+               lineno = compat_co_firstlineno
+           else:
+               fspath, lineno = getfslineno(obj)
+           modpath = self.getmodpath()
+           assert isinstance(lineno, int)
+           return fspath, lineno, modpath
+   
+5. [score=90] DoctestItem.reportinfo
+   src/_pytest/doctest.py:274
+                           lines.append("??? {} {}".format(indent, line))
+                           indent = "..."
+                   if isinstance(failure, doctest.DocTestFailure):
+                       lines += checker.output_difference(
+                           example, failure.got, report_choice
+                       ).split("\n")
+                   else:
+                       inner_excinfo = ExceptionInfo(failure.exc_info)
+                       lines += ["UNEXPECTED EXCEPTION: %s" % repr(inner_excinfo.value)]
+                       lines += traceback.format_exception(*failure.exc_info)
+                   reprlocation_lines.append((reprlocation, lines))
+               return ReprFailDoctest(reprlocation_lines)
+           else:
+               return super().repr_failure(excinfo)
+   
+       def reportinfo(self):
+           return self.fspath, self.dtest.lineno, "[doctest] %s" % self.name
+   
+   
+   def _get_flag_lookup():
+       import doctest
+   
+       return dict(
+           DONT_ACCEPT_TRUE_FOR_1=doctest.DONT_ACCEPT_TRUE_FOR_1,
+           DONT_ACCEPT_BLANKLINE=doctest.DONT_ACCEPT_BLANKLINE,
+           NORMALIZE_WHITESPACE=doctest.NORMALIZE_WHITESPACE,
+           ELLIPSIS=doctest.ELLIPSIS,
+           IGNORE_EXCEPTION_DETAIL=doctest.IGNORE_EXCEPTION_DETAIL,
+           COMPARISON_FLAGS=doctest.COMPARISON_FLAGS,
+           ALLOW_UNICODE=_get_allow_unicode_flag(),
+           ALLOW_BYTES=_get_allow_bytes_flag(),
+6. [score=88] TestReportInfo
+   testing/python/collect.py:1017
+           """
+           )
+           try:
+               import filter_traceback_entry_as_str
+   
+               filter_traceback_entry_as_str.foo()
+           except ValueError:
+               _, _, tb = sys.exc_info()
+   
+           testdir.tmpdir.join("filter_traceback_entry_as_str.py").remove()
+           tb = _pytest._code.Traceback(tb)
+           assert isinstance(tb[-1].path, str)
+           assert filter_traceback(tb[-1])
+   
+   
+   class TestReportInfo:
+       def test_itemreport_reportinfo(self, testdir, linecomp):
+           testdir.makeconftest(
+               """
+               import pytest
+               class MyFunction(pytest.Function):
+                   def reportinfo(self):
+                       return "ABCDE", 42, "custom"
+               def pytest_pycollect_makeitem(collector, name, obj):
+                   if name == "test_func":
+                       return MyFunction(name, parent=collector)
+           """
+           )
+           item = testdir.getitem("def test_func(): pass")
+           item.config.pluginmanager.getplugin("runner")
+           assert item.location == ("ABCDE", 42, "custom")
+7. [score=84] TestReportInfo.test_itemreport_reportinfo
+   testing/python/collect.py:1018
+           )
+           try:
+               import filter_traceback_entry_as_str
+   
+               filter_traceback_entry_as_str.foo()
+           except ValueError:
+               _, _, tb = sys.exc_info()
+   
+           testdir.tmpdir.join("filter_traceback_entry_as_str.py").remove()
+           tb = _pytest._code.Traceback(tb)
+           assert isinstance(tb[-1].path, str)
+           assert filter_traceback(tb[-1])
+   
+   
+   class TestReportInfo:
+       def test_itemreport_reportinfo(self, testdir, linecomp):
+           testdir.makeconftest(
+               """
+               import pytest
+               class MyFunction(pytest.Function):
+                   def reportinfo(self):
+                       return "ABCDE", 42, "custom"
+               def pytest_pycollect_makeitem(collector, name, obj):
+                   if name == "test_func":
+                       return MyFunction(name, parent=collector)
+           """
+           )
+           item = testdir.getitem("def test_func(): pass")
+           item.config.pluginmanager.getplugin("runner")
+           assert item.location == ("ABCDE", 42, "custom")
+   
+8. [score=80] TestDoctests.test_reportinfo
+   testing/test_doctest.py:685
+           """
+           Test case for issue 3583: Printing Unicode in doctest under Python 2.7
+           doesn't work
+           """
+           p = testdir.maketxtfile(
+               test_print_unicode_value=r"""
+               Here is a doctest::
+   
+                   >>> print('\xE5\xE9\xEE\xF8\xFC')
+                   åéîøü
+           """
+           )
+           result = testdir.runpytest(p)
+           result.stdout.fnmatch_lines(["* 1 passed *"])
+   
+       def test_reportinfo(self, testdir):
+           """
+           Test case to make sure that DoctestItem.reportinfo() returns lineno.
+           """
+           p = testdir.makepyfile(
+               test_reportinfo="""
+               def foo(x):
+                   '''
+                       >>> foo('a')
+                       'b'
+                   '''
+                   return 'c'
+           """
+           )
+           items, reprec = testdir.inline_genitems(p, "--doctest-modules")
+           reportinfo = items[0].reportinfo()
+9. [score=78] TestReportInfo.test_reportinfo_with_nasty_getattr
+   testing/python/collect.py:1058
+               """
+               # lineno 0
+               class TestClass(object):
+                   def test_hello(self): pass
+           """
+           )
+           classcol = testdir.collect_by_name(modcol, "TestClass")
+           fspath, lineno, msg = classcol.reportinfo()
+           assert fspath == modcol.fspath
+           assert lineno == 1
+           assert msg == "TestClass"
+   
+       @pytest.mark.filterwarnings(
+           "ignore:usage of Generator.Function is deprecated, please use pytest.Function instead"
+       )
+       def test_reportinfo_with_nasty_getattr(self, testdir):
+           # https://github.com/pytest-dev/pytest/issues/1204
+           modcol = testdir.getmodulecol(
+               """
+               # lineno 0
+               class TestClass(object):
+                   def __getattr__(self, name):
+                       return "this is not an int"
+   
+                   def test_foo(self):
+                       pass
+           """
+           )
+           classcol = testdir.collect_by_name(modcol, "TestClass")
+           instance = classcol.collect()[0]
+           fspath, lineno, msg = instance.reportinfo()
+10. [score=18] YamlItem.reportinfo
+   doc/en/example/nonpython/conftest.py:41
+               # some custom test execution (dumb example follows)
+               if name != value:
+                   raise YamlException(self, name, value)
+   
+       def repr_failure(self, excinfo):
+           """ called when self.runtest() raises an exception. """
+           if isinstance(excinfo.value, YamlException):
+               return "\n".join(
+                   [
+                       "usecase execution failed",
+                       "   spec failed: {1!r}: {2!r}".format(*excinfo.value.args),
+                       "   no further details known at this point.",
+                   ]
+               )
+   
+       def reportinfo(self):
+           return self.fspath, 0, "usecase: {}".format(self.name)
+   
+   
+   class YamlException(Exception):
+       """ custom exception for error reporting. """
+   
+
+3 more candidates cached. Call `more_symbols(name="reportinfo")` for the next batch.
+[symbol-locator] [scorer] usage pid=835380 calls=3 p=23678 c=133
+[symbol-locator] [scorer] parsed 13/13 scores from LLM
+
+2026-08-28 04:38:51 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:38:56 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:38:56 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:38:56 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 04:38:56 auto_search_main.py INFO Executing code:
+```
+print(more_symbols(**{'name': 'repr_failure', 'context': 'pytest long report headline generation', 'top_k': 5}))
+```
+2026-08-28 04:38:56 auto_search_main.py INFO OBSERVATION:
+Found 16 candidates for `repr_failure`. Showing top 5 by relevance:
+1. [score=7] _init_runner_class.PytestDoctestRunner.report_failure
+   src/_pytest/doctest.py:148
+   
+       class PytestDoctestRunner(doctest.DebugRunner):
+           """
+           Runner to collect failures.  Note that the out variable in this case is
+           a list instead of a stdout-like object
+           """
+   
+           def __init__(
+               self, checker=None, verbose=None, optionflags=0, continue_on_failure=True
+           ):
+               doctest.DebugRunner.__init__(
+                   self, checker=checker, verbose=verbose, optionflags=optionflags
+               )
+               self.continue_on_failure = continue_on_failure
+   
+           def report_failure(self, out, test, example, got):
+               failure = doctest.DocTestFailure(test, example, got)
+               if self.continue_on_failure:
+                   out.append(failure)
+               else:
+                   raise failure
+   
+           def report_unexpected_exception(self, out, test, example, exc_info):
+               if isinstance(exc_info[1], Skipped):
+                   raise exc_info[1]
+               failure = doctest.UnexpectedException(test, example, exc_info)
+               if self.continue_on_failure:
+                   out.append(failure)
+               else:
+                   raise failure
+   
+2. [score=5] YamlItem.repr_failure
+   doc/en/example/nonpython/conftest.py:30
+           for name, spec in sorted(raw.items()):
+               yield YamlItem(name, self, spec)
+   
+   
+   class YamlItem(pytest.Item):
+       def __init__(self, name, parent, spec):
+           super().__init__(name, parent)
+           self.spec = spec
+   
+       def runtest(self):
+           for name, value in sorted(self.spec.items()):
+               # some custom test execution (dumb example follows)
+               if name != value:
+                   raise YamlException(self, name, value)
+   
+       def repr_failure(self, excinfo):
+           """ called when self.runtest() raises an exception. """
+           if isinstance(excinfo.value, YamlException):
+               return "\n".join(
+                   [
+                       "usecase execution failed",
+                       "   spec failed: {1!r}: {2!r}".format(*excinfo.value.args),
+                       "   no further details known at this point.",
+                   ]
+               )
+   
+       def reportinfo(self):
+           return self.fspath, 0, "usecase: {}".format(self.name)
+   
+   
+   class YamlException(Exception):
+3. [score=4] TestRequestBasic.test_request_addfinalizer_partial_setup_failure
+   testing/python/fixtures.py:729
+               import pytest
+               values = [1, 2]
+               @pytest.fixture(scope="module")
+               def myfix(request):
+                   request.addfinalizer(values.pop)
+                   request.addfinalizer(values.pop)
+                   assert 0
+               def test_fix(myfix):
+                   pass
+           """
+           )
+           reprec = testdir.inline_run("-s")
+           mod = reprec.getcalls("pytest_runtest_setup")[0].item.module
+           assert not mod.values
+   
+       def test_request_addfinalizer_partial_setup_failure(self, testdir):
+           p = testdir.makepyfile(
+               """
+               import pytest
+               values = []
+               @pytest.fixture
+               def something(request):
+                   request.addfinalizer(lambda: values.append(None))
+               def test_func(something, missingarg):
+                   pass
+               def test_second():
+                   assert len(values) == 1
+           """
+           )
+           result = testdir.runpytest(p)
+           result.stdout.fnmatch_lines(
+4. [score=3] TestGeneralUsage.test_better_reporting_on_conftest_load_failure
+   testing/acceptance_test.py:185
+               [
+                   "ImportError while importing test module*",
+                   "*No module named *does_not_work*",
+               ]
+           )
+           assert result.ret == 2
+   
+       def test_not_collectable_arguments(self, testdir):
+           p1 = testdir.makepyfile("")
+           p2 = testdir.makefile(".pyc", "123")
+           result = testdir.runpytest(p1, p2)
+           assert result.ret
+           result.stderr.fnmatch_lines(["*ERROR: not found:*{}".format(p2.basename)])
+   
+       @pytest.mark.filterwarnings("default")
+       def test_better_reporting_on_conftest_load_failure(self, testdir, request):
+           """Show a user-friendly traceback on conftest import failures (#486, #3332)"""
+           testdir.makepyfile("")
+           testdir.makeconftest(
+               """
+               def foo():
+                   import qwerty
+               foo()
+           """
+           )
+           result = testdir.runpytest("--help")
+           result.stdout.fnmatch_lines(
+               """
+               *--version*
+               *warning*conftest.py*
+           """
+5. [score=2] _report_unserialization_failure
+   src/_pytest/reports.py:182
+   
+       @classmethod
+       def _from_json(cls, reportdict):
+           """
+           This was originally the serialize_report() function from xdist (ca03269).
+   
+           Factory method that returns either a TestReport or CollectReport, depending on the calling
+           class. It's the callers responsibility to know which class to pass here.
+   
+           Experimental method.
+           """
+           kwargs = _report_kwargs_from_json(reportdict)
+           return cls(**kwargs)
+   
+   
+   def _report_unserialization_failure(type_name, report_class, reportdict):
+       url = "https://github.com/pytest-dev/pytest/issues"
+       stream = StringIO()
+       pprint("-" * 100, stream=stream)
+       pprint("INTERNALERROR: Unknown entry type returned: %s" % type_name, stream=stream)
+       pprint("report_name: %s" % report_class, stream=stream)
+       pprint(reportdict, stream=stream)
+       pprint("Please report this bug at %s" % url, stream=stream)
+       pprint("-" * 100, stream=stream)
+       raise RuntimeError(stream.getvalue())
+   
+   
+   class TestReport(BaseReport):
+       """ Basic test report object (also used for setup and teardown calls if
+       they fail).
+       """
+
+1 more candidate cached. Call `more_symbols(name="repr_failure")` for the next batch.
+
+2026-08-28 04:38:56 auto_search_main.py INFO Executing code:
+```
+print(more_symbols(**{'name': 'reportinfo', 'context': 'pytest node location and headline generation', 'top_k': 5}))
+```
+2026-08-28 04:38:56 auto_search_main.py INFO OBSERVATION:
+Found 13 candidates for `reportinfo`. Showing top 3 by relevance:
+1. [score=10] TestTerminalFunctional.test_report_collectionfinish_hook
+   testing/test_terminal.py:740
+           assert "===" not in s
+           assert "passed" in s
+   
+       def test_more_quiet_reporting(self, testdir):
+           p1 = testdir.makepyfile("def test_pass(): pass")
+           result = testdir.runpytest(p1, "-qq")
+           s = result.stdout.str()
+           assert "test session starts" not in s
+           assert p1.basename not in s
+           assert "===" not in s
+           assert "passed" not in s
+   
+       @pytest.mark.parametrize(
+           "params", [(), ("--collect-only",)], ids=["no-params", "collect-only"]
+       )
+       def test_report_collectionfinish_hook(self, testdir, params):
+           testdir.makeconftest(
+               """
+               def pytest_report_collectionfinish(config, startdir, items):
+                   return ['hello from hook: {0} items'.format(len(items))]
+           """
+           )
+           testdir.makepyfile(
+               """
+               import pytest
+               @pytest.mark.parametrize('i', range(3))
+               def test(i):
+                   pass
+           """
+           )
+           result = testdir.runpytest(*params)
+2. [score=5] TerminalReporter._write_report_lines_from_hooks
+   src/_pytest/terminal.py:573
+           msg += ", pytest-{}, py-{}, pluggy-{}".format(
+               pytest.__version__, py.__version__, pluggy.__version__
+           )
+           if (
+               self.verbosity > 0
+               or self.config.option.debug
+               or getattr(self.config.option, "pastebin", None)
+           ):
+               msg += " -- " + str(sys.executable)
+           self.write_line(msg)
+           lines = self.config.hook.pytest_report_header(
+               config=self.config, startdir=self.startdir
+           )
+           self._write_report_lines_from_hooks(lines)
+   
+       def _write_report_lines_from_hooks(self, lines):
+           lines.reverse()
+           for line in collapse(lines):
+               self.write_line(line)
+   
+       def pytest_report_header(self, config):
+           line = "rootdir: %s" % config.rootdir
+   
+           if config.inifile:
+               line += ", inifile: " + config.rootdir.bestrelpath(config.inifile)
+   
+           testpaths = config.getini("testpaths")
+           if testpaths and config.args == testpaths:
+               rel_paths = [config.rootdir.bestrelpath(x) for x in testpaths]
+               line += ", testpaths: {}".format(", ".join(rel_paths))
+           result = [line]
+3. [score=2] TestGeneralUsage.test_better_reporting_on_conftest_load_failure
+   testing/acceptance_test.py:185
+               [
+                   "ImportError while importing test module*",
+                   "*No module named *does_not_work*",
+               ]
+           )
+           assert result.ret == 2
+   
+       def test_not_collectable_arguments(self, testdir):
+           p1 = testdir.makepyfile("")
+           p2 = testdir.makefile(".pyc", "123")
+           result = testdir.runpytest(p1, p2)
+           assert result.ret
+           result.stderr.fnmatch_lines(["*ERROR: not found:*{}".format(p2.basename)])
+   
+       @pytest.mark.filterwarnings("default")
+       def test_better_reporting_on_conftest_load_failure(self, testdir, request):
+           """Show a user-friendly traceback on conftest import failures (#486, #3332)"""
+           testdir.makepyfile("")
+           testdir.makeconftest(
+               """
+               def foo():
+                   import qwerty
+               foo()
+           """
+           )
+           result = testdir.runpytest("--help")
+           result.stdout.fnmatch_lines(
+               """
+               *--version*
+               *warning*conftest.py*
+           """
+
+2026-08-28 04:38:56 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'location', 'context': 'pytest item location property built from reportinfo', 'kind_filter': [13, 6, 5], 'top_k': 10}))
+```
+2026-08-28 04:38:56 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:38:59 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:38:59 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:38:59 auto_search_main.py INFO OBSERVATION:
+Found 36 candidates for `location`. Showing top 10 by relevance:
+1. [score=99] Item.location.location
+   src/_pytest/nodes.py:437
+   
+           :param str content:
+               The full contents as a string.
+           """
+           if content:
+               self._report_sections.append((when, key, content))
+   
+       def reportinfo(self):
+           return self.fspath, None, ""
+   
+       @property
+       def location(self):
+           try:
+               return self._location
+           except AttributeError:
+               location = self.reportinfo()
+               fspath = self.session._node_location_to_relpath(location[0])
+               location = (fspath, location[1], str(location[2]))
+               self._location = location
+               return location
+   
+2. [score=98] Item.location
+   src/_pytest/nodes.py:433
+               One of the possible capture states, ``"setup"``, ``"call"``, ``"teardown"``.
+           :param str key:
+               Name of the section, can be customized at will. Pytest uses ``"stdout"`` and
+               ``"stderr"`` internally.
+   
+           :param str content:
+               The full contents as a string.
+           """
+           if content:
+               self._report_sections.append((when, key, content))
+   
+       def reportinfo(self):
+           return self.fspath, None, ""
+   
+       @property
+       def location(self):
+           try:
+               return self._location
+           except AttributeError:
+               location = self.reportinfo()
+               fspath = self.session._node_location_to_relpath(location[0])
+               location = (fspath, location[1], str(location[2]))
+               self._location = location
+               return location
+   
+3. [score=91] Item._location
+   src/_pytest/nodes.py:440
+           """
+           if content:
+               self._report_sections.append((when, key, content))
+   
+       def reportinfo(self):
+           return self.fspath, None, ""
+   
+       @property
+       def location(self):
+           try:
+               return self._location
+           except AttributeError:
+               location = self.reportinfo()
+               fspath = self.session._node_location_to_relpath(location[0])
+               location = (fspath, location[1], str(location[2]))
+               self._location = location
+               return location
+   
+4. [score=12] TestReport.__init__.location
+   src/_pytest/reports.py:204
+       pprint("Please report this bug at %s" % url, stream=stream)
+       pprint("-" * 100, stream=stream)
+       raise RuntimeError(stream.getvalue())
+   
+   
+   class TestReport(BaseReport):
+       """ Basic test report object (also used for setup and teardown calls if
+       they fail).
+       """
+   
+       __test__ = False
+   
+       def __init__(
+           self,
+           nodeid,
+           location,
+           keywords,
+           outcome,
+           longrepr,
+           when,
+           sections=(),
+           duration=0,
+           user_properties=None,
+           **extra
+       ):
+           #: normalized collection node id
+           self.nodeid = nodeid
+   
+           #: a (filesystempath, lineno, domaininfo) tuple indicating the
+           #: actual location of a test item - it might be different from the
+           #: collected one e.g. if a method is inherited from a different module.
+5. [score=8] TestReport.location
+   src/_pytest/reports.py:220
+           keywords,
+           outcome,
+           longrepr,
+           when,
+           sections=(),
+           duration=0,
+           user_properties=None,
+           **extra
+       ):
+           #: normalized collection node id
+           self.nodeid = nodeid
+   
+           #: a (filesystempath, lineno, domaininfo) tuple indicating the
+           #: actual location of a test item - it might be different from the
+           #: collected one e.g. if a method is inherited from a different module.
+           self.location = location
+   
+           #: a name -> value dictionary containing all keywords and
+           #: markers associated with a test invocation.
+           self.keywords = keywords
+   
+           #: test outcome, always one of "passed", "failed", "skipped".
+           self.outcome = outcome
+   
+           #: None or a failure representation.
+           self.longrepr = longrepr
+   
+           #: one of 'setup', 'call', 'teardown' to indicate runtest phase.
+           self.when = when
+   
+           #: user properties is a list of tuples (name, value) that holds user
+6. [score=6] pytest_runtest_logstart.location
+   src/_pytest/hookspec.py:327
+       the given test item, including capturing exceptions and calling
+       reporting hooks.
+   
+       :arg item: test item for which the runtest protocol is performed.
+   
+       :arg nextitem: the scheduled-to-be-next test item (or None if this
+                      is the end my friend).  This argument is passed on to
+                      :py:func:`pytest_runtest_teardown`.
+   
+       :return boolean: True if no further hook implementations should be invoked.
+   
+   
+       Stops at first non-None result, see :ref:`firstresult` """
+   
+   
+   def pytest_runtest_logstart(nodeid, location):
+       """ signal the start of running a single test item.
+   
+       This hook will be called **before** :func:`pytest_runtest_setup`, :func:`pytest_runtest_call` and
+       :func:`pytest_runtest_teardown` hooks.
+   
+       :param str nodeid: full id of the item
+       :param location: a triple of ``(filename, linenum, testname)``
+       """
+   
+   
+   def pytest_runtest_logfinish(nodeid, location):
+       """ signal the complete finish of running a single test item.
+   
+       This hook will be called **after** :func:`pytest_runtest_setup`, :func:`pytest_runtest_call` and
+       :func:`pytest_runtest_teardown` hooks.
+7. [score=5] TerminalReporter._locationline
+   src/_pytest/terminal.py:700
+   
+       def _report_keyboardinterrupt(self):
+           excrepr = self._keyboardinterrupt_memo
+           msg = excrepr.reprcrash.message
+           self.write_sep("!", msg)
+           if "KeyboardInterrupt" in msg:
+               if self.config.option.fulltrace:
+                   excrepr.toterminal(self._tw)
+               else:
+                   excrepr.reprcrash.toterminal(self._tw)
+                   self._tw.line(
+                       "(to show a full traceback on KeyboardInterrupt use --full-trace)",
+                       yellow=True,
+                   )
+   
+       def _locationline(self, nodeid, fspath, lineno, domain):
+           def mkrel(nodeid):
+               line = self.config.cwd_relative_nodeid(nodeid)
+               if domain and line.endswith(domain):
+                   line = line[: -len(domain)]
+                   values = domain.split("[")
+                   values[0] = values[0].replace(".", "::")  # don't replace '.' in params
+                   line += "[".join(values)
+               return line
+   
+           # collect_fspath comes from testid which has a "/"-normalized path
+   
+           if fspath:
+               res = mkrel(nodeid)
+               if self.verbosity >= 2 and nodeid.split("::")[0] != fspath.replace(
+                   "\\", nodes.SEP
+8. [score=4] pytest_runtest_logfinish.location
+   src/_pytest/hookspec.py:338
+   
+       Stops at first non-None result, see :ref:`firstresult` """
+   
+   
+   def pytest_runtest_logstart(nodeid, location):
+       """ signal the start of running a single test item.
+   
+       This hook will be called **before** :func:`pytest_runtest_setup`, :func:`pytest_runtest_call` and
+       :func:`pytest_runtest_teardown` hooks.
+   
+       :param str nodeid: full id of the item
+       :param location: a triple of ``(filename, linenum, testname)``
+       """
+   
+   
+   def pytest_runtest_logfinish(nodeid, location):
+       """ signal the complete finish of running a single test item.
+   
+       This hook will be called **after** :func:`pytest_runtest_setup`, :func:`pytest_runtest_call` and
+       :func:`pytest_runtest_teardown` hooks.
+   
+       :param str nodeid: full id of the item
+       :param location: a triple of ``(filename, linenum, testname)``
+       """
+   
+   
+   def pytest_runtest_setup(item):
+       """ called before ``pytest_runtest_call(item)``. """
+   
+   
+   def pytest_runtest_call(item):
+9. [score=3] TerminalReporter.pytest_runtest_logstart.location
+   src/_pytest/terminal.py:376
+               fslocation=fslocation, message=message, nodeid=nodeid
+           )
+           warnings.append(warning_report)
+   
+       def pytest_plugin_registered(self, plugin):
+           if self.config.option.traceconfig:
+               msg = "PLUGIN registered: {}".format(plugin)
+               # XXX this event may happen during setup/teardown time
+               #     which unfortunately captures our output here
+               #     which garbles our output if we use self.write_line
+               self.write_line(msg)
+   
+       def pytest_deselected(self, items):
+           self.stats.setdefault("deselected", []).extend(items)
+   
+       def pytest_runtest_logstart(self, nodeid, location):
+           # ensure that the path is printed before the
+           # 1st test of a module starts running
+           if self.showlongtestinfo:
+               line = self._locationline(nodeid, *location)
+               self.write_ensure_prefix(line, "")
+           elif self.showfspath:
+               fsid = nodeid.split("::")[0]
+               self.write_fspath_result(fsid, "")
+   
+       def pytest_runtest_logreport(self, report):
+           self._tests_ran = True
+           rep = report
+           res = self.config.hook.pytest_report_teststatus(report=rep, config=self.config)
+           category, letter, word = res
+           if isinstance(word, tuple):
+10. [score=2] CollectReport.location
+   src/_pytest/reports.py:312
+           )
+   
+   
+   class CollectReport(BaseReport):
+       when = "collect"
+   
+       def __init__(self, nodeid, outcome, longrepr, result, sections=(), **extra):
+           self.nodeid = nodeid
+           self.outcome = outcome
+           self.longrepr = longrepr
+           self.result = result or []
+           self.sections = list(sections)
+           self.__dict__.update(extra)
+   
+       @property
+       def location(self):
+           return (self.fspath, None, self.fspath)
+   
+       def __repr__(self):
+           return "<CollectReport {!r} lenresult={} outcome={!r}>".format(
+               self.nodeid, len(self.result), self.outcome
+           )
+   
+   
+   class CollectErrorRepr(TerminalRepr):
+       def __init__(self, msg):
+           self.longrepr = msg
+   
+       def toterminal(self, out):
+           out.line(self.longrepr, red=True)
+   
+
+26 more candidates cached. Call `more_symbols(name="location")` for the next batch.
+[symbol-locator] [scorer] usage pid=835380 calls=4 p=36047 c=236
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 04:38:59 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:39:09 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:39:09 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:39:09 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 04:39:09 auto_search_main.py INFO ===============
+2026-08-28 04:39:09 auto_search_main.py INFO Final response generated content_length=220
+2026-08-28 04:39:09 auto_search_main.py INFO ==== localizing pytest-dev__pytest-6202 succeed, process multiple loc outputs ====
+2026-08-28 04:39:09 cost_analysis.py INFO input_tokens=39847, output_tokens=488, cost=0.10
+2026-08-28 04:39:09 auto_search_main.py INFO Total time: 0.8076 min

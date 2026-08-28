@@ -1,0 +1,2319 @@
+2026-08-28 00:26:06 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 00:26:06 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 00:26:06 auto_search_main.py INFO ============================================================
+2026-08-28 00:26:06 auto_search_main.py INFO ==== rank 0 setup localize scikit-learn__scikit-learn-14141 ====
+2026-08-28 00:26:06 git_repo_manager.py INFO Clone Github repo https://github.com/scikit-learn/scikit-learn.git to playground/b57dd5fa-e7f9-488d-ae3d-359f288ce8f5/scikit-learn_scikit-learn and checkout commit HEAD
+2026-08-28 00:26:06 git_repo_manager.py INFO Directory 'playground/b57dd5fa-e7f9-488d-ae3d-359f288ce8f5/scikit-learn_scikit-learn' was created.
+2026-08-28 00:26:33 repo_ops.py INFO [0] Processed scikit-learn__scikit-learn-14141
+2026-08-28 00:26:33 auto_search_main.py INFO ============================================================
+2026-08-28 00:26:33 auto_search_main.py INFO ==== rank 0 begin localizing scikit-learn__scikit-learn-14141 ====
+2026-08-28 00:26:33 auto_search_main.py INFO ============================================================
+2026-08-28 00:26:33 auto_search_main.py INFO ==== scikit-learn__scikit-learn-14141 Count down: attempt 1 ====
+2026-08-28 00:26:33 auto_search_main.py INFO ==== scikit-learn__scikit-learn-14141 start auto search ====
+2026-08-28 00:26:33 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:26:40 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:26:40 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:26:40 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 00:26:40 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['show_versions', 'joblib', 'issue template', 'dependencies'], 'file_path_or_pattern': '**/*'}))
+```
+2026-08-28 00:26:42 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:26:42 git_repo_manager.py INFO Clone Github repo https://github.com/scikit-learn/scikit-learn.git to playground/b57dd5fa-e7f9-488d-ae3d-359f288ce8f5/scikit-learn_scikit-learn and checkout commit HEAD
+2026-08-28 00:26:46 epic_split.py WARNING Failed to use epic splitter to split doc/tutorial/machine_learning_map/parse_path.py. Fallback to treesitter_split(). Error: Failed to parse code block with type CodeBlockType.COMMENT and content `"""
+Based on: http://wxpsvg.googlecode.com/svn/trunk/svg/pathdata.py
+According to that project, this file is licensed under the LGPL
+"""`. Expected pre_code to only contain spaces and line breaks. Got `
+
+`
+2026-08-28 00:26:47 epic_split.py WARNING Failed to use epic splitter to split doc/tutorial/machine_learning_map/pyparsing.py. Fallback to treesitter_split(). Error: Failed to parse code block with type CodeBlockType.ASSIGNMENT and content `__doc__ =`. Expected pre_code to only contain spaces and line breaks. Got `
+
+`
+2026-08-28 00:26:47 epic_split.py WARNING Failed to use epic splitter to split doc/tutorial/machine_learning_map/svg2imagemap.py. Fallback to treesitter_split(). Error: Failed to parse code block with type CodeBlockType.COMMENT and content `"""
+This script converts a subset of SVG into an HTML imagemap
+
+Note *subset*.  It only handles <path> elements, for which it only pays
+attention to the M and L commands.  Further, it only notices the "translate"
+transform.
+
+It was written to generate the examples in the documentation for maphilight,
+and thus is very squarely aimed at handling several SVG maps from wikipedia.
+It *assumes* that all the <path>s it will need are inside a <g>.  Any <path>
+outside of a <g> will be ignored.
+
+It takes several possible arguments, in the form:
+$ svn2imagemap.py FILENAME [x y [group1 group2 ... groupN]]
+
+FILENAME must be the name of an SVG file.  All other arguments are optional.
+
+x and y, if present, are the dimensions of the image you'll be creating from
+the SVG.  If not present, it assumes the values of the width and height
+attributes in the SVG file.
+
+group1 through groupN are group ids.  If only want particular groups used,
+enter their ids here and all others will be ignored.
+"""`. Expected pre_code to only contain spaces and line breaks. Got `
+
+`
+2026-08-28 00:27:46 epic_split.py WARNING Parsing file sklearn/utils/estimator_checks.py took 1.18 seconds.
+2026-08-28 00:27:48 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:27:49 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:27:50 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:27:50 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:27:51 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:27:52 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:27:52 auto_search_main.py INFO OBSERVATION:
+sklearn/utils/validation.py:check_memory
+sklearn/utils/fixes.py:_joblib_parallel_args
+sklearn/datasets/covtype.py:fetch_covtype
+sklearn/datasets/rcv1.py:fetch_rcv1
+sklearn/datasets/rcv1.py:fetch_rcv1
+doc/sphinxext/sphinx_issues.py:setup
+sklearn/ensemble/gradient_boosting.py:ClassificationLossFunction
+sklearn/ensemble/gradient_boosting.py:ClassificationLossFunction._score_to_proba
+sklearn/ensemble/gradient_boosting.py:ClassificationLossFunction._score_to_decision
+doc/conf.py:docstring:97
+doc/conf.py:docstring:66
+sklearn/utils/extmath.py:weighted_mode
+sklearn/ensemble/_gb_losses.py:ClassificationLossFunction
+sklearn/ensemble/_gb_losses.py:ClassificationLossFunction._raw_prediction_to_proba
+sklearn/ensemble/_gb_losses.py:ClassificationLossFunction._raw_prediction_to_decision
+sklearn/ensemble/_gb_losses.py:ClassificationLossFunction.check_init_estimator
+doc/sphinxext/sphinx_issues.py:impl:7
+doc/sphinxext/sphinx_issues.py:IssueRole.__call__
+doc/sphinxext/sphinx_issues.py:impl:11
+doc/sphinxext/sphinx_issues.py:format_commit_text
+doc/sphinxext/sphinx_issues.py:IssueRole.make_node
+sklearn/ensemble/gradient_boosting.py:LossFunction._update_terminal_region
+sklearn/ensemble/gradient_boosting.py:LossFunction.update_terminal_regions
+sklearn/ensemble/_gb_losses.py:LossFunction._update_terminal_region
+sklearn/ensemble/_gb_losses.py:LossFunction.get_init_raw_predictions
+sklearn/ensemble/partial_dependence.py:partial_dependence
+examples/inspection/plot_partial_dependence.py:impl
+examples/inspection/plot_partial_dependence.py:impl:2
+examples/inspection/plot_partial_dependence.py:main
+sklearn/inspection/partial_dependence.py:plot_partial_dependence
+sklearn/inspection/partial_dependence.py:partial_dependence
+sklearn/ensemble/partial_dependence.py:plot_partial_dependence
+doc/sphinxext/sphinx_issues.py:setup
+sklearn/ensemble/gradient_boosting.py:ClassificationLossFunction
+sklearn/ensemble/gradient_boosting.py:ClassificationLossFunction._score_to_proba
+sklearn/ensemble/gradient_boosting.py:ClassificationLossFunction._score_to_decision
+doc/conf.py:docstring:97
+doc/conf.py:docstring:66
+sklearn/utils/extmath.py:weighted_mode
+sklearn/ensemble/_gb_losses.py:ClassificationLossFunction
+sklearn/ensemble/_gb_losses.py:ClassificationLossFunction._raw_prediction_to_proba
+sklearn/ensemble/_gb_losses.py:ClassificationLossFunction._raw_prediction_to_decision
+sklearn/ensemble/_gb_losses.py:ClassificationLossFunction.check_init_estimator
+doc/sphinxext/sphinx_issues.py:impl:7
+doc/sphinxext/sphinx_issues.py:IssueRole.__call__
+doc/sphinxext/sphinx_issues.py:impl:11
+doc/sphinxext/sphinx_issues.py:format_commit_text
+##Searching for term "show_versions"...
+### Search Result:
+Found function `sklearn/utils/_show_versions.py:show_versions`.
+Source: Match found for entity name `show_versions`.
+```
+100 | def show_versions():
+101 |     "Print useful debugging information"
+102 | 
+103 |     sys_info = _get_sys_info()
+104 |     deps_info = _get_deps_info()
+105 |     blas_info = _get_blas_info()
+106 | 
+107 |     print('\nSystem:')
+108 |     for k, stat in sys_info.items():
+109 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+110 | 
+111 |     print('\nBLAS:')
+112 |     for k, stat in blas_info.items():
+113 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+114 | 
+115 |     print('\nPython deps:')
+116 |     for k, stat in deps_info.items():
+117 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+```
+
+
+
+##Searching for term "joblib"...
+### Search Result:
+Found code snippet in file `sklearn/utils/_joblib.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import warnings as _warnings
+ 2 | 
+ 3 | with _warnings.catch_warnings():
+ 4 |     _warnings.simplefilter("ignore")
+ 5 |     # joblib imports may raise DeprecationWarning on certain Python
+ 6 |     # versions
+ 7 |     import joblib
+ 8 |     from joblib import logger
+ 9 |     from joblib import dump, load
+10 |     from joblib import __version__
+11 |     from joblib import effective_n_jobs
+12 |     from joblib import hash
+13 |     from joblib import cpu_count, Parallel, Memory, delayed
+14 |     from joblib import parallel_backend, register_parallel_backend
+15 | 
+16 | 
+17 | __all__ = ["parallel_backend", "register_parallel_backend", "cpu_count",
+18 |            "Parallel", "Memory", "delayed", "effective_n_jobs", "hash",
+19 |            "logger", "dump", "load", "joblib", "__version__"]
+20 | 
+```
+
+Found code snippet in file `sklearn/externals/joblib/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | # Import necessary to preserve backward compatibility of pickles
+ 2 | import sys
+ 3 | import warnings
+ 4 | 
+ 5 | from joblib import *
+ 6 | 
+ 7 | 
+ 8 | msg = ("sklearn.externals.joblib is deprecated in 0.21 and will be removed "
+ 9 |        "in 0.23. Please import this functionality directly from joblib, "
+10 |        "which can be installed with: pip install joblib. If this warning is "
+11 |        "raised when loading pickled models, you may need to re-serialize "
+12 |        "those models with scikit-learn 0.21+.")
+13 | 
+14 | if not hasattr(sys, "_is_pytest_session"):
+15 |     warnings.warn(msg, category=DeprecationWarning)
+16 | 
+```
+
+Found code snippet in file `sklearn/externals/joblib/numpy_pickle.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | # Import necessary to preserve backward compatibliity of pickles
+2 | 
+3 | from joblib.numpy_pickle import *
+4 | 
+```
+
+Found function `sklearn/utils/validation.py:check_memory`.
+Source: Retrieved code content using keyword search (bm25).
+```
+156 | def check_memory(memory):
+157 |     """Check that ``memory`` is joblib.Memory-like.
+158 | 
+159 |     joblib.Memory-like means that ``memory`` can be converted into a
+160 |     joblib.Memory instance (typically a str denoting the ``location``)
+161 |     or has the same interface (has a ``cache`` method).
+162 | 
+163 |     Parameters
+164 |     ----------
+165 |     memory : None, str or object with the joblib.Memory interface
+166 | 
+167 |     Returns
+168 |     -------
+169 |     memory : object with the joblib.Memory interface
+170 | 
+171 |     Raises
+172 |     ------
+173 |     ValueError
+174 |         If ``memory`` is not joblib.Memory-like.
+175 |     """
+176 | 
+177 |     if memory is None or isinstance(memory, str):
+178 |         if LooseVersion(joblib.__version__) < '0.12':
+179 |             memory = joblib.Memory(cachedir=memory, verbose=0)
+180 |         else:
+181 |             memory = joblib.Memory(location=memory, verbose=0)
+182 |     elif not hasattr(memory, 'cache'):
+183 |         raise ValueError("'memory' should be None, a string or have the same"
+184 |                          " interface as joblib.Memory."
+185 |                          " Got memory='{}' instead.".format(memory))
+186 |     return memory
+```
+
+Found function `sklearn/utils/fixes.py:_joblib_parallel_args`.
+Source: Retrieved code content using keyword search (bm25).
+```
+200 | def _joblib_parallel_args(**kwargs):
+201 |     """Set joblib.Parallel arguments in a compatible way for 0.11 and 0.12+
+202 | 
+203 |     For joblib 0.11 this maps both ``prefer`` and ``require`` parameters to
+204 |     a specific ``backend``.
+205 | 
+206 |     Parameters
+207 |     ----------
+208 | 
+209 |     prefer : str in {'processes', 'threads'} or None
+210 |         Soft hint to choose the default backend if no specific backend
+211 |         was selected with the parallel_backend context manager.
+212 | 
+213 |     require : 'sharedmem' or None
+214 |         Hard condstraint to select the backend. If set to 'sharedmem',
+215 |         the selected backend will be single-host and thread-based even
+216 |         if the user asked for a non-thread based backend with
+217 |         parallel_backend.
+218 | 
+219 |     See joblib.Parallel documentation for more details
+220 |     """
+221 |     import joblib
+222 | 
+223 |     if joblib.__version__ >= LooseVersion('0.12'):
+224 |         return kwargs
+225 | 
+226 |     extra_args = set(kwargs.keys()).difference({'prefer', 'require'})
+227 |     if extra_args:
+228 |         raise NotImplementedError('unhandled arguments %s with joblib %s'
+229 |                                   % (list(extra_args), joblib.__version__))
+230 |     args = {}
+231 |     if 'prefer' in kwargs:
+232 |         prefer = kwargs['prefer']
+233 |         if prefer not in ['threads', 'processes', None]:
+234 |             raise ValueError('prefer=%s is not supported' % prefer)
+235 |         args['backend'] = {'threads': 'threading',
+236 |                            'processes': 'multiprocessing',
+237 |                            None: None}[prefer]
+238 | 
+239 |     if 'require' in kwargs:
+240 |         require = kwargs['require']
+241 |         if require not in [None, 'sharedmem']:
+242 |             raise ValueError('require=%s is not supported' % require)
+243 |         if require == 'sharedmem':
+244 |             args['backend'] = 'threading'
+245 |     return args
+```
+
+
+
+##Searching for term "joblib", "joblib issue template dependencies"...
+### Search Result:
+Found file `sklearn/externals/joblib/__init__.py`.
+Found file `sklearn/externals/joblib/numpy_pickle.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "issue template"...
+### Search Result:
+Found .
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | # -*- coding: utf-8 -*-
+  2 | #
+  3 | # scikit-learn documentation build configuration file, created by
+  4 | # sphinx-quickstart on Fri Jan  8 09:13:42 2010.
+  5 | #
+  6 | # This file is execfile()d with the current directory set to its containing
+  7 | # dir.
+  8 | #
+  9 | # Note that not all possible configuration values are present in this
+ 10 | # autogenerated file.
+ 11 | #
+ 12 | # All configuration values have a default; values that are commented out
+ 13 | # serve to show the default.
+ 14 | 
+ 15 | import sys
+ 16 | import os
+ 17 | import warnings
+ 18 | 
+ 19 | # If extensions (or modules to document with autodoc) are in another
+ 20 | # directory, add these directories to sys.path here. If the directory
+ 21 | # is relative to the documentation root, use os.path.abspath to make it
+ 22 | # absolute, like shown here.
+ 23 | sys.path.insert(0, os.path.abspath('sphinxext'))
+ 24 | 
+ 25 | from github_link import make_linkcode_resolve
+ 26 | import sphinx_gallery
+ 27 | 
+ 28 | # -- General configuration ---------------------------------------------------
+ 29 | 
+ 30 | # Add any Sphinx extension module names here, as strings. They can be
+ 31 | # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+ 32 | extensions = [
+ 33 |     'sphinx.ext.autodoc', 'sphinx.ext.autosummary',
+ 34 |     'numpydoc',
+ 35 |     'sphinx.ext.linkcode', 'sphinx.ext.doctest',
+ 36 |     'sphinx.ext.intersphinx',
+ 37 |     'sphinx.ext.imgconverter',
+ 38 |     'sphinx_gallery.gen_gallery',
+ 39 |     'sphinx_issues',
+ 40 |     'custom_references_resolver'
+ 41 | ]
+ 42 | 
+ 43 | # this is needed for some reason...
+ 44 | # see https://github.com/numpy/numpydoc/issues/69
+ 45 | numpydoc_class_members_toctree = False
+ 46 | 
+ 47 | 
+ 48 | # For maths, use mathjax by default and svg if NO_MATHJAX env variable is set
+ 49 | # (useful for viewing the doc offline)
+ 50 | if os.environ.get('NO_MATHJAX'):
+ 51 |     extensions.append('sphinx.ext.imgmath')
+ 52 |     imgmath_image_format = 'svg'
+ 53 | else:
+ 54 |     extensions.append('sphinx.ext.mathjax')
+ 55 |     mathjax_path = ('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/'
+ 56 |                     'MathJax.js?config=TeX-AMS_SVG')
+ 57 | 
+ 58 | 
+ 59 | autodoc_default_flags = ['members', 'inherited-members']
+ 60 | 
+ 61 | # Add any paths that contain templates here, relative to this directory.
+ 62 | templates_path = ['templates']
+ 63 | 
+ 64 | # generate autosummary even if no references
+ 65 | autosummary_generate = True
+ 66 | 
+ 67 | # The suffix of source filenames.
+ 68 | source_suffix = '.rst'
+ 69 | 
+ 70 | # The encoding of source files.
+ 71 | #source_encoding = 'utf-8'
+ 72 | 
+ 73 | # The master toctree document.
+```
+
+Found file `sklearn/tree/setup.py`.
+Found file `sklearn/impute/__init__.py`.
+Found file `sklearn/impute/_base.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "issue template", "joblib issue template dependencies"...
+### Search Result:
+Found function `doc/sphinxext/sphinx_issues.py:setup`.
+Source: Retrieved code content using keyword search (bm25).
+```
+194 | def setup(app):
+195 |     # Format template for issues URI
+196 |     # e.g. 'https://github.com/sloria/marshmallow/issues/{issue}
+197 |     app.add_config_value("issues_uri", default=None, rebuild="html")
+198 |     # Format template for PR URI
+199 |     # e.g. 'https://github.com/sloria/marshmallow/pull/{issue}
+200 |     app.add_config_value("issues_pr_uri", default=None, rebuild="html")
+201 |     # Format template for commit URI
+202 |     # e.g. 'https://github.com/sloria/marshmallow/commits/{commit}
+203 |     app.add_config_value("issues_commit_uri", default=None, rebuild="html")
+204 |     # Shortcut for Github, e.g. 'sloria/marshmallow'
+205 |     app.add_config_value("issues_github_path", default=None, rebuild="html")
+206 |     # Format template for user profile URI
+207 |     # e.g. 'https://github.com/{user}'
+208 |     app.add_config_value("issues_user_uri", default=None, rebuild="html")
+209 |     app.add_role("issue", issue_role)
+210 |     app.add_role("pr", pr_role)
+211 |     app.add_role("user", user_role)
+212 |     app.add_role("commit", commit_role)
+213 |     app.add_role("cve", cve_role)
+214 |     return {
+215 |         "version": __version__,
+216 |         "parallel_read_safe": True,
+217 |         "parallel_write_safe": True,
+218 |     }
+```
+
+Found class `sklearn/ensemble/gradient_boosting.py:ClassificationLossFunction`.
+Source: Retrieved code content using keyword search (bm25).
+```
+790 | class ClassificationLossFunction(LossFunction, metaclass=ABCMeta):
+791 |     """Base class for classification loss functions. """
+792 | 
+793 |     def _score_to_proba(self, score):
+794 |         """Template method to convert scores to probabilities.
+795 | 
+796 |          the does not support probabilities raises AttributeError.
+797 |         """
+798 |         raise TypeError('%s does not support predict_proba' % type(self).__name__)
+799 | 
+800 |     @abstractmethod
+801 |     def _score_to_decision(self, score):
+802 |         """Template method to convert scores to decisions.
+803 | 
+804 |         Returns int arrays.
+805 |         """
+```
+
+
+
+##Searching for term "dependencies"...
+### Search Result:
+Found .
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | """
+  2 | ========================
+  3 | Partial Dependence Plots
+  4 | ========================
+  5 | 
+  6 | Partial dependence plots show the dependence between the target function [2]_
+  7 | and a set of 'target' features, marginalizing over the
+  8 | values of all other features (the complement features). Due to the limits
+  9 | of human perception the size of the target feature set must be small (usually,
+ 10 | one or two) thus the target features are usually chosen among the most
+ 11 | important features.
+ 12 | 
+ 13 | This example shows how to obtain partial dependence plots from a
+ 14 | :class:`~sklearn.neural_network.MLPRegressor` and a
+ 15 | :class:`~sklearn.ensemble.GradientBoostingRegressor` trained on the
+ 16 | California housing dataset. The example is taken from [1]_.
+ 17 | 
+ 18 | The plots show four 1-way and two 1-way partial dependence plots (ommitted for
+ 19 | :class:`~sklearn.neural_network.MLPRegressor` due to computation time).
+ 20 | The target variables for the one-way PDP are: median income (`MedInc`),
+ 21 | average occupants per household (`AvgOccup`), median house age (`HouseAge`),
+ 22 | and average rooms per household (`AveRooms`).
+ 23 | 
+ 24 | We can clearly see that the median house price shows a linear relationship
+ 25 | with the median income (top left) and that the house price drops when the
+ 26 | average occupants per household increases (top middle).
+ 27 | The top right plot shows that the house age in a district does not have
+ 28 | a strong influence on the (median) house price; so does the average rooms
+ 29 | per household.
+ 30 | The tick marks on the x-axis represent the deciles of the feature values
+ 31 | in the training data.
+ 32 | 
+ 33 | We also observe that :class:`~sklearn.neural_network.MLPRegressor` has much
+ 34 | smoother predictions than
+ 35 | :class:`~sklearn.ensemble.GradientBoostingRegressor`. For the plots to be
+ 36 | comparable, it is necessary to subtract the average value of the target
+ 37 | ``y``: The 'recursion' method, used by default for
+ 38 | :class:`~sklearn.ensemble.GradientBoostingRegressor`, does not account for
+ 39 | the initial predictor (in our case the average target). Setting the target
+ 40 | average to 0 avoids this bias.
+ 41 | 
+ 42 | Partial dependence plots with two target features enable us to visualize
+ 43 | interactions among them. The two-way partial dependence plot shows the
+ 44 | dependence of median house price on joint values of house age and average
+ 45 | occupants per household. We can clearly see an interaction between the
+ 46 | two features: for an average occupancy greater than two, the house price is
+ 47 | nearly independent of the house age, whereas for values less than two there
+ 48 | is a strong dependence on age.
+ 49 | 
+ 50 | On a third figure, we have plotted the same partial dependence plot, this time
+ 51 | in 3 dimensions.
+ 52 | 
+ 53 | .. [1] T. Hastie, R. Tibshirani and J. Friedman,
+ 54 |     "Elements of Statistical Learning Ed. 2", Springer, 2009.
+ 55 | 
+ 56 | .. [2] For classification you can think of it as the regression score before
+ 57 |        the link function.
+ 58 | """
+ 59 | print(__doc__)
+```
+
+Found code snippet in file `sklearn/externals/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+2 | """
+3 | External, bundled dependencies.
+4 | 
+5 | """
+6 | 
+```
+
+Found function `sklearn/inspection/partial_dependence.py:partial_dependence`.
+Source: Retrieved entity using keyword search (bm25).
+```
+185 | def partial_dependence(estimator, X, features, response_method='auto',
+186 |                        percentiles=(0.05, 0.95), grid_resolution=100,
+187 |                        method='auto'):
+188 |     """Partial dependence of ``features``.
+189 | 
+190 |     Partial dependence of a feature (or a set of features) corresponds to
+191 |     the average response of an estimator for each possible value of the
+192 |     feature.
+193 | 
+194 |     Read more in the :ref:`User Guide <partial_dependence>`.
+195 | 
+196 |     Parameters
+197 |     ----------
+198 |     estimator : BaseEstimator
+199 |         A fitted estimator object implementing `predict`, `predict_proba`,
+200 |         or `decision_function`. Multioutput-multiclass classifiers are not
+201 |         supported.
+202 |     X : array-like, shape (n_samples, n_features)
+203 |         ``X`` is used both to generate a grid of values for the
+204 |         ``features``, and to compute the averaged predictions when
+205 |         method is 'brute'.
+206 |     features : list or array-like of int
+207 |         The target features for which the partial dependency should be
+208 |         computed.
+209 |     response_method : 'auto', 'predict_proba' or 'decision_function', \
+210 |             optional (default='auto')
+211 |         Specifies whether to use :term:`predict_proba` or
+212 |         :term:`decision_function` as the target response. For regressors
+213 |         this parameter is ignored and the response is always the output of
+214 |         :term:`predict`. By default, :term:`predict_proba` is tried first
+215 |         and we revert to :term:`decision_function` if it doesn't exist. If
+216 |         ``method`` is 'recursion', the response is always the output of
+217 |         :term:`decision_function`.
+218 |     percentiles : tuple of float, optional (default=(0.05, 0.95))
+219 |         The lower and upper percentile used to create the extreme values
+220 |         for the grid. Must be in [0, 1].
+221 |     grid_resolution : int, optional (default=100)
+222 |         The number of equally spaced points on the grid, for each target
+223 |         feature.
+224 |     method : str, optional (default='auto')
+225 |         The method used to calculate the averaged predictions:
+226 | 
+227 |         - 'recursion' is only supported for objects inheriting from
+228 |           `BaseGradientBoosting`, but is more efficient in terms of speed.
+229 |           With this method, ``X`` is only used to build the
+230 |           grid and the partial dependences are computed using the training
+231 |           data. This method does not account for the ``init`` predicor of
+232 |           the boosting process, which may lead to incorrect values (see
+233 |           warning below). With this method, the target response of a
+234 |           classifier is always the decision function, not the predicted
+235 |           probabilities.
+236 | 
+237 |         - 'brute' is supported for any estimator, but is more
+238 |           computationally intensive.
+239 | 
+240 |         - If 'auto', then 'recursion' will be used for
+241 |           ``BaseGradientBoosting`` estimators with ``init=None``, and 'brute'
+242 |           for all other.
+243 | 
+244 |     Returns
+245 |     -------
+246 |     averaged_predictions : ndarray, \
+247 |             shape (n_outputs, len(values[0]), len(values[1]), ...)
+248 |         The predictions for all the points in the grid, averaged over all
+249 |         samples in X (or over the training data if ``method`` is
+250 |         'recursion'). ``n_outputs`` corresponds to the number of classes in
+251 |         a multi-class setting, or to the number of tasks for multi-output
+252 |         regression. For classical regression and binary classification
+253 |         ``n_outputs==1``. ``n_values_feature_j`` corresponds to the size
+254 |         ``values[j]``.
+255 |     values : seq of 1d ndarrays
+256 |         The values with which the grid has been created. The generated grid
+257 |         is a cartesian product of the arrays in ``values``. ``len(values) ==
+258 |         len(features)``. The size of each array ``values[j]`` is either
+259 |         ``grid_resolution``, or the number of unique values in ``X[:, j]``,
+260 |         whichever is smaller.
+261 | 
+262 |     Examples
+263 |     --------
+264 |     >>> X = [[0, 0, 2], [1, 0, 0]]
+265 |     >>> y = [0, 1]
+266 |     >>> from sklearn.ensemble import GradientBoostingClassifier
+267 |     >>> gb = GradientBoostingClassifier(random_state=0).fit(X, y)
+268 |     >>> partial_dependence(gb, features=[0], X=X, percentiles=(0, 1),
+269 |     ...                    grid_resolution=2) # doctest: +SKIP
+270 |     (array([[-4.52...,  4.52...]]), [array([ 0.,  1.])])
+271 | 
+272 |     See also
+273 |     --------
+274 |     sklearn.inspection.plot_partial_dependence: Plot partial dependence
+275 | 
+276 |     Warnings
+277 |     --------
+278 |     The 'recursion' method only works for gradient boosting estimators, and
+279 |     unlike the 'brute' method, it does not account for the ``init``
+280 |     predictor of the boosting process. In practice this will produce the
+281 |     same values as 'brute' up to a constant offset in the target response,
+282 |     provided that ``init`` is a consant estimator (which is the default).
+283 |     However, as soon as ``init`` is not a constant estimator, the partial
+284 |     dependence values are incorrect for 'recursion'.
+285 | 
+286 |     """
+287 | 
+288 |     if not (is_classifier(estimator) or is_regressor(estimator)):
+289 |         raise ValueError(
+290 |             "'estimator' must be a fitted regressor or classifier.")
+291 | 
+292 |     if (hasattr(estimator, 'classes_') and
+293 |             isinstance(estimator.classes_[0], np.ndarray)):
+294 |         raise ValueError('Multiclass-multioutput estimators are not supported')
+295 | 
+296 |     X = check_array(X)
+297 | 
+298 |     accepted_responses = ('auto', 'predict_proba', 'decision_function')
+299 |     if response_method not in accepted_responses:
+300 |         raise ValueError(
+301 |             'response_method {} is invalid. Accepted response_method names '
+302 |             'are {}.'.format(response_method, ', '.join(accepted_responses)))
+303 | 
+304 |     if is_regressor(estimator) and response_method != 'auto':
+305 |         raise ValueError(
+306 |             "The response_method parameter is ignored for regressors and "
+307 |             "must be 'auto'."
+308 |         )
+309 |     accepted_methods = ('brute', 'recursion', 'auto')
+310 |     if method not in accepted_methods:
+311 |         raise ValueError(
+312 |             'method {} is invalid. Accepted method names are {}.'.format(
+313 |                 method, ', '.join(accepted_methods)))
+314 | 
+315 |     if method == 'auto':
+316 |         if (isinstance(estimator, BaseGradientBoosting) and
+317 |                 estimator.init is None):
+318 |             method = 'recursion'
+319 |         else:
+320 |             method = 'brute'
+321 | 
+322 |     if method == 'recursion':
+323 |         if not isinstance(estimator, BaseGradientBoosting):
+324 |             raise ValueError(
+325 |                 "'estimator' must be an instance of BaseGradientBoosting "
+326 |                 "for the 'recursion' method. Try using method='brute'.")
+327 |         if response_method == 'auto':
+328 |             response_method = 'decision_function'
+329 | 
+330 |         if response_method != 'decision_function':
+331 |             raise ValueError(
+332 |                 "With the 'recursion' method, the response_method must be "
+333 |                 "'decision_function'. Got {}.".format(response_method)
+334 |             )
+335 |         check_is_fitted(estimator, 'estimators_',
+336 |                         msg="'estimator' parameter must be a fitted estimator")
+337 |         # Note: if method is brute, this check is done at prediction time
+338 |         n_features = estimator.n_features_
+339 |     else:
+340 |         n_features = X.shape[1]
+341 | 
+342 |     features = np.asarray(features, dtype=np.int32, order='C').ravel()
+343 |     if any(not (0 <= f < n_features) for f in features):
+344 |         raise ValueError('all features must be in [0, %d]'
+345 |                          % (n_features - 1))
+346 | 
+347 |     grid, values = _grid_from_X(X[:, features], percentiles,
+348 |                                 grid_resolution)
+349 |     if method == 'brute':
+350 |         averaged_predictions = _partial_dependence_brute(estimator, grid,
+351 |                                                          features, X,
+352 |                                                          response_method)
+353 |     else:
+354 |         averaged_predictions = _partial_dependence_recursion(estimator, grid,
+355 |                                                              features)
+356 | 
+357 |     # reshape averaged_predictions to
+358 |     # (n_outputs, n_values_feature_0, n_values_feature_1, ...)
+359 |     averaged_predictions = averaged_predictions.reshape(
+360 |         -1, *[val.shape[0] for val in values])
+361 | 
+362 |     return averaged_predictions, values
+```
+
+Found function `sklearn/inspection/partial_dependence.py:plot_partial_dependence`.
+Source: Retrieved code content using keyword search (bm25).
+```
+365 | def plot_partial_dependence(estimator, X, features, feature_names=None,
+366 |                             target=None, response_method='auto', n_cols=3,
+367 |                             grid_resolution=100, percentiles=(0.05, 0.95),
+368 |                             method='auto', n_jobs=None, verbose=0, fig=None,
+369 |                             line_kw=None, contour_kw=None):
+370 |     """Partial dependence plots.
+371 | 
+372 |     The ``len(features)`` plots are arranged in a grid with ``n_cols``
+373 |     columns. Two-way partial dependence plots are plotted as contour plots.
+374 | 
+375 |     Read more in the :ref:`User Guide <partial_dependence>`.
+376 | 
+377 |     Parameters
+378 |     ----------
+379 |     estimator : BaseEstimator
+380 |         A fitted estimator object implementing `predict`, `predict_proba`,
+381 |         or `decision_function`. Multioutput-multiclass classifiers are not
+382 |         supported.
+383 |     X : array-like, shape (n_samples, n_features)
+384 |         The data to use to build the grid of values on which the dependence
+385 |         will be evaluated. This is usually the training data.
+386 |     features : list of {int, str, pair of int, pair of str}
+387 |         The target features for which to create the PDPs.
+388 |         If features[i] is an int or a string, a one-way PDP is created; if
+389 |         features[i] is a tuple, a two-way PDP is created. Each tuple must be
+390 |         of size 2.
+391 |         if any entry is a string, then it must be in ``feature_names``.
+392 |     feature_names : seq of str, shape (n_features,), optional
+393 |         Name of each feature; feature_names[i] holds the name of the feature
+394 |         with index i. By default, the name of the feature corresponds to
+395 |         their numerical index.
+396 |     target : int, optional (default=None)
+397 |         - In a multiclass setting, specifies the class for which the PDPs
+398 |           should be computed. Note that for binary classification, the
+399 |           positive class (index 1) is always used.
+400 |         - In a multioutput setting, specifies the task for which the PDPs
+401 |           should be computed
+402 |         Ignored in binary classification or classical regression settings.
+403 |     response_method : 'auto', 'predict_proba' or 'decision_function', \
+404 |             optional (default='auto') :
+405 |         Specifies whether to use :term:`predict_proba` or
+406 |         :term:`decision_function` as the target response. For regressors
+407 |         this parameter is ignored and the response is always the output of
+408 |         :term:`predict`. By default, :term:`predict_proba` is tried first
+409 |         and we revert to :term:`decision_function` if it doesn't exist. If
+410 |         ``method`` is 'recursion', the response is always the output of
+411 |         :term:`decision_function`.
+412 |     n_cols : int, optional (default=3)
+413 |         The maximum number of columns in the grid plot.
+414 |     grid_resolution : int, optional (default=100)
+415 |         The number of equally spaced points on the axes of the plots, for each
+416 |         target feature.
+417 |     percentiles : tuple of float, optional (default=(0.05, 0.95))
+418 |         The lower and upper percentile used to create the extreme values
+419 |         for the PDP axes. Must be in [0, 1].
+420 |     method : str, optional (default='auto')
+421 |         The method to use to calculate the partial dependence predictions:
+422 | 
+423 |         - 'recursion' is only supported for objects inheriting from
+424 |           `BaseGradientBoosting`, but is more efficient in terms of speed.
+425 |           With this method, ``X`` is optional and is only used to build the
+426 |           grid and the partial dependences are computed using the training
+427 |           data. This method does not account for the ``init`` predicor of
+428 |           the boosting process, which may lead to incorrect values (see
+429 |           warning below. With this method, the target response of a
+430 |           classifier is always the decision function, not the predicted
+431 |           probabilities.
+432 | 
+433 |         - 'brute' is supported for any estimator, but is more
+434 |           computationally intensive.
+435 | 
+436 |         - If 'auto', then 'recursion' will be used for
+437 |           ``BaseGradientBoosting`` estimators with ``init=None``, and
+438 |           'brute' for all other.
+439 | 
+440 |         Unlike the 'brute' method, 'recursion' does not account for the
+441 |         ``init`` predictor of the boosting process. In practice this still
+442 |         produces the same plots, up to a constant offset in the target
+443 |         response.
+444 |     n_jobs : int, optional (default=None)
+445 |         The number of CPUs to use to compute the partial dependences.
+446 |         ``None`` means 1 unless in a :obj:`joblib.parallel_backend` context.
+447 |         ``-1`` means using all processors. See :term:`Glossary <n_jobs>`
+448 |         for more details.
+449 |     verbose : int, optional (default=0)
+450 |         Verbose output during PD computations.
+451 |     fig : Matplotlib figure object, optional (default=None)
+452 |         A figure object onto which the plots will be drawn, after the figure
+453 |         has been cleared. By default, a new one is created.
+454 |     line_kw : dict, optional
+455 |         Dict with keywords passed to the ``matplotlib.pyplot.plot`` call.
+456 |         For one-way partial dependence plots.
+457 |     contour_kw : dict, optional
+458 |         Dict with keywords passed to the ``matplotlib.pyplot.plot`` call.
+459 |         For two-way partial dependence plots.
+460 | 
+461 |     Examples
+462 |     --------
+463 |     >>> from sklearn.datasets import make_friedman1
+464 |     >>> from sklearn.ensemble import GradientBoostingRegressor
+465 |     >>> X, y = make_friedman1()
+466 |     >>> clf = GradientBoostingRegressor(n_estimators=10).fit(X, y)
+467 |     >>> plot_partial_dependence(clf, X, [0, (0, 1)]) #doctest: +SKIP
+468 | 
+469 |     See also
+470 |     --------
+471 |     sklearn.inspection.partial_dependence: Return raw partial
+472 |       dependence values
+473 | 
+474 |     Warnings
+475 |     --------
+476 |     The 'recursion' method only works for gradient boosting estimators, and
+477 |     unlike the 'brute' method, it does not account for the ``init``
+478 |     predictor of the boosting process. In practice this will produce the
+479 |     same values as 'brute' up to a constant offset in the target response,
+480 |     provided that ``init`` is a consant estimator (which is the default).
+481 |     However, as soon as ``init`` is not a constant estimator, the partial
+482 |     dependence values are incorrect for 'recursion'.
+483 |     """
+484 |     check_matplotlib_support('plot_partial_dependence')  # noqa
+485 |     import matplotlib.pyplot as plt  # noqa
+486 |     from matplotlib import transforms  # noqa
+487 |     from matplotlib.ticker import MaxNLocator  # noqa
+488 |     from matplotlib.ticker import ScalarFormatter  # noqa
+489 | 
+490 |     # set target_idx for multi-class estimators
+491 |     if hasattr(estimator, 'classes_') and np.size(estimator.classes_) > 2:
+492 |         if target is None:
+493 |             raise ValueError('target must be specified for multi-class')
+494 |         target_idx = np.searchsorted(estimator.classes_, target)
+495 |         if (not (0 <= target_idx < len(estimator.classes_)) or
+496 |                 estimator.classes_[target_idx] != target):
+497 |             raise ValueError('target not in est.classes_, got {}'.format(
+498 |                 target))
+499 |     else:
+500 |         # regression and binary classification
+501 |         target_idx = 0
+502 | 
+503 |     X = check_array(X)
+504 |     n_features = X.shape[1]
+505 | 
+506 |     # convert feature_names to list
+507 |     if feature_names is None:
+508 |         # if feature_names is None, use feature indices as name
+509 |         feature_names = [str(i) for i in range(n_features)]
+510 |     elif isinstance(feature_names, np.ndarray):
+511 |         feature_names = feature_names.tolist()
+512 |     if len(set(feature_names)) != len(feature_names):
+513 |         raise ValueError('feature_names should not contain duplicates.')
+514 | 
+515 |     def convert_feature(fx):
+516 |         if isinstance(fx, str):
+517 |             try:
+518 |                 fx = feature_names.index(fx)
+519 |             except ValueError:
+520 |                 raise ValueError('Feature %s not in feature_names' % fx)
+521 |         return int(fx)
+522 | 
+523 |     # convert features into a seq of int tuples
+524 |     tmp_features = []
+525 |     for fxs in features:
+526 |         if isinstance(fxs, (numbers.Integral, str)):
+527 |             fxs = (fxs,)
+528 |         try:
+529 |             fxs = [convert_feature(fx) for fx in fxs]
+530 |         except TypeError:
+531 |             raise ValueError('Each entry in features must be either an int, '
+532 |                              'a string, or an iterable of size at most 2.')
+533 |         if not (1 <= np.size(fxs) <= 2):
+534 |             raise ValueError('Each entry in features must be either an int, '
+535 |                              'a string, or an iterable of size at most 2.')
+536 | 
+537 |         tmp_features.append(fxs)
+538 | 
+539 |     features = tmp_features
+540 | 
+541 |     names = []
+542 |     try:
+543 |         for fxs in features:
+544 |             names_ = []
+545 |             # explicit loop so "i" is bound for exception below
+546 |             for i in fxs:
+547 |                 names_.append(feature_names[i])
+548 |             names.append(names_)
+549 |     except IndexError:
+550 |         raise ValueError('All entries of features must be less than '
+551 |                          'len(feature_names) = {0}, got {1}.'
+552 |                          .format(len(feature_names), i))
+553 | 
+554 |     # compute averaged predictions
+555 |     pd_result = Parallel(n_jobs=n_jobs, verbose=verbose)(
+556 |         delayed(partial_dependence)(estimator, X, fxs,
+557 |                                     response_method=response_method,
+558 |                                     method=method,
+559 |                                     grid_resolution=grid_resolution,
+560 |                                     percentiles=percentiles)
+561 |         for fxs in features)
+562 | 
+563 |     # For multioutput regression, we can only check the validity of target
+564 |     # now that we have the predictions.
+565 |     # Also note: as multiclass-multioutput classifiers are not supported,
+566 |     # multiclass and multioutput scenario are mutually exclusive. So there is
+567 |     # no risk of overwriting target_idx here.
+568 |     avg_preds, _ = pd_result[0]  # checking the first result is enough
+569 |     if is_regressor(estimator) and avg_preds.shape[0] > 1:
+570 |         if target is None:
+571 |             raise ValueError(
+572 |                 'target must be specified for multi-output regressors')
+573 |         if not 0 <= target <= avg_preds.shape[0]:
+574 |             raise ValueError(
+575 |                 'target must be in [0, n_tasks], got {}.'.format(target))
+576 |         target_idx = target
+577 |     else:
+578 |         target_idx = 0
+579 | 
+580 |     # get global min and max values of PD grouped by plot type
+581 |     pdp_lim = {}
+582 |     for avg_preds, values in pd_result:
+583 |         min_pd = avg_preds[target_idx].min()
+584 |         max_pd = avg_preds[target_idx].max()
+585 |         n_fx = len(values)
+586 |         old_min_pd, old_max_pd = pdp_lim.get(n_fx, (min_pd, max_pd))
+587 |         min_pd = min(min_pd, old_min_pd)
+588 |         max_pd = max(max_pd, old_max_pd)
+589 |         pdp_lim[n_fx] = (min_pd, max_pd)
+590 | 
+591 |     # create contour levels for two-way plots
+592 |     if 2 in pdp_lim:
+593 |         Z_level = np.linspace(*pdp_lim[2], num=8)
+594 | 
+595 |     if fig is None:
+596 |         fig = plt.figure()
+597 |     else:
+598 |         fig.clear()
+599 | 
+600 |     if line_kw is None:
+601 |         line_kw = {'color': 'green'}
+602 |     if contour_kw is None:
+603 |         contour_kw = {}
+604 | 
+605 |     n_cols = min(n_cols, len(features))
+606 |     n_rows = int(np.ceil(len(features) / float(n_cols)))
+607 |     axs = []
+608 |     for i, fx, name, (avg_preds, values) in zip(
+609 |             count(), features, names, pd_result):
+610 |         ax = fig.add_subplot(n_rows, n_cols, i + 1)
+611 | 
+612 |         if len(values) == 1:
+613 |             ax.plot(values[0], avg_preds[target_idx].ravel(), **line_kw)
+614 |         else:
+615 |             # make contour plot
+616 |             assert len(values) == 2
+617 |             XX, YY = np.meshgrid(values[0], values[1])
+618 |             Z = avg_preds[target_idx].T
+619 |             CS = ax.contour(XX, YY, Z, levels=Z_level, linewidths=0.5,
+620 |                             colors='k')
+621 |             ax.contourf(XX, YY, Z, levels=Z_level, vmax=Z_level[-1],
+622 |                         vmin=Z_level[0], alpha=0.75, **contour_kw)
+623 |             ax.clabel(CS, fmt='%2.2f', colors='k', fontsize=10, inline=True)
+624 | 
+625 |         # plot data deciles + axes labels
+626 |         deciles = mquantiles(X[:, fx[0]], prob=np.arange(0.1, 1.0, 0.1))
+627 |         trans = transforms.blended_transform_factory(ax.transData,
+628 |                                                      ax.transAxes)
+629 |         ylim = ax.get_ylim()
+630 |         ax.vlines(deciles, [0], 0.05, transform=trans, color='k')
+631 |         ax.set_xlabel(name[0])
+632 |         ax.set_ylim(ylim)
+633 | 
+634 |         # prevent x-axis ticks from overlapping
+635 |         ax.xaxis.set_major_locator(MaxNLocator(nbins=6, prune='lower'))
+636 |         tick_formatter = ScalarFormatter()
+637 |         tick_formatter.set_powerlimits((-3, 4))
+638 |         ax.xaxis.set_major_formatter(tick_formatter)
+639 | 
+640 |         if len(values) > 1:
+641 |             # two-way PDP - y-axis deciles + labels
+642 |             deciles = mquantiles(X[:, fx[1]], prob=np.arange(0.1, 1.0, 0.1))
+643 |             trans = transforms.blended_transform_factory(ax.transAxes,
+644 |                                                          ax.transData)
+645 |             xlim = ax.get_xlim()
+646 |             ax.hlines(deciles, [0], 0.05, transform=trans, color='k')
+647 |             ax.set_ylabel(name[1])
+648 |             # hline erases xlim
+649 |             ax.set_xlim(xlim)
+650 |         else:
+651 |             ax.set_ylabel('Partial dependence')
+652 | 
+653 |         if len(values) == 1:
+654 |             ax.set_ylim(pdp_lim[1])
+655 |         axs.append(ax)
+656 | 
+657 |     fig.subplots_adjust(bottom=0.15, top=0.7, left=0.1, right=0.95, wspace=0.4,
+658 |                         hspace=0.3)
+```
+
+Found function `sklearn/ensemble/partial_dependence.py:partial_dependence`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 83 | def partial_dependence(gbrt, target_variables, grid=None, X=None,
+ 84 |                        percentiles=(0.05, 0.95), grid_resolution=100):
+ 85 |     """Partial dependence of ``target_variables``.
+ 86 | 
+ 87 |     Partial dependence plots show the dependence between the joint values
+ 88 |     of the ``target_variables`` and the function represented
+ 89 |     by the ``gbrt``.
+ 90 | 
+ 91 |     Read more in the :ref:`User Guide <partial_dependence>`.
+ 92 | 
+ 93 |     .. deprecated:: 0.21
+ 94 |        This function was deprecated in version 0.21 in favor of
+ 95 |        :func:`sklearn.inspection.partial_dependence` and will be
+ 96 |        removed in 0.23.
+ 97 | 
+ 98 |     Parameters
+ 99 |     ----------
+100 |     gbrt : BaseGradientBoosting
+101 |         A fitted gradient boosting model.
+102 |     target_variables : array-like, dtype=int
+103 |         The target features for which the partial dependency should be
+104 |         computed (size should be smaller than 3 for visual renderings).
+105 |     grid : array-like, shape=(n_points, len(target_variables))
+106 |         The grid of ``target_variables`` values for which the
+107 |         partial dependency should be evaluated (either ``grid`` or ``X``
+108 |         must be specified).
+109 |     X : array-like, shape=(n_samples, n_features)
+110 |         The data on which ``gbrt`` was trained. It is used to generate
+111 |         a ``grid`` for the ``target_variables``. The ``grid`` comprises
+112 |         ``grid_resolution`` equally spaced points between the two
+113 |         ``percentiles``.
+114 |     percentiles : (low, high), default=(0.05, 0.95)
+115 |         The lower and upper percentile used create the extreme values
+116 |         for the ``grid``. Only if ``X`` is not None.
+117 |     grid_resolution : int, default=100
+118 |         The number of equally spaced points on the ``grid``.
+119 | 
+120 |     Returns
+121 |     -------
+122 |     pdp : array, shape=(n_classes, n_points)
+123 |         The partial dependence function evaluated on the ``grid``.
+124 |         For regression and binary classification ``n_classes==1``.
+125 |     axes : seq of ndarray or None
+126 |         The axes with which the grid has been created or None if
+127 |         the grid has been given.
+128 | 
+129 |     Examples
+130 |     --------
+131 |     >>> samples = [[0, 0, 2], [1, 0, 0]]
+132 |     >>> labels = [0, 1]
+133 |     >>> from sklearn.ensemble import GradientBoostingClassifier
+134 |     >>> gb = GradientBoostingClassifier(random_state=0).fit(samples, labels)
+135 |     >>> kwargs = dict(X=samples, percentiles=(0, 1), grid_resolution=2)
+136 |     >>> partial_dependence(gb, [0], **kwargs) # doctest: +SKIP
+137 |     (array([[-4.52...,  4.52...]]), [array([ 0.,  1.])])
+138 |     """
+139 |     if not isinstance(gbrt, BaseGradientBoosting):
+140 |         raise ValueError('gbrt has to be an instance of BaseGradientBoosting')
+141 |     check_is_fitted(gbrt, 'estimators_')
+142 |     if (grid is None and X is None) or (grid is not None and X is not None):
+143 |         raise ValueError('Either grid or X must be specified')
+144 | 
+145 |     target_variables = np.asarray(target_variables, dtype=np.int32,
+146 |                                   order='C').ravel()
+147 | 
+148 |     if any([not (0 <= fx < gbrt.n_features_) for fx in target_variables]):
+149 |         raise ValueError('target_variables must be in [0, %d]'
+150 |                          % (gbrt.n_features_ - 1))
+151 | 
+152 |     if X is not None:
+153 |         X = check_array(X, dtype=DTYPE, order='C')
+154 |         grid, axes = _grid_from_X(X[:, target_variables], percentiles,
+155 |                                   grid_resolution)
+156 |     else:
+157 |         assert grid is not None
+158 |         # dont return axes if grid is given
+159 |         axes = None
+160 |         # grid must be 2d
+161 |         if grid.ndim == 1:
+162 |             grid = grid[:, np.newaxis]
+163 |         if grid.ndim != 2:
+164 |             raise ValueError('grid must be 2d but is %dd' % grid.ndim)
+165 | 
+166 |     grid = np.asarray(grid, dtype=DTYPE, order='C')
+167 |     assert grid.shape[1] == target_variables.shape[0]
+168 | 
+169 |     n_trees_per_stage = gbrt.estimators_.shape[1]
+170 |     n_estimators = gbrt.estimators_.shape[0]
+171 |     pdp = np.zeros((n_trees_per_stage, grid.shape[0],), dtype=np.float64,
+172 |                    order='C')
+173 |     for stage in range(n_estimators):
+174 |         for k in range(n_trees_per_stage):
+175 |             tree = gbrt.estimators_[stage, k].tree_
+176 |             tree.compute_partial_dependence(grid, target_variables, pdp[k])
+177 |     pdp *= gbrt.learning_rate
+178 | 
+179 |     return pdp, axes
+```
+
+Found function `examples/inspection/plot_partial_dependence.py:main`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 72 | def main():
+ 73 |     cal_housing = fetch_california_housing()
+ 74 | 
+ 75 |     X, y = cal_housing.data, cal_housing.target
+ 76 |     names = cal_housing.feature_names
+ 77 | 
+ 78 |     # Center target to avoid gradient boosting init bias: gradient boosting
+ 79 |     # with the 'recursion' method does not account for the initial estimator
+ 80 |     # (here the average target, by default)
+ 81 |     y -= y.mean()
+ 82 | 
+ 83 |     print("Training MLPRegressor...")
+ 84 |     est = MLPRegressor(activation='logistic')
+ 85 |     est.fit(X, y)
+ 86 |     print('Computing partial dependence plots...')
+ 87 |     # We don't compute the 2-way PDP (5, 1) here, because it is a lot slower
+ 88 |     # with the brute method.
+ 89 |     features = [0, 5, 1, 2]
+ 90 |     plot_partial_dependence(est, X, features, feature_names=names,
+ 91 |                             n_jobs=3, grid_resolution=50)
+ 92 |     fig = plt.gcf()
+ 93 |     fig.suptitle('Partial dependence of house value on non-location features\n'
+ 94 |                  'for the California housing dataset, with MLPRegressor')
+ 95 |     plt.subplots_adjust(top=0.9)  # tight_layout causes overlap with suptitle
+ 96 | 
+ 97 |     print("Training GradientBoostingRegressor...")
+ 98 |     est = GradientBoostingRegressor(n_estimators=100, max_depth=4,
+ 99 |                                     learning_rate=0.1, loss='huber',
+100 |                                     random_state=1)
+101 |     est.fit(X, y)
+102 |     print('Computing partial dependence plots...')
+103 |     features = [0, 5, 1, 2, (5, 1)]
+104 |     plot_partial_dependence(est, X, features, feature_names=names,
+105 |                             n_jobs=3, grid_resolution=50)
+106 |     fig = plt.gcf()
+107 |     fig.suptitle('Partial dependence of house value on non-location features\n'
+108 |                  'for the California housing dataset, with Gradient Boosting')
+109 |     plt.subplots_adjust(top=0.9)
+110 | 
+111 |     print('Custom 3d plot via ``partial_dependence``')
+112 |     fig = plt.figure()
+113 | 
+114 |     target_feature = (1, 5)
+115 |     pdp, axes = partial_dependence(est, X, target_feature,
+116 |                                    grid_resolution=50)
+117 |     XX, YY = np.meshgrid(axes[0], axes[1])
+118 |     Z = pdp[0].T
+119 |     ax = Axes3D(fig)
+120 |     surf = ax.plot_surface(XX, YY, Z, rstride=1, cstride=1,
+121 |                            cmap=plt.cm.BuPu, edgecolor='k')
+122 |     ax.set_xlabel(names[target_feature[0]])
+123 |     ax.set_ylabel(names[target_feature[1]])
+124 |     ax.set_zlabel('Partial dependence')
+125 |     #  pretty init view
+126 |     ax.view_init(elev=22, azim=122)
+127 |     plt.colorbar(surf)
+128 |     plt.suptitle('Partial dependence of house value on median\n'
+129 |                  'age and average occupancy, with Gradient Boosting')
+130 |     plt.subplots_adjust(top=0.9)
+131 | 
+132 |     plt.show()
+```
+
+Found file `sklearn/inspection/partial_dependence.py`.
+Found file `sklearn/utils/deprecation.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "joblib issue template dependencies"...
+### Search Result:
+Found .
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | # -*- coding: utf-8 -*-
+  2 | #
+  3 | # scikit-learn documentation build configuration file, created by
+  4 | # sphinx-quickstart on Fri Jan  8 09:13:42 2010.
+  5 | #
+  6 | # This file is execfile()d with the current directory set to its containing
+  7 | # dir.
+  8 | #
+  9 | # Note that not all possible configuration values are present in this
+ 10 | # autogenerated file.
+ 11 | #
+ 12 | # All configuration values have a default; values that are commented out
+ 13 | # serve to show the default.
+ 14 | 
+ 15 | import sys
+ 16 | import os
+ 17 | import warnings
+ 18 | 
+ 19 | # If extensions (or modules to document with autodoc) are in another
+ 20 | # directory, add these directories to sys.path here. If the directory
+ 21 | # is relative to the documentation root, use os.path.abspath to make it
+ 22 | # absolute, like shown here.
+ 23 | sys.path.insert(0, os.path.abspath('sphinxext'))
+ 24 | 
+ 25 | from github_link import make_linkcode_resolve
+ 26 | import sphinx_gallery
+ 27 | 
+ 28 | # -- General configuration ---------------------------------------------------
+ 29 | 
+ 30 | # Add any Sphinx extension module names here, as strings. They can be
+ 31 | # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+ 32 | extensions = [
+ 33 |     'sphinx.ext.autodoc', 'sphinx.ext.autosummary',
+ 34 |     'numpydoc',
+ 35 |     'sphinx.ext.linkcode', 'sphinx.ext.doctest',
+ 36 |     'sphinx.ext.intersphinx',
+ 37 |     'sphinx.ext.imgconverter',
+ 38 |     'sphinx_gallery.gen_gallery',
+ 39 |     'sphinx_issues',
+ 40 |     'custom_references_resolver'
+ 41 | ]
+ 42 | 
+ 43 | # this is needed for some reason...
+ 44 | # see https://github.com/numpy/numpydoc/issues/69
+ 45 | numpydoc_class_members_toctree = False
+ 46 | 
+ 47 | 
+ 48 | # For maths, use mathjax by default and svg if NO_MATHJAX env variable is set
+ 49 | # (useful for viewing the doc offline)
+ 50 | if os.environ.get('NO_MATHJAX'):
+ 51 |     extensions.append('sphinx.ext.imgmath')
+ 52 |     imgmath_image_format = 'svg'
+ 53 | else:
+ 54 |     extensions.append('sphinx.ext.mathjax')
+ 55 |     mathjax_path = ('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/'
+ 56 |                     'MathJax.js?config=TeX-AMS_SVG')
+ 57 | 
+ 58 | 
+ 59 | autodoc_default_flags = ['members', 'inherited-members']
+ 60 | 
+ 61 | # Add any paths that contain templates here, relative to this directory.
+ 62 | templates_path = ['templates']
+ 63 | 
+ 64 | # generate autosummary even if no references
+ 65 | autosummary_generate = True
+ 66 | 
+ 67 | # The suffix of source filenames.
+ 68 | source_suffix = '.rst'
+ 69 | 
+ 70 | # The encoding of source files.
+ 71 | #source_encoding = 'utf-8'
+ 72 | 
+ 73 | # The master toctree document.
+```
+Finding newlines for mmindex:   0%|          | 0.00/11.1M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 11.1M/11.1M [00:00<00:00, 377MB/s]
+
+2026-08-28 00:27:52 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['show_versions'], 'file_path_or_pattern': 'sklearn/**/*.py'}))
+```
+2026-08-28 00:27:52 auto_search_main.py INFO OBSERVATION:
+##Searching for term "show_versions"...
+### Search Result:
+Found function `sklearn/utils/_show_versions.py:show_versions`.
+Source: Match found for entity name `show_versions`.
+```
+100 | def show_versions():
+101 |     "Print useful debugging information"
+102 | 
+103 |     sys_info = _get_sys_info()
+104 |     deps_info = _get_deps_info()
+105 |     blas_info = _get_blas_info()
+106 | 
+107 |     print('\nSystem:')
+108 |     for k, stat in sys_info.items():
+109 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+110 | 
+111 |     print('\nBLAS:')
+112 |     for k, stat in blas_info.items():
+113 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+114 | 
+115 |     print('\nPython deps:')
+116 |     for k, stat in deps_info.items():
+117 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+```
+
+2026-08-28 00:27:52 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['joblib'], 'file_path_or_pattern': 'sklearn/**/*.py'}))
+```
+2026-08-28 00:27:52 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:27:52 auto_search_main.py INFO OBSERVATION:
+sklearn/utils/validation.py:check_memory
+sklearn/utils/fixes.py:_joblib_parallel_args
+sklearn/datasets/covtype.py:fetch_covtype
+sklearn/datasets/rcv1.py:fetch_rcv1
+sklearn/datasets/rcv1.py:fetch_rcv1
+##Searching for term "joblib"...
+### Search Result:
+Found code snippet in file `sklearn/utils/_joblib.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import warnings as _warnings
+ 2 | 
+ 3 | with _warnings.catch_warnings():
+ 4 |     _warnings.simplefilter("ignore")
+ 5 |     # joblib imports may raise DeprecationWarning on certain Python
+ 6 |     # versions
+ 7 |     import joblib
+ 8 |     from joblib import logger
+ 9 |     from joblib import dump, load
+10 |     from joblib import __version__
+11 |     from joblib import effective_n_jobs
+12 |     from joblib import hash
+13 |     from joblib import cpu_count, Parallel, Memory, delayed
+14 |     from joblib import parallel_backend, register_parallel_backend
+15 | 
+16 | 
+17 | __all__ = ["parallel_backend", "register_parallel_backend", "cpu_count",
+18 |            "Parallel", "Memory", "delayed", "effective_n_jobs", "hash",
+19 |            "logger", "dump", "load", "joblib", "__version__"]
+20 | 
+```
+
+Found code snippet in file `sklearn/externals/joblib/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | # Import necessary to preserve backward compatibility of pickles
+ 2 | import sys
+ 3 | import warnings
+ 4 | 
+ 5 | from joblib import *
+ 6 | 
+ 7 | 
+ 8 | msg = ("sklearn.externals.joblib is deprecated in 0.21 and will be removed "
+ 9 |        "in 0.23. Please import this functionality directly from joblib, "
+10 |        "which can be installed with: pip install joblib. If this warning is "
+11 |        "raised when loading pickled models, you may need to re-serialize "
+12 |        "those models with scikit-learn 0.21+.")
+13 | 
+14 | if not hasattr(sys, "_is_pytest_session"):
+15 |     warnings.warn(msg, category=DeprecationWarning)
+16 | 
+```
+
+Found code snippet in file `sklearn/externals/joblib/numpy_pickle.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | # Import necessary to preserve backward compatibliity of pickles
+2 | 
+3 | from joblib.numpy_pickle import *
+4 | 
+```
+
+Found function `sklearn/utils/validation.py:check_memory`.
+Source: Retrieved code content using keyword search (bm25).
+```
+156 | def check_memory(memory):
+157 |     """Check that ``memory`` is joblib.Memory-like.
+158 | 
+159 |     joblib.Memory-like means that ``memory`` can be converted into a
+160 |     joblib.Memory instance (typically a str denoting the ``location``)
+161 |     or has the same interface (has a ``cache`` method).
+162 | 
+163 |     Parameters
+164 |     ----------
+165 |     memory : None, str or object with the joblib.Memory interface
+166 | 
+167 |     Returns
+168 |     -------
+169 |     memory : object with the joblib.Memory interface
+170 | 
+171 |     Raises
+172 |     ------
+173 |     ValueError
+174 |         If ``memory`` is not joblib.Memory-like.
+175 |     """
+176 | 
+177 |     if memory is None or isinstance(memory, str):
+178 |         if LooseVersion(joblib.__version__) < '0.12':
+179 |             memory = joblib.Memory(cachedir=memory, verbose=0)
+180 |         else:
+181 |             memory = joblib.Memory(location=memory, verbose=0)
+182 |     elif not hasattr(memory, 'cache'):
+183 |         raise ValueError("'memory' should be None, a string or have the same"
+184 |                          " interface as joblib.Memory."
+185 |                          " Got memory='{}' instead.".format(memory))
+186 |     return memory
+```
+
+Found function `sklearn/utils/fixes.py:_joblib_parallel_args`.
+Source: Retrieved code content using keyword search (bm25).
+```
+200 | def _joblib_parallel_args(**kwargs):
+201 |     """Set joblib.Parallel arguments in a compatible way for 0.11 and 0.12+
+202 | 
+203 |     For joblib 0.11 this maps both ``prefer`` and ``require`` parameters to
+204 |     a specific ``backend``.
+205 | 
+206 |     Parameters
+207 |     ----------
+208 | 
+209 |     prefer : str in {'processes', 'threads'} or None
+210 |         Soft hint to choose the default backend if no specific backend
+211 |         was selected with the parallel_backend context manager.
+212 | 
+213 |     require : 'sharedmem' or None
+214 |         Hard condstraint to select the backend. If set to 'sharedmem',
+215 |         the selected backend will be single-host and thread-based even
+216 |         if the user asked for a non-thread based backend with
+217 |         parallel_backend.
+218 | 
+219 |     See joblib.Parallel documentation for more details
+220 |     """
+221 |     import joblib
+222 | 
+223 |     if joblib.__version__ >= LooseVersion('0.12'):
+224 |         return kwargs
+225 | 
+226 |     extra_args = set(kwargs.keys()).difference({'prefer', 'require'})
+227 |     if extra_args:
+228 |         raise NotImplementedError('unhandled arguments %s with joblib %s'
+229 |                                   % (list(extra_args), joblib.__version__))
+230 |     args = {}
+231 |     if 'prefer' in kwargs:
+232 |         prefer = kwargs['prefer']
+233 |         if prefer not in ['threads', 'processes', None]:
+234 |             raise ValueError('prefer=%s is not supported' % prefer)
+235 |         args['backend'] = {'threads': 'threading',
+236 |                            'processes': 'multiprocessing',
+237 |                            None: None}[prefer]
+238 | 
+239 |     if 'require' in kwargs:
+240 |         require = kwargs['require']
+241 |         if require not in [None, 'sharedmem']:
+242 |             raise ValueError('require=%s is not supported' % require)
+243 |         if require == 'sharedmem':
+244 |             args['backend'] = 'threading'
+245 |     return args
+```
+
+Found file `sklearn/externals/joblib/__init__.py`.
+Found file `sklearn/externals/joblib/numpy_pickle.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+2026-08-28 00:27:52 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:27:57 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:27:57 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:27:57 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 00:27:57 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['show_versions', '_get_deps_info', 'joblib'], 'file_path_or_pattern': 'sklearn/utils/_show_versions.py'}))
+```
+2026-08-28 00:27:58 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:27:58 auto_search_main.py INFO OBSERVATION:
+##Searching for term "show_versions"...
+### Search Result:
+Found function `sklearn/utils/_show_versions.py:show_versions`.
+Source: Match found for entity name `show_versions`.
+```
+100 | def show_versions():
+101 |     "Print useful debugging information"
+102 | 
+103 |     sys_info = _get_sys_info()
+104 |     deps_info = _get_deps_info()
+105 |     blas_info = _get_blas_info()
+106 | 
+107 |     print('\nSystem:')
+108 |     for k, stat in sys_info.items():
+109 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+110 | 
+111 |     print('\nBLAS:')
+112 |     for k, stat in blas_info.items():
+113 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+114 | 
+115 |     print('\nPython deps:')
+116 |     for k, stat in deps_info.items():
+117 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+```
+
+
+
+##Searching for term "_get_deps_info"...
+### Search Result:
+Found function `sklearn/utils/_show_versions.py:_get_deps_info`.
+Source: Match found for entity name `_get_deps_info`.
+```
+33 | def _get_deps_info():
+34 |     """Overview of the installed version of main dependencies
+35 | 
+36 |     Returns
+37 |     -------
+38 |     deps_info: dict
+39 |         version information on relevant Python libraries
+40 | 
+41 |     """
+42 |     deps = [
+43 |         "pip",
+44 |         "setuptools",
+45 |         "sklearn",
+46 |         "numpy",
+47 |         "scipy",
+48 |         "Cython",
+49 |         "pandas",
+50 |         "matplotlib",
+51 |     ]
+52 | 
+53 |     def get_version(module):
+54 |         return module.__version__
+55 | 
+56 |     deps_info = {}
+57 | 
+58 |     for modname in deps:
+59 |         try:
+60 |             if modname in sys.modules:
+61 |                 mod = sys.modules[modname]
+62 |             else:
+63 |                 mod = importlib.import_module(modname)
+64 |             ver = get_version(mod)
+65 |             deps_info[modname] = ver
+66 |         except ImportError:
+67 |             deps_info[modname] = None
+68 | 
+69 |     return deps_info
+```
+
+
+
+##Searching for term "joblib"...
+### Search Result:
+Found directory `sklearn/externals/joblib`.
+Found file `sklearn/externals/joblib/__init__.py`.
+Found file `sklearn/externals/joblib/numpy_pickle.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+2026-08-28 00:27:58 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['joblib', 'show_versions', 'dependencies'], 'file_path_or_pattern': 'doc/**/*.py'}))
+```
+2026-08-28 00:27:58 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:27:59 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:28:00 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:28:00 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:28:00 auto_search_main.py INFO OBSERVATION:
+##Searching for term "joblib", "joblib dependencies"...
+### Search Result:
+Found directory `sklearn/externals/joblib`.
+Found file `sklearn/externals/joblib/__init__.py`.
+Found file `sklearn/externals/joblib/numpy_pickle.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "show_versions"...
+### Search Result:
+Found function `sklearn/utils/_show_versions.py:show_versions`.
+Source: Match found for entity name `show_versions`.
+```
+100 | def show_versions():
+101 |     "Print useful debugging information"
+102 | 
+103 |     sys_info = _get_sys_info()
+104 |     deps_info = _get_deps_info()
+105 |     blas_info = _get_blas_info()
+106 | 
+107 |     print('\nSystem:')
+108 |     for k, stat in sys_info.items():
+109 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+110 | 
+111 |     print('\nBLAS:')
+112 |     for k, stat in blas_info.items():
+113 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+114 | 
+115 |     print('\nPython deps:')
+116 |     for k, stat in deps_info.items():
+117 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+```
+
+
+
+##Searching for term "dependencies"...
+### Search Result:
+Found function `sklearn/inspection/partial_dependence.py:partial_dependence`.
+Source: Retrieved entity using keyword search (bm25).
+```
+185 | def partial_dependence(estimator, X, features, response_method='auto',
+186 |                        percentiles=(0.05, 0.95), grid_resolution=100,
+187 |                        method='auto'):
+188 |     """Partial dependence of ``features``.
+189 | 
+190 |     Partial dependence of a feature (or a set of features) corresponds to
+191 |     the average response of an estimator for each possible value of the
+192 |     feature.
+193 | 
+194 |     Read more in the :ref:`User Guide <partial_dependence>`.
+195 | 
+196 |     Parameters
+197 |     ----------
+198 |     estimator : BaseEstimator
+199 |         A fitted estimator object implementing `predict`, `predict_proba`,
+200 |         or `decision_function`. Multioutput-multiclass classifiers are not
+201 |         supported.
+202 |     X : array-like, shape (n_samples, n_features)
+203 |         ``X`` is used both to generate a grid of values for the
+204 |         ``features``, and to compute the averaged predictions when
+205 |         method is 'brute'.
+206 |     features : list or array-like of int
+207 |         The target features for which the partial dependency should be
+208 |         computed.
+209 |     response_method : 'auto', 'predict_proba' or 'decision_function', \
+210 |             optional (default='auto')
+211 |         Specifies whether to use :term:`predict_proba` or
+212 |         :term:`decision_function` as the target response. For regressors
+213 |         this parameter is ignored and the response is always the output of
+214 |         :term:`predict`. By default, :term:`predict_proba` is tried first
+215 |         and we revert to :term:`decision_function` if it doesn't exist. If
+216 |         ``method`` is 'recursion', the response is always the output of
+217 |         :term:`decision_function`.
+218 |     percentiles : tuple of float, optional (default=(0.05, 0.95))
+219 |         The lower and upper percentile used to create the extreme values
+220 |         for the grid. Must be in [0, 1].
+221 |     grid_resolution : int, optional (default=100)
+222 |         The number of equally spaced points on the grid, for each target
+223 |         feature.
+224 |     method : str, optional (default='auto')
+225 |         The method used to calculate the averaged predictions:
+226 | 
+227 |         - 'recursion' is only supported for objects inheriting from
+228 |           `BaseGradientBoosting`, but is more efficient in terms of speed.
+229 |           With this method, ``X`` is only used to build the
+230 |           grid and the partial dependences are computed using the training
+231 |           data. This method does not account for the ``init`` predicor of
+232 |           the boosting process, which may lead to incorrect values (see
+233 |           warning below). With this method, the target response of a
+234 |           classifier is always the decision function, not the predicted
+235 |           probabilities.
+236 | 
+237 |         - 'brute' is supported for any estimator, but is more
+238 |           computationally intensive.
+239 | 
+240 |         - If 'auto', then 'recursion' will be used for
+241 |           ``BaseGradientBoosting`` estimators with ``init=None``, and 'brute'
+242 |           for all other.
+243 | 
+244 |     Returns
+245 |     -------
+246 |     averaged_predictions : ndarray, \
+247 |             shape (n_outputs, len(values[0]), len(values[1]), ...)
+248 |         The predictions for all the points in the grid, averaged over all
+249 |         samples in X (or over the training data if ``method`` is
+250 |         'recursion'). ``n_outputs`` corresponds to the number of classes in
+251 |         a multi-class setting, or to the number of tasks for multi-output
+252 |         regression. For classical regression and binary classification
+253 |         ``n_outputs==1``. ``n_values_feature_j`` corresponds to the size
+254 |         ``values[j]``.
+255 |     values : seq of 1d ndarrays
+256 |         The values with which the grid has been created. The generated grid
+257 |         is a cartesian product of the arrays in ``values``. ``len(values) ==
+258 |         len(features)``. The size of each array ``values[j]`` is either
+259 |         ``grid_resolution``, or the number of unique values in ``X[:, j]``,
+260 |         whichever is smaller.
+261 | 
+262 |     Examples
+263 |     --------
+264 |     >>> X = [[0, 0, 2], [1, 0, 0]]
+265 |     >>> y = [0, 1]
+266 |     >>> from sklearn.ensemble import GradientBoostingClassifier
+267 |     >>> gb = GradientBoostingClassifier(random_state=0).fit(X, y)
+268 |     >>> partial_dependence(gb, features=[0], X=X, percentiles=(0, 1),
+269 |     ...                    grid_resolution=2) # doctest: +SKIP
+270 |     (array([[-4.52...,  4.52...]]), [array([ 0.,  1.])])
+271 | 
+272 |     See also
+273 |     --------
+274 |     sklearn.inspection.plot_partial_dependence: Plot partial dependence
+275 | 
+276 |     Warnings
+277 |     --------
+278 |     The 'recursion' method only works for gradient boosting estimators, and
+279 |     unlike the 'brute' method, it does not account for the ``init``
+280 |     predictor of the boosting process. In practice this will produce the
+281 |     same values as 'brute' up to a constant offset in the target response,
+282 |     provided that ``init`` is a consant estimator (which is the default).
+283 |     However, as soon as ``init`` is not a constant estimator, the partial
+284 |     dependence values are incorrect for 'recursion'.
+285 | 
+286 |     """
+287 | 
+288 |     if not (is_classifier(estimator) or is_regressor(estimator)):
+289 |         raise ValueError(
+290 |             "'estimator' must be a fitted regressor or classifier.")
+291 | 
+292 |     if (hasattr(estimator, 'classes_') and
+293 |             isinstance(estimator.classes_[0], np.ndarray)):
+294 |         raise ValueError('Multiclass-multioutput estimators are not supported')
+295 | 
+296 |     X = check_array(X)
+297 | 
+298 |     accepted_responses = ('auto', 'predict_proba', 'decision_function')
+299 |     if response_method not in accepted_responses:
+300 |         raise ValueError(
+301 |             'response_method {} is invalid. Accepted response_method names '
+302 |             'are {}.'.format(response_method, ', '.join(accepted_responses)))
+303 | 
+304 |     if is_regressor(estimator) and response_method != 'auto':
+305 |         raise ValueError(
+306 |             "The response_method parameter is ignored for regressors and "
+307 |             "must be 'auto'."
+308 |         )
+309 |     accepted_methods = ('brute', 'recursion', 'auto')
+310 |     if method not in accepted_methods:
+311 |         raise ValueError(
+312 |             'method {} is invalid. Accepted method names are {}.'.format(
+313 |                 method, ', '.join(accepted_methods)))
+314 | 
+315 |     if method == 'auto':
+316 |         if (isinstance(estimator, BaseGradientBoosting) and
+317 |                 estimator.init is None):
+318 |             method = 'recursion'
+319 |         else:
+320 |             method = 'brute'
+321 | 
+322 |     if method == 'recursion':
+323 |         if not isinstance(estimator, BaseGradientBoosting):
+324 |             raise ValueError(
+325 |                 "'estimator' must be an instance of BaseGradientBoosting "
+326 |                 "for the 'recursion' method. Try using method='brute'.")
+327 |         if response_method == 'auto':
+328 |             response_method = 'decision_function'
+329 | 
+330 |         if response_method != 'decision_function':
+331 |             raise ValueError(
+332 |                 "With the 'recursion' method, the response_method must be "
+333 |                 "'decision_function'. Got {}.".format(response_method)
+334 |             )
+335 |         check_is_fitted(estimator, 'estimators_',
+336 |                         msg="'estimator' parameter must be a fitted estimator")
+337 |         # Note: if method is brute, this check is done at prediction time
+338 |         n_features = estimator.n_features_
+339 |     else:
+340 |         n_features = X.shape[1]
+341 | 
+342 |     features = np.asarray(features, dtype=np.int32, order='C').ravel()
+343 |     if any(not (0 <= f < n_features) for f in features):
+344 |         raise ValueError('all features must be in [0, %d]'
+345 |                          % (n_features - 1))
+346 | 
+347 |     grid, values = _grid_from_X(X[:, features], percentiles,
+348 |                                 grid_resolution)
+349 |     if method == 'brute':
+350 |         averaged_predictions = _partial_dependence_brute(estimator, grid,
+351 |                                                          features, X,
+352 |                                                          response_method)
+353 |     else:
+354 |         averaged_predictions = _partial_dependence_recursion(estimator, grid,
+355 |                                                              features)
+356 | 
+357 |     # reshape averaged_predictions to
+358 |     # (n_outputs, n_values_feature_0, n_values_feature_1, ...)
+359 |     averaged_predictions = averaged_predictions.reshape(
+360 |         -1, *[val.shape[0] for val in values])
+361 | 
+362 |     return averaged_predictions, values
+```
+
+Found file `sklearn/inspection/partial_dependence.py`.
+Found file `sklearn/utils/deprecation.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+2026-08-28 00:28:00 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['issue_template', 'joblib', 'show_versions'], 'file_path_or_pattern': '.github/**/*'}))
+```
+2026-08-28 00:28:01 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:28:01 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:28:02 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:28:03 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:28:04 auto_search_main.py INFO OBSERVATION:
+sklearn/utils/validation.py:check_scalar
+sklearn/datasets/samples_generator.py:make_sparse_spd_matrix
+sklearn/datasets/samples_generator.py:make_swiss_roll
+sklearn/datasets/samples_generator.py:make_s_curve
+sklearn/datasets/samples_generator.py:make_spd_matrix
+sklearn/datasets/samples_generator.py:make_checkerboard
+sklearn/datasets/samples_generator.py:make_biclusters
+sklearn/datasets/samples_generator.py:make_gaussian_quantiles
+sklearn/datasets/samples_generator.py:make_gaussian_quantiles
+sklearn/datasets/samples_generator.py:_shuffle
+sklearn/datasets/samples_generator.py:make_checkerboard
+sklearn/utils/validation.py:check_memory
+sklearn/utils/fixes.py:_joblib_parallel_args
+sklearn/datasets/covtype.py:fetch_covtype
+sklearn/datasets/rcv1.py:fetch_rcv1
+sklearn/datasets/rcv1.py:fetch_rcv1
+sklearn/utils/validation.py:check_memory
+sklearn/utils/fixes.py:_joblib_parallel_args
+sklearn/datasets/covtype.py:fetch_covtype
+sklearn/datasets/rcv1.py:fetch_rcv1
+sklearn/datasets/rcv1.py:fetch_rcv1
+No files found for file pattern '.github/**/*'. Will search all files.
+...
+##Searching for term "issue_template"...
+### Search Result:
+Found function `sklearn/utils/validation.py:check_scalar`.
+Source: Retrieved code content using keyword search (bm25).
+```
+943 | def check_scalar(x, name, target_type, min_val=None, max_val=None):
+944 |     """Validate scalar parameters type and value.
+945 | 
+946 |     Parameters
+947 |     ----------
+948 |     x : object
+949 |         The scalar parameter to validate.
+950 | 
+951 |     name : str
+952 |         The name of the parameter to be printed in error messages.
+953 | 
+954 |     target_type : type or tuple
+955 |         Acceptable data types for the parameter.
+956 | 
+957 |     min_val : float or int, optional (default=None)
+958 |         The minimum valid value the parameter can take. If None (default) it
+959 |         is implied that the parameter does not have a lower bound.
+960 | 
+961 |     max_val : float or int, optional (default=None)
+962 |         The maximum valid value the parameter can take. If None (default) it
+963 |         is implied that the parameter does not have an upper bound.
+964 | 
+965 |     Raises
+966 |     -------
+967 |     TypeError
+968 |         If the parameter's type does not match the desired type.
+969 | 
+970 |     ValueError
+971 |         If the parameter's value violates the given bounds.
+972 |     """
+973 | 
+974 |     if not isinstance(x, target_type):
+975 |         raise TypeError('`{}` must be an instance of {}, not {}.'
+976 |                         .format(name, target_type, type(x)))
+977 | 
+978 |     if min_val is not None and x < min_val:
+979 |         raise ValueError('`{}`= {}, must be >= {}.'.format(name, x, min_val))
+980 | 
+981 |     if max_val is not None and x > max_val:
+982 |         raise ValueError('`{}`= {}, must be <= {}.'.format(name, x, max_val))
+```
+
+Found function `sklearn/datasets/samples_generator.py:make_spd_matrix`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1213 | def make_spd_matrix(n_dim, random_state=None):
+1214 |     """Generate a random symmetric, positive-definite matrix.
+1215 | 
+1216 |     Read more in the :ref:`User Guide <sample_generators>`.
+1217 | 
+1218 |     Parameters
+1219 |     ----------
+1220 |     n_dim : int
+1221 |         The matrix dimension.
+1222 | 
+1223 |     random_state : int, RandomState instance or None (default)
+1224 |         Determines random number generation for dataset creation. Pass an int
+1225 |         for reproducible output across multiple function calls.
+1226 |         See :term:`Glossary <random_state>`.
+1227 | 
+1228 |     Returns
+1229 |     -------
+1230 |     X : array of shape [n_dim, n_dim]
+1231 |         The random symmetric, positive-definite matrix.
+1232 | 
+1233 |     See also
+1234 |     --------
+1235 |     make_sparse_spd_matrix
+1236 |     """
+1237 |     generator = check_random_state(random_state)
+1238 | 
+1239 |     A = generator.rand(n_dim, n_dim)
+1240 |     U, s, V = linalg.svd(np.dot(A.T, A))
+1241 |     X = np.dot(np.dot(U, 1.0 + np.diag(generator.rand(n_dim))), V)
+1242 | 
+1243 |     return X
+```
+
+Found function `sklearn/datasets/samples_generator.py:make_sparse_spd_matrix`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1246 | def make_sparse_spd_matrix(dim=1, alpha=0.95, norm_diag=False,
+1247 |                            smallest_coef=.1, largest_coef=.9,
+1248 |                            random_state=None):
+1249 |     """Generate a sparse symmetric definite positive matrix.
+1250 | 
+1251 |     Read more in the :ref:`User Guide <sample_generators>`.
+1252 | 
+1253 |     Parameters
+1254 |     ----------
+1255 |     dim : integer, optional (default=1)
+1256 |         The size of the random matrix to generate.
+1257 | 
+1258 |     alpha : float between 0 and 1, optional (default=0.95)
+1259 |         The probability that a coefficient is zero (see notes). Larger values
+1260 |         enforce more sparsity.
+1261 | 
+1262 |     norm_diag : boolean, optional (default=False)
+1263 |         Whether to normalize the output matrix to make the leading diagonal
+1264 |         elements all 1
+1265 | 
+1266 |     smallest_coef : float between 0 and 1, optional (default=0.1)
+1267 |         The value of the smallest coefficient.
+1268 | 
+1269 |     largest_coef : float between 0 and 1, optional (default=0.9)
+1270 |         The value of the largest coefficient.
+1271 | 
+1272 |     random_state : int, RandomState instance or None (default)
+1273 |         Determines random number generation for dataset creation. Pass an int
+1274 |         for reproducible output across multiple function calls.
+1275 |         See :term:`Glossary <random_state>`.
+1276 | 
+1277 |     Returns
+1278 |     -------
+1279 |     prec : sparse matrix of shape (dim, dim)
+1280 |         The generated matrix.
+1281 | 
+1282 |     Notes
+1283 |     -----
+1284 |     The sparsity is actually imposed on the cholesky factor of the matrix.
+1285 |     Thus alpha does not translate directly into the filling fraction of
+1286 |     the matrix itself.
+1287 | 
+1288 |     See also
+1289 |     --------
+1290 |     make_spd_matrix
+1291 |     """
+1292 |     random_state = check_random_state(random_state)
+1293 | 
+1294 |     chol = -np.eye(dim)
+1295 |     aux = random_state.rand(dim, dim)
+1296 |     aux[aux < alpha] = 0
+1297 |     aux[aux > alpha] = (smallest_coef
+1298 |                         + (largest_coef - smallest_coef)
+1299 |                         * random_state.rand(np.sum(aux > alpha)))
+1300 |     aux = np.tril(aux, k=-1)
+1301 | 
+1302 |     # Permute the lines: we don't want to have asymmetries in the final
+1303 |     # SPD matrix
+1304 |     permutation = random_state.permutation(dim)
+1305 |     aux = aux[permutation].T[permutation]
+1306 |     chol += aux
+1307 |     prec = np.dot(chol.T, chol)
+1308 | 
+1309 |     if norm_diag:
+1310 |         # Form the diagonal vector into a row matrix
+1311 |         d = np.diag(prec).reshape(1, prec.shape[0])
+1312 |         d = 1. / np.sqrt(d)
+1313 | 
+1314 |         prec *= d
+1315 |         prec *= d.T
+1316 | 
+1317 |     return prec
+```
+
+Found function `sklearn/datasets/samples_generator.py:make_swiss_roll`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1320 | def make_swiss_roll(n_samples=100, noise=0.0, random_state=None):
+1321 |     """Generate a swiss roll dataset.
+1322 | 
+1323 |     Read more in the :ref:`User Guide <sample_generators>`.
+1324 | 
+1325 |     Parameters
+1326 |     ----------
+1327 |     n_samples : int, optional (default=100)
+1328 |         The number of sample points on the S curve.
+1329 | 
+1330 |     noise : float, optional (default=0.0)
+1331 |         The standard deviation of the gaussian noise.
+1332 | 
+1333 |     random_state : int, RandomState instance or None (default)
+1334 |         Determines random number generation for dataset creation. Pass an int
+1335 |         for reproducible output across multiple function calls.
+1336 |         See :term:`Glossary <random_state>`.
+1337 | 
+1338 |     Returns
+1339 |     -------
+1340 |     X : array of shape [n_samples, 3]
+1341 |         The points.
+1342 | 
+1343 |     t : array of shape [n_samples]
+1344 |         The univariate position of the sample according to the main dimension
+1345 |         of the points in the manifold.
+1346 | 
+1347 |     Notes
+1348 |     -----
+1349 |     The algorithm is from Marsland [1].
+1350 | 
+1351 |     References
+1352 |     ----------
+1353 |     .. [1] S. Marsland, "Machine Learning: An Algorithmic Perspective",
+1354 |            Chapter 10, 2009.
+1355 |            http://seat.massey.ac.nz/personal/s.r.marsland/Code/10/lle.py
+1356 |     """
+1357 |     generator = check_random_state(random_state)
+1358 | 
+1359 |     t = 1.5 * np.pi * (1 + 2 * generator.rand(1, n_samples))
+1360 |     x = t * np.cos(t)
+1361 |     y = 21 * generator.rand(1, n_samples)
+1362 |     z = t * np.sin(t)
+1363 | 
+1364 |     X = np.concatenate((x, y, z))
+1365 |     X += noise * generator.randn(3, n_samples)
+1366 |     X = X.T
+1367 |     t = np.squeeze(t)
+1368 | 
+1369 |     return X, t
+```
+
+Found function `sklearn/datasets/samples_generator.py:make_s_curve`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1372 | def make_s_curve(n_samples=100, noise=0.0, random_state=None):
+1373 |     """Generate an S curve dataset.
+1374 | 
+1375 |     Read more in the :ref:`User Guide <sample_generators>`.
+1376 | 
+1377 |     Parameters
+1378 |     ----------
+1379 |     n_samples : int, optional (default=100)
+1380 |         The number of sample points on the S curve.
+1381 | 
+1382 |     noise : float, optional (default=0.0)
+1383 |         The standard deviation of the gaussian noise.
+1384 | 
+1385 |     random_state : int, RandomState instance or None (default)
+1386 |         Determines random number generation for dataset creation. Pass an int
+1387 |         for reproducible output across multiple function calls.
+1388 |         See :term:`Glossary <random_state>`.
+1389 | 
+1390 |     Returns
+1391 |     -------
+1392 |     X : array of shape [n_samples, 3]
+1393 |         The points.
+1394 | 
+1395 |     t : array of shape [n_samples]
+1396 |         The univariate position of the sample according to the main dimension
+1397 |         of the points in the manifold.
+1398 |     """
+1399 |     generator = check_random_state(random_state)
+1400 | 
+1401 |     t = 3 * np.pi * (generator.rand(1, n_samples) - 0.5)
+1402 |     x = np.sin(t)
+1403 |     y = 2.0 * generator.rand(1, n_samples)
+1404 |     z = np.sign(t) * (np.cos(t) - 1)
+1405 | 
+1406 |     X = np.concatenate((x, y, z))
+1407 |     X += noise * generator.randn(3, n_samples)
+1408 |     X = X.T
+1409 |     t = np.squeeze(t)
+1410 | 
+1411 |     return X, t
+```
+
+Found file `sklearn/tree/setup.py`.
+Found file `sklearn/impute/__init__.py`.
+Found file `sklearn/impute/_base.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "joblib"...
+### Search Result:
+Found code snippet in file `sklearn/utils/_joblib.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import warnings as _warnings
+ 2 | 
+ 3 | with _warnings.catch_warnings():
+ 4 |     _warnings.simplefilter("ignore")
+ 5 |     # joblib imports may raise DeprecationWarning on certain Python
+ 6 |     # versions
+ 7 |     import joblib
+ 8 |     from joblib import logger
+ 9 |     from joblib import dump, load
+10 |     from joblib import __version__
+11 |     from joblib import effective_n_jobs
+12 |     from joblib import hash
+13 |     from joblib import cpu_count, Parallel, Memory, delayed
+14 |     from joblib import parallel_backend, register_parallel_backend
+15 | 
+16 | 
+17 | __all__ = ["parallel_backend", "register_parallel_backend", "cpu_count",
+18 |            "Parallel", "Memory", "delayed", "effective_n_jobs", "hash",
+19 |            "logger", "dump", "load", "joblib", "__version__"]
+20 | 
+```
+
+Found code snippet in file `sklearn/externals/joblib/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | # Import necessary to preserve backward compatibility of pickles
+ 2 | import sys
+ 3 | import warnings
+ 4 | 
+ 5 | from joblib import *
+ 6 | 
+ 7 | 
+ 8 | msg = ("sklearn.externals.joblib is deprecated in 0.21 and will be removed "
+ 9 |        "in 0.23. Please import this functionality directly from joblib, "
+10 |        "which can be installed with: pip install joblib. If this warning is "
+11 |        "raised when loading pickled models, you may need to re-serialize "
+12 |        "those models with scikit-learn 0.21+.")
+13 | 
+14 | if not hasattr(sys, "_is_pytest_session"):
+15 |     warnings.warn(msg, category=DeprecationWarning)
+16 | 
+```
+
+Found code snippet in file `sklearn/externals/joblib/numpy_pickle.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | # Import necessary to preserve backward compatibliity of pickles
+2 | 
+3 | from joblib.numpy_pickle import *
+4 | 
+```
+
+
+
+##Searching for term "joblib", "issue_template joblib"...
+### Search Result:
+Found function `sklearn/utils/validation.py:check_memory`.
+Source: Retrieved code content using keyword search (bm25).
+```
+156 | def check_memory(memory):
+157 |     """Check that ``memory`` is joblib.Memory-like.
+158 | 
+159 |     joblib.Memory-like means that ``memory`` can be converted into a
+160 |     joblib.Memory instance (typically a str denoting the ``location``)
+161 |     or has the same interface (has a ``cache`` method).
+162 | 
+163 |     Parameters
+164 |     ----------
+165 |     memory : None, str or object with the joblib.Memory interface
+166 | 
+167 |     Returns
+168 |     -------
+169 |     memory : object with the joblib.Memory interface
+170 | 
+171 |     Raises
+172 |     ------
+173 |     ValueError
+174 |         If ``memory`` is not joblib.Memory-like.
+175 |     """
+176 | 
+177 |     if memory is None or isinstance(memory, str):
+178 |         if LooseVersion(joblib.__version__) < '0.12':
+179 |             memory = joblib.Memory(cachedir=memory, verbose=0)
+180 |         else:
+181 |             memory = joblib.Memory(location=memory, verbose=0)
+182 |     elif not hasattr(memory, 'cache'):
+183 |         raise ValueError("'memory' should be None, a string or have the same"
+184 |                          " interface as joblib.Memory."
+185 |                          " Got memory='{}' instead.".format(memory))
+186 |     return memory
+```
+
+Found function `sklearn/utils/fixes.py:_joblib_parallel_args`.
+Source: Retrieved code content using keyword search (bm25).
+```
+200 | def _joblib_parallel_args(**kwargs):
+201 |     """Set joblib.Parallel arguments in a compatible way for 0.11 and 0.12+
+202 | 
+203 |     For joblib 0.11 this maps both ``prefer`` and ``require`` parameters to
+204 |     a specific ``backend``.
+205 | 
+206 |     Parameters
+207 |     ----------
+208 | 
+209 |     prefer : str in {'processes', 'threads'} or None
+210 |         Soft hint to choose the default backend if no specific backend
+211 |         was selected with the parallel_backend context manager.
+212 | 
+213 |     require : 'sharedmem' or None
+214 |         Hard condstraint to select the backend. If set to 'sharedmem',
+215 |         the selected backend will be single-host and thread-based even
+216 |         if the user asked for a non-thread based backend with
+217 |         parallel_backend.
+218 | 
+219 |     See joblib.Parallel documentation for more details
+220 |     """
+221 |     import joblib
+222 | 
+223 |     if joblib.__version__ >= LooseVersion('0.12'):
+224 |         return kwargs
+225 | 
+226 |     extra_args = set(kwargs.keys()).difference({'prefer', 'require'})
+227 |     if extra_args:
+228 |         raise NotImplementedError('unhandled arguments %s with joblib %s'
+229 |                                   % (list(extra_args), joblib.__version__))
+230 |     args = {}
+231 |     if 'prefer' in kwargs:
+232 |         prefer = kwargs['prefer']
+233 |         if prefer not in ['threads', 'processes', None]:
+234 |             raise ValueError('prefer=%s is not supported' % prefer)
+235 |         args['backend'] = {'threads': 'threading',
+236 |                            'processes': 'multiprocessing',
+237 |                            None: None}[prefer]
+238 | 
+239 |     if 'require' in kwargs:
+240 |         require = kwargs['require']
+241 |         if require not in [None, 'sharedmem']:
+242 |             raise ValueError('require=%s is not supported' % require)
+243 |         if require == 'sharedmem':
+244 |             args['backend'] = 'threading'
+245 |     return args
+```
+
+Found file `sklearn/externals/joblib/__init__.py`.
+Found file `sklearn/externals/joblib/numpy_pickle.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "show_versions"...
+### Search Result:
+Found function `sklearn/utils/_show_versions.py:show_versions`.
+Source: Match found for entity name `show_versions`.
+```
+100 | def show_versions():
+101 |     "Print useful debugging information"
+102 | 
+103 |     sys_info = _get_sys_info()
+104 |     deps_info = _get_deps_info()
+105 |     blas_info = _get_blas_info()
+106 | 
+107 |     print('\nSystem:')
+108 |     for k, stat in sys_info.items():
+109 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+110 | 
+111 |     print('\nBLAS:')
+112 |     for k, stat in blas_info.items():
+113 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+114 | 
+115 |     print('\nPython deps:')
+116 |     for k, stat in deps_info.items():
+117 |         print("{k:>10}: {stat}".format(k=k, stat=stat))
+```
+
+
+
+##Searching for term "issue_template joblib"...
+### Search Result:
+Found code snippet in file `sklearn/utils/_joblib.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import warnings as _warnings
+ 2 | 
+ 3 | with _warnings.catch_warnings():
+ 4 |     _warnings.simplefilter("ignore")
+ 5 |     # joblib imports may raise DeprecationWarning on certain Python
+ 6 |     # versions
+ 7 |     import joblib
+ 8 |     from joblib import logger
+ 9 |     from joblib import dump, load
+10 |     from joblib import __version__
+11 |     from joblib import effective_n_jobs
+12 |     from joblib import hash
+13 |     from joblib import cpu_count, Parallel, Memory, delayed
+14 |     from joblib import parallel_backend, register_parallel_backend
+15 | 
+16 | 
+17 | __all__ = ["parallel_backend", "register_parallel_backend", "cpu_count",
+18 |            "Parallel", "Memory", "delayed", "effective_n_jobs", "hash",
+19 |            "logger", "dump", "load", "joblib", "__version__"]
+20 | 
+```
+
+Found code snippet in file `sklearn/externals/joblib/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | # Import necessary to preserve backward compatibility of pickles
+ 2 | import sys
+ 3 | import warnings
+ 4 | 
+ 5 | from joblib import *
+ 6 | 
+ 7 | 
+ 8 | msg = ("sklearn.externals.joblib is deprecated in 0.21 and will be removed "
+ 9 |        "in 0.23. Please import this functionality directly from joblib, "
+10 |        "which can be installed with: pip install joblib. If this warning is "
+11 |        "raised when loading pickled models, you may need to re-serialize "
+12 |        "those models with scikit-learn 0.21+.")
+13 | 
+14 | if not hasattr(sys, "_is_pytest_session"):
+15 |     warnings.warn(msg, category=DeprecationWarning)
+16 | 
+```
+
+Found code snippet in file `sklearn/externals/joblib/numpy_pickle.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | # Import necessary to preserve backward compatibliity of pickles
+2 | 
+3 | from joblib.numpy_pickle import *
+4 | 
+```
+
+2026-08-28 00:28:04 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:28:09 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:28:09 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:28:09 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 00:28:09 auto_search_main.py INFO ===============
+2026-08-28 00:28:09 auto_search_main.py INFO Final response generated content_length=219
+2026-08-28 00:28:09 auto_search_main.py INFO ==== localizing scikit-learn__scikit-learn-14141 succeed, process multiple loc outputs ====
+2026-08-28 00:28:09 cost_analysis.py INFO input_tokens=60276, output_tokens=473, cost=0.15
+2026-08-28 00:28:09 auto_search_main.py INFO Total time: 2.0659 min

@@ -1,0 +1,3604 @@
+2026-08-28 04:09:44 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 04:09:44 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 04:09:44 auto_search_main.py INFO ============================================================
+2026-08-28 04:09:44 auto_search_main.py INFO ==== rank 0 setup localize pylint-dev__pylint-4661 ====
+2026-08-28 04:09:44 install.py INFO hook: set_current_issue fired
+2026-08-28 04:09:44 git_repo_manager.py INFO Clone Github repo https://github.com/pylint-dev/pylint.git to playground/77c3eb64-c7f3-4004-9e95-af194d2fd804/pylint-dev_pylint and checkout commit HEAD
+2026-08-28 04:09:44 git_repo_manager.py INFO Directory 'playground/77c3eb64-c7f3-4004-9e95-af194d2fd804/pylint-dev_pylint' was created.
+2026-08-28 04:09:44 install.py INFO setup_repo returned: playground/77c3eb64-c7f3-4004-9e95-af194d2fd804/pylint-dev_pylint -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pylint-dev__pylint-4661
+2026-08-28 04:09:48 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pylint-dev__pylint-4661 files=841 indexed=841 failed=0
+2026-08-28 04:09:57 repo_ops.py INFO [0] Processed pylint-dev__pylint-4661
+2026-08-28 04:09:57 auto_search_main.py INFO ============================================================
+2026-08-28 04:09:57 auto_search_main.py INFO ==== rank 0 begin localizing pylint-dev__pylint-4661 ====
+2026-08-28 04:09:57 auto_search_main.py INFO ============================================================
+2026-08-28 04:09:57 auto_search_main.py INFO ==== pylint-dev__pylint-4661 Count down: attempt 1 ====
+2026-08-28 04:09:57 auto_search_main.py INFO ==== pylint-dev__pylint-4661 start auto search ====
+2026-08-28 04:10:01 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:10:07 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:10:07 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:10:07 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 04:10:07 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'pylint.d', 'context': 'XDG Base Directory Specification .pylint.d storage location', 'top_k': 5}))
+```
+2026-08-28 04:10:07 auto_search_main.py INFO OBSERVATION:
+No symbols named `pylint.d` found in workspace. Try a partial match or check spelling.
+
+2026-08-28 04:10:07 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['.pylint.d', 'XDG', 'LOCALAPPDATA', 'cache directory', 'share directory']}))
+```
+2026-08-28 04:10:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:08 git_repo_manager.py INFO Clone Github repo https://github.com/pylint-dev/pylint.git to playground/77c3eb64-c7f3-4004-9e95-af194d2fd804/pylint-dev_pylint and checkout commit HEAD
+2026-08-28 04:10:08 install.py INFO setup_repo returned: playground/77c3eb64-c7f3-4004-9e95-af194d2fd804/pylint-dev_pylint -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pylint-dev__pylint-4661
+2026-08-28 04:10:08 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pylint-dev__pylint-4661 files=0 indexed=0 failed=0
+2026-08-28 04:10:13 epic_split.py WARNING Skipping code block Python3Checker.msgs._ in pylint/checkers/python3.py as it has 3667 tokens which is more than chunk size 500. Content: {
+        # Errors for what will syntactically break in Python 3, warnings for
+        # everything ...
+2026-08-28 04:10:14 epic_split.py WARNING Skipping code block RefactoringChecker.msgs._ in pylint/checkers/refactoring/refactoring_checker.py as it has 2260 tokens which is more than chunk size 500. Content: {
+        "R1701": (
+            "Consider merging these isinstance calls to isinstance(%s, (%s))",
+...
+2026-08-28 04:10:21 epic_split.py WARNING Skipping code block PyLinter.make_options.return._ in pylint/lint/pylinter.py as it has 2055 tokens which is more than chunk size 500. Content: (
+            (
+                "ignore",
+                {
+                    "type": "csv",
+     ...
+2026-08-28 04:10:26 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:26 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:26 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:27 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:27 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:27 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:27 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:28 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:28 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:28 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:29 auto_search_main.py INFO OBSERVATION:
+pylint/lint/__init__.py:docstring:47
+pylint/lint/__init__.py:impl:3
+pylint/checkers/imports.py:imports:6
+pylint/checkers/imports.py:_qualified_names
+pylint/checkers/imports.py:docstring:24
+pylint/message/__init__.py:docstring:24
+pylint/config/__init__.py:load_results
+pylint/config/__init__.py:docstring:23
+pylint/config/__init__.py:_get_pdata_path
+pylint/checkers/refactoring/len_checker.py:LenChecker.visit_call
+pylint/checkers/refactoring/len_checker.py:LenChecker.instance_has_bool
+pylint/checkers/refactoring/len_checker.py:LenChecker.base_classes_of_node
+pylint/checkers/refactoring/len_checker.py:LenChecker.visit_unaryop
+pylint/checkers/refactoring/recommendation_checker.py:RecommendationChecker._check_consider_using_dict_items
+pylint/checkers/refactoring/recommendation_checker.py:RecommendationChecker._check_use_maxsplit_arg
+pylint/checkers/refactoring/not_checker.py:NotChecker.visit_unaryop
+pylint/checkers/refactoring/recommendation_checker.py:RecommendationChecker._check_consider_iterating_dictionary
+pylint/checkers/refactoring/len_checker.py:LenChecker.visit_call
+pylint/checkers/refactoring/len_checker.py:LenChecker.instance_has_bool
+pylint/checkers/refactoring/len_checker.py:LenChecker.base_classes_of_node
+pylint/checkers/refactoring/len_checker.py:LenChecker.visit_unaryop
+pylint/checkers/refactoring/recommendation_checker.py:RecommendationChecker._check_consider_using_dict_items
+pylint/checkers/refactoring/recommendation_checker.py:RecommendationChecker._check_use_maxsplit_arg
+pylint/checkers/refactoring/not_checker.py:NotChecker.visit_unaryop
+pylint/checkers/refactoring/recommendation_checker.py:RecommendationChecker._check_consider_iterating_dictionary
+pylint/checkers/imports.py:ImportsChecker._internal_dependencies_info
+pylint/checkers/imports.py:ImportsChecker._filter_dependencies_graph
+pylint/checkers/imports.py:ImportsChecker._external_dependencies_info
+pylint/checkers/imports.py:ImportsChecker._wildcard_import_is_allowed
+pylint/checkers/imports.py:ImportsChecker._check_wildcard_imports
+pylint/checkers/classes.py:ClassChecker._check_in_slots
+pylint/utils/utils.py:register_plugins
+pylint/__init__.py:impl
+pylint/__init__.py:modify_sys_path
+pylint/epylint.py:lint
+pylint/config/__init__.py:impl:17
+pylint/config/__init__.py:find_pylintrc
+pylint/extensions/typing.py:register
+pylint/extensions/typing.py:TypingChecker.leave_module
+doc/conf.py:docstring:38
+doc/conf.py:docstring:74
+pylint/config/__init__.py:save_results
+pylint/checkers/variables.py:_detect_global_scope
+pylint/checkers/variables.py:_infer_name_module
+pylint/checkers/variables.py:_detect_global_scope
+pylint/utils/utils.py:register_plugins
+pylint/__init__.py:impl
+pylint/__init__.py:modify_sys_path
+pylint/epylint.py:lint
+pylint/config/__init__.py:impl:17
+pylint/config/__init__.py:find_pylintrc
+pylint/config/man_help_formatter.py:_ManHelpFormatter.format_tail
+pylint/config/man_help_formatter.py:_generate_manpage
+doc/conf.py:docstring:38
+doc/conf.py:docstring:74
+pylint/config/__init__.py:save_results
+pylint/utils/utils.py:register_plugins
+pylint/__init__.py:impl
+pylint/__init__.py:modify_sys_path
+pylint/epylint.py:lint
+pylint/config/__init__.py:impl:17
+pylint/config/__init__.py:find_pylintrc
+doc/conf.py:docstring:38
+doc/conf.py:docstring:74
+pylint/config/__init__.py:save_results
+pylint/checkers/imports.py:ImportsChecker._internal_dependencies_info
+pylint/checkers/imports.py:ImportsChecker._filter_dependencies_graph
+pylint/checkers/imports.py:ImportsChecker._external_dependencies_info
+pylint/checkers/imports.py:ImportsChecker._wildcard_import_is_allowed
+pylint/checkers/imports.py:ImportsChecker._check_wildcard_imports
+pylint/checkers/classes.py:ClassChecker._check_in_slots
+##Searching for term "pylint.d"...
+### Search Result:
+Found `pylint/reporters/__init__.py:initialize`.
+Source: Retrieved code content using keyword search (bm25).
+```
+26 | from pylint import utils
+27 | from pylint.reporters.base_reporter import BaseReporter
+28 | from pylint.reporters.collecting_reporter import CollectingReporter
+29 | from pylint.reporters.json_reporter import JSONReporter
+30 | from pylint.reporters.multi_reporter import MultiReporter
+31 | from pylint.reporters.reports_handler_mix_in import ReportsHandlerMixIn
+32 | 
+33 | 
+34 | def initialize(linter):
+35 |     """initialize linter with reporters in this package"""
+36 |     utils.register_plugins(linter, __path__[0])
+37 | 
+38 | 
+39 | __all__ = [
+40 |     "BaseReporter",
+41 |     "ReportsHandlerMixIn",
+42 |     "JSONReporter",
+43 |     "CollectingReporter",
+44 |     "MultiReporter",
+45 | ]
+46 | 
+```
+
+Found `pylint/lint/run.py:_cpu_count`, `pylint/lint/run.py:cb_list_extensions`, `pylint/lint/run.py:cb_list_confidence_levels`, `pylint/lint/run.py:cb_init_hook`, `pylint/lint/run.py:Run`, `pylint/lint/run.py:Run._return_one`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  4 | import os
+  5 | import sys
+  6 | import warnings
+  7 | 
+  8 | from pylint import __pkginfo__, config, extensions, interfaces
+  9 | from pylint.constants import full_version
+ 10 | from pylint.lint.pylinter import PyLinter
+ 11 | from pylint.lint.utils import ArgumentPreprocessingError, preprocess_options
+ 12 | from pylint.utils import utils
+ 13 | 
+ 14 | try:
+ 15 |     import multiprocessing
+ 16 | except ImportError:
+ 17 |     multiprocessing = None  # type: ignore
+ 18 | 
+ 19 | 
+ 20 | def _cpu_count() -> int:
+ 21 |     """Use sched_affinity if available for virtualized or containerized environments."""
+ 22 |     sched_getaffinity = getattr(os, "sched_getaffinity", None)
+ 23 |     # pylint: disable=not-callable,using-constant-test
+ 24 |     if sched_getaffinity:
+ 25 |         return len(sched_getaffinity(0))
+ 26 |     if multiprocessing:
+ 27 |         return multiprocessing.cpu_count()
+ 28 |     return 1
+ 29 | 
+ 30 | 
+ 31 | def cb_list_extensions(option, optname, value, parser):
+ 32 |     """List all the extensions under pylint.extensions"""
+ 33 | 
+ 34 |     for filename in os.listdir(os.path.dirname(extensions.__file__)):
+ 35 |         if filename.endswith(".py") and not filename.startswith("_"):
+ 36 |             extension_name, _, _ = filename.partition(".")
+ 37 |             print(f"pylint.extensions.{extension_name}")
+ 38 |     sys.exit(0)
+ 39 | 
+ 40 | 
+ 41 | def cb_list_confidence_levels(option, optname, value, parser):
+ 42 |     for level in interfaces.CONFIDENCE_LEVELS:
+ 43 |         print("%-18s: %s" % level)
+ 44 |     sys.exit(0)
+ 45 | 
+ 46 | 
+ 47 | def cb_init_hook(optname, value):
+ 48 |     """exec arbitrary code to set sys.path for instance"""
+ 49 |     exec(value)  # pylint: disable=exec-used
+ 50 | 
+ 51 | 
+ 52 | UNUSED_PARAM_SENTINEL = object()
+ 53 | 
+ 54 | 
+ 55 | class Run:
+ 56 |     """helper class to use as main for pylint :
+ 57 | 
+ 58 |     run(*sys.argv[1:])
+ 59 |     """
+ 60 | 
+ 61 |     LinterClass = PyLinter
+ 62 |     option_groups = (
+ 63 |         (
+ 64 |             "Commands",
+ 65 |             "Options which are actually commands. Options in this \
+ 66 | group are mutually exclusive.",
+ 67 |         ),
+ 68 |     )
+ 69 | 
+ 70 |     @staticmethod
+ 71 |     def _return_one(*args):  # pylint: disable=unused-argument
+ 72 |         return 1
+```
+
+Found code snippet in file `pylint/message/message_handler_mix_in.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  4 | import sys
+  5 | from typing import List, Tuple
+  6 | 
+  7 | from pylint.constants import (
+  8 |     _SCOPE_EXEMPT,
+  9 |     MAIN_CHECKER_NAME,
+ 10 |     MSG_STATE_CONFIDENCE,
+ 11 |     MSG_STATE_SCOPE_CONFIG,
+ 12 |     MSG_STATE_SCOPE_MODULE,
+ 13 |     MSG_TYPES,
+ 14 |     MSG_TYPES_LONG,
+ 15 |     MSG_TYPES_STATUS,
+ 16 |     WarningScope,
+ 17 | )
+ 18 | from pylint.exceptions import InvalidMessageError, UnknownMessageError
+ 19 | from pylint.interfaces import UNDEFINED
+ 20 | from pylint.message.message import Message
+ 21 | from pylint.utils import get_module_and_frameid, get_rst_section, get_rst_title
+```
+
+Found code snippet in file `pylint/__main__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | #!/usr/bin/env python
+ 2 | 
+ 3 | # Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ 4 | # For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+ 5 | 
+ 6 | import pylint
+ 7 | 
+ 8 | pylint.modify_sys_path()
+ 9 | pylint.run_pylint()
+10 | 
+```
+
+Found function `pylint/checkers/imports.py:_qualified_names`.
+Source: Retrieved code content using keyword search (bm25).
+```
+72 | def _qualified_names(modname):
+73 |     """Split the names of the given module into subparts
+74 | 
+75 |     For example,
+76 |         _qualified_names('pylint.checkers.ImportsChecker')
+77 |     returns
+78 |         ['pylint', 'pylint.checkers', 'pylint.checkers.ImportsChecker']
+79 |     """
+80 |     names = modname.split(".")
+81 |     return [".".join(names[0 : i + 1]) for i in range(len(names))]
+```
+
+
+
+##Searching for term "pylint.d", "pylint.d XDG LOCALAPPDATA cache directory share directory"...
+### Search Result:
+Found class `pylint/lint/pylinter.py:PyLinter`.
+Source: Retrieved entity using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class PyLinter(
+    config.OptionsManagerMixIn,
+    MessagesHandlerMixIn,
+    reporters.ReportsHandlerMixIn,
+    checkers.BaseTokenChecker,
+):
+
+    __implements__ = (interfaces.ITokenChecker,)
+
+    name = MAIN_CHECKER_NAME
+    priority = 0
+    level = 0
+    msgs = MSGS
+
+    @staticmethod
+    def make_options():
+...
+    option_groups = (
+        ("Messages control", "Options controlling analysis messages"),
+        ("Reports", "Options related to output formatting and reporting"),
+    )
+
+    def __init__(self, options=(), reporter=None, option_groups=(), pylintrc=None):
+...
+    def load_default_plugins(self):
+...
+    def load_plugin_modules(self, modnames):
+...
+    def load_plugin_configuration(self):
+...
+    def _load_reporters(self) -> None:
+...
+    def _load_reporter_by_name(self, reporter_name: str) -> reporters.BaseReporter:
+...
+    def set_reporter(self, reporter):
+...
+    def set_option(self, optname, value, action=None, optdict=None):
+...
+    def register_reporter(self, reporter_class):
+...
+    def report_order(self):
+...
+    # checkers manipulation methods ############################################
+
+    def register_checker(self, checker):
+...
+    def enable_fail_on_messages(self):
+...
+    def any_fail_on_issues(self):
+...
+    def disable_noerror_messages(self):
+...
+    def disable_reporters(self):
+...
+    def error_mode(self):
+...
+    def python3_porting_mode(self):
+...
+    def list_messages_enabled(self):
+...
+    # block level option handling #############################################
+    # see func_block_disable_msg.py test case for expected behaviour
+
+    def process_tokens(self, tokens):
+...
+    # code checking methods ###################################################
+
+    def get_checkers(self):
+...
+    def get_checker_names(self):
+...
+    def prepare_checkers(self):
+...
+    # pylint: disable=unused-argument
+    @staticmethod
+    def should_analyze_file(modname, path, is_argument=False):
+...
+    # pylint: enable=unused-argument
+
+    def initialize(self):
+...
+    def check(self, files_or_modules):
+...
+    def check_single_file(self, name, filepath, modname):
+...
+    def _check_files(self, get_ast, file_descrs):
+...
+    def _check_file(self, get_ast, check_astroid_module, name, filepath, modname):
+...
+    @staticmethod
+    def _get_file_descr_from_stdin(filepath):
+...
+    def _iterate_file_descrs(self, files_or_modules):
+...
+    def _expand_files(self, modules):
+...
+    def set_current_module(self, modname, filepath=None):
+...
+    @contextlib.contextmanager
+    def _astroid_module_checker(self):
+...
+    def get_ast(self, filepath, modname, data=None):
+...
+    def check_astroid_module(self, ast_node, walker, rawcheckers, tokencheckers):
+...
+    def _check_astroid_module(self, ast_node, walker, rawcheckers, tokencheckers):
+...
+    # IAstroidChecker interface #################################################
+
+    def open(self):
+...
+    def generate_reports(self):
+...
+    def _report_evaluation(self):
+
+```
+Hint: Search `pylint/lint/pylinter.py:PyLinter` to get the full content if needed.
+
+Found function `pylint/lint/pylinter.py:PyLinter.disable_noerror_messages`.
+Source: Retrieved entity using keyword search (bm25).
+```
+717 | def disable_noerror_messages(self):
+718 |         for msgcat, msgids in self.msgs_store._msgs_by_category.items():
+719 |             # enable only messages with 'error' severity and above ('fatal')
+720 |             if msgcat in ["E", "F"]:
+721 |                 for msgid in msgids:
+722 |                     self.enable(msgid)
+723 |             else:
+724 |                 for msgid in msgids:
+725 |                     self.disable(msgid)
+```
+
+Found function `pylint/lint/pylinter.py:PyLinter._check_file`.
+Source: Retrieved entity using keyword search (bm25).
+```
+1014 | def _check_file(self, get_ast, check_astroid_module, name, filepath, modname):
+1015 |         """Check a file using the passed utility functions (get_ast and check_astroid_module)
+1016 | 
+1017 |         :param callable get_ast: callable returning AST from defined file taking the following arguments
+1018 |         - filepath: path to the file to check
+1019 |         - name: Python module name
+1020 |         :param callable check_astroid_module: callable checking an AST taking the following arguments
+1021 |         - ast: AST of the module
+1022 |         :param str name: full name of the module
+1023 |         :param str filepath: path to checked file
+1024 |         :param str modname: name of the checked Python module
+1025 |         """
+1026 |         self.set_current_module(name, filepath)
+1027 |         # get the module representation
+1028 |         ast_node = get_ast(filepath, name)
+1029 |         if ast_node is None:
+1030 |             return
+1031 | 
+1032 |         self._ignore_file = False
+1033 | 
+1034 |         self.file_state = FileState(modname)
+1035 |         # fix the current file (if the source file was not available or
+1036 |         # if it's actually a c extension)
+1037 |         self.current_file = ast_node.file  # pylint: disable=maybe-no-member
+1038 |         check_astroid_module(ast_node)
+1039 |         # warn about spurious inline messages handling
+1040 |         spurious_messages = self.file_state.iter_spurious_suppression_messages(
+1041 |             self.msgs_store
+1042 |         )
+1043 |         for msgid, line, args in spurious_messages:
+1044 |             self.add_message(msgid, line, None, args)
+```
+
+
+
+##Searching for term "XDG"...
+### Search Result:
+Found `pylint/checkers/refactoring/not_checker.py:NotChecker`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 5 | import astroid
+ 6 | 
+ 7 | from pylint import checkers, interfaces
+ 8 | from pylint.checkers import utils
+ 9 | from pylint.constants import BUILTINS
+10 | 
+11 | 
+12 | class NotChecker(checkers.BaseChecker):
+13 |     """checks for too many not in comparison expressions
+14 | 
+15 |     - "not not" should trigger a warning
+16 |     - "not" followed by a comparison should trigger a warning
+17 |     """
+18 | 
+19 |     __implements__ = (interfaces.IAstroidChecker,)
+20 |     msgs = {
+21 |         "C0113": (
+22 |             'Consider changing "%s" to "%s"',
+23 |             "unneeded-not",
+24 |             "Used when a boolean expression contains an unneeded negation.",
+25 |         )
+26 |     }
+27 |     name = "refactoring"
+28 |     reverse_op = {
+29 |         "<": ">=",
+30 |         "<=": ">",
+31 |         ">": "<=",
+32 |         ">=": "<",
+33 |         "==": "!=",
+34 |         "!=": "==",
+35 |         "in": "not in",
+36 |         "is": "is not",
+37 |     }
+38 |     # sets are not ordered, so for example "not set(LEFT_VALS) <= set(RIGHT_VALS)" is
+39 |     # not equivalent to "set(LEFT_VALS) > set(RIGHT_VALS)"
+40 |     skipped_nodes = (astroid.Set,)
+41 |     # 'builtins' py3, '__builtin__' py2
+42 |     skipped_classnames = [f"{BUILTINS}.{qname}" for qname in ("set", "frozenset")]
+```
+Hint: 
+The code for class `pylint/checkers/refactoring/not_checker.py:NotChecker` is incomplete; search `pylint/checkers/refactoring/not_checker.py:NotChecker` for the full content if needed.
+
+Found class `pylint/pyreverse/diadefslib.py:DiaDefGenerator`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 32 | class DiaDefGenerator:
+ 33 |     """handle diagram generation options"""
+ 34 | 
+ 35 |     def __init__(self, linker, handler):
+ 36 |         """common Diagram Handler initialization"""
+ 37 |         self.config = handler.config
+ 38 |         self._set_default_options()
+ 39 |         self.linker = linker
+ 40 |         self.classdiagram = None  # defined by subclasses
+ 41 | 
+ 42 |     def get_title(self, node):
+ 43 |         """get title for objects"""
+ 44 |         title = node.name
+ 45 |         if self.module_names:
+ 46 |             title = f"{node.root().name}.{title}"
+ 47 |         return title
+ 48 | 
+ 49 |     def _set_option(self, option):
+ 50 |         """activate some options if not explicitly deactivated"""
+ 51 |         # if we have a class diagram, we want more information by default;
+ 52 |         # so if the option is None, we return True
+ 53 |         if option is None:
+ 54 |             return bool(self.config.classes)
+ 55 |         return option
+ 56 | 
+ 57 |     def _set_default_options(self):
+ 58 |         """set different default options with _default dictionary"""
+ 59 |         self.module_names = self._set_option(self.config.module_names)
+ 60 |         all_ancestors = self._set_option(self.config.all_ancestors)
+ 61 |         all_associated = self._set_option(self.config.all_associated)
+ 62 |         anc_level, association_level = (0, 0)
+ 63 |         if all_ancestors:
+ 64 |             anc_level = -1
+ 65 |         if all_associated:
+ 66 |             association_level = -1
+ 67 |         if self.config.show_ancestors is not None:
+ 68 |             anc_level = self.config.show_ancestors
+ 69 |         if self.config.show_associated is not None:
+ 70 |             association_level = self.config.show_associated
+ 71 |         self.anc_level, self.association_level = anc_level, association_level
+ 72 | 
+ 73 |     def _get_levels(self):
+ 74 |         """help function for search levels"""
+ 75 |         return self.anc_level, self.association_level
+ 76 | 
+ 77 |     def show_node(self, node):
+ 78 |         """true if builtins and not show_builtins"""
+ 79 |         if self.config.show_builtin:
+ 80 |             return True
+ 81 |         return node.root().name != BUILTINS
+ 82 | 
+ 83 |     def add_class(self, node):
+ 84 |         """visit one class and add it to diagram"""
+ 85 |         self.linker.visit(node)
+ 86 |         self.classdiagram.add_object(self.get_title(node), node)
+ 87 | 
+ 88 |     def get_ancestors(self, node, level):
+ 89 |         """return ancestor nodes of a class node"""
+ 90 |         if level == 0:
+ 91 |             return
+ 92 |         for ancestor in node.ancestors(recurs=False):
+ 93 |             if not self.show_node(ancestor):
+ 94 |                 continue
+ 95 |             yield ancestor
+ 96 | 
+ 97 |     def get_associated(self, klass_node, level):
+ 98 |         """return associated nodes of a class node"""
+ 99 |         if level == 0:
+100 |             return
+101 |         for association_nodes in list(klass_node.instance_attrs_type.values()) + list(
+102 |             klass_node.locals_type.values()
+103 |         ):
+104 |             for node in association_nodes:
+105 |                 if isinstance(node, astroid.Instance):
+106 |                     node = node._proxied
+107 |                 if not (isinstance(node, astroid.ClassDef) and self.show_node(node)):
+108 |                     continue
+109 |                 yield node
+110 | 
+111 |     def extract_classes(self, klass_node, anc_level, association_level):
+112 |         """extract recursively classes related to klass_node"""
+113 |         if self.classdiagram.has_node(klass_node) or not self.show_node(klass_node):
+114 |             return
+115 |         self.add_class(klass_node)
+116 | 
+117 |         for ancestor in self.get_ancestors(klass_node, anc_level):
+118 |             self.extract_classes(ancestor, anc_level - 1, association_level)
+119 | 
+120 |         for node in self.get_associated(klass_node, association_level):
+121 |             self.extract_classes(node, anc_level, association_level - 1)
+```
+
+Found class `pylint/pyreverse/diadefslib.py:DefaultDiadefGenerator`.
+Source: Retrieved entity using keyword search (bm25).
+```
+124 | class DefaultDiadefGenerator(LocalsVisitor, DiaDefGenerator):
+125 |     """generate minimum diagram definition for the project :
+126 | 
+127 |     * a package diagram including project's modules
+128 |     * a class diagram including project's classes
+129 |     """
+130 | 
+131 |     def __init__(self, linker, handler):
+132 |         DiaDefGenerator.__init__(self, linker, handler)
+133 |         LocalsVisitor.__init__(self)
+134 | 
+135 |     def visit_project(self, node):
+136 |         """visit a pyreverse.utils.Project node
+137 | 
+138 |         create a diagram definition for packages
+139 |         """
+140 |         mode = self.config.mode
+141 |         if len(node.modules) > 1:
+142 |             self.pkgdiagram = PackageDiagram("packages %s" % node.name, mode)
+143 |         else:
+144 |             self.pkgdiagram = None
+145 |         self.classdiagram = ClassDiagram("classes %s" % node.name, mode)
+146 | 
+147 |     def leave_project(self, node):  # pylint: disable=unused-argument
+148 |         """leave the pyreverse.utils.Project node
+149 | 
+150 |         return the generated diagram definition
+151 |         """
+152 |         if self.pkgdiagram:
+153 |             return self.pkgdiagram, self.classdiagram
+154 |         return (self.classdiagram,)
+155 | 
+156 |     def visit_module(self, node):
+157 |         """visit an astroid.Module node
+158 | 
+159 |         add this class to the package diagram definition
+160 |         """
+161 |         if self.pkgdiagram:
+162 |             self.linker.visit(node)
+163 |             self.pkgdiagram.add_object(node.name, node)
+164 | 
+165 |     def visit_classdef(self, node):
+166 |         """visit an astroid.Class node
+167 | 
+168 |         add this class to the class diagram definition
+169 |         """
+170 |         anc_level, association_level = self._get_levels()
+171 |         self.extract_classes(node, anc_level, association_level)
+172 | 
+173 |     def visit_importfrom(self, node):
+174 |         """visit astroid.ImportFrom  and catch modules for package diagram"""
+175 |         if self.pkgdiagram:
+176 |             self.pkgdiagram.add_from_depend(node, node.modname)
+```
+
+Found class `pylint/pyreverse/diadefslib.py:ClassDiadefGenerator`.
+Source: Retrieved entity using keyword search (bm25).
+```
+179 | class ClassDiadefGenerator(DiaDefGenerator):
+180 |     """generate a class diagram definition including all classes related to a
+181 |     given class
+182 |     """
+183 | 
+184 |     def __init__(self, linker, handler):
+185 |         DiaDefGenerator.__init__(self, linker, handler)
+186 | 
+187 |     def class_diagram(self, project, klass):
+188 |         """return a class diagram definition for the given klass and its
+189 |         related klasses
+190 |         """
+191 | 
+192 |         self.classdiagram = ClassDiagram(klass, self.config.mode)
+193 |         if len(project.modules) > 1:
+194 |             module, klass = klass.rsplit(".", 1)
+195 |             module = project.get_module(module)
+196 |         else:
+197 |             module = project.modules[0]
+198 |             klass = klass.split(".")[-1]
+199 |         klass = next(module.ilookup(klass))
+200 | 
+201 |         anc_level, association_level = self._get_levels()
+202 |         self.extract_classes(klass, anc_level, association_level)
+203 |         return self.classdiagram
+```
+
+
+
+##Searching for term "XDG", "LOCALAPPDATA"...
+### Search Result:
+Found function `pylint/checkers/refactoring/len_checker.py:LenChecker.visit_call`.
+Source: Retrieved code content using keyword search (bm25).
+```
+54 | def visit_call(self, node):
+55 |         # a len(S) call is used inside a test condition
+56 |         # could be if, while, assert or if expression statement
+57 |         # e.g. `if len(S):`
+58 |         if not utils.is_call_of_name(node, "len"):
+59 |             return
+60 |         # the len() call could also be nested together with other
+61 |         # boolean operations, e.g. `if z or len(x):`
+62 |         parent = node.parent
+63 |         while isinstance(parent, astroid.BoolOp):
+64 |             parent = parent.parent
+65 |         # we're finally out of any nested boolean operations so check if
+66 |         # this len() call is part of a test condition
+67 |         if not utils.is_test_condition(node, parent):
+68 |             return
+69 |         len_arg = node.args[0]
+70 |         generator_or_comprehension = (
+71 |             astroid.ListComp,
+72 |             astroid.SetComp,
+73 |             astroid.DictComp,
+74 |             astroid.GeneratorExp,
+75 |         )
+76 |         if isinstance(len_arg, generator_or_comprehension):
+77 |             # The node is a generator or comprehension as in len([x for x in ...])
+78 |             self.add_message("len-as-condition", node=node)
+79 |             return
+80 |         try:
+81 |             instance = next(len_arg.infer())
+82 |         except astroid.InferenceError:
+83 |             # Probably undefined-varible, abort check
+84 |             return
+85 |         mother_classes = self.base_classes_of_node(instance)
+86 |         affected_by_pep8 = any(
+87 |             t in mother_classes for t in ("str", "tuple", "list", "set")
+88 |         )
+89 |         if "range" in mother_classes or (
+90 |             affected_by_pep8 and not self.instance_has_bool(instance)
+91 |         ):
+92 |             self.add_message("len-as-condition", node=node)
+```
+
+Found function `pylint/checkers/refactoring/len_checker.py:LenChecker.instance_has_bool`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 95 | def instance_has_bool(class_def: astroid.ClassDef) -> bool:
+ 96 |         try:
+ 97 |             class_def.getattr("__bool__")
+ 98 |             return True
+ 99 |         except astroid.AttributeInferenceError:
+100 |             ...
+101 |         return False
+```
+
+Found function `pylint/checkers/refactoring/len_checker.py:LenChecker.visit_unaryop`.
+Source: Retrieved code content using keyword search (bm25).
+```
+104 | def visit_unaryop(self, node):
+105 |         """`not len(S)` must become `not S` regardless if the parent block
+106 |         is a test condition or something else (boolean expression)
+107 |         e.g. `if not len(S):`"""
+108 |         if (
+109 |             isinstance(node, astroid.UnaryOp)
+110 |             and node.op == "not"
+111 |             and utils.is_call_of_name(node.operand, "len")
+112 |         ):
+113 |             self.add_message("len-as-condition", node=node)
+```
+
+Found function `pylint/checkers/refactoring/len_checker.py:LenChecker.base_classes_of_node`.
+Source: Retrieved code content using keyword search (bm25).
+```
+116 | def base_classes_of_node(instance: astroid.nodes.ClassDef) -> List[astroid.Name]:
+117 |         """Return all the classes names that a ClassDef inherit from including 'object'."""
+118 |         try:
+119 |             return [instance.name] + [x.name for x in instance.ancestors()]
+120 |         except TypeError:
+121 |             return [instance.name]
+```
+
+
+
+##Searching for term "LOCALAPPDATA"...
+### Search Result:
+Found `pylint/checkers/refactoring/not_checker.py:NotChecker`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 5 | import astroid
+ 6 | 
+ 7 | from pylint import checkers, interfaces
+ 8 | from pylint.checkers import utils
+ 9 | from pylint.constants import BUILTINS
+10 | 
+11 | 
+12 | class NotChecker(checkers.BaseChecker):
+13 |     """checks for too many not in comparison expressions
+14 | 
+15 |     - "not not" should trigger a warning
+16 |     - "not" followed by a comparison should trigger a warning
+17 |     """
+18 | 
+19 |     __implements__ = (interfaces.IAstroidChecker,)
+20 |     msgs = {
+21 |         "C0113": (
+22 |             'Consider changing "%s" to "%s"',
+23 |             "unneeded-not",
+24 |             "Used when a boolean expression contains an unneeded negation.",
+25 |         )
+26 |     }
+27 |     name = "refactoring"
+28 |     reverse_op = {
+29 |         "<": ">=",
+30 |         "<=": ">",
+31 |         ">": "<=",
+32 |         ">=": "<",
+33 |         "==": "!=",
+34 |         "!=": "==",
+35 |         "in": "not in",
+36 |         "is": "is not",
+37 |     }
+38 |     # sets are not ordered, so for example "not set(LEFT_VALS) <= set(RIGHT_VALS)" is
+39 |     # not equivalent to "set(LEFT_VALS) > set(RIGHT_VALS)"
+40 |     skipped_nodes = (astroid.Set,)
+41 |     # 'builtins' py3, '__builtin__' py2
+42 |     skipped_classnames = [f"{BUILTINS}.{qname}" for qname in ("set", "frozenset")]
+```
+Hint: 
+The code for class `pylint/checkers/refactoring/not_checker.py:NotChecker` is incomplete; search `pylint/checkers/refactoring/not_checker.py:NotChecker` for the full content if needed.
+
+Found class `pylint/extensions/typing.py:DeprecatedTypingAliasMsg`.
+Source: Retrieved entity using keyword search (bm25).
+```
+72 | class DeprecatedTypingAliasMsg(NamedTuple):
+73 |     node: Union[astroid.Name, astroid.Attribute]
+74 |     qname: str
+75 |     alias: str
+76 |     parent_subscript: bool
+```
+
+Found class `pylint/pyreverse/utils.py:ASTWalker`.
+Source: Retrieved entity using keyword search (bm25).
+```
+140 | class ASTWalker:
+141 |     """a walker visiting a tree in preorder, calling on the handler:
+142 | 
+143 |     * visit_<class name> on entering a node, where class name is the class of
+144 |     the node in lower case
+145 | 
+146 |     * leave_<class name> on leaving a node, where class name is the class of
+147 |     the node in lower case
+148 |     """
+149 | 
+150 |     def __init__(self, handler):
+151 |         self.handler = handler
+152 |         self._cache = {}
+153 | 
+154 |     def walk(self, node, _done=None):
+155 |         """walk on the tree from <node>, getting callbacks from handler"""
+156 |         if _done is None:
+157 |             _done = set()
+158 |         if node in _done:
+159 |             raise AssertionError((id(node), node, node.parent))
+160 |         _done.add(node)
+161 |         self.visit(node)
+162 |         for child_node in node.get_children():
+163 |             assert child_node is not node
+164 |             self.walk(child_node, _done)
+165 |         self.leave(node)
+166 |         assert node.parent is not node
+167 | 
+168 |     def get_callbacks(self, node):
+169 |         """get callbacks from handler for the visited node"""
+170 |         klass = node.__class__
+171 |         methods = self._cache.get(klass)
+172 |         if methods is None:
+173 |             handler = self.handler
+174 |             kid = klass.__name__.lower()
+175 |             e_method = getattr(
+176 |                 handler, "visit_%s" % kid, getattr(handler, "visit_default", None)
+177 |             )
+178 |             l_method = getattr(
+179 |                 handler, "leave_%s" % kid, getattr(handler, "leave_default", None)
+180 |             )
+181 |             self._cache[klass] = (e_method, l_method)
+182 |         else:
+183 |             e_method, l_method = methods
+184 |         return e_method, l_method
+185 | 
+186 |     def visit(self, node):
+187 |         """walk on the tree from <node>, getting callbacks from handler"""
+188 |         method = self.get_callbacks(node)[0]
+189 |         if method is not None:
+190 |             method(node)
+191 | 
+192 |     def leave(self, node):
+193 |         """walk on the tree from <node>, getting callbacks from handler"""
+194 |         method = self.get_callbacks(node)[1]
+195 |         if method is not None:
+196 |             method(node)
+```
+
+Found class `pylint/utils/ast_walker.py:ASTWalker`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 9 | class ASTWalker:
+10 |     def __init__(self, linter):
+11 |         # callbacks per node types
+12 |         self.nbstatements = 0
+13 |         self.visit_events = collections.defaultdict(list)
+14 |         self.leave_events = collections.defaultdict(list)
+15 |         self.linter = linter
+16 |         self.exception_msg = False
+17 | 
+18 |     def _is_method_enabled(self, method):
+19 |         if not hasattr(method, "checks_msgs"):
+20 |             return True
+21 |         for msg_desc in method.checks_msgs:
+22 |             if self.linter.is_message_enabled(msg_desc):
+23 |                 return True
+24 |         return False
+25 | 
+26 |     def add_checker(self, checker):
+27 |         """walk to the checker's dir and collect visit and leave methods"""
+28 |         vcids = set()
+29 |         lcids = set()
+30 |         visits = self.visit_events
+31 |         leaves = self.leave_events
+32 |         for member in dir(checker):
+33 |             cid = member[6:]
+34 |             if cid == "default":
+35 |                 continue
+36 |             if member.startswith("visit_"):
+37 |                 v_meth = getattr(checker, member)
+38 |                 # don't use visit_methods with no activated message:
+39 |                 if self._is_method_enabled(v_meth):
+40 |                     visits[cid].append(v_meth)
+41 |                     vcids.add(cid)
+42 |             elif member.startswith("leave_"):
+43 |                 l_meth = getattr(checker, member)
+44 |                 # don't use leave_methods with no activated message:
+45 |                 if self._is_method_enabled(l_meth):
+46 |                     leaves[cid].append(l_meth)
+47 |                     lcids.add(cid)
+48 |         visit_default = getattr(checker, "visit_default", None)
+49 |         if visit_default:
+50 |             for cls in nodes.ALL_NODE_CLASSES:
+51 |                 cid = cls.__name__.lower()
+52 |                 if cid not in vcids:
+53 |                     visits[cid].append(visit_default)
+54 |         # for now we have no "leave_default" method in Pylint
+55 | 
+56 |     def walk(self, astroid):
+57 |         """call visit events of astroid checkers for the given node, recurse on
+58 |         its children, then leave events.
+59 |         """
+60 |         cid = astroid.__class__.__name__.lower()
+61 | 
+62 |         # Detect if the node is a new name for a deprecated alias.
+63 |         # In this case, favour the methods for the deprecated
+64 |         # alias if any,  in order to maintain backwards
+65 |         # compatibility.
+66 |         visit_events = self.visit_events.get(cid, ())
+67 |         leave_events = self.leave_events.get(cid, ())
+68 | 
+69 |         try:
+70 |             if astroid.is_statement:
+71 |                 self.nbstatements += 1
+72 |             # generate events for this node on each checker
+73 |             for callback in visit_events or ():
+74 |                 callback(astroid)
+75 |             # recurse on children
+76 |             for child in astroid.get_children():
+77 |                 self.walk(child)
+78 |             for callback in leave_events or ():
+79 |                 callback(astroid)
+80 |         except Exception:
+81 |             if self.exception_msg is False:
+82 |                 file = getattr(astroid.root(), "file", None)
+83 |                 print(f"Exception on node {repr(astroid)} in file '{file}'")
+84 |                 self.exception_msg = True
+85 |             raise
+```
+
+
+
+##Searching for term "cache directory"...
+### Search Result:
+Found function `pylint/checkers/imports.py:ImportsChecker._filter_dependencies_graph`.
+Source: Retrieved code content using keyword search (bm25).
+```
+939 | def _filter_dependencies_graph(self, internal):
+940 |         """build the internal or the external dependency graph"""
+941 |         graph = collections.defaultdict(set)
+942 |         for importee, importers in self.stats["dependencies"].items():
+943 |             for importer in importers:
+944 |                 package = self._module_pkg.get(importer, importer)
+945 |                 is_inside = importee.startswith(package)
+946 |                 if is_inside and internal or not is_inside and not internal:
+947 |                     graph[importee].add(importer)
+948 |         return graph
+```
+
+Found function `pylint/checkers/imports.py:ImportsChecker._external_dependencies_info`.
+Source: Retrieved code content using keyword search (bm25).
+```
+951 | def _external_dependencies_info(self):
+952 |         """return cached external dependencies information or build and
+953 |         cache them
+954 |         """
+955 |         return self._filter_dependencies_graph(internal=False)
+```
+
+Found function `pylint/checkers/imports.py:ImportsChecker._internal_dependencies_info`.
+Source: Retrieved code content using keyword search (bm25).
+```
+958 | def _internal_dependencies_info(self):
+959 |         """return cached internal dependencies information or build and
+960 |         cache them
+961 |         """
+962 |         return self._filter_dependencies_graph(internal=True)
+```
+
+Found function `pylint/checkers/imports.py:ImportsChecker._check_wildcard_imports`.
+Source: Retrieved code content using keyword search (bm25).
+```
+964 | def _check_wildcard_imports(self, node, imported_module):
+965 |         if node.root().package:
+966 |             # Skip the check if in __init__.py issue #2026
+967 |             return
+968 | 
+969 |         wildcard_import_is_allowed = self._wildcard_import_is_allowed(imported_module)
+970 |         for name, _ in node.names:
+971 |             if name == "*" and not wildcard_import_is_allowed:
+972 |                 self.add_message("wildcard-import", args=node.modname, node=node)
+```
+
+Found function `pylint/checkers/imports.py:ImportsChecker._wildcard_import_is_allowed`.
+Source: Retrieved code content using keyword search (bm25).
+```
+974 | def _wildcard_import_is_allowed(self, imported_module):
+975 |         return (
+976 |             self.config.allow_wildcard_with_all
+977 |             and imported_module is not None
+978 |             and "__all__" in imported_module.locals
+979 |         )
+```
+
+Found file `examples/deprecation_checker.py`.
+Found file `pylint/checkers/deprecated.py`.
+Found file `pylint/checkers/refactoring/refactoring_checker.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "share directory"...
+### Search Result:
+Found class `pylint/pyreverse/inspector.py:Linker`.
+Source: Retrieved entity using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class Linker(IdGeneratorMixIn, utils.LocalsVisitor):
+
+    def __init__(self, project, inherited_interfaces=0, tag=False):
+...
+    def visit_project(self, node):
+...
+    def visit_package(self, node):
+...
+    def visit_module(self, node):
+...
+    def visit_classdef(self, node):
+...
+    def visit_functiondef(self, node):
+...
+    link_project = visit_project
+    link_module = visit_module
+    link_class = visit_classdef
+    link_function = visit_functiondef
+
+    def visit_assignname(self, node):
+...
+    @staticmethod
+    def handle_assignattr_type(node, parent):
+...
+    def visit_import(self, node):
+...
+    def visit_importfrom(self, node):
+...
+    def compute_module(self, context_name, mod_path):
+...
+    def _imported_module(self, node, mod_path, relative):
+
+```
+Hint: Search `pylint/pyreverse/inspector.py:Linker` to get the full content if needed.
+
+Found function `pylint/utils/utils.py:safe_decode`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 96 | def safe_decode(line, encoding, *args, **kwargs):
+ 97 |     """return decoded line from encoding or decode with default encoding"""
+ 98 |     try:
+ 99 |         return line.decode(encoding or sys.getdefaultencoding(), *args, **kwargs)
+100 |     except LookupError:
+101 |         return line.decode(sys.getdefaultencoding(), *args, **kwargs)
+```
+
+Found function `pylint/checkers/variables.py:_detect_global_scope`.
+Source: Retrieved code content using keyword search (bm25).
+```
+193 | def _detect_global_scope(node, frame, defframe):
+194 |     """Detect that the given frames shares a global
+195 |     scope.
+196 | 
+197 |     Two frames shares a global scope when neither
+198 |     of them are hidden under a function scope, as well
+199 |     as any of parent scope of them, until the root scope.
+200 |     In this case, depending from something defined later on
+201 |     will not work, because it is still undefined.
+202 | 
+203 |     Example:
+204 |         class A:
+205 |             # B has the same global scope as `C`, leading to a NameError.
+206 |             class B(C): ...
+207 |         class C: ...
+208 | 
+209 |     """
+210 |     def_scope = scope = None
+211 |     if frame and frame.parent:
+212 |         scope = frame.parent.scope()
+213 |     if defframe and defframe.parent:
+214 |         def_scope = defframe.parent.scope()
+215 |     if isinstance(frame, astroid.FunctionDef):
+216 |         # If the parent of the current node is a
+217 |         # function, then it can be under its scope
+218 |         # (defined in, which doesn't concern us) or
+219 |         # the `->` part of annotations. The same goes
+220 |         # for annotations of function arguments, they'll have
+221 |         # their parent the Arguments node.
+222 |         if not isinstance(node.parent, (astroid.FunctionDef, astroid.Arguments)):
+223 |             return False
+224 |     elif any(
+225 |         not isinstance(f, (astroid.ClassDef, astroid.Module)) for f in (frame, defframe)
+226 |     ):
+227 |         # Not interested in other frames, since they are already
+228 |         # not in a global scope.
+229 |         return False
+230 | 
+231 |     break_scopes = []
+232 |     for current_scope in (scope, def_scope):
+233 |         # Look for parent scopes. If there is anything different
+234 |         # than a module or a class scope, then they frames don't
+235 |         # share a global scope.
+236 |         parent_scope = current_scope
+237 |         while parent_scope:
+238 |             if not isinstance(parent_scope, (astroid.ClassDef, astroid.Module)):
+239 |                 break_scopes.append(parent_scope)
+240 |                 break
+241 |             if parent_scope.parent:
+242 |                 parent_scope = parent_scope.parent.scope()
+243 |             else:
+244 |                 break
+245 |     if break_scopes and len(set(break_scopes)) != 1:
+246 |         # Store different scopes than expected.
+247 |         # If the stored scopes are, in fact, the very same, then it means
+248 |         # that the two frames (frame and defframe) shares the same scope,
+249 |         # and we could apply our lineno analysis over them.
+250 |         # For instance, this works when they are inside a function, the node
+251 |         # that uses a definition and the definition itself.
+252 |         return False
+253 |     # At this point, we are certain that frame and defframe shares a scope
+254 |     # and the definition of the first depends on the second.
+255 |     return frame.lineno < defframe.lineno
+```
+
+Found function `pylint/checkers/variables.py:_infer_name_module`.
+Source: Retrieved code content using keyword search (bm25).
+```
+258 | def _infer_name_module(node, name):
+259 |     context = astroid.context.InferenceContext()
+260 |     context.lookupname = name
+261 |     return node.infer(context, asname=False)
+```
+
+Found file `pylint/pyreverse/inspector.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `pylint/pyreverse/inspector.py` for the full content if needed.
+
+
+
+##Searching for term "share directory", "pylint.d XDG LOCALAPPDATA cache directory share directory"...
+### Search Result:
+Found function `pylint/utils/utils.py:register_plugins`.
+Source: Retrieved code content using keyword search (bm25).
+```
+118 | def register_plugins(linter, directory):
+119 |     """load all module and package in the given directory, looking for a
+120 |     'register' function in each one, used to register pylint checkers
+121 |     """
+122 |     imported = {}
+123 |     for filename in os.listdir(directory):
+124 |         base, extension = os.path.splitext(filename)
+125 |         if base in imported or base == "__pycache__":
+126 |             continue
+127 |         if (
+128 |             extension in PY_EXTS
+129 |             and base != "__init__"
+130 |             or (
+131 |                 not extension
+132 |                 and os.path.isdir(os.path.join(directory, base))
+133 |                 and not filename.startswith(".")
+134 |             )
+135 |         ):
+136 |             try:
+137 |                 module = modutils.load_module_from_file(
+138 |                     os.path.join(directory, filename)
+139 |                 )
+140 |             except ValueError:
+141 |                 # empty module name (usually emacs auto-save files)
+142 |                 continue
+143 |             except ImportError as exc:
+144 |                 print(f"Problem importing module {filename}: {exc}", file=sys.stderr)
+145 |             else:
+146 |                 if hasattr(module, "register"):
+147 |                     module.register(linter)
+148 |                     imported[base] = 1
+```
+
+Found function `pylint/__init__.py:modify_sys_path`.
+Source: Retrieved code content using keyword search (bm25).
+```
+49 | def modify_sys_path() -> None:
+50 |     """Modify sys path for execution as Python module.
+51 | 
+52 |     Strip out the current working directory from sys.path.
+53 |     Having the working directory in `sys.path` means that `pylint` might
+54 |     inadvertently import user code from modules having the same name as
+55 |     stdlib or pylint's own modules.
+56 |     CPython issue: https://bugs.python.org/issue33053
+57 | 
+58 |     - Remove the first entry. This will always be either "" or the working directory
+59 |     - Remove the working directory from the second and third entries
+60 |       if PYTHONPATH includes a ":" at the beginning or the end.
+61 |       https://github.com/PyCQA/pylint/issues/3636
+62 |       Don't remove it if PYTHONPATH contains the cwd or '.' as the entry will
+63 |       only be added once.
+64 |     - Don't remove the working directory from the rest. It will be included
+65 |       if pylint is installed in an editable configuration (as the last item).
+66 |       https://github.com/PyCQA/pylint/issues/4161
+67 |     """
+68 |     sys.path.pop(0)
+69 |     env_pythonpath = os.environ.get("PYTHONPATH", "")
+70 |     cwd = os.getcwd()
+71 |     if env_pythonpath.startswith(":") and env_pythonpath not in (f":{cwd}", ":."):
+72 |         sys.path.pop(0)
+73 |     elif env_pythonpath.endswith(":") and env_pythonpath not in (f"{cwd}:", ".:"):
+74 |         sys.path.pop(1)
+```
+
+
+
+##Searching for term "pylint.d XDG LOCALAPPDATA cache directory share directory"...
+### Search Result:
+Found .
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | #
+  2 | # Pylint documentation build configuration file, created by
+  3 | # sphinx-quickstart on Thu Apr  4 20:31:25 2013.
+  4 | #
+  5 | # This file is execfile()d with the current directory set to its containing dir.
+  6 | #
+  7 | # Note that not all possible configuration values are present in this
+  8 | # autogenerated file.
+  9 | #
+ 10 | # All configuration values have a default; values that are commented out
+ 11 | # serve to show the default.
+ 12 | 
+ 13 | import os
+ 14 | import sys
+ 15 | from datetime import datetime
+ 16 | 
+ 17 | # The version info for the project you're documenting, acts as replacement for
+ 18 | # |version| and |release|, also used in various other places throughout the
+ 19 | # built documents.
+ 20 | #
+ 21 | # The short X.Y version.
+ 22 | from pylint import __version__
+ 23 | 
+ 24 | # If extensions (or modules to document with autodoc) are in another directory,
+ 25 | # add these directories to sys.path here. If the directory is relative to the
+ 26 | # documentation root, use os.path.abspath to make it absolute, like shown here.
+ 27 | sys.path.append(os.path.abspath("exts"))
+ 28 | 
+ 29 | # -- General configuration -----------------------------------------------------
+ 30 | 
+ 31 | # If your documentation needs a minimal Sphinx version, state it here.
+ 32 | # needs_sphinx = '1.0'
+ 33 | 
+ 34 | # Add any Sphinx extension module names here, as strings. They can be extensions
+ 35 | # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
+ 36 | extensions = [
+ 37 |     "pylint_features",
+ 38 |     "pylint_extensions",
+ 39 |     "sphinx.ext.autosectionlabel",
+ 40 |     "sphinx.ext.intersphinx",
+ 41 | ]
+ 42 | 
+ 43 | # Add any paths that contain templates here, relative to this directory.
+ 44 | templates_path = ["_templates"]
+ 45 | 
+ 46 | # The suffix of source filenames.
+ 47 | source_suffix = ".rst"
+ 48 | 
+ 49 | # The encoding of source files.
+ 50 | # source_encoding = 'utf-8-sig'
+ 51 | 
+ 52 | # The master toctree document.
+ 53 | master_doc = "index"
+ 54 | 
+ 55 | # General information about the project.
+ 56 | project = "Pylint"
+ 57 | current_year = datetime.utcnow().year
+ 58 | copyright = f"2003-{current_year}, Logilab, PyCQA and contributors"
+ 59 | 
+ 60 | # The full version, including alpha/beta/rc tags.
+ 61 | release = __version__
+ 62 | 
+ 63 | # The language for content autogenerated by Sphinx. Refer to documentation
+ 64 | # for a list of supported languages.
+ 65 | # language = None
+ 66 | 
+ 67 | # There are two options for replacing |today|: either, you set today to some
+ 68 | # non-false value, then it is used:
+ 69 | # today = ''
+ 70 | # Else, today_fmt is used as the format for a strftime call.
+ 71 | # today_fmt = '%B %d, %Y'
+ 72 | 
+ 73 | # List of patterns, relative to source directory, that match files and
+ 74 | # directories to ignore when looking for source files.
+ 75 | exclude_patterns = ["_build"]
+ 76 | 
+ 77 | # The reST default role (used for this markup: `text`) to use for all documents.
+ 78 | # default_role = None
+ 79 | 
+ 80 | # If true, '()' will be appended to :func: etc. cross-reference text.
+ 81 | # add_function_parentheses = True
+ 82 | 
+ 83 | # If true, the current module name will be prepended to all description
+ 84 | # unit titles (such as .. function::).
+ 85 | # add_module_names = True
+```
+
+Found function `pylint/epylint.py:lint`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 75 | def lint(filename, options=()):
+ 76 |     """Pylint the given file.
+ 77 | 
+ 78 |     When run from emacs we will be in the directory of a file, and passed its
+ 79 |     filename.  If this file is part of a package and is trying to import other
+ 80 |     modules from within its own package or another package rooted in a directory
+ 81 |     below it, pylint will classify it as a failed import.
+ 82 | 
+ 83 |     To get around this, we traverse down the directory tree to find the root of
+ 84 |     the package this module is in.  We then invoke pylint from this directory.
+ 85 | 
+ 86 |     Finally, we must correct the filenames in the output generated by pylint so
+ 87 |     Emacs doesn't become confused (it will expect just the original filename,
+ 88 |     while pylint may extend it with extra directories if we've traversed down
+ 89 |     the tree)
+ 90 |     """
+ 91 |     # traverse downwards until we are out of a python package
+ 92 |     full_path = os.path.abspath(filename)
+ 93 |     parent_path = os.path.dirname(full_path)
+ 94 |     child_path = os.path.basename(full_path)
+ 95 | 
+ 96 |     while parent_path != "/" and os.path.exists(
+ 97 |         os.path.join(parent_path, "__init__.py")
+ 98 |     ):
+ 99 |         child_path = os.path.join(os.path.basename(parent_path), child_path)
+100 |         parent_path = os.path.dirname(parent_path)
+101 | 
+102 |     # Start pylint
+103 |     # Ensure we use the python and pylint associated with the running epylint
+104 |     run_cmd = "import sys; from pylint.lint import Run; Run(sys.argv[1:])"
+105 |     cmd = (
+106 |         [sys.executable, "-c", run_cmd]
+107 |         + [
+108 |             "--msg-template",
+109 |             "{path}:{line}: {category} ({msg_id}, {symbol}, {obj}) {msg}",
+110 |             "-r",
+111 |             "n",
+112 |             child_path,
+113 |         ]
+114 |         + list(options)
+115 |     )
+116 | 
+117 |     with Popen(
+118 |         cmd, stdout=PIPE, cwd=parent_path, env=_get_env(), universal_newlines=True
+119 |     ) as process:
+120 | 
+121 |         for line in process.stdout:
+122 |             # remove pylintrc warning
+123 |             if line.startswith("No config file found"):
+124 |                 continue
+125 | 
+126 |             # modify the file name thats output to reverse the path traversal we made
+127 |             parts = line.split(":")
+128 |             if parts and parts[0] == child_path:
+129 |                 line = ":".join([filename] + parts[1:])
+130 |             print(line, end=" ")
+131 | 
+132 |         process.wait()
+133 |         return process.returncode
+```
+
+Found function `pylint/config/__init__.py:find_pylintrc`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 97 | def find_pylintrc():
+ 98 |     """search the pylint rc file and return its path if it find it, else None"""
+ 99 |     for config_file in find_default_config_files():
+100 |         if config_file.endswith("pylintrc"):
+101 |             return config_file
+102 | 
+103 |     return None
+```
+[symbol-locator] setup_repo returned: playground/77c3eb64-c7f3-4004-9e95-af194d2fd804/pylint-dev_pylint -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pylint-dev__pylint-4661
+[symbol-locator] warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pylint-dev__pylint-4661 files=0 indexed=0 failed=0
+Finding newlines for mmindex:   0%|          | 0.00/2.70M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 2.70M/2.70M [00:00<00:00, 358MB/s]
+
+2026-08-28 04:10:29 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['PYLINT_HOME', 'HOME/.pylint.d', 'user data directory', 'config directory', 'data directory']}))
+```
+2026-08-28 04:10:29 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:29 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:29 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:29 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:30 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:30 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:30 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:31 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:31 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:10:31 auto_search_main.py INFO OBSERVATION:
+pylint/config/__init__.py:save_results
+pylint/config/__init__.py:load_results
+pylint/config/__init__.py:docstring:23
+pylint/config/__init__.py:_get_pdata_path
+pylint/checkers/refactoring/not_checker.py:NotChecker.visit_unaryop
+pylint/checkers/refactoring/len_checker.py:LenChecker.instance_has_bool
+pylint/checkers/refactoring/len_checker.py:LenChecker.base_classes_of_node
+pylint/checkers/refactoring/len_checker.py:LenChecker.visit_unaryop
+pylint/checkers/refactoring/recommendation_checker.py:RecommendationChecker._check_consider_using_dict_items
+pylint/checkers/refactoring/recommendation_checker.py:RecommendationChecker._check_use_maxsplit_arg
+pylint/checkers/refactoring/recommendation_checker.py:RecommendationChecker._check_consider_iterating_dictionary
+pylint/lint/__init__.py:docstring:47
+pylint/lint/__init__.py:impl:3
+pylint/checkers/imports.py:imports:6
+pylint/checkers/imports.py:_qualified_names
+pylint/checkers/imports.py:docstring:24
+pylint/message/__init__.py:docstring:24
+pylint/config/__init__.py:impl:17
+pylint/config/__init__.py:find_pylintrc
+pylint/__init__.py:impl
+pylint/__init__.py:modify_sys_path
+pylint/reporters/ureports/nodes.py:Text.__init__
+pylint/reporters/ureports/nodes.py:VerbatimText
+pylint/reporters/ureports/nodes.py:BaseLayout.add_text
+pylint/reporters/ureports/nodes.py:Text
+pylint/lint/parallel.py:_merge_mapreduce_data
+pylint/pyreverse/diadefslib.py:DiadefsHandler.__init__
+pylint/pyreverse/diadefslib.py:ClassDiadefGenerator.class_diagram
+pylint/pyreverse/diadefslib.py:DiadefsHandler.get_diadefs
+pylint/pyreverse/diadefslib.py:DiadefsHandler
+pylint/utils/utils.py:register_plugins
+pylint/checkers/similar.py:SimilarChecker.get_map_data
+pylint/checkers/similar.py:SimilarChecker.reduce_map_data
+pylint/lint/pylinter.py:PyLinter.get_ast
+pylint/config/__init__.py:impl:17
+pylint/config/__init__.py:find_pylintrc
+pylint/utils/utils.py:register_plugins
+pylint/epylint.py:lint
+pylint/__init__.py:impl
+pylint/__init__.py:modify_sys_path
+pylint/config/__init__.py:save_results
+pylint/pyreverse/main.py:Run
+pylint/pyreverse/main.py:_check_graphviz_available
+pylint/pyreverse/main.py:Run.run
+pylint/pyreverse/main.py:Run.__init__
+pylint/pyreverse/main.py:impl:3
+doc/conf.py:docstring:38
+doc/conf.py:docstring:74
+pylint/config/__init__.py:impl:17
+pylint/config/__init__.py:find_pylintrc
+pylint/reporters/ureports/nodes.py:Text.__init__
+pylint/reporters/ureports/nodes.py:VerbatimText
+pylint/reporters/ureports/nodes.py:BaseLayout.add_text
+pylint/reporters/ureports/nodes.py:Text
+pylint/lint/parallel.py:_merge_mapreduce_data
+pylint/utils/utils.py:register_plugins
+pylint/__init__.py:impl
+pylint/__init__.py:modify_sys_path
+pylint/checkers/similar.py:SimilarChecker.get_map_data
+pylint/checkers/similar.py:SimilarChecker.reduce_map_data
+pylint/lint/pylinter.py:PyLinter.get_ast
+pylint/epylint.py:lint
+pylint/config/__init__.py:impl:17
+pylint/config/__init__.py:find_pylintrc
+pylint/config/__init__.py:save_results
+pylint/__init__.py:impl
+pylint/__init__.py:modify_sys_path
+pylint/utils/utils.py:register_plugins
+pylint/epylint.py:lint
+pylint/reporters/ureports/nodes.py:Text.__init__
+pylint/reporters/ureports/nodes.py:VerbatimText
+pylint/reporters/ureports/nodes.py:BaseLayout.add_text
+pylint/reporters/ureports/nodes.py:Text
+pylint/lint/parallel.py:_merge_mapreduce_data
+doc/conf.py:docstring:38
+doc/conf.py:docstring:74
+##Searching for term "PYLINT_HOME"...
+### Search Result:
+Found `pylint/checkers/refactoring/not_checker.py:NotChecker`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 5 | import astroid
+ 6 | 
+ 7 | from pylint import checkers, interfaces
+ 8 | from pylint.checkers import utils
+ 9 | from pylint.constants import BUILTINS
+10 | 
+11 | 
+12 | class NotChecker(checkers.BaseChecker):
+13 |     """checks for too many not in comparison expressions
+14 | 
+15 |     - "not not" should trigger a warning
+16 |     - "not" followed by a comparison should trigger a warning
+17 |     """
+18 | 
+19 |     __implements__ = (interfaces.IAstroidChecker,)
+20 |     msgs = {
+21 |         "C0113": (
+22 |             'Consider changing "%s" to "%s"',
+23 |             "unneeded-not",
+24 |             "Used when a boolean expression contains an unneeded negation.",
+25 |         )
+26 |     }
+27 |     name = "refactoring"
+28 |     reverse_op = {
+29 |         "<": ">=",
+30 |         "<=": ">",
+31 |         ">": "<=",
+32 |         ">=": "<",
+33 |         "==": "!=",
+34 |         "!=": "==",
+35 |         "in": "not in",
+36 |         "is": "is not",
+37 |     }
+38 |     # sets are not ordered, so for example "not set(LEFT_VALS) <= set(RIGHT_VALS)" is
+39 |     # not equivalent to "set(LEFT_VALS) > set(RIGHT_VALS)"
+40 |     skipped_nodes = (astroid.Set,)
+41 |     # 'builtins' py3, '__builtin__' py2
+42 |     skipped_classnames = [f"{BUILTINS}.{qname}" for qname in ("set", "frozenset")]
+```
+Hint: 
+The code for class `pylint/checkers/refactoring/not_checker.py:NotChecker` is incomplete; search `pylint/checkers/refactoring/not_checker.py:NotChecker` for the full content if needed.
+
+Found class `pylint/exceptions.py:InvalidMessageError`.
+Source: Retrieved entity using keyword search (bm25).
+```
+16 | class InvalidMessageError(Exception):
+17 |     """raised when a message creation, registration or addition is rejected"""
+```
+
+Found class `pylint/exceptions.py:UnknownMessageError`.
+Source: Retrieved entity using keyword search (bm25).
+```
+20 | class UnknownMessageError(Exception):
+21 |     """raised when an unregistered message id is encountered"""
+```
+
+Found class `pylint/message/message.py:Message`.
+Source: Retrieved entity using keyword search (bm25).
+```
+28 | class Message(_MsgBase):
+29 |     """This class represent a message to be issued by the reporters"""
+30 | 
+31 |     def __new__(cls, msg_id, symbol, location, msg, confidence):
+32 |         return _MsgBase.__new__(
+33 |             cls,
+34 |             msg_id,
+35 |             symbol,
+36 |             msg,
+37 |             msg_id[0],
+38 |             MSG_TYPES[msg_id[0]],
+39 |             confidence,
+40 |             *location
+41 |         )
+42 | 
+43 |     def format(self, template: str) -> str:
+44 |         """Format the message according to the given template.
+45 | 
+46 |         The template format is the one of the format method :
+47 |         cf. https://docs.python.org/2/library/string.html#formatstrings
+48 |         """
+49 |         return template.format(**self._asdict())
+```
+
+Found function `pylint/config/__init__.py:_get_pdata_path`.
+Source: Retrieved code content using keyword search (bm25).
+```
+69 | def _get_pdata_path(base_name, recurs):
+70 |     base_name = base_name.replace(os.sep, "_")
+71 |     return os.path.join(PYLINT_HOME, f"{base_name}{recurs}.stats")
+```
+
+Found function `pylint/config/__init__.py:load_results`.
+Source: Retrieved code content using keyword search (bm25).
+```
+74 | def load_results(base):
+75 |     data_file = _get_pdata_path(base, 1)
+76 |     try:
+77 |         with open(data_file, "rb") as stream:
+78 |             return pickle.load(stream)
+79 |     except Exception:  # pylint: disable=broad-except
+80 |         return {}
+```
+
+Found function `pylint/checkers/refactoring/not_checker.py:NotChecker.visit_unaryop`.
+Source: Retrieved code content using keyword search (bm25).
+```
+45 | def visit_unaryop(self, node):
+46 |         if node.op != "not":
+47 |             return
+48 |         operand = node.operand
+49 | 
+50 |         if isinstance(operand, astroid.UnaryOp) and operand.op == "not":
+51 |             self.add_message(
+52 |                 "unneeded-not",
+53 |                 node=node,
+54 |                 args=(node.as_string(), operand.operand.as_string()),
+55 |             )
+56 |         elif isinstance(operand, astroid.Compare):
+57 |             left = operand.left
+58 |             # ignore multiple comparisons
+59 |             if len(operand.ops) > 1:
+60 |                 return
+61 |             operator, right = operand.ops[0]
+62 |             if operator not in self.reverse_op:
+63 |                 return
+64 |             # Ignore __ne__ as function of __eq__
+65 |             frame = node.frame()
+66 |             if frame.name == "__ne__" and operator == "==":
+67 |                 return
+68 |             for _type in (utils.node_type(left), utils.node_type(right)):
+69 |                 if not _type:
+70 |                     return
+71 |                 if isinstance(_type, self.skipped_nodes):
+72 |                     return
+73 |                 if (
+74 |                     isinstance(_type, astroid.Instance)
+75 |                     and _type.qname() in self.skipped_classnames
+76 |                 ):
+77 |                     return
+78 |             suggestion = "{} {} {}".format(
+79 |                 left.as_string(),
+80 |                 self.reverse_op[operator],
+81 |                 right.as_string(),
+82 |             )
+83 |             self.add_message(
+84 |                 "unneeded-not", node=node, args=(node.as_string(), suggestion)
+85 |             )
+```
+
+
+
+##Searching for term "PYLINT_HOME", "config directory", "PYLINT_HOME HOME/.pylint.d user data directory config directory data directory"...
+### Search Result:
+Found function `pylint/config/__init__.py:save_results`.
+Source: Retrieved code content using keyword search (bm25).
+```
+83 | def save_results(results, base):
+84 |     if not os.path.exists(PYLINT_HOME):
+85 |         try:
+86 |             os.mkdir(PYLINT_HOME)
+87 |         except OSError:
+88 |             print("Unable to create directory %s" % PYLINT_HOME, file=sys.stderr)
+89 |     data_file = _get_pdata_path(base, 1)
+90 |     try:
+91 |         with open(data_file, "wb") as stream:
+92 |             pickle.dump(results, stream)
+93 |     except OSError as ex:
+94 |         print(f"Unable to create file {data_file}: {ex}", file=sys.stderr)
+```
+
+
+
+##Searching for term "HOME/.pylint.d"...
+### Search Result:
+Found `pylint/pyreverse/utils.py:get_default_options`, `pylint/pyreverse/utils.py:insert_default_options`, `pylint/pyreverse/utils.py:get_visibility`, `pylint/pyreverse/utils.py:is_abstract`, `pylint/pyreverse/utils.py:is_final`, `pylint/pyreverse/utils.py:is_interface`, `pylint/pyreverse/utils.py:is_exception`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 21 | import os
+ 22 | import re
+ 23 | import sys
+ 24 | from typing import Optional, Union
+ 25 | 
+ 26 | import astroid
+ 27 | 
+ 28 | RCFILE = ".pyreverserc"
+ 29 | 
+ 30 | 
+ 31 | def get_default_options():
+ 32 |     """Read config file and return list of options."""
+ 33 |     options = []
+ 34 |     home = os.environ.get("HOME", "")
+ 35 |     if home:
+ 36 |         rcfile = os.path.join(home, RCFILE)
+ 37 |         try:
+ 38 |             with open(rcfile, encoding="utf-8") as file_handle:
+ 39 |                 options = file_handle.read().split()
+ 40 |         except OSError:
+ 41 |             pass  # ignore if no config file found
+ 42 |     return options
+ 43 | 
+ 44 | 
+ 45 | def insert_default_options():
+ 46 |     """insert default options to sys.argv"""
+ 47 |     options = get_default_options()
+ 48 |     options.reverse()
+ 49 |     for arg in options:
+ 50 |         sys.argv.insert(1, arg)
+ 51 | 
+ 52 | 
+ 53 | # astroid utilities ###########################################################
+ 54 | SPECIAL = re.compile(r"^__([^\W_]_*)+__$")
+ 55 | PRIVATE = re.compile(r"^__(_*[^\W_])+_?$")
+ 56 | PROTECTED = re.compile(r"^_\w*$")
+ 57 | 
+ 58 | 
+ 59 | def get_visibility(name):
+ 60 |     """return the visibility from a name: public, protected, private or special"""
+ 61 |     if SPECIAL.match(name):
+ 62 |         visibility = "special"
+ 63 |     elif PRIVATE.match(name):
+ 64 |         visibility = "private"
+ 65 |     elif PROTECTED.match(name):
+ 66 |         visibility = "protected"
+ 67 | 
+ 68 |     else:
+ 69 |         visibility = "public"
+ 70 |     return visibility
+ 71 | 
+ 72 | 
+ 73 | ABSTRACT = re.compile(r"^.*Abstract.*")
+ 74 | FINAL = re.compile(r"^[^\W\da-z]*$")
+ 75 | 
+ 76 | 
+ 77 | def is_abstract(node):
+ 78 |     """return true if the given class node correspond to an abstract class
+ 79 |     definition
+ 80 |     """
+ 81 |     return ABSTRACT.match(node.name)
+ 82 | 
+ 83 | 
+ 84 | def is_final(node):
+ 85 |     """return true if the given class/function node correspond to final
+ 86 |     definition
+ 87 |     """
+ 88 |     return FINAL.match(node.name)
+ 89 | 
+ 90 | 
+ 91 | def is_interface(node):
+ 92 |     # bw compat
+ 93 |     return node.type == "interface"
+ 94 | 
+ 95 | 
+ 96 | def is_exception(node):
+ 97 |     # bw compat
+ 98 |     return node.type == "exception"
+ 99 | 
+100 | 
+101 | # Helpers #####################################################################
+102 | 
+103 | _CONSTRUCTOR = 1
+104 | _SPECIAL = 2
+105 | _PROTECTED = 4
+106 | _PRIVATE = 8
+107 | MODES = {
+108 |     "ALL": 0,
+109 |     "PUB_ONLY": _SPECIAL + _PROTECTED + _PRIVATE,
+110 |     "SPECIAL": _SPECIAL,
+111 |     "OTHER": _PROTECTED + _PRIVATE,
+112 | }
+113 | VIS_MOD = {
+114 |     "special": _SPECIAL,
+115 |     "protected": _PROTECTED,
+116 |     "private": _PRIVATE,
+117 |     "public": 0,
+118 | }
+```
+
+Found `pylint/reporters/__init__.py:initialize`.
+Source: Retrieved code content using keyword search (bm25).
+```
+26 | from pylint import utils
+27 | from pylint.reporters.base_reporter import BaseReporter
+28 | from pylint.reporters.collecting_reporter import CollectingReporter
+29 | from pylint.reporters.json_reporter import JSONReporter
+30 | from pylint.reporters.multi_reporter import MultiReporter
+31 | from pylint.reporters.reports_handler_mix_in import ReportsHandlerMixIn
+32 | 
+33 | 
+34 | def initialize(linter):
+35 |     """initialize linter with reporters in this package"""
+36 |     utils.register_plugins(linter, __path__[0])
+37 | 
+38 | 
+39 | __all__ = [
+40 |     "BaseReporter",
+41 |     "ReportsHandlerMixIn",
+42 |     "JSONReporter",
+43 |     "CollectingReporter",
+44 |     "MultiReporter",
+45 | ]
+46 | 
+```
+
+Found `pylint/lint/run.py:_cpu_count`, `pylint/lint/run.py:cb_list_extensions`, `pylint/lint/run.py:cb_list_confidence_levels`, `pylint/lint/run.py:cb_init_hook`, `pylint/lint/run.py:Run`, `pylint/lint/run.py:Run._return_one`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  4 | import os
+  5 | import sys
+  6 | import warnings
+  7 | 
+  8 | from pylint import __pkginfo__, config, extensions, interfaces
+  9 | from pylint.constants import full_version
+ 10 | from pylint.lint.pylinter import PyLinter
+ 11 | from pylint.lint.utils import ArgumentPreprocessingError, preprocess_options
+ 12 | from pylint.utils import utils
+ 13 | 
+ 14 | try:
+ 15 |     import multiprocessing
+ 16 | except ImportError:
+ 17 |     multiprocessing = None  # type: ignore
+ 18 | 
+ 19 | 
+ 20 | def _cpu_count() -> int:
+ 21 |     """Use sched_affinity if available for virtualized or containerized environments."""
+ 22 |     sched_getaffinity = getattr(os, "sched_getaffinity", None)
+ 23 |     # pylint: disable=not-callable,using-constant-test
+ 24 |     if sched_getaffinity:
+ 25 |         return len(sched_getaffinity(0))
+ 26 |     if multiprocessing:
+ 27 |         return multiprocessing.cpu_count()
+ 28 |     return 1
+ 29 | 
+ 30 | 
+ 31 | def cb_list_extensions(option, optname, value, parser):
+ 32 |     """List all the extensions under pylint.extensions"""
+ 33 | 
+ 34 |     for filename in os.listdir(os.path.dirname(extensions.__file__)):
+ 35 |         if filename.endswith(".py") and not filename.startswith("_"):
+ 36 |             extension_name, _, _ = filename.partition(".")
+ 37 |             print(f"pylint.extensions.{extension_name}")
+ 38 |     sys.exit(0)
+ 39 | 
+ 40 | 
+ 41 | def cb_list_confidence_levels(option, optname, value, parser):
+ 42 |     for level in interfaces.CONFIDENCE_LEVELS:
+ 43 |         print("%-18s: %s" % level)
+ 44 |     sys.exit(0)
+ 45 | 
+ 46 | 
+ 47 | def cb_init_hook(optname, value):
+ 48 |     """exec arbitrary code to set sys.path for instance"""
+ 49 |     exec(value)  # pylint: disable=exec-used
+ 50 | 
+ 51 | 
+ 52 | UNUSED_PARAM_SENTINEL = object()
+ 53 | 
+ 54 | 
+ 55 | class Run:
+ 56 |     """helper class to use as main for pylint :
+ 57 | 
+ 58 |     run(*sys.argv[1:])
+ 59 |     """
+ 60 | 
+ 61 |     LinterClass = PyLinter
+ 62 |     option_groups = (
+ 63 |         (
+ 64 |             "Commands",
+ 65 |             "Options which are actually commands. Options in this \
+ 66 | group are mutually exclusive.",
+ 67 |         ),
+ 68 |     )
+ 69 | 
+ 70 |     @staticmethod
+ 71 |     def _return_one(*args):  # pylint: disable=unused-argument
+ 72 |         return 1
+```
+
+Found code snippet in file `pylint/message/message_handler_mix_in.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  4 | import sys
+  5 | from typing import List, Tuple
+  6 | 
+  7 | from pylint.constants import (
+  8 |     _SCOPE_EXEMPT,
+  9 |     MAIN_CHECKER_NAME,
+ 10 |     MSG_STATE_CONFIDENCE,
+ 11 |     MSG_STATE_SCOPE_CONFIG,
+ 12 |     MSG_STATE_SCOPE_MODULE,
+ 13 |     MSG_TYPES,
+ 14 |     MSG_TYPES_LONG,
+ 15 |     MSG_TYPES_STATUS,
+ 16 |     WarningScope,
+ 17 | )
+ 18 | from pylint.exceptions import InvalidMessageError, UnknownMessageError
+ 19 | from pylint.interfaces import UNDEFINED
+ 20 | from pylint.message.message import Message
+ 21 | from pylint.utils import get_module_and_frameid, get_rst_section, get_rst_title
+```
+
+Found class `pylint/lint/pylinter.py:PyLinter`.
+Source: Retrieved entity using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class PyLinter(
+    config.OptionsManagerMixIn,
+    MessagesHandlerMixIn,
+    reporters.ReportsHandlerMixIn,
+    checkers.BaseTokenChecker,
+):
+
+    __implements__ = (interfaces.ITokenChecker,)
+
+    name = MAIN_CHECKER_NAME
+    priority = 0
+    level = 0
+    msgs = MSGS
+
+    @staticmethod
+    def make_options():
+...
+    option_groups = (
+        ("Messages control", "Options controlling analysis messages"),
+        ("Reports", "Options related to output formatting and reporting"),
+    )
+
+    def __init__(self, options=(), reporter=None, option_groups=(), pylintrc=None):
+...
+    def load_default_plugins(self):
+...
+    def load_plugin_modules(self, modnames):
+...
+    def load_plugin_configuration(self):
+...
+    def _load_reporters(self) -> None:
+...
+    def _load_reporter_by_name(self, reporter_name: str) -> reporters.BaseReporter:
+...
+    def set_reporter(self, reporter):
+...
+    def set_option(self, optname, value, action=None, optdict=None):
+...
+    def register_reporter(self, reporter_class):
+...
+    def report_order(self):
+...
+    # checkers manipulation methods ############################################
+
+    def register_checker(self, checker):
+...
+    def enable_fail_on_messages(self):
+...
+    def any_fail_on_issues(self):
+...
+    def disable_noerror_messages(self):
+...
+    def disable_reporters(self):
+...
+    def error_mode(self):
+...
+    def python3_porting_mode(self):
+...
+    def list_messages_enabled(self):
+...
+    # block level option handling #############################################
+    # see func_block_disable_msg.py test case for expected behaviour
+
+    def process_tokens(self, tokens):
+...
+    # code checking methods ###################################################
+
+    def get_checkers(self):
+...
+    def get_checker_names(self):
+...
+    def prepare_checkers(self):
+...
+    # pylint: disable=unused-argument
+    @staticmethod
+    def should_analyze_file(modname, path, is_argument=False):
+...
+    # pylint: enable=unused-argument
+
+    def initialize(self):
+...
+    def check(self, files_or_modules):
+...
+    def check_single_file(self, name, filepath, modname):
+...
+    def _check_files(self, get_ast, file_descrs):
+...
+    def _check_file(self, get_ast, check_astroid_module, name, filepath, modname):
+...
+    @staticmethod
+    def _get_file_descr_from_stdin(filepath):
+...
+    def _iterate_file_descrs(self, files_or_modules):
+...
+    def _expand_files(self, modules):
+...
+    def set_current_module(self, modname, filepath=None):
+...
+    @contextlib.contextmanager
+    def _astroid_module_checker(self):
+...
+    def get_ast(self, filepath, modname, data=None):
+...
+    def check_astroid_module(self, ast_node, walker, rawcheckers, tokencheckers):
+...
+    def _check_astroid_module(self, ast_node, walker, rawcheckers, tokencheckers):
+...
+    # IAstroidChecker interface #################################################
+
+    def open(self):
+...
+    def generate_reports(self):
+...
+    def _report_evaluation(self):
+
+```
+Hint: Search `pylint/lint/pylinter.py:PyLinter` to get the full content if needed.
+
+Found function `pylint/lint/pylinter.py:PyLinter.disable_noerror_messages`.
+Source: Retrieved entity using keyword search (bm25).
+```
+717 | def disable_noerror_messages(self):
+718 |         for msgcat, msgids in self.msgs_store._msgs_by_category.items():
+719 |             # enable only messages with 'error' severity and above ('fatal')
+720 |             if msgcat in ["E", "F"]:
+721 |                 for msgid in msgids:
+722 |                     self.enable(msgid)
+723 |             else:
+724 |                 for msgid in msgids:
+725 |                     self.disable(msgid)
+```
+
+Found function `pylint/lint/pylinter.py:PyLinter._check_file`.
+Source: Retrieved entity using keyword search (bm25).
+```
+1014 | def _check_file(self, get_ast, check_astroid_module, name, filepath, modname):
+1015 |         """Check a file using the passed utility functions (get_ast and check_astroid_module)
+1016 | 
+1017 |         :param callable get_ast: callable returning AST from defined file taking the following arguments
+1018 |         - filepath: path to the file to check
+1019 |         - name: Python module name
+1020 |         :param callable check_astroid_module: callable checking an AST taking the following arguments
+1021 |         - ast: AST of the module
+1022 |         :param str name: full name of the module
+1023 |         :param str filepath: path to checked file
+1024 |         :param str modname: name of the checked Python module
+1025 |         """
+1026 |         self.set_current_module(name, filepath)
+1027 |         # get the module representation
+1028 |         ast_node = get_ast(filepath, name)
+1029 |         if ast_node is None:
+1030 |             return
+1031 | 
+1032 |         self._ignore_file = False
+1033 | 
+1034 |         self.file_state = FileState(modname)
+1035 |         # fix the current file (if the source file was not available or
+1036 |         # if it's actually a c extension)
+1037 |         self.current_file = ast_node.file  # pylint: disable=maybe-no-member
+1038 |         check_astroid_module(ast_node)
+1039 |         # warn about spurious inline messages handling
+1040 |         spurious_messages = self.file_state.iter_spurious_suppression_messages(
+1041 |             self.msgs_store
+1042 |         )
+1043 |         for msgid, line, args in spurious_messages:
+1044 |             self.add_message(msgid, line, None, args)
+```
+
+Found function `pylint/checkers/imports.py:_qualified_names`.
+Source: Retrieved code content using keyword search (bm25).
+```
+72 | def _qualified_names(modname):
+73 |     """Split the names of the given module into subparts
+74 | 
+75 |     For example,
+76 |         _qualified_names('pylint.checkers.ImportsChecker')
+77 |     returns
+78 |         ['pylint', 'pylint.checkers', 'pylint.checkers.ImportsChecker']
+79 |     """
+80 |     names = modname.split(".")
+81 |     return [".".join(names[0 : i + 1]) for i in range(len(names))]
+```
+
+
+
+##Searching for term "user data directory"...
+### Search Result:
+Found function `pylint/utils/utils.py:format_section`.
+Source: Retrieved entity using keyword search (bm25).
+```
+264 | def format_section(stream, section, options, doc=None):
+265 |     """format an options section using the INI format"""
+266 |     if doc:
+267 |         print(_comment(doc), file=stream)
+268 |     print("[%s]" % section, file=stream)
+269 |     _ini_format(stream, options)
+```
+
+Found function `pylint/pyreverse/inspector.py:_iface_hdlr`.
+Source: Retrieved entity using keyword search (bm25).
+```
+28 | def _iface_hdlr(_):
+29 |     """Handler used by interfaces to handle suspicious interface nodes."""
+30 |     return True
+```
+
+Found file `pylint/utils/ast_walker.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `pylint/utils/ast_walker.py` for the full content if needed.
+
+
+
+##Searching for term "user data directory", "config directory", "data directory", "PYLINT_HOME HOME/.pylint.d user data directory config directory data directory"...
+### Search Result:
+Found function `pylint/config/__init__.py:find_pylintrc`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 97 | def find_pylintrc():
+ 98 |     """search the pylint rc file and return its path if it find it, else None"""
+ 99 |     for config_file in find_default_config_files():
+100 |         if config_file.endswith("pylintrc"):
+101 |             return config_file
+102 | 
+103 |     return None
+```
+
+
+
+##Searching for term "user data directory", "config directory", "PYLINT_HOME HOME/.pylint.d user data directory config directory data directory"...
+### Search Result:
+Found function `pylint/__init__.py:modify_sys_path`.
+Source: Retrieved code content using keyword search (bm25).
+```
+49 | def modify_sys_path() -> None:
+50 |     """Modify sys path for execution as Python module.
+51 | 
+52 |     Strip out the current working directory from sys.path.
+53 |     Having the working directory in `sys.path` means that `pylint` might
+54 |     inadvertently import user code from modules having the same name as
+55 |     stdlib or pylint's own modules.
+56 |     CPython issue: https://bugs.python.org/issue33053
+57 | 
+58 |     - Remove the first entry. This will always be either "" or the working directory
+59 |     - Remove the working directory from the second and third entries
+60 |       if PYTHONPATH includes a ":" at the beginning or the end.
+61 |       https://github.com/PyCQA/pylint/issues/3636
+62 |       Don't remove it if PYTHONPATH contains the cwd or '.' as the entry will
+63 |       only be added once.
+64 |     - Don't remove the working directory from the rest. It will be included
+65 |       if pylint is installed in an editable configuration (as the last item).
+66 |       https://github.com/PyCQA/pylint/issues/4161
+67 |     """
+68 |     sys.path.pop(0)
+69 |     env_pythonpath = os.environ.get("PYTHONPATH", "")
+70 |     cwd = os.getcwd()
+71 |     if env_pythonpath.startswith(":") and env_pythonpath not in (f":{cwd}", ":."):
+72 |         sys.path.pop(0)
+73 |     elif env_pythonpath.endswith(":") and env_pythonpath not in (f"{cwd}:", ".:"):
+74 |         sys.path.pop(1)
+```
+
+
+
+##Searching for term "user data directory", "data directory"...
+### Search Result:
+Found function `pylint/reporters/ureports/nodes.py:BaseLayout.add_text`.
+Source: Retrieved code content using keyword search (bm25).
+```
+88 | def add_text(self, text):
+89 |         """shortcut to add text data"""
+90 |         self.children.append(Text(text))
+```
+
+Found class `pylint/reporters/ureports/nodes.py:Text`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 96 | class Text(VNode):
+ 97 |     """a text portion
+ 98 | 
+ 99 |     attributes :
+100 |     * data : the text value as an encoded or unicode string
+101 |     """
+102 | 
+103 |     def __init__(self, data, escaped=True, **kwargs):
+104 |         super().__init__(**kwargs)
+105 |         # if isinstance(data, unicode):
+106 |         #    data = data.encode('ascii')
+107 |         assert isinstance(data, str), data.__class__
+108 |         self.escaped = escaped
+109 |         self.data = data
+```
+
+Found class `pylint/reporters/ureports/nodes.py:VerbatimText`.
+Source: Retrieved code content using keyword search (bm25).
+```
+112 | class VerbatimText(Text):
+113 |     """a verbatim text, display the raw data
+114 | 
+115 |     attributes :
+116 |     * data : the text value as an encoded or unicode string
+117 |     """
+```
+
+
+
+##Searching for term "config directory"...
+### Search Result:
+Found file `pylint/config/find_default_config_files.py`.
+Found file `pylint/config/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "config directory", "PYLINT_HOME HOME/.pylint.d user data directory config directory data directory"...
+### Search Result:
+Found function `pylint/utils/utils.py:register_plugins`.
+Source: Retrieved code content using keyword search (bm25).
+```
+118 | def register_plugins(linter, directory):
+119 |     """load all module and package in the given directory, looking for a
+120 |     'register' function in each one, used to register pylint checkers
+121 |     """
+122 |     imported = {}
+123 |     for filename in os.listdir(directory):
+124 |         base, extension = os.path.splitext(filename)
+125 |         if base in imported or base == "__pycache__":
+126 |             continue
+127 |         if (
+128 |             extension in PY_EXTS
+129 |             and base != "__init__"
+130 |             or (
+131 |                 not extension
+132 |                 and os.path.isdir(os.path.join(directory, base))
+133 |                 and not filename.startswith(".")
+134 |             )
+135 |         ):
+136 |             try:
+137 |                 module = modutils.load_module_from_file(
+138 |                     os.path.join(directory, filename)
+139 |                 )
+140 |             except ValueError:
+141 |                 # empty module name (usually emacs auto-save files)
+142 |                 continue
+143 |             except ImportError as exc:
+144 |                 print(f"Problem importing module {filename}: {exc}", file=sys.stderr)
+145 |             else:
+146 |                 if hasattr(module, "register"):
+147 |                     module.register(linter)
+148 |                     imported[base] = 1
+```
+
+Found function `pylint/epylint.py:lint`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 75 | def lint(filename, options=()):
+ 76 |     """Pylint the given file.
+ 77 | 
+ 78 |     When run from emacs we will be in the directory of a file, and passed its
+ 79 |     filename.  If this file is part of a package and is trying to import other
+ 80 |     modules from within its own package or another package rooted in a directory
+ 81 |     below it, pylint will classify it as a failed import.
+ 82 | 
+ 83 |     To get around this, we traverse down the directory tree to find the root of
+ 84 |     the package this module is in.  We then invoke pylint from this directory.
+ 85 | 
+ 86 |     Finally, we must correct the filenames in the output generated by pylint so
+ 87 |     Emacs doesn't become confused (it will expect just the original filename,
+ 88 |     while pylint may extend it with extra directories if we've traversed down
+ 89 |     the tree)
+ 90 |     """
+ 91 |     # traverse downwards until we are out of a python package
+ 92 |     full_path = os.path.abspath(filename)
+ 93 |     parent_path = os.path.dirname(full_path)
+ 94 |     child_path = os.path.basename(full_path)
+ 95 | 
+ 96 |     while parent_path != "/" and os.path.exists(
+ 97 |         os.path.join(parent_path, "__init__.py")
+ 98 |     ):
+ 99 |         child_path = os.path.join(os.path.basename(parent_path), child_path)
+100 |         parent_path = os.path.dirname(parent_path)
+101 | 
+102 |     # Start pylint
+103 |     # Ensure we use the python and pylint associated with the running epylint
+104 |     run_cmd = "import sys; from pylint.lint import Run; Run(sys.argv[1:])"
+105 |     cmd = (
+106 |         [sys.executable, "-c", run_cmd]
+107 |         + [
+108 |             "--msg-template",
+109 |             "{path}:{line}: {category} ({msg_id}, {symbol}, {obj}) {msg}",
+110 |             "-r",
+111 |             "n",
+112 |             child_path,
+113 |         ]
+114 |         + list(options)
+115 |     )
+116 | 
+117 |     with Popen(
+118 |         cmd, stdout=PIPE, cwd=parent_path, env=_get_env(), universal_newlines=True
+119 |     ) as process:
+120 | 
+121 |         for line in process.stdout:
+122 |             # remove pylintrc warning
+123 |             if line.startswith("No config file found"):
+124 |                 continue
+125 | 
+126 |             # modify the file name thats output to reverse the path traversal we made
+127 |             parts = line.split(":")
+128 |             if parts and parts[0] == child_path:
+129 |                 line = ":".join([filename] + parts[1:])
+130 |             print(line, end=" ")
+131 | 
+132 |         process.wait()
+133 |         return process.returncode
+```
+
+Found file `pylint/config/option.py`.
+Found file `pylint/config/option_parser.py`.
+Found file `pylint/config/options_provider_mixin.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "data directory"...
+### Search Result:
+Found function `pylint/lint/parallel.py:_merge_mapreduce_data`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 91 | def _merge_mapreduce_data(linter, all_mapreduce_data):
+ 92 |     """Merges map/reduce data across workers, invoking relevant APIs on checkers"""
+ 93 |     # First collate the data, preparing it so we can send it to the checkers for
+ 94 |     # validation. The intent here is to collect all the mapreduce data for all checker-
+ 95 |     # runs across processes - that will then be passed to a static method on the
+ 96 |     # checkers to be reduced and further processed.
+ 97 |     collated_map_reduce_data = collections.defaultdict(list)
+ 98 |     for linter_data in all_mapreduce_data.values():
+ 99 |         for run_data in linter_data:
+100 |             for checker_name, data in run_data.items():
+101 |                 collated_map_reduce_data[checker_name].extend(data)
+102 | 
+103 |     # Send the data to checkers that support/require consolidated data
+104 |     original_checkers = linter.get_checkers()
+105 |     for checker in original_checkers:
+106 |         if checker.name in collated_map_reduce_data:
+107 |             # Assume that if the check has returned map/reduce data that it has the
+108 |             # reducer function
+109 |             checker.reduce_map_data(linter, collated_map_reduce_data[checker.name])
+```
+
+Found function `pylint/checkers/classes.py:_has_data_descriptor`.
+Source: Retrieved entity using keyword search (bm25).
+```
+380 | def _has_data_descriptor(cls, attr):
+381 |     attributes = cls.getattr(attr)
+382 |     for attribute in attributes:
+383 |         try:
+384 |             for inferred in attribute.infer():
+385 |                 if isinstance(inferred, astroid.Instance):
+386 |                     try:
+387 |                         inferred.getattr("__get__")
+388 |                         inferred.getattr("__set__")
+389 |                     except astroid.NotFoundError:
+390 |                         continue
+391 |                     else:
+392 |                         return True
+393 |         except astroid.InferenceError:
+394 |             # Can't infer, avoid emitting a false positive in this case.
+395 |             return True
+396 |     return False
+```
+
+Found function `pylint/checkers/mapreduce_checker.py:MapReduceMixin.get_map_data`.
+Source: Retrieved entity using keyword search (bm25).
+```
+14 | def get_map_data(self):
+15 |         """Returns mergable/reducible data that will be examined"""
+```
+
+
+
+##Searching for term "PYLINT_HOME HOME/.pylint.d user data directory config directory data directory"...
+### Search Result:
+Found file `pylint/config/option_manager_mixin.py`.
+Found file `pylint/config/configuration_mixin.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+2026-08-28 04:10:31 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:10:38 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:10:38 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:10:38 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 04:10:38 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['pylint/config/__init__.py']}))
+```
+2026-08-28 04:10:38 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `pylint/config/__init__.py`...
+### Search Result:
+Found file `pylint/config/__init__.py`.
+Source: Exact match found for entity name `pylint/config/__init__.py`.
+```
+  1 | # Copyright (c) 2006-2010, 2012-2014 LOGILAB S.A. (Paris, FRANCE) <contact@logilab.fr>
+  2 | # Copyright (c) 2008 pyves@crater.logilab.fr <pyves@crater.logilab.fr>
+  3 | # Copyright (c) 2013 Google, Inc.
+  4 | # Copyright (c) 2013 John McGehee <jmcgehee@altera.com>
+  5 | # Copyright (c) 2014-2020 Claudiu Popa <pcmanticore@gmail.com>
+  6 | # Copyright (c) 2014 Brett Cannon <brett@python.org>
+  7 | # Copyright (c) 2014 Arun Persaud <arun@nubati.net>
+  8 | # Copyright (c) 2015 Aru Sahni <arusahni@gmail.com>
+  9 | # Copyright (c) 2015 John Kirkham <jakirkham@gmail.com>
+ 10 | # Copyright (c) 2015 Ionel Cristian Maries <contact@ionelmc.ro>
+ 11 | # Copyright (c) 2016 Erik <erik.eriksson@yahoo.com>
+ 12 | # Copyright (c) 2016 Alexander Todorov <atodorov@otb.bg>
+ 13 | # Copyright (c) 2016 Moises Lopez <moylop260@vauxoo.com>
+ 14 | # Copyright (c) 2017, 2020 hippo91 <guillaume.peillex@gmail.com>
+ 15 | # Copyright (c) 2017-2019 Ville Skyttä <ville.skytta@iki.fi>
+ 16 | # Copyright (c) 2017 ahirnish <ahirnish@gmail.com>
+ 17 | # Copyright (c) 2017 Łukasz Rogalski <rogalski.91@gmail.com>
+ 18 | # Copyright (c) 2018, 2020 Anthony Sottile <asottile@umich.edu>
+ 19 | # Copyright (c) 2018 Jim Robertson <jrobertson98atx@gmail.com>
+ 20 | # Copyright (c) 2018 ssolanki <sushobhitsolanki@gmail.com>
+ 21 | # Copyright (c) 2018 Bryce Guinta <bryce.paul.guinta@gmail.com>
+ 22 | # Copyright (c) 2018 Sushobhit <31987769+sushobhit27@users.noreply.github.com>
+ 23 | # Copyright (c) 2018 Gary Tyler McLeod <mail@garytyler.com>
+ 24 | # Copyright (c) 2018 Konstantin <Github@pheanex.de>
+ 25 | # Copyright (c) 2018 Nick Drozd <nicholasdrozd@gmail.com>
+ 26 | # Copyright (c) 2019-2021 Pierre Sassoulas <pierre.sassoulas@gmail.com>
+ 27 | # Copyright (c) 2019 Janne Rönkkö <jannero@users.noreply.github.com>
+ 28 | # Copyright (c) 2019 Ashley Whetter <ashley@awhetter.co.uk>
+ 29 | # Copyright (c) 2019 Hugo van Kemenade <hugovk@users.noreply.github.com>
+ 30 | # Copyright (c) 2021 Marc Mueller <30130371+cdce8p@users.noreply.github.com>
+ 31 | 
+ 32 | # Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ 33 | # For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+ 34 | 
+ 35 | import os
+ 36 | import pickle
+ 37 | import sys
+ 38 | 
+ 39 | from pylint.config.configuration_mixin import ConfigurationMixIn
+ 40 | from pylint.config.find_default_config_files import find_default_config_files
+ 41 | from pylint.config.man_help_formatter import _ManHelpFormatter
+ 42 | from pylint.config.option import Option
+ 43 | from pylint.config.option_manager_mixin import OptionsManagerMixIn
+ 44 | from pylint.config.option_parser import OptionParser
+ 45 | from pylint.config.options_provider_mixin import OptionsProviderMixIn, UnsupportedAction
+ 46 | 
+ 47 | __all__ = [
+ 48 |     "ConfigurationMixIn",
+ 49 |     "find_default_config_files",
+ 50 |     "_ManHelpFormatter",
+ 51 |     "Option",
+ 52 |     "OptionsManagerMixIn",
+ 53 |     "OptionParser",
+ 54 |     "OptionsProviderMixIn",
+ 55 |     "UnsupportedAction",
+ 56 | ]
+ 57 | 
+ 58 | USER_HOME = os.path.expanduser("~")
+ 59 | if "PYLINTHOME" in os.environ:
+ 60 |     PYLINT_HOME = os.environ["PYLINTHOME"]
+ 61 |     if USER_HOME == "~":
+ 62 |         USER_HOME = os.path.dirname(PYLINT_HOME)
+ 63 | elif USER_HOME == "~":
+ 64 |     PYLINT_HOME = ".pylint.d"
+ 65 | else:
+ 66 |     PYLINT_HOME = os.path.join(USER_HOME, ".pylint.d")
+ 67 | 
+ 68 | 
+ 69 | def _get_pdata_path(base_name, recurs):
+ 70 |     base_name = base_name.replace(os.sep, "_")
+ 71 |     return os.path.join(PYLINT_HOME, f"{base_name}{recurs}.stats")
+ 72 | 
+ 73 | 
+ 74 | def load_results(base):
+ 75 |     data_file = _get_pdata_path(base, 1)
+ 76 |     try:
+ 77 |         with open(data_file, "rb") as stream:
+ 78 |             return pickle.load(stream)
+ 79 |     except Exception:  # pylint: disable=broad-except
+ 80 |         return {}
+ 81 | 
+ 82 | 
+ 83 | def save_results(results, base):
+ 84 |     if not os.path.exists(PYLINT_HOME):
+ 85 |         try:
+ 86 |             os.mkdir(PYLINT_HOME)
+ 87 |         except OSError:
+ 88 |             print("Unable to create directory %s" % PYLINT_HOME, file=sys.stderr)
+ 89 |     data_file = _get_pdata_path(base, 1)
+ 90 |     try:
+ 91 |         with open(data_file, "wb") as stream:
+ 92 |             pickle.dump(results, stream)
+ 93 |     except OSError as ex:
+ 94 |         print(f"Unable to create file {data_file}: {ex}", file=sys.stderr)
+ 95 | 
+ 96 | 
+ 97 | def find_pylintrc():
+ 98 |     """search the pylint rc file and return its path if it find it, else None"""
+ 99 |     for config_file in find_default_config_files():
+100 |         if config_file.endswith("pylintrc"):
+101 |             return config_file
+102 | 
+103 |     return None
+104 | 
+105 | 
+106 | PYLINTRC = find_pylintrc()
+107 | 
+108 | ENV_HELP = (
+109 |     """
+110 | The following environment variables are used:
+111 |     * PYLINTHOME
+112 |     Path to the directory where persistent data for the run will be stored. If
+113 | not found, it defaults to ~/.pylint.d/ or .pylint.d (in the current working
+114 | directory).
+115 |     * PYLINTRC
+116 |     Path to the configuration file. See the documentation for the method used
+117 | to search for configuration file.
+118 | """
+119 |     % globals()  # type: ignore
+120 | )
+121 | 
+```
+
+2026-08-28 04:10:38 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['pylint/config/find_default_config_files.py']}))
+```
+2026-08-28 04:10:38 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `pylint/config/find_default_config_files.py`...
+### Search Result:
+Found file `pylint/config/find_default_config_files.py`.
+Source: Exact match found for entity name `pylint/config/find_default_config_files.py`.
+```
+ 1 | # Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ 2 | # For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+ 3 | 
+ 4 | import configparser
+ 5 | import os
+ 6 | 
+ 7 | import toml
+ 8 | from toml.decoder import TomlDecodeError
+ 9 | 
+10 | 
+11 | def _toml_has_config(path):
+12 |     with open(path, encoding="utf-8") as toml_handle:
+13 |         try:
+14 |             content = toml.load(toml_handle)
+15 |         except TomlDecodeError as error:
+16 |             print(f"Failed to load '{path}': {error}")
+17 |             return False
+18 | 
+19 |         try:
+20 |             content["tool"]["pylint"]
+21 |         except KeyError:
+22 |             return False
+23 | 
+24 |     return True
+25 | 
+26 | 
+27 | def _cfg_has_config(path):
+28 |     parser = configparser.ConfigParser()
+29 |     parser.read(path, encoding="utf-8")
+30 |     return any(section.startswith("pylint.") for section in parser.sections())
+31 | 
+32 | 
+33 | def find_default_config_files():
+34 |     """Find all possible config files."""
+35 |     rc_names = ("pylintrc", ".pylintrc")
+36 |     config_names = rc_names + ("pyproject.toml", "setup.cfg")
+37 |     for config_name in config_names:
+38 |         if os.path.isfile(config_name):
+39 |             if config_name.endswith(".toml") and not _toml_has_config(config_name):
+40 |                 continue
+41 |             if config_name.endswith(".cfg") and not _cfg_has_config(config_name):
+42 |                 continue
+43 | 
+44 |             yield os.path.abspath(config_name)
+45 | 
+46 |     if os.path.isfile("__init__.py"):
+47 |         curdir = os.path.abspath(os.getcwd())
+48 |         while os.path.isfile(os.path.join(curdir, "__init__.py")):
+49 |             curdir = os.path.abspath(os.path.join(curdir, ".."))
+50 |             for rc_name in rc_names:
+51 |                 rc_path = os.path.join(curdir, rc_name)
+52 |                 if os.path.isfile(rc_path):
+53 |                     yield rc_path
+54 | 
+55 |     if "PYLINTRC" in os.environ and os.path.exists(os.environ["PYLINTRC"]):
+56 |         if os.path.isfile(os.environ["PYLINTRC"]):
+57 |             yield os.environ["PYLINTRC"]
+58 |     else:
+59 |         user_home = os.path.expanduser("~")
+60 |         if user_home not in ("~", "/root"):
+61 |             home_rc = os.path.join(user_home, ".pylintrc")
+62 |             if os.path.isfile(home_rc):
+63 |                 yield home_rc
+64 |             home_rc = os.path.join(user_home, ".config", "pylintrc")
+65 |             if os.path.isfile(home_rc):
+66 |                 yield home_rc
+67 | 
+68 |     if os.path.isfile("/etc/pylintrc"):
+69 |         yield "/etc/pylintrc"
+70 | 
+```
+
+2026-08-28 04:10:38 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['pylint/config/configuration_mixin.py']}))
+```
+2026-08-28 04:10:38 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `pylint/config/configuration_mixin.py`...
+### Search Result:
+Found file `pylint/config/configuration_mixin.py`.
+Source: Exact match found for entity name `pylint/config/configuration_mixin.py`.
+```
+ 1 | # Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ 2 | # For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+ 3 | 
+ 4 | from pylint.config.option_manager_mixin import OptionsManagerMixIn
+ 5 | from pylint.config.options_provider_mixin import OptionsProviderMixIn
+ 6 | 
+ 7 | 
+ 8 | class ConfigurationMixIn(OptionsManagerMixIn, OptionsProviderMixIn):
+ 9 |     """basic mixin for simple configurations which don't need the
+10 |     manager / providers model"""
+11 | 
+12 |     def __init__(self, *args, **kwargs):
+13 |         if not args:
+14 |             kwargs.setdefault("usage", "")
+15 |         OptionsManagerMixIn.__init__(self, *args, **kwargs)
+16 |         OptionsProviderMixIn.__init__(self)
+17 |         if not getattr(self, "option_groups", None):
+18 |             self.option_groups = []
+19 |             for _, optdict in self.options:
+20 |                 try:
+21 |                     gdef = (optdict["group"].upper(), "")
+22 |                 except KeyError:
+23 |                     continue
+24 |                 if gdef not in self.option_groups:
+25 |                     self.option_groups.append(gdef)
+26 |         self.register_options_provider(self, own_group=False)
+27 | 
+```
+
+2026-08-28 04:10:38 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:10:43 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:10:43 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:10:43 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 04:10:43 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['pylint/__init__.py']}))
+```
+2026-08-28 04:10:43 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `pylint/__init__.py`...
+### Search Result:
+Found file `pylint/__init__.py`.
+Source: Exact match found for entity name `pylint/__init__.py`.
+```
+ 1 | # Copyright (c) 2008, 2012 LOGILAB S.A. (Paris, FRANCE) <contact@logilab.fr>
+ 2 | # Copyright (c) 2014, 2016-2020 Claudiu Popa <pcmanticore@gmail.com>
+ 3 | # Copyright (c) 2014 Arun Persaud <arun@nubati.net>
+ 4 | # Copyright (c) 2015 Ionel Cristian Maries <contact@ionelmc.ro>
+ 5 | # Copyright (c) 2018 Nick Drozd <nicholasdrozd@gmail.com>
+ 6 | # Copyright (c) 2020-2021 Pierre Sassoulas <pierre.sassoulas@gmail.com>
+ 7 | # Copyright (c) 2021 Marc Mueller <30130371+cdce8p@users.noreply.github.com>
+ 8 | 
+ 9 | # Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+10 | # For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+11 | 
+12 | import os
+13 | import sys
+14 | 
+15 | from pylint.__pkginfo__ import __version__
+16 | 
+17 | # pylint: disable=import-outside-toplevel
+18 | 
+19 | 
+20 | def run_pylint():
+21 |     from pylint.lint import Run as PylintRun
+22 | 
+23 |     try:
+24 |         PylintRun(sys.argv[1:])
+25 |     except KeyboardInterrupt:
+26 |         sys.exit(1)
+27 | 
+28 | 
+29 | def run_epylint():
+30 |     from pylint.epylint import Run as EpylintRun
+31 | 
+32 |     EpylintRun()
+33 | 
+34 | 
+35 | def run_pyreverse():
+36 |     """run pyreverse"""
+37 |     from pylint.pyreverse.main import Run as PyreverseRun
+38 | 
+39 |     PyreverseRun(sys.argv[1:])
+40 | 
+41 | 
+42 | def run_symilar():
+43 |     """run symilar"""
+44 |     from pylint.checkers.similar import Run as SimilarRun
+45 | 
+46 |     SimilarRun(sys.argv[1:])
+47 | 
+48 | 
+49 | def modify_sys_path() -> None:
+50 |     """Modify sys path for execution as Python module.
+51 | 
+52 |     Strip out the current working directory from sys.path.
+53 |     Having the working directory in `sys.path` means that `pylint` might
+54 |     inadvertently import user code from modules having the same name as
+55 |     stdlib or pylint's own modules.
+56 |     CPython issue: https://bugs.python.org/issue33053
+57 | 
+58 |     - Remove the first entry. This will always be either "" or the working directory
+59 |     - Remove the working directory from the second and third entries
+60 |       if PYTHONPATH includes a ":" at the beginning or the end.
+61 |       https://github.com/PyCQA/pylint/issues/3636
+62 |       Don't remove it if PYTHONPATH contains the cwd or '.' as the entry will
+63 |       only be added once.
+64 |     - Don't remove the working directory from the rest. It will be included
+65 |       if pylint is installed in an editable configuration (as the last item).
+66 |       https://github.com/PyCQA/pylint/issues/4161
+67 |     """
+68 |     sys.path.pop(0)
+69 |     env_pythonpath = os.environ.get("PYTHONPATH", "")
+70 |     cwd = os.getcwd()
+71 |     if env_pythonpath.startswith(":") and env_pythonpath not in (f":{cwd}", ":."):
+72 |         sys.path.pop(0)
+73 |     elif env_pythonpath.endswith(":") and env_pythonpath not in (f"{cwd}:", ".:"):
+74 |         sys.path.pop(1)
+75 | 
+76 | 
+77 | version = __version__
+78 | __all__ = ["__version__", "version"]
+79 | 
+```
+
+2026-08-28 04:10:43 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['pylint/lint/run.py']}))
+```
+2026-08-28 04:10:43 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `pylint/lint/run.py`...
+### Search Result:
+Found file `pylint/lint/run.py`.
+Source: Exact match found for entity name `pylint/lint/run.py`.
+```
+  1 | # Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  2 | # For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+  3 | 
+  4 | import os
+  5 | import sys
+  6 | import warnings
+  7 | 
+  8 | from pylint import __pkginfo__, config, extensions, interfaces
+  9 | from pylint.constants import full_version
+ 10 | from pylint.lint.pylinter import PyLinter
+ 11 | from pylint.lint.utils import ArgumentPreprocessingError, preprocess_options
+ 12 | from pylint.utils import utils
+ 13 | 
+ 14 | try:
+ 15 |     import multiprocessing
+ 16 | except ImportError:
+ 17 |     multiprocessing = None  # type: ignore
+ 18 | 
+ 19 | 
+ 20 | def _cpu_count() -> int:
+ 21 |     """Use sched_affinity if available for virtualized or containerized environments."""
+ 22 |     sched_getaffinity = getattr(os, "sched_getaffinity", None)
+ 23 |     # pylint: disable=not-callable,using-constant-test
+ 24 |     if sched_getaffinity:
+ 25 |         return len(sched_getaffinity(0))
+ 26 |     if multiprocessing:
+ 27 |         return multiprocessing.cpu_count()
+ 28 |     return 1
+ 29 | 
+ 30 | 
+ 31 | def cb_list_extensions(option, optname, value, parser):
+ 32 |     """List all the extensions under pylint.extensions"""
+ 33 | 
+ 34 |     for filename in os.listdir(os.path.dirname(extensions.__file__)):
+ 35 |         if filename.endswith(".py") and not filename.startswith("_"):
+ 36 |             extension_name, _, _ = filename.partition(".")
+ 37 |             print(f"pylint.extensions.{extension_name}")
+ 38 |     sys.exit(0)
+ 39 | 
+ 40 | 
+ 41 | def cb_list_confidence_levels(option, optname, value, parser):
+ 42 |     for level in interfaces.CONFIDENCE_LEVELS:
+ 43 |         print("%-18s: %s" % level)
+ 44 |     sys.exit(0)
+ 45 | 
+ 46 | 
+ 47 | def cb_init_hook(optname, value):
+ 48 |     """exec arbitrary code to set sys.path for instance"""
+ 49 |     exec(value)  # pylint: disable=exec-used
+ 50 | 
+ 51 | 
+ 52 | UNUSED_PARAM_SENTINEL = object()
+ 53 | 
+ 54 | 
+ 55 | class Run:
+ 56 |     """helper class to use as main for pylint :
+ 57 | 
+ 58 |     run(*sys.argv[1:])
+ 59 |     """
+ 60 | 
+ 61 |     LinterClass = PyLinter
+ 62 |     option_groups = (
+ 63 |         (
+ 64 |             "Commands",
+ 65 |             "Options which are actually commands. Options in this \
+ 66 | group are mutually exclusive.",
+ 67 |         ),
+ 68 |     )
+ 69 | 
+ 70 |     @staticmethod
+ 71 |     def _return_one(*args):  # pylint: disable=unused-argument
+ 72 |         return 1
+ 73 | 
+ 74 |     def __init__(
+ 75 |         self,
+ 76 |         args,
+ 77 |         reporter=None,
+ 78 |         exit=True,
+ 79 |         do_exit=UNUSED_PARAM_SENTINEL,
+ 80 |     ):  # pylint: disable=redefined-builtin
+ 81 |         self._rcfile = None
+ 82 |         self._output = None
+ 83 |         self._version_asked = False
+ 84 |         self._plugins = []
+ 85 |         self.verbose = None
+ 86 |         try:
+ 87 |             preprocess_options(
+ 88 |                 args,
+ 89 |                 {
+ 90 |                     # option: (callback, takearg)
+ 91 |                     "version": (self.version_asked, False),
+ 92 |                     "init-hook": (cb_init_hook, True),
+ 93 |                     "rcfile": (self.cb_set_rcfile, True),
+ 94 |                     "load-plugins": (self.cb_add_plugins, True),
+ 95 |                     "verbose": (self.cb_verbose_mode, False),
+ 96 |                     "output": (self.cb_set_output, True),
+ 97 |                 },
+ 98 |             )
+ 99 |         except ArgumentPreprocessingError as ex:
+100 |             print(ex, file=sys.stderr)
+101 |             sys.exit(32)
+102 | 
+103 |         self.linter = linter = self.LinterClass(
+104 |             (
+105 |                 (
+106 |                     "rcfile",
+107 |                     {
+108 |                         "action": "callback",
+109 |                         "callback": Run._return_one,
+110 |                         "group": "Commands",
+111 |                         "type": "string",
+112 |                         "metavar": "<file>",
+113 |                         "help": "Specify a configuration file to load.",
+114 |                     },
+115 |                 ),
+116 |                 (
+117 |                     "output",
+118 |                     {
+119 |                         "action": "callback",
+120 |                         "callback": Run._return_one,
+121 |                         "group": "Commands",
+122 |                         "type": "string",
+123 |                         "metavar": "<file>",
+124 |                         "help": "Specify an output file.",
+125 |                     },
+126 |                 ),
+127 |                 (
+128 |                     "init-hook",
+129 |                     {
+130 |                         "action": "callback",
+131 |                         "callback": Run._return_one,
+132 |                         "type": "string",
+133 |                         "metavar": "<code>",
+134 |                         "level": 1,
+135 |                         "help": "Python code to execute, usually for sys.path "
+136 |                         "manipulation such as pygtk.require().",
+137 |                     },
+138 |                 ),
+139 |                 (
+140 |                     "help-msg",
+141 |                     {
+142 |                         "action": "callback",
+143 |                         "type": "string",
+144 |                         "metavar": "<msg-id>",
+145 |                         "callback": self.cb_help_message,
+146 |                         "group": "Commands",
+147 |                         "help": "Display a help message for the given message id and "
+148 |                         "exit. The value may be a comma separated list of message ids.",
+149 |                     },
+150 |                 ),
+151 |                 (
+152 |                     "list-msgs",
+153 |                     {
+154 |                         "action": "callback",
+155 |                         "metavar": "<msg-id>",
+156 |                         "callback": self.cb_list_messages,
+157 |                         "group": "Commands",
+158 |                         "level": 1,
+159 |                         "help": "Generate pylint's messages.",
+160 |                     },
+161 |                 ),
+162 |                 (
+163 |                     "list-msgs-enabled",
+164 |                     {
+165 |                         "action": "callback",
+166 |                         "metavar": "<msg-id>",
+167 |                         "callback": self.cb_list_messages_enabled,
+168 |                         "group": "Commands",
+169 |                         "level": 1,
+170 |                         "help": "Display a list of what messages are enabled "
+171 |                         "and disabled with the given configuration.",
+172 |                     },
+173 |                 ),
+174 |                 (
+175 |                     "list-groups",
+176 |                     {
+177 |                         "action": "callback",
+178 |                         "metavar": "<msg-id>",
+179 |                         "callback": self.cb_list_groups,
+180 |                         "group": "Commands",
+181 |                         "level": 1,
+182 |                         "help": "List pylint's message groups.",
+183 |                     },
+184 |                 ),
+185 |                 (
+186 |                     "list-conf-levels",
+187 |                     {
+188 |                         "action": "callback",
+189 |                         "callback": cb_list_confidence_levels,
+190 |                         "group": "Commands",
+191 |                         "level": 1,
+192 |                         "help": "Generate pylint's confidence levels.",
+193 |                     },
+194 |                 ),
+195 |                 (
+196 |                     "list-extensions",
+197 |                     {
+198 |                         "action": "callback",
+199 |                         "callback": cb_list_extensions,
+200 |                         "group": "Commands",
+201 |                         "level": 1,
+202 |                         "help": "List available extensions.",
+203 |                     },
+204 |                 ),
+205 |                 (
+206 |                     "full-documentation",
+207 |                     {
+208 |                         "action": "callback",
+209 |                         "metavar": "<msg-id>",
+210 |                         "callback": self.cb_full_documentation,
+211 |                         "group": "Commands",
+212 |                         "level": 1,
+213 |                         "help": "Generate pylint's full documentation.",
+214 |                     },
+215 |                 ),
+216 |                 (
+217 |                     "generate-rcfile",
+218 |                     {
+219 |                         "action": "callback",
+220 |                         "callback": self.cb_generate_config,
+221 |                         "group": "Commands",
+222 |                         "help": "Generate a sample configuration file according to "
+223 |                         "the current configuration. You can put other options "
+224 |                         "before this one to get them in the generated "
+225 |                         "configuration.",
+226 |                     },
+227 |                 ),
+228 |                 (
+229 |                     "generate-man",
+230 |                     {
+231 |                         "action": "callback",
+232 |                         "callback": self.cb_generate_manpage,
+233 |                         "group": "Commands",
+234 |                         "help": "Generate pylint's man page.",
+235 |                         "hide": True,
+236 |                     },
+237 |                 ),
+238 |                 (
+239 |                     "errors-only",
+240 |                     {
+241 |                         "action": "callback",
+242 |                         "callback": self.cb_error_mode,
+243 |                         "short": "E",
+244 |                         "help": "In error mode, checkers without error messages are "
+245 |                         "disabled and for others, only the ERROR messages are "
+246 |                         "displayed, and no reports are done by default.",
+247 |                     },
+248 |                 ),
+249 |                 (
+250 |                     "py3k",
+251 |                     {
+252 |                         "action": "callback",
+253 |                         "callback": self.cb_python3_porting_mode,
+254 |                         "help": "In Python 3 porting mode, all checkers will be "
+255 |                         "disabled and only messages emitted by the porting "
+256 |                         "checker will be displayed.",
+257 |                     },
+258 |                 ),
+259 |                 (
+260 |                     "verbose",
+261 |                     {
+262 |                         "action": "callback",
+263 |                         "callback": self.cb_verbose_mode,
+264 |                         "short": "v",
+265 |                         "help": "In verbose mode, extra non-checker-related info "
+266 |                         "will be displayed.",
+267 |                     },
+268 |                 ),
+269 |             ),
+270 |             option_groups=self.option_groups,
+271 |             pylintrc=self._rcfile,
+272 |         )
+273 |         # register standard checkers
+274 |         if self._version_asked:
+275 |             print(full_version)
+276 |             sys.exit(0)
+277 |         linter.load_default_plugins()
+278 |         # load command line plugins
+279 |         linter.load_plugin_modules(self._plugins)
+280 |         # add some help section
+281 |         linter.add_help_section("Environment variables", config.ENV_HELP, level=1)
+282 |         linter.add_help_section(
+283 |             "Output",
+284 |             "Using the default text output, the message format is :                          \n"
+285 |             "                                                                                \n"
+286 |             "        MESSAGE_TYPE: LINE_NUM:[OBJECT:] MESSAGE                                \n"
+287 |             "                                                                                \n"
+288 |             "There are 5 kind of message types :                                             \n"
+289 |             "    * (C) convention, for programming standard violation                        \n"
+290 |             "    * (R) refactor, for bad code smell                                          \n"
+291 |             "    * (W) warning, for python specific problems                                 \n"
+292 |             "    * (E) error, for probable bugs in the code                                  \n"
+293 |             "    * (F) fatal, if an error occurred which prevented pylint from doing further\n"
+294 |             "processing.\n",
+295 |             level=1,
+296 |         )
+297 |         linter.add_help_section(
+298 |             "Output status code",
+299 |             "Pylint should leave with following status code:                                 \n"
+300 |             "    * 0 if everything went fine                                                 \n"
+301 |             "    * 1 if a fatal message was issued                                           \n"
+302 |             "    * 2 if an error message was issued                                          \n"
+303 |             "    * 4 if a warning message was issued                                         \n"
+304 |             "    * 8 if a refactor message was issued                                        \n"
+305 |             "    * 16 if a convention message was issued                                     \n"
+306 |             "    * 32 on usage error                                                         \n"
+307 |             "                                                                                \n"
+308 |             "status 1 to 16 will be bit-ORed so you can know which different categories has\n"
+309 |             "been issued by analysing pylint output status code\n",
+310 |             level=1,
+311 |         )
+312 |         # read configuration
+313 |         linter.disable("I")
+314 |         linter.enable("c-extension-no-member")
+315 |         try:
+316 |             linter.read_config_file(verbose=self.verbose)
+317 |         except OSError as ex:
+318 |             print(ex, file=sys.stderr)
+319 |             sys.exit(32)
+320 | 
+321 |         config_parser = linter.cfgfile_parser
+322 |         # run init hook, if present, before loading plugins
+323 |         if config_parser.has_option("MASTER", "init-hook"):
+324 |             cb_init_hook(
+325 |                 "init-hook", utils._unquote(config_parser.get("MASTER", "init-hook"))
+326 |             )
+327 |         # is there some additional plugins in the file configuration, in
+328 |         if config_parser.has_option("MASTER", "load-plugins"):
+329 |             plugins = utils._splitstrip(config_parser.get("MASTER", "load-plugins"))
+330 |             linter.load_plugin_modules(plugins)
+331 |         # now we can load file config and command line, plugins (which can
+332 |         # provide options) have been registered
+333 |         linter.load_config_file()
+334 | 
+335 |         if reporter:
+336 |             # if a custom reporter is provided as argument, it may be overridden
+337 |             # by file parameters, so re-set it here, but before command line
+338 |             # parsing so it's still overrideable by command line option
+339 |             linter.set_reporter(reporter)
+340 |         try:
+341 |             args = linter.load_command_line_configuration(args)
+342 |         except SystemExit as exc:
+343 |             if exc.code == 2:  # bad options
+344 |                 exc.code = 32
+345 |             raise
+346 |         if not args:
+347 |             print(linter.help())
+348 |             sys.exit(32)
+349 | 
+350 |         if linter.config.jobs < 0:
+351 |             print(
+352 |                 "Jobs number (%d) should be greater than or equal to 0"
+353 |                 % linter.config.jobs,
+354 |                 file=sys.stderr,
+355 |             )
+356 |             sys.exit(32)
+357 |         if linter.config.jobs > 1 or linter.config.jobs == 0:
+358 |             if multiprocessing is None:
+359 |                 print(
+360 |                     "Multiprocessing library is missing, fallback to single process",
+361 |                     file=sys.stderr,
+362 |                 )
+363 |                 linter.set_option("jobs", 1)
+364 |             elif linter.config.jobs == 0:
+365 |                 linter.config.jobs = _cpu_count()
+366 | 
+367 |         # We have loaded configuration from config file and command line. Now, we can
+368 |         # load plugin specific configuration.
+369 |         linter.load_plugin_configuration()
+370 | 
+371 |         # Now that plugins are loaded, get list of all fail_on messages, and enable them
+372 |         linter.enable_fail_on_messages()
+373 | 
+374 |         if self._output:
+375 |             try:
+376 |                 with open(self._output, "w", encoding="utf-8") as output:
+377 |                     linter.reporter.set_output(output)
+378 |                     linter.check(args)
+379 |                     score_value = linter.generate_reports()
+380 |             except OSError as ex:
+381 |                 print(ex, file=sys.stderr)
+382 |                 sys.exit(32)
+383 |         else:
+384 |             linter.check(args)
+385 |             score_value = linter.generate_reports()
+386 | 
+387 |         if do_exit is not UNUSED_PARAM_SENTINEL:
+388 |             warnings.warn(
+389 |                 "do_exit is deprecated and it is going to be removed in a future version.",
+390 |                 DeprecationWarning,
+391 |             )
+392 |             exit = do_exit
+393 | 
+394 |         if exit:
+395 |             if linter.config.exit_zero:
+396 |                 sys.exit(0)
+397 |             elif linter.any_fail_on_issues():
+398 |                 # We need to make sure we return a failing exit code in this case.
+399 |                 # So we use self.linter.msg_status if that is non-zero, otherwise we just return 1.
+400 |                 sys.exit(self.linter.msg_status or 1)
+401 |             elif score_value is not None and score_value >= linter.config.fail_under:
+402 |                 sys.exit(0)
+403 |             else:
+404 |                 sys.exit(self.linter.msg_status)
+405 | 
+406 |     def version_asked(self, _, __):
+407 |         """callback for version (i.e. before option parsing)"""
+408 |         self._version_asked = True
+409 | 
+410 |     def cb_set_rcfile(self, name, value):
+411 |         """callback for option preprocessing (i.e. before option parsing)"""
+412 |         self._rcfile = value
+413 | 
+414 |     def cb_set_output(self, name, value):
+415 |         """callback for option preprocessing (i.e. before option parsing)"""
+416 |         self._output = value
+417 | 
+418 |     def cb_add_plugins(self, name, value):
+419 |         """callback for option preprocessing (i.e. before option parsing)"""
+420 |         self._plugins.extend(utils._splitstrip(value))
+421 | 
+422 |     def cb_error_mode(self, *args, **kwargs):
+423 |         """error mode:
+424 |         * disable all but error messages
+425 |         * disable the 'miscellaneous' checker which can be safely deactivated in
+426 |           debug
+427 |         * disable reports
+428 |         * do not save execution information
+429 |         """
+430 |         self.linter.error_mode()
+431 | 
+432 |     def cb_generate_config(self, *args, **kwargs):
+433 |         """optik callback for sample config file generation"""
+434 |         self.linter.generate_config(skipsections=("COMMANDS",))
+435 |         sys.exit(0)
+436 | 
+437 |     def cb_generate_manpage(self, *args, **kwargs):
+438 |         """optik callback for sample config file generation"""
+439 |         self.linter.generate_manpage(__pkginfo__)
+440 |         sys.exit(0)
+441 | 
+442 |     def cb_help_message(self, option, optname, value, parser):
+443 |         """optik callback for printing some help about a particular message"""
+444 |         self.linter.msgs_store.help_message(utils._splitstrip(value))
+445 |         sys.exit(0)
+446 | 
+447 |     def cb_full_documentation(self, option, optname, value, parser):
+448 |         """optik callback for printing full documentation"""
+449 |         self.linter.print_full_documentation()
+450 |         sys.exit(0)
+451 | 
+452 |     def cb_list_messages(self, option, optname, value, parser):
+453 |         """optik callback for printing available messages"""
+454 |         self.linter.msgs_store.list_messages()
+455 |         sys.exit(0)
+456 | 
+457 |     def cb_list_messages_enabled(self, option, optname, value, parser):
+458 |         """optik callback for printing available messages"""
+459 |         self.linter.list_messages_enabled()
+460 |         sys.exit(0)
+461 | 
+462 |     def cb_list_groups(self, *args, **kwargs):
+463 |         """List all the check groups that pylint knows about
+464 | 
+465 |         These should be useful to know what check groups someone can disable
+466 |         or enable.
+467 |         """
+468 |         for check in self.linter.get_checker_names():
+469 |             print(check)
+470 |         sys.exit(0)
+471 | 
+472 |     def cb_python3_porting_mode(self, *args, **kwargs):
+473 |         """Activate only the python3 porting checker."""
+474 |         self.linter.python3_porting_mode()
+475 | 
+476 |     def cb_verbose_mode(self, *args, **kwargs):
+477 |         self.verbose = True
+478 | 
+```
+
+2026-08-28 04:10:43 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['pylint/utils/utils.py']}))
+```
+2026-08-28 04:10:43 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `pylint/utils/utils.py`...
+### Search Result:
+Found file `pylint/utils/utils.py`.
+Source: Exact match found for entity name `pylint/utils/utils.py`.
+```
+  1 | # Licensed under the GPL: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  2 | # For details: https://github.com/PyCQA/pylint/blob/main/LICENSE
+  3 | 
+  4 | 
+  5 | try:
+  6 |     import isort.api
+  7 | 
+  8 |     HAS_ISORT_5 = True
+  9 | except ImportError:  # isort < 5
+ 10 |     import isort
+ 11 | 
+ 12 |     HAS_ISORT_5 = False
+ 13 | 
+ 14 | import codecs
+ 15 | import os
+ 16 | import re
+ 17 | import sys
+ 18 | import textwrap
+ 19 | import tokenize
+ 20 | 
+ 21 | from astroid import Module, modutils
+ 22 | 
+ 23 | from pylint.constants import PY_EXTS
+ 24 | 
+ 25 | DEFAULT_LINE_LENGTH = 79
+ 26 | 
+ 27 | 
+ 28 | def normalize_text(text, line_len=DEFAULT_LINE_LENGTH, indent=""):
+ 29 |     """Wrap the text on the given line length."""
+ 30 |     return "\n".join(
+ 31 |         textwrap.wrap(
+ 32 |             text, width=line_len, initial_indent=indent, subsequent_indent=indent
+ 33 |         )
+ 34 |     )
+ 35 | 
+ 36 | 
+ 37 | CMPS = ["=", "-", "+"]
+ 38 | 
+ 39 | 
+ 40 | # py3k has no more cmp builtin
+ 41 | def cmp(a, b):  # pylint: disable=redefined-builtin
+ 42 |     return (a > b) - (a < b)
+ 43 | 
+ 44 | 
+ 45 | def diff_string(old, new):
+ 46 |     """given an old and new int value, return a string representing the
+ 47 |     difference
+ 48 |     """
+ 49 |     diff = abs(old - new)
+ 50 |     diff_str = "{}{}".format(CMPS[cmp(old, new)], diff and ("%.2f" % diff) or "")
+ 51 |     return diff_str
+ 52 | 
+ 53 | 
+ 54 | def get_module_and_frameid(node):
+ 55 |     """return the module name and the frame id in the module"""
+ 56 |     frame = node.frame()
+ 57 |     module, obj = "", []
+ 58 |     while frame:
+ 59 |         if isinstance(frame, Module):
+ 60 |             module = frame.name
+ 61 |         else:
+ 62 |             obj.append(getattr(frame, "name", "<lambda>"))
+ 63 |         try:
+ 64 |             frame = frame.parent.frame()
+ 65 |         except AttributeError:
+ 66 |             frame = None
+ 67 |     obj.reverse()
+ 68 |     return module, ".".join(obj)
+ 69 | 
+ 70 | 
+ 71 | def get_rst_title(title, character):
+ 72 |     """Permit to get a title formatted as ReStructuredText test (underlined with a chosen character)."""
+ 73 |     return f"{title}\n{character * len(title)}\n"
+ 74 | 
+ 75 | 
+ 76 | def get_rst_section(section, options, doc=None):
+ 77 |     """format an options section using as a ReStructuredText formatted output"""
+ 78 |     result = ""
+ 79 |     if section:
+ 80 |         result += get_rst_title(section, "'")
+ 81 |     if doc:
+ 82 |         formatted_doc = normalize_text(doc)
+ 83 |         result += "%s\n\n" % formatted_doc
+ 84 |     for optname, optdict, value in options:
+ 85 |         help_opt = optdict.get("help")
+ 86 |         result += ":%s:\n" % optname
+ 87 |         if help_opt:
+ 88 |             formatted_help = normalize_text(help_opt, indent="  ")
+ 89 |             result += "%s\n" % formatted_help
+ 90 |         if value:
+ 91 |             value = str(_format_option_value(optdict, value))
+ 92 |             result += "\n  Default: ``%s``\n" % value.replace("`` ", "```` ``")
+ 93 |     return result
+ 94 | 
+ 95 | 
+ 96 | def safe_decode(line, encoding, *args, **kwargs):
+ 97 |     """return decoded line from encoding or decode with default encoding"""
+ 98 |     try:
+ 99 |         return line.decode(encoding or sys.getdefaultencoding(), *args, **kwargs)
+100 |     except LookupError:
+101 |         return line.decode(sys.getdefaultencoding(), *args, **kwargs)
+102 | 
+103 | 
+104 | def decoding_stream(stream, encoding, errors="strict"):
+105 |     try:
+106 |         reader_cls = codecs.getreader(encoding or sys.getdefaultencoding())
+107 |     except LookupError:
+108 |         reader_cls = codecs.getreader(sys.getdefaultencoding())
+109 |     return reader_cls(stream, errors)
+110 | 
+111 | 
+112 | def tokenize_module(module):
+113 |     with module.stream() as stream:
+114 |         readline = stream.readline
+115 |         return list(tokenize.tokenize(readline))
+116 | 
+117 | 
+118 | def register_plugins(linter, directory):
+119 |     """load all module and package in the given directory, looking for a
+120 |     'register' function in each one, used to register pylint checkers
+121 |     """
+122 |     imported = {}
+123 |     for filename in os.listdir(directory):
+124 |         base, extension = os.path.splitext(filename)
+125 |         if base in imported or base == "__pycache__":
+126 |             continue
+127 |         if (
+128 |             extension in PY_EXTS
+129 |             and base != "__init__"
+130 |             or (
+131 |                 not extension
+132 |                 and os.path.isdir(os.path.join(directory, base))
+133 |                 and not filename.startswith(".")
+134 |             )
+135 |         ):
+136 |             try:
+137 |                 module = modutils.load_module_from_file(
+138 |                     os.path.join(directory, filename)
+139 |                 )
+140 |             except ValueError:
+141 |                 # empty module name (usually emacs auto-save files)
+142 |                 continue
+143 |             except ImportError as exc:
+144 |                 print(f"Problem importing module {filename}: {exc}", file=sys.stderr)
+145 |             else:
+146 |                 if hasattr(module, "register"):
+147 |                     module.register(linter)
+148 |                     imported[base] = 1
+149 | 
+150 | 
+151 | def get_global_option(checker, option, default=None):
+152 |     """Retrieve an option defined by the given *checker* or
+153 |     by all known option providers.
+154 | 
+155 |     It will look in the list of all options providers
+156 |     until the given *option* will be found.
+157 |     If the option wasn't found, the *default* value will be returned.
+158 |     """
+159 |     # First, try in the given checker's config.
+160 |     # After that, look in the options providers.
+161 | 
+162 |     try:
+163 |         return getattr(checker.config, option.replace("-", "_"))
+164 |     except AttributeError:
+165 |         pass
+166 |     for provider in checker.linter.options_providers:
+167 |         for options in provider.options:
+168 |             if options[0] == option:
+169 |                 return getattr(provider.config, option.replace("-", "_"))
+170 |     return default
+171 | 
+172 | 
+173 | def deprecated_option(
+174 |     shortname=None, opt_type=None, help_msg=None, deprecation_msg=None
+175 | ):
+176 |     def _warn_deprecated(option, optname, *args):  # pylint: disable=unused-argument
+177 |         if deprecation_msg:
+178 |             sys.stderr.write(deprecation_msg % (optname,))
+179 | 
+180 |     option = {
+181 |         "help": help_msg,
+182 |         "hide": True,
+183 |         "type": opt_type,
+184 |         "action": "callback",
+185 |         "callback": _warn_deprecated,
+186 |         "deprecated": True,
+187 |     }
+188 |     if shortname:
+189 |         option["shortname"] = shortname
+190 |     return option
+191 | 
+192 | 
+193 | def _splitstrip(string, sep=","):
+194 |     """return a list of stripped string by splitting the string given as
+195 |     argument on `sep` (',' by default). Empty string are discarded.
+196 | 
+197 |     >>> _splitstrip('a, b, c   ,  4,,')
+198 |     ['a', 'b', 'c', '4']
+199 |     >>> _splitstrip('a')
+200 |     ['a']
+201 |     >>> _splitstrip('a,\nb,\nc,')
+202 |     ['a', 'b', 'c']
+203 | 
+204 |     :type string: str or unicode
+205 |     :param string: a csv line
+206 | 
+207 |     :type sep: str or unicode
+208 |     :param sep: field separator, default to the comma (',')
+209 | 
+210 |     :rtype: str or unicode
+211 |     :return: the unquoted string (or the input string if it wasn't quoted)
+212 |     """
+213 |     return [word.strip() for word in string.split(sep) if word.strip()]
+214 | 
+215 | 
+216 | def _unquote(string):
+217 |     """remove optional quotes (simple or double) from the string
+218 | 
+219 |     :type string: str or unicode
+220 |     :param string: an optionally quoted string
+221 | 
+222 |     :rtype: str or unicode
+223 |     :return: the unquoted string (or the input string if it wasn't quoted)
+224 |     """
+225 |     if not string:
+226 |         return string
+227 |     if string[0] in "\"'":
+228 |         string = string[1:]
+229 |     if string[-1] in "\"'":
+230 |         string = string[:-1]
+231 |     return string
+232 | 
+233 | 
+234 | def _check_csv(value):
+235 |     if isinstance(value, (list, tuple)):
+236 |         return value
+237 |     return _splitstrip(value)
+238 | 
+239 | 
+240 | def _comment(string):
+241 |     """return string as a comment"""
+242 |     lines = [line.strip() for line in string.splitlines()]
+243 |     return "# " + ("%s# " % os.linesep).join(lines)
+244 | 
+245 | 
+246 | def _format_option_value(optdict, value):
+247 |     """return the user input's value from a 'compiled' value"""
+248 |     if optdict.get("type", None) == "py_version":
+249 |         value = ".".join(str(item) for item in value)
+250 |     elif isinstance(value, (list, tuple)):
+251 |         value = ",".join(_format_option_value(optdict, item) for item in value)
+252 |     elif isinstance(value, dict):
+253 |         value = ",".join(f"{k}:{v}" for k, v in value.items())
+254 |     elif hasattr(value, "match"):  # optdict.get('type') == 'regexp'
+255 |         # compiled regexp
+256 |         value = value.pattern
+257 |     elif optdict.get("type") == "yn":
+258 |         value = "yes" if value else "no"
+259 |     elif isinstance(value, str) and value.isspace():
+260 |         value = "'%s'" % value
+261 |     return value
+262 | 
+263 | 
+264 | def format_section(stream, section, options, doc=None):
+265 |     """format an options section using the INI format"""
+266 |     if doc:
+267 |         print(_comment(doc), file=stream)
+268 |     print("[%s]" % section, file=stream)
+269 |     _ini_format(stream, options)
+270 | 
+271 | 
+272 | def _ini_format(stream, options):
+273 |     """format options using the INI format"""
+274 |     for optname, optdict, value in options:
+275 |         value = _format_option_value(optdict, value)
+276 |         help_opt = optdict.get("help")
+277 |         if help_opt:
+278 |             help_opt = normalize_text(help_opt, indent="# ")
+279 |             print(file=stream)
+280 |             print(help_opt, file=stream)
+281 |         else:
+282 |             print(file=stream)
+283 |         if value is None:
+284 |             print("#%s=" % optname, file=stream)
+285 |         else:
+286 |             value = str(value).strip()
+287 |             if re.match(r"^([\w-]+,)+[\w-]+$", str(value)):
+288 |                 separator = "\n " + " " * len(optname)
+289 |                 value = separator.join(x + "," for x in str(value).split(","))
+290 |                 # remove trailing ',' from last element of the list
+291 |                 value = value[:-1]
+292 |             print(f"{optname}={value}", file=stream)
+293 | 
+294 | 
+295 | class IsortDriver:
+296 |     """A wrapper around isort API that changed between versions 4 and 5."""
+297 | 
+298 |     def __init__(self, config):
+299 |         if HAS_ISORT_5:
+300 |             self.isort5_config = isort.api.Config(
+301 |                 # There is not typo here. EXTRA_standard_library is
+302 |                 # what most users want. The option has been named
+303 |                 # KNOWN_standard_library for ages in pylint and we
+304 |                 # don't want to break compatibility.
+305 |                 extra_standard_library=config.known_standard_library,
+306 |                 known_third_party=config.known_third_party,
+307 |             )
+308 |         else:
+309 |             self.isort4_obj = isort.SortImports(  # pylint: disable=no-member
+310 |                 file_contents="",
+311 |                 known_standard_library=config.known_standard_library,
+312 |                 known_third_party=config.known_third_party,
+313 |             )
+314 | 
+315 |     def place_module(self, package):
+316 |         if HAS_ISORT_5:
+317 |             return isort.api.place_module(package, self.isort5_config)
+318 |         return self.isort4_obj.place_module(package)
+319 | 
+```
+
+2026-08-28 04:10:43 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:10:47 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:10:47 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:10:47 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 04:10:47 auto_search_main.py INFO ===============
+2026-08-28 04:10:47 auto_search_main.py INFO Final response generated content_length=128
+2026-08-28 04:10:47 auto_search_main.py INFO ==== localizing pylint-dev__pylint-4661 succeed, process multiple loc outputs ====
+2026-08-28 04:10:47 cost_analysis.py INFO input_tokens=113302, output_tokens=571, cost=0.28
+2026-08-28 04:10:47 auto_search_main.py INFO Total time: 1.0604 min

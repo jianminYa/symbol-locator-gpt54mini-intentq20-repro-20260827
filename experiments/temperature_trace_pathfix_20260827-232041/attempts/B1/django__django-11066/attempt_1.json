@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-08-28T02:42:33.967896+00:00",
+  "face": "B1",
+  "instance_id": "django__django-11066",
+  "attempt": 1,
+  "elapsed_seconds": 450.043,
+  "return_code": 0,
+  "category": "success",
+  "timeout": false,
+  "output_written": true,
+  "pyright_seen": true,
+  "pyright_warmup_success": true,
+  "pyright_warmup_failure": false,
+  "find_symbol_seen": true,
+  "find_symbol_nonempty": true,
+  "symbol_locator_installed": false,
+  "trace_root": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/B1/traces/django__django-11066_attempt_1",
+  "trace_complete": true,
+  "trace_jsonl_valid": true,
+  "trace_instance_id_correct": true,
+  "stdout_path": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/attempts/B1/django__django-11066/attempt_1.stdout.log",
+  "stderr_path": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/attempts/B1/django__django-11066/attempt_1.stderr.log"
+}

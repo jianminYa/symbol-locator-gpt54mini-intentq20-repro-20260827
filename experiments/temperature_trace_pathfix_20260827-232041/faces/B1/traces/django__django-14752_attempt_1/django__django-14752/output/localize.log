@@ -1,0 +1,2649 @@
+2026-08-28 04:53:18 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 04:53:18 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 04:53:18 auto_search_main.py INFO ============================================================
+2026-08-28 04:53:18 auto_search_main.py INFO ==== rank 0 setup localize django__django-14752 ====
+2026-08-28 04:53:18 install.py INFO hook: set_current_issue fired
+2026-08-28 04:53:18 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/86586e3e-c89f-456f-819c-686bbc4c5716/django_django and checkout commit HEAD
+2026-08-28 04:53:18 git_repo_manager.py INFO Directory 'playground/86586e3e-c89f-456f-819c-686bbc4c5716/django_django' was created.
+2026-08-28 04:53:18 install.py INFO setup_repo returned: playground/86586e3e-c89f-456f-819c-686bbc4c5716/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-14752
+2026-08-28 04:53:29 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-14752 files=2000 indexed=2000 failed=0
+2026-08-28 04:57:25 repo_ops.py INFO [0] Processed django__django-14752
+2026-08-28 04:57:25 auto_search_main.py INFO ============================================================
+2026-08-28 04:57:25 auto_search_main.py INFO ==== rank 0 begin localizing django__django-14752 ====
+2026-08-28 04:57:25 auto_search_main.py INFO ============================================================
+2026-08-28 04:57:25 auto_search_main.py INFO ==== django__django-14752 Count down: attempt 1 ====
+2026-08-28 04:57:25 auto_search_main.py INFO ==== django__django-14752 start auto search ====
+2026-08-28 04:57:35 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:59:25 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:59:25 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:59:25 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 04:59:25 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'AutocompleteJsonView', 'kind_filter': [5, 12], 'context': 'django admin autocomplete view', 'top_k': 5}))
+```
+2026-08-28 04:59:27 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:59:38 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:59:38 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:59:38 auto_search_main.py INFO OBSERVATION:
+Found 2 candidates for `AutocompleteJsonView`. Showing top 2 by relevance:
+1. [score=97] AutocompleteJsonView
+   django/contrib/admin/views/autocomplete.py:7
+   from django.apps import apps
+   from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+   from django.http import Http404, JsonResponse
+   from django.views.generic.list import BaseListView
+   
+   
+   class AutocompleteJsonView(BaseListView):
+       """Handle AutocompleteWidget's AJAX requests for data."""
+       paginate_by = 20
+       admin_site = None
+   
+       def get(self, request, *args, **kwargs):
+           """
+           Return a JsonResponse with search results of the form:
+           {
+               results: [{id: "123" text: "foo"}],
+               pagination: {more: true}
+           }
+           """
+           self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+   
+           if not self.has_perm(request):
+2. [score=52] AutocompleteJsonViewTests
+   tests/admin_views/test_autocomplete_view.py:64
+   
+   
+   @contextmanager
+   def model_admin(model, model_admin, admin_site=site):
+       org_admin = admin_site._registry.get(model)
+       if org_admin:
+           admin_site.unregister(model)
+       admin_site.register(model, model_admin)
+       try:
+           yield
+       finally:
+           if org_admin:
+               admin_site._registry[model] = org_admin
+   
+   
+   class AutocompleteJsonViewTests(AdminViewBasicTestCase):
+       as_view_args = {'admin_site': site}
+       opts = {
+           'app_label': Answer._meta.app_label,
+           'model_name': Answer._meta.model_name,
+           'field_name': 'question'
+       }
+       factory = RequestFactory()
+       url = reverse_lazy('autocomplete_admin:autocomplete')
+   
+       @classmethod
+       def setUpTestData(cls):
+           cls.user = User.objects.create_user(
+               username='user', password='secret',
+               email='user@example.com', is_staff=True,
+           )
+[symbol-locator] [scorer] usage pid=843388 calls=1 p=9528 c=22
+[symbol-locator] [scorer] parsed 2/2 scores from LLM
+
+2026-08-28 04:59:38 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['AutocompleteJsonView', 'autocomplete view', 'results', 'pagination', 'serialize_result'], 'file_path_or_pattern': '**/django/**/*.py'}))
+```
+2026-08-28 04:59:40 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:59:41 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/86586e3e-c89f-456f-819c-686bbc4c5716/django_django and checkout commit HEAD
+2026-08-28 04:59:41 install.py INFO setup_repo returned: playground/86586e3e-c89f-456f-819c-686bbc4c5716/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-14752
+2026-08-28 04:59:41 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-14752 files=0 indexed=0 failed=0
+2026-08-28 04:59:44 epic_split.py WARNING Skipping code block LANG_INFO._ in django/conf/locale/__init__.py as it has 4205 tokens which is more than chunk size 500. Content: {
+    'af': {
+        'bidi': False,
+        'code': 'af',
+        'name': 'Afrikaans',
+        'nam...
+2026-08-28 05:01:02 epic_split.py WARNING Parsing file django/db/models/sql/compiler.py took 1.26 seconds.
+2026-08-28 05:01:14 epic_split.py WARNING Parsing file django/utils/_os.py took 1.01 seconds.
+2026-08-28 05:01:24 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:01:26 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:01:27 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:01:29 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:01:30 auto_search_main.py INFO OBSERVATION:
+django/contrib/admin/sites.py:AdminSite.get_urls
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_queryset
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_paginator
+django/contrib/admin/widgets.py:AutocompleteSelectMultiple
+django/contrib/admin/widgets.py:AutocompleteSelect
+django/contrib/admin/widgets.py:AutocompleteMixin.media
+django/contrib/admin/widgets.py:AutocompleteMixin.build_attrs
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.process_request
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.has_perm
+django/contrib/auth/forms.py:SetPasswordForm.__init__
+django/contrib/auth/forms.py:SetPasswordForm.clean_new_password2
+django/contrib/auth/forms.py:SetPasswordForm
+django/contrib/auth/forms.py:SetPasswordForm.save
+django/core/management/__init__.py:ManagementUtility.autocomplete
+django/contrib/auth/forms.py:AdminPasswordChangeForm.clean_password2
+django/contrib/auth/forms.py:AdminPasswordChangeForm.__init__
+django/contrib/auth/forms.py:AdminPasswordChangeForm.save
+django/contrib/auth/forms.py:AdminPasswordChangeForm
+django/contrib/auth/forms.py:AdminPasswordChangeForm.changed_data
+django/contrib/staticfiles/storage.py:impl
+django/contrib/staticfiles/storage.py:ManifestStaticFilesStorage
+django/contrib/staticfiles/storage.py:ConfiguredStorage._setup
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.stored_name
+django/contrib/staticfiles/storage.py:ConfiguredStorage
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.save_manifest
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.post_process
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.load_manifest
+django/contrib/staticfiles/storage.py:ManifestFilesMixin
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.__init__
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.read_manifest
+django/contrib/syndication/views.py:Feed._get_dynamic_attr
+django/contrib/staticfiles/utils.py:check_settings
+django/contrib/syndication/views.py:Feed
+django/contrib/syndication/views.py:Feed.__call__
+django/contrib/admin/sites.py:AdminSite.get_urls
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_queryset
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_paginator
+django/contrib/admin/widgets.py:AutocompleteSelectMultiple
+django/contrib/admin/widgets.py:AutocompleteSelect
+django/contrib/admin/widgets.py:AutocompleteMixin.media
+django/contrib/admin/widgets.py:AutocompleteMixin.build_attrs
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.process_request
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.has_perm
+django/contrib/auth/forms.py:SetPasswordForm.__init__
+django/contrib/auth/forms.py:SetPasswordForm.clean_new_password2
+django/contrib/auth/forms.py:SetPasswordForm
+django/contrib/auth/forms.py:SetPasswordForm.save
+django/core/management/__init__.py:ManagementUtility.autocomplete
+django/contrib/auth/forms.py:AdminPasswordChangeForm.clean_password2
+django/contrib/auth/forms.py:AdminPasswordChangeForm.__init__
+django/contrib/auth/forms.py:AdminPasswordChangeForm.save
+django/contrib/auth/forms.py:AdminPasswordChangeForm
+django/contrib/auth/forms.py:AdminPasswordChangeForm.changed_data
+No files found for file pattern '**/django/**/*.py'. Will search all files.
+...
+##Searching for term "AutocompleteJsonView", "autocomplete view", "autocomplete view serialize_result"...
+### Search Result:
+Found class `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`.
+Source: Match found for entity name `AutocompleteJsonView`.
+```
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+ 34 | 
+ 35 |     def get_paginator(self, *args, **kwargs):
+ 36 |         """Use the ModelAdmin's paginator."""
+ 37 |         return self.model_admin.get_paginator(self.request, *args, **kwargs)
+ 38 | 
+ 39 |     def get_queryset(self):
+ 40 |         """Return queryset based on ModelAdmin.get_search_results()."""
+ 41 |         qs = self.model_admin.get_queryset(self.request)
+ 42 |         qs = qs.complex_filter(self.source_field.get_limit_choices_to())
+ 43 |         qs, search_use_distinct = self.model_admin.get_search_results(self.request, qs, self.term)
+ 44 |         if search_use_distinct:
+ 45 |             qs = qs.distinct()
+ 46 |         return qs
+ 47 | 
+ 48 |     def process_request(self, request):
+ 49 |         """
+ 50 |         Validate request integrity, extract and return request parameters.
+ 51 | 
+ 52 |         Since the subsequent view permission check requires the target model
+ 53 |         admin, which is determined here, raise PermissionDenied if the
+ 54 |         requested app, model or field are malformed.
+ 55 | 
+ 56 |         Raise Http404 if the target model admin is not configured properly with
+ 57 |         search_fields.
+ 58 |         """
+ 59 |         term = request.GET.get('term', '')
+ 60 |         try:
+ 61 |             app_label = request.GET['app_label']
+ 62 |             model_name = request.GET['model_name']
+ 63 |             field_name = request.GET['field_name']
+ 64 |         except KeyError as e:
+ 65 |             raise PermissionDenied from e
+ 66 | 
+ 67 |         # Retrieve objects from parameters.
+ 68 |         try:
+ 69 |             source_model = apps.get_model(app_label, model_name)
+ 70 |         except LookupError as e:
+ 71 |             raise PermissionDenied from e
+ 72 | 
+ 73 |         try:
+ 74 |             source_field = source_model._meta.get_field(field_name)
+ 75 |         except FieldDoesNotExist as e:
+ 76 |             raise PermissionDenied from e
+ 77 |         try:
+ 78 |             remote_model = source_field.remote_field.model
+ 79 |         except AttributeError as e:
+ 80 |             raise PermissionDenied from e
+ 81 |         try:
+ 82 |             model_admin = self.admin_site._registry[remote_model]
+ 83 |         except KeyError as e:
+ 84 |             raise PermissionDenied from e
+ 85 | 
+ 86 |         # Validate suitability of objects.
+ 87 |         if not model_admin.get_search_fields(request):
+ 88 |             raise Http404(
+ 89 |                 '%s must have search_fields for the autocomplete_view.' %
+ 90 |                 type(model_admin).__qualname__
+ 91 |             )
+ 92 | 
+ 93 |         to_field_name = getattr(source_field.remote_field, 'field_name', remote_model._meta.pk.attname)
+ 94 |         to_field_name = remote_model._meta.get_field(to_field_name).attname
+ 95 |         if not model_admin.to_field_allowed(request, to_field_name):
+ 96 |             raise PermissionDenied
+ 97 | 
+ 98 |         return term, model_admin, source_field, to_field_name
+ 99 | 
+100 |     def has_perm(self, request, obj=None):
+101 |         """Check if user has permission to access the related model."""
+102 |         return self.model_admin.has_view_permission(request, obj=obj)
+```
+
+
+
+##Searching for term "autocomplete view"...
+### Search Result:
+Found `django/contrib/admin/sites.py:AlreadyRegistered`, `django/contrib/admin/sites.py:NotRegistered`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | import re
+  2 | from functools import update_wrapper
+  3 | from weakref import WeakSet
+  4 | 
+  5 | from django.apps import apps
+  6 | from django.conf import settings
+  7 | from django.contrib.admin import ModelAdmin, actions
+  8 | from django.contrib.admin.views.autocomplete import AutocompleteJsonView
+  9 | from django.contrib.auth import REDIRECT_FIELD_NAME
+ 10 | from django.core.exceptions import ImproperlyConfigured
+ 11 | from django.db.models.base import ModelBase
+ 12 | from django.http import (
+ 13 |     Http404, HttpResponsePermanentRedirect, HttpResponseRedirect,
+ 14 | )
+ 15 | from django.template.response import TemplateResponse
+ 16 | from django.urls import NoReverseMatch, Resolver404, resolve, reverse
+ 17 | from django.utils.decorators import method_decorator
+ 18 | from django.utils.functional import LazyObject
+ 19 | from django.utils.module_loading import import_string
+ 20 | from django.utils.text import capfirst
+ 21 | from django.utils.translation import gettext as _, gettext_lazy
+ 22 | from django.views.decorators.cache import never_cache
+ 23 | from django.views.decorators.common import no_append_slash
+ 24 | from django.views.decorators.csrf import csrf_protect
+ 25 | from django.views.i18n import JavaScriptCatalog
+ 26 | 
+ 27 | all_sites = WeakSet()
+ 28 | 
+ 29 | 
+ 30 | class AlreadyRegistered(Exception):
+ 31 |     pass
+ 32 | 
+ 33 | 
+ 34 | class NotRegistered(Exception):
+ 35 |     pass
+```
+
+Found `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`, `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+```
+
+
+
+##Searching for term "autocomplete view", "autocomplete view serialize_result"...
+### Search Result:
+Found function `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_paginator`.
+Source: Retrieved code content using keyword search (bm25).
+```
+35 | def get_paginator(self, *args, **kwargs):
+36 |         """Use the ModelAdmin's paginator."""
+37 |         return self.model_admin.get_paginator(self.request, *args, **kwargs)
+```
+
+Found function `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_queryset`.
+Source: Retrieved code content using keyword search (bm25).
+```
+39 | def get_queryset(self):
+40 |         """Return queryset based on ModelAdmin.get_search_results()."""
+41 |         qs = self.model_admin.get_queryset(self.request)
+42 |         qs = qs.complex_filter(self.source_field.get_limit_choices_to())
+43 |         qs, search_use_distinct = self.model_admin.get_search_results(self.request, qs, self.term)
+44 |         if search_use_distinct:
+45 |             qs = qs.distinct()
+46 |         return qs
+```
+
+Found function `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.process_request`.
+Source: Retrieved entity using keyword search (bm25).
+```
+48 | def process_request(self, request):
+49 |         """
+50 |         Validate request integrity, extract and return request parameters.
+51 | 
+52 |         Since the subsequent view permission check requires the target model
+53 |         admin, which is determined here, raise PermissionDenied if the
+54 |         requested app, model or field are malformed.
+55 | 
+56 |         Raise Http404 if the target model admin is not configured properly with
+57 |         search_fields.
+58 |         """
+59 |         term = request.GET.get('term', '')
+60 |         try:
+61 |             app_label = request.GET['app_label']
+62 |             model_name = request.GET['model_name']
+63 |             field_name = request.GET['field_name']
+64 |         except KeyError as e:
+65 |             raise PermissionDenied from e
+66 | 
+67 |         # Retrieve objects from parameters.
+68 |         try:
+69 |             source_model = apps.get_model(app_label, model_name)
+70 |         except LookupError as e:
+71 |             raise PermissionDenied from e
+72 | 
+73 |         try:
+74 |             source_field = source_model._meta.get_field(field_name)
+75 |         except FieldDoesNotExist as e:
+76 |             raise PermissionDenied from e
+77 |         try:
+78 |             remote_model = source_field.remote_field.model
+79 |         except AttributeError as e:
+80 |             raise PermissionDenied from e
+81 |         try:
+82 |             model_admin = self.admin_site._registry[remote_model]
+83 |         except KeyError as e:
+84 |             raise PermissionDenied from e
+85 | 
+86 |         # Validate suitability of objects.
+87 |         if not model_admin.get_search_fields(request):
+88 |             raise Http404(
+89 |                 '%s must have search_fields for the autocomplete_view.' %
+90 |                 type(model_admin).__qualname__
+91 |             )
+92 | 
+93 |         to_field_name = getattr(source_field.remote_field, 'field_name', remote_model._meta.pk.attname)
+94 |         to_field_name = remote_model._meta.get_field(to_field_name).attname
+95 |         if not model_admin.to_field_allowed(request, to_field_name):
+96 |             raise PermissionDenied
+97 | 
+98 |         return term, model_admin, source_field, to_field_name
+```
+
+Found function `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.has_perm`.
+Source: Retrieved entity using keyword search (bm25).
+```
+100 | def has_perm(self, request, obj=None):
+101 |         """Check if user has permission to access the related model."""
+102 |         return self.model_admin.has_view_permission(request, obj=obj)
+```
+
+Found function `django/contrib/admin/sites.py:AdminSite.get_urls`.
+Source: Retrieved code content using keyword search (bm25).
+```
+245 | def get_urls(self):
+246 |         # Since this module gets imported in the application's root package,
+247 |         # it cannot import models from other applications at the module level,
+248 |         # and django.contrib.contenttypes.views imports ContentType.
+249 |         from django.contrib.contenttypes import views as contenttype_views
+250 |         from django.urls import include, path, re_path
+251 | 
+252 |         def wrap(view, cacheable=False):
+253 |             def wrapper(*args, **kwargs):
+254 |                 return self.admin_view(view, cacheable)(*args, **kwargs)
+255 |             wrapper.admin_site = self
+256 |             return update_wrapper(wrapper, view)
+257 | 
+258 |         # Admin-site-wide views.
+259 |         urlpatterns = [
+260 |             path('', wrap(self.index), name='index'),
+261 |             path('login/', self.login, name='login'),
+262 |             path('logout/', wrap(self.logout), name='logout'),
+263 |             path('password_change/', wrap(self.password_change, cacheable=True), name='password_change'),
+264 |             path(
+265 |                 'password_change/done/',
+266 |                 wrap(self.password_change_done, cacheable=True),
+267 |                 name='password_change_done',
+268 |             ),
+269 |             path('autocomplete/', wrap(self.autocomplete_view), name='autocomplete'),
+270 |             path('jsi18n/', wrap(self.i18n_javascript, cacheable=True), name='jsi18n'),
+271 |             path(
+272 |                 'r/<int:content_type_id>/<path:object_id>/',
+273 |                 wrap(contenttype_views.shortcut),
+274 |                 name='view_on_site',
+275 |             ),
+276 |         ]
+277 | 
+278 |         # Add in each model's views, and create a list of valid URLS for the
+279 |         # app_index
+280 |         valid_app_labels = []
+281 |         for model, model_admin in self._registry.items():
+282 |             urlpatterns += [
+283 |                 path('%s/%s/' % (model._meta.app_label, model._meta.model_name), include(model_admin.urls)),
+284 |             ]
+285 |             if model._meta.app_label not in valid_app_labels:
+286 |                 valid_app_labels.append(model._meta.app_label)
+287 | 
+288 |         # If there were ModelAdmins registered, we should have a list of app
+289 |         # labels for which we need to allow access to the app_index view,
+290 |         if valid_app_labels:
+291 |             regex = r'^(?P<app_label>' + '|'.join(valid_app_labels) + ')/$'
+292 |             urlpatterns += [
+293 |                 re_path(regex, wrap(self.app_index), name='app_list'),
+294 |             ]
+295 | 
+296 |         if self.final_catch_all_view:
+297 |             urlpatterns.append(re_path(r'(?P<url>.*)$', wrap(self.catch_all_view)))
+298 | 
+299 |         return urlpatterns
+```
+
+Found file `django/contrib/admin/views/autocomplete.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/admin/views/autocomplete.py` for the full content if needed.
+
+
+
+##Searching for term "results"...
+### Search Result:
+Found function `django/contrib/admin/templatetags/admin_list.py:results`.
+Source: Match found for entity name `results`.
+```
+278 | def results(cl):
+279 |     if cl.formset:
+280 |         for res, form in zip(cl.result_list, cl.formset.forms):
+281 |             yield ResultList(form, items_for_result(cl, res, form))
+282 |     else:
+283 |         for res in cl.result_list:
+284 |             yield ResultList(None, items_for_result(cl, res, None))
+```
+
+
+
+##Searching for term "pagination"...
+### Search Result:
+Found function `django/contrib/admin/templatetags/admin_list.py:pagination`.
+Source: Match found for entity name `pagination`.
+```
+46 | def pagination(cl):
+47 |     """
+48 |     Generate the series of links to the pages in a paginated list.
+49 |     """
+50 |     pagination_required = (not cl.show_all or not cl.can_show_all) and cl.multi_page
+51 |     page_range = cl.paginator.get_elided_page_range(cl.page_num) if pagination_required else []
+52 |     need_show_all_link = cl.can_show_all and not cl.show_all and cl.multi_page
+53 |     return {
+54 |         'cl': cl,
+55 |         'pagination_required': pagination_required,
+56 |         'show_all_url': need_show_all_link and cl.get_query_string({ALL_VAR: ''}),
+57 |         'page_range': page_range,
+58 |         'ALL_VAR': ALL_VAR,
+59 |         '1': 1,
+60 |     }
+```
+
+
+
+##Searching for term "serialize_result"...
+### Search Result:
+Found code snippet in file `setup.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import os
+ 2 | import sys
+ 3 | from distutils.sysconfig import get_python_lib
+ 4 | 
+ 5 | from setuptools import setup
+ 6 | 
+ 7 | # Warn if we are installing over top of an existing installation. This can
+ 8 | # cause issues where files that were deleted from a more recent Django are
+ 9 | # still present in site-packages. See #18115.
+10 | overlay_warning = False
+11 | if "install" in sys.argv:
+12 |     lib_paths = [get_python_lib()]
+13 |     if lib_paths[0].startswith("/usr/lib/"):
+14 |         # We have to try also with an explicit prefix of /usr/local in order to
+15 |         # catch Debian's custom user site-packages directory.
+16 |         lib_paths.append(get_python_lib(prefix="/usr/local"))
+17 |     for lib_path in lib_paths:
+18 |         existing_path = os.path.abspath(os.path.join(lib_path, "django"))
+19 |         if os.path.exists(existing_path):
+20 |             # We note the need for the warning here, but present it after the
+21 |             # command is run, so it's more likely to be seen.
+22 |             overlay_warning = True
+23 |             break
+24 | 
+25 | 
+26 | setup()
+27 | 
+28 | 
+29 | if overlay_warning:
+30 |     sys.stderr.write("""
+31 | 
+32 | ========
+33 | WARNING!
+34 | ========
+35 | 
+36 | You have just installed Django over top of an existing
+37 | installation, without removing it first. Because of this,
+38 | your install may now include extraneous files from a
+39 | previous version that have since been removed from
+40 | Django. This is known to cause a variety of problems. You
+41 | should manually remove the
+42 | 
+43 | %(existing_path)s
+44 | 
+45 | directory and re-install Django.
+46 | 
+47 | """ % {"existing_path": existing_path})
+48 | 
+```
+
+Found function `django/contrib/postgres/serializers.py:RangeSerializer.serialize`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 5 | def serialize(self):
+ 6 |         module = self.value.__class__.__module__
+ 7 |         # Ranges are implemented in psycopg2._range but the public import
+ 8 |         # location is psycopg2.extras.
+ 9 |         module = 'psycopg2.extras' if module == 'psycopg2._range' else module
+10 |         return '%s.%r' % (module, self.value), {'import %s' % module}
+```
+
+Found function `django/contrib/messages/storage/session.py:SessionStorage.serialize_messages`.
+Source: Retrieved entity using keyword search (bm25).
+```
+43 | def serialize_messages(self, messages):
+44 |         encoder = MessageEncoder()
+45 |         return encoder.encode(messages)
+```
+
+Found function `django/contrib/gis/forms/widgets.py:BaseGeometryWidget.serialize`.
+Source: Retrieved entity using keyword search (bm25).
+```
+34 | def serialize(self, value):
+35 |         return value.wkt if value else ''
+```
+
+Found function `django/contrib/staticfiles/storage.py:ManifestFilesMixin.stored_name`.
+Source: Retrieved code content using keyword search (bm25).
+```
+446 | def stored_name(self, name):
+447 |         parsed_name = urlsplit(unquote(name))
+448 |         clean_name = parsed_name.path.strip()
+449 |         hash_key = self.hash_key(clean_name)
+450 |         cache_name = self.hashed_files.get(hash_key)
+451 |         if cache_name is None:
+452 |             if self.manifest_strict:
+453 |                 raise ValueError("Missing staticfiles manifest entry for '%s'" % clean_name)
+454 |             cache_name = self.clean_name(self.hashed_name(name))
+455 |         unparsed_name = list(parsed_name)
+456 |         unparsed_name[2] = cache_name
+457 |         # Special casing for a @font-face hack, like url(myfont.eot?#iefix")
+458 |         # http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax
+459 |         if '?#' in name and not unparsed_name[3]:
+460 |             unparsed_name[2] += '?'
+461 |         return urlunsplit(unparsed_name)
+```
+
+Found class `django/contrib/staticfiles/storage.py:ManifestStaticFilesStorage`.
+Source: Retrieved code content using keyword search (bm25).
+```
+464 | class ManifestStaticFilesStorage(ManifestFilesMixin, StaticFilesStorage):
+465 |     """
+466 |     A static file system storage backend which also saves
+467 |     hashed copies of the files it saves.
+468 |     """
+469 |     pass
+```
+
+Found class `django/contrib/staticfiles/storage.py:ConfiguredStorage`.
+Source: Retrieved code content using keyword search (bm25).
+```
+472 | class ConfiguredStorage(LazyObject):
+473 |     def _setup(self):
+474 |         self._wrapped = get_storage_class(settings.STATICFILES_STORAGE)()
+```
+
+
+
+##Searching for term "autocomplete view serialize_result"...
+### Search Result:
+Found `django/contrib/admin/sites.py:AlreadyRegistered`, `django/contrib/admin/sites.py:NotRegistered`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | import re
+  2 | from functools import update_wrapper
+  3 | from weakref import WeakSet
+  4 | 
+  5 | from django.apps import apps
+  6 | from django.conf import settings
+  7 | from django.contrib.admin import ModelAdmin, actions
+  8 | from django.contrib.admin.views.autocomplete import AutocompleteJsonView
+  9 | from django.contrib.auth import REDIRECT_FIELD_NAME
+ 10 | from django.core.exceptions import ImproperlyConfigured
+ 11 | from django.db.models.base import ModelBase
+ 12 | from django.http import (
+ 13 |     Http404, HttpResponsePermanentRedirect, HttpResponseRedirect,
+ 14 | )
+ 15 | from django.template.response import TemplateResponse
+ 16 | from django.urls import NoReverseMatch, Resolver404, resolve, reverse
+ 17 | from django.utils.decorators import method_decorator
+ 18 | from django.utils.functional import LazyObject
+ 19 | from django.utils.module_loading import import_string
+ 20 | from django.utils.text import capfirst
+ 21 | from django.utils.translation import gettext as _, gettext_lazy
+ 22 | from django.views.decorators.cache import never_cache
+ 23 | from django.views.decorators.common import no_append_slash
+ 24 | from django.views.decorators.csrf import csrf_protect
+ 25 | from django.views.i18n import JavaScriptCatalog
+ 26 | 
+ 27 | all_sites = WeakSet()
+ 28 | 
+ 29 | 
+ 30 | class AlreadyRegistered(Exception):
+ 31 |     pass
+ 32 | 
+ 33 | 
+ 34 | class NotRegistered(Exception):
+ 35 |     pass
+```
+
+Found `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`, `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+```
+[symbol-locator] setup_repo returned: playground/86586e3e-c89f-456f-819c-686bbc4c5716/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-14752
+[symbol-locator] warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-14752 files=0 indexed=0 failed=0
+Finding newlines for mmindex:   0%|          | 0.00/11.3M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 11.3M/11.3M [00:00<00:00, 344MB/s]
+
+2026-08-28 05:01:30 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:01:35 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:01:35 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:01:35 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 05:01:35 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'autocomplete_view', 'kind_filter': [12, 6], 'context': 'admin site autocomplete url dispatch', 'top_k': 5}))
+```
+2026-08-28 05:01:36 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:01:47 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:01:47 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:01:47 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `autocomplete_view`. Showing top 1 by relevance:
+1. [score=96] AdminSite.autocomplete_view
+   django/contrib/admin/sites.py:419
+               'username': request.user.get_username(),
+           }
+           if (REDIRECT_FIELD_NAME not in request.GET and
+                   REDIRECT_FIELD_NAME not in request.POST):
+               context[REDIRECT_FIELD_NAME] = reverse('admin:index', current_app=self.name)
+           context.update(extra_context or {})
+   
+           defaults = {
+               'extra_context': context,
+               'authentication_form': self.login_form or AdminAuthenticationForm,
+               'template_name': self.login_template or 'admin/login.html',
+           }
+           request.current_app = self.name
+           return LoginView.as_view(**defaults)(request)
+   
+       def autocomplete_view(self, request):
+           return AutocompleteJsonView.as_view(admin_site=self)(request)
+   
+       @no_append_slash
+       def catch_all_view(self, request, url):
+           if settings.APPEND_SLASH and not url.endswith('/'):
+               urlconf = getattr(request, 'urlconf', None)
+               try:
+                   match = resolve('%s/' % request.path_info, urlconf)
+               except Resolver404:
+                   pass
+               else:
+                   if getattr(match.func, 'should_append_slash', True):
+                       return HttpResponsePermanentRedirect('%s/' % request.path)
+           raise Http404
+   
+[symbol-locator] [scorer] usage pid=843388 calls=2 p=18776 c=36
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 05:01:47 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'AutocompleteJsonViewTests', 'kind_filter': [5], 'context': 'autocomplete json response tests', 'top_k': 5}))
+```
+2026-08-28 05:01:48 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:02:02 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:02:02 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:02:02 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `AutocompleteJsonViewTests`. Showing top 1 by relevance:
+1. [score=86] AutocompleteJsonViewTests
+   tests/admin_views/test_autocomplete_view.py:64
+   
+   
+   @contextmanager
+   def model_admin(model, model_admin, admin_site=site):
+       org_admin = admin_site._registry.get(model)
+       if org_admin:
+           admin_site.unregister(model)
+       admin_site.register(model, model_admin)
+       try:
+           yield
+       finally:
+           if org_admin:
+               admin_site._registry[model] = org_admin
+   
+   
+   class AutocompleteJsonViewTests(AdminViewBasicTestCase):
+       as_view_args = {'admin_site': site}
+       opts = {
+           'app_label': Answer._meta.app_label,
+           'model_name': Answer._meta.model_name,
+           'field_name': 'question'
+       }
+       factory = RequestFactory()
+       url = reverse_lazy('autocomplete_admin:autocomplete')
+   
+       @classmethod
+       def setUpTestData(cls):
+           cls.user = User.objects.create_user(
+               username='user', password='secret',
+               email='user@example.com', is_staff=True,
+           )
+[symbol-locator] [scorer] usage pid=843388 calls=3 p=27940 c=50
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 05:02:02 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ["'results': [", 'has_next()', 'JsonResponse({', 'autocomplete_admin:autocomplete'], 'file_path_or_pattern': 'tests/**/*.py'}))
+```
+2026-08-28 05:02:04 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:02:05 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:02:07 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:02:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:02:09 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:02:10 auto_search_main.py INFO OBSERVATION:
+django/contrib/gis/gdal/prototypes/errcheck.py:check_errcode
+django/contrib/gis/gdal/prototypes/errcheck.py:check_str_arg
+django/contrib/gis/gdal/prototypes/errcheck.py:check_arg_errcode
+django/contrib/gis/gdal/prototypes/errcheck.py:check_srs
+django/contrib/gis/gdal/prototypes/errcheck.py:check_geom
+django/contrib/gis/gdal/prototypes/errcheck.py:check_geom_offset
+django/contrib/gis/gdal/prototypes/errcheck.py:check_envelope
+django/contrib/gis/gdal/prototypes/errcheck.py:check_pointer
+django/contrib/gis/gdal/prototypes/errcheck.py:check_string
+django/db/migrations/questioner.py:InteractiveMigrationQuestioner._choice_input
+django/db/migrations/questioner.py:InteractiveMigrationQuestioner
+django/db/migrations/questioner.py:InteractiveMigrationQuestioner._boolean_input
+django/templatetags/tz.py:do_timezone
+django/contrib/gis/geos/prototypes/errcheck.py:check_sized_string
+django/contrib/gis/geos/prototypes/errcheck.py:check_string
+django/contrib/staticfiles/finders.py:find
+django/utils/translation/trans_real.py:do_ntranslate
+django/utils/translation/trans_real.py:gettext_noop
+django/utils/translation/trans_real.py:npgettext
+django/utils/translation/trans_real.py:pgettext
+django/utils/translation/trans_real.py:ngettext
+django/utils/decorators.py:make_middleware_decorator
+django/db/models/sql/compiler.py:SQLInsertCompiler.as_sql
+django/core/paginator.py:Page.start_index
+django/core/paginator.py:Page.__repr__
+django/core/paginator.py:Page.previous_page_number
+django/core/paginator.py:Page.has_other_pages
+django/core/paginator.py:Page.end_index
+django/core/paginator.py:Page.has_previous
+django/core/paginator.py:Page
+django/core/paginator.py:Page.__getitem__
+django/core/paginator.py:Page.has_next
+django/core/paginator.py:Page.__init__
+django/core/paginator.py:Page.__len__
+django/core/paginator.py:Page.next_page_number
+django/contrib/staticfiles/storage.py:impl
+django/contrib/staticfiles/storage.py:ManifestStaticFilesStorage
+django/contrib/staticfiles/storage.py:ConfiguredStorage._setup
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.stored_name
+django/contrib/staticfiles/storage.py:ConfiguredStorage
+django/contrib/syndication/views.py:Feed.get_object
+django/contrib/syndication/views.py:Feed.item_extra_kwargs
+django/contrib/syndication/views.py:Feed.feed_extra_kwargs
+django/contrib/syndication/views.py:Feed.get_context_data
+django/contrib/staticfiles/utils.py:check_settings
+django/http/response.py:JsonResponse
+django/http/response.py:JsonResponse.__init__
+django/views/i18n.py:JSONCatalog.render_to_response
+django/views/i18n.py:JSONCatalog
+django/contrib/staticfiles/storage.py:HashedFilesMixin.stored_name
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.save_manifest
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.post_process
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.load_manifest
+django/contrib/staticfiles/storage.py:ManifestFilesMixin
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.__init__
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.read_manifest
+django/contrib/staticfiles/storage.py:HashedFilesMixin.clean_name
+django/contrib/staticfiles/storage.py:HashedFilesMixin._stored_name
+django/contrib/staticfiles/storage.py:HashedFilesMixin.hash_key
+django/contrib/staticfiles/storage.py:HashedFilesMixin._post_process
+django/contrib/admin/widgets.py:AutocompleteSelectMultiple
+django/contrib/admin/widgets.py:AutocompleteSelect
+django/contrib/admin/widgets.py:AutocompleteMixin.media
+django/contrib/admin/widgets.py:AutocompleteMixin.build_attrs
+django/core/management/__init__.py:ManagementUtility.autocomplete
+django/contrib/auth/forms.py:SetPasswordForm.__init__
+django/contrib/auth/forms.py:SetPasswordForm.clean_new_password2
+django/contrib/auth/forms.py:SetPasswordForm
+django/contrib/auth/forms.py:SetPasswordForm.save
+django/contrib/auth/forms.py:AdminPasswordChangeForm.clean_password2
+django/contrib/auth/forms.py:AdminPasswordChangeForm.__init__
+django/contrib/auth/forms.py:AdminPasswordChangeForm.save
+django/contrib/auth/forms.py:AdminPasswordChangeForm
+django/contrib/auth/forms.py:AdminPasswordChangeForm.changed_data
+django/core/management/__init__.py:ManagementUtility.autocomplete
+django/contrib/auth/forms.py:UsernameField.to_python
+django/contrib/auth/forms.py:UsernameField.widget_attrs
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField
+django/contrib/auth/forms.py:UsernameField
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.__init__
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_queryset
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_paginator
+django/contrib/admin/widgets.py:AutocompleteMixin.__init__
+django/contrib/admin/widgets.py:AutocompleteMixin
+django/contrib/admin/widgets.py:AutocompleteMixin.get_url
+django/contrib/auth/forms.py:UserCreationForm.clean_password2
+django/contrib/auth/forms.py:UserCreationForm.__init__
+django/contrib/auth/forms.py:UserCreationForm.Meta
+django/contrib/auth/forms.py:UserCreationForm
+django/contrib/auth/forms.py:UserCreationForm.save
+django/contrib/auth/forms.py:UserCreationForm._post_clean
+django/http/response.py:JsonResponse
+django/http/response.py:JsonResponse.__init__
+django/core/paginator.py:Page.start_index
+django/core/paginator.py:Page.__repr__
+django/core/paginator.py:Page.previous_page_number
+django/core/paginator.py:Page.has_other_pages
+django/core/paginator.py:Page.end_index
+django/core/paginator.py:Page.has_previous
+django/core/paginator.py:Page
+django/core/paginator.py:Page.__getitem__
+django/core/paginator.py:Page.has_next
+django/core/paginator.py:Page.__init__
+django/core/paginator.py:Page.__len__
+django/core/paginator.py:Page.next_page_number
+django/core/management/__init__.py:ManagementUtility.autocomplete
+django/views/i18n.py:JSONCatalog.render_to_response
+django/views/i18n.py:JSONCatalog
+django/contrib/admin/widgets.py:AutocompleteSelectMultiple
+django/contrib/admin/widgets.py:AutocompleteSelect
+django/contrib/admin/widgets.py:AutocompleteMixin.media
+django/contrib/admin/widgets.py:AutocompleteMixin.build_attrs
+django/contrib/auth/forms.py:SetPasswordForm.__init__
+django/contrib/auth/forms.py:SetPasswordForm.clean_new_password2
+django/contrib/auth/forms.py:SetPasswordForm
+django/contrib/auth/forms.py:SetPasswordForm.save
+django/contrib/auth/forms.py:AdminPasswordChangeForm.clean_password2
+django/contrib/auth/forms.py:AdminPasswordChangeForm.__init__
+django/contrib/auth/forms.py:AdminPasswordChangeForm.save
+django/contrib/auth/forms.py:AdminPasswordChangeForm
+django/contrib/auth/forms.py:AdminPasswordChangeForm.changed_data
+No files found for file pattern 'tests/**/*.py'. Will search all files.
+...
+##Searching for term "'results': [", "'results': [ has_next() JsonResponse({ autocomplete_admin:autocomplete"...
+### Search Result:
+Found function `django/contrib/admin/templatetags/admin_list.py:results`.
+Source: Retrieved entity using keyword search (bm25).
+```
+278 | def results(cl):
+279 |     if cl.formset:
+280 |         for res, form in zip(cl.result_list, cl.formset.forms):
+281 |             yield ResultList(form, items_for_result(cl, res, form))
+282 |     else:
+283 |         for res in cl.result_list:
+284 |             yield ResultList(None, items_for_result(cl, res, None))
+```
+
+
+
+##Searching for term "'results': ["...
+### Search Result:
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_geom`.
+Source: Retrieved code content using keyword search (bm25).
+```
+76 | def check_geom(result, func, cargs):
+77 |     "Check a function that returns a geometry."
+78 |     # OGR_G_Clone may return an integer, even though the
+79 |     # restype is set to c_void_p
+80 |     if isinstance(result, int):
+81 |         result = c_void_p(result)
+82 |     if not result:
+83 |         raise GDALException('Invalid geometry pointer returned from "%s".' % func.__name__)
+84 |     return result
+```
+
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_srs`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 95 | def check_srs(result, func, cargs):
+ 96 |     if isinstance(result, int):
+ 97 |         result = c_void_p(result)
+ 98 |     if not result:
+ 99 |         raise SRSException('Invalid spatial reference pointer returned from "%s".' % func.__name__)
+100 |     return result
+```
+
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_arg_errcode`.
+Source: Retrieved code content using keyword search (bm25).
+```
+104 | def check_arg_errcode(result, func, cargs, cpl=False):
+105 |     """
+106 |     The error code is returned in the last argument, by reference.
+107 |     Check its value with `check_err` before returning the result.
+108 |     """
+109 |     check_err(arg_byref(cargs), cpl=cpl)
+110 |     return result
+```
+
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_errcode`.
+Source: Retrieved code content using keyword search (bm25).
+```
+113 | def check_errcode(result, func, cargs, cpl=False):
+114 |     """
+115 |     Check the error code returned (c_int).
+116 |     """
+117 |     check_err(result, cpl=cpl)
+```
+
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_str_arg`.
+Source: Retrieved code content using keyword search (bm25).
+```
+130 | def check_str_arg(result, func, cargs):
+131 |     """
+132 |     This is for the OSRGet[Angular|Linear]Units functions, which
+133 |     require that the returned string pointer not be freed.  This
+134 |     returns both the double and string values.
+135 |     """
+136 |     dbl = result
+137 |     ptr = cargs[-1]._obj
+138 |     return dbl, ptr.value.decode()
+```
+
+
+
+##Searching for term "has_next()", "'results': [ has_next() JsonResponse({ autocomplete_admin:autocomplete"...
+### Search Result:
+Found function `django/core/paginator.py:Page.__repr__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+173 | def __repr__(self):
+174 |         return '<Page %s of %s>' % (self.number, self.paginator.num_pages)
+```
+
+Found function `django/core/paginator.py:Page.has_next`.
+Source: Retrieved entity using keyword search (bm25).
+```
+191 | def has_next(self):
+192 |         return self.number < self.paginator.num_pages
+```
+
+Found function `django/core/paginator.py:Page.start_index`.
+Source: Retrieved code content using keyword search (bm25).
+```
+206 | def start_index(self):
+207 |         """
+208 |         Return the 1-based index of the first object on this page,
+209 |         relative to total objects in the paginator.
+210 |         """
+211 |         # Special case, return zero if no items.
+212 |         if self.paginator.count == 0:
+213 |             return 0
+214 |         return (self.paginator.per_page * (self.number - 1)) + 1
+```
+
+
+
+##Searching for term "has_next()"...
+### Search Result:
+Found function `django/core/paginator.py:Page.has_other_pages`.
+Source: Retrieved code content using keyword search (bm25).
+```
+197 | def has_other_pages(self):
+198 |         return self.has_previous() or self.has_next()
+```
+
+Found function `django/core/paginator.py:Page.previous_page_number`.
+Source: Retrieved code content using keyword search (bm25).
+```
+203 | def previous_page_number(self):
+204 |         return self.paginator.validate_number(self.number - 1)
+```
+
+Found function `django/core/paginator.py:Page.end_index`.
+Source: Retrieved code content using keyword search (bm25).
+```
+216 | def end_index(self):
+217 |         """
+218 |         Return the 1-based index of the last object on this page,
+219 |         relative to total objects found (hits).
+220 |         """
+221 |         # Special case for the last page because there can be orphans.
+222 |         if self.number == self.paginator.num_pages:
+223 |             return self.paginator.count
+224 |         return self.number * self.paginator.per_page
+```
+
+
+
+##Searching for term "JsonResponse({"...
+### Search Result:
+Found `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`, `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+```
+
+Found code snippet in file `django/http/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.http.cookie import SimpleCookie, parse_cookie
+ 2 | from django.http.request import (
+ 3 |     HttpRequest, QueryDict, RawPostDataException, UnreadablePostError,
+ 4 | )
+ 5 | from django.http.response import (
+ 6 |     BadHeaderError, FileResponse, Http404, HttpResponse,
+ 7 |     HttpResponseBadRequest, HttpResponseForbidden, HttpResponseGone,
+ 8 |     HttpResponseNotAllowed, HttpResponseNotFound, HttpResponseNotModified,
+ 9 |     HttpResponsePermanentRedirect, HttpResponseRedirect,
+10 |     HttpResponseServerError, JsonResponse, StreamingHttpResponse,
+11 | )
+12 | 
+13 | __all__ = [
+14 |     'SimpleCookie', 'parse_cookie', 'HttpRequest', 'QueryDict',
+15 |     'RawPostDataException', 'UnreadablePostError',
+16 |     'HttpResponse', 'StreamingHttpResponse', 'HttpResponseRedirect',
+17 |     'HttpResponsePermanentRedirect', 'HttpResponseNotModified',
+18 |     'HttpResponseBadRequest', 'HttpResponseForbidden', 'HttpResponseNotFound',
+19 |     'HttpResponseNotAllowed', 'HttpResponseGone', 'HttpResponseServerError',
+20 |     'Http404', 'BadHeaderError', 'JsonResponse', 'FileResponse',
+21 | ]
+22 | 
+```
+
+Found class `django/views/i18n.py:JSONCatalog`.
+Source: Retrieved code content using keyword search (bm25).
+```
+297 | class JSONCatalog(JavaScriptCatalog):
+298 |     """
+299 |     Return the selected language catalog as a JSON object.
+300 | 
+301 |     Receive the same parameters as JavaScriptCatalog and return a response
+302 |     with a JSON object of the following format:
+303 | 
+304 |         {
+305 |             "catalog": {
+306 |                 # Translations catalog
+307 |             },
+308 |             "formats": {
+309 |                 # Language formats for date, time, etc.
+310 |             },
+311 |             "plural": '...'  # Expression for plural forms, or null.
+312 |         }
+313 |     """
+314 |     def render_to_response(self, context, **response_kwargs):
+315 |         return JsonResponse(context)
+```
+
+
+
+##Searching for term "JsonResponse({", "'results': [ has_next() JsonResponse({ autocomplete_admin:autocomplete"...
+### Search Result:
+Found class `django/http/response.py:JsonResponse`.
+Source: Retrieved entity using keyword search (bm25).
+```
+582 | class JsonResponse(HttpResponse):
+583 |     """
+584 |     An HTTP response class that consumes data to be serialized to JSON.
+585 | 
+586 |     :param data: Data to be dumped into json. By default only ``dict`` objects
+587 |       are allowed to be passed due to a security flaw before ECMAScript 5. See
+588 |       the ``safe`` parameter for more information.
+589 |     :param encoder: Should be a json encoder class. Defaults to
+590 |       ``django.core.serializers.json.DjangoJSONEncoder``.
+591 |     :param safe: Controls if only ``dict`` objects may be serialized. Defaults
+592 |       to ``True``.
+593 |     :param json_dumps_params: A dictionary of kwargs passed to json.dumps().
+594 |     """
+595 | 
+596 |     def __init__(self, data, encoder=DjangoJSONEncoder, safe=True,
+597 |                  json_dumps_params=None, **kwargs):
+598 |         if safe and not isinstance(data, dict):
+599 |             raise TypeError(
+600 |                 'In order to allow non-dict objects to be serialized set the '
+601 |                 'safe parameter to False.'
+602 |             )
+603 |         if json_dumps_params is None:
+604 |             json_dumps_params = {}
+605 |         kwargs.setdefault('content_type', 'application/json')
+606 |         data = json.dumps(data, cls=encoder, **json_dumps_params)
+607 |         super().__init__(content=data, **kwargs)
+```
+
+
+
+##Searching for term "autocomplete_admin:autocomplete", "'results': [ has_next() JsonResponse({ autocomplete_admin:autocomplete"...
+### Search Result:
+Found file `django/contrib/admin/views/autocomplete.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/admin/views/autocomplete.py` for the full content if needed.
+
+
+
+##Searching for term "autocomplete_admin:autocomplete"...
+### Search Result:
+Found class `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`.
+Source: Retrieved entity using keyword search (bm25).
+```
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+ 34 | 
+ 35 |     def get_paginator(self, *args, **kwargs):
+ 36 |         """Use the ModelAdmin's paginator."""
+ 37 |         return self.model_admin.get_paginator(self.request, *args, **kwargs)
+ 38 | 
+ 39 |     def get_queryset(self):
+ 40 |         """Return queryset based on ModelAdmin.get_search_results()."""
+ 41 |         qs = self.model_admin.get_queryset(self.request)
+ 42 |         qs = qs.complex_filter(self.source_field.get_limit_choices_to())
+ 43 |         qs, search_use_distinct = self.model_admin.get_search_results(self.request, qs, self.term)
+ 44 |         if search_use_distinct:
+ 45 |             qs = qs.distinct()
+ 46 |         return qs
+ 47 | 
+ 48 |     def process_request(self, request):
+ 49 |         """
+ 50 |         Validate request integrity, extract and return request parameters.
+ 51 | 
+ 52 |         Since the subsequent view permission check requires the target model
+ 53 |         admin, which is determined here, raise PermissionDenied if the
+ 54 |         requested app, model or field are malformed.
+ 55 | 
+ 56 |         Raise Http404 if the target model admin is not configured properly with
+ 57 |         search_fields.
+ 58 |         """
+ 59 |         term = request.GET.get('term', '')
+ 60 |         try:
+ 61 |             app_label = request.GET['app_label']
+ 62 |             model_name = request.GET['model_name']
+ 63 |             field_name = request.GET['field_name']
+ 64 |         except KeyError as e:
+ 65 |             raise PermissionDenied from e
+ 66 | 
+ 67 |         # Retrieve objects from parameters.
+ 68 |         try:
+ 69 |             source_model = apps.get_model(app_label, model_name)
+ 70 |         except LookupError as e:
+ 71 |             raise PermissionDenied from e
+ 72 | 
+ 73 |         try:
+ 74 |             source_field = source_model._meta.get_field(field_name)
+ 75 |         except FieldDoesNotExist as e:
+ 76 |             raise PermissionDenied from e
+ 77 |         try:
+ 78 |             remote_model = source_field.remote_field.model
+ 79 |         except AttributeError as e:
+ 80 |             raise PermissionDenied from e
+ 81 |         try:
+ 82 |             model_admin = self.admin_site._registry[remote_model]
+ 83 |         except KeyError as e:
+ 84 |             raise PermissionDenied from e
+ 85 | 
+ 86 |         # Validate suitability of objects.
+ 87 |         if not model_admin.get_search_fields(request):
+ 88 |             raise Http404(
+ 89 |                 '%s must have search_fields for the autocomplete_view.' %
+ 90 |                 type(model_admin).__qualname__
+ 91 |             )
+ 92 | 
+ 93 |         to_field_name = getattr(source_field.remote_field, 'field_name', remote_model._meta.pk.attname)
+ 94 |         to_field_name = remote_model._meta.get_field(to_field_name).attname
+ 95 |         if not model_admin.to_field_allowed(request, to_field_name):
+ 96 |             raise PermissionDenied
+ 97 | 
+ 98 |         return term, model_admin, source_field, to_field_name
+ 99 | 
+100 |     def has_perm(self, request, obj=None):
+101 |         """Check if user has permission to access the related model."""
+102 |         return self.model_admin.has_view_permission(request, obj=obj)
+```
+
+Found function `django/core/management/__init__.py:ManagementUtility.autocomplete`.
+Source: Retrieved entity using keyword search (bm25).
+```
+260 | def autocomplete(self):
+261 |         """
+262 |         Output completion suggestions for BASH.
+263 | 
+264 |         The output of this function is passed to BASH's `COMREPLY` variable and
+265 |         treated as completion suggestions. `COMREPLY` expects a space
+266 |         separated string as the result.
+267 | 
+268 |         The `COMP_WORDS` and `COMP_CWORD` BASH environment variables are used
+269 |         to get information about the cli input. Please refer to the BASH
+270 |         man-page for more information about this variables.
+271 | 
+272 |         Subcommand options are saved as pairs. A pair consists of
+273 |         the long option string (e.g. '--exclude') and a boolean
+274 |         value indicating if the option requires arguments. When printing to
+275 |         stdout, an equal sign is appended to options which require arguments.
+276 | 
+277 |         Note: If debugging this function, it is recommended to write the debug
+278 |         output in a separate file. Otherwise the debug output will be treated
+279 |         and formatted as potential completion suggestions.
+280 |         """
+281 |         # Don't complete if user hasn't sourced bash_completion file.
+282 |         if 'DJANGO_AUTO_COMPLETE' not in os.environ:
+283 |             return
+284 | 
+285 |         cwords = os.environ['COMP_WORDS'].split()[1:]
+286 |         cword = int(os.environ['COMP_CWORD'])
+287 | 
+288 |         try:
+289 |             curr = cwords[cword - 1]
+290 |         except IndexError:
+291 |             curr = ''
+292 | 
+293 |         subcommands = [*get_commands(), 'help']
+294 |         options = [('--help', False)]
+295 | 
+296 |         # subcommand
+297 |         if cword == 1:
+298 |             print(' '.join(sorted(filter(lambda x: x.startswith(curr), subcommands))))
+299 |         # subcommand options
+300 |         # special case: the 'help' subcommand has no options
+301 |         elif cwords[0] in subcommands and cwords[0] != 'help':
+302 |             subcommand_cls = self.fetch_command(cwords[0])
+303 |             # special case: add the names of installed apps to options
+304 |             if cwords[0] in ('dumpdata', 'sqlmigrate', 'sqlsequencereset', 'test'):
+305 |                 try:
+306 |                     app_configs = apps.get_app_configs()
+307 |                     # Get the last part of the dotted path as the app name.
+308 |                     options.extend((app_config.label, 0) for app_config in app_configs)
+309 |                 except ImportError:
+310 |                     # Fail silently if DJANGO_SETTINGS_MODULE isn't set. The
+311 |                     # user will find out once they execute the command.
+312 |                     pass
+313 |             parser = subcommand_cls.create_parser('', cwords[0])
+314 |             options.extend(
+315 |                 (min(s_opt.option_strings), s_opt.nargs != 0)
+316 |                 for s_opt in parser._actions if s_opt.option_strings
+317 |             )
+318 |             # filter out previously specified options from available options
+319 |             prev_opts = {x.split('=')[0] for x in cwords[1:cword - 1]}
+320 |             options = (opt for opt in options if opt[0] not in prev_opts)
+321 | 
+322 |             # filter options by current input
+323 |             options = sorted((k, v) for k, v in options if k.startswith(curr))
+324 |             for opt_label, require_arg in options:
+325 |                 # append '=' to options which require args
+326 |                 if require_arg:
+327 |                     opt_label += '='
+328 |                 print(opt_label)
+329 |         # Exit code of the bash completion function is never passed back to
+330 |         # the user, so it's safe to always exit with 0.
+331 |         # For more details see #25420.
+332 |         sys.exit(0)
+```
+
+Found function `django/contrib/admin/widgets.py:AutocompleteMixin.build_attrs`.
+Source: Retrieved code content using keyword search (bm25).
+```
+395 | def build_attrs(self, base_attrs, extra_attrs=None):
+396 |         """
+397 |         Set select2's AJAX attributes.
+398 | 
+399 |         Attributes can be set using the html5 data attribute.
+400 |         Nested attributes require a double dash as per
+401 |         https://select2.org/configuration/data-attributes#nested-subkey-options
+402 |         """
+403 |         attrs = super().build_attrs(base_attrs, extra_attrs=extra_attrs)
+404 |         attrs.setdefault('class', '')
+405 |         attrs.update({
+406 |             'data-ajax--cache': 'true',
+407 |             'data-ajax--delay': 250,
+408 |             'data-ajax--type': 'GET',
+409 |             'data-ajax--url': self.get_url(),
+410 |             'data-app-label': self.field.model._meta.app_label,
+411 |             'data-model-name': self.field.model._meta.model_name,
+412 |             'data-field-name': self.field.name,
+413 |             'data-theme': 'admin-autocomplete',
+414 |             'data-allow-clear': json.dumps(not self.is_required),
+415 |             'data-placeholder': '',  # Allows clearing of the input.
+416 |             'class': attrs['class'] + (' ' if attrs['class'] else '') + 'admin-autocomplete',
+417 |         })
+418 |         return attrs
+```
+
+Found function `django/contrib/admin/widgets.py:AutocompleteMixin.media`.
+Source: Retrieved code content using keyword search (bm25).
+```
+450 | def media(self):
+451 |         extra = '' if settings.DEBUG else '.min'
+452 |         i18n_name = SELECT2_TRANSLATIONS.get(get_language())
+453 |         i18n_file = ('admin/js/vendor/select2/i18n/%s.js' % i18n_name,) if i18n_name else ()
+454 |         return forms.Media(
+455 |             js=(
+456 |                 'admin/js/vendor/jquery/jquery%s.js' % extra,
+457 |                 'admin/js/vendor/select2/select2.full%s.js' % extra,
+458 |             ) + i18n_file + (
+459 |                 'admin/js/jquery.init.js',
+460 |                 'admin/js/autocomplete.js',
+461 |             ),
+462 |             css={
+463 |                 'screen': (
+464 |                     'admin/css/vendor/select2/select2%s.css' % extra,
+465 |                     'admin/css/autocomplete.css',
+466 |                 ),
+467 |             },
+468 |         )
+```
+
+Found class `django/contrib/admin/widgets.py:AutocompleteSelect`.
+Source: Retrieved code content using keyword search (bm25).
+```
+471 | class AutocompleteSelect(AutocompleteMixin, forms.Select):
+472 |     pass
+```
+
+Found class `django/contrib/admin/widgets.py:AutocompleteSelectMultiple`.
+Source: Retrieved code content using keyword search (bm25).
+```
+475 | class AutocompleteSelectMultiple(AutocompleteMixin, forms.SelectMultiple):
+476 |     pass
+```
+
+
+
+##Searching for term "'results': [ has_next() JsonResponse({ autocomplete_admin:autocomplete"...
+### Search Result:
+Found `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`, `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+```
+
+Found code snippet in file `django/http/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.http.cookie import SimpleCookie, parse_cookie
+ 2 | from django.http.request import (
+ 3 |     HttpRequest, QueryDict, RawPostDataException, UnreadablePostError,
+ 4 | )
+ 5 | from django.http.response import (
+ 6 |     BadHeaderError, FileResponse, Http404, HttpResponse,
+ 7 |     HttpResponseBadRequest, HttpResponseForbidden, HttpResponseGone,
+ 8 |     HttpResponseNotAllowed, HttpResponseNotFound, HttpResponseNotModified,
+ 9 |     HttpResponsePermanentRedirect, HttpResponseRedirect,
+10 |     HttpResponseServerError, JsonResponse, StreamingHttpResponse,
+11 | )
+12 | 
+13 | __all__ = [
+14 |     'SimpleCookie', 'parse_cookie', 'HttpRequest', 'QueryDict',
+15 |     'RawPostDataException', 'UnreadablePostError',
+16 |     'HttpResponse', 'StreamingHttpResponse', 'HttpResponseRedirect',
+17 |     'HttpResponsePermanentRedirect', 'HttpResponseNotModified',
+18 |     'HttpResponseBadRequest', 'HttpResponseForbidden', 'HttpResponseNotFound',
+19 |     'HttpResponseNotAllowed', 'HttpResponseGone', 'HttpResponseServerError',
+20 |     'Http404', 'BadHeaderError', 'JsonResponse', 'FileResponse',
+21 | ]
+22 | 
+```
+
+2026-08-28 05:02:10 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:02:14 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:02:14 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:02:14 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 05:02:14 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['tests/admin_views/test_autocomplete_view.py', 'django/contrib/admin/views/autocomplete.py', 'django/contrib/admin/sites.py']}))
+```
+2026-08-28 05:02:15 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `tests/admin_views/test_autocomplete_view.py`...
+### Search Result:
+Invalid name. 
+Hint: Valid entity name should be formatted as "file_path:QualifiedName" or just "file_path".
+
+##Searching for entity `django/contrib/admin/views/autocomplete.py`...
+### Search Result:
+Found file `django/contrib/admin/views/autocomplete.py`.
+Source: Exact match found for entity name `django/contrib/admin/views/autocomplete.py`.
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+ 34 | 
+ 35 |     def get_paginator(self, *args, **kwargs):
+ 36 |         """Use the ModelAdmin's paginator."""
+ 37 |         return self.model_admin.get_paginator(self.request, *args, **kwargs)
+ 38 | 
+ 39 |     def get_queryset(self):
+ 40 |         """Return queryset based on ModelAdmin.get_search_results()."""
+ 41 |         qs = self.model_admin.get_queryset(self.request)
+ 42 |         qs = qs.complex_filter(self.source_field.get_limit_choices_to())
+ 43 |         qs, search_use_distinct = self.model_admin.get_search_results(self.request, qs, self.term)
+ 44 |         if search_use_distinct:
+ 45 |             qs = qs.distinct()
+ 46 |         return qs
+ 47 | 
+ 48 |     def process_request(self, request):
+ 49 |         """
+ 50 |         Validate request integrity, extract and return request parameters.
+ 51 | 
+ 52 |         Since the subsequent view permission check requires the target model
+ 53 |         admin, which is determined here, raise PermissionDenied if the
+ 54 |         requested app, model or field are malformed.
+ 55 | 
+ 56 |         Raise Http404 if the target model admin is not configured properly with
+ 57 |         search_fields.
+ 58 |         """
+ 59 |         term = request.GET.get('term', '')
+ 60 |         try:
+ 61 |             app_label = request.GET['app_label']
+ 62 |             model_name = request.GET['model_name']
+ 63 |             field_name = request.GET['field_name']
+ 64 |         except KeyError as e:
+ 65 |             raise PermissionDenied from e
+ 66 | 
+ 67 |         # Retrieve objects from parameters.
+ 68 |         try:
+ 69 |             source_model = apps.get_model(app_label, model_name)
+ 70 |         except LookupError as e:
+ 71 |             raise PermissionDenied from e
+ 72 | 
+ 73 |         try:
+ 74 |             source_field = source_model._meta.get_field(field_name)
+ 75 |         except FieldDoesNotExist as e:
+ 76 |             raise PermissionDenied from e
+ 77 |         try:
+ 78 |             remote_model = source_field.remote_field.model
+ 79 |         except AttributeError as e:
+ 80 |             raise PermissionDenied from e
+ 81 |         try:
+ 82 |             model_admin = self.admin_site._registry[remote_model]
+ 83 |         except KeyError as e:
+ 84 |             raise PermissionDenied from e
+ 85 | 
+ 86 |         # Validate suitability of objects.
+ 87 |         if not model_admin.get_search_fields(request):
+ 88 |             raise Http404(
+ 89 |                 '%s must have search_fields for the autocomplete_view.' %
+ 90 |                 type(model_admin).__qualname__
+ 91 |             )
+ 92 | 
+ 93 |         to_field_name = getattr(source_field.remote_field, 'field_name', remote_model._meta.pk.attname)
+ 94 |         to_field_name = remote_model._meta.get_field(to_field_name).attname
+ 95 |         if not model_admin.to_field_allowed(request, to_field_name):
+ 96 |             raise PermissionDenied
+ 97 | 
+ 98 |         return term, model_admin, source_field, to_field_name
+ 99 | 
+100 |     def has_perm(self, request, obj=None):
+101 |         """Check if user has permission to access the related model."""
+102 |         return self.model_admin.has_view_permission(request, obj=obj)
+103 | 
+```
+
+
+##Searching for entity `django/contrib/admin/sites.py`...
+### Search Result:
+Found file `django/contrib/admin/sites.py`.
+Source: Exact match found for entity name `django/contrib/admin/sites.py`.
+```
+  1 | import re
+  2 | from functools import update_wrapper
+  3 | from weakref import WeakSet
+  4 | 
+  5 | from django.apps import apps
+  6 | from django.conf import settings
+  7 | from django.contrib.admin import ModelAdmin, actions
+  8 | from django.contrib.admin.views.autocomplete import AutocompleteJsonView
+  9 | from django.contrib.auth import REDIRECT_FIELD_NAME
+ 10 | from django.core.exceptions import ImproperlyConfigured
+ 11 | from django.db.models.base import ModelBase
+ 12 | from django.http import (
+ 13 |     Http404, HttpResponsePermanentRedirect, HttpResponseRedirect,
+ 14 | )
+ 15 | from django.template.response import TemplateResponse
+ 16 | from django.urls import NoReverseMatch, Resolver404, resolve, reverse
+ 17 | from django.utils.decorators import method_decorator
+ 18 | from django.utils.functional import LazyObject
+ 19 | from django.utils.module_loading import import_string
+ 20 | from django.utils.text import capfirst
+ 21 | from django.utils.translation import gettext as _, gettext_lazy
+ 22 | from django.views.decorators.cache import never_cache
+ 23 | from django.views.decorators.common import no_append_slash
+ 24 | from django.views.decorators.csrf import csrf_protect
+ 25 | from django.views.i18n import JavaScriptCatalog
+ 26 | 
+ 27 | all_sites = WeakSet()
+ 28 | 
+ 29 | 
+ 30 | class AlreadyRegistered(Exception):
+ 31 |     pass
+ 32 | 
+ 33 | 
+ 34 | class NotRegistered(Exception):
+ 35 |     pass
+ 36 | 
+ 37 | 
+ 38 | class AdminSite:
+ 39 |     """
+ 40 |     An AdminSite object encapsulates an instance of the Django admin application, ready
+ 41 |     to be hooked in to your URLconf. Models are registered with the AdminSite using the
+ 42 |     register() method, and the get_urls() method can then be used to access Django view
+ 43 |     functions that present a full admin interface for the collection of registered
+ 44 |     models.
+ 45 |     """
+ 46 | 
+ 47 |     # Text to put at the end of each page's <title>.
+ 48 |     site_title = gettext_lazy('Django site admin')
+ 49 | 
+ 50 |     # Text to put in each page's <h1>.
+ 51 |     site_header = gettext_lazy('Django administration')
+ 52 | 
+ 53 |     # Text to put at the top of the admin index page.
+ 54 |     index_title = gettext_lazy('Site administration')
+ 55 | 
+ 56 |     # URL for the "View site" link at the top of each admin page.
+ 57 |     site_url = '/'
+ 58 | 
+ 59 |     enable_nav_sidebar = True
+ 60 | 
+ 61 |     empty_value_display = '-'
+ 62 | 
+ 63 |     login_form = None
+ 64 |     index_template = None
+ 65 |     app_index_template = None
+ 66 |     login_template = None
+ 67 |     logout_template = None
+ 68 |     password_change_template = None
+ 69 |     password_change_done_template = None
+ 70 | 
+ 71 |     final_catch_all_view = True
+ 72 | 
+ 73 |     def __init__(self, name='admin'):
+ 74 |         self._registry = {}  # model_class class -> admin_class instance
+ 75 |         self.name = name
+ 76 |         self._actions = {'delete_selected': actions.delete_selected}
+ 77 |         self._global_actions = self._actions.copy()
+ 78 |         all_sites.add(self)
+ 79 | 
+ 80 |     def __repr__(self):
+ 81 |         return f'{self.__class__.__name__}(name={self.name!r})'
+ 82 | 
+ 83 |     def check(self, app_configs):
+ 84 |         """
+ 85 |         Run the system checks on all ModelAdmins, except if they aren't
+ 86 |         customized at all.
+ 87 |         """
+ 88 |         if app_configs is None:
+ 89 |             app_configs = apps.get_app_configs()
+ 90 |         app_configs = set(app_configs)  # Speed up lookups below
+ 91 | 
+ 92 |         errors = []
+ 93 |         modeladmins = (o for o in self._registry.values() if o.__class__ is not ModelAdmin)
+ 94 |         for modeladmin in modeladmins:
+ 95 |             if modeladmin.model._meta.app_config in app_configs:
+ 96 |                 errors.extend(modeladmin.check())
+ 97 |         return errors
+ 98 | 
+ 99 |     def register(self, model_or_iterable, admin_class=None, **options):
+100 |         """
+101 |         Register the given model(s) with the given admin class.
+102 | 
+103 |         The model(s) should be Model classes, not instances.
+104 | 
+105 |         If an admin class isn't given, use ModelAdmin (the default admin
+106 |         options). If keyword arguments are given -- e.g., list_display --
+107 |         apply them as options to the admin class.
+108 | 
+109 |         If a model is already registered, raise AlreadyRegistered.
+110 | 
+111 |         If a model is abstract, raise ImproperlyConfigured.
+112 |         """
+113 |         admin_class = admin_class or ModelAdmin
+114 |         if isinstance(model_or_iterable, ModelBase):
+115 |             model_or_iterable = [model_or_iterable]
+116 |         for model in model_or_iterable:
+117 |             if model._meta.abstract:
+118 |                 raise ImproperlyConfigured(
+119 |                     'The model %s is abstract, so it cannot be registered with admin.' % model.__name__
+120 |                 )
+121 | 
+122 |             if model in self._registry:
+123 |                 registered_admin = str(self._registry[model])
+124 |                 msg = 'The model %s is already registered ' % model.__name__
+125 |                 if registered_admin.endswith('.ModelAdmin'):
+126 |                     # Most likely registered without a ModelAdmin subclass.
+127 |                     msg += 'in app %r.' % re.sub(r'\.ModelAdmin$', '', registered_admin)
+128 |                 else:
+129 |                     msg += 'with %r.' % registered_admin
+130 |                 raise AlreadyRegistered(msg)
+131 | 
+132 |             # Ignore the registration if the model has been
+133 |             # swapped out.
+134 |             if not model._meta.swapped:
+135 |                 # If we got **options then dynamically construct a subclass of
+136 |                 # admin_class with those **options.
+137 |                 if options:
+138 |                     # For reasons I don't quite understand, without a __module__
+139 |                     # the created class appears to "live" in the wrong place,
+140 |                     # which causes issues later on.
+141 |                     options['__module__'] = __name__
+142 |                     admin_class = type("%sAdmin" % model.__name__, (admin_class,), options)
+143 | 
+144 |                 # Instantiate the admin class to save in the registry
+145 |                 self._registry[model] = admin_class(model, self)
+146 | 
+147 |     def unregister(self, model_or_iterable):
+148 |         """
+149 |         Unregister the given model(s).
+150 | 
+151 |         If a model isn't already registered, raise NotRegistered.
+152 |         """
+153 |         if isinstance(model_or_iterable, ModelBase):
+154 |             model_or_iterable = [model_or_iterable]
+155 |         for model in model_or_iterable:
+156 |             if model not in self._registry:
+157 |                 raise NotRegistered('The model %s is not registered' % model.__name__)
+158 |             del self._registry[model]
+159 | 
+160 |     def is_registered(self, model):
+161 |         """
+162 |         Check if a model class is registered with this `AdminSite`.
+163 |         """
+164 |         return model in self._registry
+165 | 
+166 |     def add_action(self, action, name=None):
+167 |         """
+168 |         Register an action to be available globally.
+169 |         """
+170 |         name = name or action.__name__
+171 |         self._actions[name] = action
+172 |         self._global_actions[name] = action
+173 | 
+174 |     def disable_action(self, name):
+175 |         """
+176 |         Disable a globally-registered action. Raise KeyError for invalid names.
+177 |         """
+178 |         del self._actions[name]
+179 | 
+180 |     def get_action(self, name):
+181 |         """
+182 |         Explicitly get a registered global action whether it's enabled or
+183 |         not. Raise KeyError for invalid names.
+184 |         """
+185 |         return self._global_actions[name]
+186 | 
+187 |     @property
+188 |     def actions(self):
+189 |         """
+190 |         Get all the enabled actions as an iterable of (name, func).
+191 |         """
+192 |         return self._actions.items()
+193 | 
+194 |     def has_permission(self, request):
+195 |         """
+196 |         Return True if the given HttpRequest has permission to view
+197 |         *at least one* page in the admin site.
+198 |         """
+199 |         return request.user.is_active and request.user.is_staff
+200 | 
+201 |     def admin_view(self, view, cacheable=False):
+202 |         """
+203 |         Decorator to create an admin view attached to this ``AdminSite``. This
+204 |         wraps the view and provides permission checking by calling
+205 |         ``self.has_permission``.
+206 | 
+207 |         You'll want to use this from within ``AdminSite.get_urls()``:
+208 | 
+209 |             class MyAdminSite(AdminSite):
+210 | 
+211 |                 def get_urls(self):
+212 |                     from django.urls import path
+213 | 
+214 |                     urls = super().get_urls()
+215 |                     urls += [
+216 |                         path('my_view/', self.admin_view(some_view))
+217 |                     ]
+218 |                     return urls
+219 | 
+220 |         By default, admin_views are marked non-cacheable using the
+221 |         ``never_cache`` decorator. If the view can be safely cached, set
+222 |         cacheable=True.
+223 |         """
+224 |         def inner(request, *args, **kwargs):
+225 |             if not self.has_permission(request):
+226 |                 if request.path == reverse('admin:logout', current_app=self.name):
+227 |                     index_path = reverse('admin:index', current_app=self.name)
+228 |                     return HttpResponseRedirect(index_path)
+229 |                 # Inner import to prevent django.contrib.admin (app) from
+230 |                 # importing django.contrib.auth.models.User (unrelated model).
+231 |                 from django.contrib.auth.views import redirect_to_login
+232 |                 return redirect_to_login(
+233 |                     request.get_full_path(),
+234 |                     reverse('admin:login', current_app=self.name)
+235 |                 )
+236 |             return view(request, *args, **kwargs)
+237 |         if not cacheable:
+238 |             inner = never_cache(inner)
+239 |         # We add csrf_protect here so this function can be used as a utility
+240 |         # function for any view, without having to repeat 'csrf_protect'.
+241 |         if not getattr(view, 'csrf_exempt', False):
+242 |             inner = csrf_protect(inner)
+243 |         return update_wrapper(inner, view)
+244 | 
+245 |     def get_urls(self):
+246 |         # Since this module gets imported in the application's root package,
+247 |         # it cannot import models from other applications at the module level,
+248 |         # and django.contrib.contenttypes.views imports ContentType.
+249 |         from django.contrib.contenttypes import views as contenttype_views
+250 |         from django.urls import include, path, re_path
+251 | 
+252 |         def wrap(view, cacheable=False):
+253 |             def wrapper(*args, **kwargs):
+254 |                 return self.admin_view(view, cacheable)(*args, **kwargs)
+255 |             wrapper.admin_site = self
+256 |             return update_wrapper(wrapper, view)
+257 | 
+258 |         # Admin-site-wide views.
+259 |         urlpatterns = [
+260 |             path('', wrap(self.index), name='index'),
+261 |             path('login/', self.login, name='login'),
+262 |             path('logout/', wrap(self.logout), name='logout'),
+263 |             path('password_change/', wrap(self.password_change, cacheable=True), name='password_change'),
+264 |             path(
+265 |                 'password_change/done/',
+266 |                 wrap(self.password_change_done, cacheable=True),
+267 |                 name='password_change_done',
+268 |             ),
+269 |             path('autocomplete/', wrap(self.autocomplete_view), name='autocomplete'),
+270 |             path('jsi18n/', wrap(self.i18n_javascript, cacheable=True), name='jsi18n'),
+271 |             path(
+272 |                 'r/<int:content_type_id>/<path:object_id>/',
+273 |                 wrap(contenttype_views.shortcut),
+274 |                 name='view_on_site',
+275 |             ),
+276 |         ]
+277 | 
+278 |         # Add in each model's views, and create a list of valid URLS for the
+279 |         # app_index
+280 |         valid_app_labels = []
+281 |         for model, model_admin in self._registry.items():
+282 |             urlpatterns += [
+283 |                 path('%s/%s/' % (model._meta.app_label, model._meta.model_name), include(model_admin.urls)),
+284 |             ]
+285 |             if model._meta.app_label not in valid_app_labels:
+286 |                 valid_app_labels.append(model._meta.app_label)
+287 | 
+288 |         # If there were ModelAdmins registered, we should have a list of app
+289 |         # labels for which we need to allow access to the app_index view,
+290 |         if valid_app_labels:
+291 |             regex = r'^(?P<app_label>' + '|'.join(valid_app_labels) + ')/$'
+292 |             urlpatterns += [
+293 |                 re_path(regex, wrap(self.app_index), name='app_list'),
+294 |             ]
+295 | 
+296 |         if self.final_catch_all_view:
+297 |             urlpatterns.append(re_path(r'(?P<url>.*)$', wrap(self.catch_all_view)))
+298 | 
+299 |         return urlpatterns
+300 | 
+301 |     @property
+302 |     def urls(self):
+303 |         return self.get_urls(), 'admin', self.name
+304 | 
+305 |     def each_context(self, request):
+306 |         """
+307 |         Return a dictionary of variables to put in the template context for
+308 |         *every* page in the admin site.
+309 | 
+310 |         For sites running on a subpath, use the SCRIPT_NAME value if site_url
+311 |         hasn't been customized.
+312 |         """
+313 |         script_name = request.META['SCRIPT_NAME']
+314 |         site_url = script_name if self.site_url == '/' and script_name else self.site_url
+315 |         return {
+316 |             'site_title': self.site_title,
+317 |             'site_header': self.site_header,
+318 |             'site_url': site_url,
+319 |             'has_permission': self.has_permission(request),
+320 |             'available_apps': self.get_app_list(request),
+321 |             'is_popup': False,
+322 |             'is_nav_sidebar_enabled': self.enable_nav_sidebar,
+323 |         }
+324 | 
+325 |     def password_change(self, request, extra_context=None):
+326 |         """
+327 |         Handle the "change password" task -- both form display and validation.
+328 |         """
+329 |         from django.contrib.admin.forms import AdminPasswordChangeForm
+330 |         from django.contrib.auth.views import PasswordChangeView
+331 |         url = reverse('admin:password_change_done', current_app=self.name)
+332 |         defaults = {
+333 |             'form_class': AdminPasswordChangeForm,
+334 |             'success_url': url,
+335 |             'extra_context': {**self.each_context(request), **(extra_context or {})},
+336 |         }
+337 |         if self.password_change_template is not None:
+338 |             defaults['template_name'] = self.password_change_template
+339 |         request.current_app = self.name
+340 |         return PasswordChangeView.as_view(**defaults)(request)
+341 | 
+342 |     def password_change_done(self, request, extra_context=None):
+343 |         """
+344 |         Display the "success" page after a password change.
+345 |         """
+346 |         from django.contrib.auth.views import PasswordChangeDoneView
+347 |         defaults = {
+348 |             'extra_context': {**self.each_context(request), **(extra_context or {})},
+349 |         }
+350 |         if self.password_change_done_template is not None:
+351 |             defaults['template_name'] = self.password_change_done_template
+352 |         request.current_app = self.name
+353 |         return PasswordChangeDoneView.as_view(**defaults)(request)
+354 | 
+355 |     def i18n_javascript(self, request, extra_context=None):
+356 |         """
+357 |         Display the i18n JavaScript that the Django admin requires.
+358 | 
+359 |         `extra_context` is unused but present for consistency with the other
+360 |         admin views.
+361 |         """
+362 |         return JavaScriptCatalog.as_view(packages=['django.contrib.admin'])(request)
+363 | 
+364 |     def logout(self, request, extra_context=None):
+365 |         """
+366 |         Log out the user for the given HttpRequest.
+367 | 
+368 |         This should *not* assume the user is already logged in.
+369 |         """
+370 |         from django.contrib.auth.views import LogoutView
+371 |         defaults = {
+372 |             'extra_context': {
+373 |                 **self.each_context(request),
+374 |                 # Since the user isn't logged out at this point, the value of
+375 |                 # has_permission must be overridden.
+376 |                 'has_permission': False,
+377 |                 **(extra_context or {})
+378 |             },
+379 |         }
+380 |         if self.logout_template is not None:
+381 |             defaults['template_name'] = self.logout_template
+382 |         request.current_app = self.name
+383 |         return LogoutView.as_view(**defaults)(request)
+384 | 
+385 |     @method_decorator(never_cache)
+386 |     def login(self, request, extra_context=None):
+387 |         """
+388 |         Display the login form for the given HttpRequest.
+389 |         """
+390 |         if request.method == 'GET' and self.has_permission(request):
+391 |             # Already logged-in, redirect to admin index
+392 |             index_path = reverse('admin:index', current_app=self.name)
+393 |             return HttpResponseRedirect(index_path)
+394 | 
+395 |         # Since this module gets imported in the application's root package,
+396 |         # it cannot import models from other applications at the module level,
+397 |         # and django.contrib.admin.forms eventually imports User.
+398 |         from django.contrib.admin.forms import AdminAuthenticationForm
+399 |         from django.contrib.auth.views import LoginView
+400 |         context = {
+401 |             **self.each_context(request),
+402 |             'title': _('Log in'),
+403 |             'app_path': request.get_full_path(),
+404 |             'username': request.user.get_username(),
+405 |         }
+406 |         if (REDIRECT_FIELD_NAME not in request.GET and
+407 |                 REDIRECT_FIELD_NAME not in request.POST):
+408 |             context[REDIRECT_FIELD_NAME] = reverse('admin:index', current_app=self.name)
+409 |         context.update(extra_context or {})
+410 | 
+411 |         defaults = {
+412 |             'extra_context': context,
+413 |             'authentication_form': self.login_form or AdminAuthenticationForm,
+414 |             'template_name': self.login_template or 'admin/login.html',
+415 |         }
+416 |         request.current_app = self.name
+417 |         return LoginView.as_view(**defaults)(request)
+418 | 
+419 |     def autocomplete_view(self, request):
+420 |         return AutocompleteJsonView.as_view(admin_site=self)(request)
+421 | 
+422 |     @no_append_slash
+423 |     def catch_all_view(self, request, url):
+424 |         if settings.APPEND_SLASH and not url.endswith('/'):
+425 |             urlconf = getattr(request, 'urlconf', None)
+426 |             try:
+427 |                 match = resolve('%s/' % request.path_info, urlconf)
+428 |             except Resolver404:
+429 |                 pass
+430 |             else:
+431 |                 if getattr(match.func, 'should_append_slash', True):
+432 |                     return HttpResponsePermanentRedirect('%s/' % request.path)
+433 |         raise Http404
+434 | 
+435 |     def _build_app_dict(self, request, label=None):
+436 |         """
+437 |         Build the app dictionary. The optional `label` parameter filters models
+438 |         of a specific app.
+439 |         """
+440 |         app_dict = {}
+441 | 
+442 |         if label:
+443 |             models = {
+444 |                 m: m_a for m, m_a in self._registry.items()
+445 |                 if m._meta.app_label == label
+446 |             }
+447 |         else:
+448 |             models = self._registry
+449 | 
+450 |         for model, model_admin in models.items():
+451 |             app_label = model._meta.app_label
+452 | 
+453 |             has_module_perms = model_admin.has_module_permission(request)
+454 |             if not has_module_perms:
+455 |                 continue
+456 | 
+457 |             perms = model_admin.get_model_perms(request)
+458 | 
+459 |             # Check whether user has any perm for this module.
+460 |             # If so, add the module to the model_list.
+461 |             if True not in perms.values():
+462 |                 continue
+463 | 
+464 |             info = (app_label, model._meta.model_name)
+465 |             model_dict = {
+466 |                 'model': model,
+467 |                 'name': capfirst(model._meta.verbose_name_plural),
+468 |                 'object_name': model._meta.object_name,
+469 |                 'perms': perms,
+470 |                 'admin_url': None,
+471 |                 'add_url': None,
+472 |             }
+473 |             if perms.get('change') or perms.get('view'):
+474 |                 model_dict['view_only'] = not perms.get('change')
+475 |                 try:
+476 |                     model_dict['admin_url'] = reverse('admin:%s_%s_changelist' % info, current_app=self.name)
+477 |                 except NoReverseMatch:
+478 |                     pass
+479 |             if perms.get('add'):
+480 |                 try:
+481 |                     model_dict['add_url'] = reverse('admin:%s_%s_add' % info, current_app=self.name)
+482 |                 except NoReverseMatch:
+483 |                     pass
+484 | 
+485 |             if app_label in app_dict:
+486 |                 app_dict[app_label]['models'].append(model_dict)
+487 |             else:
+488 |                 app_dict[app_label] = {
+489 |                     'name': apps.get_app_config(app_label).verbose_name,
+490 |                     'app_label': app_label,
+491 |                     'app_url': reverse(
+492 |                         'admin:app_list',
+493 |                         kwargs={'app_label': app_label},
+494 |                         current_app=self.name,
+495 |                     ),
+496 |                     'has_module_perms': has_module_perms,
+497 |                     'models': [model_dict],
+498 |                 }
+499 | 
+500 |         if label:
+501 |             return app_dict.get(label)
+502 |         return app_dict
+503 | 
+504 |     def get_app_list(self, request):
+505 |         """
+506 |         Return a sorted list of all the installed apps that have been
+507 |         registered in this site.
+508 |         """
+509 |         app_dict = self._build_app_dict(request)
+510 | 
+511 |         # Sort the apps alphabetically.
+512 |         app_list = sorted(app_dict.values(), key=lambda x: x['name'].lower())
+513 | 
+514 |         # Sort the models alphabetically within each app.
+515 |         for app in app_list:
+516 |             app['models'].sort(key=lambda x: x['name'])
+517 | 
+518 |         return app_list
+519 | 
+520 |     def index(self, request, extra_context=None):
+521 |         """
+522 |         Display the main admin index page, which lists all of the installed
+523 |         apps that have been registered in this site.
+524 |         """
+525 |         app_list = self.get_app_list(request)
+526 | 
+527 |         context = {
+528 |             **self.each_context(request),
+529 |             'title': self.index_title,
+530 |             'subtitle': None,
+531 |             'app_list': app_list,
+532 |             **(extra_context or {}),
+533 |         }
+534 | 
+535 |         request.current_app = self.name
+536 | 
+537 |         return TemplateResponse(request, self.index_template or 'admin/index.html', context)
+538 | 
+539 |     def app_index(self, request, app_label, extra_context=None):
+540 |         app_dict = self._build_app_dict(request, app_label)
+541 |         if not app_dict:
+542 |             raise Http404('The requested admin page does not exist.')
+543 |         # Sort the models alphabetically within each app.
+544 |         app_dict['models'].sort(key=lambda x: x['name'])
+545 |         context = {
+546 |             **self.each_context(request),
+547 |             'title': _('%(app)s administration') % {'app': app_dict['name']},
+548 |             'subtitle': None,
+549 |             'app_list': [app_dict],
+550 |             'app_label': app_label,
+551 |             **(extra_context or {}),
+552 |         }
+553 | 
+554 |         request.current_app = self.name
+555 | 
+556 |         return TemplateResponse(request, self.app_index_template or [
+557 |             'admin/%s/app_index.html' % app_label,
+558 |             'admin/app_index.html'
+559 |         ], context)
+560 | 
+561 | 
+562 | class DefaultAdminSite(LazyObject):
+563 |     def _setup(self):
+564 |         AdminSiteClass = import_string(apps.get_app_config('admin').default_site)
+565 |         self._wrapped = AdminSiteClass()
+566 | 
+567 |     def __repr__(self):
+568 |         return repr(self._wrapped)
+569 | 
+570 | 
+571 | # This global object represents the default admin site, for the common case.
+572 | # You can provide your own AdminSite using the (Simple)AdminConfig.default_site
+573 | # attribute. You can also instantiate AdminSite in your own code to create a
+574 | # custom admin site.
+575 | site = DefaultAdminSite()
+576 | 
+```
+
+2026-08-28 05:02:15 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:02:18 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:02:18 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:02:18 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 05:02:18 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'test_autocomplete', 'kind_filter': [12, 6], 'context': 'autocomplete admin view tests response shape', 'top_k': 10}))
+```
+2026-08-28 05:02:19 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:02:25 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:02:25 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:02:25 auto_search_main.py INFO OBSERVATION:
+Found 14 candidates for `test_autocomplete`. Showing top 10 by relevance:
+1. [score=97] AutocompleteFieldsTests.test_autocomplete_e037
+   tests/modeladmin/test_checks.py:1349
+           )
+   
+   
+   class AutocompleteFieldsTests(CheckTestCase):
+       def test_autocomplete_e036(self):
+           class Admin(ModelAdmin):
+               autocomplete_fields = 'name'
+   
+           self.assertIsInvalid(
+               Admin, Band,
+               msg="The value of 'autocomplete_fields' must be a list or tuple.",
+               id='admin.E036',
+               invalid_obj=Admin,
+           )
+   
+       def test_autocomplete_e037(self):
+           class Admin(ModelAdmin):
+               autocomplete_fields = ('nonexistent',)
+   
+           self.assertIsInvalid(
+               Admin, ValidationTestModel,
+               msg=(
+                   "The value of 'autocomplete_fields[0]' refers to 'nonexistent', "
+                   "which is not a field of 'modeladmin.ValidationTestModel'."
+               ),
+               id='admin.E037',
+               invalid_obj=Admin,
+           )
+   
+       def test_autocomplete_e38(self):
+           class Admin(ModelAdmin):
+2. [score=95] AutocompleteFieldsTests.test_autocomplete_e38
+   tests/modeladmin/test_checks.py:1363
+   
+       def test_autocomplete_e037(self):
+           class Admin(ModelAdmin):
+               autocomplete_fields = ('nonexistent',)
+   
+           self.assertIsInvalid(
+               Admin, ValidationTestModel,
+               msg=(
+                   "The value of 'autocomplete_fields[0]' refers to 'nonexistent', "
+                   "which is not a field of 'modeladmin.ValidationTestModel'."
+               ),
+               id='admin.E037',
+               invalid_obj=Admin,
+           )
+   
+       def test_autocomplete_e38(self):
+           class Admin(ModelAdmin):
+               autocomplete_fields = ('name',)
+   
+           self.assertIsInvalid(
+               Admin, ValidationTestModel,
+               msg=(
+                   "The value of 'autocomplete_fields[0]' must be a foreign "
+                   "key or a many-to-many field."
+               ),
+               id='admin.E038',
+               invalid_obj=Admin,
+           )
+   
+       def test_autocomplete_e039(self):
+           class Admin(ModelAdmin):
+3. [score=93] AutocompleteFieldsTests.test_autocomplete_e036
+   tests/modeladmin/test_checks.py:1338
+   
+       def test_both_list_editable_and_list_display_links(self):
+           class ProductAdmin(ModelAdmin):
+               list_editable = ('name',)
+               list_display = ('name',)
+               list_display_links = ('name',)
+           self.assertIsInvalid(
+               ProductAdmin, ValidationTestModel,
+               "The value of 'name' cannot be in both 'list_editable' and "
+               "'list_display_links'.",
+               id='admin.E123',
+           )
+   
+   
+   class AutocompleteFieldsTests(CheckTestCase):
+       def test_autocomplete_e036(self):
+           class Admin(ModelAdmin):
+               autocomplete_fields = 'name'
+   
+           self.assertIsInvalid(
+               Admin, Band,
+               msg="The value of 'autocomplete_fields' must be a list or tuple.",
+               id='admin.E036',
+               invalid_obj=Admin,
+           )
+   
+       def test_autocomplete_e037(self):
+           class Admin(ModelAdmin):
+               autocomplete_fields = ('nonexistent',)
+   
+           self.assertIsInvalid(
+4. [score=90] AutocompleteFieldsTests.test_autocomplete_is_valid
+   tests/modeladmin/test_checks.py:1411
+               autocomplete_fields = ('featuring',)
+   
+           site = AdminSite()
+           site.register(Band, NoSearchFieldsAdmin)
+           self.assertIsInvalid(
+               AutocompleteAdmin, Song,
+               msg=(
+                   'NoSearchFieldsAdmin must define "search_fields", because '
+                   'it\'s referenced by AutocompleteAdmin.autocomplete_fields.'
+               ),
+               id='admin.E040',
+               invalid_obj=AutocompleteAdmin,
+               admin_site=site,
+           )
+   
+       def test_autocomplete_is_valid(self):
+           class SearchFieldsAdmin(ModelAdmin):
+               search_fields = 'name'
+   
+           class AutocompleteAdmin(ModelAdmin):
+               autocomplete_fields = ('featuring',)
+   
+           site = AdminSite()
+           site.register(Band, SearchFieldsAdmin)
+           self.assertIsValid(AutocompleteAdmin, Song, admin_site=site)
+   
+       def test_autocomplete_is_onetoone(self):
+           class UserAdmin(ModelAdmin):
+               search_fields = ('name',)
+   
+           class Admin(ModelAdmin):
+5. [score=88] AutocompleteFieldsTests.test_autocomplete_e039
+   tests/modeladmin/test_checks.py:1377
+   
+       def test_autocomplete_e38(self):
+           class Admin(ModelAdmin):
+               autocomplete_fields = ('name',)
+   
+           self.assertIsInvalid(
+               Admin, ValidationTestModel,
+               msg=(
+                   "The value of 'autocomplete_fields[0]' must be a foreign "
+                   "key or a many-to-many field."
+               ),
+               id='admin.E038',
+               invalid_obj=Admin,
+           )
+   
+       def test_autocomplete_e039(self):
+           class Admin(ModelAdmin):
+               autocomplete_fields = ('band',)
+   
+           self.assertIsInvalid(
+               Admin, Song,
+               msg=(
+                   'An admin for model "Band" has to be registered '
+                   'to be referenced by Admin.autocomplete_fields.'
+               ),
+               id='admin.E039',
+               invalid_obj=Admin,
+           )
+   
+       def test_autocomplete_e040(self):
+           class NoSearchFieldsAdmin(ModelAdmin):
+6. [score=84] AutocompleteFieldsTests.test_autocomplete_is_onetoone
+   tests/modeladmin/test_checks.py:1422
+               invalid_obj=AutocompleteAdmin,
+               admin_site=site,
+           )
+   
+       def test_autocomplete_is_valid(self):
+           class SearchFieldsAdmin(ModelAdmin):
+               search_fields = 'name'
+   
+           class AutocompleteAdmin(ModelAdmin):
+               autocomplete_fields = ('featuring',)
+   
+           site = AdminSite()
+           site.register(Band, SearchFieldsAdmin)
+           self.assertIsValid(AutocompleteAdmin, Song, admin_site=site)
+   
+       def test_autocomplete_is_onetoone(self):
+           class UserAdmin(ModelAdmin):
+               search_fields = ('name',)
+   
+           class Admin(ModelAdmin):
+               autocomplete_fields = ('best_friend',)
+   
+           site = AdminSite()
+           site.register(User, UserAdmin)
+           self.assertIsValid(Admin, ValidationTestModel, admin_site=site)
+   
+   
+   class ActionsCheckTests(CheckTestCase):
+   
+       def test_custom_permissions_require_matching_has_method(self):
+           @admin.action(permissions=['custom'])
+7. [score=82] AutocompleteFieldsTests.test_autocomplete_e040
+   tests/modeladmin/test_checks.py:1391
+   
+       def test_autocomplete_e039(self):
+           class Admin(ModelAdmin):
+               autocomplete_fields = ('band',)
+   
+           self.assertIsInvalid(
+               Admin, Song,
+               msg=(
+                   'An admin for model "Band" has to be registered '
+                   'to be referenced by Admin.autocomplete_fields.'
+               ),
+               id='admin.E039',
+               invalid_obj=Admin,
+           )
+   
+       def test_autocomplete_e040(self):
+           class NoSearchFieldsAdmin(ModelAdmin):
+               pass
+   
+           class AutocompleteAdmin(ModelAdmin):
+               autocomplete_fields = ('featuring',)
+   
+           site = AdminSite()
+           site.register(Band, NoSearchFieldsAdmin)
+           self.assertIsInvalid(
+               AutocompleteAdmin, Song,
+               msg=(
+                   'NoSearchFieldsAdmin must define "search_fields", because '
+                   'it\'s referenced by AutocompleteAdmin.autocomplete_fields.'
+               ),
+               id='admin.E040',
+8. [score=41] ModelAdminTests.test_get_autocomplete_fields
+   tests/modeladmin/tests.py:669
+               with self.subTest(name=method.__name__):
+                   created = method(mock_request, self.band, message)
+                   fetched = LogEntry.objects.filter(action_flag=flag).latest('id')
+                   self.assertEqual(created, fetched)
+                   self.assertEqual(fetched.action_flag, flag)
+                   self.assertEqual(fetched.content_type, content_type)
+                   self.assertEqual(fetched.object_id, str(self.band.pk))
+                   self.assertEqual(fetched.user, mock_request.user)
+                   if flag == DELETION:
+                       self.assertEqual(fetched.change_message, '')
+                       self.assertEqual(fetched.object_repr, message)
+                   else:
+                       self.assertEqual(fetched.change_message, str(message))
+                       self.assertEqual(fetched.object_repr, str(self.band))
+   
+       def test_get_autocomplete_fields(self):
+           class NameAdmin(ModelAdmin):
+               search_fields = ['name']
+   
+           class SongAdmin(ModelAdmin):
+               autocomplete_fields = ['featuring']
+               fields = ['featuring', 'band']
+   
+           class OtherSongAdmin(SongAdmin):
+               def get_autocomplete_fields(self, request):
+                   return ['band']
+   
+           self.site.register(Band, NameAdmin)
+           try:
+               # Uses autocomplete_fields if not overridden.
+               model_admin = SongAdmin(Song, self.site)
+9. [score=10] PasswordResetFormTest.test_html_autocomplete_attributes
+   tests/auth_tests/test_forms.py:994
+               r'^<html><a href="http://example.com/reset/[\w/-]+/">Link</a></html>$',
+               message.get_payload(1).get_payload()
+           ))
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.CustomEmailField')
+       def test_custom_email_field(self):
+           email = 'test@mail.com'
+           CustomEmailField.objects.create_user('test name', 'test password', email)
+           form = PasswordResetForm({'email': email})
+           self.assertTrue(form.is_valid())
+           form.save()
+           self.assertEqual(form.cleaned_data['email'], email)
+           self.assertEqual(len(mail.outbox), 1)
+           self.assertEqual(mail.outbox[0].to, [email])
+   
+       def test_html_autocomplete_attributes(self):
+           form = PasswordResetForm()
+           self.assertEqual(form.fields['email'].widget.attrs['autocomplete'], 'email')
+   
+   
+   class ReadOnlyPasswordHashTest(SimpleTestCase):
+   
+       def test_bug_19349_render_with_none_value(self):
+           # Rendering the widget with value set to None
+           # mustn't raise an exception.
+           widget = ReadOnlyPasswordHashWidget()
+           html = widget.render(name='password', value=None, attrs={})
+           self.assertIn(_("No password set."), html)
+   
+       @override_settings(PASSWORD_HASHERS=['django.contrib.auth.hashers.PBKDF2PasswordHasher'])
+       def test_render(self):
+10. [score=9] SetPasswordFormTest.test_html_autocomplete_attributes
+   tests/auth_tests/test_forms.py:599
+           {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', 'OPTIONS': {
+               'min_length': 12,
+           }},
+       ])
+       def test_help_text_translation(self):
+           french_help_texts = [
+               'Votre mot de passe ne peut pas trop ressembler à vos autres informations personnelles.',
+               'Votre mot de passe doit contenir au minimum 12 caractères.',
+           ]
+           form = SetPasswordForm(self.u1)
+           with translation.override('fr'):
+               html = form.as_p()
+               for french_text in french_help_texts:
+                   self.assertIn(french_text, html)
+   
+       def test_html_autocomplete_attributes(self):
+           form = SetPasswordForm(self.u1)
+           tests = (
+               ('new_password1', 'new-password'),
+               ('new_password2', 'new-password'),
+           )
+           for field_name, autocomplete in tests:
+               with self.subTest(field_name=field_name, autocomplete=autocomplete):
+                   self.assertEqual(form.fields[field_name].widget.attrs['autocomplete'], autocomplete)
+   
+   
+   class PasswordChangeFormTest(TestDataMixin, TestCase):
+   
+       def test_incorrect_password(self):
+           user = User.objects.get(username='testclient')
+           data = {
+
+4 more candidates cached. Call `more_symbols(name="test_autocomplete")` for the next batch.
+[symbol-locator] [scorer] usage pid=843388 calls=4 p=43256 c=168
+[symbol-locator] [scorer] parsed 14/14 scores from LLM
+
+2026-08-28 05:02:25 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:02:30 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:02:30 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:02:30 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 05:02:30 auto_search_main.py INFO ===============
+2026-08-28 05:02:30 auto_search_main.py INFO Final response generated content_length=337
+2026-08-28 05:02:30 auto_search_main.py INFO ==== localizing django__django-14752 succeed, process multiple loc outputs ====
+2026-08-28 05:02:31 cost_analysis.py INFO input_tokens=177421, output_tokens=1272, cost=0.45
+2026-08-28 05:02:31 auto_search_main.py INFO Total time: 9.2194 min

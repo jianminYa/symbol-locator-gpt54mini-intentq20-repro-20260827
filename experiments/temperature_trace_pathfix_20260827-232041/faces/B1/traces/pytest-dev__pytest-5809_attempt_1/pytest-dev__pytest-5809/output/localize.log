@@ -1,0 +1,1293 @@
+2026-08-28 05:02:51 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 05:02:51 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 05:02:51 auto_search_main.py INFO ============================================================
+2026-08-28 05:02:51 auto_search_main.py INFO ==== rank 0 setup localize pytest-dev__pytest-5809 ====
+2026-08-28 05:02:51 install.py INFO hook: set_current_issue fired
+2026-08-28 05:02:51 git_repo_manager.py INFO Clone Github repo https://github.com/pytest-dev/pytest.git to playground/9fb2d765-0347-4b8d-a1fc-07239b44fde5/pytest-dev_pytest and checkout commit HEAD
+2026-08-28 05:02:51 git_repo_manager.py INFO Directory 'playground/9fb2d765-0347-4b8d-a1fc-07239b44fde5/pytest-dev_pytest' was created.
+2026-08-28 05:02:51 install.py INFO setup_repo returned: playground/9fb2d765-0347-4b8d-a1fc-07239b44fde5/pytest-dev_pytest -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pytest-dev__pytest-5809
+2026-08-28 05:02:54 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pytest-dev__pytest-5809 files=199 indexed=199 failed=0
+2026-08-28 05:03:04 repo_ops.py INFO [0] Processed pytest-dev__pytest-5809
+2026-08-28 05:03:04 auto_search_main.py INFO ============================================================
+2026-08-28 05:03:04 auto_search_main.py INFO ==== rank 0 begin localizing pytest-dev__pytest-5809 ====
+2026-08-28 05:03:04 auto_search_main.py INFO ============================================================
+2026-08-28 05:03:04 auto_search_main.py INFO ==== pytest-dev__pytest-5809 Count down: attempt 1 ====
+2026-08-28 05:03:04 auto_search_main.py INFO ==== pytest-dev__pytest-5809 start auto search ====
+2026-08-28 05:03:07 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:03:24 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:03:24 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:03:24 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 05:03:24 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'pastebin', 'context': 'pytest pastebin upload option and bpaste lexer selection', 'top_k': 5}))
+```
+2026-08-28 05:03:24 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:04:24 _base_client.py INFO Retrying request to /chat/completions in 0.494785 seconds
+2026-08-28 05:05:25 _base_client.py INFO Retrying request to /chat/completions in 0.952161 seconds
+2026-08-28 05:06:26 auto_search_main.py INFO OBSERVATION:
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm.set_verbose=True'.
+
+Found 9 candidates for `pastebin`. Showing top 5 by relevance:
+1. [score=50] pytest_unconfigure.pastebinurl
+   src/_pytest/pastebin.py:61
+               tr._tw.write = tee_write
+   
+   
+   def pytest_unconfigure(config):
+       if hasattr(config, "_pastebinfile"):
+           # get terminal contents and delete file
+           config._pastebinfile.seek(0)
+           sessionlog = config._pastebinfile.read()
+           config._pastebinfile.close()
+           del config._pastebinfile
+           # undo our patching in the terminal reporter
+           tr = config.pluginmanager.getplugin("terminalreporter")
+           del tr._tw.__dict__["write"]
+           # write summary
+           tr.write_sep("=", "Sending information to Paste Service")
+           pastebinurl = create_new_paste(sessionlog)
+           tr.write_line("pastebin session-log: %s\n" % pastebinurl)
+   
+   
+   def create_new_paste(contents):
+       """
+       Creates a new paste using bpaste.net service.
+   
+       :contents: paste contents as utf-8 encoded bytes
+       :returns: url to the pasted contents
+       """
+       import re
+   
+       if sys.version_info < (3, 0):
+           from urllib import urlopen, urlencode
+       else:
+2. [score=50] pytest_terminal_summary.pastebinurl
+   src/_pytest/pastebin.py:113
+           return
+       tr = terminalreporter
+       if "failed" in tr.stats:
+           terminalreporter.write_sep("=", "Sending information to Paste Service")
+           for rep in terminalreporter.stats.get("failed"):
+               try:
+                   msg = rep.longrepr.reprtraceback.reprentries[-1].reprfileloc
+               except AttributeError:
+                   msg = tr._getfailureheadline(rep)
+               tw = _pytest.config.create_terminal_writer(
+                   terminalreporter.config, stringio=True
+               )
+               rep.toterminal(tw)
+               s = tw.stringio.getvalue()
+               assert len(s)
+               pastebinurl = create_new_paste(s)
+               tr.write_line("%s --> %s" % (msg, pastebinurl))
+   
+3. [score=50] TestPaste.pastebin
+   testing/test_pastebin.py:92
+           if sys.version_info[0] >= 3:
+               expected_msg = "*assert '☺' == 1*"
+           else:
+               expected_msg = "*assert '\\xe2\\x98\\xba' == 1*"
+           result.stdout.fnmatch_lines(
+               [
+                   expected_msg,
+                   "*== 1 failed in *",
+                   "*Sending information to Paste Service*",
+               ]
+           )
+   
+   
+   class TestPaste(object):
+       @pytest.fixture
+       def pastebin(self, request):
+           return request.config.pluginmanager.getplugin("pastebin")
+   
+       @pytest.fixture
+       def mocked_urlopen(self, monkeypatch):
+           """
+           monkeypatch the actual urlopen calls done by the internal plugin
+           function that connects to bpaste service.
+           """
+           calls = []
+   
+           def mocked(url, data):
+               calls.append((url, data))
+   
+               class DummyFile(object):
+                   def read(self):
+4. [score=50] TestPaste.test_create_new_paste.pastebin
+   testing/test_pastebin.py:123
+                       # part of html of a normal response
+                       return b'View <a href="/raw/3c0c6750bd">raw</a>.'
+   
+               return DummyFile()
+   
+           if sys.version_info < (3, 0):
+               import urllib
+   
+               monkeypatch.setattr(urllib, "urlopen", mocked)
+           else:
+               import urllib.request
+   
+               monkeypatch.setattr(urllib.request, "urlopen", mocked)
+           return calls
+   
+       def test_create_new_paste(self, pastebin, mocked_urlopen):
+           result = pastebin.create_new_paste(b"full-paste-contents")
+           assert result == "https://bpaste.net/show/3c0c6750bd"
+           assert len(mocked_urlopen) == 1
+           url, data = mocked_urlopen[0]
+           assert type(data) is bytes
+           lexer = "python3" if sys.version_info[0] >= 3 else "python"
+           assert url == "https://bpaste.net"
+           assert "lexer=%s" % lexer in data.decode()
+           assert "code=full-paste-contents" in data.decode()
+           assert "expiry=1week" in data.decode()
+   
+5. [score=50] TestPasteCapture.pastebinlist
+   testing/test_pastebin.py:13
+   # -*- coding: utf-8 -*-
+   from __future__ import absolute_import
+   from __future__ import division
+   from __future__ import print_function
+   
+   import sys
+   
+   import pytest
+   
+   
+   class TestPasteCapture(object):
+       @pytest.fixture
+       def pastebinlist(self, monkeypatch, request):
+           pastebinlist = []
+           plugin = request.config.pluginmanager.getplugin("pastebin")
+           monkeypatch.setattr(plugin, "create_new_paste", pastebinlist.append)
+           return pastebinlist
+   
+       def test_failed(self, testdir, pastebinlist):
+           testpath = testdir.makepyfile(
+               """
+               import pytest
+               def test_pass():
+                   pass
+               def test_fail():
+                   assert 0
+               def test_skip():
+                   pytest.skip("")
+
+4 more candidates cached. Call `more_symbols(name="pastebin")` for the next batch.
+[symbol-locator] [scorer] LLM call failed type=Timeout — using score=50
+
+2026-08-28 05:06:26 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['lexer=python3', 'bpaste.net', 'pastebin', '--pastebin']}))
+```
+2026-08-28 05:06:26 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:26 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:26 git_repo_manager.py INFO Clone Github repo https://github.com/pytest-dev/pytest.git to playground/9fb2d765-0347-4b8d-a1fc-07239b44fde5/pytest-dev_pytest and checkout commit HEAD
+2026-08-28 05:06:26 install.py INFO setup_repo returned: playground/9fb2d765-0347-4b8d-a1fc-07239b44fde5/pytest-dev_pytest -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pytest-dev__pytest-5809
+2026-08-28 05:06:26 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pytest-dev__pytest-5809 files=0 indexed=0 failed=0
+2026-08-28 05:06:42 epic_split.py INFO Splitting file testing/python/fixtures.py in 126 chunks
+2026-08-28 05:06:43 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:43 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:44 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:44 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:44 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:44 auto_search_main.py INFO OBSERVATION:
+src/_pytest/pastebin.py:create_new_paste
+src/_pytest/capture.py:capsysbinary
+src/_pytest/assertion/util.py:issequence
+src/_pytest/assertion/util.py:isset
+src/_pytest/assertion/util.py:isdict
+src/_pytest/assertion/util.py:isattrs
+src/_pytest/assertion/util.py:_format_lines
+src/_pytest/assertion/util.py:isdatacls
+src/_pytest/assertion/util.py:isiterable
+src/_pytest/assertion/util.py:impl:3
+src/_pytest/assertion/util.py:istext
+src/_pytest/fixtures.py:FixtureRequest._get_fixturestack
+src/_pytest/fixtures.py:FixtureRequest._get_active_fixturedef
+src/_pytest/assertion/rewrite.py:rewrite_asserts
+src/_pytest/assertion/rewrite.py:_saferepr
+src/_pytest/python_api.py:ApproxScalar.__repr__
+src/_pytest/python_api.py:ApproxScalar
+src/_pytest/pastebin.py:create_new_paste
+src/_pytest/hookspec.py:pytest_report_teststatus
+src/_pytest/hookspec.py:pytest_terminal_summary
+src/_pytest/hookspec.py:pytest_logwarning
+src/_pytest/hookspec.py:pytest_warning_captured
+src/_pytest/hookspec.py:pytest_exception_interact
+src/_pytest/hookspec.py:pytest_keyboard_interrupt
+src/_pytest/hookspec.py:pytest_enter_pdb
+src/_pytest/hookspec.py:pytest_warning_captured
+src/_pytest/hookspec.py:pytest_internalerror
+src/_pytest/hookspec.py:pytest_leave_pdb
+src/_pytest/hookspec.py:pytest_doctest_prepare_content
+src/_pytest/junitxml.py:_NodeReporter.to_xml
+src/_pytest/junitxml.py:_NodeReporter.record_testreport
+src/_pytest/junitxml.py:_NodeReporter._add_simple
+src/_pytest/junitxml.py:impl:17
+src/_pytest/junitxml.py:merge_family
+src/_pytest/pastebin.py:pytest_configure
+src/_pytest/pastebin.py:pytest_unconfigure
+src/_pytest/pastebin.py:pytest_terminal_summary
+src/_pytest/pastebin.py:create_new_paste
+src/_pytest/terminal.py:TerminalReporter.pytest_sessionstart
+src/_pytest/config/__init__.py:filename_arg
+src/_pytest/config/__init__.py:get_plugin_manager
+src/_pytest/config/__init__.py:impl:5
+src/_pytest/config/__init__.py:get_config
+src/_pytest/config/__init__.py:cmdline
+src/_pytest/config/__init__.py:directory_arg
+src/_pytest/hookspec.py:pytest_logwarning
+src/_pytest/hookspec.py:pytest_report_teststatus
+src/_pytest/hookspec.py:pytest_terminal_summary
+src/_pytest/hookspec.py:pytest_warning_captured
+src/_pytest/pastebin.py:create_new_paste
+src/_pytest/pastebin.py:pytest_configure
+src/_pytest/pastebin.py:pytest_unconfigure
+src/_pytest/pastebin.py:pytest_terminal_summary
+src/_pytest/capture.py:capsysbinary
+src/_pytest/terminal.py:TerminalReporter.pytest_sessionstart
+##Searching for term "lexer=python3"...
+### Search Result:
+Found `doc/en/example/multipython.py:python1`, `doc/en/example/multipython.py:python2`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | # -*- coding: utf-8 -*-
+ 2 | """
+ 3 | module containing a parametrized tests testing cross-python
+ 4 | serialization via the pickle module.
+ 5 | """
+ 6 | import distutils.spawn
+ 7 | import subprocess
+ 8 | import textwrap
+ 9 | 
+10 | import pytest
+11 | 
+12 | pythonlist = ["python2.7", "python3.4", "python3.5"]
+13 | 
+14 | 
+15 | @pytest.fixture(params=pythonlist)
+16 | def python1(request, tmpdir):
+17 |     picklefile = tmpdir.join("data.pickle")
+18 |     return Python(request.param, picklefile)
+19 | 
+20 | 
+21 | @pytest.fixture(params=pythonlist)
+22 | def python2(request, python1):
+23 |     return Python(request.param, python1.picklefile)
+```
+
+Found class `src/_pytest/python.py:Module`.
+Source: Retrieved entity using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class Module(nodes.File, PyCollector):
+
+    def _getobj(self):
+...
+    def collect(self):
+...
+    def _inject_setup_module_fixture(self):
+...
+    def _inject_setup_function_fixture(self):
+...
+    def _importtestmodule(self):
+
+```
+Hint: Search `src/_pytest/python.py:Module` to get the full content if needed.
+
+Found function `src/_pytest/python.py:_idvalset`.
+Source: Retrieved entity using keyword search (bm25).
+```
+1207 | def _idvalset(idx, parameterset, argnames, idfn, ids, item, config):
+1208 |     if parameterset.id is not None:
+1209 |         return parameterset.id
+1210 |     if ids is None or (idx >= len(ids) or ids[idx] is None):
+1211 |         this_id = [
+1212 |             _idval(val, argname, idx, idfn, item=item, config=config)
+1213 |             for val, argname in zip(parameterset.values, argnames)
+1214 |         ]
+1215 |         return "-".join(this_id)
+1216 |     else:
+1217 |         return _ascii_escaped_by_config(ids[idx], config)
+```
+
+Found function `src/_pytest/capture.py:capsysbinary`.
+Source: Retrieved code content using keyword search (bm25).
+```
+278 | def capsysbinary(request):
+279 |     """Enable bytes capturing of writes to ``sys.stdout`` and ``sys.stderr``.
+280 | 
+281 |     The captured output is made available via ``capsysbinary.readouterr()``
+282 |     method calls, which return a ``(out, err)`` namedtuple.
+283 |     ``out`` and ``err`` will be ``bytes`` objects.
+284 |     """
+285 |     _ensure_only_one_capture_fixture(request, "capsysbinary")
+286 |     # Currently, the implementation uses the python3 specific `.buffer`
+287 |     # property of CaptureIO.
+288 |     if sys.version_info < (3,):
+289 |         raise request.raiseerror("capsysbinary is only supported on Python 3")
+290 |     with _install_capture_fixture_on_item(request, SysCaptureBinary) as fixture:
+291 |         yield fixture
+```
+
+Found function `src/_pytest/assertion/util.py:issequence`.
+Source: Retrieved code content using keyword search (bm25).
+```
+107 | def issequence(x):
+108 |     return isinstance(x, Sequence) and not isinstance(x, basestring)
+```
+
+Found function `src/_pytest/assertion/util.py:isset`.
+Source: Retrieved code content using keyword search (bm25).
+```
+119 | def isset(x):
+120 |     return isinstance(x, (set, frozenset))
+```
+
+Found file `src/_pytest/python.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `src/_pytest/python.py` for the full content if needed.
+
+
+
+##Searching for term "lexer=python3", "bpaste.net", "--pastebin", "lexer=python3 bpaste.net --pastebin"...
+### Search Result:
+Found function `src/_pytest/pastebin.py:create_new_paste`.
+Source: Retrieved code content using keyword search (bm25).
+```
+65 | def create_new_paste(contents):
+66 |     """
+67 |     Creates a new paste using bpaste.net service.
+68 | 
+69 |     :contents: paste contents as utf-8 encoded bytes
+70 |     :returns: url to the pasted contents
+71 |     """
+72 |     import re
+73 | 
+74 |     if sys.version_info < (3, 0):
+75 |         from urllib import urlopen, urlencode
+76 |     else:
+77 |         from urllib.request import urlopen
+78 |         from urllib.parse import urlencode
+79 | 
+80 |     params = {
+81 |         "code": contents,
+82 |         "lexer": "python3" if sys.version_info[0] >= 3 else "python",
+83 |         "expiry": "1week",
+84 |     }
+85 |     url = "https://bpaste.net"
+86 |     response = urlopen(url, data=urlencode(params).encode("ascii")).read()
+87 |     m = re.search(r'href="/raw/(\w+)"', response.decode("utf-8"))
+88 |     if m:
+89 |         return "%s/show/%s" % (url, m.group(1))
+90 |     else:
+91 |         return "bad response: " + response
+```
+
+
+
+##Searching for term "bpaste.net"...
+### Search Result:
+Found `src/_pytest/pastebin.py:pytest_addoption`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | # -*- coding: utf-8 -*-
+  2 | """ submit failure or test session information to a pastebin service. """
+  3 | from __future__ import absolute_import
+  4 | from __future__ import division
+  5 | from __future__ import print_function
+  6 | 
+  7 | import sys
+  8 | import tempfile
+  9 | 
+ 10 | import six
+ 11 | 
+ 12 | import pytest
+ 13 | 
+ 14 | 
+ 15 | def pytest_addoption(parser):
+ 16 |     group = parser.getgroup("terminal reporting")
+ 17 |     group._addoption(
+ 18 |         "--pastebin",
+ 19 |         metavar="mode",
+ 20 |         action="store",
+ 21 |         dest="pastebin",
+ 22 |         default=None,
+ 23 |         choices=["failed", "all"],
+ 24 |         help="send failed|all info to bpaste.net pastebin service.",
+ 25 |     )
+```
+
+Found function `src/_pytest/hookspec.py:pytest_report_teststatus`.
+Source: Retrieved code content using keyword search (bm25).
+```
+523 | def pytest_report_teststatus(report, config):
+524 |     """ return result-category, shortletter and verbose word for reporting.
+525 | 
+526 |     :param _pytest.config.Config config: pytest config object
+527 | 
+528 |     Stops at first non-None result, see :ref:`firstresult` """
+```
+
+Found function `src/_pytest/hookspec.py:pytest_terminal_summary`.
+Source: Retrieved code content using keyword search (bm25).
+```
+531 | def pytest_terminal_summary(terminalreporter, exitstatus, config):
+532 |     """Add a section to terminal summary reporting.
+533 | 
+534 |     :param _pytest.terminal.TerminalReporter terminalreporter: the internal terminal reporter object
+535 |     :param int exitstatus: the exit status that will be reported back to the OS
+536 |     :param _pytest.config.Config config: pytest config object
+537 | 
+538 |     .. versionadded:: 4.2
+539 |         The ``config`` parameter.
+540 |     """
+```
+
+Found function `src/_pytest/hookspec.py:pytest_logwarning`.
+Source: Retrieved code content using keyword search (bm25).
+```
+544 | def pytest_logwarning(message, code, nodeid, fslocation):
+545 |     """
+546 |     .. deprecated:: 3.8
+547 | 
+548 |         This hook is will stop working in a future release.
+549 | 
+550 |         pytest no longer triggers this hook, but the
+551 |         terminal writer still implements it to display warnings issued by
+552 |         :meth:`_pytest.config.Config.warn` and :meth:`_pytest.nodes.Node.warn`. Calling those functions will be
+553 |         an error in future releases.
+554 | 
+555 |     process a warning specified by a message, a code string,
+556 |     a nodeid and fslocation (both of which may be None
+557 |     if the warning is not tied to a particular node/location).
+558 | 
+559 |     .. note::
+560 |         This hook is incompatible with ``hookwrapper=True``.
+561 |     """
+```
+
+Found file `setup.py`.
+Found file `src/_pytest/unittest.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "bpaste.net", "pastebin", "--pastebin", "lexer=python3 bpaste.net --pastebin"...
+### Search Result:
+Found file `src/_pytest/pastebin.py`.
+Source: Match found for entity name `pastebin`.
+Just show the structure of this file due to response length limitations:
+```
+# -*- coding: utf-8 -*-
+
+
+def pytest_addoption(parser):
+...
+
+@pytest.hookimpl(trylast=True)
+def pytest_configure(config):
+...
+
+def pytest_unconfigure(config):
+...
+
+def create_new_paste(contents):
+...
+
+def pytest_terminal_summary(terminalreporter):
+...
+
+```
+Hint: Search `src/_pytest/pastebin.py` to get the full content if needed.
+
+
+
+##Searching for term "--pastebin"...
+### Search Result:
+Found `src/_pytest/pastebin.py:pytest_addoption`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | # -*- coding: utf-8 -*-
+  2 | """ submit failure or test session information to a pastebin service. """
+  3 | from __future__ import absolute_import
+  4 | from __future__ import division
+  5 | from __future__ import print_function
+  6 | 
+  7 | import sys
+  8 | import tempfile
+  9 | 
+ 10 | import six
+ 11 | 
+ 12 | import pytest
+ 13 | 
+ 14 | 
+ 15 | def pytest_addoption(parser):
+ 16 |     group = parser.getgroup("terminal reporting")
+ 17 |     group._addoption(
+ 18 |         "--pastebin",
+ 19 |         metavar="mode",
+ 20 |         action="store",
+ 21 |         dest="pastebin",
+ 22 |         default=None,
+ 23 |         choices=["failed", "all"],
+ 24 |         help="send failed|all info to bpaste.net pastebin service.",
+ 25 |     )
+```
+
+
+
+##Searching for term "--pastebin", "lexer=python3 bpaste.net --pastebin"...
+### Search Result:
+Found function `src/_pytest/pastebin.py:pytest_addoption`.
+Source: Retrieved entity using keyword search (bm25).
+```
+15 | def pytest_addoption(parser):
+16 |     group = parser.getgroup("terminal reporting")
+17 |     group._addoption(
+18 |         "--pastebin",
+19 |         metavar="mode",
+20 |         action="store",
+21 |         dest="pastebin",
+22 |         default=None,
+23 |         choices=["failed", "all"],
+24 |         help="send failed|all info to bpaste.net pastebin service.",
+25 |     )
+```
+
+Found function `src/_pytest/pastebin.py:pytest_configure`.
+Source: Retrieved code content using keyword search (bm25).
+```
+29 | def pytest_configure(config):
+30 |     if config.option.pastebin == "all":
+31 |         tr = config.pluginmanager.getplugin("terminalreporter")
+32 |         # if no terminal reporter plugin is present, nothing we can do here;
+33 |         # this can happen when this function executes in a slave node
+34 |         # when using pytest-xdist, for example
+35 |         if tr is not None:
+36 |             # pastebin file will be utf-8 encoded binary file
+37 |             config._pastebinfile = tempfile.TemporaryFile("w+b")
+38 |             oldwrite = tr._tw.write
+39 | 
+40 |             def tee_write(s, **kwargs):
+41 |                 oldwrite(s, **kwargs)
+42 |                 if isinstance(s, six.text_type):
+43 |                     s = s.encode("utf-8")
+44 |                 config._pastebinfile.write(s)
+45 | 
+46 |             tr._tw.write = tee_write
+```
+
+Found function `src/_pytest/pastebin.py:pytest_unconfigure`.
+Source: Retrieved code content using keyword search (bm25).
+```
+49 | def pytest_unconfigure(config):
+50 |     if hasattr(config, "_pastebinfile"):
+51 |         # get terminal contents and delete file
+52 |         config._pastebinfile.seek(0)
+53 |         sessionlog = config._pastebinfile.read()
+54 |         config._pastebinfile.close()
+55 |         del config._pastebinfile
+56 |         # undo our patching in the terminal reporter
+57 |         tr = config.pluginmanager.getplugin("terminalreporter")
+58 |         del tr._tw.__dict__["write"]
+59 |         # write summary
+60 |         tr.write_sep("=", "Sending information to Paste Service")
+61 |         pastebinurl = create_new_paste(sessionlog)
+62 |         tr.write_line("pastebin session-log: %s\n" % pastebinurl)
+```
+
+Found function `src/_pytest/pastebin.py:pytest_terminal_summary`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 94 | def pytest_terminal_summary(terminalreporter):
+ 95 |     import _pytest.config
+ 96 | 
+ 97 |     if terminalreporter.config.option.pastebin != "failed":
+ 98 |         return
+ 99 |     tr = terminalreporter
+100 |     if "failed" in tr.stats:
+101 |         terminalreporter.write_sep("=", "Sending information to Paste Service")
+102 |         for rep in terminalreporter.stats.get("failed"):
+103 |             try:
+104 |                 msg = rep.longrepr.reprtraceback.reprentries[-1].reprfileloc
+105 |             except AttributeError:
+106 |                 msg = tr._getfailureheadline(rep)
+107 |             tw = _pytest.config.create_terminal_writer(
+108 |                 terminalreporter.config, stringio=True
+109 |             )
+110 |             rep.toterminal(tw)
+111 |             s = tw.stringio.getvalue()
+112 |             assert len(s)
+113 |             pastebinurl = create_new_paste(s)
+114 |             tr.write_line("%s --> %s" % (msg, pastebinurl))
+```
+
+
+
+##Searching for term "lexer=python3 bpaste.net --pastebin"...
+### Search Result:
+Found `src/_pytest/pastebin.py:pytest_addoption`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | # -*- coding: utf-8 -*-
+  2 | """ submit failure or test session information to a pastebin service. """
+  3 | from __future__ import absolute_import
+  4 | from __future__ import division
+  5 | from __future__ import print_function
+  6 | 
+  7 | import sys
+  8 | import tempfile
+  9 | 
+ 10 | import six
+ 11 | 
+ 12 | import pytest
+ 13 | 
+ 14 | 
+ 15 | def pytest_addoption(parser):
+ 16 |     group = parser.getgroup("terminal reporting")
+ 17 |     group._addoption(
+ 18 |         "--pastebin",
+ 19 |         metavar="mode",
+ 20 |         action="store",
+ 21 |         dest="pastebin",
+ 22 |         default=None,
+ 23 |         choices=["failed", "all"],
+ 24 |         help="send failed|all info to bpaste.net pastebin service.",
+ 25 |     )
+```
+[symbol-locator] setup_repo returned: playground/9fb2d765-0347-4b8d-a1fc-07239b44fde5/pytest-dev_pytest -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pytest-dev__pytest-5809
+[symbol-locator] warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/pytest-dev__pytest-5809 files=0 indexed=0 failed=0
+Finding newlines for mmindex:   0%|          | 0.00/2.87M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 2.87M/2.87M [00:00<00:00, 348MB/s]
+
+2026-08-28 05:06:44 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:06:50 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:06:50 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:06:50 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 05:06:50 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['pytest_terminal_summary', 'pytest_unconfigure', 'pytest_configure'], 'file_path_or_pattern': 'src/_pytest/pastebin.py'}))
+```
+2026-08-28 05:06:50 auto_search_main.py INFO OBSERVATION:
+##Searching for term "pytest_terminal_summary"...
+### Search Result:
+Found function `src/_pytest/pastebin.py:pytest_terminal_summary`.
+Source: Match found for entity name `pytest_terminal_summary`.
+```
+ 94 | def pytest_terminal_summary(terminalreporter):
+ 95 |     import _pytest.config
+ 96 | 
+ 97 |     if terminalreporter.config.option.pastebin != "failed":
+ 98 |         return
+ 99 |     tr = terminalreporter
+100 |     if "failed" in tr.stats:
+101 |         terminalreporter.write_sep("=", "Sending information to Paste Service")
+102 |         for rep in terminalreporter.stats.get("failed"):
+103 |             try:
+104 |                 msg = rep.longrepr.reprtraceback.reprentries[-1].reprfileloc
+105 |             except AttributeError:
+106 |                 msg = tr._getfailureheadline(rep)
+107 |             tw = _pytest.config.create_terminal_writer(
+108 |                 terminalreporter.config, stringio=True
+109 |             )
+110 |             rep.toterminal(tw)
+111 |             s = tw.stringio.getvalue()
+112 |             assert len(s)
+113 |             pastebinurl = create_new_paste(s)
+114 |             tr.write_line("%s --> %s" % (msg, pastebinurl))
+```
+
+
+
+##Searching for term "pytest_unconfigure"...
+### Search Result:
+Found function `src/_pytest/pastebin.py:pytest_unconfigure`.
+Source: Match found for entity name `pytest_unconfigure`.
+```
+49 | def pytest_unconfigure(config):
+50 |     if hasattr(config, "_pastebinfile"):
+51 |         # get terminal contents and delete file
+52 |         config._pastebinfile.seek(0)
+53 |         sessionlog = config._pastebinfile.read()
+54 |         config._pastebinfile.close()
+55 |         del config._pastebinfile
+56 |         # undo our patching in the terminal reporter
+57 |         tr = config.pluginmanager.getplugin("terminalreporter")
+58 |         del tr._tw.__dict__["write"]
+59 |         # write summary
+60 |         tr.write_sep("=", "Sending information to Paste Service")
+61 |         pastebinurl = create_new_paste(sessionlog)
+62 |         tr.write_line("pastebin session-log: %s\n" % pastebinurl)
+```
+
+
+
+##Searching for term "pytest_configure"...
+### Search Result:
+Found function `src/_pytest/pastebin.py:pytest_configure`.
+Source: Match found for entity name `pytest_configure`.
+```
+29 | def pytest_configure(config):
+30 |     if config.option.pastebin == "all":
+31 |         tr = config.pluginmanager.getplugin("terminalreporter")
+32 |         # if no terminal reporter plugin is present, nothing we can do here;
+33 |         # this can happen when this function executes in a slave node
+34 |         # when using pytest-xdist, for example
+35 |         if tr is not None:
+36 |             # pastebin file will be utf-8 encoded binary file
+37 |             config._pastebinfile = tempfile.TemporaryFile("w+b")
+38 |             oldwrite = tr._tw.write
+39 | 
+40 |             def tee_write(s, **kwargs):
+41 |                 oldwrite(s, **kwargs)
+42 |                 if isinstance(s, six.text_type):
+43 |                     s = s.encode("utf-8")
+44 |                 config._pastebinfile.write(s)
+45 | 
+46 |             tr._tw.write = tee_write
+```
+
+2026-08-28 05:06:50 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['--pastebin', 'pastebin', 'bpaste'], 'file_path_or_pattern': 'testing/test_pastebin.py'}))
+```
+2026-08-28 05:06:50 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:50 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:50 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:51 __init__.py DEBUG Building index from IDs objects
+2026-08-28 05:06:51 auto_search_main.py INFO OBSERVATION:
+src/_pytest/pastebin.py:pytest_configure
+src/_pytest/pastebin.py:pytest_unconfigure
+src/_pytest/pastebin.py:pytest_terminal_summary
+src/_pytest/pastebin.py:create_new_paste
+src/_pytest/terminal.py:TerminalReporter.pytest_sessionstart
+src/_pytest/config/__init__.py:filename_arg
+src/_pytest/config/__init__.py:get_plugin_manager
+src/_pytest/config/__init__.py:impl:5
+src/_pytest/config/__init__.py:get_config
+src/_pytest/config/__init__.py:cmdline
+src/_pytest/config/__init__.py:directory_arg
+src/_pytest/hookspec.py:pytest_logwarning
+src/_pytest/hookspec.py:pytest_report_teststatus
+src/_pytest/hookspec.py:pytest_terminal_summary
+src/_pytest/hookspec.py:pytest_warning_captured
+src/_pytest/pastebin.py:create_new_paste
+src/_pytest/hookspec.py:pytest_report_teststatus
+src/_pytest/hookspec.py:pytest_terminal_summary
+src/_pytest/hookspec.py:pytest_logwarning
+src/_pytest/hookspec.py:pytest_warning_captured
+src/_pytest/hookspec.py:pytest_exception_interact
+src/_pytest/hookspec.py:pytest_keyboard_interrupt
+src/_pytest/hookspec.py:pytest_enter_pdb
+src/_pytest/hookspec.py:pytest_warning_captured
+src/_pytest/hookspec.py:pytest_internalerror
+src/_pytest/hookspec.py:pytest_leave_pdb
+src/_pytest/hookspec.py:pytest_doctest_prepare_content
+src/_pytest/junitxml.py:_NodeReporter.to_xml
+src/_pytest/junitxml.py:_NodeReporter.record_testreport
+src/_pytest/junitxml.py:_NodeReporter._add_simple
+src/_pytest/junitxml.py:impl:17
+src/_pytest/junitxml.py:merge_family
+src/_pytest/pastebin.py:create_new_paste
+src/_pytest/pastebin.py:pytest_configure
+src/_pytest/pastebin.py:pytest_unconfigure
+src/_pytest/pastebin.py:pytest_terminal_summary
+src/_pytest/terminal.py:TerminalReporter.pytest_sessionstart
+src/_pytest/config/__init__.py:filename_arg
+src/_pytest/config/__init__.py:get_plugin_manager
+src/_pytest/config/__init__.py:impl:5
+src/_pytest/config/__init__.py:get_config
+src/_pytest/config/__init__.py:cmdline
+src/_pytest/config/__init__.py:directory_arg
+src/_pytest/hookspec.py:pytest_report_teststatus
+src/_pytest/hookspec.py:pytest_terminal_summary
+src/_pytest/hookspec.py:pytest_logwarning
+src/_pytest/hookspec.py:pytest_warning_captured
+No files found for file pattern 'testing/test_pastebin.py'. Will search all files.
+...
+##Searching for term "--pastebin"...
+### Search Result:
+Found `src/_pytest/pastebin.py:pytest_addoption`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | # -*- coding: utf-8 -*-
+  2 | """ submit failure or test session information to a pastebin service. """
+  3 | from __future__ import absolute_import
+  4 | from __future__ import division
+  5 | from __future__ import print_function
+  6 | 
+  7 | import sys
+  8 | import tempfile
+  9 | 
+ 10 | import six
+ 11 | 
+ 12 | import pytest
+ 13 | 
+ 14 | 
+ 15 | def pytest_addoption(parser):
+ 16 |     group = parser.getgroup("terminal reporting")
+ 17 |     group._addoption(
+ 18 |         "--pastebin",
+ 19 |         metavar="mode",
+ 20 |         action="store",
+ 21 |         dest="pastebin",
+ 22 |         default=None,
+ 23 |         choices=["failed", "all"],
+ 24 |         help="send failed|all info to bpaste.net pastebin service.",
+ 25 |     )
+```
+
+
+
+##Searching for term "--pastebin", "pastebin", "bpaste", "--pastebin bpaste"...
+### Search Result:
+Found file `src/_pytest/pastebin.py`.
+Source: Match found for entity name `pastebin`.
+Just show the structure of this file due to response length limitations:
+```
+# -*- coding: utf-8 -*-
+
+
+def pytest_addoption(parser):
+...
+
+@pytest.hookimpl(trylast=True)
+def pytest_configure(config):
+...
+
+def pytest_unconfigure(config):
+...
+
+def create_new_paste(contents):
+...
+
+def pytest_terminal_summary(terminalreporter):
+...
+
+```
+Hint: Search `src/_pytest/pastebin.py` to get the full content if needed.
+
+
+
+##Searching for term "--pastebin", "--pastebin bpaste"...
+### Search Result:
+Found function `src/_pytest/pastebin.py:pytest_addoption`.
+Source: Retrieved entity using keyword search (bm25).
+```
+15 | def pytest_addoption(parser):
+16 |     group = parser.getgroup("terminal reporting")
+17 |     group._addoption(
+18 |         "--pastebin",
+19 |         metavar="mode",
+20 |         action="store",
+21 |         dest="pastebin",
+22 |         default=None,
+23 |         choices=["failed", "all"],
+24 |         help="send failed|all info to bpaste.net pastebin service.",
+25 |     )
+```
+
+Found function `src/_pytest/pastebin.py:pytest_configure`.
+Source: Retrieved code content using keyword search (bm25).
+```
+29 | def pytest_configure(config):
+30 |     if config.option.pastebin == "all":
+31 |         tr = config.pluginmanager.getplugin("terminalreporter")
+32 |         # if no terminal reporter plugin is present, nothing we can do here;
+33 |         # this can happen when this function executes in a slave node
+34 |         # when using pytest-xdist, for example
+35 |         if tr is not None:
+36 |             # pastebin file will be utf-8 encoded binary file
+37 |             config._pastebinfile = tempfile.TemporaryFile("w+b")
+38 |             oldwrite = tr._tw.write
+39 | 
+40 |             def tee_write(s, **kwargs):
+41 |                 oldwrite(s, **kwargs)
+42 |                 if isinstance(s, six.text_type):
+43 |                     s = s.encode("utf-8")
+44 |                 config._pastebinfile.write(s)
+45 | 
+46 |             tr._tw.write = tee_write
+```
+
+Found function `src/_pytest/pastebin.py:pytest_unconfigure`.
+Source: Retrieved code content using keyword search (bm25).
+```
+49 | def pytest_unconfigure(config):
+50 |     if hasattr(config, "_pastebinfile"):
+51 |         # get terminal contents and delete file
+52 |         config._pastebinfile.seek(0)
+53 |         sessionlog = config._pastebinfile.read()
+54 |         config._pastebinfile.close()
+55 |         del config._pastebinfile
+56 |         # undo our patching in the terminal reporter
+57 |         tr = config.pluginmanager.getplugin("terminalreporter")
+58 |         del tr._tw.__dict__["write"]
+59 |         # write summary
+60 |         tr.write_sep("=", "Sending information to Paste Service")
+61 |         pastebinurl = create_new_paste(sessionlog)
+62 |         tr.write_line("pastebin session-log: %s\n" % pastebinurl)
+```
+
+Found function `src/_pytest/pastebin.py:pytest_terminal_summary`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 94 | def pytest_terminal_summary(terminalreporter):
+ 95 |     import _pytest.config
+ 96 | 
+ 97 |     if terminalreporter.config.option.pastebin != "failed":
+ 98 |         return
+ 99 |     tr = terminalreporter
+100 |     if "failed" in tr.stats:
+101 |         terminalreporter.write_sep("=", "Sending information to Paste Service")
+102 |         for rep in terminalreporter.stats.get("failed"):
+103 |             try:
+104 |                 msg = rep.longrepr.reprtraceback.reprentries[-1].reprfileloc
+105 |             except AttributeError:
+106 |                 msg = tr._getfailureheadline(rep)
+107 |             tw = _pytest.config.create_terminal_writer(
+108 |                 terminalreporter.config, stringio=True
+109 |             )
+110 |             rep.toterminal(tw)
+111 |             s = tw.stringio.getvalue()
+112 |             assert len(s)
+113 |             pastebinurl = create_new_paste(s)
+114 |             tr.write_line("%s --> %s" % (msg, pastebinurl))
+```
+
+
+
+##Searching for term "--pastebin", "bpaste", "--pastebin bpaste"...
+### Search Result:
+Found function `src/_pytest/pastebin.py:create_new_paste`.
+Source: Retrieved entity using keyword search (bm25).
+```
+65 | def create_new_paste(contents):
+66 |     """
+67 |     Creates a new paste using bpaste.net service.
+68 | 
+69 |     :contents: paste contents as utf-8 encoded bytes
+70 |     :returns: url to the pasted contents
+71 |     """
+72 |     import re
+73 | 
+74 |     if sys.version_info < (3, 0):
+75 |         from urllib import urlopen, urlencode
+76 |     else:
+77 |         from urllib.request import urlopen
+78 |         from urllib.parse import urlencode
+79 | 
+80 |     params = {
+81 |         "code": contents,
+82 |         "lexer": "python3" if sys.version_info[0] >= 3 else "python",
+83 |         "expiry": "1week",
+84 |     }
+85 |     url = "https://bpaste.net"
+86 |     response = urlopen(url, data=urlencode(params).encode("ascii")).read()
+87 |     m = re.search(r'href="/raw/(\w+)"', response.decode("utf-8"))
+88 |     if m:
+89 |         return "%s/show/%s" % (url, m.group(1))
+90 |     else:
+91 |         return "bad response: " + response
+```
+
+
+
+##Searching for term "bpaste"...
+### Search Result:
+Found `src/_pytest/pastebin.py:pytest_addoption`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | # -*- coding: utf-8 -*-
+  2 | """ submit failure or test session information to a pastebin service. """
+  3 | from __future__ import absolute_import
+  4 | from __future__ import division
+  5 | from __future__ import print_function
+  6 | 
+  7 | import sys
+  8 | import tempfile
+  9 | 
+ 10 | import six
+ 11 | 
+ 12 | import pytest
+ 13 | 
+ 14 | 
+ 15 | def pytest_addoption(parser):
+ 16 |     group = parser.getgroup("terminal reporting")
+ 17 |     group._addoption(
+ 18 |         "--pastebin",
+ 19 |         metavar="mode",
+ 20 |         action="store",
+ 21 |         dest="pastebin",
+ 22 |         default=None,
+ 23 |         choices=["failed", "all"],
+ 24 |         help="send failed|all info to bpaste.net pastebin service.",
+ 25 |     )
+```
+
+Found function `bench/skip.py:test_foo`.
+Source: Retrieved entity using keyword search (bm25).
+```
+10 | def test_foo(x):
+11 |     if SKIP:
+12 |         pytest.skip("heh")
+```
+
+Found function `src/_pytest/hookspec.py:pytest_report_teststatus`.
+Source: Retrieved code content using keyword search (bm25).
+```
+523 | def pytest_report_teststatus(report, config):
+524 |     """ return result-category, shortletter and verbose word for reporting.
+525 | 
+526 |     :param _pytest.config.Config config: pytest config object
+527 | 
+528 |     Stops at first non-None result, see :ref:`firstresult` """
+```
+
+Found function `src/_pytest/hookspec.py:pytest_terminal_summary`.
+Source: Retrieved code content using keyword search (bm25).
+```
+531 | def pytest_terminal_summary(terminalreporter, exitstatus, config):
+532 |     """Add a section to terminal summary reporting.
+533 | 
+534 |     :param _pytest.terminal.TerminalReporter terminalreporter: the internal terminal reporter object
+535 |     :param int exitstatus: the exit status that will be reported back to the OS
+536 |     :param _pytest.config.Config config: pytest config object
+537 | 
+538 |     .. versionadded:: 4.2
+539 |         The ``config`` parameter.
+540 |     """
+```
+
+Found function `src/_pytest/hookspec.py:pytest_logwarning`.
+Source: Retrieved code content using keyword search (bm25).
+```
+544 | def pytest_logwarning(message, code, nodeid, fslocation):
+545 |     """
+546 |     .. deprecated:: 3.8
+547 | 
+548 |         This hook is will stop working in a future release.
+549 | 
+550 |         pytest no longer triggers this hook, but the
+551 |         terminal writer still implements it to display warnings issued by
+552 |         :meth:`_pytest.config.Config.warn` and :meth:`_pytest.nodes.Node.warn`. Calling those functions will be
+553 |         an error in future releases.
+554 | 
+555 |     process a warning specified by a message, a code string,
+556 |     a nodeid and fslocation (both of which may be None
+557 |     if the warning is not tied to a particular node/location).
+558 | 
+559 |     .. note::
+560 |         This hook is incompatible with ``hookwrapper=True``.
+561 |     """
+```
+
+Found file `setup.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `setup.py` for the full content if needed.
+
+
+
+##Searching for term "--pastebin bpaste"...
+### Search Result:
+Found `src/_pytest/pastebin.py:pytest_addoption`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | # -*- coding: utf-8 -*-
+  2 | """ submit failure or test session information to a pastebin service. """
+  3 | from __future__ import absolute_import
+  4 | from __future__ import division
+  5 | from __future__ import print_function
+  6 | 
+  7 | import sys
+  8 | import tempfile
+  9 | 
+ 10 | import six
+ 11 | 
+ 12 | import pytest
+ 13 | 
+ 14 | 
+ 15 | def pytest_addoption(parser):
+ 16 |     group = parser.getgroup("terminal reporting")
+ 17 |     group._addoption(
+ 18 |         "--pastebin",
+ 19 |         metavar="mode",
+ 20 |         action="store",
+ 21 |         dest="pastebin",
+ 22 |         default=None,
+ 23 |         choices=["failed", "all"],
+ 24 |         help="send failed|all info to bpaste.net pastebin service.",
+ 25 |     )
+```
+
+2026-08-28 05:06:51 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:06:55 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:06:55 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:06:55 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 05:06:55 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'TestPaste', 'context': 'pastebin tests and lexer choice in upload payload', 'kind_filter': [5], 'top_k': 5}))
+```
+2026-08-28 05:06:55 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:07:30 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:07:30 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:07:30 auto_search_main.py INFO OBSERVATION:
+Found 3 candidates for `TestPaste`. Showing top 3 by relevance:
+1. [score=95] TestPaste
+   testing/test_pastebin.py:90
+           )
+           result = testdir.runpytest("--pastebin=all")
+           if sys.version_info[0] >= 3:
+               expected_msg = "*assert '☺' == 1*"
+           else:
+               expected_msg = "*assert '\\xe2\\x98\\xba' == 1*"
+           result.stdout.fnmatch_lines(
+               [
+                   expected_msg,
+                   "*== 1 failed in *",
+                   "*Sending information to Paste Service*",
+               ]
+           )
+   
+   
+   class TestPaste(object):
+       @pytest.fixture
+       def pastebin(self, request):
+           return request.config.pluginmanager.getplugin("pastebin")
+   
+       @pytest.fixture
+       def mocked_urlopen(self, monkeypatch):
+           """
+           monkeypatch the actual urlopen calls done by the internal plugin
+           function that connects to bpaste service.
+           """
+           calls = []
+   
+           def mocked(url, data):
+               calls.append((url, data))
+   
+2. [score=72] TestPasteCapture
+   testing/test_pastebin.py:11
+   # -*- coding: utf-8 -*-
+   from __future__ import absolute_import
+   from __future__ import division
+   from __future__ import print_function
+   
+   import sys
+   
+   import pytest
+   
+   
+   class TestPasteCapture(object):
+       @pytest.fixture
+       def pastebinlist(self, monkeypatch, request):
+           pastebinlist = []
+           plugin = request.config.pluginmanager.getplugin("pastebin")
+           monkeypatch.setattr(plugin, "create_new_paste", pastebinlist.append)
+           return pastebinlist
+   
+       def test_failed(self, testdir, pastebinlist):
+           testpath = testdir.makepyfile(
+               """
+               import pytest
+               def test_pass():
+                   pass
+               def test_fail():
+                   assert 0
+3. [score=8] TestFixtureManagerParseFactories
+   testing/python/fixtures.py:1306
+   
+                   def teardown_method(self, method):
+                       assert DB_INITIALIZED
+   
+                   def test_printer_1(self):
+                       pass
+   
+                   def test_printer_2(self):
+                       pass
+           """
+           )
+           result = testdir.runpytest()
+           result.stdout.fnmatch_lines(["* 2 passed in *"])
+   
+   
+   class TestFixtureManagerParseFactories(object):
+       @pytest.fixture
+       def testdir(self, request):
+           testdir = request.getfixturevalue("testdir")
+           testdir.makeconftest(
+               """
+               import pytest
+   
+               @pytest.fixture
+               def hello(request):
+                   return "conftest"
+   
+               @pytest.fixture
+               def fm(request):
+                   return request._fixturemanager
+   
+[symbol-locator] [scorer] usage pid=845792 calls=1 p=9857 c=30
+[symbol-locator] [scorer] parsed 3/3 scores from LLM
+
+2026-08-28 05:07:30 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'TestPasteCapture', 'context': 'pastebin tests and terminal summary behavior', 'kind_filter': [5], 'top_k': 5}))
+```
+2026-08-28 05:07:30 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:07:38 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:07:38 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:07:38 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `TestPasteCapture`. Showing top 1 by relevance:
+1. [score=62] TestPasteCapture
+   testing/test_pastebin.py:11
+   # -*- coding: utf-8 -*-
+   from __future__ import absolute_import
+   from __future__ import division
+   from __future__ import print_function
+   
+   import sys
+   
+   import pytest
+   
+   
+   class TestPasteCapture(object):
+       @pytest.fixture
+       def pastebinlist(self, monkeypatch, request):
+           pastebinlist = []
+           plugin = request.config.pluginmanager.getplugin("pastebin")
+           monkeypatch.setattr(plugin, "create_new_paste", pastebinlist.append)
+           return pastebinlist
+   
+       def test_failed(self, testdir, pastebinlist):
+           testpath = testdir.makepyfile(
+               """
+               import pytest
+               def test_pass():
+                   pass
+               def test_fail():
+                   assert 0
+[symbol-locator] [scorer] usage pid=845792 calls=2 p=18958 c=44
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 05:07:38 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 05:07:41 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 05:07:41 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 05:07:41 auto_search_main.py INFO agent response received content_present=False tool_calls=1
+2026-08-28 05:07:41 auto_search_main.py INFO ===============
+2026-08-28 05:07:41 auto_search_main.py INFO Final response generated content_length=222
+2026-08-28 05:07:41 auto_search_main.py INFO ==== localizing pytest-dev__pytest-5809 succeed, process multiple loc outputs ====
+2026-08-28 05:07:41 cost_analysis.py INFO input_tokens=99349, output_tokens=1012, cost=0.25
+2026-08-28 05:07:42 auto_search_main.py INFO Total time: 4.8470 min

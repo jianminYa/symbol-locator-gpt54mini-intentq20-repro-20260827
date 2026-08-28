@@ -1,0 +1,11 @@
+{"time": "2026-08-28T00:19:59.619546+00:00", "elapsed_seconds": 2.949, "status_category": "2xx", "error_type": "success", "temperature": 1.0}
+{"time": "2026-08-28T00:20:02.418782+00:00", "elapsed_seconds": 2.442, "status_category": "2xx", "error_type": "success", "temperature": 0.0}
+{"time": "2026-08-28T00:56:23.150136+00:00", "elapsed_seconds": 1.992, "status_category": "2xx", "error_type": "success", "temperature": 0.0}
+{"time": "2026-08-28T01:29:15.655269+00:00", "elapsed_seconds": 2.408, "status_category": "2xx", "error_type": "success", "temperature": 0.0}
+{"time": "2026-08-28T02:05:58.417213+00:00", "elapsed_seconds": 60.457, "status_category": "unknown", "error_type": "ReadTimeout", "temperature": "0.0"}
+{"time": "2026-08-28T02:06:31.315535+00:00", "elapsed_seconds": 2.585, "status_category": "2xx", "error_type": "success", "temperature": 0.0}
+{"time": "2026-08-28T02:42:40.637291+00:00", "elapsed_seconds": 6.351, "status_category": "2xx", "error_type": "success", "temperature": 0.0}
+{"time": "2026-08-28T03:24:04.802599+00:00", "elapsed_seconds": 13.577, "status_category": "2xx", "error_type": "success", "temperature": 0.0}
+{"time": "2026-08-28T04:02:38.236625+00:00", "elapsed_seconds": 4.828, "status_category": "2xx", "error_type": "success", "temperature": 0.0}
+{"time": "2026-08-28T04:38:05.263297+00:00", "elapsed_seconds": 2.583, "status_category": "2xx", "error_type": "success", "temperature": 0.0}
+{"time": "2026-08-28T05:19:31.113004+00:00", "elapsed_seconds": 1.793, "status_category": "2xx", "error_type": "success", "temperature": 0.0}

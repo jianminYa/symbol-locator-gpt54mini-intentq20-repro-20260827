@@ -1,0 +1,4286 @@
+2026-08-28 00:46:01 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 00:46:01 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 00:46:01 auto_search_main.py INFO ============================================================
+2026-08-28 00:46:01 auto_search_main.py INFO ==== rank 0 setup localize matplotlib__matplotlib-24026 ====
+2026-08-28 00:46:01 git_repo_manager.py INFO Clone Github repo https://github.com/matplotlib/matplotlib.git to playground/bd594133-8288-47b4-a19c-c9147b91e3c5/matplotlib_matplotlib and checkout commit HEAD
+2026-08-28 00:46:01 git_repo_manager.py INFO Directory 'playground/bd594133-8288-47b4-a19c-c9147b91e3c5/matplotlib_matplotlib' was created.
+2026-08-28 00:46:35 repo_ops.py INFO [0] Processed matplotlib__matplotlib-24026
+2026-08-28 00:46:35 auto_search_main.py INFO ============================================================
+2026-08-28 00:46:35 auto_search_main.py INFO ==== rank 0 begin localizing matplotlib__matplotlib-24026 ====
+2026-08-28 00:46:35 auto_search_main.py INFO ============================================================
+2026-08-28 00:46:35 auto_search_main.py INFO ==== matplotlib__matplotlib-24026 Count down: attempt 1 ====
+2026-08-28 00:46:35 auto_search_main.py INFO ==== matplotlib__matplotlib-24026 start auto search ====
+2026-08-28 00:46:35 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:46:46 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:46:46 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:46:46 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 00:46:46 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['def stackplot', 'set_prop_cycle(color=colors)', 'Cannot put cycle reference', 'validate_color_for_prop_cycle'], 'file_path_or_pattern': '**/*.py'}))
+```
+2026-08-28 00:46:47 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:46:47 git_repo_manager.py INFO Clone Github repo https://github.com/matplotlib/matplotlib.git to playground/bd594133-8288-47b4-a19c-c9147b91e3c5/matplotlib_matplotlib and checkout commit HEAD
+2026-08-28 00:47:42 epic_split.py WARNING Skipping code block _pink_data._red_0_0_1178_0 in lib/matplotlib/_cm.py as it has 3623 tokens which is more than chunk size 500. Content: {'red':   ((0., 0.1178, 0.1178), (0.015873, 0.195857, 0.195857),
+                        (0.031746, ...
+2026-08-28 00:47:42 epic_split.py WARNING Skipping code block _coolwarm_data._ in lib/matplotlib/_cm.py as it has 2070 tokens which is more than chunk size 500. Content: {
+    'red': [
+        (0.0, 0.2298057, 0.2298057),
+        (0.03125, 0.26623388, 0.26623388),
+     ...
+2026-08-28 00:47:43 epic_split.py WARNING Skipping code block _magma_data._0_001462_0_000466_0_0 in lib/matplotlib/_cm_listed.py as it has 4863 tokens which is more than chunk size 500. Content: [[0.001462, 0.000466, 0.013866],
+               [0.002258, 0.001295, 0.018331],
+               [0.00...
+2026-08-28 00:47:43 epic_split.py WARNING Skipping code block _inferno_data._0_001462_0_000466_0_0 in lib/matplotlib/_cm_listed.py as it has 4863 tokens which is more than chunk size 500. Content: [[0.001462, 0.000466, 0.013866],
+                 [0.002267, 0.001270, 0.018570],
+                 [...
+2026-08-28 00:47:43 epic_split.py WARNING Skipping code block _plasma_data._0_050383_0_029803_0_5 in lib/matplotlib/_cm_listed.py as it has 4863 tokens which is more than chunk size 500. Content: [[0.050383, 0.029803, 0.527975],
+                [0.063536, 0.028426, 0.533124],
+                [0....
+2026-08-28 00:47:43 epic_split.py WARNING Skipping code block _viridis_data._0_267004_0_004874_0_3 in lib/matplotlib/_cm_listed.py as it has 4863 tokens which is more than chunk size 500. Content: [[0.267004, 0.004874, 0.329415],
+                 [0.268510, 0.009605, 0.335427],
+                 [...
+2026-08-28 00:47:43 epic_split.py WARNING Skipping code block _cividis_data._0_000000_0_135112_0_3 in lib/matplotlib/_cm_listed.py as it has 4863 tokens which is more than chunk size 500. Content: [[0.000000, 0.135112, 0.304751],
+                 [0.000000, 0.138068, 0.311105],
+                 [...
+2026-08-28 00:47:43 epic_split.py WARNING Skipping code block _twilight_data._ in lib/matplotlib/_cm_listed.py as it has 16271 tokens which is more than chunk size 500. Content: [
+    [0.88575015840754434, 0.85000924943067835,  0.8879736506427196],
+    [0.88378520195539056, 0.8...
+2026-08-28 00:47:43 epic_split.py WARNING Skipping code block _turbo_data._0_18995_0_07176_0_232 in lib/matplotlib/_cm_listed.py as it has 4863 tokens which is more than chunk size 500. Content: [[0.18995, 0.07176, 0.23217],
+               [0.19483, 0.08339, 0.26149],
+               [0.19956, 0...
+2026-08-28 00:47:43 epic_split.py WARNING Skipping code block XKCD_COLORS._ in lib/matplotlib/_color_data.py as it has 10516 tokens which is more than chunk size 500. Content: {
+    'cloudy blue': '#acc2d9',
+    'dark pastel green': '#56ae57',
+    'dust': '#b2996e',
+    'elec...
+2026-08-28 00:47:45 epic_split.py WARNING Skipping code block latex_to_bakoma._ in lib/matplotlib/_mathtext_data.py as it has 3856 tokens which is more than chunk size 500. Content: {
+    '\\__sqrt__'                 : ('cmex10', 0x70),
+    '\\bigcap'                   : ('cmex10',...
+2026-08-28 00:47:45 epic_split.py WARNING Skipping code block type12uni._ in lib/matplotlib/_mathtext_data.py as it has 2171 tokens which is more than chunk size 500. Content: {
+    'aring'          : 229,
+    'quotedblright'  : 8221,
+    'V'              : 86,
+    'dollar'  ...
+2026-08-28 00:47:45 epic_split.py WARNING Skipping code block tex2uni._ in lib/matplotlib/_mathtext_data.py as it has 6472 tokens which is more than chunk size 500. Content: {
+    'widehat'                  : 0x0302,
+    'widetilde'                : 0x0303,
+    'widebar'   ...
+2026-08-28 00:47:45 epic_split.py WARNING Skipping code block stix_virtual_fonts._ in lib/matplotlib/_mathtext_data.py as it has 3887 tokens which is more than chunk size 500. Content: {
+    'bb':
+        {
+        'rm':
+            [
+            (0x0030, 0x0039, 'rm', 0x1d7d8), # 0-9...
+2026-08-28 00:47:48 epic_split.py WARNING Parsing file lib/matplotlib/axes/_axes.py took 1.10 seconds.
+2026-08-28 00:47:48 epic_split.py INFO Splitting file lib/matplotlib/axes/_axes.py in 141 chunks
+2026-08-28 00:47:49 epic_split.py INFO Splitting file lib/matplotlib/axes/_base.py in 129 chunks
+2026-08-28 00:47:51 epic_split.py WARNING Parsing file lib/matplotlib/backend_bases.py took 1.22 seconds.
+2026-08-28 00:47:51 epic_split.py INFO Splitting file lib/matplotlib/backend_bases.py in 115 chunks
+2026-08-28 00:47:59 epic_split.py WARNING Parsing file lib/matplotlib/backends/backend_wx.py took 1.03 seconds.
+2026-08-28 00:48:03 epic_split.py WARNING Skipping code block None_1 in lib/matplotlib/contour.py as it has 2401 tokens which is more than chunk size 500. Content: _docstring.interpd.update(contour_doc="""
+`.contour` and `.contourf` draw contour lines and filled c...
+2026-08-28 00:48:05 epic_split.py WARNING Parsing file lib/matplotlib/figure.py took 1.14 seconds.
+2026-08-28 00:48:05 python.py WARNING Parsed block with type ASSIGNMENT with line break but no ending \: MSFolders =
+2026-08-28 00:48:07 epic_split.py WARNING Skipping code block _docstring_interpd_update in lib/matplotlib/legend.py as it has 2086 tokens which is more than chunk size 500. Content: _docstring.interpd.update(_legend_kw_doc="""
+loc : str or pair of floats, default: :rc:`legend.loc` ...
+2026-08-28 00:48:09 epic_split.py INFO Splitting file lib/matplotlib/patches.py in 129 chunks
+2026-08-28 00:48:13 epic_split.py WARNING Skipping code block _validators._ in lib/matplotlib/rcsetup.py as it has 5340 tokens which is more than chunk size 500. Content: {
+    "backend":           validate_backend,
+    "backend_fallback":  validate_bool,
+    "toolbar": ...
+2026-08-28 00:48:13 epic_split.py INFO File lib/matplotlib/sphinxext/plot_directive.py has 6072 tokens and the word 'generated' in the first comments, will assume it's a generated file.
+2026-08-28 00:48:18 epic_split.py INFO File lib/matplotlib/ticker.py has 23457 tokens and the word 'generated' in the first comments, will assume it's a generated file.
+2026-08-28 00:48:19 epic_split.py WARNING Parsing file lib/matplotlib/transforms.py took 1.17 seconds.
+2026-08-28 00:48:21 python.py WARNING Parsed block with type ASSIGNMENT with line break but no ending \: _RECTANGLESELECTOR_PARAMETERS_DOCSTRING =
+2026-08-28 00:48:27 epic_split.py WARNING Parsing file lib/mpl_toolkits/mplot3d/axes3d.py took 1.32 seconds.
+2026-08-28 00:48:37 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:39 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:40 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:41 auto_search_main.py INFO OBSERVATION:
+lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle
+tutorials/intermediate/color_cycle.py:impl:14
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__init__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.set_prop_cycle
+lib/matplotlib/axes/_base.py:_process_plot_var_args
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__setstate__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__getstate__
+lib/matplotlib/colors.py:LinearSegmentedColormap.from_list
+lib/matplotlib/text.py:Text.set_color
+lib/matplotlib/text.py:Text.set_backgroundcolor
+lib/matplotlib/axes/_secondary_axes.py:SecondaryAxis.set_aspect
+lib/matplotlib/axes/_secondary_axes.py:SecondaryAxis.set_color
+lib/matplotlib/rcsetup.py:validate_backend
+lib/matplotlib/rcsetup.py:validate_color_or_inherit
+lib/matplotlib/rcsetup.py:_validate_toolbar
+lib/matplotlib/rcsetup.py:impl:25
+lib/matplotlib/rcsetup.py:validate_color_or_auto
+lib/matplotlib/rcsetup.py:validate_color_for_prop_cycle
+lib/matplotlib/cbook/__init__.py:print_cycles
+lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle
+lib/matplotlib/cbook/__init__.py:print_cycles
+lib/mpl_toolkits/axisartist/angle_helper.py:select_step
+lib/matplotlib/axes/_base.py:_process_plot_var_args._getdefaults
+lib/matplotlib/colorbar.py:make_axes
+lib/matplotlib/axes/_axes.py:Axes.bar_label
+lib/matplotlib/colors.py:_sanitize_extrema
+lib/matplotlib/colors.py:_is_nth_color
+lib/matplotlib/colors.py:_check_color_like
+lib/matplotlib/colors.py:is_color_like
+lib/matplotlib/colors.py:_has_alpha_channel
+lib/matplotlib/colors.py:impl:13
+lib/matplotlib/axes/_axes.py:Axes.bar
+lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle
+lib/matplotlib/rcsetup.py:validate_backend
+lib/matplotlib/rcsetup.py:validate_color_or_inherit
+lib/matplotlib/rcsetup.py:_validate_toolbar
+lib/matplotlib/rcsetup.py:impl:25
+lib/matplotlib/rcsetup.py:validate_color_or_auto
+lib/matplotlib/rcsetup.py:validate_color_for_prop_cycle
+tutorials/intermediate/color_cycle.py:impl:14
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__init__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.set_prop_cycle
+lib/matplotlib/axes/_base.py:_process_plot_var_args
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__setstate__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__getstate__
+lib/matplotlib/colors.py:_sanitize_extrema
+lib/matplotlib/colors.py:_is_nth_color
+lib/matplotlib/colors.py:_check_color_like
+lib/matplotlib/colors.py:is_color_like
+lib/matplotlib/colors.py:_has_alpha_channel
+lib/matplotlib/colors.py:impl:13
+lib/matplotlib/axes/_axes.py:Axes.plot
+##Searching for term "def stackplot"...
+### Search Result:
+Found function `lib/matplotlib/stackplot.py:stackplot`.
+Source: Match found for entity name `def stackplot`.
+```
+ 16 | def stackplot(axes, x, *args,
+ 17 |               labels=(), colors=None, baseline='zero',
+ 18 |               **kwargs):
+ 19 |     """
+ 20 |     Draw a stacked area plot.
+ 21 | 
+ 22 |     Parameters
+ 23 |     ----------
+ 24 |     x : (N,) array-like
+ 25 | 
+ 26 |     y : (M, N) array-like
+ 27 |         The data is assumed to be unstacked. Each of the following
+ 28 |         calls is legal::
+ 29 | 
+ 30 |             stackplot(x, y)           # where y has shape (M, N)
+ 31 |             stackplot(x, y1, y2, y3)  # where y1, y2, y3, y4 have length N
+ 32 | 
+ 33 |     baseline : {'zero', 'sym', 'wiggle', 'weighted_wiggle'}
+ 34 |         Method used to calculate the baseline:
+ 35 | 
+ 36 |         - ``'zero'``: Constant zero baseline, i.e. a simple stacked plot.
+ 37 |         - ``'sym'``:  Symmetric around zero and is sometimes called
+ 38 |           'ThemeRiver'.
+ 39 |         - ``'wiggle'``: Minimizes the sum of the squared slopes.
+ 40 |         - ``'weighted_wiggle'``: Does the same but weights to account for
+ 41 |           size of each layer. It is also called 'Streamgraph'-layout. More
+ 42 |           details can be found at http://leebyron.com/streamgraph/.
+ 43 | 
+ 44 |     labels : list of str, optional
+ 45 |         A sequence of labels to assign to each data series. If unspecified,
+ 46 |         then no labels will be applied to artists.
+ 47 | 
+ 48 |     colors : list of color, optional
+ 49 |         A sequence of colors to be cycled through and used to color the stacked
+ 50 |         areas. The sequence need not be exactly the same length as the number
+ 51 |         of provided *y*, in which case the colors will repeat from the
+ 52 |         beginning.
+ 53 | 
+ 54 |         If not specified, the colors from the Axes property cycle will be used.
+ 55 | 
+ 56 |     data : indexable object, optional
+ 57 |         DATA_PARAMETER_PLACEHOLDER
+ 58 | 
+ 59 |     **kwargs
+ 60 |         All other keyword arguments are passed to `.Axes.fill_between`.
+ 61 | 
+ 62 |     Returns
+ 63 |     -------
+ 64 |     list of `.PolyCollection`
+ 65 |         A list of `.PolyCollection` instances, one for each element in the
+ 66 |         stacked area plot.
+ 67 |     """
+ 68 | 
+ 69 |     y = np.row_stack(args)
+ 70 | 
+ 71 |     labels = iter(labels)
+ 72 |     if colors is not None:
+ 73 |         axes.set_prop_cycle(color=colors)
+ 74 | 
+ 75 |     # Assume data passed has not been 'stacked', so stack it here.
+ 76 |     # We'll need a float buffer for the upcoming calculations.
+ 77 |     stack = np.cumsum(y, axis=0, dtype=np.promote_types(y.dtype, np.float32))
+ 78 | 
+ 79 |     _api.check_in_list(['zero', 'sym', 'wiggle', 'weighted_wiggle'],
+ 80 |                        baseline=baseline)
+ 81 |     if baseline == 'zero':
+ 82 |         first_line = 0.
+ 83 | 
+ 84 |     elif baseline == 'sym':
+ 85 |         first_line = -np.sum(y, 0) * 0.5
+ 86 |         stack += first_line[None, :]
+ 87 | 
+ 88 |     elif baseline == 'wiggle':
+ 89 |         m = y.shape[0]
+ 90 |         first_line = (y * (m - 0.5 - np.arange(m)[:, None])).sum(0)
+ 91 |         first_line /= -m
+ 92 |         stack += first_line
+ 93 | 
+ 94 |     elif baseline == 'weighted_wiggle':
+ 95 |         total = np.sum(y, 0)
+ 96 |         # multiply by 1/total (or zero) to avoid infinities in the division:
+ 97 |         inv_total = np.zeros_like(total)
+ 98 |         mask = total > 0
+ 99 |         inv_total[mask] = 1.0 / total[mask]
+100 |         increase = np.hstack((y[:, 0:1], np.diff(y)))
+101 |         below_size = total - stack
+102 |         below_size += 0.5 * y
+103 |         move_up = below_size * inv_total
+104 |         move_up[:, 0] = 0.5
+105 |         center = (move_up - 0.5) * increase
+106 |         center = np.cumsum(center.sum(0))
+107 |         first_line = center - 0.5 * total
+108 |         stack += first_line
+109 | 
+110 |     # Color between x = 0 and the first array.
+111 |     color = axes._get_lines.get_next_color()
+112 |     coll = axes.fill_between(x, first_line, stack[0, :],
+113 |                              facecolor=color, label=next(labels, None),
+114 |                              **kwargs)
+115 |     coll.sticky_edges.y[:] = [0]
+116 |     r = [coll]
+117 | 
+118 |     # Color between array i-1 and array i
+119 |     for i in range(len(y) - 1):
+120 |         color = axes._get_lines.get_next_color()
+121 |         r.append(axes.fill_between(x, stack[i, :], stack[i + 1, :],
+122 |                                    facecolor=color, label=next(labels, None),
+123 |                                    **kwargs))
+124 |     return r
+```
+
+Found file `lib/matplotlib/stackplot.py`.
+Source: Match found for entity name `def stackplot`.
+Just show the structure of this file due to response length limitations:
+```
+
+__all__ = ['stackplot']
+
+
+def stackplot(axes, x, *args,
+              labels=(), colors=None, baseline='zero',
+              **kwargs):
+...
+
+```
+Hint: Search `lib/matplotlib/stackplot.py` to get the full content if needed.
+
+Found function `lib/matplotlib/pyplot.py:stackplot`.
+Source: Match found for entity name `def stackplot`.
+```
+2831 | def stackplot(
+2832 |         x, *args, labels=(), colors=None, baseline='zero', data=None,
+2833 |         **kwargs):
+2834 |     return gca().stackplot(
+2835 |         x, *args, labels=labels, colors=colors, baseline=baseline,
+2836 |         **({"data": data} if data is not None else {}), **kwargs)
+```
+
+Found file `plot_types/basic/stackplot.py`.
+Source: Match found for entity name `def stackplot`.
+```
+ 1 | """
+ 2 | ===============
+ 3 | stackplot(x, y)
+ 4 | ===============
+ 5 | See `~matplotlib.axes.Axes.stackplot`
+ 6 | """
+ 7 | import matplotlib.pyplot as plt
+ 8 | import numpy as np
+ 9 | 
+10 | plt.style.use('_mpl-gallery')
+11 | 
+12 | # make data
+13 | x = np.arange(0, 10, 2)
+14 | ay = [1, 1.25, 2, 2.75, 3]
+15 | by = [1, 1, 1, 1, 1]
+16 | cy = [2, 1, 2, 1, 2]
+17 | y = np.vstack([ay, by, cy])
+18 | 
+19 | # plot
+20 | fig, ax = plt.subplots()
+21 | 
+22 | ax.stackplot(x, y)
+23 | 
+24 | ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+25 |        ylim=(0, 8), yticks=np.arange(1, 8))
+26 | 
+27 | plt.show()
+28 | 
+```
+
+
+
+##Searching for term "set_prop_cycle(color=colors)", "set_prop_cycle(color=colors) Cannot put cycle reference"...
+### Search Result:
+Found function `tutorials/colors/colors.py:demo`.
+Source: Retrieved entity using keyword search (bm25).
+```
+125 | def demo(sty):
+126 |     mpl.style.use(sty)
+127 |     fig, ax = plt.subplots(figsize=(3, 3))
+128 | 
+129 |     ax.set_title('style: {!r}'.format(sty), color='C0')
+130 | 
+131 |     ax.plot(th, np.cos(th), 'C1', label='C1')
+132 |     ax.plot(th, np.sin(th), 'C2', label='C2')
+133 |     ax.legend()
+```
+
+Found function `lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1550 | def set_prop_cycle(self, *args, **kwargs):
+1551 |         """
+1552 |         Set the property cycle of the Axes.
+1553 | 
+1554 |         The property cycle controls the style properties such as color,
+1555 |         marker and linestyle of future plot commands. The style properties
+1556 |         of data already added to the Axes are not modified.
+1557 | 
+1558 |         Call signatures::
+1559 | 
+1560 |           set_prop_cycle(cycler)
+1561 |           set_prop_cycle(label=values[, label2=values2[, ...]])
+1562 |           set_prop_cycle(label, values)
+1563 | 
+1564 |         Form 1 sets given `~cycler.Cycler` object.
+1565 | 
+1566 |         Form 2 creates a `~cycler.Cycler` which cycles over one or more
+1567 |         properties simultaneously and set it as the property cycle of the
+1568 |         Axes. If multiple properties are given, their value lists must have
+1569 |         the same length. This is just a shortcut for explicitly creating a
+1570 |         cycler and passing it to the function, i.e. it's short for
+1571 |         ``set_prop_cycle(cycler(label=values label2=values2, ...))``.
+1572 | 
+1573 |         Form 3 creates a `~cycler.Cycler` for a single property and set it
+1574 |         as the property cycle of the Axes. This form exists for compatibility
+1575 |         with the original `cycler.cycler` interface. Its use is discouraged
+1576 |         in favor of the kwarg form, i.e. ``set_prop_cycle(label=values)``.
+1577 | 
+1578 |         Parameters
+1579 |         ----------
+1580 |         cycler : Cycler
+1581 |             Set the given Cycler. *None* resets to the cycle defined by the
+1582 |             current style.
+1583 | 
+1584 |         label : str
+1585 |             The property key. Must be a valid `.Artist` property.
+1586 |             For example, 'color' or 'linestyle'. Aliases are allowed,
+1587 |             such as 'c' for 'color' and 'lw' for 'linewidth'.
+1588 | 
+1589 |         values : iterable
+1590 |             Finite-length iterable of the property values. These values
+1591 |             are validated and will raise a ValueError if invalid.
+1592 | 
+1593 |         See Also
+1594 |         --------
+1595 |         matplotlib.rcsetup.cycler
+1596 |             Convenience function for creating validated cyclers for properties.
+1597 |         cycler.cycler
+1598 |             The original function for creating unvalidated cyclers.
+1599 | 
+1600 |         Examples
+1601 |         --------
+1602 |         Setting the property cycle for a single property:
+1603 | 
+1604 |         >>> ax.set_prop_cycle(color=['red', 'green', 'blue'])
+1605 | 
+1606 |         Setting the property cycle for simultaneously cycling over multiple
+1607 |         properties (e.g. red circle, green plus, blue cross):
+1608 | 
+1609 |         >>> ax.set_prop_cycle(color=['red', 'green', 'blue'],
+1610 |         ...                   marker=['o', '+', 'x'])
+1611 | 
+1612 |         """
+1613 |         if args and kwargs:
+1614 |             raise TypeError("Cannot supply both positional and keyword "
+1615 |                             "arguments to this method.")
+1616 |         # Can't do `args == (None,)` as that crashes cycler.
+1617 |         if len(args) == 1 and args[0] is None:
+1618 |             prop_cycle = None
+1619 |         else:
+1620 |             prop_cycle = cycler(*args, **kwargs)
+1621 |         self._get_lines.set_prop_cycle(prop_cycle)
+1622 |         self._get_patches_for_fill.set_prop_cycle(prop_cycle)
+```
+
+Found file `tutorials/colors/colors.py`.
+Found file `lib/matplotlib/colors.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "set_prop_cycle(color=colors)"...
+### Search Result:
+Found class `lib/matplotlib/axes/_base.py:_process_plot_var_args`.
+Source: Retrieved code content using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class _process_plot_var_args:
+    def __init__(self, axes, command='plot'):
+...
+    def __getstate__(self):
+...
+    def __setstate__(self, state):
+...
+    def set_prop_cycle(self, cycler):
+...
+    def __call__(self, *args, data=None, **kwargs):
+...
+    def get_next_color(self):
+...
+    def _getdefaults(self, ignore, kw):
+...
+    def _setdefaults(self, defaults, kw):
+...
+    def _makeline(self, x, y, kw, kwargs):
+...
+    def _makefill(self, x, y, kw, kwargs):
+...
+    def _plot_args(self, tup, kwargs, *,
+                   return_kwargs=False, ambiguous_fmt_datakey=False):
+
+```
+Hint: Search `lib/matplotlib/axes/_base.py:_process_plot_var_args` to get the full content if needed.
+
+Found function `lib/matplotlib/axes/_base.py:_process_plot_var_args.__getstate__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+226 | def __getstate__(self):
+227 |         # note: it is not possible to pickle a generator (and thus a cycler).
+228 |         return {'axes': self.axes, 'command': self.command}
+```
+
+Found function `lib/matplotlib/axes/_base.py:_process_plot_var_args.__setstate__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+230 | def __setstate__(self, state):
+231 |         self.__dict__ = state.copy()
+232 |         self.set_prop_cycle(None)
+```
+
+Found function `lib/matplotlib/axes/_base.py:_process_plot_var_args.set_prop_cycle`.
+Source: Retrieved code content using keyword search (bm25).
+```
+234 | def set_prop_cycle(self, cycler):
+235 |         if cycler is None:
+236 |             cycler = mpl.rcParams['axes.prop_cycle']
+237 |         self.prop_cycler = itertools.cycle(cycler)
+238 |         self._prop_keys = cycler.keys
+```
+
+Found file `tutorials/colors/colorbar_only.py`.
+Found file `tutorials/colors/colormaps.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "Cannot put cycle reference"...
+### Search Result:
+Found class `lib/matplotlib/backends/backend_pdf.py:Reference`.
+Source: Retrieved entity using keyword search (bm25).
+```
+392 | class Reference:
+393 |     """
+394 |     PDF reference object.
+395 | 
+396 |     Use PdfFile.reserveObject() to create References.
+397 |     """
+398 | 
+399 |     def __init__(self, id):
+400 |         self.id = id
+401 | 
+402 |     def __repr__(self):
+403 |         return "<Reference %d>" % self.id
+404 | 
+405 |     def pdfRepr(self):
+406 |         return b"%d 0 R" % self.id
+407 | 
+408 |     def write(self, contents, file):
+409 |         write = file.write
+410 |         write(b"%d 0 obj\n" % self.id)
+411 |         write(pdfRepr(contents))
+412 |         write(b"\nendobj\n")
+```
+
+
+
+##Searching for term "Cannot put cycle reference", "set_prop_cycle(color=colors) Cannot put cycle reference"...
+### Search Result:
+Found function `lib/matplotlib/rcsetup.py:validate_backend`.
+Source: Retrieved code content using keyword search (bm25).
+```
+252 | def validate_backend(s):
+253 |     backend = (
+254 |         s if s is _auto_backend_sentinel or s.startswith("module://")
+255 |         else _validate_standard_backends(s))
+256 |     return backend
+```
+
+Found function `lib/matplotlib/rcsetup.py:_validate_toolbar`.
+Source: Retrieved code content using keyword search (bm25).
+```
+259 | def _validate_toolbar(s):
+260 |     s = ValidateInStrings(
+261 |         'toolbar', ['None', 'toolbar2', 'toolmanager'], ignorecase=True)(s)
+262 |     if s == 'toolmanager':
+263 |         _api.warn_external(
+264 |             "Treat the new Tool classes introduced in v1.5 as experimental "
+265 |             "for now; the API and rcParam may change in future versions.")
+266 |     return s
+```
+
+Found function `lib/matplotlib/rcsetup.py:validate_color_or_inherit`.
+Source: Retrieved code content using keyword search (bm25).
+```
+269 | def validate_color_or_inherit(s):
+270 |     """Return a valid color arg."""
+271 |     if cbook._str_equal(s, 'inherit'):
+272 |         return s
+273 |     return validate_color(s)
+```
+
+Found function `lib/matplotlib/rcsetup.py:validate_color_or_auto`.
+Source: Retrieved code content using keyword search (bm25).
+```
+276 | def validate_color_or_auto(s):
+277 |     if cbook._str_equal(s, 'auto'):
+278 |         return s
+279 |     return validate_color(s)
+```
+
+
+
+##Searching for term "Cannot put cycle reference", "validate_color_for_prop_cycle"...
+### Search Result:
+Found function `lib/matplotlib/rcsetup.py:validate_color_for_prop_cycle`.
+Source: Retrieved code content using keyword search (bm25).
+```
+282 | def validate_color_for_prop_cycle(s):
+283 |     # N-th color cycle syntax can't go into the color cycle.
+284 |     if isinstance(s, str) and re.match("^C[0-9]$", s):
+285 |         raise ValueError(f"Cannot put cycle reference ({s!r}) in prop_cycler")
+286 |     return validate_color(s)
+```
+
+
+
+##Searching for term "set_prop_cycle(color=colors) Cannot put cycle reference"...
+### Search Result:
+Found file `examples/color/color_demo.py`.
+Found file `examples/color/custom_cmap.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+Finding newlines for mmindex:   0%|          | 0.00/14.7M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 14.7M/14.7M [00:00<00:00, 323MB/s]
+
+2026-08-28 00:48:41 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['stackplot', 'prop_cycle', 'cycle reference'], 'file_path_or_pattern': 'matplotlib/**/*.py'}))
+```
+2026-08-28 00:48:41 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:43 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:44 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:45 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:45 auto_search_main.py INFO OBSERVATION:
+lib/matplotlib/colors.py:to_rgba
+tutorials/intermediate/color_cycle.py:impl:14
+lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__init__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.set_prop_cycle
+lib/matplotlib/axes/_base.py:_process_plot_var_args
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__setstate__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__getstate__
+examples/style_sheets/style_sheets_reference.py:plot_colored_lines
+examples/text_labels_and_annotations/legend_demo.py:impl:63
+lib/matplotlib/cbook/__init__.py:print_cycles
+lib/matplotlib/rcsetup.py:validate_backend
+lib/matplotlib/rcsetup.py:validate_color_or_inherit
+lib/matplotlib/rcsetup.py:_validate_toolbar
+lib/matplotlib/rcsetup.py:impl:25
+lib/matplotlib/rcsetup.py:validate_color_or_auto
+lib/matplotlib/rcsetup.py:validate_color_for_prop_cycle
+lib/matplotlib/cbook/__init__.py:print_cycles
+lib/mpl_toolkits/axisartist/angle_helper.py:select_step
+lib/matplotlib/axes/_base.py:_process_plot_var_args._getdefaults
+lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle
+lib/matplotlib/backend_bases.py:key_press_handler
+lib/matplotlib/backend_bases.py:RendererBase._iter_collection
+lib/matplotlib/backend_bases.py:key_press_handler
+lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle
+lib/matplotlib/rcsetup.py:validate_backend
+lib/matplotlib/rcsetup.py:validate_color_or_inherit
+lib/matplotlib/rcsetup.py:_validate_toolbar
+lib/matplotlib/rcsetup.py:impl:25
+lib/matplotlib/rcsetup.py:validate_color_or_auto
+lib/matplotlib/rcsetup.py:validate_color_for_prop_cycle
+tutorials/intermediate/color_cycle.py:impl:14
+lib/matplotlib/axes/_base.py:_process_plot_var_args._getdefaults
+examples/style_sheets/style_sheets_reference.py:plot_colored_lines
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__init__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.set_prop_cycle
+lib/matplotlib/axes/_base.py:_process_plot_var_args
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__setstate__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__getstate__
+lib/matplotlib/cbook/__init__.py:print_cycles
+No files found for file pattern 'matplotlib/**/*.py'. Will search all files.
+...
+##Searching for term "stackplot"...
+### Search Result:
+Found function `lib/matplotlib/stackplot.py:stackplot`.
+Source: Match found for entity name `stackplot`.
+```
+ 16 | def stackplot(axes, x, *args,
+ 17 |               labels=(), colors=None, baseline='zero',
+ 18 |               **kwargs):
+ 19 |     """
+ 20 |     Draw a stacked area plot.
+ 21 | 
+ 22 |     Parameters
+ 23 |     ----------
+ 24 |     x : (N,) array-like
+ 25 | 
+ 26 |     y : (M, N) array-like
+ 27 |         The data is assumed to be unstacked. Each of the following
+ 28 |         calls is legal::
+ 29 | 
+ 30 |             stackplot(x, y)           # where y has shape (M, N)
+ 31 |             stackplot(x, y1, y2, y3)  # where y1, y2, y3, y4 have length N
+ 32 | 
+ 33 |     baseline : {'zero', 'sym', 'wiggle', 'weighted_wiggle'}
+ 34 |         Method used to calculate the baseline:
+ 35 | 
+ 36 |         - ``'zero'``: Constant zero baseline, i.e. a simple stacked plot.
+ 37 |         - ``'sym'``:  Symmetric around zero and is sometimes called
+ 38 |           'ThemeRiver'.
+ 39 |         - ``'wiggle'``: Minimizes the sum of the squared slopes.
+ 40 |         - ``'weighted_wiggle'``: Does the same but weights to account for
+ 41 |           size of each layer. It is also called 'Streamgraph'-layout. More
+ 42 |           details can be found at http://leebyron.com/streamgraph/.
+ 43 | 
+ 44 |     labels : list of str, optional
+ 45 |         A sequence of labels to assign to each data series. If unspecified,
+ 46 |         then no labels will be applied to artists.
+ 47 | 
+ 48 |     colors : list of color, optional
+ 49 |         A sequence of colors to be cycled through and used to color the stacked
+ 50 |         areas. The sequence need not be exactly the same length as the number
+ 51 |         of provided *y*, in which case the colors will repeat from the
+ 52 |         beginning.
+ 53 | 
+ 54 |         If not specified, the colors from the Axes property cycle will be used.
+ 55 | 
+ 56 |     data : indexable object, optional
+ 57 |         DATA_PARAMETER_PLACEHOLDER
+ 58 | 
+ 59 |     **kwargs
+ 60 |         All other keyword arguments are passed to `.Axes.fill_between`.
+ 61 | 
+ 62 |     Returns
+ 63 |     -------
+ 64 |     list of `.PolyCollection`
+ 65 |         A list of `.PolyCollection` instances, one for each element in the
+ 66 |         stacked area plot.
+ 67 |     """
+ 68 | 
+ 69 |     y = np.row_stack(args)
+ 70 | 
+ 71 |     labels = iter(labels)
+ 72 |     if colors is not None:
+ 73 |         axes.set_prop_cycle(color=colors)
+ 74 | 
+ 75 |     # Assume data passed has not been 'stacked', so stack it here.
+ 76 |     # We'll need a float buffer for the upcoming calculations.
+ 77 |     stack = np.cumsum(y, axis=0, dtype=np.promote_types(y.dtype, np.float32))
+ 78 | 
+ 79 |     _api.check_in_list(['zero', 'sym', 'wiggle', 'weighted_wiggle'],
+ 80 |                        baseline=baseline)
+ 81 |     if baseline == 'zero':
+ 82 |         first_line = 0.
+ 83 | 
+ 84 |     elif baseline == 'sym':
+ 85 |         first_line = -np.sum(y, 0) * 0.5
+ 86 |         stack += first_line[None, :]
+ 87 | 
+ 88 |     elif baseline == 'wiggle':
+ 89 |         m = y.shape[0]
+ 90 |         first_line = (y * (m - 0.5 - np.arange(m)[:, None])).sum(0)
+ 91 |         first_line /= -m
+ 92 |         stack += first_line
+ 93 | 
+ 94 |     elif baseline == 'weighted_wiggle':
+ 95 |         total = np.sum(y, 0)
+ 96 |         # multiply by 1/total (or zero) to avoid infinities in the division:
+ 97 |         inv_total = np.zeros_like(total)
+ 98 |         mask = total > 0
+ 99 |         inv_total[mask] = 1.0 / total[mask]
+100 |         increase = np.hstack((y[:, 0:1], np.diff(y)))
+101 |         below_size = total - stack
+102 |         below_size += 0.5 * y
+103 |         move_up = below_size * inv_total
+104 |         move_up[:, 0] = 0.5
+105 |         center = (move_up - 0.5) * increase
+106 |         center = np.cumsum(center.sum(0))
+107 |         first_line = center - 0.5 * total
+108 |         stack += first_line
+109 | 
+110 |     # Color between x = 0 and the first array.
+111 |     color = axes._get_lines.get_next_color()
+112 |     coll = axes.fill_between(x, first_line, stack[0, :],
+113 |                              facecolor=color, label=next(labels, None),
+114 |                              **kwargs)
+115 |     coll.sticky_edges.y[:] = [0]
+116 |     r = [coll]
+117 | 
+118 |     # Color between array i-1 and array i
+119 |     for i in range(len(y) - 1):
+120 |         color = axes._get_lines.get_next_color()
+121 |         r.append(axes.fill_between(x, stack[i, :], stack[i + 1, :],
+122 |                                    facecolor=color, label=next(labels, None),
+123 |                                    **kwargs))
+124 |     return r
+```
+
+Found file `lib/matplotlib/stackplot.py`.
+Source: Match found for entity name `stackplot`.
+Just show the structure of this file due to response length limitations:
+```
+
+__all__ = ['stackplot']
+
+
+def stackplot(axes, x, *args,
+              labels=(), colors=None, baseline='zero',
+              **kwargs):
+...
+
+```
+Hint: Search `lib/matplotlib/stackplot.py` to get the full content if needed.
+
+Found function `lib/matplotlib/pyplot.py:stackplot`.
+Source: Match found for entity name `stackplot`.
+```
+2831 | def stackplot(
+2832 |         x, *args, labels=(), colors=None, baseline='zero', data=None,
+2833 |         **kwargs):
+2834 |     return gca().stackplot(
+2835 |         x, *args, labels=labels, colors=colors, baseline=baseline,
+2836 |         **({"data": data} if data is not None else {}), **kwargs)
+```
+
+Found file `plot_types/basic/stackplot.py`.
+Source: Match found for entity name `stackplot`.
+```
+ 1 | """
+ 2 | ===============
+ 3 | stackplot(x, y)
+ 4 | ===============
+ 5 | See `~matplotlib.axes.Axes.stackplot`
+ 6 | """
+ 7 | import matplotlib.pyplot as plt
+ 8 | import numpy as np
+ 9 | 
+10 | plt.style.use('_mpl-gallery')
+11 | 
+12 | # make data
+13 | x = np.arange(0, 10, 2)
+14 | ay = [1, 1.25, 2, 2.75, 3]
+15 | by = [1, 1, 1, 1, 1]
+16 | cy = [2, 1, 2, 1, 2]
+17 | y = np.vstack([ay, by, cy])
+18 | 
+19 | # plot
+20 | fig, ax = plt.subplots()
+21 | 
+22 | ax.stackplot(x, y)
+23 | 
+24 | ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+25 |        ylim=(0, 8), yticks=np.arange(1, 8))
+26 | 
+27 | plt.show()
+28 | 
+```
+
+
+
+##Searching for term "prop_cycle"...
+### Search Result:
+Found code snippet in file `examples/color/color_cycle_default.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | ====================================
+ 3 | Colors in the default property cycle
+ 4 | ====================================
+ 5 | 
+ 6 | Display the colors from the default prop_cycle, which is obtained from the
+ 7 | :doc:`rc parameters</tutorials/introductory/customizing>`.
+ 8 | """
+ 9 | import numpy as np
+10 | import matplotlib.pyplot as plt
+11 | 
+12 | 
+13 | prop_cycle = plt.rcParams['axes.prop_cycle']
+14 | colors = prop_cycle.by_key()['color']
+15 | 
+16 | lwbase = plt.rcParams['lines.linewidth']
+17 | thin = lwbase / 2
+18 | thick = lwbase * 3
+19 | 
+20 | fig, axs = plt.subplots(nrows=2, ncols=2, sharex=True, sharey=True)
+21 | for icol in range(2):
+22 |     if icol == 0:
+23 |         lwx, lwy = thin, lwbase
+24 |     else:
+25 |         lwx, lwy = lwbase, thick
+26 |     for irow in range(2):
+27 |         for i, color in enumerate(colors):
+28 |             axs[irow, icol].axhline(i, color=color, lw=lwx)
+29 |             axs[irow, icol].axvline(i, color=color, lw=lwy)
+30 | 
+31 |     axs[1, icol].set_facecolor('k')
+32 |     axs[1, icol].xaxis.set_ticks(np.arange(0, 10, 2))
+33 |     axs[0, icol].set_title('line widths (pts): %g, %g' % (lwx, lwy),
+34 |                            fontsize='medium')
+35 | 
+36 | for irow in range(2):
+37 |     axs[irow, 0].yaxis.set_ticks(np.arange(0, 10, 2))
+38 | 
+39 | fig.suptitle('Colors in the default prop_cycle', fontsize='large')
+40 | 
+41 | plt.show()
+42 | 
+43 | #############################################################################
+44 | #
+45 | # .. admonition:: References
+46 | #
+47 | #    The use of the following functions, methods, classes and modules is shown
+48 | #    in this example:
+49 | #
+50 | #    - `matplotlib.axes.Axes.axhline` / `matplotlib.pyplot.axhline`
+51 | #    - `matplotlib.axes.Axes.axvline` / `matplotlib.pyplot.axvline`
+52 | #    - `matplotlib.axes.Axes.set_facecolor`
+53 | #    - `matplotlib.figure.Figure.suptitle`
+54 | 
+```
+
+Found code snippet in file `tutorials/intermediate/color_cycle.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | """
+  2 | ===================
+  3 | Styling with cycler
+  4 | ===================
+  5 | 
+  6 | Demo of custom property-cycle settings to control colors and other style
+  7 | properties for multi-line plots.
+  8 | 
+  9 | .. note::
+ 10 | 
+ 11 |     More complete documentation of the ``cycler`` API can be found
+ 12 |     `here <https://matplotlib.org/cycler/>`_.
+ 13 | 
+ 14 | This example demonstrates two different APIs:
+ 15 | 
+ 16 | 1. Setting the rc parameter specifying the default property cycle.
+ 17 |    This affects all subsequent axes (but not axes already created).
+ 18 | 2. Setting the property cycle for a single pair of axes.
+ 19 | 
+ 20 | """
+ 21 | from cycler import cycler
+ 22 | import numpy as np
+ 23 | import matplotlib.pyplot as plt
+ 24 | 
+ 25 | ###############################################################################
+ 26 | # First we'll generate some sample data, in this case, four offset sine
+ 27 | # curves.
+ 28 | x = np.linspace(0, 2 * np.pi, 50)
+ 29 | offsets = np.linspace(0, 2 * np.pi, 4, endpoint=False)
+ 30 | yy = np.transpose([np.sin(x + phi) for phi in offsets])
+ 31 | 
+ 32 | ###############################################################################
+ 33 | # Now ``yy`` has shape
+ 34 | print(yy.shape)
+ 35 | 
+ 36 | ###############################################################################
+ 37 | # So ``yy[:, i]`` will give you the ``i``-th offset sine curve. Let's set the
+ 38 | # default ``prop_cycle`` using :func:`matplotlib.pyplot.rc`.  We'll combine a
+ 39 | # color cycler and a linestyle cycler by adding (``+``) two ``cycler``'s
+ 40 | # together.  See the bottom of this tutorial for more information about
+ 41 | # combining different cyclers.
+ 42 | default_cycler = (cycler(color=['r', 'g', 'b', 'y']) +
+ 43 |                   cycler(linestyle=['-', '--', ':', '-.']))
+ 44 | 
+ 45 | plt.rc('lines', linewidth=4)
+ 46 | plt.rc('axes', prop_cycle=default_cycler)
+ 47 | 
+ 48 | ###############################################################################
+ 49 | # Now we'll generate a figure with two axes, one on top of the other. On the
+ 50 | # first axis, we'll plot with the default cycler. On the second axis, we'll
+ 51 | # set the ``prop_cycle`` using :func:`matplotlib.axes.Axes.set_prop_cycle`,
+ 52 | # which will only set the ``prop_cycle`` for this :mod:`matplotlib.axes.Axes`
+ 53 | # instance. We'll use a second ``cycler`` that combines a color cycler and a
+ 54 | # linewidth cycler.
+ 55 | custom_cycler = (cycler(color=['c', 'm', 'y', 'k']) +
+ 56 |                  cycler(lw=[1, 2, 3, 4]))
+```
+
+Found code snippet in file `examples/style_sheets/ggplot.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | ==================
+ 3 | ggplot style sheet
+ 4 | ==================
+ 5 | 
+ 6 | This example demonstrates the "ggplot" style, which adjusts the style to
+ 7 | emulate ggplot_ (a popular plotting package for R_).
+ 8 | 
+ 9 | These settings were shamelessly stolen from [1]_ (with permission).
+10 | 
+11 | .. [1] https://everyhue.me/posts/sane-color-scheme-for-matplotlib/
+12 | 
+13 | .. _ggplot: https://ggplot2.tidyverse.org/
+14 | .. _R: https://www.r-project.org/
+15 | 
+16 | """
+17 | import numpy as np
+18 | import matplotlib.pyplot as plt
+19 | 
+20 | plt.style.use('ggplot')
+21 | 
+22 | # Fixing random state for reproducibility
+23 | np.random.seed(19680801)
+24 | 
+25 | fig, axs = plt.subplots(ncols=2, nrows=2)
+26 | ax1, ax2, ax3, ax4 = axs.flat
+27 | 
+28 | # scatter plot (Note: `plt.scatter` doesn't use default colors)
+29 | x, y = np.random.normal(size=(2, 200))
+30 | ax1.plot(x, y, 'o')
+31 | 
+32 | # sinusoidal lines with colors from default color cycle
+33 | L = 2*np.pi
+34 | x = np.linspace(0, L)
+35 | ncolors = len(plt.rcParams['axes.prop_cycle'])
+36 | shift = np.linspace(0, L, ncolors, endpoint=False)
+37 | for s in shift:
+38 |     ax2.plot(x, np.sin(x + s), '-')
+39 | ax2.margins(0)
+40 | 
+41 | # bar graphs
+42 | x = np.arange(5)
+43 | y1, y2 = np.random.randint(1, 25, size=(2, 5))
+44 | width = 0.25
+45 | ax3.bar(x, y1, width)
+46 | ax3.bar(x + width, y2, width,
+47 |         color=list(plt.rcParams['axes.prop_cycle'])[2]['color'])
+48 | ax3.set_xticks(x + width, labels=['a', 'b', 'c', 'd', 'e'])
+49 | 
+50 | # circles with colors from default color cycle
+51 | for i, color in enumerate(plt.rcParams['axes.prop_cycle']):
+52 |     xy = np.random.normal(size=2)
+53 |     ax4.add_patch(plt.Circle(xy, radius=0.3, color=color['color']))
+54 | ax4.axis('equal')
+55 | ax4.margins(0)
+56 | 
+57 | plt.show()
+58 | 
+```
+
+Found function `lib/matplotlib/rcsetup.py:validate_color_for_prop_cycle`.
+Source: Retrieved entity using keyword search (bm25).
+```
+282 | def validate_color_for_prop_cycle(s):
+283 |     # N-th color cycle syntax can't go into the color cycle.
+284 |     if isinstance(s, str) and re.match("^C[0-9]$", s):
+285 |         raise ValueError(f"Cannot put cycle reference ({s!r}) in prop_cycler")
+286 |     return validate_color(s)
+```
+
+Found function `lib/matplotlib/axes/_base.py:_process_plot_var_args.set_prop_cycle`.
+Source: Retrieved entity using keyword search (bm25).
+```
+234 | def set_prop_cycle(self, cycler):
+235 |         if cycler is None:
+236 |             cycler = mpl.rcParams['axes.prop_cycle']
+237 |         self.prop_cycler = itertools.cycle(cycler)
+238 |         self._prop_keys = cycler.keys
+```
+
+Found function `lib/matplotlib/colors.py:to_rgba`.
+Source: Retrieved code content using keyword search (bm25).
+```
+265 | def to_rgba(c, alpha=None):
+266 |     """
+267 |     Convert *c* to an RGBA color.
+268 | 
+269 |     Parameters
+270 |     ----------
+271 |     c : Matplotlib color or ``np.ma.masked``
+272 | 
+273 |     alpha : float, optional
+274 |         If *alpha* is given, force the alpha value of the returned RGBA tuple
+275 |         to *alpha*.
+276 | 
+277 |         If None, the alpha value from *c* is used. If *c* does not have an
+278 |         alpha channel, then alpha defaults to 1.
+279 | 
+280 |         *alpha* is ignored for the color value ``"none"`` (case-insensitive),
+281 |         which always maps to ``(0, 0, 0, 0)``.
+282 | 
+283 |     Returns
+284 |     -------
+285 |     tuple
+286 |         Tuple of floats ``(r, g, b, a)``, where each channel (red, green, blue,
+287 |         alpha) can assume values between 0 and 1.
+288 |     """
+289 |     # Special-case nth color syntax because it should not be cached.
+290 |     if _is_nth_color(c):
+291 |         prop_cycler = mpl.rcParams['axes.prop_cycle']
+292 |         colors = prop_cycler.by_key().get('color', ['k'])
+293 |         c = colors[int(c[1:]) % len(colors)]
+294 |     try:
+295 |         rgba = _colors_full_map.cache[c, alpha]
+296 |     except (KeyError, TypeError):  # Not in cache, or unhashable.
+297 |         rgba = None
+298 |     if rgba is None:  # Suppress exception chaining of cache lookup failure.
+299 |         rgba = _to_rgba_no_colorcycle(c, alpha)
+300 |         try:
+301 |             _colors_full_map.cache[c, alpha] = rgba
+302 |         except TypeError:
+303 |             pass
+304 |     return rgba
+```
+
+
+
+##Searching for term "prop_cycle", "prop_cycle cycle reference"...
+### Search Result:
+Found function `lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle`.
+Source: Retrieved entity using keyword search (bm25).
+```
+1550 | def set_prop_cycle(self, *args, **kwargs):
+1551 |         """
+1552 |         Set the property cycle of the Axes.
+1553 | 
+1554 |         The property cycle controls the style properties such as color,
+1555 |         marker and linestyle of future plot commands. The style properties
+1556 |         of data already added to the Axes are not modified.
+1557 | 
+1558 |         Call signatures::
+1559 | 
+1560 |           set_prop_cycle(cycler)
+1561 |           set_prop_cycle(label=values[, label2=values2[, ...]])
+1562 |           set_prop_cycle(label, values)
+1563 | 
+1564 |         Form 1 sets given `~cycler.Cycler` object.
+1565 | 
+1566 |         Form 2 creates a `~cycler.Cycler` which cycles over one or more
+1567 |         properties simultaneously and set it as the property cycle of the
+1568 |         Axes. If multiple properties are given, their value lists must have
+1569 |         the same length. This is just a shortcut for explicitly creating a
+1570 |         cycler and passing it to the function, i.e. it's short for
+1571 |         ``set_prop_cycle(cycler(label=values label2=values2, ...))``.
+1572 | 
+1573 |         Form 3 creates a `~cycler.Cycler` for a single property and set it
+1574 |         as the property cycle of the Axes. This form exists for compatibility
+1575 |         with the original `cycler.cycler` interface. Its use is discouraged
+1576 |         in favor of the kwarg form, i.e. ``set_prop_cycle(label=values)``.
+1577 | 
+1578 |         Parameters
+1579 |         ----------
+1580 |         cycler : Cycler
+1581 |             Set the given Cycler. *None* resets to the cycle defined by the
+1582 |             current style.
+1583 | 
+1584 |         label : str
+1585 |             The property key. Must be a valid `.Artist` property.
+1586 |             For example, 'color' or 'linestyle'. Aliases are allowed,
+1587 |             such as 'c' for 'color' and 'lw' for 'linewidth'.
+1588 | 
+1589 |         values : iterable
+1590 |             Finite-length iterable of the property values. These values
+1591 |             are validated and will raise a ValueError if invalid.
+1592 | 
+1593 |         See Also
+1594 |         --------
+1595 |         matplotlib.rcsetup.cycler
+1596 |             Convenience function for creating validated cyclers for properties.
+1597 |         cycler.cycler
+1598 |             The original function for creating unvalidated cyclers.
+1599 | 
+1600 |         Examples
+1601 |         --------
+1602 |         Setting the property cycle for a single property:
+1603 | 
+1604 |         >>> ax.set_prop_cycle(color=['red', 'green', 'blue'])
+1605 | 
+1606 |         Setting the property cycle for simultaneously cycling over multiple
+1607 |         properties (e.g. red circle, green plus, blue cross):
+1608 | 
+1609 |         >>> ax.set_prop_cycle(color=['red', 'green', 'blue'],
+1610 |         ...                   marker=['o', '+', 'x'])
+1611 | 
+1612 |         """
+1613 |         if args and kwargs:
+1614 |             raise TypeError("Cannot supply both positional and keyword "
+1615 |                             "arguments to this method.")
+1616 |         # Can't do `args == (None,)` as that crashes cycler.
+1617 |         if len(args) == 1 and args[0] is None:
+1618 |             prop_cycle = None
+1619 |         else:
+1620 |             prop_cycle = cycler(*args, **kwargs)
+1621 |         self._get_lines.set_prop_cycle(prop_cycle)
+1622 |         self._get_patches_for_fill.set_prop_cycle(prop_cycle)
+```
+
+
+
+##Searching for term "cycle reference", "prop_cycle cycle reference"...
+### Search Result:
+Found class `lib/matplotlib/backends/backend_pdf.py:Reference`.
+Source: Retrieved entity using keyword search (bm25).
+```
+392 | class Reference:
+393 |     """
+394 |     PDF reference object.
+395 | 
+396 |     Use PdfFile.reserveObject() to create References.
+397 |     """
+398 | 
+399 |     def __init__(self, id):
+400 |         self.id = id
+401 | 
+402 |     def __repr__(self):
+403 |         return "<Reference %d>" % self.id
+404 | 
+405 |     def pdfRepr(self):
+406 |         return b"%d 0 R" % self.id
+407 | 
+408 |     def write(self, contents, file):
+409 |         write = file.write
+410 |         write(b"%d 0 obj\n" % self.id)
+411 |         write(pdfRepr(contents))
+412 |         write(b"\nendobj\n")
+```
+
+Found function `lib/matplotlib/rcsetup.py:validate_backend`.
+Source: Retrieved code content using keyword search (bm25).
+```
+252 | def validate_backend(s):
+253 |     backend = (
+254 |         s if s is _auto_backend_sentinel or s.startswith("module://")
+255 |         else _validate_standard_backends(s))
+256 |     return backend
+```
+
+Found function `lib/matplotlib/rcsetup.py:_validate_toolbar`.
+Source: Retrieved code content using keyword search (bm25).
+```
+259 | def _validate_toolbar(s):
+260 |     s = ValidateInStrings(
+261 |         'toolbar', ['None', 'toolbar2', 'toolmanager'], ignorecase=True)(s)
+262 |     if s == 'toolmanager':
+263 |         _api.warn_external(
+264 |             "Treat the new Tool classes introduced in v1.5 as experimental "
+265 |             "for now; the API and rcParam may change in future versions.")
+266 |     return s
+```
+
+Found function `lib/matplotlib/rcsetup.py:validate_color_or_inherit`.
+Source: Retrieved code content using keyword search (bm25).
+```
+269 | def validate_color_or_inherit(s):
+270 |     """Return a valid color arg."""
+271 |     if cbook._str_equal(s, 'inherit'):
+272 |         return s
+273 |     return validate_color(s)
+```
+
+Found function `lib/matplotlib/rcsetup.py:validate_color_or_auto`.
+Source: Retrieved code content using keyword search (bm25).
+```
+276 | def validate_color_or_auto(s):
+277 |     if cbook._str_equal(s, 'auto'):
+278 |         return s
+279 |     return validate_color(s)
+```
+
+
+
+##Searching for term "cycle reference"...
+### Search Result:
+Found function `lib/matplotlib/cbook/__init__.py:print_cycles`.
+Source: Retrieved code content using keyword search (bm25).
+```
+756 | def print_cycles(objects, outstream=sys.stdout, show_progress=False):
+757 |     """
+758 |     Print loops of cyclic references in the given *objects*.
+759 | 
+760 |     It is often useful to pass in ``gc.garbage`` to find the cycles that are
+761 |     preventing some objects from being garbage collected.
+762 | 
+763 |     Parameters
+764 |     ----------
+765 |     objects
+766 |         A list of objects to find cycles in.
+767 |     outstream
+768 |         The stream for output.
+769 |     show_progress : bool
+770 |         If True, print the number of objects reached as they are found.
+771 |     """
+772 |     import gc
+773 | 
+774 |     def print_path(path):
+775 |         for i, step in enumerate(path):
+776 |             # next "wraps around"
+777 |             next = path[(i + 1) % len(path)]
+778 | 
+779 |             outstream.write("   %s -- " % type(step))
+780 |             if isinstance(step, dict):
+781 |                 for key, val in step.items():
+782 |                     if val is next:
+783 |                         outstream.write("[{!r}]".format(key))
+784 |                         break
+785 |                     if key is next:
+786 |                         outstream.write("[key] = {!r}".format(val))
+787 |                         break
+788 |             elif isinstance(step, list):
+789 |                 outstream.write("[%d]" % step.index(next))
+790 |             elif isinstance(step, tuple):
+791 |                 outstream.write("( tuple )")
+792 |             else:
+793 |                 outstream.write(repr(step))
+794 |             outstream.write(" ->\n")
+795 |         outstream.write("\n")
+796 | 
+797 |     def recurse(obj, start, all, current_path):
+798 |         if show_progress:
+799 |             outstream.write("%d\r" % len(all))
+800 | 
+801 |         all[id(obj)] = None
+802 | 
+803 |         referents = gc.get_referents(obj)
+804 |         for referent in referents:
+805 |             # If we've found our way back to the start, this is
+806 |             # a cycle, so print it out
+807 |             if referent is start:
+808 |                 print_path(current_path)
+809 | 
+810 |             # Don't go back through the original list of objects, or
+811 |             # through temporary references to the object, since those
+812 |             # are just an artifact of the cycle detector itself.
+813 |             elif referent is objects or isinstance(referent, types.FrameType):
+814 |                 continue
+815 | 
+816 |             # We haven't seen this object before, so recurse
+817 |             elif id(referent) not in all:
+818 |                 recurse(referent, start, all, current_path + [obj])
+819 | 
+820 |     for obj in objects:
+821 |         outstream.write(f"Examining: {obj!r}\n")
+822 |         recurse(obj, obj, {}, [])
+```
+
+2026-08-28 00:48:45 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:48:51 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:48:51 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:48:51 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 00:48:51 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['stackplot(', 'axes._get_lines.get_next_color()', 'fill_between(', '_get_patches_for_fill'], 'file_path_or_pattern': 'lib/matplotlib/axes/_base.py'}))
+```
+2026-08-28 00:48:52 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:53 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:54 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:56 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:57 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:58 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:48:58 auto_search_main.py INFO OBSERVATION:
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__call__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.get_next_color
+lib/matplotlib/axes/_base.py:_AxesBase.__clear
+lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle
+##Searching for term "stackplot("...
+### Search Result:
+Found function `lib/matplotlib/stackplot.py:stackplot`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 16 | def stackplot(axes, x, *args,
+ 17 |               labels=(), colors=None, baseline='zero',
+ 18 |               **kwargs):
+ 19 |     """
+ 20 |     Draw a stacked area plot.
+ 21 | 
+ 22 |     Parameters
+ 23 |     ----------
+ 24 |     x : (N,) array-like
+ 25 | 
+ 26 |     y : (M, N) array-like
+ 27 |         The data is assumed to be unstacked. Each of the following
+ 28 |         calls is legal::
+ 29 | 
+ 30 |             stackplot(x, y)           # where y has shape (M, N)
+ 31 |             stackplot(x, y1, y2, y3)  # where y1, y2, y3, y4 have length N
+ 32 | 
+ 33 |     baseline : {'zero', 'sym', 'wiggle', 'weighted_wiggle'}
+ 34 |         Method used to calculate the baseline:
+ 35 | 
+ 36 |         - ``'zero'``: Constant zero baseline, i.e. a simple stacked plot.
+ 37 |         - ``'sym'``:  Symmetric around zero and is sometimes called
+ 38 |           'ThemeRiver'.
+ 39 |         - ``'wiggle'``: Minimizes the sum of the squared slopes.
+ 40 |         - ``'weighted_wiggle'``: Does the same but weights to account for
+ 41 |           size of each layer. It is also called 'Streamgraph'-layout. More
+ 42 |           details can be found at http://leebyron.com/streamgraph/.
+ 43 | 
+ 44 |     labels : list of str, optional
+ 45 |         A sequence of labels to assign to each data series. If unspecified,
+ 46 |         then no labels will be applied to artists.
+ 47 | 
+ 48 |     colors : list of color, optional
+ 49 |         A sequence of colors to be cycled through and used to color the stacked
+ 50 |         areas. The sequence need not be exactly the same length as the number
+ 51 |         of provided *y*, in which case the colors will repeat from the
+ 52 |         beginning.
+ 53 | 
+ 54 |         If not specified, the colors from the Axes property cycle will be used.
+ 55 | 
+ 56 |     data : indexable object, optional
+ 57 |         DATA_PARAMETER_PLACEHOLDER
+ 58 | 
+ 59 |     **kwargs
+ 60 |         All other keyword arguments are passed to `.Axes.fill_between`.
+ 61 | 
+ 62 |     Returns
+ 63 |     -------
+ 64 |     list of `.PolyCollection`
+ 65 |         A list of `.PolyCollection` instances, one for each element in the
+ 66 |         stacked area plot.
+ 67 |     """
+ 68 | 
+ 69 |     y = np.row_stack(args)
+ 70 | 
+ 71 |     labels = iter(labels)
+ 72 |     if colors is not None:
+ 73 |         axes.set_prop_cycle(color=colors)
+ 74 | 
+ 75 |     # Assume data passed has not been 'stacked', so stack it here.
+ 76 |     # We'll need a float buffer for the upcoming calculations.
+ 77 |     stack = np.cumsum(y, axis=0, dtype=np.promote_types(y.dtype, np.float32))
+ 78 | 
+ 79 |     _api.check_in_list(['zero', 'sym', 'wiggle', 'weighted_wiggle'],
+ 80 |                        baseline=baseline)
+ 81 |     if baseline == 'zero':
+ 82 |         first_line = 0.
+ 83 | 
+ 84 |     elif baseline == 'sym':
+ 85 |         first_line = -np.sum(y, 0) * 0.5
+ 86 |         stack += first_line[None, :]
+ 87 | 
+ 88 |     elif baseline == 'wiggle':
+ 89 |         m = y.shape[0]
+ 90 |         first_line = (y * (m - 0.5 - np.arange(m)[:, None])).sum(0)
+ 91 |         first_line /= -m
+ 92 |         stack += first_line
+ 93 | 
+ 94 |     elif baseline == 'weighted_wiggle':
+ 95 |         total = np.sum(y, 0)
+ 96 |         # multiply by 1/total (or zero) to avoid infinities in the division:
+ 97 |         inv_total = np.zeros_like(total)
+ 98 |         mask = total > 0
+ 99 |         inv_total[mask] = 1.0 / total[mask]
+100 |         increase = np.hstack((y[:, 0:1], np.diff(y)))
+101 |         below_size = total - stack
+102 |         below_size += 0.5 * y
+103 |         move_up = below_size * inv_total
+104 |         move_up[:, 0] = 0.5
+105 |         center = (move_up - 0.5) * increase
+106 |         center = np.cumsum(center.sum(0))
+107 |         first_line = center - 0.5 * total
+108 |         stack += first_line
+109 | 
+110 |     # Color between x = 0 and the first array.
+111 |     color = axes._get_lines.get_next_color()
+112 |     coll = axes.fill_between(x, first_line, stack[0, :],
+113 |                              facecolor=color, label=next(labels, None),
+114 |                              **kwargs)
+115 |     coll.sticky_edges.y[:] = [0]
+116 |     r = [coll]
+117 | 
+118 |     # Color between array i-1 and array i
+119 |     for i in range(len(y) - 1):
+120 |         color = axes._get_lines.get_next_color()
+121 |         r.append(axes.fill_between(x, stack[i, :], stack[i + 1, :],
+122 |                                    facecolor=color, label=next(labels, None),
+123 |                                    **kwargs))
+124 |     return r
+```
+
+Found function `lib/matplotlib/pyplot.py:stackplot`.
+Source: Retrieved entity using keyword search (bm25).
+```
+2831 | def stackplot(
+2832 |         x, *args, labels=(), colors=None, baseline='zero', data=None,
+2833 |         **kwargs):
+2834 |     return gca().stackplot(
+2835 |         x, *args, labels=labels, colors=colors, baseline=baseline,
+2836 |         **({"data": data} if data is not None else {}), **kwargs)
+```
+
+Found file `plot_types/basic/stackplot.py`.
+Found file `lib/matplotlib/stackplot.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "axes._get_lines.get_next_color()", "stackplot( axes._get_lines.get_next_color() fill_between( _get_patches_for_fill"...
+### Search Result:
+Found function `lib/matplotlib/axes/_base.py:_process_plot_var_args.get_next_color`.
+Source: Retrieved entity using keyword search (bm25).
+```
+314 | def get_next_color(self):
+315 |         """Return the next color in the cycle."""
+316 |         if 'color' not in self._prop_keys:
+317 |             return 'k'
+318 |         return next(self.prop_cycler)['color']
+```
+
+
+
+##Searching for term "axes._get_lines.get_next_color()"...
+### Search Result:
+Found function `lib/matplotlib/axes/_base.py:_process_plot_var_args.__call__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+240 | def __call__(self, *args, data=None, **kwargs):
+241 |         self.axes._process_unit_info(kwargs=kwargs)
+242 | 
+243 |         for pos_only in "xy":
+244 |             if pos_only in kwargs:
+245 |                 raise TypeError("{} got an unexpected keyword argument {!r}"
+246 |                                 .format(self.command, pos_only))
+247 | 
+248 |         if not args:
+249 |             return
+250 | 
+251 |         if data is None:  # Process dict views
+252 |             args = [cbook.sanitize_sequence(a) for a in args]
+253 |         else:  # Process the 'data' kwarg.
+254 |             replaced = [mpl._replacer(data, arg) for arg in args]
+255 |             if len(args) == 1:
+256 |                 label_namer_idx = 0
+257 |             elif len(args) == 2:  # Can be x, y or y, c.
+258 |                 # Figure out what the second argument is.
+259 |                 # 1) If the second argument cannot be a format shorthand, the
+260 |                 #    second argument is the label_namer.
+261 |                 # 2) Otherwise (it could have been a format shorthand),
+262 |                 #    a) if we did perform a substitution, emit a warning, and
+263 |                 #       use it as label_namer.
+264 |                 #    b) otherwise, it is indeed a format shorthand; use the
+265 |                 #       first argument as label_namer.
+266 |                 try:
+267 |                     _process_plot_format(args[1])
+268 |                 except ValueError:  # case 1)
+269 |                     label_namer_idx = 1
+270 |                 else:
+271 |                     if replaced[1] is not args[1]:  # case 2a)
+272 |                         _api.warn_external(
+273 |                             f"Second argument {args[1]!r} is ambiguous: could "
+274 |                             f"be a format string but is in 'data'; using as "
+275 |                             f"data.  If it was intended as data, set the "
+276 |                             f"format string to an empty string to suppress "
+277 |                             f"this warning.  If it was intended as a format "
+278 |                             f"string, explicitly pass the x-values as well.  "
+279 |                             f"Alternatively, rename the entry in 'data'.",
+280 |                             RuntimeWarning)
+281 |                         label_namer_idx = 1
+282 |                     else:  # case 2b)
+283 |                         label_namer_idx = 0
+284 |             elif len(args) == 3:
+285 |                 label_namer_idx = 1
+286 |             else:
+287 |                 raise ValueError(
+288 |                     "Using arbitrary long args with data is not supported due "
+289 |                     "to ambiguity of arguments; use multiple plotting calls "
+290 |                     "instead")
+291 |             if kwargs.get("label") is None:
+292 |                 kwargs["label"] = mpl._label_from_arg(
+293 |                     replaced[label_namer_idx], args[label_namer_idx])
+294 |             args = replaced
+295 |         ambiguous_fmt_datakey = data is not None and len(args) == 2
+296 | 
+297 |         if len(args) >= 4 and not cbook.is_scalar_or_string(
+298 |                 kwargs.get("label")):
+299 |             raise ValueError("plot() with multiple groups of data (i.e., "
+300 |                              "pairs of x and y) does not support multiple "
+301 |                              "labels")
+302 | 
+303 |         # Repeatedly grab (x, y) or (x, y, format) from the front of args and
+304 |         # massage them into arguments to plot() or fill().
+305 | 
+306 |         while args:
+307 |             this, args = args[:2], args[2:]
+308 |             if args and isinstance(args[0], str):
+309 |                 this += args[0],
+310 |                 args = args[1:]
+311 |             yield from self._plot_args(
+312 |                 this, kwargs, ambiguous_fmt_datakey=ambiguous_fmt_datakey)
+```
+
+
+
+##Searching for term "fill_between("...
+### Search Result:
+Found function `lib/matplotlib/pyplot.py:fill_between`.
+Source: Retrieved entity using keyword search (bm25).
+```
+2512 | def fill_between(
+2513 |         x, y1, y2=0, where=None, interpolate=False, step=None, *,
+2514 |         data=None, **kwargs):
+2515 |     return gca().fill_between(
+2516 |         x, y1, y2=y2, where=where, interpolate=interpolate, step=step,
+2517 |         **({"data": data} if data is not None else {}), **kwargs)
+```
+
+Found function `lib/matplotlib/axes/_axes.py:Axes.fill_between`.
+Source: Retrieved entity using keyword search (bm25).
+```
+5351 | def fill_between(self, x, y1, y2=0, where=None, interpolate=False,
+5352 |                      step=None, **kwargs):
+5353 |         return self._fill_between_x_or_y(
+5354 |             "x", x, y1, y2,
+5355 |             where=where, interpolate=interpolate, step=step, **kwargs)
+```
+
+Found file `plot_types/basic/fill_between.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `plot_types/basic/fill_between.py` for the full content if needed.
+
+
+
+##Searching for term "_get_patches_for_fill"...
+### Search Result:
+Found function `lib/matplotlib/axes/_base.py:_AxesBase.__clear`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1219 | def __clear(self):
+1220 |         """Clear the Axes."""
+1221 |         # The actual implementation of clear() as long as clear() has to be
+1222 |         # an adapter delegating to the correct implementation.
+1223 |         # The implementation can move back into clear() when the
+1224 |         # deprecation on cla() subclassing expires.
+1225 | 
+1226 |         # stash the current visibility state
+1227 |         if hasattr(self, 'patch'):
+1228 |             patch_visible = self.patch.get_visible()
+1229 |         else:
+1230 |             patch_visible = True
+1231 | 
+1232 |         xaxis_visible = self.xaxis.get_visible()
+1233 |         yaxis_visible = self.yaxis.get_visible()
+1234 | 
+1235 |         for axis in self._axis_map.values():
+1236 |             axis.clear()  # Also resets the scale to linear.
+1237 |         for spine in self.spines.values():
+1238 |             spine.clear()
+1239 | 
+1240 |         self.ignore_existing_data_limits = True
+1241 |         self.callbacks = cbook.CallbackRegistry(
+1242 |             signals=["xlim_changed", "ylim_changed", "zlim_changed"])
+1243 | 
+1244 |         for name, axis in self._axis_map.items():
+1245 |             share = getattr(self, f"_share{name}")
+1246 |             if share is not None:
+1247 |                 getattr(self, f"share{name}")(share)
+1248 |             else:
+1249 |                 axis._set_scale("linear")
+1250 |                 axis._set_lim(0, 1, auto=True)
+1251 | 
+1252 |         # update the minor locator for x and y axis based on rcParams
+1253 |         if mpl.rcParams['xtick.minor.visible']:
+1254 |             self.xaxis.set_minor_locator(mticker.AutoMinorLocator())
+1255 |         if mpl.rcParams['ytick.minor.visible']:
+1256 |             self.yaxis.set_minor_locator(mticker.AutoMinorLocator())
+1257 | 
+1258 |         self._xmargin = mpl.rcParams['axes.xmargin']
+1259 |         self._ymargin = mpl.rcParams['axes.ymargin']
+1260 |         self._tight = None
+1261 |         self._use_sticky_edges = True
+1262 |         self._update_transScale()  # needed?
+1263 | 
+1264 |         self._get_lines = _process_plot_var_args(self)
+1265 |         self._get_patches_for_fill = _process_plot_var_args(self, 'fill')
+1266 | 
+1267 |         self._gridOn = mpl.rcParams['axes.grid']
+1268 |         self._children = []
+1269 |         self._mouseover_set = _OrderedSet()
+1270 |         self.child_axes = []
+1271 |         self._current_image = None  # strictly for pyplot via _sci, _gci
+1272 |         self._projection_init = None  # strictly for pyplot.subplot
+1273 |         self.legend_ = None
+1274 |         self.containers = []
+1275 | 
+1276 |         self.grid(False)  # Disable grid on init to use rcParameter
+1277 |         self.grid(self._gridOn, which=mpl.rcParams['axes.grid.which'],
+1278 |                   axis=mpl.rcParams['axes.grid.axis'])
+1279 |         props = font_manager.FontProperties(
+1280 |             size=mpl.rcParams['axes.titlesize'],
+1281 |             weight=mpl.rcParams['axes.titleweight'])
+1282 | 
+1283 |         y = mpl.rcParams['axes.titley']
+1284 |         if y is None:
+1285 |             y = 1.0
+1286 |             self._autotitlepos = True
+1287 |         else:
+1288 |             self._autotitlepos = False
+1289 | 
+1290 |         self.title = mtext.Text(
+1291 |             x=0.5, y=y, text='',
+1292 |             fontproperties=props,
+1293 |             verticalalignment='baseline',
+1294 |             horizontalalignment='center',
+1295 |             )
+1296 |         self._left_title = mtext.Text(
+1297 |             x=0.0, y=y, text='',
+1298 |             fontproperties=props.copy(),
+1299 |             verticalalignment='baseline',
+1300 |             horizontalalignment='left', )
+1301 |         self._right_title = mtext.Text(
+1302 |             x=1.0, y=y, text='',
+1303 |             fontproperties=props.copy(),
+1304 |             verticalalignment='baseline',
+1305 |             horizontalalignment='right',
+1306 |             )
+1307 |         title_offset_points = mpl.rcParams['axes.titlepad']
+1308 |         # refactor this out so it can be called in ax.set_title if
+1309 |         # pad argument used...
+1310 |         self._set_title_offset_trans(title_offset_points)
+1311 | 
+1312 |         for _title in (self.title, self._left_title, self._right_title):
+1313 |             self._set_artist_props(_title)
+1314 | 
+1315 |         # The patch draws the background of the Axes.  We want this to be below
+1316 |         # the other artists.  We use the frame to draw the edges so we are
+1317 |         # setting the edgecolor to None.
+1318 |         self.patch = self._gen_axes_patch()
+1319 |         self.patch.set_figure(self.figure)
+1320 |         self.patch.set_facecolor(self._facecolor)
+1321 |         self.patch.set_edgecolor('none')
+1322 |         self.patch.set_linewidth(0)
+1323 |         self.patch.set_transform(self.transAxes)
+1324 | 
+1325 |         self.set_axis_on()
+1326 | 
+1327 |         self.xaxis.set_clip_path(self.patch)
+1328 |         self.yaxis.set_clip_path(self.patch)
+1329 | 
+1330 |         self._shared_axes["x"].clean()
+1331 |         self._shared_axes["y"].clean()
+1332 |         if self._sharex is not None:
+1333 |             self.xaxis.set_visible(xaxis_visible)
+1334 |             self.patch.set_visible(patch_visible)
+1335 |         if self._sharey is not None:
+1336 |             self.yaxis.set_visible(yaxis_visible)
+1337 |             self.patch.set_visible(patch_visible)
+1338 | 
+1339 |         self.stale = True
+```
+
+Found function `lib/matplotlib/patches.py:Patch.set_fill`.
+Source: Retrieved entity using keyword search (bm25).
+```
+432 | def set_fill(self, b):
+433 |         """
+434 |         Set whether to fill the patch.
+435 | 
+436 |         Parameters
+437 |         ----------
+438 |         b : bool
+439 |         """
+440 |         self._fill = bool(b)
+441 |         self._set_facecolor(self._original_facecolor)
+442 |         self._set_edgecolor(self._original_edgecolor)
+443 |         self.stale = True
+```
+
+Found function `lib/matplotlib/patches.py:Patch.get_fill`.
+Source: Retrieved entity using keyword search (bm25).
+```
+445 | def get_fill(self):
+446 |         """Return whether the patch is filled."""
+447 |         return self._fill
+```
+
+Found function `lib/matplotlib/legend.py:Legend.get_patches`.
+Source: Retrieved entity using keyword search (bm25).
+```
+874 | def get_patches(self):
+875 |         r"""Return the list of `~.patches.Patch`\s in the legend."""
+876 |         return silent_list('Patch',
+877 |                            [h for h in self.legendHandles
+878 |                             if isinstance(h, Patch)])
+```
+
+Found function `lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1550 | def set_prop_cycle(self, *args, **kwargs):
+1551 |         """
+1552 |         Set the property cycle of the Axes.
+1553 | 
+1554 |         The property cycle controls the style properties such as color,
+1555 |         marker and linestyle of future plot commands. The style properties
+1556 |         of data already added to the Axes are not modified.
+1557 | 
+1558 |         Call signatures::
+1559 | 
+1560 |           set_prop_cycle(cycler)
+1561 |           set_prop_cycle(label=values[, label2=values2[, ...]])
+1562 |           set_prop_cycle(label, values)
+1563 | 
+1564 |         Form 1 sets given `~cycler.Cycler` object.
+1565 | 
+1566 |         Form 2 creates a `~cycler.Cycler` which cycles over one or more
+1567 |         properties simultaneously and set it as the property cycle of the
+1568 |         Axes. If multiple properties are given, their value lists must have
+1569 |         the same length. This is just a shortcut for explicitly creating a
+1570 |         cycler and passing it to the function, i.e. it's short for
+1571 |         ``set_prop_cycle(cycler(label=values label2=values2, ...))``.
+1572 | 
+1573 |         Form 3 creates a `~cycler.Cycler` for a single property and set it
+1574 |         as the property cycle of the Axes. This form exists for compatibility
+1575 |         with the original `cycler.cycler` interface. Its use is discouraged
+1576 |         in favor of the kwarg form, i.e. ``set_prop_cycle(label=values)``.
+1577 | 
+1578 |         Parameters
+1579 |         ----------
+1580 |         cycler : Cycler
+1581 |             Set the given Cycler. *None* resets to the cycle defined by the
+1582 |             current style.
+1583 | 
+1584 |         label : str
+1585 |             The property key. Must be a valid `.Artist` property.
+1586 |             For example, 'color' or 'linestyle'. Aliases are allowed,
+1587 |             such as 'c' for 'color' and 'lw' for 'linewidth'.
+1588 | 
+1589 |         values : iterable
+1590 |             Finite-length iterable of the property values. These values
+1591 |             are validated and will raise a ValueError if invalid.
+1592 | 
+1593 |         See Also
+1594 |         --------
+1595 |         matplotlib.rcsetup.cycler
+1596 |             Convenience function for creating validated cyclers for properties.
+1597 |         cycler.cycler
+1598 |             The original function for creating unvalidated cyclers.
+1599 | 
+1600 |         Examples
+1601 |         --------
+1602 |         Setting the property cycle for a single property:
+1603 | 
+1604 |         >>> ax.set_prop_cycle(color=['red', 'green', 'blue'])
+1605 | 
+1606 |         Setting the property cycle for simultaneously cycling over multiple
+1607 |         properties (e.g. red circle, green plus, blue cross):
+1608 | 
+1609 |         >>> ax.set_prop_cycle(color=['red', 'green', 'blue'],
+1610 |         ...                   marker=['o', '+', 'x'])
+1611 | 
+1612 |         """
+1613 |         if args and kwargs:
+1614 |             raise TypeError("Cannot supply both positional and keyword "
+1615 |                             "arguments to this method.")
+1616 |         # Can't do `args == (None,)` as that crashes cycler.
+1617 |         if len(args) == 1 and args[0] is None:
+1618 |             prop_cycle = None
+1619 |         else:
+1620 |             prop_cycle = cycler(*args, **kwargs)
+1621 |         self._get_lines.set_prop_cycle(prop_cycle)
+1622 |         self._get_patches_for_fill.set_prop_cycle(prop_cycle)
+```
+
+2026-08-28 00:48:58 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['validate_color_for_prop_cycle', 'cycler(', 'axes.prop_cycle'], 'file_path_or_pattern': 'lib/matplotlib/rcsetup.py'}))
+```
+2026-08-28 00:49:00 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:01 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:02 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:04 auto_search_main.py INFO OBSERVATION:
+lib/matplotlib/rcsetup.py:cycler
+lib/matplotlib/rcsetup.py:validate_cycler
+lib/matplotlib/rcsetup.py:_DunderChecker
+lib/matplotlib/rcsetup.py:_DunderChecker.visit_Attribute
+lib/matplotlib/rcsetup.py:cycler
+lib/matplotlib/rcsetup.py:validate_cycler
+lib/matplotlib/rcsetup.py:cycler
+##Searching for term "validate_color_for_prop_cycle"...
+### Search Result:
+Found function `lib/matplotlib/rcsetup.py:validate_color_for_prop_cycle`.
+Source: Match found for entity name `validate_color_for_prop_cycle`.
+```
+282 | def validate_color_for_prop_cycle(s):
+283 |     # N-th color cycle syntax can't go into the color cycle.
+284 |     if isinstance(s, str) and re.match("^C[0-9]$", s):
+285 |         raise ValueError(f"Cannot put cycle reference ({s!r}) in prop_cycler")
+286 |     return validate_color(s)
+```
+
+
+
+##Searching for term "cycler(", "cycler( axes.prop_cycle"...
+### Search Result:
+Found function `lib/matplotlib/rcsetup.py:cycler`.
+Source: Retrieved entity using keyword search (bm25).
+```
+632 | def cycler(*args, **kwargs):
+633 |     """
+634 |     Create a `~cycler.Cycler` object much like :func:`cycler.cycler`,
+635 |     but includes input validation.
+636 | 
+637 |     Call signatures::
+638 | 
+639 |       cycler(cycler)
+640 |       cycler(label=values[, label2=values2[, ...]])
+641 |       cycler(label, values)
+642 | 
+643 |     Form 1 copies a given `~cycler.Cycler` object.
+644 | 
+645 |     Form 2 creates a `~cycler.Cycler` which cycles over one or more
+646 |     properties simultaneously. If multiple properties are given, their
+647 |     value lists must have the same length.
+648 | 
+649 |     Form 3 creates a `~cycler.Cycler` for a single property. This form
+650 |     exists for compatibility with the original cycler. Its use is
+651 |     discouraged in favor of the kwarg form, i.e. ``cycler(label=values)``.
+652 | 
+653 |     Parameters
+654 |     ----------
+655 |     cycler : Cycler
+656 |         Copy constructor for Cycler.
+657 | 
+658 |     label : str
+659 |         The property key. Must be a valid `.Artist` property.
+660 |         For example, 'color' or 'linestyle'. Aliases are allowed,
+661 |         such as 'c' for 'color' and 'lw' for 'linewidth'.
+662 | 
+663 |     values : iterable
+664 |         Finite-length iterable of the property values. These values
+665 |         are validated and will raise a ValueError if invalid.
+666 | 
+667 |     Returns
+668 |     -------
+669 |     Cycler
+670 |         A new :class:`~cycler.Cycler` for the given properties.
+671 | 
+672 |     Examples
+673 |     --------
+674 |     Creating a cycler for a single property:
+675 | 
+676 |     >>> c = cycler(color=['red', 'green', 'blue'])
+677 | 
+678 |     Creating a cycler for simultaneously cycling over multiple properties
+679 |     (e.g. red circle, green plus, blue cross):
+680 | 
+681 |     >>> c = cycler(color=['red', 'green', 'blue'],
+682 |     ...            marker=['o', '+', 'x'])
+683 | 
+684 |     """
+685 |     if args and kwargs:
+686 |         raise TypeError("cycler() can only accept positional OR keyword "
+687 |                         "arguments -- not both.")
+688 |     elif not args and not kwargs:
+689 |         raise TypeError("cycler() must have positional OR keyword arguments")
+690 | 
+691 |     if len(args) == 1:
+692 |         if not isinstance(args[0], Cycler):
+693 |             raise TypeError("If only one positional argument given, it must "
+694 |                             "be a Cycler instance.")
+695 |         return validate_cycler(args[0])
+696 |     elif len(args) == 2:
+697 |         pairs = [(args[0], args[1])]
+698 |     elif len(args) > 2:
+699 |         raise TypeError("No more than 2 positional arguments allowed")
+700 |     else:
+701 |         pairs = kwargs.items()
+702 | 
+703 |     validated = []
+704 |     for prop, vals in pairs:
+705 |         norm_prop = _prop_aliases.get(prop, prop)
+706 |         validator = _prop_validators.get(norm_prop, None)
+707 |         if validator is None:
+708 |             raise TypeError("Unknown artist property: %s" % prop)
+709 |         vals = validator(vals)
+710 |         # We will normalize the property names as well to reduce
+711 |         # the amount of alias handling code elsewhere.
+712 |         validated.append((norm_prop, vals))
+713 | 
+714 |     return reduce(operator.add, (ccycler(k, v) for k, v in validated))
+```
+
+Found function `lib/matplotlib/rcsetup.py:validate_cycler`.
+Source: Retrieved code content using keyword search (bm25).
+```
+724 | def validate_cycler(s):
+725 |     """Return a Cycler object from a string repr or the object itself."""
+726 |     if isinstance(s, str):
+727 |         # TODO: We might want to rethink this...
+728 |         # While I think I have it quite locked down, it is execution of
+729 |         # arbitrary code without sanitation.
+730 |         # Combine this with the possibility that rcparams might come from the
+731 |         # internet (future plans), this could be downright dangerous.
+732 |         # I locked it down by only having the 'cycler()' function available.
+733 |         # UPDATE: Partly plugging a security hole.
+734 |         # I really should have read this:
+735 |         # https://nedbatchelder.com/blog/201206/eval_really_is_dangerous.html
+736 |         # We should replace this eval with a combo of PyParsing and
+737 |         # ast.literal_eval()
+738 |         try:
+739 |             _DunderChecker().visit(ast.parse(s))
+740 |             s = eval(s, {'cycler': cycler, '__builtins__': {}})
+741 |         except BaseException as e:
+742 |             raise ValueError(f"{s!r} is not a valid cycler construction: {e}"
+743 |                              ) from e
+744 |     # Should make sure what comes from the above eval()
+745 |     # is a Cycler object.
+746 |     if isinstance(s, Cycler):
+747 |         cycler_inst = s
+748 |     else:
+749 |         raise ValueError(f"Object is not a string or Cycler instance: {s!r}")
+750 | 
+751 |     unknowns = cycler_inst.keys - (set(_prop_validators) | set(_prop_aliases))
+752 |     if unknowns:
+753 |         raise ValueError("Unknown artist properties: %s" % unknowns)
+754 | 
+755 |     # Not a full validation, but it'll at least normalize property names
+756 |     # A fuller validation would require v0.10 of cycler.
+757 |     checker = set()
+758 |     for prop in cycler_inst.keys:
+759 |         norm_prop = _prop_aliases.get(prop, prop)
+760 |         if norm_prop != prop and norm_prop in cycler_inst.keys:
+761 |             raise ValueError(f"Cannot specify both {norm_prop!r} and alias "
+762 |                              f"{prop!r} in the same prop_cycle")
+763 |         if norm_prop in checker:
+764 |             raise ValueError(f"Another property was already aliased to "
+765 |                              f"{norm_prop!r}. Collision normalizing {prop!r}.")
+766 |         checker.update([norm_prop])
+767 | 
+768 |     # This is just an extra-careful check, just in case there is some
+769 |     # edge-case I haven't thought of.
+770 |     assert len(checker) == len(cycler_inst.keys)
+771 | 
+772 |     # Now, it should be safe to mutate this cycler
+773 |     for prop in cycler_inst.keys:
+774 |         norm_prop = _prop_aliases.get(prop, prop)
+775 |         cycler_inst.change_key(prop, norm_prop)
+776 | 
+777 |     for key, vals in cycler_inst.by_key().items():
+778 |         _prop_validators[key](vals)
+779 | 
+780 |     return cycler_inst
+```
+
+
+
+##Searching for term "cycler("...
+### Search Result:
+Found class `lib/matplotlib/rcsetup.py:_DunderChecker`.
+Source: Retrieved code content using keyword search (bm25).
+```
+717 | class _DunderChecker(ast.NodeVisitor):
+718 |     def visit_Attribute(self, node):
+719 |         if node.attr.startswith("__") and node.attr.endswith("__"):
+720 |             raise ValueError("cycler strings with dunders are forbidden")
+721 |         self.generic_visit(node)
+```
+
+
+
+##Searching for term "axes.prop_cycle"...
+### Search Result:
+Found class `lib/matplotlib/axes/_axes.py:Axes`.
+Source: Retrieved entity using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class Axes(_AxesBase):
+    ### Labelling, legend and texts
+
+    def get_title(self, loc="center"):
+...
+    def set_title(self, label, fontdict=None, loc=None, pad=None, *, y=None,
+                  **kwargs):
+...
+    def get_legend_handles_labels(self, legend_handler_map=None):
+...
+    @_docstring.dedent_interpd
+    def legend(self, *args, **kwargs):
+...
+    def _remove_legend(self, legend):
+...
+    def inset_axes(self, bounds, *, transform=None, zorder=5, **kwargs):
+...
+    @_docstring.dedent_interpd
+    def indicate_inset(self, bounds, inset_ax=None, *, transform=None,
+                       facecolor='none', edgecolor='0.5', alpha=0.5,
+                       zorder=4.99, **kwargs):
+...
+    def indicate_inset_zoom(self, inset_ax, **kwargs):
+...
+    @_docstring.dedent_interpd
+    def secondary_xaxis(self, location, *, functions=None, **kwargs):
+...
+    @_docstring.dedent_interpd
+    def secondary_yaxis(self, location, *, functions=None, **kwargs):
+...
+    @_docstring.dedent_interpd
+    def text(self, x, y, s, fontdict=None, **kwargs):
+...
+    @_docstring.dedent_interpd
+    def annotate(self, text, xy, xytext=None, xycoords='data', textcoords=None,
+                 arrowprops=None, annotation_clip=None, **kwargs):
+...
+    annotate.__doc__ = mtext.Annotation.__init__.__doc__
+    #### Lines and spans
+
+    @_docstring.dedent_interpd
+    def axhline(self, y=0, xmin=0, xmax=1, **kwargs):
+...
+    @_docstring.dedent_interpd
+    def axvline(self, x=0, ymin=0, ymax=1, **kwargs):
+...
+    @staticmethod
+    def _check_no_units(vals, names):
+...
+    @_docstring.dedent_interpd
+    def axline(self, xy1, xy2=None, *, slope=None, **kwargs):
+...
+    @_docstring.dedent_interpd
+    def axhspan(self, ymin, ymax, xmin=0, xmax=1, **kwargs):
+...
+    @_docstring.dedent_interpd
+    def axvspan(self, xmin, xmax, ymin=0, ymax=1, **kwargs):
+...
+    @_preprocess_data(replace_names=["y", "xmin", "xmax", "colors"],
+                      label_namer="y")
+    def hlines(self, y, xmin, xmax, colors=None, linestyles='solid',
+               label='', **kwargs):
+...
+    @_preprocess_data(replace_names=["x", "ymin", "ymax", "colors"],
+                      label_namer="x")
+    def vlines(self, x, ymin, ymax, colors=None, linestyles='solid',
+               label='', **kwargs):
+...
+    @_preprocess_data(replace_names=["positions", "lineoffsets",
+                                     "linelengths", "linewidths",
+                                     "colors", "linestyles"])
+    @_docstring.dedent_interpd
+    def eventplot(self, positions, orientation='horizontal', lineoffsets=1,
+                  linelengths=1, linewidths=None, colors=None,
+                  linestyles='solid', **kwargs):
+...
+    #### Basic plotting
+
+    # Uses a custom implementation of data-kwarg handling in
+    # _process_plot_var_args.
+    @_docstring.dedent_interpd
+    def plot(self, *args, scalex=True, scaley=True, data=None, **kwargs):
+...
+    @_preprocess_data(replace_names=["x", "y"], label_namer="y")
+    @_docstring.dedent_interpd
+    def plot_date(self, x, y, fmt='o', tz=None, xdate=True, ydate=False,
+                  **kwargs):
+...
+    # @_preprocess_data() # let 'plot' do the unpacking..
+    @_docstring.dedent_interpd
+    def loglog(self, *args, **kwargs):
+...
+    # @_preprocess_data() # let 'plot' do the unpacking..
+    @_docstring.dedent_interpd
+    def semilogx(self, *args, **kwargs):
+...
+    # @_preprocess_data() # let 'plot' do the unpacking..
+    @_docstring.dedent_interpd
+    def semilogy(self, *args, **kwargs):
+...
+    @_preprocess_data(replace_names=["x"], label_namer="x")
+    def acorr(self, x, **kwargs):
+...
+    @_preprocess_data(replace_names=["x", "y"], label_namer="y")
+    def xcorr(self, x, y, normed=True, detrend=mlab.detrend_none,
+              usevlines=True, maxlags=10, **kwargs):
+...
+    #### Specialized plotting
+
+    # @_preprocess_data() # let 'plot' do the unpacking..
+    def step(self, x, y, *args, where='pre', data=None, **kwargs):
+...
+    @staticmethod
+    def _convert_dx(dx, x0, xconv, convert):
+...
+    @_preprocess_data()
+    @_docstring.dedent_interpd
+    def bar(self, x, height, width=0.8, bottom=None, *, align="center",
+            **kwargs):
+...
+    # @_preprocess_data() # let 'bar' do the unpacking..
+    @_docstring.dedent_interpd
+    def barh(self, y, width, height=0.8, left=None, *, align="center",
+             data=None, **kwargs):
+...
+    def bar_label(self, container, labels=None, *, fmt="%g", label_type="edge",
+                  padding=0, **kwargs):
+...
+    @_preprocess_data()
+    @_docstring.dedent_interpd
+    def broken_barh(self, xranges, yrange, **kwargs):
+...
+    @_preprocess_data()
+    @_api.delete_parameter("3.6", "use_line_collection")
+    def stem(self, *args, linefmt=None, markerfmt=None, basefmt=None, bottom=0,
+             label=None, use_line_collection=True, orientation='vertical'):
+...
+    @_preprocess_data(replace_names=["x", "explode", "labels", "colors"])
+    def pie(self, x, explode=None, labels=None, colors=None,
+            autopct=None, pctdistance=0.6, shadow=False, labeldistance=1.1,
+            startangle=0, radius=1, counterclock=True,
+            wedgeprops=None, textprops=None, center=(0, 0),
+            frame=False, rotatelabels=False, *, normalize=True):
+...
+    @staticmethod
+    def _errorevery_to_mask(x, errorevery):
+...
+    @_preprocess_data(replace_names=["x", "y", "xerr", "yerr"],
+                      label_namer="y")
+    @_docstring.dedent_interpd
+    def errorbar(self, x, y, yerr=None, xerr=None,
+                 fmt='', ecolor=None, elinewidth=None, capsize=None,
+                 barsabove=False, lolims=False, uplims=False,
+                 xlolims=False, xuplims=False, errorevery=1, capthick=None,
+                 **kwargs):
+...
+    @_preprocess_data()
+    def boxplot(self, x, notch=None, sym=None, vert=None, whis=None,
+                positions=None, widths=None, patch_artist=None,
+                bootstrap=None, usermedians=None, conf_intervals=None,
+                meanline=None, showmeans=None, showcaps=None,
+                showbox=None, showfliers=None, boxprops=None,
+                labels=None, flierprops=None, medianprops=None,
+                meanprops=None, capprops=None, whiskerprops=None,
+                manage_ticks=True, autorange=False, zorder=None,
+                capwidths=None):
+...
+    def bxp(self, bxpstats, positions=None, widths=None, vert=True,
+            patch_artist=False, shownotches=False, showmeans=False,
+            showcaps=True, showbox=True, showfliers=True,
+            boxprops=None, whiskerprops=None, flierprops=None,
+            medianprops=None, capprops=None, meanprops=None,
+            meanline=False, manage_ticks=True, zorder=None,
+            capwidths=None):
+...
+    @staticmethod
+    def _parse_scatter_color_args(c, edgecolors, kwargs, xsize,
+                                  get_next_color_func):
+...
+    @_preprocess_data(replace_names=["x", "y", "s", "linewidths",
+                                     "edgecolors", "c", "facecolor",
+                                     "facecolors", "color"],
+                      label_namer="y")
+    @_docstring.interpd
+    def scatter(self, x, y, s=None, c=None, marker=None, cmap=None, norm=None,
+                vmin=None, vmax=None, alpha=None, linewidths=None, *,
+                edgecolors=None, plotnonfinite=False, **kwargs):
+...
+    @_preprocess_data(replace_names=["x", "y", "C"], label_namer="y")
+    @_docstring.dedent_interpd
+    def hexbin(self, x, y, C=None, gridsize=100, bins=None,
+               xscale='linear', yscale='linear', extent=None,
+               cmap=None, norm=None, vmin=None, vmax=None,
+               alpha=None, linewidths=None, edgecolors='face',
+               reduce_C_function=np.mean, mincnt=None, marginals=False,
+               **kwargs):
+...
+    @_docstring.dedent_interpd
+    def arrow(self, x, y, dx, dy, **kwargs):
+...
+    @_docstring.copy(mquiver.QuiverKey.__init__)
+    def quiverkey(self, Q, X, Y, U, label, **kwargs):
+...
+    # Handle units for x and y, if they've been passed
+    def _quiver_units(self, args, kwargs):
+...
+    # args can by a combination if X, Y, U, V, C and all should be replaced
+    @_preprocess_data()
+    @_docstring.dedent_interpd
+    def quiver(self, *args, **kwargs):
+...
+    # args can be some combination of X, Y, U, V, C and all should be replaced
+    @_preprocess_data()
+    @_docstring.dedent_interpd
+    def barbs(self, *args, **kwargs):
+...
+    # Uses a custom implementation of data-kwarg handling in
+    # _process_plot_var_args.
+    def fill(self, *args, data=None, **kwargs):
+...
+    def _fill_between_x_or_y(
+            self, ind_dir, ind, dep1, dep2=0, *,
+            where=None, interpolate=False, step=None, **kwargs):
+...
+    def fill_between(self, x, y1, y2=0, where=None, interpolate=False,
+                     step=None, **kwargs):
+...
+    if _fill_between_x_or_y.__doc__:
+        fill_between.__doc__ = _fill_between_x_or_y.__doc__.format(
+            dir="horizontal", ind="x", dep="y"
+        )
+    fill_between = _preprocess_data(
+        _docstring.dedent_interpd(fill_between),
+        replace_names=["x", "y1", "y2", "where"])
+
+    def fill_betweenx(self, y, x1, x2=0, where=None,
+                      step=None, interpolate=False, **kwargs):
+...
+    if _fill_between_x_or_y.__doc__:
+        fill_betweenx.__doc__ = _fill_between_x_or_y.__doc__.format(
+            dir="vertical", ind="y", dep="x"
+        )
+    fill_betweenx = _preprocess_data(
+        _docstring.dedent_interpd(fill_betweenx),
+        replace_names=["y", "x1", "x2", "where"])
+
+    #### plotting z(x, y): imshow, pcolor and relatives, contour
+
+    # Once this deprecation elapses, also move vmin, vmax right after norm, to
+    # match the signature of other methods returning ScalarMappables and keep
+    # the documentation for *norm*, *vmax* and *vmin* together.
+    @_api.make_keyword_only("3.5", "aspect")
+    @_preprocess_data()
+    @_docstring.interpd
+    def imshow(self, X, cmap=None, norm=None, aspect=None,
+               interpolation=None, alpha=None,
+               vmin=None, vmax=None, origin=None, extent=None, *,
+               interpolation_stage=None, filternorm=True, filterrad=4.0,
+               resample=None, url=None, **kwargs):
+...
+    def _pcolorargs(self, funcname, *args, shading='auto', **kwargs):
+...
+    def _pcolor_grid_deprecation_helper(self):
+...
+    @_preprocess_data()
+    @_docstring.dedent_interpd
+    def pcolor(self, *args, shading=None, alpha=None, norm=None, cmap=None,
+               vmin=None, vmax=None, **kwargs):
+...
+    @_preprocess_data()
+    @_docstring.dedent_interpd
+    def pcolormesh(self, *args, alpha=None, norm=None, cmap=None, vmin=None,
+                   vmax=None, shading=None, antialiased=False, **kwargs):
+...
+    @_preprocess_data()
+    @_docstring.dedent_interpd
+    def pcolorfast(self, *args, alpha=None, norm=None, cmap=None, vmin=None,
+                   vmax=None, **kwargs):
+...
+    @_preprocess_data()
+    @_docstring.dedent_interpd
+    def contour(self, *args, **kwargs):
+...
+    @_preprocess_data()
+    @_docstring.dedent_interpd
+    def contourf(self, *args, **kwargs):
+...
+    def clabel(self, CS, levels=None, **kwargs):
+...
+    #### Data analysis
+
+    @_preprocess_data(replace_names=["x", 'weights'], label_namer="x")
+    def hist(self, x, bins=None, range=None, density=False, weights=None,
+             cumulative=False, bottom=None, histtype='bar', align='mid',
+             orientation='vertical', rwidth=None, log=False,
+             color=None, label=None, stacked=False, **kwargs):
+...
+    @_preprocess_data()
+    def stairs(self, values, edges=None, *,
+               orientation='vertical', baseline=0, fill=False, **kwargs):
+...
+    @_preprocess_data(replace_names=["x", "y", "weights"])
+    @_docstring.dedent_interpd
+    def hist2d(self, x, y, bins=10, range=None, density=False, weights=None,
+               cmin=None, cmax=None, **kwargs):
+...
+    @_preprocess_data(replace_names=["x"])
+    @_docstring.dedent_interpd
+    def psd(self, x, NFFT=None, Fs=None, Fc=None, detrend=None,
+            window=None, noverlap=None, pad_to=None,
+            sides=None, scale_by_freq=None, return_line=None, **kwargs):
+...
+    @_preprocess_data(replace_names=["x", "y"], label_namer="y")
+    @_docstring.dedent_interpd
+    def csd(self, x, y, NFFT=None, Fs=None, Fc=None, detrend=None,
+            window=None, noverlap=None, pad_to=None,
+            sides=None, scale_by_freq=None, return_line=None, **kwargs):
+...
+    @_preprocess_data(replace_names=["x"])
+    @_docstring.dedent_interpd
+    def magnitude_spectrum(self, x, Fs=None, Fc=None, window=None,
+                           pad_to=None, sides=None, scale=None,
+                           **kwargs):
+...
+    @_preprocess_data(replace_names=["x"])
+    @_docstring.dedent_interpd
+    def angle_spectrum(self, x, Fs=None, Fc=None, window=None,
+                       pad_to=None, sides=None, **kwargs):
+...
+    @_preprocess_data(replace_names=["x"])
+    @_docstring.dedent_interpd
+    def phase_spectrum(self, x, Fs=None, Fc=None, window=None,
+                       pad_to=None, sides=None, **kwargs):
+...
+    @_preprocess_data(replace_names=["x", "y"])
+    @_docstring.dedent_interpd
+    def cohere(self, x, y, NFFT=256, Fs=2, Fc=0, detrend=mlab.detrend_none,
+               window=mlab.window_hanning, noverlap=0, pad_to=None,
+               sides='default', scale_by_freq=None, **kwargs):
+...
+    @_preprocess_data(replace_names=["x"])
+    @_docstring.dedent_interpd
+    def specgram(self, x, NFFT=None, Fs=None, Fc=None, detrend=None,
+                 window=None, noverlap=None,
+                 cmap=None, xextent=None, pad_to=None, sides=None,
+                 scale_by_freq=None, mode=None, scale=None,
+                 vmin=None, vmax=None, **kwargs):
+...
+    @_docstring.dedent_interpd
+    def spy(self, Z, precision=0, marker=None, markersize=None,
+            aspect='equal', origin="upper", **kwargs):
+...
+    def matshow(self, Z, **kwargs):
+...
+    @_preprocess_data(replace_names=["dataset"])
+    def violinplot(self, dataset, positions=None, vert=True, widths=0.5,
+                   showmeans=False, showextrema=True, showmedians=False,
+                   quantiles=None, points=100, bw_method=None):
+...
+    def violin(self, vpstats, positions=None, vert=True, widths=0.5,
+               showmeans=False, showextrema=True, showmedians=False):
+...
+    # Methods that are entirely implemented in other modules.
+
+    table = mtable.table
+
+    # args can by either Y or y1, y2, ... and all should be replaced
+    stackplot = _preprocess_data()(mstack.stackplot)
+
+    streamplot = _preprocess_data(
+        replace_names=["x", "y", "u", "v", "start_points"])(mstream.streamplot)
+
+    tricontour = mtri.tricontour
+    tricontourf = mtri.tricontourf
+    tripcolor = mtri.tripcolor
+    triplot = mtri.triplot
+
+    def _get_aspect_ratio(self):
+
+```
+Hint: Search `lib/matplotlib/axes/_axes.py:Axes` to get the full content if needed.
+
+Found function `lib/matplotlib/axes/_axes.py:Axes.quiver`.
+Source: Retrieved entity using keyword search (bm25).
+```
+5085 | def quiver(self, *args, **kwargs):
+5086 |         """%(quiver_doc)s"""
+5087 |         # Make sure units are handled for x and y values
+5088 |         args = self._quiver_units(args, kwargs)
+5089 |         q = mquiver.Quiver(self, *args, **kwargs)
+5090 |         self.add_collection(q, autolim=True)
+5091 |         self._request_autoscale_view()
+5092 |         return q
+```
+
+Found function `lib/matplotlib/axes/_axes.py:Axes.barbs`.
+Source: Retrieved entity using keyword search (bm25).
+```
+5097 | def barbs(self, *args, **kwargs):
+5098 |         """%(barbs_doc)s"""
+5099 |         # Make sure units are handled for x and y values
+5100 |         args = self._quiver_units(args, kwargs)
+5101 |         b = mquiver.Barbs(self, *args, **kwargs)
+5102 |         self.add_collection(b, autolim=True)
+5103 |         self._request_autoscale_view()
+5104 |         return b
+```
+
+2026-08-28 00:49:04 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['stackplot', 'prop_cycle', 'CN', 'C0', 'C1'], 'file_path_or_pattern': 'lib/matplotlib/tests/**/*.py'}))
+```
+2026-08-28 00:49:05 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:06 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:07 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:09 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:10 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:11 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:12 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:14 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:15 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:16 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:49:16 auto_search_main.py INFO OBSERVATION:
+lib/matplotlib/colors.py:to_rgba
+tutorials/intermediate/color_cycle.py:impl:14
+lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__init__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.set_prop_cycle
+lib/matplotlib/axes/_base.py:_process_plot_var_args
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__setstate__
+lib/matplotlib/axes/_base.py:_process_plot_var_args.__getstate__
+examples/style_sheets/style_sheets_reference.py:plot_colored_lines
+examples/text_labels_and_annotations/legend_demo.py:impl:63
+lib/matplotlib/axes/_axes.py:Axes.plot
+lib/matplotlib/axes/_base.py:_AxesBase._set_position
+lib/matplotlib/axes/_base.py:_AxesBase._gen_axes_patch
+lib/matplotlib/axes/_base.py:_AxesBase.get_yaxis_text2_transform
+lib/matplotlib/axes/_base.py:_AxesBase.set_position
+lib/matplotlib/axes/_base.py:_AxesBase.reset_position
+lib/matplotlib/axes/_base.py:_AxesBase.set_axes_locator
+lib/matplotlib/axes/_base.py:_AxesBase._set_artist_props
+lib/matplotlib/axes/_base.py:_AxesBase.get_axes_locator
+lib/matplotlib/axes/_base.py:_AxesBase.get_position
+lib/matplotlib/axes/_base.py:_AxesBase._update_transScale
+lib/matplotlib/patches.py:ConnectionStyle.Arc3.__init__
+lib/matplotlib/patches.py:ConnectionStyle.Arc3
+tools/memleak.py:run_memleak_test
+examples/lines_bars_and_markers/fill_between_alpha.py:impl:55
+examples/text_labels_and_annotations/tex_demo.py:impl:21
+examples/text_labels_and_annotations/tex_demo.py:impl:35
+examples/text_labels_and_annotations/angle_annotation.py:impl
+examples/text_labels_and_annotations/angle_annotation.py:plot_angle
+lib/mpl_toolkits/mplot3d/axes3d.py:Axes3D.stem
+lib/matplotlib/colors.py:same_color
+examples/event_handling/poly_editor.py:dist_point_to_segment
+tools/memleak.py:run_memleak_test
+lib/matplotlib/bezier.py:make_wedged_bezier2
+examples/subplots_axes_and_figures/axes_zoom_effect.py:zoom_effect01
+examples/subplots_axes_and_figures/axes_zoom_effect.py:impl
+examples/subplots_axes_and_figures/axes_zoom_effect.py:zoom_effect02
+lib/matplotlib/bezier.py:get_parallels
+lib/matplotlib/patches.py:ConnectionStyle.Arc3.__init__
+lib/matplotlib/patches.py:ConnectionStyle.Arc3
+lib/matplotlib/transforms.py:TransformNode.invalidate
+lib/matplotlib/transforms.py:TransformNode.__copy__
+lib/mpl_toolkits/axisartist/axislines.py:AxisArtistHelperRectlinear.Floating.get_tick_iterators
+tools/memleak.py:run_memleak_test
+lib/matplotlib/patches.py:ConnectionStyle.Arc3.__init__
+lib/matplotlib/patches.py:ConnectionStyle.Arc3
+lib/matplotlib/dviread.py:Dvi._nop
+lib/matplotlib/dviread.py:Dvi._put_rule
+lib/matplotlib/dviread.py:Dvi._put_rule_real
+lib/matplotlib/dviread.py:Dvi._bop
+lib/matplotlib/colors.py:same_color
+examples/text_labels_and_annotations/demo_text_rotation_mode.py:test_rotation_mode
+No files found for file pattern 'lib/matplotlib/tests/**/*.py'. Will search all files.
+...
+##Searching for term "stackplot"...
+### Search Result:
+Found function `lib/matplotlib/stackplot.py:stackplot`.
+Source: Match found for entity name `stackplot`.
+```
+ 16 | def stackplot(axes, x, *args,
+ 17 |               labels=(), colors=None, baseline='zero',
+ 18 |               **kwargs):
+ 19 |     """
+ 20 |     Draw a stacked area plot.
+ 21 | 
+ 22 |     Parameters
+ 23 |     ----------
+ 24 |     x : (N,) array-like
+ 25 | 
+ 26 |     y : (M, N) array-like
+ 27 |         The data is assumed to be unstacked. Each of the following
+ 28 |         calls is legal::
+ 29 | 
+ 30 |             stackplot(x, y)           # where y has shape (M, N)
+ 31 |             stackplot(x, y1, y2, y3)  # where y1, y2, y3, y4 have length N
+ 32 | 
+ 33 |     baseline : {'zero', 'sym', 'wiggle', 'weighted_wiggle'}
+ 34 |         Method used to calculate the baseline:
+ 35 | 
+ 36 |         - ``'zero'``: Constant zero baseline, i.e. a simple stacked plot.
+ 37 |         - ``'sym'``:  Symmetric around zero and is sometimes called
+ 38 |           'ThemeRiver'.
+ 39 |         - ``'wiggle'``: Minimizes the sum of the squared slopes.
+ 40 |         - ``'weighted_wiggle'``: Does the same but weights to account for
+ 41 |           size of each layer. It is also called 'Streamgraph'-layout. More
+ 42 |           details can be found at http://leebyron.com/streamgraph/.
+ 43 | 
+ 44 |     labels : list of str, optional
+ 45 |         A sequence of labels to assign to each data series. If unspecified,
+ 46 |         then no labels will be applied to artists.
+ 47 | 
+ 48 |     colors : list of color, optional
+ 49 |         A sequence of colors to be cycled through and used to color the stacked
+ 50 |         areas. The sequence need not be exactly the same length as the number
+ 51 |         of provided *y*, in which case the colors will repeat from the
+ 52 |         beginning.
+ 53 | 
+ 54 |         If not specified, the colors from the Axes property cycle will be used.
+ 55 | 
+ 56 |     data : indexable object, optional
+ 57 |         DATA_PARAMETER_PLACEHOLDER
+ 58 | 
+ 59 |     **kwargs
+ 60 |         All other keyword arguments are passed to `.Axes.fill_between`.
+ 61 | 
+ 62 |     Returns
+ 63 |     -------
+ 64 |     list of `.PolyCollection`
+ 65 |         A list of `.PolyCollection` instances, one for each element in the
+ 66 |         stacked area plot.
+ 67 |     """
+ 68 | 
+ 69 |     y = np.row_stack(args)
+ 70 | 
+ 71 |     labels = iter(labels)
+ 72 |     if colors is not None:
+ 73 |         axes.set_prop_cycle(color=colors)
+ 74 | 
+ 75 |     # Assume data passed has not been 'stacked', so stack it here.
+ 76 |     # We'll need a float buffer for the upcoming calculations.
+ 77 |     stack = np.cumsum(y, axis=0, dtype=np.promote_types(y.dtype, np.float32))
+ 78 | 
+ 79 |     _api.check_in_list(['zero', 'sym', 'wiggle', 'weighted_wiggle'],
+ 80 |                        baseline=baseline)
+ 81 |     if baseline == 'zero':
+ 82 |         first_line = 0.
+ 83 | 
+ 84 |     elif baseline == 'sym':
+ 85 |         first_line = -np.sum(y, 0) * 0.5
+ 86 |         stack += first_line[None, :]
+ 87 | 
+ 88 |     elif baseline == 'wiggle':
+ 89 |         m = y.shape[0]
+ 90 |         first_line = (y * (m - 0.5 - np.arange(m)[:, None])).sum(0)
+ 91 |         first_line /= -m
+ 92 |         stack += first_line
+ 93 | 
+ 94 |     elif baseline == 'weighted_wiggle':
+ 95 |         total = np.sum(y, 0)
+ 96 |         # multiply by 1/total (or zero) to avoid infinities in the division:
+ 97 |         inv_total = np.zeros_like(total)
+ 98 |         mask = total > 0
+ 99 |         inv_total[mask] = 1.0 / total[mask]
+100 |         increase = np.hstack((y[:, 0:1], np.diff(y)))
+101 |         below_size = total - stack
+102 |         below_size += 0.5 * y
+103 |         move_up = below_size * inv_total
+104 |         move_up[:, 0] = 0.5
+105 |         center = (move_up - 0.5) * increase
+106 |         center = np.cumsum(center.sum(0))
+107 |         first_line = center - 0.5 * total
+108 |         stack += first_line
+109 | 
+110 |     # Color between x = 0 and the first array.
+111 |     color = axes._get_lines.get_next_color()
+112 |     coll = axes.fill_between(x, first_line, stack[0, :],
+113 |                              facecolor=color, label=next(labels, None),
+114 |                              **kwargs)
+115 |     coll.sticky_edges.y[:] = [0]
+116 |     r = [coll]
+117 | 
+118 |     # Color between array i-1 and array i
+119 |     for i in range(len(y) - 1):
+120 |         color = axes._get_lines.get_next_color()
+121 |         r.append(axes.fill_between(x, stack[i, :], stack[i + 1, :],
+122 |                                    facecolor=color, label=next(labels, None),
+123 |                                    **kwargs))
+124 |     return r
+```
+
+Found file `lib/matplotlib/stackplot.py`.
+Source: Match found for entity name `stackplot`.
+Just show the structure of this file due to response length limitations:
+```
+
+__all__ = ['stackplot']
+
+
+def stackplot(axes, x, *args,
+              labels=(), colors=None, baseline='zero',
+              **kwargs):
+...
+
+```
+Hint: Search `lib/matplotlib/stackplot.py` to get the full content if needed.
+
+Found function `lib/matplotlib/pyplot.py:stackplot`.
+Source: Match found for entity name `stackplot`.
+```
+2831 | def stackplot(
+2832 |         x, *args, labels=(), colors=None, baseline='zero', data=None,
+2833 |         **kwargs):
+2834 |     return gca().stackplot(
+2835 |         x, *args, labels=labels, colors=colors, baseline=baseline,
+2836 |         **({"data": data} if data is not None else {}), **kwargs)
+```
+
+Found file `plot_types/basic/stackplot.py`.
+Source: Match found for entity name `stackplot`.
+```
+ 1 | """
+ 2 | ===============
+ 3 | stackplot(x, y)
+ 4 | ===============
+ 5 | See `~matplotlib.axes.Axes.stackplot`
+ 6 | """
+ 7 | import matplotlib.pyplot as plt
+ 8 | import numpy as np
+ 9 | 
+10 | plt.style.use('_mpl-gallery')
+11 | 
+12 | # make data
+13 | x = np.arange(0, 10, 2)
+14 | ay = [1, 1.25, 2, 2.75, 3]
+15 | by = [1, 1, 1, 1, 1]
+16 | cy = [2, 1, 2, 1, 2]
+17 | y = np.vstack([ay, by, cy])
+18 | 
+19 | # plot
+20 | fig, ax = plt.subplots()
+21 | 
+22 | ax.stackplot(x, y)
+23 | 
+24 | ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+25 |        ylim=(0, 8), yticks=np.arange(1, 8))
+26 | 
+27 | plt.show()
+28 | 
+```
+
+
+
+##Searching for term "prop_cycle"...
+### Search Result:
+Found code snippet in file `examples/color/color_cycle_default.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | ====================================
+ 3 | Colors in the default property cycle
+ 4 | ====================================
+ 5 | 
+ 6 | Display the colors from the default prop_cycle, which is obtained from the
+ 7 | :doc:`rc parameters</tutorials/introductory/customizing>`.
+ 8 | """
+ 9 | import numpy as np
+10 | import matplotlib.pyplot as plt
+11 | 
+12 | 
+13 | prop_cycle = plt.rcParams['axes.prop_cycle']
+14 | colors = prop_cycle.by_key()['color']
+15 | 
+16 | lwbase = plt.rcParams['lines.linewidth']
+17 | thin = lwbase / 2
+18 | thick = lwbase * 3
+19 | 
+20 | fig, axs = plt.subplots(nrows=2, ncols=2, sharex=True, sharey=True)
+21 | for icol in range(2):
+22 |     if icol == 0:
+23 |         lwx, lwy = thin, lwbase
+24 |     else:
+25 |         lwx, lwy = lwbase, thick
+26 |     for irow in range(2):
+27 |         for i, color in enumerate(colors):
+28 |             axs[irow, icol].axhline(i, color=color, lw=lwx)
+29 |             axs[irow, icol].axvline(i, color=color, lw=lwy)
+30 | 
+31 |     axs[1, icol].set_facecolor('k')
+32 |     axs[1, icol].xaxis.set_ticks(np.arange(0, 10, 2))
+33 |     axs[0, icol].set_title('line widths (pts): %g, %g' % (lwx, lwy),
+34 |                            fontsize='medium')
+35 | 
+36 | for irow in range(2):
+37 |     axs[irow, 0].yaxis.set_ticks(np.arange(0, 10, 2))
+38 | 
+39 | fig.suptitle('Colors in the default prop_cycle', fontsize='large')
+40 | 
+41 | plt.show()
+42 | 
+43 | #############################################################################
+44 | #
+45 | # .. admonition:: References
+46 | #
+47 | #    The use of the following functions, methods, classes and modules is shown
+48 | #    in this example:
+49 | #
+50 | #    - `matplotlib.axes.Axes.axhline` / `matplotlib.pyplot.axhline`
+51 | #    - `matplotlib.axes.Axes.axvline` / `matplotlib.pyplot.axvline`
+52 | #    - `matplotlib.axes.Axes.set_facecolor`
+53 | #    - `matplotlib.figure.Figure.suptitle`
+54 | 
+```
+
+Found code snippet in file `tutorials/intermediate/color_cycle.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | """
+  2 | ===================
+  3 | Styling with cycler
+  4 | ===================
+  5 | 
+  6 | Demo of custom property-cycle settings to control colors and other style
+  7 | properties for multi-line plots.
+  8 | 
+  9 | .. note::
+ 10 | 
+ 11 |     More complete documentation of the ``cycler`` API can be found
+ 12 |     `here <https://matplotlib.org/cycler/>`_.
+ 13 | 
+ 14 | This example demonstrates two different APIs:
+ 15 | 
+ 16 | 1. Setting the rc parameter specifying the default property cycle.
+ 17 |    This affects all subsequent axes (but not axes already created).
+ 18 | 2. Setting the property cycle for a single pair of axes.
+ 19 | 
+ 20 | """
+ 21 | from cycler import cycler
+ 22 | import numpy as np
+ 23 | import matplotlib.pyplot as plt
+ 24 | 
+ 25 | ###############################################################################
+ 26 | # First we'll generate some sample data, in this case, four offset sine
+ 27 | # curves.
+ 28 | x = np.linspace(0, 2 * np.pi, 50)
+ 29 | offsets = np.linspace(0, 2 * np.pi, 4, endpoint=False)
+ 30 | yy = np.transpose([np.sin(x + phi) for phi in offsets])
+ 31 | 
+ 32 | ###############################################################################
+ 33 | # Now ``yy`` has shape
+ 34 | print(yy.shape)
+ 35 | 
+ 36 | ###############################################################################
+ 37 | # So ``yy[:, i]`` will give you the ``i``-th offset sine curve. Let's set the
+ 38 | # default ``prop_cycle`` using :func:`matplotlib.pyplot.rc`.  We'll combine a
+ 39 | # color cycler and a linestyle cycler by adding (``+``) two ``cycler``'s
+ 40 | # together.  See the bottom of this tutorial for more information about
+ 41 | # combining different cyclers.
+ 42 | default_cycler = (cycler(color=['r', 'g', 'b', 'y']) +
+ 43 |                   cycler(linestyle=['-', '--', ':', '-.']))
+ 44 | 
+ 45 | plt.rc('lines', linewidth=4)
+ 46 | plt.rc('axes', prop_cycle=default_cycler)
+ 47 | 
+ 48 | ###############################################################################
+ 49 | # Now we'll generate a figure with two axes, one on top of the other. On the
+ 50 | # first axis, we'll plot with the default cycler. On the second axis, we'll
+ 51 | # set the ``prop_cycle`` using :func:`matplotlib.axes.Axes.set_prop_cycle`,
+ 52 | # which will only set the ``prop_cycle`` for this :mod:`matplotlib.axes.Axes`
+ 53 | # instance. We'll use a second ``cycler`` that combines a color cycler and a
+ 54 | # linewidth cycler.
+ 55 | custom_cycler = (cycler(color=['c', 'm', 'y', 'k']) +
+ 56 |                  cycler(lw=[1, 2, 3, 4]))
+```
+
+Found code snippet in file `examples/style_sheets/ggplot.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | ==================
+ 3 | ggplot style sheet
+ 4 | ==================
+ 5 | 
+ 6 | This example demonstrates the "ggplot" style, which adjusts the style to
+ 7 | emulate ggplot_ (a popular plotting package for R_).
+ 8 | 
+ 9 | These settings were shamelessly stolen from [1]_ (with permission).
+10 | 
+11 | .. [1] https://everyhue.me/posts/sane-color-scheme-for-matplotlib/
+12 | 
+13 | .. _ggplot: https://ggplot2.tidyverse.org/
+14 | .. _R: https://www.r-project.org/
+15 | 
+16 | """
+17 | import numpy as np
+18 | import matplotlib.pyplot as plt
+19 | 
+20 | plt.style.use('ggplot')
+21 | 
+22 | # Fixing random state for reproducibility
+23 | np.random.seed(19680801)
+24 | 
+25 | fig, axs = plt.subplots(ncols=2, nrows=2)
+26 | ax1, ax2, ax3, ax4 = axs.flat
+27 | 
+28 | # scatter plot (Note: `plt.scatter` doesn't use default colors)
+29 | x, y = np.random.normal(size=(2, 200))
+30 | ax1.plot(x, y, 'o')
+31 | 
+32 | # sinusoidal lines with colors from default color cycle
+33 | L = 2*np.pi
+34 | x = np.linspace(0, L)
+35 | ncolors = len(plt.rcParams['axes.prop_cycle'])
+36 | shift = np.linspace(0, L, ncolors, endpoint=False)
+37 | for s in shift:
+38 |     ax2.plot(x, np.sin(x + s), '-')
+39 | ax2.margins(0)
+40 | 
+41 | # bar graphs
+42 | x = np.arange(5)
+43 | y1, y2 = np.random.randint(1, 25, size=(2, 5))
+44 | width = 0.25
+45 | ax3.bar(x, y1, width)
+46 | ax3.bar(x + width, y2, width,
+47 |         color=list(plt.rcParams['axes.prop_cycle'])[2]['color'])
+48 | ax3.set_xticks(x + width, labels=['a', 'b', 'c', 'd', 'e'])
+49 | 
+50 | # circles with colors from default color cycle
+51 | for i, color in enumerate(plt.rcParams['axes.prop_cycle']):
+52 |     xy = np.random.normal(size=2)
+53 |     ax4.add_patch(plt.Circle(xy, radius=0.3, color=color['color']))
+54 | ax4.axis('equal')
+55 | ax4.margins(0)
+56 | 
+57 | plt.show()
+58 | 
+```
+
+Found function `lib/matplotlib/colors.py:to_rgba`.
+Source: Retrieved code content using keyword search (bm25).
+```
+265 | def to_rgba(c, alpha=None):
+266 |     """
+267 |     Convert *c* to an RGBA color.
+268 | 
+269 |     Parameters
+270 |     ----------
+271 |     c : Matplotlib color or ``np.ma.masked``
+272 | 
+273 |     alpha : float, optional
+274 |         If *alpha* is given, force the alpha value of the returned RGBA tuple
+275 |         to *alpha*.
+276 | 
+277 |         If None, the alpha value from *c* is used. If *c* does not have an
+278 |         alpha channel, then alpha defaults to 1.
+279 | 
+280 |         *alpha* is ignored for the color value ``"none"`` (case-insensitive),
+281 |         which always maps to ``(0, 0, 0, 0)``.
+282 | 
+283 |     Returns
+284 |     -------
+285 |     tuple
+286 |         Tuple of floats ``(r, g, b, a)``, where each channel (red, green, blue,
+287 |         alpha) can assume values between 0 and 1.
+288 |     """
+289 |     # Special-case nth color syntax because it should not be cached.
+290 |     if _is_nth_color(c):
+291 |         prop_cycler = mpl.rcParams['axes.prop_cycle']
+292 |         colors = prop_cycler.by_key().get('color', ['k'])
+293 |         c = colors[int(c[1:]) % len(colors)]
+294 |     try:
+295 |         rgba = _colors_full_map.cache[c, alpha]
+296 |     except (KeyError, TypeError):  # Not in cache, or unhashable.
+297 |         rgba = None
+298 |     if rgba is None:  # Suppress exception chaining of cache lookup failure.
+299 |         rgba = _to_rgba_no_colorcycle(c, alpha)
+300 |         try:
+301 |             _colors_full_map.cache[c, alpha] = rgba
+302 |         except TypeError:
+303 |             pass
+304 |     return rgba
+```
+
+
+
+##Searching for term "prop_cycle", "prop_cycle CN C0 C1"...
+### Search Result:
+Found function `lib/matplotlib/rcsetup.py:validate_color_for_prop_cycle`.
+Source: Retrieved entity using keyword search (bm25).
+```
+282 | def validate_color_for_prop_cycle(s):
+283 |     # N-th color cycle syntax can't go into the color cycle.
+284 |     if isinstance(s, str) and re.match("^C[0-9]$", s):
+285 |         raise ValueError(f"Cannot put cycle reference ({s!r}) in prop_cycler")
+286 |     return validate_color(s)
+```
+
+Found function `lib/matplotlib/axes/_base.py:_process_plot_var_args.set_prop_cycle`.
+Source: Retrieved entity using keyword search (bm25).
+```
+234 | def set_prop_cycle(self, cycler):
+235 |         if cycler is None:
+236 |             cycler = mpl.rcParams['axes.prop_cycle']
+237 |         self.prop_cycler = itertools.cycle(cycler)
+238 |         self._prop_keys = cycler.keys
+```
+
+Found function `lib/matplotlib/axes/_base.py:_AxesBase.set_prop_cycle`.
+Source: Retrieved entity using keyword search (bm25).
+```
+1550 | def set_prop_cycle(self, *args, **kwargs):
+1551 |         """
+1552 |         Set the property cycle of the Axes.
+1553 | 
+1554 |         The property cycle controls the style properties such as color,
+1555 |         marker and linestyle of future plot commands. The style properties
+1556 |         of data already added to the Axes are not modified.
+1557 | 
+1558 |         Call signatures::
+1559 | 
+1560 |           set_prop_cycle(cycler)
+1561 |           set_prop_cycle(label=values[, label2=values2[, ...]])
+1562 |           set_prop_cycle(label, values)
+1563 | 
+1564 |         Form 1 sets given `~cycler.Cycler` object.
+1565 | 
+1566 |         Form 2 creates a `~cycler.Cycler` which cycles over one or more
+1567 |         properties simultaneously and set it as the property cycle of the
+1568 |         Axes. If multiple properties are given, their value lists must have
+1569 |         the same length. This is just a shortcut for explicitly creating a
+1570 |         cycler and passing it to the function, i.e. it's short for
+1571 |         ``set_prop_cycle(cycler(label=values label2=values2, ...))``.
+1572 | 
+1573 |         Form 3 creates a `~cycler.Cycler` for a single property and set it
+1574 |         as the property cycle of the Axes. This form exists for compatibility
+1575 |         with the original `cycler.cycler` interface. Its use is discouraged
+1576 |         in favor of the kwarg form, i.e. ``set_prop_cycle(label=values)``.
+1577 | 
+1578 |         Parameters
+1579 |         ----------
+1580 |         cycler : Cycler
+1581 |             Set the given Cycler. *None* resets to the cycle defined by the
+1582 |             current style.
+1583 | 
+1584 |         label : str
+1585 |             The property key. Must be a valid `.Artist` property.
+1586 |             For example, 'color' or 'linestyle'. Aliases are allowed,
+1587 |             such as 'c' for 'color' and 'lw' for 'linewidth'.
+1588 | 
+1589 |         values : iterable
+1590 |             Finite-length iterable of the property values. These values
+1591 |             are validated and will raise a ValueError if invalid.
+1592 | 
+1593 |         See Also
+1594 |         --------
+1595 |         matplotlib.rcsetup.cycler
+1596 |             Convenience function for creating validated cyclers for properties.
+1597 |         cycler.cycler
+1598 |             The original function for creating unvalidated cyclers.
+1599 | 
+1600 |         Examples
+1601 |         --------
+1602 |         Setting the property cycle for a single property:
+1603 | 
+1604 |         >>> ax.set_prop_cycle(color=['red', 'green', 'blue'])
+1605 | 
+1606 |         Setting the property cycle for simultaneously cycling over multiple
+1607 |         properties (e.g. red circle, green plus, blue cross):
+1608 | 
+1609 |         >>> ax.set_prop_cycle(color=['red', 'green', 'blue'],
+1610 |         ...                   marker=['o', '+', 'x'])
+1611 | 
+1612 |         """
+1613 |         if args and kwargs:
+1614 |             raise TypeError("Cannot supply both positional and keyword "
+1615 |                             "arguments to this method.")
+1616 |         # Can't do `args == (None,)` as that crashes cycler.
+1617 |         if len(args) == 1 and args[0] is None:
+1618 |             prop_cycle = None
+1619 |         else:
+1620 |             prop_cycle = cycler(*args, **kwargs)
+1621 |         self._get_lines.set_prop_cycle(prop_cycle)
+1622 |         self._get_patches_for_fill.set_prop_cycle(prop_cycle)
+```
+
+
+
+##Searching for term "CN"...
+### Search Result:
+Found code snippet in file `tutorials/colors/colors.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | """
+  2 | *****************
+  3 | Specifying Colors
+  4 | *****************
+  5 | 
+  6 | Matplotlib recognizes the following formats to specify a color.
+  7 | 
+  8 | +--------------------------------------+--------------------------------------+
+  9 | | Format                               | Example                              |
+ 10 | +======================================+======================================+
+ 11 | | RGB or RGBA (red, green, blue, alpha)| - ``(0.1, 0.2, 0.5)``                |
+ 12 | | tuple of float values in a closed    | - ``(0.1, 0.2, 0.5, 0.3)``           |
+ 13 | | interval [0, 1].                     |                                      |
+ 14 | +--------------------------------------+--------------------------------------+
+ 15 | | Case-insensitive hex RGB or RGBA     | - ``'#0f0f0f'``                      |
+ 16 | | string.                              | - ``'#0f0f0f80'``                    |
+ 17 | +--------------------------------------+--------------------------------------+
+ 18 | | Case-insensitive RGB or RGBA string  | - ``'#abc'`` as ``'#aabbcc'``        |
+ 19 | | equivalent hex shorthand of          | - ``'#fb1'`` as ``'#ffbb11'``        |
+ 20 | | duplicated characters.               |                                      |
+ 21 | +--------------------------------------+--------------------------------------+
+ 22 | | String representation of float value | - ``'0'`` as black                   |
+ 23 | | in closed interval ``[0, 1]`` for    | - ``'1'`` as white                   |
+ 24 | | grayscale values.                    | - ``'0.8'`` as light gray            |
+ 25 | +--------------------------------------+--------------------------------------+
+ 26 | | Single character shorthand notation  | - ``'b'`` as blue                    |
+ 27 | | for some basic colors.               | - ``'g'`` as green                   |
+ 28 | |                                      | - ``'r'`` as red                     |
+ 29 | | .. note::                            | - ``'c'`` as cyan                    |
+ 30 | |    The colors green, cyan, magenta,  | - ``'m'`` as magenta                 |
+ 31 | |    and yellow do not coincide with   | - ``'y'`` as yellow                  |
+ 32 | |    X11/CSS4 colors. Their particular | - ``'k'`` as black                   |
+ 33 | |    shades were chosen for better     | - ``'w'`` as white                   |
+ 34 | |    visibility of colored lines       |                                      |
+ 35 | |    against typical backgrounds.      |                                      |
+ 36 | +--------------------------------------+--------------------------------------+
+ 37 | | Case-insensitive X11/CSS4 color name | - ``'aquamarine'``                   |
+ 38 | | with no spaces.                      | - ``'mediumseagreen'``               |
+ 39 | +--------------------------------------+--------------------------------------+
+ 40 | | Case-insensitive color name from     | - ``'xkcd:sky blue'``                |
+ 41 | | `xkcd color survey`_ with ``'xkcd:'``| - ``'xkcd:eggshell'``                |
+ 42 | | prefix.                              |                                      |
+ 43 | +--------------------------------------+--------------------------------------+
+ 44 | | Case-insensitive Tableau Colors from | - ``'tab:blue'``                     |
+ 45 | | 'T10' categorical palette.           | - ``'tab:orange'``                   |
+ 46 | |                                      | - ``'tab:green'``                    |
+ 47 | |                                      | - ``'tab:red'``                      |
+ 48 | |                                      | - ``'tab:purple'``                   |
+ 49 | | .. note:: This is the default color  | - ``'tab:brown'``                    |
+ 50 | |           cycle.                     | - ``'tab:pink'``                     |
+ 51 | |                                      | - ``'tab:gray'``                     |
+ 52 | |                                      | - ``'tab:olive'``                    |
+ 53 | |                                      | - ``'tab:cyan'``                     |
+ 54 | +--------------------------------------+--------------------------------------+
+ 55 | | "CN" color spec where ``'C'``        | - ``'C0'``                           |
+ 56 | | precedes a number acting as an index | - ``'C1'``                           |
+ 57 | | into the default property cycle.     +--------------------------------------+
+ 58 | |                                      | :rc:`axes.prop_cycle`                |
+ 59 | | .. note:: Matplotlib indexes color   |                                      |
+ 60 | |           at draw time and defaults  |                                      |
+ 61 | |           to black if cycle does not |                                      |
+ 62 | |           include color.             |                                      |
+ 63 | +--------------------------------------+--------------------------------------+
+ 64 | 
+ 65 | .. _xkcd color survey: https://xkcd.com/color/rgb/
+ 66 | 
+ 67 | .. seealso::
+ 68 | 
+ 69 |     The following links provide more information on colors in Matplotlib.
+ 70 |         * :doc:`/gallery/color/color_demo` Example
+ 71 |         * `matplotlib.colors` API
+ 72 |         * :doc:`/gallery/color/named_colors` Example
+ 73 | 
+ 74 | "Red", "Green", and "Blue" are the intensities of those colors. In combination,
+ 75 | they represent the colorspace.
+ 76 | 
+ 77 | Matplotlib draws Artists based on the ``zorder`` parameter. If there are no
+ 78 | specified values, Matplotlib defaults to the order of the Artists added to the
+ 79 | Axes.
+ 80 | 
+ 81 | The alpha for an Artist controls opacity. It indicates how the RGB color of the
+ 82 | new Artist combines with RGB colors already on the Axes.
+ 83 | 
+ 84 | The two Artists combine with alpha compositing. Matplotlib uses the equation
+ 85 | below to compute the result of blending a new Artist.
+ 86 | 
+ 87 | ::
+ 88 | 
+ 89 |     RGB_{new} = RGB_{below} * (1 - \\alpha) + RGB_{artist} * \\alpha
+ 90 | 
+ 91 | Alpha of 1 indicates the new Artist completely covers the previous color.
+ 92 | Alpha of 0 for top color is not visible; however, it contributes to blending
+ 93 | for intermediate values as the cumulative result of all previous Artists. The
+ 94 | following table contains examples.
+ 95 | 
+ 96 | +---------------+-------------------------------------------------------------+
+ 97 | | Alpha value   | Visual                                                      |
+ 98 | +===============+=============================================================+
+ 99 | | ``0.3``       | .. image:: ../../_static/color_zorder_A.png                 |
+100 | +---------------+-------------------------------------------------------------+
+101 | | ``1``         | .. image:: ../../_static/color_zorder_B.png                 |
+102 | +---------------+-------------------------------------------------------------+
+103 | 
+104 | .. note::
+105 | 
+106 |     Re-ordering Artists is not commutative in Matplotlib.
+107 | 
+108 | 
+109 | "CN" color selection
+110 | --------------------
+111 | 
+112 | Matplotlib converts "CN" colors to RGBA when drawing Artists. The
+113 | :doc:`/tutorials/intermediate/color_cycle` section contains additional
+114 | information about controlling colors and style properties.
+115 | """
+116 | 
+117 | 
+118 | import numpy as np
+```
+
+Found code snippet in file `examples/color/color_demo.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+39 | import numpy as np
+40 | 
+41 | t = np.linspace(0.0, 2.0, 201)
+42 | s = np.sin(2 * np.pi * t)
+43 | 
+44 | # 1) RGB tuple:
+45 | fig, ax = plt.subplots(facecolor=(.18, .31, .31))
+46 | # 2) hex string:
+47 | ax.set_facecolor('#eafff5')
+48 | # 3) gray level string:
+49 | ax.set_title('Voltage vs. time chart', color='0.7')
+50 | # 4) single letter color string
+51 | ax.set_xlabel('Time [s]', color='c')
+52 | # 5) a named color:
+53 | ax.set_ylabel('Voltage [mV]', color='peachpuff')
+54 | # 6) a named xkcd color:
+55 | ax.plot(t, s, 'xkcd:crimson')
+56 | # 7) Cn notation:
+57 | ax.plot(t, .7*s, color='C4', linestyle='--')
+58 | # 8) tab notation:
+59 | ax.tick_params(labelcolor='tab:orange')
+60 | 
+61 | 
+62 | plt.show()
+63 | 
+64 | #############################################################################
+65 | #
+66 | # .. admonition:: References
+67 | #
+68 | #    The use of the following functions, methods, classes and modules is shown
+69 | #    in this example:
+70 | #
+71 | #    - `matplotlib.colors`
+72 | #    - `matplotlib.axes.Axes.plot`
+73 | #    - `matplotlib.axes.Axes.set_facecolor`
+74 | #    - `matplotlib.axes.Axes.set_title`
+75 | #    - `matplotlib.axes.Axes.set_xlabel`
+76 | #    - `matplotlib.axes.Axes.set_ylabel`
+77 | #    - `matplotlib.axes.Axes.tick_params`
+78 | 
+```
+
+Found code snippet in file `examples/color/color_demo.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | ==========
+ 3 | Color Demo
+ 4 | ==========
+ 5 | 
+ 6 | Matplotlib recognizes the following formats to specify a color:
+ 7 | 
+ 8 | 1) an RGB or RGBA tuple of float values in ``[0, 1]`` (e.g. ``(0.1, 0.2, 0.5)``
+ 9 |    or ``(0.1, 0.2, 0.5, 0.3)``).  RGBA is short for Red, Green, Blue, Alpha;
+10 | 2) a hex RGB or RGBA string (e.g., ``'#0F0F0F'`` or ``'#0F0F0F0F'``);
+11 | 3) a shorthand hex RGB or RGBA string, equivalent to the hex RGB or RGBA
+12 |    string obtained by duplicating each character, (e.g., ``'#abc'``, equivalent
+13 |    to ``'#aabbcc'``, or ``'#abcd'``, equivalent to ``'#aabbccdd'``);
+14 | 4) a string representation of a float value in ``[0, 1]`` inclusive for gray
+15 |    level (e.g., ``'0.5'``);
+16 | 5) a single letter string, i.e. one of
+17 |    ``{'b', 'g', 'r', 'c', 'm', 'y', 'k', 'w'}``, which are short-hand notations
+18 |    for shades of blue, green, red, cyan, magenta, yellow, black, and white;
+19 | 6) a X11/CSS4 ("html") color name, e.g. ``"blue"``;
+20 | 7) a name from the `xkcd color survey <https://xkcd.com/color/rgb/>`__,
+21 |    prefixed with ``'xkcd:'`` (e.g., ``'xkcd:sky blue'``);
+22 | 8) a "Cn" color spec, i.e. ``'C'`` followed by a number, which is an index into
+23 |    the default property cycle (:rc:`axes.prop_cycle`); the indexing is intended
+24 |    to occur at rendering time, and defaults to black if the cycle does not
+25 |    include color.
+26 | 9) one of ``{'tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple',
+27 |    'tab:brown', 'tab:pink', 'tab:gray', 'tab:olive', 'tab:cyan'}`` which are
+28 |    the Tableau Colors from the 'tab10' categorical palette (which is the
+29 |    default color cycle);
+30 | 
+31 | For more information on colors in matplotlib see
+32 | 
+33 | * the :doc:`/tutorials/colors/colors` tutorial;
+34 | * the `matplotlib.colors` API;
+35 | * the :doc:`/gallery/color/named_colors` example.
+36 | """
+37 | 
+38 | import matplotlib.pyplot as plt
+```
+
+Found function `lib/matplotlib/axes/_axes.py:Axes.plot`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1418 | def plot(self, *args, scalex=True, scaley=True, data=None, **kwargs):
+1419 |         """
+1420 |         Plot y versus x as lines and/or markers.
+1421 | 
+1422 |         Call signatures::
+1423 | 
+1424 |             plot([x], y, [fmt], *, data=None, **kwargs)
+1425 |             plot([x], y, [fmt], [x2], y2, [fmt2], ..., **kwargs)
+1426 | 
+1427 |         The coordinates of the points or line nodes are given by *x*, *y*.
+1428 | 
+1429 |         The optional parameter *fmt* is a convenient way for defining basic
+1430 |         formatting like color, marker and linestyle. It's a shortcut string
+1431 |         notation described in the *Notes* section below.
+1432 | 
+1433 |         >>> plot(x, y)        # plot x and y using default line style and color
+1434 |         >>> plot(x, y, 'bo')  # plot x and y using blue circle markers
+1435 |         >>> plot(y)           # plot y using x as index array 0..N-1
+1436 |         >>> plot(y, 'r+')     # ditto, but with red plusses
+1437 | 
+1438 |         You can use `.Line2D` properties as keyword arguments for more
+1439 |         control on the appearance. Line properties and *fmt* can be mixed.
+1440 |         The following two calls yield identical results:
+1441 | 
+1442 |         >>> plot(x, y, 'go--', linewidth=2, markersize=12)
+1443 |         >>> plot(x, y, color='green', marker='o', linestyle='dashed',
+1444 |         ...      linewidth=2, markersize=12)
+1445 | 
+1446 |         When conflicting with *fmt*, keyword arguments take precedence.
+1447 | 
+1448 | 
+1449 |         **Plotting labelled data**
+1450 | 
+1451 |         There's a convenient way for plotting objects with labelled data (i.e.
+1452 |         data that can be accessed by index ``obj['y']``). Instead of giving
+1453 |         the data in *x* and *y*, you can provide the object in the *data*
+1454 |         parameter and just give the labels for *x* and *y*::
+1455 | 
+1456 |         >>> plot('xlabel', 'ylabel', data=obj)
+1457 | 
+1458 |         All indexable objects are supported. This could e.g. be a `dict`, a
+1459 |         `pandas.DataFrame` or a structured numpy array.
+1460 | 
+1461 | 
+1462 |         **Plotting multiple sets of data**
+1463 | 
+1464 |         There are various ways to plot multiple sets of data.
+1465 | 
+1466 |         - The most straight forward way is just to call `plot` multiple times.
+1467 |           Example:
+1468 | 
+1469 |           >>> plot(x1, y1, 'bo')
+1470 |           >>> plot(x2, y2, 'go')
+1471 | 
+1472 |         - If *x* and/or *y* are 2D arrays a separate data set will be drawn
+1473 |           for every column. If both *x* and *y* are 2D, they must have the
+1474 |           same shape. If only one of them is 2D with shape (N, m) the other
+1475 |           must have length N and will be used for every data set m.
+1476 | 
+1477 |           Example:
+1478 | 
+1479 |           >>> x = [1, 2, 3]
+1480 |           >>> y = np.array([[1, 2], [3, 4], [5, 6]])
+1481 |           >>> plot(x, y)
+1482 | 
+1483 |           is equivalent to:
+1484 | 
+1485 |           >>> for col in range(y.shape[1]):
+1486 |           ...     plot(x, y[:, col])
+1487 | 
+1488 |         - The third way is to specify multiple sets of *[x]*, *y*, *[fmt]*
+1489 |           groups::
+1490 | 
+1491 |           >>> plot(x1, y1, 'g^', x2, y2, 'g-')
+1492 | 
+1493 |           In this case, any additional keyword argument applies to all
+1494 |           datasets. Also this syntax cannot be combined with the *data*
+1495 |           parameter.
+1496 | 
+1497 |         By default, each line is assigned a different style specified by a
+1498 |         'style cycle'. The *fmt* and line property parameters are only
+1499 |         necessary if you want explicit deviations from these defaults.
+1500 |         Alternatively, you can also change the style cycle using
+1501 |         :rc:`axes.prop_cycle`.
+1502 | 
+1503 | 
+1504 |         Parameters
+1505 |         ----------
+1506 |         x, y : array-like or scalar
+1507 |             The horizontal / vertical coordinates of the data points.
+1508 |             *x* values are optional and default to ``range(len(y))``.
+1509 | 
+1510 |             Commonly, these parameters are 1D arrays.
+1511 | 
+1512 |             They can also be scalars, or two-dimensional (in that case, the
+1513 |             columns represent separate data sets).
+1514 | 
+1515 |             These arguments cannot be passed as keywords.
+1516 | 
+1517 |         fmt : str, optional
+1518 |             A format string, e.g. 'ro' for red circles. See the *Notes*
+1519 |             section for a full description of the format strings.
+1520 | 
+1521 |             Format strings are just an abbreviation for quickly setting
+1522 |             basic line properties. All of these and more can also be
+1523 |             controlled by keyword arguments.
+1524 | 
+1525 |             This argument cannot be passed as keyword.
+1526 | 
+1527 |         data : indexable object, optional
+1528 |             An object with labelled data. If given, provide the label names to
+1529 |             plot in *x* and *y*.
+1530 | 
+1531 |             .. note::
+1532 |                 Technically there's a slight ambiguity in calls where the
+1533 |                 second label is a valid *fmt*. ``plot('n', 'o', data=obj)``
+1534 |                 could be ``plt(x, y)`` or ``plt(y, fmt)``. In such cases,
+1535 |                 the former interpretation is chosen, but a warning is issued.
+1536 |                 You may suppress the warning by adding an empty format string
+1537 |                 ``plot('n', 'o', '', data=obj)``.
+1538 | 
+1539 |         Returns
+1540 |         -------
+1541 |         list of `.Line2D`
+1542 |             A list of lines representing the plotted data.
+1543 | 
+1544 |         Other Parameters
+1545 |         ----------------
+1546 |         scalex, scaley : bool, default: True
+1547 |             These parameters determine if the view limits are adapted to the
+1548 |             data limits. The values are passed on to
+1549 |             `~.axes.Axes.autoscale_view`.
+1550 | 
+1551 |         **kwargs : `.Line2D` properties, optional
+1552 |             *kwargs* are used to specify properties like a line label (for
+1553 |             auto legends), linewidth, antialiasing, marker face color.
+1554 |             Example::
+1555 | 
+1556 |             >>> plot([1, 2, 3], [1, 2, 3], 'go-', label='line 1', linewidth=2)
+1557 |             >>> plot([1, 2, 3], [1, 4, 9], 'rs', label='line 2')
+1558 | 
+1559 |             If you specify multiple lines with one plot call, the kwargs apply
+1560 |             to all those lines. In case the label object is iterable, each
+1561 |             element is used as labels for each set of data.
+1562 | 
+1563 |             Here is a list of available `.Line2D` properties:
+1564 | 
+1565 |             %(Line2D:kwdoc)s
+1566 | 
+1567 |         See Also
+1568 |         --------
+1569 |         scatter : XY scatter plot with markers of varying size and/or color (
+1570 |             sometimes also called bubble chart).
+1571 | 
+1572 |         Notes
+1573 |         -----
+1574 |         **Format Strings**
+1575 | 
+1576 |         A format string consists of a part for color, marker and line::
+1577 | 
+1578 |             fmt = '[marker][line][color]'
+1579 | 
+1580 |         Each of them is optional. If not provided, the value from the style
+1581 |         cycle is used. Exception: If ``line`` is given, but no ``marker``,
+1582 |         the data will be a line without markers.
+1583 | 
+1584 |         Other combinations such as ``[color][marker][line]`` are also
+1585 |         supported, but note that their parsing may be ambiguous.
+1586 | 
+1587 |         **Markers**
+1588 | 
+1589 |         =============   ===============================
+1590 |         character       description
+1591 |         =============   ===============================
+1592 |         ``'.'``         point marker
+1593 |         ``','``         pixel marker
+1594 |         ``'o'``         circle marker
+1595 |         ``'v'``         triangle_down marker
+1596 |         ``'^'``         triangle_up marker
+1597 |         ``'<'``         triangle_left marker
+1598 |         ``'>'``         triangle_right marker
+1599 |         ``'1'``         tri_down marker
+1600 |         ``'2'``         tri_up marker
+1601 |         ``'3'``         tri_left marker
+1602 |         ``'4'``         tri_right marker
+1603 |         ``'8'``         octagon marker
+1604 |         ``'s'``         square marker
+1605 |         ``'p'``         pentagon marker
+1606 |         ``'P'``         plus (filled) marker
+1607 |         ``'*'``         star marker
+1608 |         ``'h'``         hexagon1 marker
+1609 |         ``'H'``         hexagon2 marker
+1610 |         ``'+'``         plus marker
+1611 |         ``'x'``         x marker
+1612 |         ``'X'``         x (filled) marker
+1613 |         ``'D'``         diamond marker
+1614 |         ``'d'``         thin_diamond marker
+1615 |         ``'|'``         vline marker
+1616 |         ``'_'``         hline marker
+1617 |         =============   ===============================
+1618 | 
+1619 |         **Line Styles**
+1620 | 
+1621 |         =============    ===============================
+1622 |         character        description
+1623 |         =============    ===============================
+1624 |         ``'-'``          solid line style
+1625 |         ``'--'``         dashed line style
+1626 |         ``'-.'``         dash-dot line style
+1627 |         ``':'``          dotted line style
+1628 |         =============    ===============================
+1629 | 
+1630 |         Example format strings::
+1631 | 
+1632 |             'b'    # blue markers with default shape
+1633 |             'or'   # red circles
+1634 |             '-g'   # green solid line
+1635 |             '--'   # dashed line with default color
+1636 |             '^k:'  # black triangle_up markers connected by a dotted line
+1637 | 
+1638 |         **Colors**
+1639 | 
+1640 |         The supported color abbreviations are the single letter codes
+1641 | 
+1642 |         =============    ===============================
+1643 |         character        color
+1644 |         =============    ===============================
+1645 |         ``'b'``          blue
+1646 |         ``'g'``          green
+1647 |         ``'r'``          red
+1648 |         ``'c'``          cyan
+1649 |         ``'m'``          magenta
+1650 |         ``'y'``          yellow
+1651 |         ``'k'``          black
+1652 |         ``'w'``          white
+1653 |         =============    ===============================
+1654 | 
+1655 |         and the ``'CN'`` colors that index into the default property cycle.
+1656 | 
+1657 |         If the color is the only part of the format string, you can
+1658 |         additionally use any  `matplotlib.colors` spec, e.g. full names
+1659 |         (``'green'``) or hex strings (``'#008000'``).
+1660 |         """
+1661 |         kwargs = cbook.normalize_kwargs(kwargs, mlines.Line2D)
+1662 |         lines = [*self._get_lines(*args, data=data, **kwargs)]
+1663 |         for line in lines:
+1664 |             self.add_line(line)
+1665 |         if scalex:
+1666 |             self._request_autoscale_view("x")
+1667 |         if scaley:
+1668 |             self._request_autoscale_view("y")
+1669 |         return lines
+```
+
+Found class `lib/matplotlib/colors.py:CenteredNorm`.
+Source: Retrieved entity using keyword search (bm25).
+```
+1478 | class CenteredNorm(Normalize):
+1479 |     def __init__(self, vcenter=0, halfrange=None, clip=False):
+1480 |         """
+1481 |         Normalize symmetrical data around a center (0 by default).
+1482 | 
+1483 |         Unlike `TwoSlopeNorm`, `CenteredNorm` applies an equal rate of change
+1484 |         around the center.
+1485 | 
+1486 |         Useful when mapping symmetrical data around a conceptual center
+1487 |         e.g., data that range from -2 to 4, with 0 as the midpoint, and
+1488 |         with equal rates of change around that midpoint.
+1489 | 
+1490 |         Parameters
+1491 |         ----------
+1492 |         vcenter : float, default: 0
+1493 |             The data value that defines ``0.5`` in the normalization.
+1494 |         halfrange : float, optional
+1495 |             The range of data values that defines a range of ``0.5`` in the
+1496 |             normalization, so that *vcenter* - *halfrange* is ``0.0`` and
+1497 |             *vcenter* + *halfrange* is ``1.0`` in the normalization.
+1498 |             Defaults to the largest absolute difference to *vcenter* for
+1499 |             the values in the dataset.
+1500 | 
+1501 |         Examples
+1502 |         --------
+1503 |         This maps data values -2 to 0.25, 0 to 0.5, and 4 to 1.0
+1504 |         (assuming equal rates of change above and below 0.0):
+1505 | 
+1506 |             >>> import matplotlib.colors as mcolors
+1507 |             >>> norm = mcolors.CenteredNorm(halfrange=4.0)
+1508 |             >>> data = [-2., 0., 4.]
+1509 |             >>> norm(data)
+1510 |             array([0.25, 0.5 , 1.  ])
+1511 |         """
+1512 |         super().__init__(vmin=None, vmax=None, clip=clip)
+1513 |         self._vcenter = vcenter
+1514 |         # calling the halfrange setter to set vmin and vmax
+1515 |         self.halfrange = halfrange
+1516 | 
+1517 |     def _set_vmin_vmax(self):
+1518 |         """
+1519 |         Set *vmin* and *vmax* based on *vcenter* and *halfrange*.
+1520 |         """
+1521 |         self.vmax = self._vcenter + self._halfrange
+1522 |         self.vmin = self._vcenter - self._halfrange
+1523 | 
+1524 |     def autoscale(self, A):
+1525 |         """
+1526 |         Set *halfrange* to ``max(abs(A-vcenter))``, then set *vmin* and *vmax*.
+1527 |         """
+1528 |         A = np.asanyarray(A)
+1529 |         self._halfrange = max(self._vcenter-A.min(),
+1530 |                               A.max()-self._vcenter)
+1531 |         self._set_vmin_vmax()
+1532 | 
+1533 |     def autoscale_None(self, A):
+1534 |         """Set *vmin* and *vmax*."""
+1535 |         A = np.asanyarray(A)
+1536 |         if self._halfrange is None and A.size:
+1537 |             self.autoscale(A)
+1538 | 
+1539 |     @property
+1540 |     def vcenter(self):
+1541 |         return self._vcenter
+1542 | 
+1543 |     @vcenter.setter
+1544 |     def vcenter(self, vcenter):
+1545 |         if vcenter != self._vcenter:
+1546 |             self._vcenter = vcenter
+1547 |             self._changed()
+1548 |         if self.vmax is not None:
+1549 |             # recompute halfrange assuming vmin and vmax represent
+1550 |             # min and max of data
+1551 |             self._halfrange = max(self._vcenter-self.vmin,
+1552 |                                   self.vmax-self._vcenter)
+1553 |             self._set_vmin_vmax()
+1554 | 
+1555 |     @property
+1556 |     def halfrange(self):
+1557 |         return self._halfrange
+1558 | 
+1559 |     @halfrange.setter
+1560 |     def halfrange(self, halfrange):
+1561 |         if halfrange is None:
+1562 |             self._halfrange = None
+1563 |             self.vmin = None
+1564 |             self.vmax = None
+1565 |         else:
+1566 |             self._halfrange = abs(halfrange)
+1567 | 
+1568 |     def __call__(self, value, clip=None):
+1569 |         if self._halfrange is not None:
+1570 |             # enforce symmetry, reset vmin and vmax
+1571 |             self._set_vmin_vmax()
+1572 |         return super().__call__(value, clip=clip)
+```
+
+Found function `lib/matplotlib/axes/_base.py:_AxesBase._set_position`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1091 | def _set_position(self, pos, which='both'):
+1092 |         """
+1093 |         Private version of set_position.
+1094 | 
+1095 |         Call this internally to get the same functionality of `set_position`,
+1096 |         but not to take the axis out of the constrained_layout hierarchy.
+1097 |         """
+1098 |         if not isinstance(pos, mtransforms.BboxBase):
+1099 |             pos = mtransforms.Bbox.from_bounds(*pos)
+1100 |         for ax in self._twinned_axes.get_siblings(self):
+1101 |             if which in ('both', 'active'):
+1102 |                 ax._position.set(pos)
+1103 |             if which in ('both', 'original'):
+1104 |                 ax._originalPosition.set(pos)
+1105 |         self.stale = True
+```
+
+
+
+##Searching for term "C0"...
+### Search Result:
+Found code snippet in file `plot_types/stats/boxplot_plot.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | ==========
+ 3 | boxplot(X)
+ 4 | ==========
+ 5 | 
+ 6 | See `~matplotlib.axes.Axes.boxplot`.
+ 7 | """
+ 8 | import matplotlib.pyplot as plt
+ 9 | import numpy as np
+10 | 
+11 | plt.style.use('_mpl-gallery')
+12 | 
+13 | # make data:
+14 | np.random.seed(10)
+15 | D = np.random.normal((3, 5, 4), (1.25, 1.00, 1.25), (100, 3))
+16 | 
+17 | # plot
+18 | fig, ax = plt.subplots()
+19 | VP = ax.boxplot(D, positions=[2, 4, 6], widths=1.5, patch_artist=True,
+20 |                 showmeans=False, showfliers=False,
+21 |                 medianprops={"color": "white", "linewidth": 0.5},
+22 |                 boxprops={"facecolor": "C0", "edgecolor": "white",
+23 |                           "linewidth": 0.5},
+24 |                 whiskerprops={"color": "C0", "linewidth": 1.5},
+25 |                 capprops={"color": "C0", "linewidth": 1.5})
+26 | 
+27 | ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
+28 |        ylim=(0, 8), yticks=np.arange(1, 8))
+29 | 
+30 | plt.show()
+31 | 
+```
+
+Found code snippet in file `plot_types/arrays/barbs.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | =================
+ 3 | barbs(X, Y, U, V)
+ 4 | =================
+ 5 | 
+ 6 | See `~matplotlib.axes.Axes.barbs`.
+ 7 | """
+ 8 | import matplotlib.pyplot as plt
+ 9 | import numpy as np
+10 | 
+11 | plt.style.use('_mpl-gallery-nogrid')
+12 | 
+13 | # make data:
+14 | X, Y = np.meshgrid([1, 2, 3, 4], [1, 2, 3, 4])
+15 | angle = np.pi / 180 * np.array([[15., 30, 35, 45],
+16 |                                 [25., 40, 55, 60],
+17 |                                 [35., 50, 65, 75],
+18 |                                 [45., 60, 75, 90]])
+19 | amplitude = np.array([[5, 10, 25, 50],
+20 |                       [10, 15, 30, 60],
+21 |                       [15, 26, 50, 70],
+22 |                       [20, 45, 80, 100]])
+23 | U = amplitude * np.sin(angle)
+24 | V = amplitude * np.cos(angle)
+25 | 
+26 | # plot:
+27 | fig, ax = plt.subplots()
+28 | 
+29 | ax.barbs(X, Y, U, V, barbcolor='C0', flagcolor='C0', length=7, linewidth=1.5)
+30 | 
+31 | ax.set(xlim=(0, 4.5), ylim=(0, 4.5))
+32 | 
+33 | plt.show()
+34 | 
+```
+
+Found code snippet in file `plot_types/arrays/quiver.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | ==================
+ 3 | quiver(X, Y, U, V)
+ 4 | ==================
+ 5 | 
+ 6 | See `~matplotlib.axes.Axes.quiver`.
+ 7 | """
+ 8 | import matplotlib.pyplot as plt
+ 9 | import numpy as np
+10 | 
+11 | plt.style.use('_mpl-gallery-nogrid')
+12 | 
+13 | # make data
+14 | x = np.linspace(-4, 4, 6)
+15 | y = np.linspace(-4, 4, 6)
+16 | X, Y = np.meshgrid(x, y)
+17 | U = X + Y
+18 | V = Y - X
+19 | 
+20 | # plot
+21 | fig, ax = plt.subplots()
+22 | 
+23 | ax.quiver(X, Y, U, V, color="C0", angles='xy',
+24 |           scale_units='xy', scale=5, width=.015)
+25 | 
+26 | ax.set(xlim=(-5, 5), ylim=(-5, 5))
+27 | 
+28 | plt.show()
+29 | 
+```
+
+Found function `lib/matplotlib/_cm.py:_g0`.
+Source: Retrieved entity using keyword search (bm25).
+```
+112 | def _g0(x): return 0
+```
+
+Found function `lib/matplotlib/_cm.py:_g10`.
+Source: Retrieved entity using keyword search (bm25).
+```
+122 | def _g10(x): return np.cos(x * np.pi / 2)
+```
+
+Found function `lib/matplotlib/_cm.py:_g20`.
+Source: Retrieved entity using keyword search (bm25).
+```
+132 | def _g20(x): return np.abs(np.cos(x * 4 * np.pi))
+```
+
+
+
+##Searching for term "C0", "prop_cycle CN C0 C1"...
+### Search Result:
+Found class `lib/matplotlib/patches.py:ConnectionStyle.Arc3`.
+Source: Retrieved code content using keyword search (bm25).
+```
+2772 | class Arc3(_Base):
+2773 |         """
+2774 |         Creates a simple quadratic Bezier curve between two
+2775 |         points. The curve is created so that the middle control point
+2776 |         (C1) is located at the same distance from the start (C0) and
+2777 |         end points(C2) and the distance of the C1 to the line
+2778 |         connecting C0-C2 is *rad* times the distance of C0-C2.
+2779 |         """
+2780 | 
+2781 |         def __init__(self, rad=0.):
+2782 |             """
+2783 |             *rad*
+2784 |               curvature of the curve.
+2785 |             """
+2786 |             self.rad = rad
+2787 | 
+2788 |         def connect(self, posA, posB):
+2789 |             x1, y1 = posA
+2790 |             x2, y2 = posB
+2791 |             x12, y12 = (x1 + x2) / 2., (y1 + y2) / 2.
+2792 |             dx, dy = x2 - x1, y2 - y1
+2793 | 
+2794 |             f = self.rad
+2795 | 
+2796 |             cx, cy = x12 + f * dy, y12 - f * dx
+2797 | 
+2798 |             vertices = [(x1, y1),
+2799 |                         (cx, cy),
+2800 |                         (x2, y2)]
+2801 |             codes = [Path.MOVETO,
+2802 |                      Path.CURVE3,
+2803 |                      Path.CURVE3]
+2804 | 
+2805 |             return Path(vertices, codes)
+```
+
+
+
+##Searching for term "C0", "C1", "prop_cycle CN C0 C1"...
+### Search Result:
+Found function `tools/memleak.py:run_memleak_test`.
+Source: Retrieved code content using keyword search (bm25).
+```
+15 | def run_memleak_test(bench, iterations, report):
+16 |     tracemalloc.start()
+17 | 
+18 |     starti = min(50, iterations // 2)
+19 |     endi = iterations
+20 | 
+21 |     malloc_arr = np.empty(endi, dtype=np.int64)
+22 |     rss_arr = np.empty(endi, dtype=np.int64)
+23 |     rss_peaks = np.empty(endi, dtype=np.int64)
+24 |     nobjs_arr = np.empty(endi, dtype=np.int64)
+25 |     garbage_arr = np.empty(endi, dtype=np.int64)
+26 |     open_files_arr = np.empty(endi, dtype=np.int64)
+27 |     rss_peak = 0
+28 | 
+29 |     p = psutil.Process()
+30 | 
+31 |     for i in range(endi):
+32 |         bench()
+33 | 
+34 |         gc.collect()
+35 | 
+36 |         rss = p.memory_info().rss
+37 |         malloc, peak = tracemalloc.get_traced_memory()
+38 |         nobjs = len(gc.get_objects())
+39 |         garbage = len(gc.garbage)
+40 |         open_files = len(p.open_files())
+41 |         print("{0: 4d}: pymalloc {1: 10d}, rss {2: 10d}, nobjs {3: 10d}, "
+42 |               "garbage {4: 4d}, files: {5: 4d}".format(
+43 |                   i, malloc, rss, nobjs, garbage, open_files))
+44 |         if i == starti:
+45 |             print('{:-^86s}'.format(' warmup done '))
+46 |         malloc_arr[i] = malloc
+47 |         rss_arr[i] = rss
+48 |         if rss > rss_peak:
+49 |             rss_peak = rss
+50 |         rss_peaks[i] = rss_peak
+51 |         nobjs_arr[i] = nobjs
+52 |         garbage_arr[i] = garbage
+53 |         open_files_arr[i] = open_files
+54 | 
+55 |     print('Average memory consumed per loop: {:1.4f} bytes\n'.format(
+56 |         np.sum(rss_peaks[starti+1:] - rss_peaks[starti:-1]) / (endi - starti)))
+57 | 
+58 |     from matplotlib import pyplot as plt
+59 |     from matplotlib.ticker import EngFormatter
+60 |     bytes_formatter = EngFormatter(unit='B')
+61 |     fig, (ax1, ax2, ax3) = plt.subplots(3)
+62 |     for ax in (ax1, ax2, ax3):
+63 |         ax.axvline(starti, linestyle='--', color='k')
+64 |     ax1b = ax1.twinx()
+65 |     ax1b.yaxis.set_major_formatter(bytes_formatter)
+66 |     ax1.plot(malloc_arr, 'C0')
+67 |     ax1b.plot(rss_arr, 'C1', label='rss')
+68 |     ax1b.plot(rss_peaks, 'C1', linestyle='--', label='rss max')
+69 |     ax1.set_ylabel('pymalloc', color='C0')
+70 |     ax1b.set_ylabel('rss', color='C1')
+71 |     ax1b.legend()
+72 | 
+73 |     ax2b = ax2.twinx()
+74 |     ax2.plot(nobjs_arr, 'C0')
+75 |     ax2b.plot(garbage_arr, 'C1')
+76 |     ax2.set_ylabel('total objects', color='C0')
+77 |     ax2b.set_ylabel('garbage objects', color='C1')
+78 | 
+79 |     ax3.plot(open_files_arr)
+80 |     ax3.set_ylabel('open file handles')
+81 | 
+82 |     if not report.endswith('.pdf'):
+83 |         report = report + '.pdf'
+84 |     fig.tight_layout()
+85 |     fig.savefig(report, format='pdf')
+```
+
+
+
+##Searching for term "C1"...
+### Search Result:
+Found class `lib/mpl_toolkits/axes_grid1/axes_grid.py:CbarAxesBase`.
+Source: Retrieved entity using keyword search (bm25).
+```
+20 | class CbarAxesBase:
+21 |     def __init__(self, *args, orientation, **kwargs):
+22 |         self.orientation = orientation
+23 |         self._locator = None  # deprecated.
+24 |         super().__init__(*args, **kwargs)
+25 | 
+26 |     def colorbar(self, mappable, *, ticks=None, **kwargs):
+27 |         orientation = (
+28 |             "horizontal" if self.orientation in ["top", "bottom"] else
+29 |             "vertical")
+30 |         cb = self.figure.colorbar(mappable, cax=self, orientation=orientation,
+31 |                                   ticks=ticks, **kwargs)
+32 |         return cb
+33 | 
+34 |     def toggle_label(self, b):
+35 |         axis = self.axis[self.orientation]
+36 |         axis.toggle(ticklabels=b, label=b)
+37 | 
+38 |     def cla(self):
+39 |         orientation = self.orientation
+40 |         super().cla()
+41 |         self.orientation = orientation
+```
+
+Found class `lib/mpl_toolkits/axes_grid1/axes_grid.py:CbarAxes`.
+Source: Retrieved entity using keyword search (bm25).
+```
+45 | class CbarAxes(CbarAxesBase, Axes):
+46 |     pass
+```
+
+Found function `lib/matplotlib/_cm.py:_g1`.
+Source: Retrieved entity using keyword search (bm25).
+```
+113 | def _g1(x): return 0.5
+```
+
+Found function `lib/matplotlib/colors.py:same_color`.
+Source: Retrieved code content using keyword search (bm25).
+```
+246 | def same_color(c1, c2):
+247 |     """
+248 |     Return whether the colors *c1* and *c2* are the same.
+249 | 
+250 |     *c1*, *c2* can be single colors or lists/arrays of colors.
+251 |     """
+252 |     c1 = to_rgba_array(c1)
+253 |     c2 = to_rgba_array(c2)
+254 |     n1 = max(c1.shape[0], 1)  # 'none' results in shape (0, 4), but is 1-elem
+255 |     n2 = max(c2.shape[0], 1)  # 'none' results in shape (0, 4), but is 1-elem
+256 | 
+257 |     if n1 != n2:
+258 |         raise ValueError('Different number of elements passed.')
+259 |     # The following shape test is needed to correctly handle comparisons with
+260 |     # 'none', which results in a shape (0, 4) array and thus cannot be tested
+261 |     # via value comparison.
+262 |     return c1.shape == c2.shape and (c1 == c2).all()
+```
+
+Found function `examples/event_handling/poly_editor.py:dist_point_to_segment`.
+Source: Retrieved code content using keyword search (bm25).
+```
+30 | def dist_point_to_segment(p, s0, s1):
+31 |     """
+32 |     Get the distance of a point to a segment.
+33 |       *p*, *s0*, *s1* are *xy* sequences
+34 |     This algorithm from
+35 |     http://www.geomalgorithms.com/algorithms.html
+36 |     """
+37 |     v = s1 - s0
+38 |     w = p - s0
+39 |     c1 = np.dot(w, v)
+40 |     if c1 <= 0:
+41 |         return dist(p, s0)
+42 |     c2 = np.dot(v, v)
+43 |     if c2 <= c1:
+44 |         return dist(p, s1)
+45 |     b = c1 / c2
+46 |     pb = s0 + b * v
+47 |     return dist(p, pb)
+```
+
+Found function `lib/matplotlib/bezier.py:make_wedged_bezier2`.
+Source: Retrieved code content using keyword search (bm25).
+```
+546 | def make_wedged_bezier2(bezier2, width, w1=1., wm=0.5, w2=0.):
+547 |     """
+548 |     Being similar to get_parallels, returns control points of two quadratic
+549 |     Bezier lines having a width roughly parallel to given one separated by
+550 |     *width*.
+551 |     """
+552 | 
+553 |     # c1, cm, c2
+554 |     c1x, c1y = bezier2[0]
+555 |     cmx, cmy = bezier2[1]
+556 |     c3x, c3y = bezier2[2]
+557 | 
+558 |     # t1 and t2 is the angle between c1 and cm, cm, c3.
+559 |     # They are also a angle of the tangential line of the path at c1 and c3
+560 |     cos_t1, sin_t1 = get_cos_sin(c1x, c1y, cmx, cmy)
+561 |     cos_t2, sin_t2 = get_cos_sin(cmx, cmy, c3x, c3y)
+562 | 
+563 |     # find c1_left, c1_right which are located along the lines
+564 |     # through c1 and perpendicular to the tangential lines of the
+565 |     # Bezier path at a distance of width. Same thing for c3_left and
+566 |     # c3_right with respect to c3.
+567 |     c1x_left, c1y_left, c1x_right, c1y_right = (
+568 |         get_normal_points(c1x, c1y, cos_t1, sin_t1, width * w1)
+569 |     )
+570 |     c3x_left, c3y_left, c3x_right, c3y_right = (
+571 |         get_normal_points(c3x, c3y, cos_t2, sin_t2, width * w2)
+572 |     )
+573 | 
+574 |     # find c12, c23 and c123 which are middle points of c1-cm, cm-c3 and
+575 |     # c12-c23
+576 |     c12x, c12y = (c1x + cmx) * .5, (c1y + cmy) * .5
+577 |     c23x, c23y = (cmx + c3x) * .5, (cmy + c3y) * .5
+578 |     c123x, c123y = (c12x + c23x) * .5, (c12y + c23y) * .5
+579 | 
+580 |     # tangential angle of c123 (angle between c12 and c23)
+581 |     cos_t123, sin_t123 = get_cos_sin(c12x, c12y, c23x, c23y)
+582 | 
+583 |     c123x_left, c123y_left, c123x_right, c123y_right = (
+584 |         get_normal_points(c123x, c123y, cos_t123, sin_t123, width * wm)
+585 |     )
+586 | 
+587 |     path_left = find_control_points(c1x_left, c1y_left,
+588 |                                     c123x_left, c123y_left,
+589 |                                     c3x_left, c3y_left)
+590 |     path_right = find_control_points(c1x_right, c1y_right,
+591 |                                      c123x_right, c123y_right,
+592 |                                      c3x_right, c3y_right)
+593 | 
+594 |     return path_left, path_right
+```
+
+Found function `examples/subplots_axes_and_figures/axes_zoom_effect.py:zoom_effect01`.
+Source: Retrieved code content using keyword search (bm25).
+```
+42 | def zoom_effect01(ax1, ax2, xmin, xmax, **kwargs):
+43 |     """
+44 |     Connect *ax1* and *ax2*. The *xmin*-to-*xmax* range in both axes will
+45 |     be marked.
+46 | 
+47 |     Parameters
+48 |     ----------
+49 |     ax1
+50 |         The main axes.
+51 |     ax2
+52 |         The zoomed axes.
+53 |     xmin, xmax
+54 |         The limits of the colored area in both plot axes.
+55 |     **kwargs
+56 |         Arguments passed to the patch constructor.
+57 |     """
+58 | 
+59 |     bbox = Bbox.from_extents(xmin, 0, xmax, 1)
+60 | 
+61 |     mybbox1 = TransformedBbox(bbox, ax1.get_xaxis_transform())
+62 |     mybbox2 = TransformedBbox(bbox, ax2.get_xaxis_transform())
+63 | 
+64 |     prop_patches = {**kwargs, "ec": "none", "alpha": 0.2}
+65 | 
+66 |     c1, c2, bbox_patch1, bbox_patch2, p = connect_bbox(
+67 |         mybbox1, mybbox2,
+68 |         loc1a=3, loc2a=2, loc1b=4, loc2b=1,
+69 |         prop_lines=kwargs, prop_patches=prop_patches)
+70 | 
+71 |     ax1.add_patch(bbox_patch1)
+72 |     ax2.add_patch(bbox_patch2)
+73 |     ax2.add_patch(c1)
+74 |     ax2.add_patch(c2)
+75 |     ax2.add_patch(p)
+76 | 
+77 |     return c1, c2, bbox_patch1, bbox_patch2, p
+```
+
+
+
+##Searching for term "prop_cycle CN C0 C1"...
+### Search Result:
+Found `tutorials/colors/colors.py:demo`.
+Source: Retrieved code content using keyword search (bm25).
+```
+119 | import matplotlib.pyplot as plt
+120 | import matplotlib as mpl
+121 | 
+122 | th = np.linspace(0, 2*np.pi, 128)
+123 | 
+124 | 
+125 | def demo(sty):
+126 |     mpl.style.use(sty)
+127 |     fig, ax = plt.subplots(figsize=(3, 3))
+128 | 
+129 |     ax.set_title('style: {!r}'.format(sty), color='C0')
+130 | 
+131 |     ax.plot(th, np.cos(th), 'C1', label='C1')
+132 |     ax.plot(th, np.sin(th), 'C2', label='C2')
+133 |     ax.legend()
+134 | 
+135 | 
+136 | demo('default')
+137 | demo('seaborn-v0_8')
+138 | 
+139 | ###############################################################################
+140 | # The first color ``'C0'`` is the title. Each plot uses the second and third
+141 | # colors of each style's :rc:`axes.prop_cycle`. They are ``'C1'`` and ``'C2'``,
+142 | # respectively.
+143 | #
+144 | # .. _xkcd-colors:
+145 | #
+146 | # Comparison between X11/CSS4 and xkcd colors
+147 | # -------------------------------------------
+148 | #
+149 | # The xkcd colors come from a `user survey conducted by the webcomic xkcd
+150 | # <https://blog.xkcd.com/2010/05/03/color-survey-results/>`__.
+151 | #
+152 | # 95 out of the 148 X11/CSS4 color names also appear in the xkcd color survey.
+153 | # Almost all of them map to different color values in the X11/CSS4 and in
+154 | # the xkcd palette. Only 'black', 'white' and 'cyan' are identical.
+155 | #
+156 | # For example, ``'blue'`` maps to ``'#0000FF'`` whereas ``'xkcd:blue'`` maps to
+157 | # ``'#0343DF'``.  Due to these name collisions, all xkcd colors have the
+158 | # ``'xkcd:'`` prefix.
+159 | #
+160 | # The visual below shows name collisions. Color names where color values agree
+161 | # are in bold.
+162 | 
+163 | import matplotlib.colors as mcolors
+164 | import matplotlib.patches as mpatch
+165 | 
+166 | overlap = {name for name in mcolors.CSS4_COLORS
+167 |            if f'xkcd:{name}' in mcolors.XKCD_COLORS}
+168 | 
+169 | fig = plt.figure(figsize=[9, 5])
+170 | ax = fig.add_axes([0, 0, 1, 1])
+171 | 
+172 | n_groups = 3
+173 | n_rows = len(overlap) // n_groups + 1
+```
+
+Found code snippet in file `tutorials/colors/colors.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | """
+  2 | *****************
+  3 | Specifying Colors
+  4 | *****************
+  5 | 
+  6 | Matplotlib recognizes the following formats to specify a color.
+  7 | 
+  8 | +--------------------------------------+--------------------------------------+
+  9 | | Format                               | Example                              |
+ 10 | +======================================+======================================+
+ 11 | | RGB or RGBA (red, green, blue, alpha)| - ``(0.1, 0.2, 0.5)``                |
+ 12 | | tuple of float values in a closed    | - ``(0.1, 0.2, 0.5, 0.3)``           |
+ 13 | | interval [0, 1].                     |                                      |
+ 14 | +--------------------------------------+--------------------------------------+
+ 15 | | Case-insensitive hex RGB or RGBA     | - ``'#0f0f0f'``                      |
+ 16 | | string.                              | - ``'#0f0f0f80'``                    |
+ 17 | +--------------------------------------+--------------------------------------+
+ 18 | | Case-insensitive RGB or RGBA string  | - ``'#abc'`` as ``'#aabbcc'``        |
+ 19 | | equivalent hex shorthand of          | - ``'#fb1'`` as ``'#ffbb11'``        |
+ 20 | | duplicated characters.               |                                      |
+ 21 | +--------------------------------------+--------------------------------------+
+ 22 | | String representation of float value | - ``'0'`` as black                   |
+ 23 | | in closed interval ``[0, 1]`` for    | - ``'1'`` as white                   |
+ 24 | | grayscale values.                    | - ``'0.8'`` as light gray            |
+ 25 | +--------------------------------------+--------------------------------------+
+ 26 | | Single character shorthand notation  | - ``'b'`` as blue                    |
+ 27 | | for some basic colors.               | - ``'g'`` as green                   |
+ 28 | |                                      | - ``'r'`` as red                     |
+ 29 | | .. note::                            | - ``'c'`` as cyan                    |
+ 30 | |    The colors green, cyan, magenta,  | - ``'m'`` as magenta                 |
+ 31 | |    and yellow do not coincide with   | - ``'y'`` as yellow                  |
+ 32 | |    X11/CSS4 colors. Their particular | - ``'k'`` as black                   |
+ 33 | |    shades were chosen for better     | - ``'w'`` as white                   |
+ 34 | |    visibility of colored lines       |                                      |
+ 35 | |    against typical backgrounds.      |                                      |
+ 36 | +--------------------------------------+--------------------------------------+
+ 37 | | Case-insensitive X11/CSS4 color name | - ``'aquamarine'``                   |
+ 38 | | with no spaces.                      | - ``'mediumseagreen'``               |
+ 39 | +--------------------------------------+--------------------------------------+
+ 40 | | Case-insensitive color name from     | - ``'xkcd:sky blue'``                |
+ 41 | | `xkcd color survey`_ with ``'xkcd:'``| - ``'xkcd:eggshell'``                |
+ 42 | | prefix.                              |                                      |
+ 43 | +--------------------------------------+--------------------------------------+
+ 44 | | Case-insensitive Tableau Colors from | - ``'tab:blue'``                     |
+ 45 | | 'T10' categorical palette.           | - ``'tab:orange'``                   |
+ 46 | |                                      | - ``'tab:green'``                    |
+ 47 | |                                      | - ``'tab:red'``                      |
+ 48 | |                                      | - ``'tab:purple'``                   |
+ 49 | | .. note:: This is the default color  | - ``'tab:brown'``                    |
+ 50 | |           cycle.                     | - ``'tab:pink'``                     |
+ 51 | |                                      | - ``'tab:gray'``                     |
+ 52 | |                                      | - ``'tab:olive'``                    |
+ 53 | |                                      | - ``'tab:cyan'``                     |
+ 54 | +--------------------------------------+--------------------------------------+
+ 55 | | "CN" color spec where ``'C'``        | - ``'C0'``                           |
+ 56 | | precedes a number acting as an index | - ``'C1'``                           |
+ 57 | | into the default property cycle.     +--------------------------------------+
+ 58 | |                                      | :rc:`axes.prop_cycle`                |
+ 59 | | .. note:: Matplotlib indexes color   |                                      |
+ 60 | |           at draw time and defaults  |                                      |
+ 61 | |           to black if cycle does not |                                      |
+ 62 | |           include color.             |                                      |
+ 63 | +--------------------------------------+--------------------------------------+
+ 64 | 
+ 65 | .. _xkcd color survey: https://xkcd.com/color/rgb/
+ 66 | 
+ 67 | .. seealso::
+ 68 | 
+ 69 |     The following links provide more information on colors in Matplotlib.
+ 70 |         * :doc:`/gallery/color/color_demo` Example
+ 71 |         * `matplotlib.colors` API
+ 72 |         * :doc:`/gallery/color/named_colors` Example
+ 73 | 
+ 74 | "Red", "Green", and "Blue" are the intensities of those colors. In combination,
+ 75 | they represent the colorspace.
+ 76 | 
+ 77 | Matplotlib draws Artists based on the ``zorder`` parameter. If there are no
+ 78 | specified values, Matplotlib defaults to the order of the Artists added to the
+ 79 | Axes.
+ 80 | 
+ 81 | The alpha for an Artist controls opacity. It indicates how the RGB color of the
+ 82 | new Artist combines with RGB colors already on the Axes.
+ 83 | 
+ 84 | The two Artists combine with alpha compositing. Matplotlib uses the equation
+ 85 | below to compute the result of blending a new Artist.
+ 86 | 
+ 87 | ::
+ 88 | 
+ 89 |     RGB_{new} = RGB_{below} * (1 - \\alpha) + RGB_{artist} * \\alpha
+ 90 | 
+ 91 | Alpha of 1 indicates the new Artist completely covers the previous color.
+ 92 | Alpha of 0 for top color is not visible; however, it contributes to blending
+ 93 | for intermediate values as the cumulative result of all previous Artists. The
+ 94 | following table contains examples.
+ 95 | 
+ 96 | +---------------+-------------------------------------------------------------+
+ 97 | | Alpha value   | Visual                                                      |
+ 98 | +===============+=============================================================+
+ 99 | | ``0.3``       | .. image:: ../../_static/color_zorder_A.png                 |
+100 | +---------------+-------------------------------------------------------------+
+101 | | ``1``         | .. image:: ../../_static/color_zorder_B.png                 |
+102 | +---------------+-------------------------------------------------------------+
+103 | 
+104 | .. note::
+105 | 
+106 |     Re-ordering Artists is not commutative in Matplotlib.
+107 | 
+108 | 
+109 | "CN" color selection
+110 | --------------------
+111 | 
+112 | Matplotlib converts "CN" colors to RGBA when drawing Artists. The
+113 | :doc:`/tutorials/intermediate/color_cycle` section contains additional
+114 | information about controlling colors and style properties.
+115 | """
+116 | 
+117 | 
+118 | import numpy as np
+```
+
+Found .
+Source: Retrieved code content using keyword search (bm25).
+```
+ 58 | y_err = x.std() * np.sqrt(1/len(x) +
+ 59 |                           (x - x.mean())**2 / np.sum((x - x.mean())**2))
+ 60 | 
+ 61 | fig, ax = plt.subplots()
+ 62 | ax.plot(x, y_est, '-')
+ 63 | ax.fill_between(x, y_est - y_err, y_est + y_err, alpha=0.2)
+ 64 | ax.plot(x, y, 'o', color='tab:brown')
+ 65 | 
+ 66 | ###############################################################################
+ 67 | #
+ 68 | # Selectively filling horizontal regions
+ 69 | # --------------------------------------
+ 70 | # The parameter *where* allows to specify the x-ranges to fill. It's a boolean
+ 71 | # array with the same size as *x*.
+ 72 | #
+ 73 | # Only x-ranges of contiguous *True* sequences are filled. As a result the
+ 74 | # range between neighboring *True* and *False* values is never filled. This
+ 75 | # often undesired when the data points should represent a contiguous quantity.
+ 76 | # It is therefore recommended to set ``interpolate=True`` unless the
+ 77 | # x-distance of the data points is fine enough so that the above effect is not
+ 78 | # noticeable. Interpolation approximates the actual x position at which the
+ 79 | # *where* condition will change and extends the filling up to there.
+ 80 | 
+ 81 | x = np.array([0, 1, 2, 3])
+ 82 | y1 = np.array([0.8, 0.8, 0.2, 0.2])
+ 83 | y2 = np.array([0, 0, 1, 1])
+ 84 | 
+ 85 | fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+ 86 | 
+ 87 | ax1.set_title('interpolation=False')
+ 88 | ax1.plot(x, y1, 'o--')
+ 89 | ax1.plot(x, y2, 'o--')
+ 90 | ax1.fill_between(x, y1, y2, where=(y1 > y2), color='C0', alpha=0.3)
+ 91 | ax1.fill_between(x, y1, y2, where=(y1 < y2), color='C1', alpha=0.3)
+ 92 | 
+ 93 | ax2.set_title('interpolation=True')
+ 94 | ax2.plot(x, y1, 'o--')
+ 95 | ax2.plot(x, y2, 'o--')
+ 96 | ax2.fill_between(x, y1, y2, where=(y1 > y2), color='C0', alpha=0.3,
+ 97 |                  interpolate=True)
+```
+
+2026-08-28 00:49:16 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:49:21 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:49:21 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:49:21 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 00:49:21 auto_search_main.py INFO ===============
+2026-08-28 00:49:21 auto_search_main.py INFO Final response generated content_length=291
+2026-08-28 00:49:21 auto_search_main.py INFO ==== localizing matplotlib__matplotlib-24026 succeed, process multiple loc outputs ====
+2026-08-28 00:49:22 cost_analysis.py INFO input_tokens=80797, output_tokens=536, cost=0.20
+2026-08-28 00:49:22 auto_search_main.py INFO Total time: 3.3628 min

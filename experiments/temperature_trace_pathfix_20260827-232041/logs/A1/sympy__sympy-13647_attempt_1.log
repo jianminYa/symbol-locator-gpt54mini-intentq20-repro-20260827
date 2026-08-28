@@ -1,0 +1,2 @@
+2026-08-28T00:56:23.154131+00:00 case_start face=A1 instance=sympy__sympy-13647 attempt=1
+2026-08-28T01:11:49.323862+00:00 case_end face=A1 instance=sympy__sympy-13647 attempt=1 elapsed=926.155 category=success

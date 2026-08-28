@@ -1,0 +1,1236 @@
+2026-08-28 02:35:20 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 02:35:20 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 02:35:20 auto_search_main.py INFO ============================================================
+2026-08-28 02:35:20 auto_search_main.py INFO ==== rank 0 setup localize django__django-11066 ====
+2026-08-28 02:35:20 install.py INFO hook: set_current_issue fired
+2026-08-28 02:35:20 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/656f6e3d-3af6-4bd0-b2c6-4f970fe1764a/django_django and checkout commit HEAD
+2026-08-28 02:35:20 git_repo_manager.py INFO Directory 'playground/656f6e3d-3af6-4bd0-b2c6-4f970fe1764a/django_django' was created.
+2026-08-28 02:35:20 install.py INFO setup_repo returned: playground/656f6e3d-3af6-4bd0-b2c6-4f970fe1764a/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-11066
+2026-08-28 02:35:29 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-11066 files=2000 indexed=2000 failed=0
+2026-08-28 02:38:37 repo_ops.py INFO [0] Processed django__django-11066
+2026-08-28 02:38:38 auto_search_main.py INFO ============================================================
+2026-08-28 02:38:38 auto_search_main.py INFO ==== rank 0 begin localizing django__django-11066 ====
+2026-08-28 02:38:38 auto_search_main.py INFO ============================================================
+2026-08-28 02:38:38 auto_search_main.py INFO ==== django__django-11066 Count down: attempt 1 ====
+2026-08-28 02:38:38 auto_search_main.py INFO ==== django__django-11066 start auto search ====
+2026-08-28 02:38:47 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:39:24 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:39:24 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:39:24 auto_search_main.py INFO agent response received content_present=False tool_calls=3
+2026-08-28 02:39:24 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'RenameContentType', 'context': 'django.contrib.contenttypes.management rename content type migration database alias save using db schema_editor.connection.alias', 'kind_filter': [5, 12, 6], 'top_k': 5}))
+```
+2026-08-28 02:39:26 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:39:30 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:39:30 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:39:30 auto_search_main.py INFO OBSERVATION:
+Found 2 candidates for `RenameContentType`. Showing top 2 by relevance:
+1. [score=98] RenameContentType
+   django/contrib/contenttypes/management/__init__.py:6
+   from django.apps import apps as global_apps
+   from django.db import DEFAULT_DB_ALIAS, migrations, router, transaction
+   from django.db.utils import IntegrityError
+   
+   
+   class RenameContentType(migrations.RunPython):
+       def __init__(self, app_label, old_model, new_model):
+           self.app_label = app_label
+           self.old_model = old_model
+           self.new_model = new_model
+           super().__init__(self.rename_forward, self.rename_backward)
+   
+       def _rename(self, apps, schema_editor, old_model, new_model):
+           ContentType = apps.get_model('contenttypes', 'ContentType')
+           db = schema_editor.connection.alias
+           if not router.allow_migrate_model(db, ContentType):
+               return
+   
+           try:
+               content_type = ContentType.objects.db_manager(db).get_by_natural_key(self.app_label, old_model)
+           except ContentType.DoesNotExist:
+2. [score=18] inject_rename_contenttypes_operations
+   django/contrib/contenttypes/management/__init__.py:45
+                   # conflict as remove_stale_contenttypes will take care of
+                   # asking the user what should be done next.
+                   content_type.model = old_model
+               else:
+                   # Clear the cache as the `get_by_natual_key()` call will cache
+                   # the renamed ContentType instance by its old model name.
+                   ContentType.objects.clear_cache()
+   
+       def rename_forward(self, apps, schema_editor):
+           self._rename(apps, schema_editor, self.old_model, self.new_model)
+   
+       def rename_backward(self, apps, schema_editor):
+           self._rename(apps, schema_editor, self.new_model, self.old_model)
+   
+   
+   def inject_rename_contenttypes_operations(plan=None, apps=global_apps, using=DEFAULT_DB_ALIAS, **kwargs):
+       """
+       Insert a `RenameContentType` operation after every planned `RenameModel`
+       operation.
+       """
+       if plan is None:
+           return
+   
+       # Determine whether or not the ContentType model is available.
+       try:
+           ContentType = apps.get_model('contenttypes', 'ContentType')
+       except LookupError:
+           available = False
+       else:
+           if not router.allow_migrate_model(using, ContentType):
+               return
+[symbol-locator] [scorer] usage pid=787119 calls=1 p=5381 c=11
+[symbol-locator] [scorer] parsed 2/2 scores from LLM
+
+2026-08-28 02:39:30 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'RenameModel', 'context': 'django migration operation contenttypes rename content type save database alias', 'kind_filter': [5, 12, 6], 'top_k': 5}))
+```
+2026-08-28 02:39:30 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:39:37 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:39:37 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:39:37 auto_search_main.py INFO OBSERVATION:
+Found 26 candidates for `RenameModel`. Showing top 5 by relevance:
+1. [score=95] OperationTests.test_rename_model_state_forwards
+   tests/migrations/test_operations.py:698
+           # Test original state and database
+           self.assertIn(("test_rnmo", "pony"), original_state.models)
+           self.assertNotIn(("test_rnmo", "horse"), original_state.models)
+           self.assertEqual("Pony", original_state.models["test_rnmo", "rider"].fields[1][1].remote_field.model)
+           self.assertTableExists("test_rnmo_pony")
+           self.assertTableNotExists("test_rnmo_horse")
+           if connection.features.supports_foreign_keys:
+               self.assertFKExists("test_rnmo_rider", ["pony_id"], ("test_rnmo_pony", "id"))
+               self.assertFKNotExists("test_rnmo_rider", ["pony_id"], ("test_rnmo_horse", "id"))
+           # And deconstruction
+           definition = operation.deconstruct()
+           self.assertEqual(definition[0], "RenameModel")
+           self.assertEqual(definition[1], [])
+           self.assertEqual(definition[2], {'old_name': "Pony", 'new_name': "Horse"})
+   
+       def test_rename_model_state_forwards(self):
+           """
+           RenameModel operations shouldn't trigger the caching of rendered apps
+           on state without prior apps.
+           """
+           state = ProjectState()
+           state.add_model(ModelState('migrations', 'Foo', []))
+           operation = migrations.RenameModel('Foo', 'Bar')
+           operation.state_forwards('migrations', state)
+           self.assertNotIn('apps', state.__dict__)
+           self.assertNotIn(('migrations', 'foo'), state.models)
+           self.assertIn(('migrations', 'bar'), state.models)
+           # Now with apps cached.
+           apps = state.apps
+           operation = migrations.RenameModel('Bar', 'Foo')
+           operation.state_forwards('migrations', state)
+2. [score=91] OperationTests.test_rename_model
+   tests/migrations/test_operations.py:651
+           # Test the database alteration
+           self.assertTableExists('test_dlmtimo_pony')
+           self.assertTableExists('test_dlmtimo_shetlandpony')
+           self.assertColumnExists('test_dlmtimo_shetlandpony', 'pony_ptr_id')
+           with connection.schema_editor() as editor:
+               operation.database_forwards('test_dlmtimo', editor, project_state, new_state)
+           self.assertTableExists('test_dlmtimo_pony')
+           self.assertTableNotExists('test_dlmtimo_shetlandpony')
+           # And test reversal
+           with connection.schema_editor() as editor:
+               operation.database_backwards('test_dlmtimo', editor, new_state, project_state)
+           self.assertTableExists('test_dlmtimo_pony')
+           self.assertTableExists('test_dlmtimo_shetlandpony')
+           self.assertColumnExists('test_dlmtimo_shetlandpony', 'pony_ptr_id')
+   
+       def test_rename_model(self):
+           """
+           Tests the RenameModel operation.
+           """
+           project_state = self.set_up_test_model("test_rnmo", related_model=True)
+           # Test the state alteration
+           operation = migrations.RenameModel("Pony", "Horse")
+           self.assertEqual(operation.describe(), "Rename model Pony to Horse")
+           # Test initial state and database
+           self.assertIn(("test_rnmo", "pony"), project_state.models)
+           self.assertNotIn(("test_rnmo", "horse"), project_state.models)
+           self.assertTableExists("test_rnmo_pony")
+           self.assertTableNotExists("test_rnmo_horse")
+           if connection.features.supports_foreign_keys:
+               self.assertFKExists("test_rnmo_rider", ["pony_id"], ("test_rnmo_pony", "id"))
+               self.assertFKNotExists("test_rnmo_rider", ["pony_id"], ("test_rnmo_horse", "id"))
+3. [score=88] OperationTests.test_rename_model_with_self_referential_fk
+   tests/migrations/test_operations.py:718
+           state = ProjectState()
+           state.add_model(ModelState('migrations', 'Foo', []))
+           operation = migrations.RenameModel('Foo', 'Bar')
+           operation.state_forwards('migrations', state)
+           self.assertNotIn('apps', state.__dict__)
+           self.assertNotIn(('migrations', 'foo'), state.models)
+           self.assertIn(('migrations', 'bar'), state.models)
+           # Now with apps cached.
+           apps = state.apps
+           operation = migrations.RenameModel('Bar', 'Foo')
+           operation.state_forwards('migrations', state)
+           self.assertIs(state.apps, apps)
+           self.assertNotIn(('migrations', 'bar'), state.models)
+           self.assertIn(('migrations', 'foo'), state.models)
+   
+       def test_rename_model_with_self_referential_fk(self):
+           """
+           Tests the RenameModel operation on model with self referential FK.
+           """
+           project_state = self.set_up_test_model("test_rmwsrf", related_model=True)
+           # Test the state alteration
+           operation = migrations.RenameModel("Rider", "HorseRider")
+           self.assertEqual(operation.describe(), "Rename model Rider to HorseRider")
+           new_state = project_state.clone()
+           operation.state_forwards("test_rmwsrf", new_state)
+           self.assertNotIn(("test_rmwsrf", "rider"), new_state.models)
+           self.assertIn(("test_rmwsrf", "horserider"), new_state.models)
+           # Remember, RenameModel also repoints all incoming FKs and M2Ms
+           self.assertEqual(
+               'self',
+               new_state.models["test_rmwsrf", "horserider"].fields[2][1].remote_field.model
+4. [score=86] OperationTests.test_rename_model_with_superclass_fk
+   tests/migrations/test_operations.py:760
+               operation.database_forwards("test_rmwsrf", editor, project_state, new_state)
+           self.assertTableNotExists("test_rmwsrf_rider")
+           self.assertTableExists("test_rmwsrf_horserider")
+           if connection.features.supports_foreign_keys:
+               self.assertFKNotExists("test_rmwsrf_horserider", ["friend_id"], ("test_rmwsrf_rider", "id"))
+               self.assertFKExists("test_rmwsrf_horserider", ["friend_id"], ("test_rmwsrf_horserider", "id"))
+           # And test reversal
+           with connection.schema_editor(atomic=atomic_rename) as editor:
+               operation.database_backwards("test_rmwsrf", editor, new_state, project_state)
+           self.assertTableExists("test_rmwsrf_rider")
+           self.assertTableNotExists("test_rmwsrf_horserider")
+           if connection.features.supports_foreign_keys:
+               self.assertFKExists("test_rmwsrf_rider", ["friend_id"], ("test_rmwsrf_rider", "id"))
+               self.assertFKNotExists("test_rmwsrf_rider", ["friend_id"], ("test_rmwsrf_horserider", "id"))
+   
+       def test_rename_model_with_superclass_fk(self):
+           """
+           Tests the RenameModel operation on a model which has a superclass that
+           has a foreign key.
+           """
+           project_state = self.set_up_test_model("test_rmwsc", related_model=True, mti_model=True)
+           # Test the state alteration
+           operation = migrations.RenameModel("ShetlandPony", "LittleHorse")
+           self.assertEqual(operation.describe(), "Rename model ShetlandPony to LittleHorse")
+           new_state = project_state.clone()
+           operation.state_forwards("test_rmwsc", new_state)
+           self.assertNotIn(("test_rmwsc", "shetlandpony"), new_state.models)
+           self.assertIn(("test_rmwsc", "littlehorse"), new_state.models)
+           # RenameModel shouldn't repoint the superclass's relations, only local ones
+           self.assertEqual(
+               project_state.models["test_rmwsc", "rider"].fields[1][1].remote_field.model,
+5. [score=83] OperationTests.test_rename_model_with_self_referential_m2m
+   tests/migrations/test_operations.py:795
+           self.assertTableNotExists("test_rmwsc_littlehorse")
+           if connection.features.supports_foreign_keys:
+               # and the foreign key on rider points to pony, not shetland pony
+               self.assertFKExists("test_rmwsc_rider", ["pony_id"], ("test_rmwsc_pony", "id"))
+               self.assertFKNotExists("test_rmwsc_rider", ["pony_id"], ("test_rmwsc_shetlandpony", "id"))
+           with connection.schema_editor(atomic=connection.features.supports_atomic_references_rename) as editor:
+               operation.database_forwards("test_rmwsc", editor, project_state, new_state)
+           # Now we have a little horse table, not shetland pony
+           self.assertTableNotExists("test_rmwsc_shetlandpony")
+           self.assertTableExists("test_rmwsc_littlehorse")
+           if connection.features.supports_foreign_keys:
+               # but the Foreign keys still point at pony, not little horse
+               self.assertFKExists("test_rmwsc_rider", ["pony_id"], ("test_rmwsc_pony", "id"))
+               self.assertFKNotExists("test_rmwsc_rider", ["pony_id"], ("test_rmwsc_littlehorse", "id"))
+   
+       def test_rename_model_with_self_referential_m2m(self):
+           app_label = "test_rename_model_with_self_referential_m2m"
+   
+           project_state = self.apply_operations(app_label, ProjectState(), operations=[
+               migrations.CreateModel("ReflexivePony", fields=[
+                   ("id", models.AutoField(primary_key=True)),
+                   ("ponies", models.ManyToManyField("self")),
+               ]),
+           ])
+           project_state = self.apply_operations(app_label, project_state, operations=[
+               migrations.RenameModel("ReflexivePony", "ReflexivePony2"),
+           ], atomic=connection.features.supports_atomic_references_rename)
+           Pony = project_state.apps.get_model(app_label, "ReflexivePony2")
+           pony = Pony.objects.create()
+           pony.ponies.add(pony)
+   
+
+21 more candidates cached. Call `more_symbols(name="RenameModel")` for the next batch.
+[symbol-locator] [scorer] usage pid=787119 calls=2 p=19916 c=114
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 02:39:37 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'content_type.save', 'context': 'django.contrib.contenttypes.management __init__.py RenameContentType _rename save update_fields using db', 'kind_filter': [12, 6], 'top_k': 5}))
+```
+2026-08-28 02:39:37 auto_search_main.py INFO OBSERVATION:
+No symbols named `content_type.save` found in workspace. Try a partial match or check spelling.
+
+2026-08-28 02:39:37 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:40:24 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:40:24 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:40:24 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 02:40:24 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['django/contrib/contenttypes/management/__init__.py:RenameContentType', 'django/db/migrations/operations/models.py:RenameModel']}))
+```
+2026-08-28 02:40:24 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `django/contrib/contenttypes/management/__init__.py:RenameContentType`...
+### Search Result:
+Found class `django/contrib/contenttypes/management/__init__.py:RenameContentType`.
+Source: Exact match found for entity name `django/contrib/contenttypes/management/__init__.py:RenameContentType`.
+```
+ 6 | class RenameContentType(migrations.RunPython):
+ 7 |     def __init__(self, app_label, old_model, new_model):
+ 8 |         self.app_label = app_label
+ 9 |         self.old_model = old_model
+10 |         self.new_model = new_model
+11 |         super().__init__(self.rename_forward, self.rename_backward)
+12 | 
+13 |     def _rename(self, apps, schema_editor, old_model, new_model):
+14 |         ContentType = apps.get_model('contenttypes', 'ContentType')
+15 |         db = schema_editor.connection.alias
+16 |         if not router.allow_migrate_model(db, ContentType):
+17 |             return
+18 | 
+19 |         try:
+20 |             content_type = ContentType.objects.db_manager(db).get_by_natural_key(self.app_label, old_model)
+21 |         except ContentType.DoesNotExist:
+22 |             pass
+23 |         else:
+24 |             content_type.model = new_model
+25 |             try:
+26 |                 with transaction.atomic(using=db):
+27 |                     content_type.save(update_fields={'model'})
+28 |             except IntegrityError:
+29 |                 # Gracefully fallback if a stale content type causes a
+30 |                 # conflict as remove_stale_contenttypes will take care of
+31 |                 # asking the user what should be done next.
+32 |                 content_type.model = old_model
+33 |             else:
+34 |                 # Clear the cache as the `get_by_natual_key()` call will cache
+35 |                 # the renamed ContentType instance by its old model name.
+36 |                 ContentType.objects.clear_cache()
+37 | 
+38 |     def rename_forward(self, apps, schema_editor):
+39 |         self._rename(apps, schema_editor, self.old_model, self.new_model)
+40 | 
+41 |     def rename_backward(self, apps, schema_editor):
+42 |         self._rename(apps, schema_editor, self.new_model, self.old_model)
+```
+
+
+##Searching for entity `django/db/migrations/operations/models.py:RenameModel`...
+### Search Result:
+Found class `django/db/migrations/operations/models.py:RenameModel`.
+Source: Exact match found for entity name `django/db/migrations/operations/models.py:RenameModel`.
+```
+277 | class RenameModel(ModelOperation):
+278 |     """Rename a model."""
+279 | 
+280 |     def __init__(self, old_name, new_name):
+281 |         self.old_name = old_name
+282 |         self.new_name = new_name
+283 |         super().__init__(old_name)
+284 | 
+285 |     @cached_property
+286 |     def old_name_lower(self):
+287 |         return self.old_name.lower()
+288 | 
+289 |     @cached_property
+290 |     def new_name_lower(self):
+291 |         return self.new_name.lower()
+292 | 
+293 |     def deconstruct(self):
+294 |         kwargs = {
+295 |             'old_name': self.old_name,
+296 |             'new_name': self.new_name,
+297 |         }
+298 |         return (
+299 |             self.__class__.__qualname__,
+300 |             [],
+301 |             kwargs
+302 |         )
+303 | 
+304 |     def state_forwards(self, app_label, state):
+305 |         # Add a new model.
+306 |         renamed_model = state.models[app_label, self.old_name_lower].clone()
+307 |         renamed_model.name = self.new_name
+308 |         state.models[app_label, self.new_name_lower] = renamed_model
+309 |         # Repoint all fields pointing to the old model to the new one.
+310 |         old_model_tuple = ModelTuple(app_label, self.old_name_lower)
+311 |         new_remote_model = '%s.%s' % (app_label, self.new_name)
+312 |         to_reload = []
+313 |         for (model_app_label, model_name), model_state in state.models.items():
+314 |             model_changed = False
+315 |             for index, (name, field) in enumerate(model_state.fields):
+316 |                 changed_field = None
+317 |                 remote_field = field.remote_field
+318 |                 if remote_field:
+319 |                     remote_model_tuple = ModelTuple.from_model(
+320 |                         remote_field.model, model_app_label, model_name
+321 |                     )
+322 |                     if remote_model_tuple == old_model_tuple:
+323 |                         changed_field = field.clone()
+324 |                         changed_field.remote_field.model = new_remote_model
+325 |                     through_model = getattr(remote_field, 'through', None)
+326 |                     if through_model:
+327 |                         through_model_tuple = ModelTuple.from_model(
+328 |                             through_model, model_app_label, model_name
+329 |                         )
+330 |                         if through_model_tuple == old_model_tuple:
+331 |                             if changed_field is None:
+332 |                                 changed_field = field.clone()
+333 |                             changed_field.remote_field.through = new_remote_model
+334 |                 if changed_field:
+335 |                     model_state.fields[index] = name, changed_field
+336 |                     model_changed = True
+337 |             if model_changed:
+338 |                 to_reload.append((model_app_label, model_name))
+339 |         # Reload models related to old model before removing the old model.
+340 |         state.reload_models(to_reload, delay=True)
+341 |         # Remove the old model.
+342 |         state.remove_model(app_label, self.old_name_lower)
+343 |         state.reload_model(app_label, self.new_name_lower, delay=True)
+344 | 
+345 |     def database_forwards(self, app_label, schema_editor, from_state, to_state):
+346 |         new_model = to_state.apps.get_model(app_label, self.new_name)
+347 |         if self.allow_migrate_model(schema_editor.connection.alias, new_model):
+348 |             old_model = from_state.apps.get_model(app_label, self.old_name)
+349 |             # Move the main table
+350 |             schema_editor.alter_db_table(
+351 |                 new_model,
+352 |                 old_model._meta.db_table,
+353 |                 new_model._meta.db_table,
+354 |             )
+355 |             # Alter the fields pointing to us
+356 |             for related_object in old_model._meta.related_objects:
+357 |                 if related_object.related_model == old_model:
+358 |                     model = new_model
+359 |                     related_key = (app_label, self.new_name_lower)
+360 |                 else:
+361 |                     model = related_object.related_model
+362 |                     related_key = (
+363 |                         related_object.related_model._meta.app_label,
+364 |                         related_object.related_model._meta.model_name,
+365 |                     )
+366 |                 to_field = to_state.apps.get_model(
+367 |                     *related_key
+368 |                 )._meta.get_field(related_object.field.name)
+369 |                 schema_editor.alter_field(
+370 |                     model,
+371 |                     related_object.field,
+372 |                     to_field,
+373 |                 )
+374 |             # Rename M2M fields whose name is based on this model's name.
+375 |             fields = zip(old_model._meta.local_many_to_many, new_model._meta.local_many_to_many)
+376 |             for (old_field, new_field) in fields:
+377 |                 # Skip self-referential fields as these are renamed above.
+378 |                 if new_field.model == new_field.related_model or not new_field.remote_field.through._meta.auto_created:
+379 |                     continue
+380 |                 # Rename the M2M table that's based on this model's name.
+381 |                 old_m2m_model = old_field.remote_field.through
+382 |                 new_m2m_model = new_field.remote_field.through
+383 |                 schema_editor.alter_db_table(
+384 |                     new_m2m_model,
+385 |                     old_m2m_model._meta.db_table,
+386 |                     new_m2m_model._meta.db_table,
+387 |                 )
+388 |                 # Rename the column in the M2M table that's based on this
+389 |                 # model's name.
+390 |                 schema_editor.alter_field(
+391 |                     new_m2m_model,
+392 |                     old_m2m_model._meta.get_field(old_model._meta.model_name),
+393 |                     new_m2m_model._meta.get_field(new_model._meta.model_name),
+394 |                 )
+395 | 
+396 |     def database_backwards(self, app_label, schema_editor, from_state, to_state):
+397 |         self.new_name_lower, self.old_name_lower = self.old_name_lower, self.new_name_lower
+398 |         self.new_name, self.old_name = self.old_name, self.new_name
+399 | 
+400 |         self.database_forwards(app_label, schema_editor, from_state, to_state)
+401 | 
+402 |         self.new_name_lower, self.old_name_lower = self.old_name_lower, self.new_name_lower
+403 |         self.new_name, self.old_name = self.old_name, self.new_name
+404 | 
+405 |     def references_model(self, name, app_label=None):
+406 |         return (
+407 |             name.lower() == self.old_name_lower or
+408 |             name.lower() == self.new_name_lower
+409 |         )
+410 | 
+411 |     def describe(self):
+412 |         return "Rename model %s to %s" % (self.old_name, self.new_name)
+413 | 
+414 |     def reduce(self, operation, app_label=None):
+415 |         if (isinstance(operation, RenameModel) and
+416 |                 self.new_name_lower == operation.old_name_lower):
+417 |             return [
+418 |                 RenameModel(
+419 |                     self.old_name,
+420 |                     operation.new_name,
+421 |                 ),
+422 |             ]
+423 |         # Skip `ModelOperation.reduce` as we want to run `references_model`
+424 |         # against self.new_name.
+425 |         return (
+426 |             super(ModelOperation, self).reduce(operation, app_label=app_label) or
+427 |             not operation.references_model(self.new_name, app_label)
+428 |         )
+```
+
+2026-08-28 02:40:24 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'inject_rename_contenttypes_operations', 'context': 'django.contrib.contenttypes.management plan RenameModel contenttypes operation injection database alias using', 'kind_filter': [12], 'top_k': 5}))
+```
+2026-08-28 02:40:25 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:40:27 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:40:27 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:40:27 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `inject_rename_contenttypes_operations`. Showing top 1 by relevance:
+1. [score=96] inject_rename_contenttypes_operations
+   django/contrib/contenttypes/management/__init__.py:45
+                   # conflict as remove_stale_contenttypes will take care of
+                   # asking the user what should be done next.
+                   content_type.model = old_model
+               else:
+                   # Clear the cache as the `get_by_natual_key()` call will cache
+                   # the renamed ContentType instance by its old model name.
+                   ContentType.objects.clear_cache()
+   
+       def rename_forward(self, apps, schema_editor):
+           self._rename(apps, schema_editor, self.old_model, self.new_model)
+   
+       def rename_backward(self, apps, schema_editor):
+           self._rename(apps, schema_editor, self.new_model, self.old_model)
+   
+   
+   def inject_rename_contenttypes_operations(plan=None, apps=global_apps, using=DEFAULT_DB_ALIAS, **kwargs):
+       """
+       Insert a `RenameContentType` operation after every planned `RenameModel`
+       operation.
+       """
+       if plan is None:
+           return
+   
+       # Determine whether or not the ContentType model is available.
+       try:
+           ContentType = apps.get_model('contenttypes', 'ContentType')
+       except LookupError:
+           available = False
+       else:
+           if not router.allow_migrate_model(using, ContentType):
+               return
+[symbol-locator] [scorer] usage pid=787119 calls=3 p=25031 c=121
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 02:40:27 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'database_forwards', 'context': 'RenameModel migration operation database_forwards schema_editor connection alias save using content type', 'kind_filter': [12, 6], 'top_k': 10}))
+```
+2026-08-28 02:40:28 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:40:31 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:40:31 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:40:31 auto_search_main.py INFO OBSERVATION:
+Found 23 candidates for `database_forwards`. Showing top 10 by relevance:
+1. [score=100] RenameModel.database_forwards
+   django/db/migrations/operations/models.py:345
+                           if through_model_tuple == old_model_tuple:
+                               if changed_field is None:
+                                   changed_field = field.clone()
+                               changed_field.remote_field.through = new_remote_model
+                   if changed_field:
+                       model_state.fields[index] = name, changed_field
+                       model_changed = True
+               if model_changed:
+                   to_reload.append((model_app_label, model_name))
+           # Reload models related to old model before removing the old model.
+           state.reload_models(to_reload, delay=True)
+           # Remove the old model.
+           state.remove_model(app_label, self.old_name_lower)
+           state.reload_model(app_label, self.new_name_lower, delay=True)
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           new_model = to_state.apps.get_model(app_label, self.new_name)
+           if self.allow_migrate_model(schema_editor.connection.alias, new_model):
+               old_model = from_state.apps.get_model(app_label, self.old_name)
+               # Move the main table
+               schema_editor.alter_db_table(
+                   new_model,
+                   old_model._meta.db_table,
+                   new_model._meta.db_table,
+               )
+               # Alter the fields pointing to us
+               for related_object in old_model._meta.related_objects:
+                   if related_object.related_model == old_model:
+                       model = new_model
+                       related_key = (app_label, self.new_name_lower)
+                   else:
+2. [score=82] AlterModelTable.database_forwards
+   django/db/migrations/operations/models.py:453
+       def deconstruct(self):
+           kwargs = {
+               'name': self.name,
+               'table': self.table,
+           }
+           return (
+               self.__class__.__qualname__,
+               [],
+               kwargs
+           )
+   
+       def state_forwards(self, app_label, state):
+           state.models[app_label, self.name_lower].options["db_table"] = self.table
+           state.reload_model(app_label, self.name_lower, delay=True)
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           new_model = to_state.apps.get_model(app_label, self.name)
+           if self.allow_migrate_model(schema_editor.connection.alias, new_model):
+               old_model = from_state.apps.get_model(app_label, self.name)
+               schema_editor.alter_db_table(
+                   new_model,
+                   old_model._meta.db_table,
+                   new_model._meta.db_table,
+               )
+               # Rename M2M fields whose name is based on this model's db_table
+               for (old_field, new_field) in zip(old_model._meta.local_many_to_many, new_model._meta.local_many_to_many):
+                   if new_field.remote_field.through._meta.auto_created:
+                       schema_editor.alter_db_table(
+                           new_field.remote_field.through,
+                           old_field.remote_field.through._meta.db_table,
+                           new_field.remote_field.through._meta.db_table,
+3. [score=18] AlterTogetherOptionOperation.database_forwards
+   django/db/migrations/operations/models.py:522
+           kwargs = {
+               'name': self.name,
+               self.option_name: self.option_value,
+           }
+           return (
+               self.__class__.__qualname__,
+               [],
+               kwargs
+           )
+   
+       def state_forwards(self, app_label, state):
+           model_state = state.models[app_label, self.name_lower]
+           model_state.options[self.option_name] = self.option_value
+           state.reload_model(app_label, self.name_lower, delay=True)
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           new_model = to_state.apps.get_model(app_label, self.name)
+           if self.allow_migrate_model(schema_editor.connection.alias, new_model):
+               old_model = from_state.apps.get_model(app_label, self.name)
+               alter_together = getattr(schema_editor, 'alter_%s' % self.option_name)
+               alter_together(
+                   new_model,
+                   getattr(old_model._meta, self.option_name, set()),
+                   getattr(new_model._meta, self.option_name, set()),
+               )
+   
+       def database_backwards(self, app_label, schema_editor, from_state, to_state):
+           return self.database_forwards(app_label, schema_editor, from_state, to_state)
+   
+       def references_field(self, model_name, name, app_label=None):
+           return (
+4. [score=14] RenameField.database_forwards
+   django/db/migrations/operations/fields.py:357
+                   if remote_field:
+                       remote_model_tuple = self._get_model_tuple(
+                           remote_field.model, model_app_label, model_name
+                       )
+                       if remote_model_tuple == model_tuple:
+                           if getattr(remote_field, 'field_name', None) == self.old_name:
+                               remote_field.field_name = self.new_name
+                           to_fields = getattr(field, 'to_fields', None)
+                           if to_fields:
+                               field.to_fields = tuple([
+                                   self.new_name if to_field_name == self.old_name else to_field_name
+                                   for to_field_name in to_fields
+                               ])
+           state.reload_model(app_label, self.model_name_lower, delay=delay)
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           to_model = to_state.apps.get_model(app_label, self.model_name)
+           if self.allow_migrate_model(schema_editor.connection.alias, to_model):
+               from_model = from_state.apps.get_model(app_label, self.model_name)
+               schema_editor.alter_field(
+                   from_model,
+                   from_model._meta.get_field(self.old_name),
+                   to_model._meta.get_field(self.new_name),
+               )
+   
+       def database_backwards(self, app_label, schema_editor, from_state, to_state):
+           to_model = to_state.apps.get_model(app_label, self.model_name)
+           if self.allow_migrate_model(schema_editor.connection.alias, to_model):
+               from_model = from_state.apps.get_model(app_label, self.model_name)
+               schema_editor.alter_field(
+                   from_model,
+5. [score=12] AlterOrderWithRespectTo.database_forwards
+   django/db/migrations/operations/models.py:596
+           kwargs = {
+               'name': self.name,
+               'order_with_respect_to': self.order_with_respect_to,
+           }
+           return (
+               self.__class__.__qualname__,
+               [],
+               kwargs
+           )
+   
+       def state_forwards(self, app_label, state):
+           model_state = state.models[app_label, self.name_lower]
+           model_state.options['order_with_respect_to'] = self.order_with_respect_to
+           state.reload_model(app_label, self.name_lower, delay=True)
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           to_model = to_state.apps.get_model(app_label, self.name)
+           if self.allow_migrate_model(schema_editor.connection.alias, to_model):
+               from_model = from_state.apps.get_model(app_label, self.name)
+               # Remove a field if we need to
+               if from_model._meta.order_with_respect_to and not to_model._meta.order_with_respect_to:
+                   schema_editor.remove_field(from_model, from_model._meta.get_field("_order"))
+               # Add a field if we need to (altering the column is untouched as
+               # it's likely a rename)
+               elif to_model._meta.order_with_respect_to and not from_model._meta.order_with_respect_to:
+                   field = to_model._meta.get_field("_order")
+                   if not field.has_default():
+                       field.default = 0
+                   schema_editor.add_field(
+                       from_model,
+                       field,
+6. [score=8] AlterField.database_forwards
+   django/db/migrations/operations/fields.py:241
+           state.models[app_label, self.model_name_lower].fields = [
+               (n, field if n == self.name else f)
+               for n, f in
+               state.models[app_label, self.model_name_lower].fields
+           ]
+           # TODO: investigate if old relational fields must be reloaded or if it's
+           # sufficient if the new field is (#27737).
+           # Delay rendering of relationships if it's not a relational field and
+           # not referenced by a foreign key.
+           delay = (
+               not field.is_relation and
+               not is_referenced_by_foreign_key(state, self.model_name_lower, self.field, self.name)
+           )
+           state.reload_model(app_label, self.model_name_lower, delay=delay)
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           to_model = to_state.apps.get_model(app_label, self.model_name)
+           if self.allow_migrate_model(schema_editor.connection.alias, to_model):
+               from_model = from_state.apps.get_model(app_label, self.model_name)
+               from_field = from_model._meta.get_field(self.name)
+               to_field = to_model._meta.get_field(self.name)
+               if not self.preserve_default:
+                   to_field.default = self.field.default
+               schema_editor.alter_field(from_model, from_field, to_field)
+               if not self.preserve_default:
+                   to_field.default = NOT_PROVIDED
+   
+       def database_backwards(self, app_label, schema_editor, from_state, to_state):
+           self.database_forwards(app_label, schema_editor, from_state, to_state)
+   
+       def describe(self):
+7. [score=3] CreateModel.database_forwards
+   django/db/migrations/operations/models.py:89
+               self.__class__.__qualname__,
+               [],
+               kwargs
+           )
+   
+       def state_forwards(self, app_label, state):
+           state.add_model(ModelState(
+               app_label,
+               self.name,
+               list(self.fields),
+               dict(self.options),
+               tuple(self.bases),
+               list(self.managers),
+           ))
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           model = to_state.apps.get_model(app_label, self.name)
+           if self.allow_migrate_model(schema_editor.connection.alias, model):
+               schema_editor.create_model(model)
+   
+       def database_backwards(self, app_label, schema_editor, from_state, to_state):
+           model = from_state.apps.get_model(app_label, self.name)
+           if self.allow_migrate_model(schema_editor.connection.alias, model):
+               schema_editor.delete_model(model)
+   
+       def describe(self):
+           return "Create %smodel %s" % ("proxy " if self.options.get("proxy", False) else "", self.name)
+   
+       def references_model(self, name, app_label=None):
+           name_lower = name.lower()
+           if name_lower == self.name_lower:
+8. [score=3] DeleteModel.database_forwards
+   django/db/migrations/operations/models.py:258
+       """Drop a model's table."""
+   
+       def deconstruct(self):
+           kwargs = {
+               'name': self.name,
+           }
+           return (
+               self.__class__.__qualname__,
+               [],
+               kwargs
+           )
+   
+       def state_forwards(self, app_label, state):
+           state.remove_model(app_label, self.name_lower)
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           model = from_state.apps.get_model(app_label, self.name)
+           if self.allow_migrate_model(schema_editor.connection.alias, model):
+               schema_editor.delete_model(model)
+   
+       def database_backwards(self, app_label, schema_editor, from_state, to_state):
+           model = to_state.apps.get_model(app_label, self.name)
+           if self.allow_migrate_model(schema_editor.connection.alias, model):
+               schema_editor.create_model(model)
+   
+       def references_model(self, name, app_label=None):
+           # The deleted model could be referencing the specified model through
+           # related fields.
+           return True
+   
+       def describe(self):
+9. [score=2] Operation.database_forwards
+   django/db/migrations/operations/base.py:62
+           arguments.
+           """
+           return (
+               self.__class__.__name__,
+               self._constructor_args[0],
+               self._constructor_args[1],
+           )
+   
+       def state_forwards(self, app_label, state):
+           """
+           Take the state from the previous migration, and mutate it
+           so that it matches what this migration would perform.
+           """
+           raise NotImplementedError('subclasses of Operation must provide a state_forwards() method')
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           """
+           Perform the mutation on the database schema in the normal
+           (forwards) direction.
+           """
+           raise NotImplementedError('subclasses of Operation must provide a database_forwards() method')
+   
+       def database_backwards(self, app_label, schema_editor, from_state, to_state):
+           """
+           Perform the mutation on the database schema in the reverse
+           direction - e.g. if this were CreateModel, it would in fact
+           drop the model's table.
+           """
+           raise NotImplementedError('subclasses of Operation must provide a database_backwards() method')
+   
+       def describe(self):
+10. [score=2] AddIndex.database_forwards
+   django/db/migrations/operations/models.py:741
+   
+       def __init__(self, model_name, index):
+           self.model_name = model_name
+           if not index.name:
+               raise ValueError(
+                   "Indexes passed to AddIndex operations require a name "
+                   "argument. %r doesn't have one." % index
+               )
+           self.index = index
+   
+       def state_forwards(self, app_label, state):
+           model_state = state.models[app_label, self.model_name_lower]
+           model_state.options[self.option_name] = [*model_state.options[self.option_name], self.index.clone()]
+           state.reload_model(app_label, self.model_name_lower, delay=True)
+   
+       def database_forwards(self, app_label, schema_editor, from_state, to_state):
+           model = to_state.apps.get_model(app_label, self.model_name)
+           if self.allow_migrate_model(schema_editor.connection.alias, model):
+               schema_editor.add_index(model, self.index)
+   
+       def database_backwards(self, app_label, schema_editor, from_state, to_state):
+           model = from_state.apps.get_model(app_label, self.model_name)
+           if self.allow_migrate_model(schema_editor.connection.alias, model):
+               schema_editor.remove_index(model, self.index)
+   
+       def deconstruct(self):
+           kwargs = {
+               'model_name': self.model_name,
+               'index': self.index,
+           }
+           return (
+
+13 more candidates cached. Call `more_symbols(name="database_forwards")` for the next batch.
+[symbol-locator] [scorer] usage pid=787119 calls=4 p=37534 c=216
+[symbol-locator] [scorer] parsed 23/23 scores from LLM
+
+2026-08-28 02:40:31 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:41:25 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:41:25 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:41:25 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 02:41:25 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'test_rename_model', 'context': 'tests migrations rename model contenttypes inject rename content type database alias', 'kind_filter': [12], 'top_k': 10}))
+```
+2026-08-28 02:41:25 auto_search_main.py INFO OBSERVATION:
+No `test_rename_model` matches the kind_filter. Try without it.
+
+2026-08-28 02:41:25 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'contenttypes', 'context': 'tests migration rename content type contenttypes operation', 'kind_filter': [12, 6, 5], 'top_k': 10}))
+```
+2026-08-28 02:41:26 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:41:36 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:41:36 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:41:36 auto_search_main.py INFO OBSERVATION:
+Found 23 candidates for `contenttypes`. Showing top 10 by relevance:
+1. [score=98] ContentTypeOperationsTests
+   tests/contenttypes_tests/test_operations.py:16
+   from django.apps.registry import apps
+   from django.conf import settings
+   from django.contrib.contenttypes import management as contenttypes_management
+   from django.contrib.contenttypes.models import ContentType
+   from django.core.management import call_command
+   from django.db import migrations, models
+   from django.test import TransactionTestCase, override_settings
+   
+   
+   @override_settings(
+       MIGRATION_MODULES=dict(
+           settings.MIGRATION_MODULES,
+           contenttypes_tests='contenttypes_tests.operations_migrations',
+       ),
+   )
+   class ContentTypeOperationsTests(TransactionTestCase):
+       available_apps = [
+           'contenttypes_tests',
+           'django.contrib.contenttypes',
+       ]
+   
+       def setUp(self):
+           app_config = apps.get_app_config('contenttypes_tests')
+           models.signals.post_migrate.connect(self.assertOperationsInjected, sender=app_config)
+   
+       def tearDown(self):
+           app_config = apps.get_app_config('contenttypes_tests')
+           models.signals.post_migrate.disconnect(self.assertOperationsInjected, sender=app_config)
+   
+       def assertOperationsInjected(self, plan, **kwargs):
+           for migration, _backward in plan:
+2. [score=97] get_contenttypes_and_models
+   django/contrib/contenttypes/management/__init__.py:87
+                   continue
+           # The ContentType model is not available yet.
+           if not available:
+               continue
+           inserts = []
+           for index, operation in enumerate(migration.operations):
+               if isinstance(operation, migrations.RenameModel):
+                   operation = RenameContentType(
+                       migration.app_label, operation.old_name_lower, operation.new_name_lower
+                   )
+                   inserts.append((index + 1, operation))
+           for inserted, (index, operation) in enumerate(inserts):
+               migration.operations.insert(inserted + index, operation)
+   
+   
+   def get_contenttypes_and_models(app_config, using, ContentType):
+       if not router.allow_migrate_model(using, ContentType):
+           return None, None
+   
+       ContentType.objects.clear_cache()
+   
+       content_types = {
+           ct.model: ct
+           for ct in ContentType.objects.using(using).filter(app_label=app_config.label)
+       }
+       app_models = {
+           model._meta.model_name: model
+           for model in app_config.get_models()
+       }
+       return content_types, app_models
+   
+3. [score=96] ContentTypesConfig
+   django/contrib/contenttypes/apps.py:14
+   from django.apps import AppConfig
+   from django.contrib.contenttypes.checks import (
+       check_generic_foreign_keys, check_model_name_lengths,
+   )
+   from django.core import checks
+   from django.db.models.signals import post_migrate, pre_migrate
+   from django.utils.translation import gettext_lazy as _
+   
+   from .management import (
+       create_contenttypes, inject_rename_contenttypes_operations,
+   )
+   
+   
+   class ContentTypesConfig(AppConfig):
+       name = 'django.contrib.contenttypes'
+       verbose_name = _("Content Types")
+   
+       def ready(self):
+           pre_migrate.connect(inject_rename_contenttypes_operations, sender=self)
+           post_migrate.connect(create_contenttypes)
+           checks.register(check_generic_foreign_keys, checks.Tags.models)
+           checks.register(check_model_name_lengths, checks.Tags.models)
+   
+4. [score=94] inject_rename_contenttypes_operations
+   django/contrib/contenttypes/management/__init__.py:45
+                   # conflict as remove_stale_contenttypes will take care of
+                   # asking the user what should be done next.
+                   content_type.model = old_model
+               else:
+                   # Clear the cache as the `get_by_natual_key()` call will cache
+                   # the renamed ContentType instance by its old model name.
+                   ContentType.objects.clear_cache()
+   
+       def rename_forward(self, apps, schema_editor):
+           self._rename(apps, schema_editor, self.old_model, self.new_model)
+   
+       def rename_backward(self, apps, schema_editor):
+           self._rename(apps, schema_editor, self.new_model, self.old_model)
+   
+   
+   def inject_rename_contenttypes_operations(plan=None, apps=global_apps, using=DEFAULT_DB_ALIAS, **kwargs):
+       """
+       Insert a `RenameContentType` operation after every planned `RenameModel`
+       operation.
+       """
+       if plan is None:
+           return
+   
+       # Determine whether or not the ContentType model is available.
+       try:
+           ContentType = apps.get_model('contenttypes', 'ContentType')
+       except LookupError:
+           available = False
+       else:
+           if not router.allow_migrate_model(using, ContentType):
+               return
+5. [score=92] create_contenttypes
+   django/contrib/contenttypes/management/__init__.py:104
+           return None, None
+   
+       ContentType.objects.clear_cache()
+   
+       content_types = {
+           ct.model: ct
+           for ct in ContentType.objects.using(using).filter(app_label=app_config.label)
+       }
+       app_models = {
+           model._meta.model_name: model
+           for model in app_config.get_models()
+       }
+       return content_types, app_models
+   
+   
+   def create_contenttypes(app_config, verbosity=2, interactive=True, using=DEFAULT_DB_ALIAS, apps=global_apps, **kwargs):
+       """
+       Create content types for models in the given app.
+       """
+       if not app_config.models_module:
+           return
+   
+       app_label = app_config.label
+       try:
+           app_config = apps.get_app_config(app_label)
+           ContentType = apps.get_model('contenttypes', 'ContentType')
+       except LookupError:
+           return
+   
+       content_types, app_models = get_contenttypes_and_models(app_config, using, ContentType)
+   
+6. [score=88] RemoveStaleContentTypesTests
+   tests/contenttypes_tests/test_management.py:14
+   from unittest import mock
+   
+   from django.apps.registry import Apps, apps
+   from django.contrib.contenttypes import management as contenttypes_management
+   from django.contrib.contenttypes.models import ContentType
+   from django.core.management import call_command
+   from django.test import TestCase, modify_settings
+   from django.test.utils import captured_stdout
+   
+   from .models import ModelWithNullFKToSite, Post
+   
+   
+   @modify_settings(INSTALLED_APPS={'append': ['no_models']})
+   class RemoveStaleContentTypesTests(TestCase):
+       # Speed up tests by avoiding retrieving ContentTypes for all test apps.
+       available_apps = ['contenttypes_tests', 'no_models', 'django.contrib.contenttypes']
+   
+       def setUp(self):
+           self.before_count = ContentType.objects.count()
+           self.content_type = ContentType.objects.create(app_label='contenttypes_tests', model='Fake')
+           self.app_config = apps.get_app_config('contenttypes_tests')
+   
+       def test_interactive_true_with_dependent_objects(self):
+           """
+           interactive mode (the default) deletes stale content types and warns of
+           dependent objects.
+           """
+           post = Post.objects.create(title='post', content_type=self.content_type)
+           # A related object is needed to show that a custom collector with
+7. [score=84] RemoveStaleContentTypesTests.test_contenttypes_removed_in_apps_without_models
+   tests/contenttypes_tests/test_management.py:68
+   
+       def test_interactive_false(self):
+           """non-interactive mode deletes stale content types."""
+           with captured_stdout() as stdout:
+               call_command('remove_stale_contenttypes', interactive=False, verbosity=2)
+           self.assertIn('Deleting stale content type', stdout.getvalue())
+           self.assertEqual(ContentType.objects.count(), self.before_count)
+   
+       def test_unavailable_content_type_model(self):
+           """A ContentType isn't created if the model isn't available."""
+           apps = Apps()
+           with self.assertNumQueries(0):
+               contenttypes_management.create_contenttypes(self.app_config, interactive=False, verbosity=0, apps=apps)
+           self.assertEqual(ContentType.objects.count(), self.before_count + 1)
+   
+       def test_contenttypes_removed_in_apps_without_models(self):
+           ContentType.objects.create(app_label='no_models', model='Fake')
+           with mock.patch('builtins.input', return_value='yes'), captured_stdout() as stdout:
+               call_command('remove_stale_contenttypes', verbosity=2)
+           self.assertIn("Deleting stale content type 'no_models | Fake'", stdout.getvalue())
+           self.assertEqual(ContentType.objects.count(), self.before_count)
+   
+8. [score=61] CreatePermissionsTests.test_create_permissions_checks_contenttypes_created
+   tests/auth_tests/test_management.py:978
+   
+       def test_unavailable_models(self):
+           """
+           #24075 - Permissions shouldn't be created or deleted if the ContentType
+           or Permission models aren't available.
+           """
+           state = migrations.state.ProjectState()
+           # Unavailable contenttypes.ContentType
+           with self.assertNumQueries(0):
+               create_permissions(self.app_config, verbosity=0, apps=state.apps)
+           # Unavailable auth.Permission
+           state = migrations.state.ProjectState(real_apps=['contenttypes'])
+           with self.assertNumQueries(0):
+               create_permissions(self.app_config, verbosity=0, apps=state.apps)
+   
+       def test_create_permissions_checks_contenttypes_created(self):
+           """
+           `post_migrate` handler ordering isn't guaranteed. Simulate a case
+           where create_permissions() is called before create_contenttypes().
+           """
+           # Warm the manager cache.
+           ContentType.objects.get_for_model(Group)
+           # Apply a deletion as if e.g. a database 'flush' had been executed.
+           ContentType.objects.filter(app_label='auth', model='group').delete()
+           # This fails with a foreign key constraint without the fix.
+           create_permissions(apps.get_app_config('auth'), interactive=False, verbosity=0)
+   
+       def test_permission_with_proxy_content_type_created(self):
+           """
+           A proxy model's permissions use its own content type rather than the
+           content type of the concrete model.
+9. [score=22] LogEntryTests.test_proxy_model_content_type_is_used_for_log_entries
+   tests/admin_utils/test_logentry.py:219
+           self.assertContains(response, should_contain)
+           should_contain = "Article"
+           self.assertContains(response, should_contain)
+           logentry = LogEntry.objects.get(content_type__model__iexact='article')
+           # If the log entry doesn't have a content type it should still be
+           # possible to view the Recent Actions part (#10275).
+           logentry.content_type = None
+           logentry.save()
+   
+           should_contain = should_contain.encode()
+           counted_presence_before = response.content.count(should_contain)
+           response = self.client.get(reverse('admin:index'))
+           counted_presence_after = response.content.count(should_contain)
+           self.assertEqual(counted_presence_before - 1, counted_presence_after)
+   
+       def test_proxy_model_content_type_is_used_for_log_entries(self):
+           """
+           Log entries for proxy models should have the proxy model's contenttype
+           (#21084).
+           """
+           proxy_content_type = ContentType.objects.get_for_model(ArticleProxy, for_concrete_model=False)
+           post_data = {
+               'site': self.site.pk, 'title': "Foo", 'hist': "Bar",
+               'created_0': '2015-12-25', 'created_1': '00:00',
+           }
+           changelist_url = reverse('admin:admin_utils_articleproxy_changelist')
+   
+           # add
+           proxy_add_url = reverse('admin:admin_utils_articleproxy_add')
+           response = self.client.post(proxy_add_url, post_data)
+           self.assertRedirects(response, changelist_url)
+10. [score=18] CheckContentTypeNosniffTest
+   tests/check_framework/test_security.py:373
+       def test_middleware_not_installed(self):
+           """
+           No error if XFrameOptionsMiddleware isn't in MIDDLEWARE even if
+           X_FRAME_OPTIONS isn't 'DENY'.
+           """
+           self.assertEqual(self.func(None), [])
+   
+       @override_settings(
+           MIDDLEWARE=["django.middleware.clickjacking.XFrameOptionsMiddleware"],
+           X_FRAME_OPTIONS='DENY',
+       )
+       def test_xframe_deny(self):
+           self.assertEqual(self.func(None), [])
+   
+   
+   class CheckContentTypeNosniffTest(SimpleTestCase):
+       @property
+       def func(self):
+           from django.core.checks.security.base import check_content_type_nosniff
+           return check_content_type_nosniff
+   
+       @override_settings(
+           MIDDLEWARE=["django.middleware.security.SecurityMiddleware"],
+           SECURE_CONTENT_TYPE_NOSNIFF=False,
+       )
+       def test_no_content_type_nosniff(self):
+           """
+           Warn if SECURE_CONTENT_TYPE_NOSNIFF isn't True.
+           """
+           self.assertEqual(self.func(None), [base.W006])
+   
+
+13 more candidates cached. Call `more_symbols(name="contenttypes")` for the next batch.
+[symbol-locator] [scorer] usage pid=787119 calls=5 p=49557 c=311
+[symbol-locator] [scorer] parsed 23/23 scores from LLM
+
+2026-08-28 02:41:36 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'run_before_migrations', 'context': 'contenttypes management inject rename contenttypes operations tests', 'kind_filter': [12, 6], 'top_k': 10}))
+```
+2026-08-28 02:41:36 auto_search_main.py INFO OBSERVATION:
+No symbols named `run_before_migrations` found in workspace. Try a partial match or check spelling.
+
+2026-08-28 02:41:36 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:42:30 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:42:30 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:42:30 auto_search_main.py INFO agent response received content_present=False tool_calls=1
+2026-08-28 02:42:30 auto_search_main.py INFO ===============
+2026-08-28 02:42:30 auto_search_main.py INFO Final response generated content_length=327
+2026-08-28 02:42:30 auto_search_main.py INFO ==== localizing django__django-11066 succeed, process multiple loc outputs ====
+2026-08-28 02:42:31 cost_analysis.py INFO input_tokens=53847, output_tokens=651, cost=0.14
+2026-08-28 02:42:31 auto_search_main.py INFO Total time: 7.1858 min

@@ -1,0 +1,45 @@
+--- /data/workspace/symbol-locator-repair-20260826-083933/source_copy/source_copy/SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py	2026-08-26 09:04:59.608625435 +0000
++++ /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_study_20260827-152310/source/SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py	2026-08-27 15:33:20.582319356 +0000
+@@ -1,4 +1,5 @@
+ import argparse
++import math
+ import os
+ import json
+ import logging
+@@ -52,6 +53,19 @@
+ # os.environ['LITELLM_LOG'] = 'DEBUG
+ 
+ 
++def _configured_temperature() -> float:
++    raw = os.environ.get('LOCAGENT_TEMPERATURE')
++    if raw is None:
++        return 1.0
++    try:
++        value = float(raw)
++    except (TypeError, ValueError) as exc:
++        raise ValueError('LOCAGENT_TEMPERATURE must be a finite floating-point value') from exc
++    if not math.isfinite(value):
++        raise ValueError('LOCAGENT_TEMPERATURE must be a finite floating-point value')
++    return value
++
++
+ def filter_dataset(dataset, filter_column: str, used_list: str):
+     file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.toml')
+     if os.path.exists(file_path):
+@@ -480,7 +494,7 @@
+                             'model_name': args.model,
+                             'messages': messages,
+                             'fake_user_msg': auto_search.FAKE_USER_MSG_FOR_LOC,
+-                            'temp': 1,
++                            'temp': args.locagent_temperature,
+                             'tools': tools,
+                             'max_iteration_num': int(os.environ.get('LOCAGENT_MAX_ITER', '20')),
+                             'use_function_calling': args.use_function_calling,
+@@ -760,6 +774,7 @@
+     parser.add_argument("--timeout", type=int, default=900)
+     parser.add_argument("--rerun_empty_location", action="store_true")
+     args = parser.parse_args()
++    args.locagent_temperature = _configured_temperature()
+ 
+     args.output_file = os.path.join(args.output_folder, args.output_file)
+     os.makedirs(args.output_folder, exist_ok=True)

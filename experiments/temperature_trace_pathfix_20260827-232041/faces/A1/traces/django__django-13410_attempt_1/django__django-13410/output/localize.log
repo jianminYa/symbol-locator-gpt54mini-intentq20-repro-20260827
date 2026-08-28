@@ -1,0 +1,3125 @@
+2026-08-28 01:29:31 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 01:29:31 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 01:29:31 auto_search_main.py INFO ============================================================
+2026-08-28 01:29:31 auto_search_main.py INFO ==== rank 0 setup localize django__django-13410 ====
+2026-08-28 01:29:31 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/6d75474c-258c-40a0-b72f-763d617ae714/django_django and checkout commit HEAD
+2026-08-28 01:29:31 git_repo_manager.py INFO Directory 'playground/6d75474c-258c-40a0-b72f-763d617ae714/django_django' was created.
+2026-08-28 01:32:57 repo_ops.py INFO [0] Processed django__django-13410
+2026-08-28 01:32:58 auto_search_main.py INFO ============================================================
+2026-08-28 01:32:58 auto_search_main.py INFO ==== rank 0 begin localizing django__django-13410 ====
+2026-08-28 01:32:58 auto_search_main.py INFO ============================================================
+2026-08-28 01:32:58 auto_search_main.py INFO ==== django__django-13410 Count down: attempt 1 ====
+2026-08-28 01:32:58 auto_search_main.py INFO ==== django__django-13410 start auto search ====
+2026-08-28 01:32:58 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 01:33:20 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 01:33:20 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 01:33:20 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 01:33:20 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['def lock(', 'def unlock(', 'LOCK_NB', 'fcntl.flock'], 'file_path_or_pattern': '**/locks.py'}))
+```
+2026-08-28 01:33:21 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:33:21 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/6d75474c-258c-40a0-b72f-763d617ae714/django_django and checkout commit HEAD
+2026-08-28 01:33:25 epic_split.py WARNING Skipping code block LANG_INFO._ in django/conf/locale/__init__.py as it has 4196 tokens which is more than chunk size 500. Content: {
+    'af': {
+        'bidi': False,
+        'code': 'af',
+        'name': 'Afrikaans',
+        'nam...
+2026-08-28 01:34:43 epic_split.py WARNING Parsing file django/forms/widgets.py took 1.00 seconds.
+2026-08-28 01:34:59 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:00 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:02 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:03 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:05 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:06 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:07 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:08 auto_search_main.py INFO OBSERVATION:
+##Searching for term "def lock("...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+Found class `django/core/files/locks.py:_OFFSET`.
+Source: Retrieved entity using keyword search (bm25).
+```
+50 | class _OFFSET(Structure):
+51 |         _fields_ = [
+52 |             ('Offset', DWORD),
+53 |             ('OffsetHigh', DWORD)]
+```
+
+
+
+##Searching for term "def lock(", "def lock( def unlock( LOCK_NB fcntl.flock"...
+### Search Result:
+Found function `django/core/files/locks.py:lock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+109 | def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+```
+
+
+
+##Searching for term "def lock(", "fcntl.flock", "def lock( def unlock( LOCK_NB fcntl.flock"...
+### Search Result:
+Found file `django/core/files/locks.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/core/files/locks.py` for the full content if needed.
+
+
+
+##Searching for term "def lock(", "def unlock(", "def lock( def unlock( LOCK_NB fcntl.flock"...
+### Search Result:
+Found function `django/core/files/locks.py:unlock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+113 | def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+```
+
+
+
+##Searching for term "def unlock("...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+
+
+##Searching for term "LOCK_NB"...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+Found class `django/utils/functional.py:LazyObject`.
+Source: Retrieved entity using keyword search (bm25).
+```
+245 | class LazyObject:
+246 |     """
+247 |     A wrapper for another class that can be used to delay instantiation of the
+248 |     wrapped class.
+249 | 
+250 |     By subclassing, you have the opportunity to intercept and alter the
+251 |     instantiation. If you don't need to do that, use SimpleLazyObject.
+252 |     """
+253 | 
+254 |     # Avoid infinite recursion when tracing __init__ (#19456).
+255 |     _wrapped = None
+256 | 
+257 |     def __init__(self):
+258 |         # Note: if a subclass overrides __init__(), it will likely need to
+259 |         # override __copy__() and __deepcopy__() as well.
+260 |         self._wrapped = empty
+261 | 
+262 |     __getattr__ = new_method_proxy(getattr)
+263 | 
+264 |     def __setattr__(self, name, value):
+265 |         if name == "_wrapped":
+266 |             # Assign to __dict__ to avoid infinite __setattr__ loops.
+267 |             self.__dict__["_wrapped"] = value
+268 |         else:
+269 |             if self._wrapped is empty:
+270 |                 self._setup()
+271 |             setattr(self._wrapped, name, value)
+272 | 
+273 |     def __delattr__(self, name):
+274 |         if name == "_wrapped":
+275 |             raise TypeError("can't delete _wrapped.")
+276 |         if self._wrapped is empty:
+277 |             self._setup()
+278 |         delattr(self._wrapped, name)
+279 | 
+280 |     def _setup(self):
+281 |         """
+282 |         Must be implemented by subclasses to initialize the wrapped object.
+283 |         """
+284 |         raise NotImplementedError('subclasses of LazyObject must provide a _setup() method')
+285 | 
+286 |     # Because we have messed with __class__ below, we confuse pickle as to what
+287 |     # class we are pickling. We're going to have to initialize the wrapped
+288 |     # object to successfully pickle it, so we might as well just pickle the
+289 |     # wrapped object since they're supposed to act the same way.
+290 |     #
+291 |     # Unfortunately, if we try to simply act like the wrapped object, the ruse
+292 |     # will break down when pickle gets our id(). Thus we end up with pickle
+293 |     # thinking, in effect, that we are a distinct object from the wrapped
+294 |     # object, but with the same __dict__. This can cause problems (see #25389).
+295 |     #
+296 |     # So instead, we define our own __reduce__ method and custom unpickler. We
+297 |     # pickle the wrapped object as the unpickler's argument, so that pickle
+298 |     # will pickle it normally, and then the unpickler simply returns its
+299 |     # argument.
+300 |     def __reduce__(self):
+301 |         if self._wrapped is empty:
+302 |             self._setup()
+303 |         return (unpickle_lazyobject, (self._wrapped,))
+304 | 
+305 |     def __copy__(self):
+306 |         if self._wrapped is empty:
+307 |             # If uninitialized, copy the wrapper. Use type(self), not
+308 |             # self.__class__, because the latter is proxied.
+309 |             return type(self)()
+310 |         else:
+311 |             # If initialized, return a copy of the wrapped object.
+312 |             return copy.copy(self._wrapped)
+313 | 
+314 |     def __deepcopy__(self, memo):
+315 |         if self._wrapped is empty:
+316 |             # We have to use type(self), not self.__class__, because the
+317 |             # latter is proxied.
+318 |             result = type(self)()
+319 |             memo[id(self)] = result
+320 |             return result
+321 |         return copy.deepcopy(self._wrapped, memo)
+322 | 
+323 |     __bytes__ = new_method_proxy(bytes)
+324 |     __str__ = new_method_proxy(str)
+325 |     __bool__ = new_method_proxy(bool)
+326 | 
+327 |     # Introspection support
+328 |     __dir__ = new_method_proxy(dir)
+329 | 
+330 |     # Need to pretend to be the wrapped class, for the sake of objects that
+331 |     # care about this (especially in equality tests)
+332 |     __class__ = property(new_method_proxy(operator.attrgetter("__class__")))
+333 |     __eq__ = new_method_proxy(operator.eq)
+334 |     __lt__ = new_method_proxy(operator.lt)
+335 |     __gt__ = new_method_proxy(operator.gt)
+336 |     __ne__ = new_method_proxy(operator.ne)
+337 |     __hash__ = new_method_proxy(hash)
+338 | 
+339 |     # List/Tuple/Dictionary methods support
+340 |     __getitem__ = new_method_proxy(operator.getitem)
+341 |     __setitem__ = new_method_proxy(operator.setitem)
+342 |     __delitem__ = new_method_proxy(operator.delitem)
+343 |     __iter__ = new_method_proxy(iter)
+344 |     __len__ = new_method_proxy(len)
+345 |     __contains__ = new_method_proxy(operator.contains)
+```
+
+Found class `django/views/i18n.py:JSONCatalog`.
+Source: Retrieved entity using keyword search (bm25).
+```
+306 | class JSONCatalog(JavaScriptCatalog):
+307 |     """
+308 |     Return the selected language catalog as a JSON object.
+309 | 
+310 |     Receive the same parameters as JavaScriptCatalog and return a response
+311 |     with a JSON object of the following format:
+312 | 
+313 |         {
+314 |             "catalog": {
+315 |                 # Translations catalog
+316 |             },
+317 |             "formats": {
+318 |                 # Language formats for date, time, etc.
+319 |             },
+320 |             "plural": '...'  # Expression for plural forms, or null.
+321 |         }
+322 |     """
+323 |     def render_to_response(self, context, **response_kwargs):
+324 |         return JsonResponse(context)
+```
+
+Found function `django/db/models/deletion.py:PROTECT`.
+Source: Retrieved entity using keyword search (bm25).
+```
+32 | def PROTECT(collector, field, sub_objs, using):
+33 |     raise ProtectedError(
+34 |         "Cannot delete some instances of model '%s' because they are "
+35 |         "referenced through a protected foreign key: '%s.%s'" % (
+36 |             field.remote_field.model.__name__, sub_objs[0].__class__.__name__, field.name
+37 |         ),
+38 |         sub_objs
+39 |     )
+```
+
+
+
+##Searching for term "fcntl.flock"...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+Found file `docs/conf.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `docs/conf.py` for the full content if needed.
+
+
+
+##Searching for term "fcntl.flock", "def lock( def unlock( LOCK_NB fcntl.flock"...
+### Search Result:
+Found function `django/core/files/locks.py:_fd`.
+Source: Retrieved entity using keyword search (bm25).
+```
+24 | def _fd(f):
+25 |     """Get a filedescriptor from something which could be a file or an fd."""
+26 |     return f.fileno() if hasattr(f, 'fileno') else f
+```
+
+
+
+##Searching for term "def lock( def unlock( LOCK_NB fcntl.flock"...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+Finding newlines for mmindex:   0%|          | 0.00/11.0M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 11.0M/11.0M [00:00<00:00, 347MB/s]
+
+2026-08-28 01:35:08 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['locks.LOCKS_NB', 'django.core.files.locks', 'LOCK_UN'], 'file_path_or_pattern': '**/*.py'}))
+```
+2026-08-28 01:35:09 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:11 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:12 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:14 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:14 auto_search_main.py INFO OBSERVATION:
+django/core/files/move.py:file_move_safe
+django/core/files/storage.py:FileSystemStorage._save
+django/dispatch/dispatcher.py:Signal._live_receivers
+django/dispatch/dispatcher.py:Signal._remove_receiver
+django/contrib/sessions/backends/file.py:SessionStore.save
+django/db/backends/base/operations.py:BaseDatabaseOperations.force_no_ordering
+django/db/backends/base/operations.py:BaseDatabaseOperations._get_limit_offset_params
+django/db/backends/base/operations.py:BaseDatabaseOperations.limit_offset_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.field_cast_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.for_update_sql
+django/db/models/sql/compiler.py:SQLCompiler.get_select_for_update_of_arguments
+django/db/models/query.py:QuerySet.select_for_update
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.handle
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.is_local_storage
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.log
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.clear_dir
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.delete_file
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.link_file
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.collect
+django/contrib/staticfiles/storage.py:HashedFilesMixin.hashed_name
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.copy_file
+django/core/files/move.py:file_move_safe
+django/core/files/storage.py:FileSystemStorage._save
+django/dispatch/dispatcher.py:Signal._live_receivers
+django/dispatch/dispatcher.py:Signal._remove_receiver
+django/contrib/sessions/backends/file.py:SessionStore.save
+django/db/backends/base/operations.py:BaseDatabaseOperations.force_no_ordering
+django/db/backends/base/operations.py:BaseDatabaseOperations._get_limit_offset_params
+django/db/backends/base/operations.py:BaseDatabaseOperations.limit_offset_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.field_cast_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.for_update_sql
+django/db/models/sql/compiler.py:SQLCompiler.get_select_for_update_of_arguments
+django/db/models/query.py:QuerySet.select_for_update
+##Searching for term "locks.LOCKS_NB"...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+
+
+##Searching for term "locks.LOCKS_NB", "locks.LOCKS_NB LOCK_UN"...
+### Search Result:
+Found class `django/core/files/locks.py:_OFFSET`.
+Source: Retrieved entity using keyword search (bm25).
+```
+50 | class _OFFSET(Structure):
+51 |         _fields_ = [
+52 |             ('Offset', DWORD),
+53 |             ('OffsetHigh', DWORD)]
+```
+
+Found function `django/core/files/locks.py:lock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+109 | def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+```
+
+Found function `django/core/files/locks.py:unlock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+113 | def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+```
+
+Found function `django/core/files/move.py:file_move_safe`.
+Source: Retrieved code content using keyword search (bm25).
+```
+30 | def file_move_safe(old_file_name, new_file_name, chunk_size=1024 * 64, allow_overwrite=False):
+31 |     """
+32 |     Move a file from one location to another in the safest way possible.
+33 | 
+34 |     First, try ``os.rename``, which is simple but will break across filesystems.
+35 |     If that fails, stream manually from one file to another in pure Python.
+36 | 
+37 |     If the destination file exists and ``allow_overwrite`` is ``False``, raise
+38 |     ``FileExistsError``.
+39 |     """
+40 |     # There's no reason to move if we don't have to.
+41 |     if _samefile(old_file_name, new_file_name):
+42 |         return
+43 | 
+44 |     try:
+45 |         if not allow_overwrite and os.access(new_file_name, os.F_OK):
+46 |             raise FileExistsError('Destination file %s exists and allow_overwrite is False.' % new_file_name)
+47 | 
+48 |         os.rename(old_file_name, new_file_name)
+49 |         return
+50 |     except OSError:
+51 |         # OSError happens with os.rename() if moving to another filesystem or
+52 |         # when moving opened files on certain operating systems.
+53 |         pass
+54 | 
+55 |     # first open the old file, so that it won't go away
+56 |     with open(old_file_name, 'rb') as old_file:
+57 |         # now open the new file, not forgetting allow_overwrite
+58 |         fd = os.open(new_file_name, (os.O_WRONLY | os.O_CREAT | getattr(os, 'O_BINARY', 0) |
+59 |                                      (os.O_EXCL if not allow_overwrite else 0)))
+60 |         try:
+61 |             locks.lock(fd, locks.LOCK_EX)
+62 |             current_chunk = None
+63 |             while current_chunk != b'':
+64 |                 current_chunk = old_file.read(chunk_size)
+65 |                 os.write(fd, current_chunk)
+66 |         finally:
+67 |             locks.unlock(fd)
+68 |             os.close(fd)
+69 | 
+70 |     try:
+71 |         copystat(old_file_name, new_file_name)
+72 |     except PermissionError as e:
+73 |         # Certain filesystems (e.g. CIFS) fail to copy the file's metadata if
+74 |         # the type of the destination filesystem isn't the same as the source
+75 |         # filesystem; ignore that.
+76 |         if e.errno != errno.EPERM:
+77 |             raise
+78 | 
+79 |     try:
+80 |         os.remove(old_file_name)
+81 |     except PermissionError as e:
+82 |         # Certain operating systems (Cygwin and Windows)
+83 |         # fail when deleting opened files, ignore it.  (For the
+84 |         # systems where this happens, temporary files will be auto-deleted
+85 |         # on close anyway.)
+86 |         if getattr(e, 'winerror', 0) != 32:
+87 |             raise
+```
+
+Found function `django/core/files/storage.py:FileSystemStorage._save`.
+Source: Retrieved code content using keyword search (bm25).
+```
+233 | def _save(self, name, content):
+234 |         full_path = self.path(name)
+235 | 
+236 |         # Create any intermediate directories that do not exist.
+237 |         directory = os.path.dirname(full_path)
+238 |         try:
+239 |             if self.directory_permissions_mode is not None:
+240 |                 # Set the umask because os.makedirs() doesn't apply the "mode"
+241 |                 # argument to intermediate-level directories.
+242 |                 old_umask = os.umask(0o777 & ~self.directory_permissions_mode)
+243 |                 try:
+244 |                     os.makedirs(directory, self.directory_permissions_mode, exist_ok=True)
+245 |                 finally:
+246 |                     os.umask(old_umask)
+247 |             else:
+248 |                 os.makedirs(directory, exist_ok=True)
+249 |         except FileExistsError:
+250 |             raise FileExistsError('%s exists and is not a directory.' % directory)
+251 | 
+252 |         # There's a potential race condition between get_available_name and
+253 |         # saving the file; it's possible that two threads might return the
+254 |         # same name, at which point all sorts of fun happens. So we need to
+255 |         # try to create the file, but if it already exists we have to go back
+256 |         # to get_available_name() and try again.
+257 | 
+258 |         while True:
+259 |             try:
+260 |                 # This file has a file path that we can move.
+261 |                 if hasattr(content, 'temporary_file_path'):
+262 |                     file_move_safe(content.temporary_file_path(), full_path)
+263 | 
+264 |                 # This is a normal uploadedfile that we can stream.
+265 |                 else:
+266 |                     # The current umask value is masked out by os.open!
+267 |                     fd = os.open(full_path, self.OS_OPEN_FLAGS, 0o666)
+268 |                     _file = None
+269 |                     try:
+270 |                         locks.lock(fd, locks.LOCK_EX)
+271 |                         for chunk in content.chunks():
+272 |                             if _file is None:
+273 |                                 mode = 'wb' if isinstance(chunk, bytes) else 'wt'
+274 |                                 _file = os.fdopen(fd, mode)
+275 |                             _file.write(chunk)
+276 |                     finally:
+277 |                         locks.unlock(fd)
+278 |                         if _file is not None:
+279 |                             _file.close()
+280 |                         else:
+281 |                             os.close(fd)
+282 |             except FileExistsError:
+283 |                 # A new name is needed if the file exists.
+284 |                 name = self.get_available_name(name)
+285 |                 full_path = self.path(name)
+286 |             else:
+287 |                 # OK, the file save worked. Break out of the loop.
+288 |                 break
+289 | 
+290 |         if self.file_permissions_mode is not None:
+291 |             os.chmod(full_path, self.file_permissions_mode)
+292 | 
+293 |         # Store filenames with forward slashes, even on Windows.
+294 |         return str(name).replace('\\', '/')
+```
+
+Found function `django/dispatch/dispatcher.py:Signal._live_receivers`.
+Source: Retrieved code content using keyword search (bm25).
+```
+225 | def _live_receivers(self, sender):
+226 |         """
+227 |         Filter sequence of receivers to get resolved, live receivers.
+228 | 
+229 |         This checks for weak references and resolves them, then returning only
+230 |         live receivers.
+231 |         """
+232 |         receivers = None
+233 |         if self.use_caching and not self._dead_receivers:
+234 |             receivers = self.sender_receivers_cache.get(sender)
+235 |             # We could end up here with NO_RECEIVERS even if we do check this case in
+236 |             # .send() prior to calling _live_receivers() due to concurrent .send() call.
+237 |             if receivers is NO_RECEIVERS:
+238 |                 return []
+239 |         if receivers is None:
+240 |             with self.lock:
+241 |                 self._clear_dead_receivers()
+242 |                 senderkey = _make_id(sender)
+243 |                 receivers = []
+244 |                 for (receiverkey, r_senderkey), receiver in self.receivers:
+245 |                     if r_senderkey == NONE_ID or r_senderkey == senderkey:
+246 |                         receivers.append(receiver)
+247 |                 if self.use_caching:
+248 |                     if not receivers:
+249 |                         self.sender_receivers_cache[sender] = NO_RECEIVERS
+250 |                     else:
+251 |                         # Note, we must cache the weakref versions.
+252 |                         self.sender_receivers_cache[sender] = receivers
+253 |         non_weak_receivers = []
+254 |         for receiver in receivers:
+255 |             if isinstance(receiver, weakref.ReferenceType):
+256 |                 # Dereference the weak reference.
+257 |                 receiver = receiver()
+258 |                 if receiver is not None:
+259 |                     non_weak_receivers.append(receiver)
+260 |             else:
+261 |                 non_weak_receivers.append(receiver)
+262 |         return non_weak_receivers
+```
+
+Found function `django/dispatch/dispatcher.py:Signal._remove_receiver`.
+Source: Retrieved code content using keyword search (bm25).
+```
+264 | def _remove_receiver(self, receiver=None):
+265 |         # Mark that the self.receivers list has dead weakrefs. If so, we will
+266 |         # clean those up in connect, disconnect and _live_receivers while
+267 |         # holding self.lock. Note that doing the cleanup here isn't a good
+268 |         # idea, _remove_receiver() will be called as side effect of garbage
+269 |         # collection, and so the call can happen while we are already holding
+270 |         # self.lock.
+271 |         self._dead_receivers = True
+```
+
+
+
+##Searching for term "locks.LOCKS_NB", "django.core.files.locks", "locks.LOCKS_NB LOCK_UN"...
+### Search Result:
+Found file `django/core/files/locks.py`.
+Source: Match found for entity name `locks`.
+Just show the structure of this file due to response length limitations:
+```
+
+__all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+
+
+def _fd(f):
+...
+
+```
+Hint: Search `django/core/files/locks.py` to get the full content if needed.
+
+
+
+##Searching for term "LOCK_UN"...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+Found class `django/core/files/locks.py:_OFFSET_UNION`.
+Source: Retrieved entity using keyword search (bm25).
+```
+55 | class _OFFSET_UNION(Union):
+56 |         _anonymous_ = ['_offset']
+57 |         _fields_ = [
+58 |             ('_offset', _OFFSET),
+59 |             ('Pointer', PVOID)]
+```
+
+Found class `django/views/i18n.py:JSONCatalog`.
+Source: Retrieved entity using keyword search (bm25).
+```
+306 | class JSONCatalog(JavaScriptCatalog):
+307 |     """
+308 |     Return the selected language catalog as a JSON object.
+309 | 
+310 |     Receive the same parameters as JavaScriptCatalog and return a response
+311 |     with a JSON object of the following format:
+312 | 
+313 |         {
+314 |             "catalog": {
+315 |                 # Translations catalog
+316 |             },
+317 |             "formats": {
+318 |                 # Language formats for date, time, etc.
+319 |             },
+320 |             "plural": '...'  # Expression for plural forms, or null.
+321 |         }
+322 |     """
+323 |     def render_to_response(self, context, **response_kwargs):
+324 |         return JsonResponse(context)
+```
+
+Found function `django/db/models/deletion.py:PROTECT`.
+Source: Retrieved entity using keyword search (bm25).
+```
+32 | def PROTECT(collector, field, sub_objs, using):
+33 |     raise ProtectedError(
+34 |         "Cannot delete some instances of model '%s' because they are "
+35 |         "referenced through a protected foreign key: '%s.%s'" % (
+36 |             field.remote_field.model.__name__, sub_objs[0].__class__.__name__, field.name
+37 |         ),
+38 |         sub_objs
+39 |     )
+```
+
+Found function `django/contrib/staticfiles/management/commands/collectstatic.py:Command.handle`.
+Source: Retrieved code content using keyword search (bm25).
+```
+148 | def handle(self, **options):
+149 |         self.set_options(**options)
+150 |         message = ['\n']
+151 |         if self.dry_run:
+152 |             message.append(
+153 |                 'You have activated the --dry-run option so no files will be modified.\n\n'
+154 |             )
+155 | 
+156 |         message.append(
+157 |             'You have requested to collect static files at the destination\n'
+158 |             'location as specified in your settings'
+159 |         )
+160 | 
+161 |         if self.is_local_storage() and self.storage.location:
+162 |             destination_path = self.storage.location
+163 |             message.append(':\n\n    %s\n\n' % destination_path)
+164 |             should_warn_user = (
+165 |                 self.storage.exists(destination_path) and
+166 |                 any(self.storage.listdir(destination_path))
+167 |             )
+168 |         else:
+169 |             destination_path = None
+170 |             message.append('.\n\n')
+171 |             # Destination files existence not checked; play it safe and warn.
+172 |             should_warn_user = True
+173 | 
+174 |         if self.interactive and should_warn_user:
+175 |             if self.clear:
+176 |                 message.append('This will DELETE ALL FILES in this location!\n')
+177 |             else:
+178 |                 message.append('This will overwrite existing files!\n')
+179 | 
+180 |             message.append(
+181 |                 'Are you sure you want to do this?\n\n'
+182 |                 "Type 'yes' to continue, or 'no' to cancel: "
+183 |             )
+184 |             if input(''.join(message)) != 'yes':
+185 |                 raise CommandError("Collecting static files cancelled.")
+186 | 
+187 |         collected = self.collect()
+188 | 
+189 |         if self.verbosity >= 1:
+190 |             modified_count = len(collected['modified'])
+191 |             unmodified_count = len(collected['unmodified'])
+192 |             post_processed_count = len(collected['post_processed'])
+193 |             return (
+194 |                 "\n%(modified_count)s %(identifier)s %(action)s"
+195 |                 "%(destination)s%(unmodified)s%(post_processed)s."
+196 |             ) % {
+197 |                 'modified_count': modified_count,
+198 |                 'identifier': 'static file' + ('' if modified_count == 1 else 's'),
+199 |                 'action': 'symlinked' if self.symlink else 'copied',
+200 |                 'destination': (" to '%s'" % destination_path if destination_path else ''),
+201 |                 'unmodified': (', %s unmodified' % unmodified_count if collected['unmodified'] else ''),
+202 |                 'post_processed': (collected['post_processed'] and
+203 |                                    ', %s post-processed'
+204 |                                    % post_processed_count or ''),
+205 |             }
+```
+
+Found function `django/contrib/staticfiles/management/commands/collectstatic.py:Command.log`.
+Source: Retrieved code content using keyword search (bm25).
+```
+207 | def log(self, msg, level=2):
+208 |         """
+209 |         Small log helper
+210 |         """
+211 |         if self.verbosity >= level:
+212 |             self.stdout.write(msg)
+```
+
+Found function `django/contrib/staticfiles/management/commands/collectstatic.py:Command.is_local_storage`.
+Source: Retrieved code content using keyword search (bm25).
+```
+214 | def is_local_storage(self):
+215 |         return isinstance(self.storage, FileSystemStorage)
+```
+
+Found function `django/contrib/staticfiles/management/commands/collectstatic.py:Command.clear_dir`.
+Source: Retrieved code content using keyword search (bm25).
+```
+217 | def clear_dir(self, path):
+218 |         """
+219 |         Delete the given relative path using the destination storage backend.
+220 |         """
+221 |         if not self.storage.exists(path):
+222 |             return
+223 | 
+224 |         dirs, files = self.storage.listdir(path)
+225 |         for f in files:
+226 |             fpath = os.path.join(path, f)
+227 |             if self.dry_run:
+228 |                 self.log("Pretending to delete '%s'" % fpath, level=1)
+229 |             else:
+230 |                 self.log("Deleting '%s'" % fpath, level=1)
+231 |                 try:
+232 |                     full_path = self.storage.path(fpath)
+233 |                 except NotImplementedError:
+234 |                     self.storage.delete(fpath)
+235 |                 else:
+236 |                     if not os.path.exists(full_path) and os.path.lexists(full_path):
+237 |                         # Delete broken symlinks
+238 |                         os.unlink(full_path)
+239 |                     else:
+240 |                         self.storage.delete(fpath)
+241 |         for d in dirs:
+242 |             self.clear_dir(os.path.join(path, d))
+```
+
+
+
+##Searching for term "locks.LOCKS_NB LOCK_UN"...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+2026-08-28 01:35:14 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['django/core/files/locks.py']}))
+```
+2026-08-28 01:35:14 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `django/core/files/locks.py`...
+### Search Result:
+Found file `django/core/files/locks.py`.
+Source: Exact match found for entity name `django/core/files/locks.py`.
+```
+  1 | """
+  2 | Portable file locking utilities.
+  3 | 
+  4 | Based partially on an example by Jonathan Feignberg in the Python
+  5 | Cookbook [1] (licensed under the Python Software License) and a ctypes port by
+  6 | Anatoly Techtonik for Roundup [2] (license [3]).
+  7 | 
+  8 | [1] http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/65203
+  9 | [2] https://sourceforge.net/p/roundup/code/ci/default/tree/roundup/backends/portalocker.py
+ 10 | [3] https://sourceforge.net/p/roundup/code/ci/default/tree/COPYING.txt
+ 11 | 
+ 12 | Example Usage::
+ 13 | 
+ 14 |     >>> from django.core.files import locks
+ 15 |     >>> with open('./file', 'wb') as f:
+ 16 |     ...     locks.lock(f, locks.LOCK_EX)
+ 17 |     ...     f.write('Django')
+ 18 | """
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+2026-08-28 01:35:14 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 01:35:20 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 01:35:20 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 01:35:20 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 01:35:20 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['locks.lock(', 'locks.unlock(', 'LOCK_EX'], 'file_path_or_pattern': 'django/core/files/*.py'}))
+```
+2026-08-28 01:35:21 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:23 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:24 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:25 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:27 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:27 auto_search_main.py INFO OBSERVATION:
+django/core/files/move.py:file_move_safe
+django/core/files/storage.py:FileSystemStorage._save
+django/core/files/move.py:file_move_safe
+django/core/files/storage.py:FileSystemStorage._save
+django/core/files/move.py:file_move_safe
+django/core/files/storage.py:FileSystemStorage._save
+django/core/files/move.py:file_move_safe
+django/core/files/storage.py:FileSystemStorage._save
+##Searching for term "locks.lock("...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+Found `django/core/files/move.py:_samefile`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Move a file in the safest way possible::
+ 3 | 
+ 4 |     >>> from django.core.files.move import file_move_safe
+ 5 |     >>> file_move_safe("/tmp/old_file", "/tmp/new_file")
+ 6 | """
+ 7 | 
+ 8 | import errno
+ 9 | import os
+10 | from shutil import copystat
+11 | 
+12 | from django.core.files import locks
+13 | 
+14 | __all__ = ['file_move_safe']
+15 | 
+16 | 
+17 | def _samefile(src, dst):
+18 |     # Macintosh, Unix.
+19 |     if hasattr(os.path, 'samefile'):
+20 |         try:
+21 |             return os.path.samefile(src, dst)
+22 |         except OSError:
+23 |             return False
+24 | 
+25 |     # All other platforms: check for same pathname.
+26 |     return (os.path.normcase(os.path.abspath(src)) ==
+27 |             os.path.normcase(os.path.abspath(dst)))
+```
+
+Found class `django/core/files/locks.py:_OFFSET`.
+Source: Retrieved entity using keyword search (bm25).
+```
+50 | class _OFFSET(Structure):
+51 |         _fields_ = [
+52 |             ('Offset', DWORD),
+53 |             ('OffsetHigh', DWORD)]
+```
+
+
+
+##Searching for term "locks.lock(", "locks.unlock(", "locks.lock( locks.unlock( LOCK_EX"...
+### Search Result:
+Found function `django/core/files/locks.py:lock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+109 | def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+```
+
+Found function `django/core/files/locks.py:unlock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+113 | def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+```
+
+Found file `django/core/files/locks.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/core/files/locks.py` for the full content if needed.
+
+
+
+##Searching for term "locks.lock(", "locks.unlock(", "LOCK_EX", "locks.lock( locks.unlock( LOCK_EX"...
+### Search Result:
+Found function `django/core/files/move.py:file_move_safe`.
+Source: Retrieved code content using keyword search (bm25).
+```
+30 | def file_move_safe(old_file_name, new_file_name, chunk_size=1024 * 64, allow_overwrite=False):
+31 |     """
+32 |     Move a file from one location to another in the safest way possible.
+33 | 
+34 |     First, try ``os.rename``, which is simple but will break across filesystems.
+35 |     If that fails, stream manually from one file to another in pure Python.
+36 | 
+37 |     If the destination file exists and ``allow_overwrite`` is ``False``, raise
+38 |     ``FileExistsError``.
+39 |     """
+40 |     # There's no reason to move if we don't have to.
+41 |     if _samefile(old_file_name, new_file_name):
+42 |         return
+43 | 
+44 |     try:
+45 |         if not allow_overwrite and os.access(new_file_name, os.F_OK):
+46 |             raise FileExistsError('Destination file %s exists and allow_overwrite is False.' % new_file_name)
+47 | 
+48 |         os.rename(old_file_name, new_file_name)
+49 |         return
+50 |     except OSError:
+51 |         # OSError happens with os.rename() if moving to another filesystem or
+52 |         # when moving opened files on certain operating systems.
+53 |         pass
+54 | 
+55 |     # first open the old file, so that it won't go away
+56 |     with open(old_file_name, 'rb') as old_file:
+57 |         # now open the new file, not forgetting allow_overwrite
+58 |         fd = os.open(new_file_name, (os.O_WRONLY | os.O_CREAT | getattr(os, 'O_BINARY', 0) |
+59 |                                      (os.O_EXCL if not allow_overwrite else 0)))
+60 |         try:
+61 |             locks.lock(fd, locks.LOCK_EX)
+62 |             current_chunk = None
+63 |             while current_chunk != b'':
+64 |                 current_chunk = old_file.read(chunk_size)
+65 |                 os.write(fd, current_chunk)
+66 |         finally:
+67 |             locks.unlock(fd)
+68 |             os.close(fd)
+69 | 
+70 |     try:
+71 |         copystat(old_file_name, new_file_name)
+72 |     except PermissionError as e:
+73 |         # Certain filesystems (e.g. CIFS) fail to copy the file's metadata if
+74 |         # the type of the destination filesystem isn't the same as the source
+75 |         # filesystem; ignore that.
+76 |         if e.errno != errno.EPERM:
+77 |             raise
+78 | 
+79 |     try:
+80 |         os.remove(old_file_name)
+81 |     except PermissionError as e:
+82 |         # Certain operating systems (Cygwin and Windows)
+83 |         # fail when deleting opened files, ignore it.  (For the
+84 |         # systems where this happens, temporary files will be auto-deleted
+85 |         # on close anyway.)
+86 |         if getattr(e, 'winerror', 0) != 32:
+87 |             raise
+```
+
+Found function `django/core/files/storage.py:FileSystemStorage._save`.
+Source: Retrieved code content using keyword search (bm25).
+```
+233 | def _save(self, name, content):
+234 |         full_path = self.path(name)
+235 | 
+236 |         # Create any intermediate directories that do not exist.
+237 |         directory = os.path.dirname(full_path)
+238 |         try:
+239 |             if self.directory_permissions_mode is not None:
+240 |                 # Set the umask because os.makedirs() doesn't apply the "mode"
+241 |                 # argument to intermediate-level directories.
+242 |                 old_umask = os.umask(0o777 & ~self.directory_permissions_mode)
+243 |                 try:
+244 |                     os.makedirs(directory, self.directory_permissions_mode, exist_ok=True)
+245 |                 finally:
+246 |                     os.umask(old_umask)
+247 |             else:
+248 |                 os.makedirs(directory, exist_ok=True)
+249 |         except FileExistsError:
+250 |             raise FileExistsError('%s exists and is not a directory.' % directory)
+251 | 
+252 |         # There's a potential race condition between get_available_name and
+253 |         # saving the file; it's possible that two threads might return the
+254 |         # same name, at which point all sorts of fun happens. So we need to
+255 |         # try to create the file, but if it already exists we have to go back
+256 |         # to get_available_name() and try again.
+257 | 
+258 |         while True:
+259 |             try:
+260 |                 # This file has a file path that we can move.
+261 |                 if hasattr(content, 'temporary_file_path'):
+262 |                     file_move_safe(content.temporary_file_path(), full_path)
+263 | 
+264 |                 # This is a normal uploadedfile that we can stream.
+265 |                 else:
+266 |                     # The current umask value is masked out by os.open!
+267 |                     fd = os.open(full_path, self.OS_OPEN_FLAGS, 0o666)
+268 |                     _file = None
+269 |                     try:
+270 |                         locks.lock(fd, locks.LOCK_EX)
+271 |                         for chunk in content.chunks():
+272 |                             if _file is None:
+273 |                                 mode = 'wb' if isinstance(chunk, bytes) else 'wt'
+274 |                                 _file = os.fdopen(fd, mode)
+275 |                             _file.write(chunk)
+276 |                     finally:
+277 |                         locks.unlock(fd)
+278 |                         if _file is not None:
+279 |                             _file.close()
+280 |                         else:
+281 |                             os.close(fd)
+282 |             except FileExistsError:
+283 |                 # A new name is needed if the file exists.
+284 |                 name = self.get_available_name(name)
+285 |                 full_path = self.path(name)
+286 |             else:
+287 |                 # OK, the file save worked. Break out of the loop.
+288 |                 break
+289 | 
+290 |         if self.file_permissions_mode is not None:
+291 |             os.chmod(full_path, self.file_permissions_mode)
+292 | 
+293 |         # Store filenames with forward slashes, even on Windows.
+294 |         return str(name).replace('\\', '/')
+```
+
+
+
+##Searching for term "locks.unlock("...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+Found `django/core/files/move.py:_samefile`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Move a file in the safest way possible::
+ 3 | 
+ 4 |     >>> from django.core.files.move import file_move_safe
+ 5 |     >>> file_move_safe("/tmp/old_file", "/tmp/new_file")
+ 6 | """
+ 7 | 
+ 8 | import errno
+ 9 | import os
+10 | from shutil import copystat
+11 | 
+12 | from django.core.files import locks
+13 | 
+14 | __all__ = ['file_move_safe']
+15 | 
+16 | 
+17 | def _samefile(src, dst):
+18 |     # Macintosh, Unix.
+19 |     if hasattr(os.path, 'samefile'):
+20 |         try:
+21 |             return os.path.samefile(src, dst)
+22 |         except OSError:
+23 |             return False
+24 | 
+25 |     # All other platforms: check for same pathname.
+26 |     return (os.path.normcase(os.path.abspath(src)) ==
+27 |             os.path.normcase(os.path.abspath(dst)))
+```
+
+
+
+##Searching for term "locks.unlock(", "locks.lock( locks.unlock( LOCK_EX"...
+### Search Result:
+Found function `django/core/files/locks.py:_fd`.
+Source: Retrieved entity using keyword search (bm25).
+```
+24 | def _fd(f):
+25 |     """Get a filedescriptor from something which could be a file or an fd."""
+26 |     return f.fileno() if hasattr(f, 'fileno') else f
+```
+
+
+
+##Searching for term "LOCK_EX"...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+Found class `django/core/files/locks.py:_OFFSET_UNION`.
+Source: Retrieved entity using keyword search (bm25).
+```
+55 | class _OFFSET_UNION(Union):
+56 |         _anonymous_ = ['_offset']
+57 |         _fields_ = [
+58 |             ('_offset', _OFFSET),
+59 |             ('Pointer', PVOID)]
+```
+
+Found class `django/db/utils.py:Error`.
+Source: Retrieved entity using keyword search (bm25).
+```
+16 | class Error(Exception):
+17 |     pass
+```
+
+Found file `setup.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `setup.py` for the full content if needed.
+
+
+
+##Searching for term "locks.lock( locks.unlock( LOCK_EX"...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+Found `django/core/files/move.py:_samefile`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Move a file in the safest way possible::
+ 3 | 
+ 4 |     >>> from django.core.files.move import file_move_safe
+ 5 |     >>> file_move_safe("/tmp/old_file", "/tmp/new_file")
+ 6 | """
+ 7 | 
+ 8 | import errno
+ 9 | import os
+10 | from shutil import copystat
+11 | 
+12 | from django.core.files import locks
+13 | 
+14 | __all__ = ['file_move_safe']
+15 | 
+16 | 
+17 | def _samefile(src, dst):
+18 |     # Macintosh, Unix.
+19 |     if hasattr(os.path, 'samefile'):
+20 |         try:
+21 |             return os.path.samefile(src, dst)
+22 |         except OSError:
+23 |             return False
+24 | 
+25 |     # All other platforms: check for same pathname.
+26 |     return (os.path.normcase(os.path.abspath(src)) ==
+27 |             os.path.normcase(os.path.abspath(dst)))
+```
+
+2026-08-28 01:35:27 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['locks.lock(', 'locks.unlock('], 'file_path_or_pattern': 'django/contrib/**/*.py'}))
+```
+2026-08-28 01:35:29 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:30 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:32 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:32 auto_search_main.py INFO OBSERVATION:
+django/contrib/sessions/backends/file.py:SessionStore.save
+django/contrib/sessions/backends/file.py:SessionStore.save
+django/contrib/sessions/backends/file.py:SessionStore.save
+##Searching for term "locks.lock(", "locks.unlock(", "locks.lock( locks.unlock("...
+### Search Result:
+Found function `django/core/files/locks.py:lock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+109 | def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+```
+
+Found function `django/core/files/locks.py:unlock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+113 | def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+```
+
+Found function `django/contrib/sessions/backends/file.py:SessionStore.save`.
+Source: Retrieved code content using keyword search (bm25).
+```
+111 | def save(self, must_create=False):
+112 |         if self.session_key is None:
+113 |             return self.create()
+114 |         # Get the session data now, before we start messing
+115 |         # with the file it is stored within.
+116 |         session_data = self._get_session(no_load=must_create)
+117 | 
+118 |         session_file_name = self._key_to_file()
+119 | 
+120 |         try:
+121 |             # Make sure the file exists.  If it does not already exist, an
+122 |             # empty placeholder file is created.
+123 |             flags = os.O_WRONLY | getattr(os, 'O_BINARY', 0)
+124 |             if must_create:
+125 |                 flags |= os.O_EXCL | os.O_CREAT
+126 |             fd = os.open(session_file_name, flags)
+127 |             os.close(fd)
+128 |         except FileNotFoundError:
+129 |             if not must_create:
+130 |                 raise UpdateError
+131 |         except FileExistsError:
+132 |             if must_create:
+133 |                 raise CreateError
+134 | 
+135 |         # Write the session file without interfering with other threads
+136 |         # or processes.  By writing to an atomically generated temporary
+137 |         # file and then using the atomic os.rename() to make the complete
+138 |         # file visible, we avoid having to lock the session file, while
+139 |         # still maintaining its integrity.
+140 |         #
+141 |         # Note: Locking the session file was explored, but rejected in part
+142 |         # because in order to be atomic and cross-platform, it required a
+143 |         # long-lived lock file for each session, doubling the number of
+144 |         # files in the session storage directory at any given time.  This
+145 |         # rename solution is cleaner and avoids any additional overhead
+146 |         # when reading the session data, which is the more common case
+147 |         # unless SESSION_SAVE_EVERY_REQUEST = True.
+148 |         #
+149 |         # See ticket #8616.
+150 |         dir, prefix = os.path.split(session_file_name)
+151 | 
+152 |         try:
+153 |             output_file_fd, output_file_name = tempfile.mkstemp(dir=dir, prefix=prefix + '_out_')
+154 |             renamed = False
+155 |             try:
+156 |                 try:
+157 |                     os.write(output_file_fd, self.encode(session_data).encode())
+158 |                 finally:
+159 |                     os.close(output_file_fd)
+160 | 
+161 |                 # This will atomically rename the file (os.rename) if the OS
+162 |                 # supports it. Otherwise this will result in a shutil.copy2
+163 |                 # and os.unlink (for example on Windows). See #9084.
+164 |                 shutil.move(output_file_name, session_file_name)
+165 |                 renamed = True
+166 |             finally:
+167 |                 if not renamed:
+168 |                     os.unlink(output_file_name)
+169 |         except (EOFError, OSError):
+170 |             pass
+```
+
+Found file `django/core/files/locks.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/core/files/locks.py` for the full content if needed.
+
+
+
+##Searching for term "locks.lock("...
+### Search Result:
+Found class `django/core/files/locks.py:_OFFSET`.
+Source: Retrieved entity using keyword search (bm25).
+```
+50 | class _OFFSET(Structure):
+51 |         _fields_ = [
+52 |             ('Offset', DWORD),
+53 |             ('OffsetHigh', DWORD)]
+```
+
+
+
+##Searching for term "locks.unlock(", "locks.lock( locks.unlock("...
+### Search Result:
+Found function `django/core/files/locks.py:_fd`.
+Source: Retrieved entity using keyword search (bm25).
+```
+24 | def _fd(f):
+25 |     """Get a filedescriptor from something which could be a file or an fd."""
+26 |     return f.fileno() if hasattr(f, 'fileno') else f
+```
+
+2026-08-28 01:35:32 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['locks.lock(', 'locks.unlock('], 'file_path_or_pattern': 'django/**/*.py'}))
+```
+2026-08-28 01:35:33 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:35 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:36 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:35:36 auto_search_main.py INFO OBSERVATION:
+django/core/files/move.py:file_move_safe
+django/core/files/storage.py:FileSystemStorage._save
+django/dispatch/dispatcher.py:Signal._live_receivers
+django/dispatch/dispatcher.py:Signal._remove_receiver
+django/contrib/sessions/backends/file.py:SessionStore.save
+django/db/backends/base/operations.py:BaseDatabaseOperations.force_no_ordering
+django/db/backends/base/operations.py:BaseDatabaseOperations._get_limit_offset_params
+django/db/backends/base/operations.py:BaseDatabaseOperations.limit_offset_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.field_cast_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.for_update_sql
+django/db/models/sql/compiler.py:SQLCompiler.get_select_for_update_of_arguments
+django/db/models/query.py:QuerySet.select_for_update
+django/core/files/move.py:file_move_safe
+django/core/files/storage.py:FileSystemStorage._save
+django/dispatch/dispatcher.py:Signal._live_receivers
+django/dispatch/dispatcher.py:Signal._remove_receiver
+django/contrib/sessions/backends/file.py:SessionStore.save
+django/db/backends/base/operations.py:BaseDatabaseOperations.force_no_ordering
+django/db/backends/base/operations.py:BaseDatabaseOperations._get_limit_offset_params
+django/db/backends/base/operations.py:BaseDatabaseOperations.limit_offset_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.field_cast_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.for_update_sql
+django/db/models/sql/compiler.py:SQLCompiler.get_select_for_update_of_arguments
+django/db/models/query.py:QuerySet.select_for_update
+django/core/files/move.py:file_move_safe
+django/core/files/storage.py:FileSystemStorage._save
+django/dispatch/dispatcher.py:Signal._live_receivers
+django/dispatch/dispatcher.py:Signal._remove_receiver
+django/contrib/sessions/backends/file.py:SessionStore.save
+django/db/backends/base/operations.py:BaseDatabaseOperations.force_no_ordering
+django/db/backends/base/operations.py:BaseDatabaseOperations._get_limit_offset_params
+django/db/backends/base/operations.py:BaseDatabaseOperations.limit_offset_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.field_cast_sql
+django/db/backends/base/operations.py:BaseDatabaseOperations.for_update_sql
+django/db/models/sql/compiler.py:SQLCompiler.get_select_for_update_of_arguments
+django/db/models/query.py:QuerySet.select_for_update
+##Searching for term "locks.lock("...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+Found class `django/core/files/locks.py:_OFFSET`.
+Source: Retrieved entity using keyword search (bm25).
+```
+50 | class _OFFSET(Structure):
+51 |         _fields_ = [
+52 |             ('Offset', DWORD),
+53 |             ('OffsetHigh', DWORD)]
+```
+
+
+
+##Searching for term "locks.lock(", "locks.unlock(", "locks.lock( locks.unlock("...
+### Search Result:
+Found function `django/core/files/locks.py:lock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+109 | def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+```
+
+Found function `django/core/files/locks.py:unlock`.
+Source: Retrieved entity using keyword search (bm25).
+```
+113 | def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+```
+
+Found function `django/core/files/move.py:file_move_safe`.
+Source: Retrieved code content using keyword search (bm25).
+```
+30 | def file_move_safe(old_file_name, new_file_name, chunk_size=1024 * 64, allow_overwrite=False):
+31 |     """
+32 |     Move a file from one location to another in the safest way possible.
+33 | 
+34 |     First, try ``os.rename``, which is simple but will break across filesystems.
+35 |     If that fails, stream manually from one file to another in pure Python.
+36 | 
+37 |     If the destination file exists and ``allow_overwrite`` is ``False``, raise
+38 |     ``FileExistsError``.
+39 |     """
+40 |     # There's no reason to move if we don't have to.
+41 |     if _samefile(old_file_name, new_file_name):
+42 |         return
+43 | 
+44 |     try:
+45 |         if not allow_overwrite and os.access(new_file_name, os.F_OK):
+46 |             raise FileExistsError('Destination file %s exists and allow_overwrite is False.' % new_file_name)
+47 | 
+48 |         os.rename(old_file_name, new_file_name)
+49 |         return
+50 |     except OSError:
+51 |         # OSError happens with os.rename() if moving to another filesystem or
+52 |         # when moving opened files on certain operating systems.
+53 |         pass
+54 | 
+55 |     # first open the old file, so that it won't go away
+56 |     with open(old_file_name, 'rb') as old_file:
+57 |         # now open the new file, not forgetting allow_overwrite
+58 |         fd = os.open(new_file_name, (os.O_WRONLY | os.O_CREAT | getattr(os, 'O_BINARY', 0) |
+59 |                                      (os.O_EXCL if not allow_overwrite else 0)))
+60 |         try:
+61 |             locks.lock(fd, locks.LOCK_EX)
+62 |             current_chunk = None
+63 |             while current_chunk != b'':
+64 |                 current_chunk = old_file.read(chunk_size)
+65 |                 os.write(fd, current_chunk)
+66 |         finally:
+67 |             locks.unlock(fd)
+68 |             os.close(fd)
+69 | 
+70 |     try:
+71 |         copystat(old_file_name, new_file_name)
+72 |     except PermissionError as e:
+73 |         # Certain filesystems (e.g. CIFS) fail to copy the file's metadata if
+74 |         # the type of the destination filesystem isn't the same as the source
+75 |         # filesystem; ignore that.
+76 |         if e.errno != errno.EPERM:
+77 |             raise
+78 | 
+79 |     try:
+80 |         os.remove(old_file_name)
+81 |     except PermissionError as e:
+82 |         # Certain operating systems (Cygwin and Windows)
+83 |         # fail when deleting opened files, ignore it.  (For the
+84 |         # systems where this happens, temporary files will be auto-deleted
+85 |         # on close anyway.)
+86 |         if getattr(e, 'winerror', 0) != 32:
+87 |             raise
+```
+
+Found function `django/core/files/storage.py:FileSystemStorage._save`.
+Source: Retrieved code content using keyword search (bm25).
+```
+233 | def _save(self, name, content):
+234 |         full_path = self.path(name)
+235 | 
+236 |         # Create any intermediate directories that do not exist.
+237 |         directory = os.path.dirname(full_path)
+238 |         try:
+239 |             if self.directory_permissions_mode is not None:
+240 |                 # Set the umask because os.makedirs() doesn't apply the "mode"
+241 |                 # argument to intermediate-level directories.
+242 |                 old_umask = os.umask(0o777 & ~self.directory_permissions_mode)
+243 |                 try:
+244 |                     os.makedirs(directory, self.directory_permissions_mode, exist_ok=True)
+245 |                 finally:
+246 |                     os.umask(old_umask)
+247 |             else:
+248 |                 os.makedirs(directory, exist_ok=True)
+249 |         except FileExistsError:
+250 |             raise FileExistsError('%s exists and is not a directory.' % directory)
+251 | 
+252 |         # There's a potential race condition between get_available_name and
+253 |         # saving the file; it's possible that two threads might return the
+254 |         # same name, at which point all sorts of fun happens. So we need to
+255 |         # try to create the file, but if it already exists we have to go back
+256 |         # to get_available_name() and try again.
+257 | 
+258 |         while True:
+259 |             try:
+260 |                 # This file has a file path that we can move.
+261 |                 if hasattr(content, 'temporary_file_path'):
+262 |                     file_move_safe(content.temporary_file_path(), full_path)
+263 | 
+264 |                 # This is a normal uploadedfile that we can stream.
+265 |                 else:
+266 |                     # The current umask value is masked out by os.open!
+267 |                     fd = os.open(full_path, self.OS_OPEN_FLAGS, 0o666)
+268 |                     _file = None
+269 |                     try:
+270 |                         locks.lock(fd, locks.LOCK_EX)
+271 |                         for chunk in content.chunks():
+272 |                             if _file is None:
+273 |                                 mode = 'wb' if isinstance(chunk, bytes) else 'wt'
+274 |                                 _file = os.fdopen(fd, mode)
+275 |                             _file.write(chunk)
+276 |                     finally:
+277 |                         locks.unlock(fd)
+278 |                         if _file is not None:
+279 |                             _file.close()
+280 |                         else:
+281 |                             os.close(fd)
+282 |             except FileExistsError:
+283 |                 # A new name is needed if the file exists.
+284 |                 name = self.get_available_name(name)
+285 |                 full_path = self.path(name)
+286 |             else:
+287 |                 # OK, the file save worked. Break out of the loop.
+288 |                 break
+289 | 
+290 |         if self.file_permissions_mode is not None:
+291 |             os.chmod(full_path, self.file_permissions_mode)
+292 | 
+293 |         # Store filenames with forward slashes, even on Windows.
+294 |         return str(name).replace('\\', '/')
+```
+
+Found function `django/dispatch/dispatcher.py:Signal._live_receivers`.
+Source: Retrieved code content using keyword search (bm25).
+```
+225 | def _live_receivers(self, sender):
+226 |         """
+227 |         Filter sequence of receivers to get resolved, live receivers.
+228 | 
+229 |         This checks for weak references and resolves them, then returning only
+230 |         live receivers.
+231 |         """
+232 |         receivers = None
+233 |         if self.use_caching and not self._dead_receivers:
+234 |             receivers = self.sender_receivers_cache.get(sender)
+235 |             # We could end up here with NO_RECEIVERS even if we do check this case in
+236 |             # .send() prior to calling _live_receivers() due to concurrent .send() call.
+237 |             if receivers is NO_RECEIVERS:
+238 |                 return []
+239 |         if receivers is None:
+240 |             with self.lock:
+241 |                 self._clear_dead_receivers()
+242 |                 senderkey = _make_id(sender)
+243 |                 receivers = []
+244 |                 for (receiverkey, r_senderkey), receiver in self.receivers:
+245 |                     if r_senderkey == NONE_ID or r_senderkey == senderkey:
+246 |                         receivers.append(receiver)
+247 |                 if self.use_caching:
+248 |                     if not receivers:
+249 |                         self.sender_receivers_cache[sender] = NO_RECEIVERS
+250 |                     else:
+251 |                         # Note, we must cache the weakref versions.
+252 |                         self.sender_receivers_cache[sender] = receivers
+253 |         non_weak_receivers = []
+254 |         for receiver in receivers:
+255 |             if isinstance(receiver, weakref.ReferenceType):
+256 |                 # Dereference the weak reference.
+257 |                 receiver = receiver()
+258 |                 if receiver is not None:
+259 |                     non_weak_receivers.append(receiver)
+260 |             else:
+261 |                 non_weak_receivers.append(receiver)
+262 |         return non_weak_receivers
+```
+
+Found function `django/dispatch/dispatcher.py:Signal._remove_receiver`.
+Source: Retrieved code content using keyword search (bm25).
+```
+264 | def _remove_receiver(self, receiver=None):
+265 |         # Mark that the self.receivers list has dead weakrefs. If so, we will
+266 |         # clean those up in connect, disconnect and _live_receivers while
+267 |         # holding self.lock. Note that doing the cleanup here isn't a good
+268 |         # idea, _remove_receiver() will be called as side effect of garbage
+269 |         # collection, and so the call can happen while we are already holding
+270 |         # self.lock.
+271 |         self._dead_receivers = True
+```
+
+Found file `django/core/files/locks.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/core/files/locks.py` for the full content if needed.
+
+
+
+##Searching for term "locks.unlock("...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+
+
+##Searching for term "locks.unlock(", "locks.lock( locks.unlock("...
+### Search Result:
+Found function `django/core/files/locks.py:_fd`.
+Source: Retrieved entity using keyword search (bm25).
+```
+24 | def _fd(f):
+25 |     """Get a filedescriptor from something which could be a file or an fd."""
+26 |     return f.fileno() if hasattr(f, 'fileno') else f
+```
+
+
+
+##Searching for term "locks.lock( locks.unlock("...
+### Search Result:
+Found `django/core/files/locks.py:_fd`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 19 | import os
+ 20 | 
+ 21 | __all__ = ('LOCK_EX', 'LOCK_SH', 'LOCK_NB', 'lock', 'unlock')
+ 22 | 
+ 23 | 
+ 24 | def _fd(f):
+ 25 |     """Get a filedescriptor from something which could be a file or an fd."""
+ 26 |     return f.fileno() if hasattr(f, 'fileno') else f
+ 27 | 
+ 28 | 
+ 29 | if os.name == 'nt':
+ 30 |     import msvcrt
+ 31 |     from ctypes import (
+ 32 |         POINTER, Structure, Union, byref, c_int64, c_ulong, c_void_p, sizeof,
+ 33 |         windll,
+ 34 |     )
+ 35 |     from ctypes.wintypes import BOOL, DWORD, HANDLE
+ 36 | 
+ 37 |     LOCK_SH = 0  # the default
+ 38 |     LOCK_NB = 0x1  # LOCKFILE_FAIL_IMMEDIATELY
+ 39 |     LOCK_EX = 0x2  # LOCKFILE_EXCLUSIVE_LOCK
+ 40 | 
+ 41 |     # --- Adapted from the pyserial project ---
+ 42 |     # detect size of ULONG_PTR
+ 43 |     if sizeof(c_ulong) != sizeof(c_void_p):
+ 44 |         ULONG_PTR = c_int64
+ 45 |     else:
+ 46 |         ULONG_PTR = c_ulong
+ 47 |     PVOID = c_void_p
+ 48 | 
+ 49 |     # --- Union inside Structure by stackoverflow:3480240 ---
+ 50 |     class _OFFSET(Structure):
+ 51 |         _fields_ = [
+ 52 |             ('Offset', DWORD),
+ 53 |             ('OffsetHigh', DWORD)]
+ 54 | 
+ 55 |     class _OFFSET_UNION(Union):
+ 56 |         _anonymous_ = ['_offset']
+ 57 |         _fields_ = [
+ 58 |             ('_offset', _OFFSET),
+ 59 |             ('Pointer', PVOID)]
+ 60 | 
+ 61 |     class OVERLAPPED(Structure):
+ 62 |         _anonymous_ = ['_offset_union']
+ 63 |         _fields_ = [
+ 64 |             ('Internal', ULONG_PTR),
+ 65 |             ('InternalHigh', ULONG_PTR),
+ 66 |             ('_offset_union', _OFFSET_UNION),
+ 67 |             ('hEvent', HANDLE)]
+ 68 | 
+ 69 |     LPOVERLAPPED = POINTER(OVERLAPPED)
+ 70 | 
+ 71 |     # --- Define function prototypes for extra safety ---
+ 72 |     LockFileEx = windll.kernel32.LockFileEx
+ 73 |     LockFileEx.restype = BOOL
+ 74 |     LockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 75 |     UnlockFileEx = windll.kernel32.UnlockFileEx
+ 76 |     UnlockFileEx.restype = BOOL
+ 77 |     UnlockFileEx.argtypes = [HANDLE, DWORD, DWORD, DWORD, LPOVERLAPPED]
+ 78 | 
+ 79 |     def lock(f, flags):
+ 80 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 81 |         overlapped = OVERLAPPED()
+ 82 |         ret = LockFileEx(hfile, flags, 0, 0, 0xFFFF0000, byref(overlapped))
+ 83 |         return bool(ret)
+ 84 | 
+ 85 |     def unlock(f):
+ 86 |         hfile = msvcrt.get_osfhandle(_fd(f))
+ 87 |         overlapped = OVERLAPPED()
+ 88 |         ret = UnlockFileEx(hfile, 0, 0, 0xFFFF0000, byref(overlapped))
+ 89 |         return bool(ret)
+ 90 | else:
+ 91 |     try:
+ 92 |         import fcntl
+ 93 |         LOCK_SH = fcntl.LOCK_SH  # shared lock
+ 94 |         LOCK_NB = fcntl.LOCK_NB  # non-blocking
+ 95 |         LOCK_EX = fcntl.LOCK_EX
+ 96 |     except (ImportError, AttributeError):
+ 97 |         # File locking is not supported.
+ 98 |         LOCK_EX = LOCK_SH = LOCK_NB = 0
+ 99 | 
+100 |         # Dummy functions that don't do anything.
+101 |         def lock(f, flags):
+102 |             # File is not locked
+103 |             return False
+104 | 
+105 |         def unlock(f):
+106 |             # File is unlocked
+107 |             return True
+108 |     else:
+109 |         def lock(f, flags):
+110 |             ret = fcntl.flock(_fd(f), flags)
+111 |             return ret == 0
+112 | 
+113 |         def unlock(f):
+114 |             ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)
+115 |             return ret == 0
+116 | 
+```
+
+2026-08-28 01:35:36 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 01:36:20 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 01:36:20 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 01:36:20 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 01:36:20 auto_search_main.py INFO ===============
+2026-08-28 01:36:20 auto_search_main.py INFO Final response generated content_length=186
+2026-08-28 01:36:20 auto_search_main.py INFO ==== localizing django__django-13410 succeed, process multiple loc outputs ====
+2026-08-28 01:36:20 cost_analysis.py INFO input_tokens=69699, output_tokens=430, cost=0.18
+2026-08-28 01:36:21 auto_search_main.py INFO Total time: 6.8299 min

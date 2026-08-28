@@ -1,0 +1,3895 @@
+2026-08-28 01:45:20 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 01:45:20 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 01:45:20 auto_search_main.py INFO ============================================================
+2026-08-28 01:45:20 auto_search_main.py INFO ==== rank 0 setup localize django__django-10973 ====
+2026-08-28 01:45:20 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/25548157-c4aa-4470-bf81-5d85a735f8f5/django_django and checkout commit HEAD
+2026-08-28 01:45:20 git_repo_manager.py INFO Directory 'playground/25548157-c4aa-4470-bf81-5d85a735f8f5/django_django' was created.
+2026-08-28 01:45:22 repo_ops.py INFO [0] Processed django__django-10973
+2026-08-28 01:45:22 auto_search_main.py INFO ============================================================
+2026-08-28 01:45:22 auto_search_main.py INFO ==== rank 0 begin localizing django__django-10973 ====
+2026-08-28 01:45:22 auto_search_main.py INFO ============================================================
+2026-08-28 01:45:22 auto_search_main.py INFO ==== django__django-10973 Count down: attempt 1 ====
+2026-08-28 01:45:22 auto_search_main.py INFO ==== django__django-10973 start auto search ====
+2026-08-28 01:45:22 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 01:45:30 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 01:45:30 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 01:45:30 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 01:45:30 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['subprocess.run', 'PGPASSWORD', 'postgres client', 'django.db.backends.postgres.client']}))
+```
+2026-08-28 01:45:30 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:30 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:31 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/25548157-c4aa-4470-bf81-5d85a735f8f5/django_django and checkout commit HEAD
+2026-08-28 01:45:32 epic_split.py WARNING Skipping code block LANG_INFO._ in django/conf/locale/__init__.py as it has 3922 tokens which is more than chunk size 500. Content: {
+    'af': {
+        'bidi': False,
+        'code': 'af',
+        'name': 'Afrikaans',
+        'nam...
+2026-08-28 01:45:55 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:55 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:55 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:55 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:55 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:55 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:56 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:56 auto_search_main.py INFO OBSERVATION:
+django/apps/config.py:AppConfig.ready
+django/apps/config.py:AppConfig.import_models
+django/contrib/admin/sites.py:AdminSite.check
+django/contrib/auth/hashers.py:BasePasswordHasher.harden_runtime
+django/apps/registry.py:Apps.populate
+django/contrib/admin/sites.py:AdminSite.each_context
+django/contrib/admin/sites.py:AdminSite.urls
+django/conf/global_settings.py:impl:249
+django/contrib/auth/tokens.py:PasswordResetTokenGenerator._num_days
+django/contrib/auth/tokens.py:impl
+django/contrib/auth/tokens.py:PasswordResetTokenGenerator._today
+django/contrib/auth/tokens.py:PasswordResetTokenGenerator._make_hash_value
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/conf/global_settings.py:impl:159
+django/conf/global_settings.py:impl:193
+django/contrib/auth/__init__.py:login
+django/contrib/auth/models.py:_user_get_all_permissions
+django/contrib/auth/models.py:_user_has_module_perms
+django/contrib/auth/models.py:UserManager.create_superuser
+django/contrib/auth/models.py:_user_has_perm
+django/contrib/auth/__init__.py:authenticate
+django/contrib/auth/middleware.py:RemoteUserMiddleware._remove_invalid_user
+django/contrib/auth/middleware.py:RemoteUserMiddleware.clean_username
+django/conf/global_settings.py:impl:19
+django/contrib/auth/models.py:PermissionsMixin.has_perm
+django/contrib/auth/models.py:PermissionsMixin.get_all_permissions
+django/contrib/auth/models.py:PermissionsMixin.get_group_permissions
+django/contrib/auth/models.py:PermissionsMixin.Meta
+django/contrib/auth/models.py:PermissionsMixin
+django/conf/global_settings.py:impl:159
+django/conf/global_settings.py:impl:193
+django/contrib/auth/__init__.py:login
+django/contrib/auth/models.py:_user_get_all_permissions
+django/contrib/auth/models.py:_user_has_module_perms
+django/contrib/auth/models.py:UserManager.create_superuser
+django/contrib/auth/models.py:_user_has_perm
+django/contrib/auth/__init__.py:authenticate
+django/contrib/auth/middleware.py:RemoteUserMiddleware._remove_invalid_user
+django/contrib/auth/middleware.py:RemoteUserMiddleware.clean_username
+django/conf/global_settings.py:impl:19
+##Searching for term "subprocess.run"...
+### Search Result:
+Found `django/contrib/admin/bin/compress.py:main`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | #!/usr/bin/env python
+ 2 | import argparse
+ 3 | import subprocess
+ 4 | import sys
+ 5 | from pathlib import Path
+ 6 | 
+ 7 | try:
+ 8 |     import closure
+ 9 | except ImportError:
+10 |     closure_compiler = None
+11 | else:
+12 |     closure_compiler = closure.get_jar_filename()
+13 | 
+14 | js_path = Path(__file__).parent.parent / 'static' / 'admin' / 'js'
+15 | 
+16 | 
+17 | def main():
+18 |     description = """With no file paths given this script will automatically
+19 | compress all jQuery-based files of the admin app. Requires the Google Closure
+20 | Compiler library and Java version 6 or later."""
+21 |     parser = argparse.ArgumentParser(description=description)
+22 |     parser.add_argument('file', nargs='*')
+23 |     parser.add_argument(
+24 |         "-c", dest="compiler", default="~/bin/compiler.jar",
+25 |         help="path to Closure Compiler jar file",
+26 |     )
+27 |     parser.add_argument("-v", "--verbose", action="store_true", dest="verbose")
+28 |     parser.add_argument("-q", "--quiet", action="store_false", dest="verbose")
+29 |     options = parser.parse_args()
+30 | 
+31 |     compiler = Path(closure_compiler or options.compiler).expanduser()
+32 |     if not compiler.exists():
+33 |         sys.exit(
+34 |             "Google Closure compiler jar file %s not found. Please use the -c "
+35 |             "option to specify the path." % compiler
+36 |         )
+37 | 
+38 |     if not options.file:
+39 |         if options.verbose:
+40 |             sys.stdout.write("No filenames given; defaulting to admin scripts\n")
+41 |         files = [
+42 |             js_path / f
+43 |             for f in ["actions.js", "collapse.js", "inlines.js", "prepopulate.js"]
+44 |         ]
+45 |     else:
+46 |         files = [Path(f) for f in options.file]
+47 | 
+48 |     for file_path in files:
+49 |         to_compress = file_path.expanduser()
+50 |         if to_compress.exists():
+51 |             to_compress_min = to_compress.with_suffix('.min.js')
+52 |             cmd = "java -jar %s --js %s --js_output_file %s" % (compiler, to_compress, to_compress_min)
+53 |             if options.verbose:
+54 |                 sys.stdout.write("Running: %s\n" % cmd)
+55 |             subprocess.call(cmd.split())
+56 |         else:
+57 |             sys.stdout.write("File %s not found. Sure it exists?\n" % to_compress)
+58 | 
+59 | 
+60 | if __name__ == '__main__':
+61 |     main()
+62 | 
+```
+
+Found code snippet in file `django/__main__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Invokes django-admin when the django module is run as a script.
+ 3 | 
+ 4 | Example: python -m django check
+ 5 | """
+ 6 | from django.core import management
+ 7 | 
+ 8 | if __name__ == "__main__":
+ 9 |     management.execute_from_command_line()
+10 | 
+```
+
+Found class `django/contrib/auth/context_processors.py:PermWrapper`.
+Source: Retrieved entity using keyword search (bm25).
+```
+24 | class PermWrapper:
+25 |     def __init__(self, user):
+26 |         self.user = user
+27 | 
+28 |     def __getitem__(self, app_label):
+29 |         return PermLookupDict(self.user, app_label)
+30 | 
+31 |     def __iter__(self):
+32 |         # I am large, I contain multitudes.
+33 |         raise TypeError("PermWrapper is not iterable.")
+34 | 
+35 |     def __contains__(self, perm_name):
+36 |         """
+37 |         Lookup by "someapp" or "someapp.someperm" in perms.
+38 |         """
+39 |         if '.' not in perm_name:
+40 |             # The name refers to module.
+41 |             return bool(self[perm_name])
+42 |         app_label, perm_name = perm_name.split('.', 1)
+43 |         return self[app_label][perm_name]
+```
+
+Found function `django/contrib/auth/context_processors.py:auth`.
+Source: Retrieved entity using keyword search (bm25).
+```
+46 | def auth(request):
+47 |     """
+48 |     Return context variables required by apps that use Django's authentication
+49 |     system.
+50 | 
+51 |     If there is no 'user' attribute in the request, use AnonymousUser (from
+52 |     django.contrib.auth).
+53 |     """
+54 |     if hasattr(request, 'user'):
+55 |         user = request.user
+56 |     else:
+57 |         from django.contrib.auth.models import AnonymousUser
+58 |         user = AnonymousUser()
+59 | 
+60 |     return {
+61 |         'user': user,
+62 |         'perms': PermWrapper(user),
+63 |     }
+```
+
+Found function `django/apps/config.py:AppConfig.import_models`.
+Source: Retrieved code content using keyword search (bm25).
+```
+204 | def import_models(self):
+205 |         # Dictionary of models for this app, primarily maintained in the
+206 |         # 'all_models' attribute of the Apps this AppConfig is attached to.
+207 |         self.models = self.apps.all_models[self.label]
+208 | 
+209 |         if module_has_submodule(self.module, MODELS_MODULE_NAME):
+210 |             models_module_name = '%s.%s' % (self.name, MODELS_MODULE_NAME)
+211 |             self.models_module = import_module(models_module_name)
+```
+
+Found function `django/apps/config.py:AppConfig.ready`.
+Source: Retrieved code content using keyword search (bm25).
+```
+213 | def ready(self):
+214 |         """
+215 |         Override this method in subclasses to run code when Django starts.
+216 |         """
+```
+
+Found function `django/contrib/admin/sites.py:AdminSite.check`.
+Source: Retrieved code content using keyword search (bm25).
+```
+69 | def check(self, app_configs):
+70 |         """
+71 |         Run the system checks on all ModelAdmins, except if they aren't
+72 |         customized at all.
+73 |         """
+74 |         if app_configs is None:
+75 |             app_configs = apps.get_app_configs()
+76 |         app_configs = set(app_configs)  # Speed up lookups below
+77 | 
+78 |         errors = []
+79 |         modeladmins = (o for o in self._registry.values() if o.__class__ is not ModelAdmin)
+80 |         for modeladmin in modeladmins:
+81 |             if modeladmin.model._meta.app_config in app_configs:
+82 |                 errors.extend(modeladmin.check())
+83 |         return errors
+```
+
+Found file `django/contrib/auth/context_processors.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/context_processors.py` for the full content if needed.
+
+
+
+##Searching for term "PGPASSWORD"...
+### Search Result:
+Found function `django/conf/__init__.py:LazySettings.FILE_CHARSET`.
+Source: Retrieved entity using keyword search (bm25).
+```
+116 | def FILE_CHARSET(self):
+117 |         stack = traceback.extract_stack()
+118 |         # Show a warning if the setting is used outside of Django.
+119 |         # Stack index: -1 this line, -2 the caller.
+120 |         filename, _line_number, _function_name, _text = stack[-2]
+121 |         if not filename.startswith(os.path.dirname(django.__file__)):
+122 |             warnings.warn(
+123 |                 FILE_CHARSET_DEPRECATED_MSG,
+124 |                 RemovedInDjango31Warning,
+125 |                 stacklevel=2,
+126 |             )
+127 |         return self.__getattr__('FILE_CHARSET')
+```
+
+Found class `django/contrib/auth/views.py:PasswordResetDoneView`.
+Source: Retrieved entity using keyword search (bm25).
+```
+241 | class PasswordResetDoneView(PasswordContextMixin, TemplateView):
+242 |     template_name = 'registration/password_reset_done.html'
+243 |     title = _('Password reset sent')
+```
+
+Found class `django/contrib/admin/widgets.py:AdminSplitDateTime`.
+Source: Retrieved entity using keyword search (bm25).
+```
+77 | class AdminSplitDateTime(forms.SplitDateTimeWidget):
+78 |     """
+79 |     A SplitDateTime Widget that has some admin-specific styling.
+80 |     """
+81 |     template_name = 'admin/widgets/split_datetime.html'
+82 | 
+83 |     def __init__(self, attrs=None):
+84 |         widgets = [AdminDateWidget, AdminTimeWidget]
+85 |         # Note that we're calling MultiWidget, not SplitDateTimeWidget, because
+86 |         # we want to define widgets.
+87 |         forms.MultiWidget.__init__(self, widgets, attrs)
+88 | 
+89 |     def get_context(self, name, value, attrs):
+90 |         context = super().get_context(name, value, attrs)
+91 |         context['date_label'] = _('Date:')
+92 |         context['time_label'] = _('Time:')
+93 |         return context
+```
+
+
+
+##Searching for term "PGPASSWORD", "postgres client"...
+### Search Result:
+Found function `django/contrib/flatpages/forms.py:FlatpageForm.clean`.
+Source: Retrieved code content using keyword search (bm25).
+```
+52 | def clean(self):
+53 |         url = self.cleaned_data.get('url')
+54 |         sites = self.cleaned_data.get('sites')
+55 | 
+56 |         same_url = FlatPage.objects.filter(url=url)
+57 |         if self.instance.pk:
+58 |             same_url = same_url.exclude(pk=self.instance.pk)
+59 | 
+60 |         if sites and same_url.filter(sites__in=sites).exists():
+61 |             for site in sites:
+62 |                 if same_url.filter(sites=site).exists():
+63 |                     raise forms.ValidationError(
+64 |                         _('Flatpage with url %(url)s already exists for site %(site)s'),
+65 |                         code='duplicate_url',
+66 |                         params={'url': url, 'site': site},
+67 |                     )
+68 | 
+69 |         return super().clean()
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters`.
+Source: Retrieved code content using keyword search (bm25).
+```
+237 | def expected_parameters(self):
+238 |         return [self.lookup_kwarg, self.lookup_kwarg2]
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.choices`.
+Source: Retrieved code content using keyword search (bm25).
+```
+240 | def choices(self, changelist):
+241 |         for lookup, title in (
+242 |                 (None, _('All')),
+243 |                 ('1', _('Yes')),
+244 |                 ('0', _('No'))):
+245 |             yield {
+246 |                 'selected': self.lookup_val == lookup and not self.lookup_val2,
+247 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg2]),
+248 |                 'display': title,
+249 |             }
+250 |         if self.field.null:
+251 |             yield {
+252 |                 'selected': self.lookup_val2 == 'True',
+253 |                 'query_string': changelist.get_query_string({self.lookup_kwarg2: 'True'}, [self.lookup_kwarg]),
+254 |                 'display': _('Unknown'),
+255 |             }
+```
+
+Found class `django/contrib/admin/filters.py:ChoicesFieldListFilter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+261 | class ChoicesFieldListFilter(FieldListFilter):
+262 |     def __init__(self, field, request, params, model, model_admin, field_path):
+263 |         self.lookup_kwarg = '%s__exact' % field_path
+264 |         self.lookup_kwarg_isnull = '%s__isnull' % field_path
+265 |         self.lookup_val = params.get(self.lookup_kwarg)
+266 |         self.lookup_val_isnull = params.get(self.lookup_kwarg_isnull)
+267 |         super().__init__(field, request, params, model, model_admin, field_path)
+268 | 
+269 |     def expected_parameters(self):
+270 |         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
+271 | 
+272 |     def choices(self, changelist):
+273 |         yield {
+274 |             'selected': self.lookup_val is None,
+275 |             'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+276 |             'display': _('All')
+277 |         }
+278 |         none_title = ''
+279 |         for lookup, title in self.field.flatchoices:
+280 |             if lookup is None:
+281 |                 none_title = title
+282 |                 continue
+283 |             yield {
+284 |                 'selected': str(lookup) == self.lookup_val,
+285 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg_isnull]),
+286 |                 'display': title,
+287 |             }
+288 |         if none_title:
+289 |             yield {
+290 |                 'selected': bool(self.lookup_val_isnull),
+291 |                 'query_string': changelist.get_query_string({self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]),
+292 |                 'display': none_title,
+293 |             }
+```
+
+
+
+##Searching for term "postgres client"...
+### Search Result:
+Found function `django/__init__.py:setup`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 8 | def setup(set_prefix=True):
+ 9 |     """
+10 |     Configure the settings (this happens as a side effect of accessing the
+11 |     first setting), configure logging and populate the app registry.
+12 |     Set the thread-local urlresolvers script prefix if `set_prefix` is True.
+13 |     """
+14 |     from django.apps import apps
+15 |     from django.conf import settings
+16 |     from django.urls import set_script_prefix
+17 |     from django.utils.log import configure_logging
+18 | 
+19 |     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+20 |     if set_prefix:
+21 |         set_script_prefix(
+22 |             '/' if settings.FORCE_SCRIPT_NAME is None else settings.FORCE_SCRIPT_NAME
+23 |         )
+24 |     apps.populate(settings.INSTALLED_APPS)
+```
+
+Found file `django/conf/urls/__init__.py`.
+Found file `django/contrib/admin/sites.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "django.db.backends.postgres.client", "subprocess.run PGPASSWORD postgres client django.db.backends.postgres.client"...
+### Search Result:
+Found class `django/contrib/auth/backends.py:ModelBackend`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 11 | class ModelBackend:
+ 12 |     """
+ 13 |     Authenticates against settings.AUTH_USER_MODEL.
+ 14 |     """
+ 15 | 
+ 16 |     def authenticate(self, request, username=None, password=None, **kwargs):
+ 17 |         if username is None:
+ 18 |             username = kwargs.get(UserModel.USERNAME_FIELD)
+ 19 |         try:
+ 20 |             user = UserModel._default_manager.get_by_natural_key(username)
+ 21 |         except UserModel.DoesNotExist:
+ 22 |             # Run the default password hasher once to reduce the timing
+ 23 |             # difference between an existing and a nonexistent user (#20760).
+ 24 |             UserModel().set_password(password)
+ 25 |         else:
+ 26 |             if user.check_password(password) and self.user_can_authenticate(user):
+ 27 |                 return user
+ 28 | 
+ 29 |     def user_can_authenticate(self, user):
+ 30 |         """
+ 31 |         Reject users with is_active=False. Custom user models that don't have
+ 32 |         that attribute are allowed.
+ 33 |         """
+ 34 |         is_active = getattr(user, 'is_active', None)
+ 35 |         return is_active or is_active is None
+ 36 | 
+ 37 |     def _get_user_permissions(self, user_obj):
+ 38 |         return user_obj.user_permissions.all()
+ 39 | 
+ 40 |     def _get_group_permissions(self, user_obj):
+ 41 |         user_groups_field = get_user_model()._meta.get_field('groups')
+ 42 |         user_groups_query = 'group__%s' % user_groups_field.related_query_name()
+ 43 |         return Permission.objects.filter(**{user_groups_query: user_obj})
+ 44 | 
+ 45 |     def _get_permissions(self, user_obj, obj, from_name):
+ 46 |         """
+ 47 |         Return the permissions of `user_obj` from `from_name`. `from_name` can
+ 48 |         be either "group" or "user" to return permissions from
+ 49 |         `_get_group_permissions` or `_get_user_permissions` respectively.
+ 50 |         """
+ 51 |         if not user_obj.is_active or user_obj.is_anonymous or obj is not None:
+ 52 |             return set()
+ 53 | 
+ 54 |         perm_cache_name = '_%s_perm_cache' % from_name
+ 55 |         if not hasattr(user_obj, perm_cache_name):
+ 56 |             if user_obj.is_superuser:
+ 57 |                 perms = Permission.objects.all()
+ 58 |             else:
+ 59 |                 perms = getattr(self, '_get_%s_permissions' % from_name)(user_obj)
+ 60 |             perms = perms.values_list('content_type__app_label', 'codename').order_by()
+ 61 |             setattr(user_obj, perm_cache_name, {"%s.%s" % (ct, name) for ct, name in perms})
+ 62 |         return getattr(user_obj, perm_cache_name)
+ 63 | 
+ 64 |     def get_user_permissions(self, user_obj, obj=None):
+ 65 |         """
+ 66 |         Return a set of permission strings the user `user_obj` has from their
+ 67 |         `user_permissions`.
+ 68 |         """
+ 69 |         return self._get_permissions(user_obj, obj, 'user')
+ 70 | 
+ 71 |     def get_group_permissions(self, user_obj, obj=None):
+ 72 |         """
+ 73 |         Return a set of permission strings the user `user_obj` has from the
+ 74 |         groups they belong.
+ 75 |         """
+ 76 |         return self._get_permissions(user_obj, obj, 'group')
+ 77 | 
+ 78 |     def get_all_permissions(self, user_obj, obj=None):
+ 79 |         if not user_obj.is_active or user_obj.is_anonymous or obj is not None:
+ 80 |             return set()
+ 81 |         if not hasattr(user_obj, '_perm_cache'):
+ 82 |             user_obj._perm_cache = {
+ 83 |                 *self.get_user_permissions(user_obj),
+ 84 |                 *self.get_group_permissions(user_obj),
+ 85 |             }
+ 86 |         return user_obj._perm_cache
+ 87 | 
+ 88 |     def has_perm(self, user_obj, perm, obj=None):
+ 89 |         return user_obj.is_active and perm in self.get_all_permissions(user_obj, obj)
+ 90 | 
+ 91 |     def has_module_perms(self, user_obj, app_label):
+ 92 |         """
+ 93 |         Return True if user_obj has any permissions in the given app_label.
+ 94 |         """
+ 95 |         return user_obj.is_active and any(
+ 96 |             perm[:perm.index('.')] == app_label
+ 97 |             for perm in self.get_all_permissions(user_obj)
+ 98 |         )
+ 99 | 
+100 |     def get_user(self, user_id):
+101 |         try:
+102 |             user = UserModel._default_manager.get(pk=user_id)
+103 |         except UserModel.DoesNotExist:
+104 |             return None
+105 |         return user if self.user_can_authenticate(user) else None
+```
+
+Found class `django/contrib/auth/backends.py:AllowAllUsersModelBackend`.
+Source: Retrieved entity using keyword search (bm25).
+```
+108 | class AllowAllUsersModelBackend(ModelBackend):
+109 |     def user_can_authenticate(self, user):
+110 |         return True
+```
+
+Found class `django/contrib/auth/backends.py:AllowAllUsersRemoteUserBackend`.
+Source: Retrieved entity using keyword search (bm25).
+```
+186 | class AllowAllUsersRemoteUserBackend(RemoteUserBackend):
+187 |     def user_can_authenticate(self, user):
+188 |         return True
+```
+
+Found function `django/contrib/auth/__init__.py:login`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 87 | def login(request, user, backend=None):
+ 88 |     """
+ 89 |     Persist a user id and a backend in the request. This way a user doesn't
+ 90 |     have to reauthenticate on every request. Note that data set during
+ 91 |     the anonymous session is retained when the user logs in.
+ 92 |     """
+ 93 |     session_auth_hash = ''
+ 94 |     if user is None:
+ 95 |         user = request.user
+ 96 |     if hasattr(user, 'get_session_auth_hash'):
+ 97 |         session_auth_hash = user.get_session_auth_hash()
+ 98 | 
+ 99 |     if SESSION_KEY in request.session:
+100 |         if _get_user_session_key(request) != user.pk or (
+101 |                 session_auth_hash and
+102 |                 not constant_time_compare(request.session.get(HASH_SESSION_KEY, ''), session_auth_hash)):
+103 |             # To avoid reusing another user's session, create a new, empty
+104 |             # session if the existing session corresponds to a different
+105 |             # authenticated user.
+106 |             request.session.flush()
+107 |     else:
+108 |         request.session.cycle_key()
+109 | 
+110 |     try:
+111 |         backend = backend or user.backend
+112 |     except AttributeError:
+113 |         backends = _get_backends(return_tuples=True)
+114 |         if len(backends) == 1:
+115 |             _, backend = backends[0]
+116 |         else:
+117 |             raise ValueError(
+118 |                 'You have multiple authentication backends configured and '
+119 |                 'therefore must provide the `backend` argument or set the '
+120 |                 '`backend` attribute on the user.'
+121 |             )
+122 |     else:
+123 |         if not isinstance(backend, str):
+124 |             raise TypeError('backend must be a dotted import path string (got %r).' % backend)
+125 | 
+126 |     request.session[SESSION_KEY] = user._meta.pk.value_to_string(user)
+127 |     request.session[BACKEND_SESSION_KEY] = backend
+128 |     request.session[HASH_SESSION_KEY] = session_auth_hash
+129 |     if hasattr(request, 'user'):
+130 |         request.user = user
+131 |     rotate_token(request)
+132 |     user_logged_in.send(sender=user.__class__, request=request, user=user)
+```
+
+Found function `django/contrib/auth/models.py:_user_get_all_permissions`.
+Source: Retrieved code content using keyword search (bm25).
+```
+162 | def _user_get_all_permissions(user, obj):
+163 |     permissions = set()
+164 |     for backend in auth.get_backends():
+165 |         if hasattr(backend, "get_all_permissions"):
+166 |             permissions.update(backend.get_all_permissions(user, obj))
+167 |     return permissions
+```
+
+Found function `django/contrib/auth/models.py:_user_has_module_perms`.
+Source: Retrieved code content using keyword search (bm25).
+```
+185 | def _user_has_module_perms(user, app_label):
+186 |     """
+187 |     A backend can raise `PermissionDenied` to short-circuit permission checking.
+188 |     """
+189 |     for backend in auth.get_backends():
+190 |         if not hasattr(backend, 'has_module_perms'):
+191 |             continue
+192 |         try:
+193 |             if backend.has_module_perms(user, app_label):
+194 |                 return True
+195 |         except PermissionDenied:
+196 |             return False
+197 |     return False
+```
+
+Found file `django/contrib/auth/backends.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/backends.py` for the full content if needed.
+
+
+
+##Searching for term "django.db.backends.postgres.client"...
+### Search Result:
+Found function `django/contrib/auth/models.py:UserManager.create_superuser`.
+Source: Retrieved code content using keyword search (bm25).
+```
+149 | def create_superuser(self, username, email, password, **extra_fields):
+150 |         extra_fields.setdefault('is_staff', True)
+151 |         extra_fields.setdefault('is_superuser', True)
+152 | 
+153 |         if extra_fields.get('is_staff') is not True:
+154 |             raise ValueError('Superuser must have is_staff=True.')
+155 |         if extra_fields.get('is_superuser') is not True:
+156 |             raise ValueError('Superuser must have is_superuser=True.')
+157 | 
+158 |         return self._create_user(username, email, password, **extra_fields)
+```
+
+Found function `django/contrib/auth/models.py:_user_has_perm`.
+Source: Retrieved code content using keyword search (bm25).
+```
+170 | def _user_has_perm(user, perm, obj):
+171 |     """
+172 |     A backend can raise `PermissionDenied` to short-circuit permission checking.
+173 |     """
+174 |     for backend in auth.get_backends():
+175 |         if not hasattr(backend, 'has_perm'):
+176 |             continue
+177 |         try:
+178 |             if backend.has_perm(user, perm, obj):
+179 |                 return True
+180 |         except PermissionDenied:
+181 |             return False
+182 |     return False
+```
+
+
+
+##Searching for term "subprocess.run PGPASSWORD postgres client django.db.backends.postgres.client"...
+### Search Result:
+Found `django/contrib/admin/bin/compress.py:main`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | #!/usr/bin/env python
+ 2 | import argparse
+ 3 | import subprocess
+ 4 | import sys
+ 5 | from pathlib import Path
+ 6 | 
+ 7 | try:
+ 8 |     import closure
+ 9 | except ImportError:
+10 |     closure_compiler = None
+11 | else:
+12 |     closure_compiler = closure.get_jar_filename()
+13 | 
+14 | js_path = Path(__file__).parent.parent / 'static' / 'admin' / 'js'
+15 | 
+16 | 
+17 | def main():
+18 |     description = """With no file paths given this script will automatically
+19 | compress all jQuery-based files of the admin app. Requires the Google Closure
+20 | Compiler library and Java version 6 or later."""
+21 |     parser = argparse.ArgumentParser(description=description)
+22 |     parser.add_argument('file', nargs='*')
+23 |     parser.add_argument(
+24 |         "-c", dest="compiler", default="~/bin/compiler.jar",
+25 |         help="path to Closure Compiler jar file",
+26 |     )
+27 |     parser.add_argument("-v", "--verbose", action="store_true", dest="verbose")
+28 |     parser.add_argument("-q", "--quiet", action="store_false", dest="verbose")
+29 |     options = parser.parse_args()
+30 | 
+31 |     compiler = Path(closure_compiler or options.compiler).expanduser()
+32 |     if not compiler.exists():
+33 |         sys.exit(
+34 |             "Google Closure compiler jar file %s not found. Please use the -c "
+35 |             "option to specify the path." % compiler
+36 |         )
+37 | 
+38 |     if not options.file:
+39 |         if options.verbose:
+40 |             sys.stdout.write("No filenames given; defaulting to admin scripts\n")
+41 |         files = [
+42 |             js_path / f
+43 |             for f in ["actions.js", "collapse.js", "inlines.js", "prepopulate.js"]
+44 |         ]
+45 |     else:
+46 |         files = [Path(f) for f in options.file]
+47 | 
+48 |     for file_path in files:
+49 |         to_compress = file_path.expanduser()
+50 |         if to_compress.exists():
+51 |             to_compress_min = to_compress.with_suffix('.min.js')
+52 |             cmd = "java -jar %s --js %s --js_output_file %s" % (compiler, to_compress, to_compress_min)
+53 |             if options.verbose:
+54 |                 sys.stdout.write("Running: %s\n" % cmd)
+55 |             subprocess.call(cmd.split())
+56 |         else:
+57 |             sys.stdout.write("File %s not found. Sure it exists?\n" % to_compress)
+58 | 
+59 | 
+60 | if __name__ == '__main__':
+61 |     main()
+62 | 
+```
+
+Found `django/contrib/auth/backends.py:ModelBackend`, `django/contrib/auth/backends.py:ModelBackend.authenticate`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | import inspect
+  2 | import warnings
+  3 | 
+  4 | from django.contrib.auth import get_user_model
+  5 | from django.contrib.auth.models import Permission
+  6 | from django.utils.deprecation import RemovedInDjango31Warning
+  7 | 
+  8 | UserModel = get_user_model()
+  9 | 
+ 10 | 
+ 11 | class ModelBackend:
+ 12 |     """
+ 13 |     Authenticates against settings.AUTH_USER_MODEL.
+ 14 |     """
+ 15 | 
+ 16 |     def authenticate(self, request, username=None, password=None, **kwargs):
+ 17 |         if username is None:
+ 18 |             username = kwargs.get(UserModel.USERNAME_FIELD)
+ 19 |         try:
+ 20 |             user = UserModel._default_manager.get_by_natural_key(username)
+ 21 |         except UserModel.DoesNotExist:
+ 22 |             # Run the default password hasher once to reduce the timing
+ 23 |             # difference between an existing and a nonexistent user (#20760).
+ 24 |             UserModel().set_password(password)
+ 25 |         else:
+ 26 |             if user.check_password(password) and self.user_can_authenticate(user):
+ 27 |                 return user
+```
+Finding newlines for mmindex:   0%|          | 0.00/1.68M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 1.68M/1.68M [00:00<00:00, 329MB/s]
+
+2026-08-28 01:45:56 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['DatabaseClient', 'rdbms.client', 'postgresql client', 'client.py']}))
+```
+2026-08-28 01:45:56 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:56 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:56 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:57 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:57 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:57 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:57 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:58 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:45:58 auto_search_main.py INFO OBSERVATION:
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/contenttypes/__init__.py:impl
+django/contrib/admindocs/__init__.py:impl
+django/contrib/flatpages/__init__.py:impl
+django/contrib/contenttypes/__init__.py:impl
+django/contrib/admindocs/__init__.py:impl
+django/contrib/flatpages/__init__.py:impl
+##Searching for term "DatabaseClient"...
+### Search Result:
+Found file `django/contrib/auth/base_user.py`.
+Found file `django/contrib/auth/__init__.py`.
+Found file `django/contrib/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "DatabaseClient", "rdbms.client", "postgresql client"...
+### Search Result:
+Found function `django/contrib/flatpages/forms.py:FlatpageForm.clean`.
+Source: Retrieved code content using keyword search (bm25).
+```
+52 | def clean(self):
+53 |         url = self.cleaned_data.get('url')
+54 |         sites = self.cleaned_data.get('sites')
+55 | 
+56 |         same_url = FlatPage.objects.filter(url=url)
+57 |         if self.instance.pk:
+58 |             same_url = same_url.exclude(pk=self.instance.pk)
+59 | 
+60 |         if sites and same_url.filter(sites__in=sites).exists():
+61 |             for site in sites:
+62 |                 if same_url.filter(sites=site).exists():
+63 |                     raise forms.ValidationError(
+64 |                         _('Flatpage with url %(url)s already exists for site %(site)s'),
+65 |                         code='duplicate_url',
+66 |                         params={'url': url, 'site': site},
+67 |                     )
+68 | 
+69 |         return super().clean()
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters`.
+Source: Retrieved code content using keyword search (bm25).
+```
+237 | def expected_parameters(self):
+238 |         return [self.lookup_kwarg, self.lookup_kwarg2]
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.choices`.
+Source: Retrieved code content using keyword search (bm25).
+```
+240 | def choices(self, changelist):
+241 |         for lookup, title in (
+242 |                 (None, _('All')),
+243 |                 ('1', _('Yes')),
+244 |                 ('0', _('No'))):
+245 |             yield {
+246 |                 'selected': self.lookup_val == lookup and not self.lookup_val2,
+247 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg2]),
+248 |                 'display': title,
+249 |             }
+250 |         if self.field.null:
+251 |             yield {
+252 |                 'selected': self.lookup_val2 == 'True',
+253 |                 'query_string': changelist.get_query_string({self.lookup_kwarg2: 'True'}, [self.lookup_kwarg]),
+254 |                 'display': _('Unknown'),
+255 |             }
+```
+
+Found class `django/contrib/admin/filters.py:ChoicesFieldListFilter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+261 | class ChoicesFieldListFilter(FieldListFilter):
+262 |     def __init__(self, field, request, params, model, model_admin, field_path):
+263 |         self.lookup_kwarg = '%s__exact' % field_path
+264 |         self.lookup_kwarg_isnull = '%s__isnull' % field_path
+265 |         self.lookup_val = params.get(self.lookup_kwarg)
+266 |         self.lookup_val_isnull = params.get(self.lookup_kwarg_isnull)
+267 |         super().__init__(field, request, params, model, model_admin, field_path)
+268 | 
+269 |     def expected_parameters(self):
+270 |         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
+271 | 
+272 |     def choices(self, changelist):
+273 |         yield {
+274 |             'selected': self.lookup_val is None,
+275 |             'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+276 |             'display': _('All')
+277 |         }
+278 |         none_title = ''
+279 |         for lookup, title in self.field.flatchoices:
+280 |             if lookup is None:
+281 |                 none_title = title
+282 |                 continue
+283 |             yield {
+284 |                 'selected': str(lookup) == self.lookup_val,
+285 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg_isnull]),
+286 |                 'display': title,
+287 |             }
+288 |         if none_title:
+289 |             yield {
+290 |                 'selected': bool(self.lookup_val_isnull),
+291 |                 'query_string': changelist.get_query_string({self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]),
+292 |                 'display': none_title,
+293 |             }
+```
+
+
+
+##Searching for term "rdbms.client"...
+### Search Result:
+Found file `django/conf/urls/__init__.py`.
+Found file `django/contrib/contenttypes/forms.py`.
+Found file `django/contrib/contenttypes/models.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "postgresql client"...
+### Search Result:
+Found file `django/contrib/admin/sites.py`.
+Found file `django/conf/locale/sq/__init__.py`.
+Found file `django/conf/locale/sl/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "client.py"...
+### Search Result:
+Found code snippet in file `django/conf/locale/fy/formats.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+22 | 
+```
+
+Found code snippet in file `django/apps/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | from .config import AppConfig
+2 | from .registry import apps
+3 | 
+4 | __all__ = ['AppConfig', 'apps']
+5 | 
+```
+
+Found code snippet in file `django/bin/django-admin.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | #!/usr/bin/env python
+2 | from django.core import management
+3 | 
+4 | if __name__ == "__main__":
+5 |     management.execute_from_command_line()
+6 | 
+```
+
+Found code snippet in file `django/__main__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Invokes django-admin when the django module is run as a script.
+ 3 | 
+ 4 | Example: python -m django check
+ 5 | """
+ 6 | from django.core import management
+ 7 | 
+ 8 | if __name__ == "__main__":
+ 9 |     management.execute_from_command_line()
+10 | 
+```
+
+Found code snippet in file `django/contrib/auth/signals.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | from django.dispatch import Signal
+2 | 
+3 | user_logged_in = Signal(providing_args=['request', 'user'])
+4 | user_login_failed = Signal(providing_args=['credentials', 'request'])
+5 | user_logged_out = Signal(providing_args=['request', 'user'])
+6 | 
+```
+
+
+
+##Searching for term "client.py", "DatabaseClient rdbms.client postgresql client client.py"...
+### Search Result:
+Found file `django/__init__.py`.
+Found file `django/__main__.py`.
+Found file `django/conf/__init__.py`.
+Found file `django/apps/__init__.py`.
+Found file `django/apps/config.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "DatabaseClient rdbms.client postgresql client client.py"...
+### Search Result:
+Found code snippet in file `django/conf/locale/fy/formats.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+22 | 
+```
+
+Found code snippet in file `django/apps/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | from .config import AppConfig
+2 | from .registry import apps
+3 | 
+4 | __all__ = ['AppConfig', 'apps']
+5 | 
+```
+
+Found code snippet in file `django/bin/django-admin.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | #!/usr/bin/env python
+2 | from django.core import management
+3 | 
+4 | if __name__ == "__main__":
+5 |     management.execute_from_command_line()
+6 | 
+```
+
+Found code snippet in file `django/__main__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Invokes django-admin when the django module is run as a script.
+ 3 | 
+ 4 | Example: python -m django check
+ 5 | """
+ 6 | from django.core import management
+ 7 | 
+ 8 | if __name__ == "__main__":
+ 9 |     management.execute_from_command_line()
+10 | 
+```
+
+Found code snippet in file `django/contrib/auth/signals.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1 | from django.dispatch import Signal
+2 | 
+3 | user_logged_in = Signal(providing_args=['request', 'user'])
+4 | user_login_failed = Signal(providing_args=['credentials', 'request'])
+5 | user_logged_out = Signal(providing_args=['request', 'user'])
+6 | 
+```
+
+2026-08-28 01:45:58 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 01:46:04 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 01:46:04 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 01:46:04 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 01:46:04 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['class DatabaseClient', 'def runshell', 'PGPASSWORD', 'subprocess.Popen', 'subprocess.call'], 'file_path_or_pattern': 'django/db/backends/**/*.py'}))
+```
+2026-08-28 01:46:04 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:04 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:04 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:04 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:05 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:05 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:05 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:05 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:06 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:06 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:06 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:06 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:06 auto_search_main.py INFO OBSERVATION:
+django/contrib/admin/widgets.py:AdminTextInputWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget
+django/contrib/admin/widgets.py:AdminTextInputWidget.__init__
+django/contrib/admin/helpers.py:AdminField.errors
+django/contrib/admin/helpers.py:AdminField
+django/contrib/admin/helpers.py:AdminField.__init__
+django/contrib/admin/helpers.py:AdminField.label_tag
+django/contrib/admin/widgets.py:AdminTimeWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget
+django/contrib/admin/widgets.py:AdminTimeWidget
+django/contrib/admin/widgets.py:AdminDateWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.__init__
+django/contrib/admin/helpers.py:Fieldset.media
+django/contrib/admin/helpers.py:Fieldset.__iter__
+django/contrib/admin/helpers.py:Fieldset
+django/contrib/admin/helpers.py:Fieldset.__init__
+django/contrib/admin/widgets.py:AutocompleteMixin.build_attrs
+django/contrib/admin/sites.py:AdminSite.register
+django/apps/config.py:AppConfig.create
+django/contrib/admin/helpers.py:InlineAdminFormSet
+django/contrib/admin/helpers.py:InlineAdminFormSet.__init__
+django/contrib/admin/widgets.py:AdminUUIDInputWidget.__init__
+django/contrib/admin/widgets.py:impl
+django/contrib/admin/widgets.py:AdminUUIDInputWidget
+django/contrib/admin/widgets.py:AdminIntegerFieldWidget
+django/contrib/admin/widgets.py:AdminIntegerFieldWidget.__init__
+django/contrib/admin/widgets.py:AdminBigIntegerFieldWidget
+django/contrib/auth/models.py:AnonymousUser.__hash__
+django/contrib/auth/models.py:AnonymousUser.is_anonymous
+django/contrib/auth/models.py:AnonymousUser.__eq__
+django/contrib/auth/models.py:AnonymousUser.__str__
+django/contrib/auth/models.py:AnonymousUser.save
+django/contrib/auth/models.py:AnonymousUser.has_module_perms
+django/contrib/auth/models.py:AnonymousUser.set_password
+django/contrib/auth/models.py:User
+django/contrib/auth/models.py:AnonymousUser.is_authenticated
+django/contrib/auth/models.py:AnonymousUser.get_group_permissions
+django/contrib/auth/models.py:AnonymousUser.check_password
+django/contrib/auth/models.py:AnonymousUser.__int__
+django/contrib/auth/models.py:AnonymousUser.groups
+django/contrib/auth/models.py:User.Meta
+django/contrib/auth/models.py:AnonymousUser.user_permissions
+django/contrib/auth/models.py:AnonymousUser
+django/contrib/auth/models.py:AnonymousUser.get_all_permissions
+django/contrib/auth/models.py:AnonymousUser.get_username
+django/contrib/auth/models.py:AnonymousUser.has_perms
+django/contrib/auth/models.py:AnonymousUser.delete
+django/contrib/auth/models.py:AnonymousUser.has_perm
+django/contrib/auth/base_user.py:AbstractBaseUser.has_usable_password
+django/contrib/auth/base_user.py:AbstractBaseUser
+django/contrib/auth/base_user.py:AbstractBaseUser.set_password
+django/contrib/auth/base_user.py:AbstractBaseUser.__str__
+django/contrib/auth/base_user.py:AbstractBaseUser.save
+django/contrib/auth/base_user.py:AbstractBaseUser.natural_key
+django/contrib/auth/base_user.py:AbstractBaseUser.is_anonymous
+django/contrib/auth/base_user.py:AbstractBaseUser.get_email_field_name
+django/contrib/auth/base_user.py:AbstractBaseUser.clean
+django/contrib/auth/base_user.py:AbstractBaseUser.set_unusable_password
+django/contrib/auth/base_user.py:AbstractBaseUser.normalize_username
+django/contrib/auth/base_user.py:AbstractBaseUser.Meta
+django/contrib/auth/base_user.py:AbstractBaseUser.is_authenticated
+django/contrib/auth/base_user.py:AbstractBaseUser.get_username
+django/contrib/auth/base_user.py:AbstractBaseUser.get_session_auth_hash
+django/contrib/auth/base_user.py:AbstractBaseUser.check_password
+django/contrib/admin/sites.py:AdminSite.has_permission
+django/contrib/admin/sites.py:AdminSite.unregister
+django/contrib/admin/sites.py:AdminSite.get_action
+django/contrib/admin/sites.py:AdminSite.add_action
+django/contrib/admin/sites.py:AdminSite.is_registered
+django/contrib/admin/sites.py:AdminSite.actions
+django/contrib/admin/sites.py:AdminSite.empty_value_display_9
+django/contrib/admin/sites.py:AdminSite.empty_value_display
+django/contrib/admin/sites.py:AdminSite.disable_action
+django/contrib/admin/options.py:ModelAdmin.delete_model
+django/contrib/admin/options.py:ModelAdmin.save_formset
+django/contrib/admin/options.py:ModelAdmin.save_model
+django/contrib/admin/options.py:ModelAdmin.save_form
+django/contrib/admin/options.py:ModelAdmin.delete_queryset
+django/conf/__init__.py:UserSettingsHolder.__setattr__
+django/conf/__init__.py:UserSettingsHolder.__delattr__
+django/conf/__init__.py:UserSettingsHolder.__init__
+django/conf/__init__.py:UserSettingsHolder.__repr__
+django/conf/__init__.py:UserSettingsHolder.__getattr__
+django/conf/__init__.py:UserSettingsHolder
+django/conf/__init__.py:UserSettingsHolder.is_overridden
+django/conf/__init__.py:impl:5
+django/conf/__init__.py:UserSettingsHolder.__dir__
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.label_and_url_for_value
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.get_context
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.url_parameters
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.value_from_datadict
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.format_value
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.has_changed
+django/contrib/auth/forms.py:UsernameField.to_python
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.bound_data
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField
+django/contrib/auth/forms.py:UsernameField
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.__init__
+django/contrib/admin/options.py:BaseModelAdmin.get_autocomplete_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_exclude
+django/contrib/admin/options.py:BaseModelAdmin.get_readonly_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_empty_value_display
+django/contrib/admin/options.py:BaseModelAdmin.get_view_on_site_url
+django/contrib/admin/options.py:BaseModelAdmin.get_fieldsets
+django/contrib/admin/options.py:BaseModelAdmin.get_prepopulated_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_ordering
+django/contrib/admin/templatetags/admin_list.py:admin_list_filter
+django/contrib/admin/templatetags/admin_list.py:date_hierarchy_tag
+django/contrib/admin/templatetags/admin_list.py:admin_actions
+django/contrib/admin/templatetags/admin_list.py:search_form
+django/contrib/admin/templatetags/admin_list.py:change_list_object_tools_tag
+django/contrib/admin/templatetags/admin_list.py:admin_actions_tag
+django/contrib/admin/templatetags/admin_list.py:search_form_tag
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/apps/registry.py:Apps.clear_cache
+django/apps/registry.py:Apps.unset_installed_apps
+django/apps/registry.py:Apps.register_model
+django/apps/registry.py:Apps.get_registered_model
+django/contrib/admin/options.py:ModelAdmin.save_related
+django/contrib/admin/options.py:ModelAdmin.log_deletion
+django/contrib/admin/templatetags/base.py:InclusionAdminNode.render
+django/contrib/admin/widgets.py:AdminSplitDateTime
+django/contrib/admin/widgets.py:AdminSplitDateTime.__init__
+django/contrib/admin/widgets.py:AdminSplitDateTime.get_context
+django/apps/registry.py:Apps.populate
+django/apps/registry.py:Apps.clear_cache
+django/apps/registry.py:Apps.unset_installed_apps
+django/apps/registry.py:Apps.register_model
+django/apps/registry.py:Apps.get_registered_model
+django/contrib/admin/options.py:ModelAdmin.save_related
+django/contrib/admin/options.py:ModelAdmin.log_deletion
+django/contrib/admin/templatetags/base.py:InclusionAdminNode.render
+django/contrib/admin/sites.py:AdminSite.admin_view
+django/apps/registry.py:impl
+django/apps/registry.py:Apps.lazy_model_operation
+django/apps/registry.py:Apps.do_pending_operations
+django/contrib/admin/widgets.py:AdminSplitDateTime
+django/contrib/admin/widgets.py:AdminSplitDateTime.__init__
+django/contrib/admin/widgets.py:AdminSplitDateTime.get_context
+No files found for file pattern 'django/db/backends/**/*.py'. Will search all files.
+...
+##Searching for term "class DatabaseClient"...
+### Search Result:
+Found function `django/contrib/admin/options.py:get_ul_class`.
+Source: Retrieved entity using keyword search (bm25).
+```
+67 | def get_ul_class(radio_style):
+68 |     return 'radiolist' if radio_style == VERTICAL else 'radiolist inline'
+```
+
+Found function `django/contrib/auth/views.py:LoginView.get_form_class`.
+Source: Retrieved entity using keyword search (bm25).
+```
+80 | def get_form_class(self):
+81 |         return self.authentication_form or self.form_class
+```
+
+Found class `django/contrib/admin/widgets.py:AdminTextareaWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+315 | class AdminTextareaWidget(forms.Textarea):
+316 |     def __init__(self, attrs=None):
+317 |         super().__init__(attrs={'class': 'vLargeTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/widgets.py:AdminTextInputWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+320 | class AdminTextInputWidget(forms.TextInput):
+321 |     def __init__(self, attrs=None):
+322 |         super().__init__(attrs={'class': 'vTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/widgets.py:AdminEmailInputWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+325 | class AdminEmailInputWidget(forms.EmailInput):
+326 |     def __init__(self, attrs=None):
+327 |         super().__init__(attrs={'class': 'vTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/helpers.py:AdminField`.
+Source: Retrieved code content using keyword search (bm25).
+```
+123 | class AdminField:
+124 |     def __init__(self, form, field, is_first):
+125 |         self.field = form[field]  # A django.forms.BoundField instance
+126 |         self.is_first = is_first  # Whether this field is first on the line
+127 |         self.is_checkbox = isinstance(self.field.field.widget, forms.CheckboxInput)
+128 |         self.is_readonly = False
+129 | 
+130 |     def label_tag(self):
+131 |         classes = []
+132 |         contents = conditional_escape(self.field.label)
+133 |         if self.is_checkbox:
+134 |             classes.append('vCheckboxLabel')
+135 | 
+136 |         if self.field.field.required:
+137 |             classes.append('required')
+138 |         if not self.is_first:
+139 |             classes.append('inline')
+140 |         attrs = {'class': ' '.join(classes)} if classes else {}
+141 |         # checkboxes should not have a label suffix as the checkbox appears
+142 |         # to the left of the label.
+143 |         return self.field.label_tag(
+144 |             contents=mark_safe(contents), attrs=attrs,
+145 |             label_suffix='' if self.is_checkbox else None,
+146 |         )
+147 | 
+148 |     def errors(self):
+149 |         return mark_safe(self.field.errors.as_ul())
+```
+
+Found file `django/contrib/auth/base_user.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/base_user.py` for the full content if needed.
+
+
+
+##Searching for term "def runshell"...
+### Search Result:
+Found function `django/contrib/auth/models.py:AnonymousUser.__str__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+374 | def __str__(self):
+375 |         return 'AnonymousUser'
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.__eq__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+377 | def __eq__(self, other):
+378 |         return isinstance(other, self.__class__)
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.__hash__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+380 | def __hash__(self):
+381 |         return 1
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.save`.
+Source: Retrieved code content using keyword search (bm25).
+```
+386 | def save(self):
+387 |         raise NotImplementedError("Django doesn't provide a DB representation for AnonymousUser.")
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.is_anonymous`.
+Source: Retrieved code content using keyword search (bm25).
+```
+422 | def is_anonymous(self):
+423 |         return True
+```
+
+Found file `django/conf/locale/he/formats.py`.
+Found file `django/conf/locale/he/__init__.py`.
+Found file `django/contrib/admin/helpers.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "PGPASSWORD"...
+### Search Result:
+Found function `django/conf/__init__.py:LazySettings.FILE_CHARSET`.
+Source: Retrieved entity using keyword search (bm25).
+```
+116 | def FILE_CHARSET(self):
+117 |         stack = traceback.extract_stack()
+118 |         # Show a warning if the setting is used outside of Django.
+119 |         # Stack index: -1 this line, -2 the caller.
+120 |         filename, _line_number, _function_name, _text = stack[-2]
+121 |         if not filename.startswith(os.path.dirname(django.__file__)):
+122 |             warnings.warn(
+123 |                 FILE_CHARSET_DEPRECATED_MSG,
+124 |                 RemovedInDjango31Warning,
+125 |                 stacklevel=2,
+126 |             )
+127 |         return self.__getattr__('FILE_CHARSET')
+```
+
+Found class `django/contrib/auth/views.py:PasswordResetDoneView`.
+Source: Retrieved entity using keyword search (bm25).
+```
+241 | class PasswordResetDoneView(PasswordContextMixin, TemplateView):
+242 |     template_name = 'registration/password_reset_done.html'
+243 |     title = _('Password reset sent')
+```
+
+Found class `django/contrib/admin/widgets.py:AdminSplitDateTime`.
+Source: Retrieved entity using keyword search (bm25).
+```
+77 | class AdminSplitDateTime(forms.SplitDateTimeWidget):
+78 |     """
+79 |     A SplitDateTime Widget that has some admin-specific styling.
+80 |     """
+81 |     template_name = 'admin/widgets/split_datetime.html'
+82 | 
+83 |     def __init__(self, attrs=None):
+84 |         widgets = [AdminDateWidget, AdminTimeWidget]
+85 |         # Note that we're calling MultiWidget, not SplitDateTimeWidget, because
+86 |         # we want to define widgets.
+87 |         forms.MultiWidget.__init__(self, widgets, attrs)
+88 | 
+89 |     def get_context(self, name, value, attrs):
+90 |         context = super().get_context(name, value, attrs)
+91 |         context['date_label'] = _('Date:')
+92 |         context['time_label'] = _('Time:')
+93 |         return context
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters`.
+Source: Retrieved code content using keyword search (bm25).
+```
+237 | def expected_parameters(self):
+238 |         return [self.lookup_kwarg, self.lookup_kwarg2]
+```
+
+
+
+##Searching for term "PGPASSWORD", "subprocess.Popen"...
+### Search Result:
+Found function `django/contrib/flatpages/forms.py:FlatpageForm.clean`.
+Source: Retrieved code content using keyword search (bm25).
+```
+52 | def clean(self):
+53 |         url = self.cleaned_data.get('url')
+54 |         sites = self.cleaned_data.get('sites')
+55 | 
+56 |         same_url = FlatPage.objects.filter(url=url)
+57 |         if self.instance.pk:
+58 |             same_url = same_url.exclude(pk=self.instance.pk)
+59 | 
+60 |         if sites and same_url.filter(sites__in=sites).exists():
+61 |             for site in sites:
+62 |                 if same_url.filter(sites=site).exists():
+63 |                     raise forms.ValidationError(
+64 |                         _('Flatpage with url %(url)s already exists for site %(site)s'),
+65 |                         code='duplicate_url',
+66 |                         params={'url': url, 'site': site},
+67 |                     )
+68 | 
+69 |         return super().clean()
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.choices`.
+Source: Retrieved code content using keyword search (bm25).
+```
+240 | def choices(self, changelist):
+241 |         for lookup, title in (
+242 |                 (None, _('All')),
+243 |                 ('1', _('Yes')),
+244 |                 ('0', _('No'))):
+245 |             yield {
+246 |                 'selected': self.lookup_val == lookup and not self.lookup_val2,
+247 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg2]),
+248 |                 'display': title,
+249 |             }
+250 |         if self.field.null:
+251 |             yield {
+252 |                 'selected': self.lookup_val2 == 'True',
+253 |                 'query_string': changelist.get_query_string({self.lookup_kwarg2: 'True'}, [self.lookup_kwarg]),
+254 |                 'display': _('Unknown'),
+255 |             }
+```
+
+Found class `django/contrib/admin/filters.py:ChoicesFieldListFilter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+261 | class ChoicesFieldListFilter(FieldListFilter):
+262 |     def __init__(self, field, request, params, model, model_admin, field_path):
+263 |         self.lookup_kwarg = '%s__exact' % field_path
+264 |         self.lookup_kwarg_isnull = '%s__isnull' % field_path
+265 |         self.lookup_val = params.get(self.lookup_kwarg)
+266 |         self.lookup_val_isnull = params.get(self.lookup_kwarg_isnull)
+267 |         super().__init__(field, request, params, model, model_admin, field_path)
+268 | 
+269 |     def expected_parameters(self):
+270 |         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
+271 | 
+272 |     def choices(self, changelist):
+273 |         yield {
+274 |             'selected': self.lookup_val is None,
+275 |             'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+276 |             'display': _('All')
+277 |         }
+278 |         none_title = ''
+279 |         for lookup, title in self.field.flatchoices:
+280 |             if lookup is None:
+281 |                 none_title = title
+282 |                 continue
+283 |             yield {
+284 |                 'selected': str(lookup) == self.lookup_val,
+285 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg_isnull]),
+286 |                 'display': title,
+287 |             }
+288 |         if none_title:
+289 |             yield {
+290 |                 'selected': bool(self.lookup_val_isnull),
+291 |                 'query_string': changelist.get_query_string({self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]),
+292 |                 'display': none_title,
+293 |             }
+```
+
+
+
+##Searching for term "subprocess.Popen"...
+### Search Result:
+Found `django/contrib/admin/bin/compress.py:main`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | #!/usr/bin/env python
+ 2 | import argparse
+ 3 | import subprocess
+ 4 | import sys
+ 5 | from pathlib import Path
+ 6 | 
+ 7 | try:
+ 8 |     import closure
+ 9 | except ImportError:
+10 |     closure_compiler = None
+11 | else:
+12 |     closure_compiler = closure.get_jar_filename()
+13 | 
+14 | js_path = Path(__file__).parent.parent / 'static' / 'admin' / 'js'
+15 | 
+16 | 
+17 | def main():
+18 |     description = """With no file paths given this script will automatically
+19 | compress all jQuery-based files of the admin app. Requires the Google Closure
+20 | Compiler library and Java version 6 or later."""
+21 |     parser = argparse.ArgumentParser(description=description)
+22 |     parser.add_argument('file', nargs='*')
+23 |     parser.add_argument(
+24 |         "-c", dest="compiler", default="~/bin/compiler.jar",
+25 |         help="path to Closure Compiler jar file",
+26 |     )
+27 |     parser.add_argument("-v", "--verbose", action="store_true", dest="verbose")
+28 |     parser.add_argument("-q", "--quiet", action="store_false", dest="verbose")
+29 |     options = parser.parse_args()
+30 | 
+31 |     compiler = Path(closure_compiler or options.compiler).expanduser()
+32 |     if not compiler.exists():
+33 |         sys.exit(
+34 |             "Google Closure compiler jar file %s not found. Please use the -c "
+35 |             "option to specify the path." % compiler
+36 |         )
+37 | 
+38 |     if not options.file:
+39 |         if options.verbose:
+40 |             sys.stdout.write("No filenames given; defaulting to admin scripts\n")
+41 |         files = [
+42 |             js_path / f
+43 |             for f in ["actions.js", "collapse.js", "inlines.js", "prepopulate.js"]
+44 |         ]
+45 |     else:
+46 |         files = [Path(f) for f in options.file]
+47 | 
+48 |     for file_path in files:
+49 |         to_compress = file_path.expanduser()
+50 |         if to_compress.exists():
+51 |             to_compress_min = to_compress.with_suffix('.min.js')
+52 |             cmd = "java -jar %s --js %s --js_output_file %s" % (compiler, to_compress, to_compress_min)
+53 |             if options.verbose:
+54 |                 sys.stdout.write("Running: %s\n" % cmd)
+55 |             subprocess.call(cmd.split())
+56 |         else:
+57 |             sys.stdout.write("File %s not found. Sure it exists?\n" % to_compress)
+58 | 
+59 | 
+60 | if __name__ == '__main__':
+61 |     main()
+62 | 
+```
+
+Found class `django/contrib/auth/context_processors.py:PermWrapper`.
+Source: Retrieved entity using keyword search (bm25).
+```
+24 | class PermWrapper:
+25 |     def __init__(self, user):
+26 |         self.user = user
+27 | 
+28 |     def __getitem__(self, app_label):
+29 |         return PermLookupDict(self.user, app_label)
+30 | 
+31 |     def __iter__(self):
+32 |         # I am large, I contain multitudes.
+33 |         raise TypeError("PermWrapper is not iterable.")
+34 | 
+35 |     def __contains__(self, perm_name):
+36 |         """
+37 |         Lookup by "someapp" or "someapp.someperm" in perms.
+38 |         """
+39 |         if '.' not in perm_name:
+40 |             # The name refers to module.
+41 |             return bool(self[perm_name])
+42 |         app_label, perm_name = perm_name.split('.', 1)
+43 |         return self[app_label][perm_name]
+```
+
+Found function `django/contrib/auth/context_processors.py:auth`.
+Source: Retrieved entity using keyword search (bm25).
+```
+46 | def auth(request):
+47 |     """
+48 |     Return context variables required by apps that use Django's authentication
+49 |     system.
+50 | 
+51 |     If there is no 'user' attribute in the request, use AnonymousUser (from
+52 |     django.contrib.auth).
+53 |     """
+54 |     if hasattr(request, 'user'):
+55 |         user = request.user
+56 |     else:
+57 |         from django.contrib.auth.models import AnonymousUser
+58 |         user = AnonymousUser()
+59 | 
+60 |     return {
+61 |         'user': user,
+62 |         'perms': PermWrapper(user),
+63 |     }
+```
+
+
+
+##Searching for term "subprocess.Popen", "subprocess.call"...
+### Search Result:
+Found file `django/contrib/auth/context_processors.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/context_processors.py` for the full content if needed.
+
+
+
+##Searching for term "subprocess.call"...
+### Search Result:
+Found `django/contrib/admin/bin/compress.py:main`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | #!/usr/bin/env python
+ 2 | import argparse
+ 3 | import subprocess
+ 4 | import sys
+ 5 | from pathlib import Path
+ 6 | 
+ 7 | try:
+ 8 |     import closure
+ 9 | except ImportError:
+10 |     closure_compiler = None
+11 | else:
+12 |     closure_compiler = closure.get_jar_filename()
+13 | 
+14 | js_path = Path(__file__).parent.parent / 'static' / 'admin' / 'js'
+15 | 
+16 | 
+17 | def main():
+18 |     description = """With no file paths given this script will automatically
+19 | compress all jQuery-based files of the admin app. Requires the Google Closure
+20 | Compiler library and Java version 6 or later."""
+21 |     parser = argparse.ArgumentParser(description=description)
+22 |     parser.add_argument('file', nargs='*')
+23 |     parser.add_argument(
+24 |         "-c", dest="compiler", default="~/bin/compiler.jar",
+25 |         help="path to Closure Compiler jar file",
+26 |     )
+27 |     parser.add_argument("-v", "--verbose", action="store_true", dest="verbose")
+28 |     parser.add_argument("-q", "--quiet", action="store_false", dest="verbose")
+29 |     options = parser.parse_args()
+30 | 
+31 |     compiler = Path(closure_compiler or options.compiler).expanduser()
+32 |     if not compiler.exists():
+33 |         sys.exit(
+34 |             "Google Closure compiler jar file %s not found. Please use the -c "
+35 |             "option to specify the path." % compiler
+36 |         )
+37 | 
+38 |     if not options.file:
+39 |         if options.verbose:
+40 |             sys.stdout.write("No filenames given; defaulting to admin scripts\n")
+41 |         files = [
+42 |             js_path / f
+43 |             for f in ["actions.js", "collapse.js", "inlines.js", "prepopulate.js"]
+44 |         ]
+45 |     else:
+46 |         files = [Path(f) for f in options.file]
+47 | 
+48 |     for file_path in files:
+49 |         to_compress = file_path.expanduser()
+50 |         if to_compress.exists():
+51 |             to_compress_min = to_compress.with_suffix('.min.js')
+52 |             cmd = "java -jar %s --js %s --js_output_file %s" % (compiler, to_compress, to_compress_min)
+53 |             if options.verbose:
+54 |                 sys.stdout.write("Running: %s\n" % cmd)
+55 |             subprocess.call(cmd.split())
+56 |         else:
+57 |             sys.stdout.write("File %s not found. Sure it exists?\n" % to_compress)
+58 | 
+59 | 
+60 | if __name__ == '__main__':
+61 |     main()
+62 | 
+```
+
+Found function `django/contrib/contenttypes/fields.py:create_generic_related_manager.GenericRelatedObjectManager.__call__`.
+Source: Retrieved entity using keyword search (bm25).
+```
+532 | def __call__(self, *, manager):
+533 |             manager = getattr(self.model, manager)
+534 |             manager_class = create_generic_related_manager(manager.__class__, rel)
+535 |             return manager_class(instance=self.instance)
+```
+
+Found file `django/conf/locale/ro/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/conf/locale/ro/__init__.py` for the full content if needed.
+
+
+
+##Searching for term "subprocess.call", "class DatabaseClient def runshell PGPASSWORD subprocess.Popen subprocess.call"...
+### Search Result:
+Found function `django/apps/registry.py:Apps.register_model`.
+Source: Retrieved code content using keyword search (bm25).
+```
+212 | def register_model(self, app_label, model):
+213 |         # Since this method is called when models are imported, it cannot
+214 |         # perform imports because of the risk of import loops. It mustn't
+215 |         # call get_app_config().
+216 |         model_name = model._meta.model_name
+217 |         app_models = self.all_models[app_label]
+218 |         if model_name in app_models:
+219 |             if (model.__name__ == app_models[model_name].__name__ and
+220 |                     model.__module__ == app_models[model_name].__module__):
+221 |                 warnings.warn(
+222 |                     "Model '%s.%s' was already registered. "
+223 |                     "Reloading models is not advised as it can lead to inconsistencies, "
+224 |                     "most notably with related models." % (app_label, model_name),
+225 |                     RuntimeWarning, stacklevel=2)
+226 |             else:
+227 |                 raise RuntimeError(
+228 |                     "Conflicting '%s' models in application '%s': %s and %s." %
+229 |                     (model_name, app_label, app_models[model_name], model))
+230 |         app_models[model_name] = model
+231 |         self.do_pending_operations(model)
+232 |         self.clear_cache()
+```
+
+Found function `django/apps/registry.py:Apps.get_registered_model`.
+Source: Retrieved code content using keyword search (bm25).
+```
+262 | def get_registered_model(self, app_label, model_name):
+263 |         """
+264 |         Similar to get_model(), but doesn't require that an app exists with
+265 |         the given app_label.
+266 | 
+267 |         It's safe to call this method at import time, even while the registry
+268 |         is being populated.
+269 |         """
+270 |         model = self.all_models[app_label].get(model_name.lower())
+271 |         if model is None:
+272 |             raise LookupError(
+273 |                 "Model '%s.%s' not registered." % (app_label, model_name))
+274 |         return model
+```
+
+Found function `django/apps/registry.py:Apps.unset_installed_apps`.
+Source: Retrieved code content using keyword search (bm25).
+```
+356 | def unset_installed_apps(self):
+357 |         """Cancel a previous call to set_installed_apps()."""
+358 |         self.app_configs = self.stored_app_configs.pop()
+359 |         self.apps_ready = self.models_ready = self.ready = True
+360 |         self.clear_cache()
+```
+
+Found function `django/apps/registry.py:Apps.clear_cache`.
+Source: Retrieved code content using keyword search (bm25).
+```
+362 | def clear_cache(self):
+363 |         """
+364 |         Clear all internal caches, for methods that alter the app registry.
+365 | 
+366 |         This is mostly used in tests.
+367 |         """
+368 |         # Call expire cache on each model. This will purge
+369 |         # the relation tree and the fields cache.
+370 |         self.get_models.cache_clear()
+371 |         if self.ready:
+372 |             # Circumvent self.get_models() to prevent that the cache is refilled.
+373 |             # This particularly prevents that an empty value is cached while cloning.
+374 |             for app_config in self.app_configs.values():
+375 |                 for model in app_config.get_models(include_auto_created=True):
+376 |                     model._meta._expire_cache()
+```
+
+
+
+##Searching for term "class DatabaseClient def runshell PGPASSWORD subprocess.Popen subprocess.call"...
+### Search Result:
+Found `django/contrib/admin/bin/compress.py:main`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | #!/usr/bin/env python
+ 2 | import argparse
+ 3 | import subprocess
+ 4 | import sys
+ 5 | from pathlib import Path
+ 6 | 
+ 7 | try:
+ 8 |     import closure
+ 9 | except ImportError:
+10 |     closure_compiler = None
+11 | else:
+12 |     closure_compiler = closure.get_jar_filename()
+13 | 
+14 | js_path = Path(__file__).parent.parent / 'static' / 'admin' / 'js'
+15 | 
+16 | 
+17 | def main():
+18 |     description = """With no file paths given this script will automatically
+19 | compress all jQuery-based files of the admin app. Requires the Google Closure
+20 | Compiler library and Java version 6 or later."""
+21 |     parser = argparse.ArgumentParser(description=description)
+22 |     parser.add_argument('file', nargs='*')
+23 |     parser.add_argument(
+24 |         "-c", dest="compiler", default="~/bin/compiler.jar",
+25 |         help="path to Closure Compiler jar file",
+26 |     )
+27 |     parser.add_argument("-v", "--verbose", action="store_true", dest="verbose")
+28 |     parser.add_argument("-q", "--quiet", action="store_false", dest="verbose")
+29 |     options = parser.parse_args()
+30 | 
+31 |     compiler = Path(closure_compiler or options.compiler).expanduser()
+32 |     if not compiler.exists():
+33 |         sys.exit(
+34 |             "Google Closure compiler jar file %s not found. Please use the -c "
+35 |             "option to specify the path." % compiler
+36 |         )
+37 | 
+38 |     if not options.file:
+39 |         if options.verbose:
+40 |             sys.stdout.write("No filenames given; defaulting to admin scripts\n")
+41 |         files = [
+42 |             js_path / f
+43 |             for f in ["actions.js", "collapse.js", "inlines.js", "prepopulate.js"]
+44 |         ]
+45 |     else:
+46 |         files = [Path(f) for f in options.file]
+47 | 
+48 |     for file_path in files:
+49 |         to_compress = file_path.expanduser()
+50 |         if to_compress.exists():
+51 |             to_compress_min = to_compress.with_suffix('.min.js')
+52 |             cmd = "java -jar %s --js %s --js_output_file %s" % (compiler, to_compress, to_compress_min)
+53 |             if options.verbose:
+54 |                 sys.stdout.write("Running: %s\n" % cmd)
+55 |             subprocess.call(cmd.split())
+56 |         else:
+57 |             sys.stdout.write("File %s not found. Sure it exists?\n" % to_compress)
+58 | 
+59 | 
+60 | if __name__ == '__main__':
+61 |     main()
+62 | 
+```
+
+Found function `django/contrib/auth/base_user.py:AbstractBaseUser.set_unusable_password`.
+Source: Retrieved entity using keyword search (bm25).
+```
+113 | def set_unusable_password(self):
+114 |         # Set a value that will never be a valid hash
+115 |         self.password = make_password(None)
+```
+
+Found function `django/contrib/contenttypes/models.py:ContentType.model_class`.
+Source: Retrieved entity using keyword search (bm25).
+```
+161 | def model_class(self):
+162 |         """Return the model class for this type of content."""
+163 |         try:
+164 |             return apps.get_model(self.app_label, self.model)
+165 |         except LookupError:
+166 |             return None
+```
+
+Found function `django/contrib/admin/options.py:BaseModelAdmin.has_module_permission`.
+Source: Retrieved entity using keyword search (bm25).
+```
+524 | def has_module_permission(self, request):
+525 |         """
+526 |         Return True if the given request has any permission in the given
+527 |         app label.
+528 | 
+529 |         Can be overridden by the user in subclasses. In such case it should
+530 |         return True if the given request has permission to view the module on
+531 |         the admin index page and access the module's index page. Overriding it
+532 |         does not restrict access to the add, change or delete views. Use
+533 |         `ModelAdmin.has_(add|change|delete)_permission` for that.
+534 |         """
+535 |         return request.user.has_module_perms(self.opts.app_label)
+```
+
+2026-08-28 01:46:06 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['class DatabaseClient', 'def runshell'], 'file_path_or_pattern': 'django/db/backends/postgresql/**/*.py'}))
+```
+2026-08-28 01:46:06 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:06 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:07 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:07 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:07 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:07 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:08 auto_search_main.py INFO OBSERVATION:
+django/contrib/admin/widgets.py:AdminTextInputWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget
+django/contrib/admin/widgets.py:AdminTextInputWidget.__init__
+django/contrib/admin/helpers.py:AdminField.errors
+django/contrib/admin/helpers.py:AdminField
+django/contrib/admin/helpers.py:AdminField.__init__
+django/contrib/admin/helpers.py:AdminField.label_tag
+django/contrib/admin/widgets.py:AdminTimeWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget
+django/contrib/admin/widgets.py:AdminTimeWidget
+django/contrib/admin/widgets.py:AdminDateWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.__init__
+django/contrib/admin/helpers.py:Fieldset.media
+django/contrib/admin/helpers.py:Fieldset.__iter__
+django/contrib/admin/helpers.py:Fieldset
+django/contrib/admin/helpers.py:Fieldset.__init__
+django/contrib/admin/widgets.py:AutocompleteMixin.build_attrs
+django/contrib/admin/sites.py:AdminSite.register
+django/apps/config.py:AppConfig.create
+django/contrib/admin/helpers.py:InlineAdminFormSet
+django/contrib/admin/helpers.py:InlineAdminFormSet.__init__
+django/contrib/admin/widgets.py:AdminUUIDInputWidget.__init__
+django/contrib/admin/widgets.py:impl
+django/contrib/admin/widgets.py:AdminUUIDInputWidget
+django/contrib/admin/widgets.py:AdminIntegerFieldWidget
+django/contrib/admin/widgets.py:AdminIntegerFieldWidget.__init__
+django/contrib/admin/widgets.py:AdminBigIntegerFieldWidget
+django/contrib/auth/models.py:AnonymousUser.__hash__
+django/contrib/auth/models.py:AnonymousUser.is_anonymous
+django/contrib/auth/models.py:AnonymousUser.__eq__
+django/contrib/auth/models.py:AnonymousUser.__str__
+django/contrib/auth/models.py:AnonymousUser.save
+django/contrib/auth/models.py:AnonymousUser.has_module_perms
+django/contrib/auth/models.py:AnonymousUser.set_password
+django/contrib/auth/models.py:User
+django/contrib/auth/models.py:AnonymousUser.is_authenticated
+django/contrib/auth/models.py:AnonymousUser.get_group_permissions
+django/contrib/auth/models.py:AnonymousUser.check_password
+django/contrib/auth/models.py:AnonymousUser.__int__
+django/contrib/auth/models.py:AnonymousUser.groups
+django/contrib/auth/models.py:User.Meta
+django/contrib/auth/models.py:AnonymousUser.user_permissions
+django/contrib/auth/models.py:AnonymousUser
+django/contrib/auth/models.py:AnonymousUser.get_all_permissions
+django/contrib/auth/models.py:AnonymousUser.get_username
+django/contrib/auth/models.py:AnonymousUser.has_perms
+django/contrib/auth/models.py:AnonymousUser.delete
+django/contrib/auth/models.py:AnonymousUser.has_perm
+django/contrib/auth/base_user.py:AbstractBaseUser.has_usable_password
+django/contrib/auth/base_user.py:AbstractBaseUser
+django/contrib/auth/base_user.py:AbstractBaseUser.set_password
+django/contrib/auth/base_user.py:AbstractBaseUser.__str__
+django/contrib/auth/base_user.py:AbstractBaseUser.save
+django/contrib/auth/base_user.py:AbstractBaseUser.natural_key
+django/contrib/auth/base_user.py:AbstractBaseUser.is_anonymous
+django/contrib/auth/base_user.py:AbstractBaseUser.get_email_field_name
+django/contrib/auth/base_user.py:AbstractBaseUser.clean
+django/contrib/auth/base_user.py:AbstractBaseUser.set_unusable_password
+django/contrib/auth/base_user.py:AbstractBaseUser.normalize_username
+django/contrib/auth/base_user.py:AbstractBaseUser.Meta
+django/contrib/auth/base_user.py:AbstractBaseUser.is_authenticated
+django/contrib/auth/base_user.py:AbstractBaseUser.get_username
+django/contrib/auth/base_user.py:AbstractBaseUser.get_session_auth_hash
+django/contrib/auth/base_user.py:AbstractBaseUser.check_password
+django/contrib/admin/sites.py:AdminSite.has_permission
+django/contrib/admin/sites.py:AdminSite.unregister
+django/contrib/admin/sites.py:AdminSite.get_action
+django/contrib/admin/sites.py:AdminSite.add_action
+django/contrib/admin/sites.py:AdminSite.is_registered
+django/contrib/admin/sites.py:AdminSite.actions
+django/contrib/admin/sites.py:AdminSite.empty_value_display_9
+django/contrib/admin/sites.py:AdminSite.empty_value_display
+django/contrib/admin/sites.py:AdminSite.disable_action
+django/contrib/admin/options.py:ModelAdmin.delete_model
+django/contrib/admin/options.py:ModelAdmin.save_formset
+django/contrib/admin/options.py:ModelAdmin.save_model
+django/contrib/admin/options.py:ModelAdmin.save_form
+django/contrib/admin/options.py:ModelAdmin.delete_queryset
+django/conf/__init__.py:UserSettingsHolder.__setattr__
+django/conf/__init__.py:UserSettingsHolder.__delattr__
+django/conf/__init__.py:UserSettingsHolder.__init__
+django/conf/__init__.py:UserSettingsHolder.__repr__
+django/conf/__init__.py:UserSettingsHolder.__getattr__
+django/conf/__init__.py:UserSettingsHolder
+django/conf/__init__.py:UserSettingsHolder.is_overridden
+django/conf/__init__.py:impl:5
+django/conf/__init__.py:UserSettingsHolder.__dir__
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.label_and_url_for_value
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.get_context
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.url_parameters
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.value_from_datadict
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.format_value
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.has_changed
+django/contrib/auth/forms.py:UsernameField.to_python
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.bound_data
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField
+django/contrib/auth/forms.py:UsernameField
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.__init__
+django/contrib/admin/options.py:BaseModelAdmin.get_autocomplete_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_exclude
+django/contrib/admin/options.py:BaseModelAdmin.get_readonly_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_empty_value_display
+django/contrib/admin/options.py:BaseModelAdmin.get_view_on_site_url
+django/contrib/admin/options.py:BaseModelAdmin.get_fieldsets
+django/contrib/admin/options.py:BaseModelAdmin.get_prepopulated_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_ordering
+django/contrib/admin/templatetags/admin_list.py:admin_list_filter
+django/contrib/admin/templatetags/admin_list.py:date_hierarchy_tag
+django/contrib/admin/templatetags/admin_list.py:admin_actions
+django/contrib/admin/templatetags/admin_list.py:search_form
+django/contrib/admin/templatetags/admin_list.py:change_list_object_tools_tag
+django/contrib/admin/templatetags/admin_list.py:admin_actions_tag
+django/contrib/admin/templatetags/admin_list.py:search_form_tag
+django/contrib/admin/widgets.py:AdminTextInputWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget
+django/contrib/admin/widgets.py:AdminTextInputWidget.__init__
+django/contrib/admin/helpers.py:AdminField.errors
+django/contrib/admin/helpers.py:AdminField
+django/contrib/admin/helpers.py:AdminField.__init__
+django/contrib/admin/helpers.py:AdminField.label_tag
+django/contrib/admin/helpers.py:Fieldset.media
+django/contrib/admin/helpers.py:Fieldset.__iter__
+django/contrib/admin/helpers.py:Fieldset
+django/contrib/admin/helpers.py:Fieldset.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget
+django/contrib/admin/widgets.py:AdminTimeWidget
+django/contrib/admin/widgets.py:AdminDateWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.__init__
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.has_changed
+django/contrib/auth/forms.py:UsernameField.to_python
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.bound_data
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField
+django/contrib/auth/forms.py:UsernameField
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.__init__
+django/contrib/contenttypes/models.py:ContentType.Meta
+django/contrib/contenttypes/models.py:ContentType.__str__
+django/contrib/contenttypes/models.py:ContentType.name
+django/contrib/contenttypes/models.py:ContentType.get_all_objects_for_this_type
+django/contrib/contenttypes/models.py:ContentType.natural_key
+django/contrib/contenttypes/models.py:ContentType.get_object_for_this_type
+django/contrib/contenttypes/models.py:ContentType.model_class
+django/contrib/contenttypes/models.py:ContentType.app_labeled_name
+django/contrib/contenttypes/models.py:ContentType
+django/contrib/admin/options.py:InlineModelAdmin.get_extra
+django/contrib/admin/options.py:InlineModelAdmin.media
+django/contrib/admin/options.py:InlineModelAdmin.get_min_num
+django/contrib/admin/options.py:InlineModelAdmin.get_max_num
+django/contrib/admin/widgets.py:AdminURLFieldWidget
+django/contrib/admin/widgets.py:AdminURLFieldWidget.__init__
+django/contrib/admin/widgets.py:AdminURLFieldWidget.get_context
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.label_and_url_for_value
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.get_context
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.url_parameters
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.value_from_datadict
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.format_value
+No files found for file pattern 'django/db/backends/postgresql/**/*.py'. Will search all files.
+...
+##Searching for term "class DatabaseClient", "class DatabaseClient def runshell"...
+### Search Result:
+Found function `django/contrib/admin/options.py:get_ul_class`.
+Source: Retrieved entity using keyword search (bm25).
+```
+67 | def get_ul_class(radio_style):
+68 |     return 'radiolist' if radio_style == VERTICAL else 'radiolist inline'
+```
+
+Found class `django/contrib/admin/widgets.py:AdminTextareaWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+315 | class AdminTextareaWidget(forms.Textarea):
+316 |     def __init__(self, attrs=None):
+317 |         super().__init__(attrs={'class': 'vLargeTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/widgets.py:AdminTextInputWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+320 | class AdminTextInputWidget(forms.TextInput):
+321 |     def __init__(self, attrs=None):
+322 |         super().__init__(attrs={'class': 'vTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/widgets.py:AdminEmailInputWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+325 | class AdminEmailInputWidget(forms.EmailInput):
+326 |     def __init__(self, attrs=None):
+327 |         super().__init__(attrs={'class': 'vTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/helpers.py:AdminField`.
+Source: Retrieved code content using keyword search (bm25).
+```
+123 | class AdminField:
+124 |     def __init__(self, form, field, is_first):
+125 |         self.field = form[field]  # A django.forms.BoundField instance
+126 |         self.is_first = is_first  # Whether this field is first on the line
+127 |         self.is_checkbox = isinstance(self.field.field.widget, forms.CheckboxInput)
+128 |         self.is_readonly = False
+129 | 
+130 |     def label_tag(self):
+131 |         classes = []
+132 |         contents = conditional_escape(self.field.label)
+133 |         if self.is_checkbox:
+134 |             classes.append('vCheckboxLabel')
+135 | 
+136 |         if self.field.field.required:
+137 |             classes.append('required')
+138 |         if not self.is_first:
+139 |             classes.append('inline')
+140 |         attrs = {'class': ' '.join(classes)} if classes else {}
+141 |         # checkboxes should not have a label suffix as the checkbox appears
+142 |         # to the left of the label.
+143 |         return self.field.label_tag(
+144 |             contents=mark_safe(contents), attrs=attrs,
+145 |             label_suffix='' if self.is_checkbox else None,
+146 |         )
+147 | 
+148 |     def errors(self):
+149 |         return mark_safe(self.field.errors.as_ul())
+```
+
+Found file `django/contrib/auth/base_user.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/base_user.py` for the full content if needed.
+
+
+
+##Searching for term "class DatabaseClient"...
+### Search Result:
+Found function `django/contrib/auth/views.py:LoginView.get_form_class`.
+Source: Retrieved entity using keyword search (bm25).
+```
+80 | def get_form_class(self):
+81 |         return self.authentication_form or self.form_class
+```
+
+
+
+##Searching for term "def runshell"...
+### Search Result:
+Found function `django/contrib/auth/models.py:AnonymousUser.__str__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+374 | def __str__(self):
+375 |         return 'AnonymousUser'
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.__eq__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+377 | def __eq__(self, other):
+378 |         return isinstance(other, self.__class__)
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.__hash__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+380 | def __hash__(self):
+381 |         return 1
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.save`.
+Source: Retrieved code content using keyword search (bm25).
+```
+386 | def save(self):
+387 |         raise NotImplementedError("Django doesn't provide a DB representation for AnonymousUser.")
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.is_anonymous`.
+Source: Retrieved code content using keyword search (bm25).
+```
+422 | def is_anonymous(self):
+423 |         return True
+```
+
+Found file `django/conf/locale/he/formats.py`.
+Found file `django/conf/locale/he/__init__.py`.
+Found file `django/contrib/admin/helpers.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "class DatabaseClient def runshell"...
+### Search Result:
+Found function `django/contrib/auth/models.py:_user_has_perm`.
+Source: Retrieved entity using keyword search (bm25).
+```
+170 | def _user_has_perm(user, perm, obj):
+171 |     """
+172 |     A backend can raise `PermissionDenied` to short-circuit permission checking.
+173 |     """
+174 |     for backend in auth.get_backends():
+175 |         if not hasattr(backend, 'has_perm'):
+176 |             continue
+177 |         try:
+178 |             if backend.has_perm(user, perm, obj):
+179 |                 return True
+180 |         except PermissionDenied:
+181 |             return False
+182 |     return False
+```
+
+2026-08-28 01:46:08 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['class DatabaseClient', 'def runshell'], 'file_path_or_pattern': 'django/db/backends/base/**/*.py'}))
+```
+2026-08-28 01:46:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:09 auto_search_main.py INFO OBSERVATION:
+django/contrib/admin/widgets.py:AdminTextInputWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget
+django/contrib/admin/widgets.py:AdminTextInputWidget.__init__
+django/contrib/admin/helpers.py:AdminField.errors
+django/contrib/admin/helpers.py:AdminField
+django/contrib/admin/helpers.py:AdminField.__init__
+django/contrib/admin/helpers.py:AdminField.label_tag
+django/contrib/admin/widgets.py:AdminTimeWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget
+django/contrib/admin/widgets.py:AdminTimeWidget
+django/contrib/admin/widgets.py:AdminDateWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.__init__
+django/contrib/admin/helpers.py:Fieldset.media
+django/contrib/admin/helpers.py:Fieldset.__iter__
+django/contrib/admin/helpers.py:Fieldset
+django/contrib/admin/helpers.py:Fieldset.__init__
+django/contrib/admin/widgets.py:AutocompleteMixin.build_attrs
+django/contrib/admin/sites.py:AdminSite.register
+django/apps/config.py:AppConfig.create
+django/contrib/admin/helpers.py:InlineAdminFormSet
+django/contrib/admin/helpers.py:InlineAdminFormSet.__init__
+django/contrib/admin/widgets.py:AdminUUIDInputWidget.__init__
+django/contrib/admin/widgets.py:impl
+django/contrib/admin/widgets.py:AdminUUIDInputWidget
+django/contrib/admin/widgets.py:AdminIntegerFieldWidget
+django/contrib/admin/widgets.py:AdminIntegerFieldWidget.__init__
+django/contrib/admin/widgets.py:AdminBigIntegerFieldWidget
+django/contrib/auth/models.py:AnonymousUser.__hash__
+django/contrib/auth/models.py:AnonymousUser.is_anonymous
+django/contrib/auth/models.py:AnonymousUser.__eq__
+django/contrib/auth/models.py:AnonymousUser.__str__
+django/contrib/auth/models.py:AnonymousUser.save
+django/contrib/auth/models.py:AnonymousUser.has_module_perms
+django/contrib/auth/models.py:AnonymousUser.set_password
+django/contrib/auth/models.py:User
+django/contrib/auth/models.py:AnonymousUser.is_authenticated
+django/contrib/auth/models.py:AnonymousUser.get_group_permissions
+django/contrib/auth/models.py:AnonymousUser.check_password
+django/contrib/auth/models.py:AnonymousUser.__int__
+django/contrib/auth/models.py:AnonymousUser.groups
+django/contrib/auth/models.py:User.Meta
+django/contrib/auth/models.py:AnonymousUser.user_permissions
+django/contrib/auth/models.py:AnonymousUser
+django/contrib/auth/models.py:AnonymousUser.get_all_permissions
+django/contrib/auth/models.py:AnonymousUser.get_username
+django/contrib/auth/models.py:AnonymousUser.has_perms
+django/contrib/auth/models.py:AnonymousUser.delete
+django/contrib/auth/models.py:AnonymousUser.has_perm
+django/contrib/auth/base_user.py:AbstractBaseUser.has_usable_password
+django/contrib/auth/base_user.py:AbstractBaseUser
+django/contrib/auth/base_user.py:AbstractBaseUser.set_password
+django/contrib/auth/base_user.py:AbstractBaseUser.__str__
+django/contrib/auth/base_user.py:AbstractBaseUser.save
+django/contrib/auth/base_user.py:AbstractBaseUser.natural_key
+django/contrib/auth/base_user.py:AbstractBaseUser.is_anonymous
+django/contrib/auth/base_user.py:AbstractBaseUser.get_email_field_name
+django/contrib/auth/base_user.py:AbstractBaseUser.clean
+django/contrib/auth/base_user.py:AbstractBaseUser.set_unusable_password
+django/contrib/auth/base_user.py:AbstractBaseUser.normalize_username
+django/contrib/auth/base_user.py:AbstractBaseUser.Meta
+django/contrib/auth/base_user.py:AbstractBaseUser.is_authenticated
+django/contrib/auth/base_user.py:AbstractBaseUser.get_username
+django/contrib/auth/base_user.py:AbstractBaseUser.get_session_auth_hash
+django/contrib/auth/base_user.py:AbstractBaseUser.check_password
+django/contrib/admin/sites.py:AdminSite.has_permission
+django/contrib/admin/sites.py:AdminSite.unregister
+django/contrib/admin/sites.py:AdminSite.get_action
+django/contrib/admin/sites.py:AdminSite.add_action
+django/contrib/admin/sites.py:AdminSite.is_registered
+django/contrib/admin/sites.py:AdminSite.actions
+django/contrib/admin/sites.py:AdminSite.empty_value_display_9
+django/contrib/admin/sites.py:AdminSite.empty_value_display
+django/contrib/admin/sites.py:AdminSite.disable_action
+django/contrib/admin/options.py:ModelAdmin.delete_model
+django/contrib/admin/options.py:ModelAdmin.save_formset
+django/contrib/admin/options.py:ModelAdmin.save_model
+django/contrib/admin/options.py:ModelAdmin.save_form
+django/contrib/admin/options.py:ModelAdmin.delete_queryset
+django/conf/__init__.py:UserSettingsHolder.__setattr__
+django/conf/__init__.py:UserSettingsHolder.__delattr__
+django/conf/__init__.py:UserSettingsHolder.__init__
+django/conf/__init__.py:UserSettingsHolder.__repr__
+django/conf/__init__.py:UserSettingsHolder.__getattr__
+django/conf/__init__.py:UserSettingsHolder
+django/conf/__init__.py:UserSettingsHolder.is_overridden
+django/conf/__init__.py:impl:5
+django/conf/__init__.py:UserSettingsHolder.__dir__
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.label_and_url_for_value
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.get_context
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.url_parameters
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.value_from_datadict
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.format_value
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.has_changed
+django/contrib/auth/forms.py:UsernameField.to_python
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.bound_data
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField
+django/contrib/auth/forms.py:UsernameField
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.__init__
+django/contrib/admin/options.py:BaseModelAdmin.get_autocomplete_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_exclude
+django/contrib/admin/options.py:BaseModelAdmin.get_readonly_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_empty_value_display
+django/contrib/admin/options.py:BaseModelAdmin.get_view_on_site_url
+django/contrib/admin/options.py:BaseModelAdmin.get_fieldsets
+django/contrib/admin/options.py:BaseModelAdmin.get_prepopulated_fields
+django/contrib/admin/options.py:BaseModelAdmin.get_ordering
+django/contrib/admin/templatetags/admin_list.py:admin_list_filter
+django/contrib/admin/templatetags/admin_list.py:date_hierarchy_tag
+django/contrib/admin/templatetags/admin_list.py:admin_actions
+django/contrib/admin/templatetags/admin_list.py:search_form
+django/contrib/admin/templatetags/admin_list.py:change_list_object_tools_tag
+django/contrib/admin/templatetags/admin_list.py:admin_actions_tag
+django/contrib/admin/templatetags/admin_list.py:search_form_tag
+django/contrib/admin/widgets.py:AdminTextInputWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget
+django/contrib/admin/widgets.py:AdminTextInputWidget.__init__
+django/contrib/admin/helpers.py:AdminField.errors
+django/contrib/admin/helpers.py:AdminField
+django/contrib/admin/helpers.py:AdminField.__init__
+django/contrib/admin/helpers.py:AdminField.label_tag
+django/contrib/admin/helpers.py:Fieldset.media
+django/contrib/admin/helpers.py:Fieldset.__iter__
+django/contrib/admin/helpers.py:Fieldset
+django/contrib/admin/helpers.py:Fieldset.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget
+django/contrib/admin/widgets.py:AdminTimeWidget
+django/contrib/admin/widgets.py:AdminDateWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.__init__
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.has_changed
+django/contrib/auth/forms.py:UsernameField.to_python
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.bound_data
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField
+django/contrib/auth/forms.py:UsernameField
+django/contrib/auth/forms.py:ReadOnlyPasswordHashField.__init__
+django/contrib/contenttypes/models.py:ContentType.Meta
+django/contrib/contenttypes/models.py:ContentType.__str__
+django/contrib/contenttypes/models.py:ContentType.name
+django/contrib/contenttypes/models.py:ContentType.get_all_objects_for_this_type
+django/contrib/contenttypes/models.py:ContentType.natural_key
+django/contrib/contenttypes/models.py:ContentType.get_object_for_this_type
+django/contrib/contenttypes/models.py:ContentType.model_class
+django/contrib/contenttypes/models.py:ContentType.app_labeled_name
+django/contrib/contenttypes/models.py:ContentType
+django/contrib/admin/options.py:InlineModelAdmin.get_extra
+django/contrib/admin/options.py:InlineModelAdmin.media
+django/contrib/admin/options.py:InlineModelAdmin.get_min_num
+django/contrib/admin/options.py:InlineModelAdmin.get_max_num
+django/contrib/admin/widgets.py:AdminURLFieldWidget
+django/contrib/admin/widgets.py:AdminURLFieldWidget.__init__
+django/contrib/admin/widgets.py:AdminURLFieldWidget.get_context
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.label_and_url_for_value
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.get_context
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.url_parameters
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.value_from_datadict
+django/contrib/admin/widgets.py:ManyToManyRawIdWidget.format_value
+No files found for file pattern 'django/db/backends/base/**/*.py'. Will search all files.
+...
+##Searching for term "class DatabaseClient", "class DatabaseClient def runshell"...
+### Search Result:
+Found function `django/contrib/admin/options.py:get_ul_class`.
+Source: Retrieved entity using keyword search (bm25).
+```
+67 | def get_ul_class(radio_style):
+68 |     return 'radiolist' if radio_style == VERTICAL else 'radiolist inline'
+```
+
+Found class `django/contrib/admin/widgets.py:AdminTextareaWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+315 | class AdminTextareaWidget(forms.Textarea):
+316 |     def __init__(self, attrs=None):
+317 |         super().__init__(attrs={'class': 'vLargeTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/widgets.py:AdminTextInputWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+320 | class AdminTextInputWidget(forms.TextInput):
+321 |     def __init__(self, attrs=None):
+322 |         super().__init__(attrs={'class': 'vTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/widgets.py:AdminEmailInputWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+325 | class AdminEmailInputWidget(forms.EmailInput):
+326 |     def __init__(self, attrs=None):
+327 |         super().__init__(attrs={'class': 'vTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/helpers.py:AdminField`.
+Source: Retrieved code content using keyword search (bm25).
+```
+123 | class AdminField:
+124 |     def __init__(self, form, field, is_first):
+125 |         self.field = form[field]  # A django.forms.BoundField instance
+126 |         self.is_first = is_first  # Whether this field is first on the line
+127 |         self.is_checkbox = isinstance(self.field.field.widget, forms.CheckboxInput)
+128 |         self.is_readonly = False
+129 | 
+130 |     def label_tag(self):
+131 |         classes = []
+132 |         contents = conditional_escape(self.field.label)
+133 |         if self.is_checkbox:
+134 |             classes.append('vCheckboxLabel')
+135 | 
+136 |         if self.field.field.required:
+137 |             classes.append('required')
+138 |         if not self.is_first:
+139 |             classes.append('inline')
+140 |         attrs = {'class': ' '.join(classes)} if classes else {}
+141 |         # checkboxes should not have a label suffix as the checkbox appears
+142 |         # to the left of the label.
+143 |         return self.field.label_tag(
+144 |             contents=mark_safe(contents), attrs=attrs,
+145 |             label_suffix='' if self.is_checkbox else None,
+146 |         )
+147 | 
+148 |     def errors(self):
+149 |         return mark_safe(self.field.errors.as_ul())
+```
+
+Found file `django/contrib/auth/base_user.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/base_user.py` for the full content if needed.
+
+
+
+##Searching for term "class DatabaseClient"...
+### Search Result:
+Found function `django/contrib/auth/views.py:LoginView.get_form_class`.
+Source: Retrieved entity using keyword search (bm25).
+```
+80 | def get_form_class(self):
+81 |         return self.authentication_form or self.form_class
+```
+
+
+
+##Searching for term "def runshell"...
+### Search Result:
+Found function `django/contrib/auth/models.py:AnonymousUser.__str__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+374 | def __str__(self):
+375 |         return 'AnonymousUser'
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.__eq__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+377 | def __eq__(self, other):
+378 |         return isinstance(other, self.__class__)
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.__hash__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+380 | def __hash__(self):
+381 |         return 1
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.save`.
+Source: Retrieved code content using keyword search (bm25).
+```
+386 | def save(self):
+387 |         raise NotImplementedError("Django doesn't provide a DB representation for AnonymousUser.")
+```
+
+Found function `django/contrib/auth/models.py:AnonymousUser.is_anonymous`.
+Source: Retrieved code content using keyword search (bm25).
+```
+422 | def is_anonymous(self):
+423 |         return True
+```
+
+Found file `django/conf/locale/he/formats.py`.
+Found file `django/conf/locale/he/__init__.py`.
+Found file `django/contrib/admin/helpers.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "class DatabaseClient def runshell"...
+### Search Result:
+Found function `django/contrib/auth/models.py:_user_has_perm`.
+Source: Retrieved entity using keyword search (bm25).
+```
+170 | def _user_has_perm(user, perm, obj):
+171 |     """
+172 |     A backend can raise `PermissionDenied` to short-circuit permission checking.
+173 |     """
+174 |     for backend in auth.get_backends():
+175 |         if not hasattr(backend, 'has_perm'):
+176 |             continue
+177 |         try:
+178 |             if backend.has_perm(user, perm, obj):
+179 |                 return True
+180 |         except PermissionDenied:
+181 |             return False
+182 |     return False
+```
+
+2026-08-28 01:46:09 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 01:46:39 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 01:46:39 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 01:46:39 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 01:46:39 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['DatabaseClient', 'runshell'], 'file_path_or_pattern': 'django/db/backends/postgresql_psycopg2/*.py'}))
+```
+2026-08-28 01:46:40 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:40 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:40 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:40 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:40 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:41 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:41 auto_search_main.py INFO OBSERVATION:
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+No files found for file pattern 'django/db/backends/postgresql_psycopg2/*.py'. Will search all files.
+...
+##Searching for term "DatabaseClient", "DatabaseClient runshell"...
+### Search Result:
+Found file `django/contrib/auth/base_user.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/base_user.py` for the full content if needed.
+
+
+
+##Searching for term "DatabaseClient"...
+### Search Result:
+Found file `django/contrib/auth/__init__.py`.
+Found file `django/contrib/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "DatabaseClient", "runshell", "DatabaseClient runshell"...
+### Search Result:
+Found function `django/contrib/flatpages/forms.py:FlatpageForm.clean`.
+Source: Retrieved code content using keyword search (bm25).
+```
+52 | def clean(self):
+53 |         url = self.cleaned_data.get('url')
+54 |         sites = self.cleaned_data.get('sites')
+55 | 
+56 |         same_url = FlatPage.objects.filter(url=url)
+57 |         if self.instance.pk:
+58 |             same_url = same_url.exclude(pk=self.instance.pk)
+59 | 
+60 |         if sites and same_url.filter(sites__in=sites).exists():
+61 |             for site in sites:
+62 |                 if same_url.filter(sites=site).exists():
+63 |                     raise forms.ValidationError(
+64 |                         _('Flatpage with url %(url)s already exists for site %(site)s'),
+65 |                         code='duplicate_url',
+66 |                         params={'url': url, 'site': site},
+67 |                     )
+68 | 
+69 |         return super().clean()
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters`.
+Source: Retrieved code content using keyword search (bm25).
+```
+237 | def expected_parameters(self):
+238 |         return [self.lookup_kwarg, self.lookup_kwarg2]
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.choices`.
+Source: Retrieved code content using keyword search (bm25).
+```
+240 | def choices(self, changelist):
+241 |         for lookup, title in (
+242 |                 (None, _('All')),
+243 |                 ('1', _('Yes')),
+244 |                 ('0', _('No'))):
+245 |             yield {
+246 |                 'selected': self.lookup_val == lookup and not self.lookup_val2,
+247 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg2]),
+248 |                 'display': title,
+249 |             }
+250 |         if self.field.null:
+251 |             yield {
+252 |                 'selected': self.lookup_val2 == 'True',
+253 |                 'query_string': changelist.get_query_string({self.lookup_kwarg2: 'True'}, [self.lookup_kwarg]),
+254 |                 'display': _('Unknown'),
+255 |             }
+```
+
+Found class `django/contrib/admin/filters.py:ChoicesFieldListFilter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+261 | class ChoicesFieldListFilter(FieldListFilter):
+262 |     def __init__(self, field, request, params, model, model_admin, field_path):
+263 |         self.lookup_kwarg = '%s__exact' % field_path
+264 |         self.lookup_kwarg_isnull = '%s__isnull' % field_path
+265 |         self.lookup_val = params.get(self.lookup_kwarg)
+266 |         self.lookup_val_isnull = params.get(self.lookup_kwarg_isnull)
+267 |         super().__init__(field, request, params, model, model_admin, field_path)
+268 | 
+269 |     def expected_parameters(self):
+270 |         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
+271 | 
+272 |     def choices(self, changelist):
+273 |         yield {
+274 |             'selected': self.lookup_val is None,
+275 |             'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+276 |             'display': _('All')
+277 |         }
+278 |         none_title = ''
+279 |         for lookup, title in self.field.flatchoices:
+280 |             if lookup is None:
+281 |                 none_title = title
+282 |                 continue
+283 |             yield {
+284 |                 'selected': str(lookup) == self.lookup_val,
+285 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg_isnull]),
+286 |                 'display': title,
+287 |             }
+288 |         if none_title:
+289 |             yield {
+290 |                 'selected': bool(self.lookup_val_isnull),
+291 |                 'query_string': changelist.get_query_string({self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]),
+292 |                 'display': none_title,
+293 |             }
+```
+
+
+
+##Searching for term "runshell"...
+### Search Result:
+Found file `django/conf/locale/he/formats.py`.
+Found file `django/conf/locale/he/__init__.py`.
+Found file `django/contrib/auth/hashers.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "DatabaseClient runshell"...
+### Search Result:
+Found function `django/contrib/auth/__init__.py:get_user`.
+Source: Retrieved entity using keyword search (bm25).
+```
+174 | def get_user(request):
+175 |     """
+176 |     Return the user model instance associated with the given request session.
+177 |     If no user is retrieved, return an instance of `AnonymousUser`.
+178 |     """
+179 |     from .models import AnonymousUser
+180 |     user = None
+181 |     try:
+182 |         user_id = _get_user_session_key(request)
+183 |         backend_path = request.session[BACKEND_SESSION_KEY]
+184 |     except KeyError:
+185 |         pass
+186 |     else:
+187 |         if backend_path in settings.AUTHENTICATION_BACKENDS:
+188 |             backend = load_backend(backend_path)
+189 |             user = backend.get_user(user_id)
+190 |             # Verify the session
+191 |             if hasattr(user, 'get_session_auth_hash'):
+192 |                 session_hash = request.session.get(HASH_SESSION_KEY)
+193 |                 session_hash_verified = session_hash and constant_time_compare(
+194 |                     session_hash,
+195 |                     user.get_session_auth_hash()
+196 |                 )
+197 |                 if not session_hash_verified:
+198 |                     request.session.flush()
+199 |                     user = None
+200 | 
+201 |     return user or AnonymousUser()
+```
+
+Found function `django/contrib/auth/base_user.py:AbstractBaseUser.clean`.
+Source: Retrieved entity using keyword search (bm25).
+```
+75 | def clean(self):
+76 |         setattr(self, self.USERNAME_FIELD, self.normalize_username(self.get_username()))
+```
+
+2026-08-28 01:46:41 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['DatabaseClient', 'runshell'], 'file_path_or_pattern': 'django/db/backends/postgresql/*.py'}))
+```
+2026-08-28 01:46:41 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:41 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:41 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:42 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:42 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:42 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:42 auto_search_main.py INFO OBSERVATION:
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+No files found for file pattern 'django/db/backends/postgresql/*.py'. Will search all files.
+...
+##Searching for term "DatabaseClient", "DatabaseClient runshell"...
+### Search Result:
+Found file `django/contrib/auth/base_user.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/base_user.py` for the full content if needed.
+
+
+
+##Searching for term "DatabaseClient"...
+### Search Result:
+Found file `django/contrib/auth/__init__.py`.
+Found file `django/contrib/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "DatabaseClient", "runshell", "DatabaseClient runshell"...
+### Search Result:
+Found function `django/contrib/flatpages/forms.py:FlatpageForm.clean`.
+Source: Retrieved code content using keyword search (bm25).
+```
+52 | def clean(self):
+53 |         url = self.cleaned_data.get('url')
+54 |         sites = self.cleaned_data.get('sites')
+55 | 
+56 |         same_url = FlatPage.objects.filter(url=url)
+57 |         if self.instance.pk:
+58 |             same_url = same_url.exclude(pk=self.instance.pk)
+59 | 
+60 |         if sites and same_url.filter(sites__in=sites).exists():
+61 |             for site in sites:
+62 |                 if same_url.filter(sites=site).exists():
+63 |                     raise forms.ValidationError(
+64 |                         _('Flatpage with url %(url)s already exists for site %(site)s'),
+65 |                         code='duplicate_url',
+66 |                         params={'url': url, 'site': site},
+67 |                     )
+68 | 
+69 |         return super().clean()
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters`.
+Source: Retrieved code content using keyword search (bm25).
+```
+237 | def expected_parameters(self):
+238 |         return [self.lookup_kwarg, self.lookup_kwarg2]
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.choices`.
+Source: Retrieved code content using keyword search (bm25).
+```
+240 | def choices(self, changelist):
+241 |         for lookup, title in (
+242 |                 (None, _('All')),
+243 |                 ('1', _('Yes')),
+244 |                 ('0', _('No'))):
+245 |             yield {
+246 |                 'selected': self.lookup_val == lookup and not self.lookup_val2,
+247 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg2]),
+248 |                 'display': title,
+249 |             }
+250 |         if self.field.null:
+251 |             yield {
+252 |                 'selected': self.lookup_val2 == 'True',
+253 |                 'query_string': changelist.get_query_string({self.lookup_kwarg2: 'True'}, [self.lookup_kwarg]),
+254 |                 'display': _('Unknown'),
+255 |             }
+```
+
+Found class `django/contrib/admin/filters.py:ChoicesFieldListFilter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+261 | class ChoicesFieldListFilter(FieldListFilter):
+262 |     def __init__(self, field, request, params, model, model_admin, field_path):
+263 |         self.lookup_kwarg = '%s__exact' % field_path
+264 |         self.lookup_kwarg_isnull = '%s__isnull' % field_path
+265 |         self.lookup_val = params.get(self.lookup_kwarg)
+266 |         self.lookup_val_isnull = params.get(self.lookup_kwarg_isnull)
+267 |         super().__init__(field, request, params, model, model_admin, field_path)
+268 | 
+269 |     def expected_parameters(self):
+270 |         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
+271 | 
+272 |     def choices(self, changelist):
+273 |         yield {
+274 |             'selected': self.lookup_val is None,
+275 |             'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+276 |             'display': _('All')
+277 |         }
+278 |         none_title = ''
+279 |         for lookup, title in self.field.flatchoices:
+280 |             if lookup is None:
+281 |                 none_title = title
+282 |                 continue
+283 |             yield {
+284 |                 'selected': str(lookup) == self.lookup_val,
+285 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg_isnull]),
+286 |                 'display': title,
+287 |             }
+288 |         if none_title:
+289 |             yield {
+290 |                 'selected': bool(self.lookup_val_isnull),
+291 |                 'query_string': changelist.get_query_string({self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]),
+292 |                 'display': none_title,
+293 |             }
+```
+
+
+
+##Searching for term "runshell"...
+### Search Result:
+Found file `django/conf/locale/he/formats.py`.
+Found file `django/conf/locale/he/__init__.py`.
+Found file `django/contrib/auth/hashers.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "DatabaseClient runshell"...
+### Search Result:
+Found function `django/contrib/auth/__init__.py:get_user`.
+Source: Retrieved entity using keyword search (bm25).
+```
+174 | def get_user(request):
+175 |     """
+176 |     Return the user model instance associated with the given request session.
+177 |     If no user is retrieved, return an instance of `AnonymousUser`.
+178 |     """
+179 |     from .models import AnonymousUser
+180 |     user = None
+181 |     try:
+182 |         user_id = _get_user_session_key(request)
+183 |         backend_path = request.session[BACKEND_SESSION_KEY]
+184 |     except KeyError:
+185 |         pass
+186 |     else:
+187 |         if backend_path in settings.AUTHENTICATION_BACKENDS:
+188 |             backend = load_backend(backend_path)
+189 |             user = backend.get_user(user_id)
+190 |             # Verify the session
+191 |             if hasattr(user, 'get_session_auth_hash'):
+192 |                 session_hash = request.session.get(HASH_SESSION_KEY)
+193 |                 session_hash_verified = session_hash and constant_time_compare(
+194 |                     session_hash,
+195 |                     user.get_session_auth_hash()
+196 |                 )
+197 |                 if not session_hash_verified:
+198 |                     request.session.flush()
+199 |                     user = None
+200 | 
+201 |     return user or AnonymousUser()
+```
+
+Found function `django/contrib/auth/base_user.py:AbstractBaseUser.clean`.
+Source: Retrieved entity using keyword search (bm25).
+```
+75 | def clean(self):
+76 |         setattr(self, self.USERNAME_FIELD, self.normalize_username(self.get_username()))
+```
+
+2026-08-28 01:46:42 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['DatabaseClient', 'runshell'], 'file_path_or_pattern': 'django/db/backends/base/*.py'}))
+```
+2026-08-28 01:46:42 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:42 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:43 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:43 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:43 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:43 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:43 auto_search_main.py INFO OBSERVATION:
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+No files found for file pattern 'django/db/backends/base/*.py'. Will search all files.
+...
+##Searching for term "DatabaseClient", "DatabaseClient runshell"...
+### Search Result:
+Found file `django/contrib/auth/base_user.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/base_user.py` for the full content if needed.
+
+
+
+##Searching for term "DatabaseClient"...
+### Search Result:
+Found file `django/contrib/auth/__init__.py`.
+Found file `django/contrib/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "DatabaseClient", "runshell", "DatabaseClient runshell"...
+### Search Result:
+Found function `django/contrib/flatpages/forms.py:FlatpageForm.clean`.
+Source: Retrieved code content using keyword search (bm25).
+```
+52 | def clean(self):
+53 |         url = self.cleaned_data.get('url')
+54 |         sites = self.cleaned_data.get('sites')
+55 | 
+56 |         same_url = FlatPage.objects.filter(url=url)
+57 |         if self.instance.pk:
+58 |             same_url = same_url.exclude(pk=self.instance.pk)
+59 | 
+60 |         if sites and same_url.filter(sites__in=sites).exists():
+61 |             for site in sites:
+62 |                 if same_url.filter(sites=site).exists():
+63 |                     raise forms.ValidationError(
+64 |                         _('Flatpage with url %(url)s already exists for site %(site)s'),
+65 |                         code='duplicate_url',
+66 |                         params={'url': url, 'site': site},
+67 |                     )
+68 | 
+69 |         return super().clean()
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters`.
+Source: Retrieved code content using keyword search (bm25).
+```
+237 | def expected_parameters(self):
+238 |         return [self.lookup_kwarg, self.lookup_kwarg2]
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.choices`.
+Source: Retrieved code content using keyword search (bm25).
+```
+240 | def choices(self, changelist):
+241 |         for lookup, title in (
+242 |                 (None, _('All')),
+243 |                 ('1', _('Yes')),
+244 |                 ('0', _('No'))):
+245 |             yield {
+246 |                 'selected': self.lookup_val == lookup and not self.lookup_val2,
+247 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg2]),
+248 |                 'display': title,
+249 |             }
+250 |         if self.field.null:
+251 |             yield {
+252 |                 'selected': self.lookup_val2 == 'True',
+253 |                 'query_string': changelist.get_query_string({self.lookup_kwarg2: 'True'}, [self.lookup_kwarg]),
+254 |                 'display': _('Unknown'),
+255 |             }
+```
+
+Found class `django/contrib/admin/filters.py:ChoicesFieldListFilter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+261 | class ChoicesFieldListFilter(FieldListFilter):
+262 |     def __init__(self, field, request, params, model, model_admin, field_path):
+263 |         self.lookup_kwarg = '%s__exact' % field_path
+264 |         self.lookup_kwarg_isnull = '%s__isnull' % field_path
+265 |         self.lookup_val = params.get(self.lookup_kwarg)
+266 |         self.lookup_val_isnull = params.get(self.lookup_kwarg_isnull)
+267 |         super().__init__(field, request, params, model, model_admin, field_path)
+268 | 
+269 |     def expected_parameters(self):
+270 |         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
+271 | 
+272 |     def choices(self, changelist):
+273 |         yield {
+274 |             'selected': self.lookup_val is None,
+275 |             'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+276 |             'display': _('All')
+277 |         }
+278 |         none_title = ''
+279 |         for lookup, title in self.field.flatchoices:
+280 |             if lookup is None:
+281 |                 none_title = title
+282 |                 continue
+283 |             yield {
+284 |                 'selected': str(lookup) == self.lookup_val,
+285 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg_isnull]),
+286 |                 'display': title,
+287 |             }
+288 |         if none_title:
+289 |             yield {
+290 |                 'selected': bool(self.lookup_val_isnull),
+291 |                 'query_string': changelist.get_query_string({self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]),
+292 |                 'display': none_title,
+293 |             }
+```
+
+
+
+##Searching for term "runshell"...
+### Search Result:
+Found file `django/conf/locale/he/formats.py`.
+Found file `django/conf/locale/he/__init__.py`.
+Found file `django/contrib/auth/hashers.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "DatabaseClient runshell"...
+### Search Result:
+Found function `django/contrib/auth/__init__.py:get_user`.
+Source: Retrieved entity using keyword search (bm25).
+```
+174 | def get_user(request):
+175 |     """
+176 |     Return the user model instance associated with the given request session.
+177 |     If no user is retrieved, return an instance of `AnonymousUser`.
+178 |     """
+179 |     from .models import AnonymousUser
+180 |     user = None
+181 |     try:
+182 |         user_id = _get_user_session_key(request)
+183 |         backend_path = request.session[BACKEND_SESSION_KEY]
+184 |     except KeyError:
+185 |         pass
+186 |     else:
+187 |         if backend_path in settings.AUTHENTICATION_BACKENDS:
+188 |             backend = load_backend(backend_path)
+189 |             user = backend.get_user(user_id)
+190 |             # Verify the session
+191 |             if hasattr(user, 'get_session_auth_hash'):
+192 |                 session_hash = request.session.get(HASH_SESSION_KEY)
+193 |                 session_hash_verified = session_hash and constant_time_compare(
+194 |                     session_hash,
+195 |                     user.get_session_auth_hash()
+196 |                 )
+197 |                 if not session_hash_verified:
+198 |                     request.session.flush()
+199 |                     user = None
+200 | 
+201 |     return user or AnonymousUser()
+```
+
+Found function `django/contrib/auth/base_user.py:AbstractBaseUser.clean`.
+Source: Retrieved entity using keyword search (bm25).
+```
+75 | def clean(self):
+76 |         setattr(self, self.USERNAME_FIELD, self.normalize_username(self.get_username()))
+```
+
+2026-08-28 01:46:43 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 01:46:49 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 01:46:49 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 01:46:49 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 01:46:49 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['class DatabaseClient'], 'file_path_or_pattern': 'django/db/backends/*/client.py'}))
+```
+2026-08-28 01:46:49 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:49 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:49 auto_search_main.py INFO OBSERVATION:
+django/contrib/admin/widgets.py:AdminTextInputWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget.__init__
+django/contrib/admin/widgets.py:AdminTextareaWidget
+django/contrib/admin/widgets.py:AdminEmailInputWidget
+django/contrib/admin/widgets.py:AdminTextInputWidget.__init__
+django/contrib/admin/helpers.py:AdminField.errors
+django/contrib/admin/helpers.py:AdminField
+django/contrib/admin/helpers.py:AdminField.__init__
+django/contrib/admin/helpers.py:AdminField.label_tag
+django/contrib/admin/widgets.py:AdminTimeWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget
+django/contrib/admin/widgets.py:AdminTimeWidget
+django/contrib/admin/widgets.py:AdminDateWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.__init__
+django/contrib/admin/helpers.py:Fieldset.media
+django/contrib/admin/helpers.py:Fieldset.__iter__
+django/contrib/admin/helpers.py:Fieldset
+django/contrib/admin/helpers.py:Fieldset.__init__
+django/contrib/admin/widgets.py:AutocompleteMixin.build_attrs
+django/contrib/admin/sites.py:AdminSite.register
+django/apps/config.py:AppConfig.create
+django/contrib/admin/helpers.py:InlineAdminFormSet
+django/contrib/admin/helpers.py:InlineAdminFormSet.__init__
+django/contrib/admin/widgets.py:AdminUUIDInputWidget.__init__
+django/contrib/admin/widgets.py:impl
+django/contrib/admin/widgets.py:AdminUUIDInputWidget
+django/contrib/admin/widgets.py:AdminIntegerFieldWidget
+django/contrib/admin/widgets.py:AdminIntegerFieldWidget.__init__
+django/contrib/admin/widgets.py:AdminBigIntegerFieldWidget
+No files found for file pattern 'django/db/backends/*/client.py'. Will search all files.
+...
+##Searching for term "class DatabaseClient"...
+### Search Result:
+Found function `django/contrib/admin/options.py:get_ul_class`.
+Source: Retrieved entity using keyword search (bm25).
+```
+67 | def get_ul_class(radio_style):
+68 |     return 'radiolist' if radio_style == VERTICAL else 'radiolist inline'
+```
+
+Found function `django/contrib/auth/views.py:LoginView.get_form_class`.
+Source: Retrieved entity using keyword search (bm25).
+```
+80 | def get_form_class(self):
+81 |         return self.authentication_form or self.form_class
+```
+
+Found class `django/contrib/admin/widgets.py:AdminTextareaWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+315 | class AdminTextareaWidget(forms.Textarea):
+316 |     def __init__(self, attrs=None):
+317 |         super().__init__(attrs={'class': 'vLargeTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/widgets.py:AdminTextInputWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+320 | class AdminTextInputWidget(forms.TextInput):
+321 |     def __init__(self, attrs=None):
+322 |         super().__init__(attrs={'class': 'vTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/widgets.py:AdminEmailInputWidget`.
+Source: Retrieved code content using keyword search (bm25).
+```
+325 | class AdminEmailInputWidget(forms.EmailInput):
+326 |     def __init__(self, attrs=None):
+327 |         super().__init__(attrs={'class': 'vTextField', **(attrs or {})})
+```
+
+Found class `django/contrib/admin/helpers.py:AdminField`.
+Source: Retrieved code content using keyword search (bm25).
+```
+123 | class AdminField:
+124 |     def __init__(self, form, field, is_first):
+125 |         self.field = form[field]  # A django.forms.BoundField instance
+126 |         self.is_first = is_first  # Whether this field is first on the line
+127 |         self.is_checkbox = isinstance(self.field.field.widget, forms.CheckboxInput)
+128 |         self.is_readonly = False
+129 | 
+130 |     def label_tag(self):
+131 |         classes = []
+132 |         contents = conditional_escape(self.field.label)
+133 |         if self.is_checkbox:
+134 |             classes.append('vCheckboxLabel')
+135 | 
+136 |         if self.field.field.required:
+137 |             classes.append('required')
+138 |         if not self.is_first:
+139 |             classes.append('inline')
+140 |         attrs = {'class': ' '.join(classes)} if classes else {}
+141 |         # checkboxes should not have a label suffix as the checkbox appears
+142 |         # to the left of the label.
+143 |         return self.field.label_tag(
+144 |             contents=mark_safe(contents), attrs=attrs,
+145 |             label_suffix='' if self.is_checkbox else None,
+146 |         )
+147 | 
+148 |     def errors(self):
+149 |         return mark_safe(self.field.errors.as_ul())
+```
+
+Found file `django/contrib/auth/base_user.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/auth/base_user.py` for the full content if needed.
+
+2026-08-28 01:46:49 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['runshell'], 'file_path_or_pattern': 'django/db/backends/*/client.py'}))
+```
+2026-08-28 01:46:49 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:50 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:50 auto_search_main.py INFO OBSERVATION:
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+No files found for file pattern 'django/db/backends/*/client.py'. Will search all files.
+...
+##Searching for term "runshell"...
+### Search Result:
+Found function `django/contrib/flatpages/forms.py:FlatpageForm.clean`.
+Source: Retrieved code content using keyword search (bm25).
+```
+52 | def clean(self):
+53 |         url = self.cleaned_data.get('url')
+54 |         sites = self.cleaned_data.get('sites')
+55 | 
+56 |         same_url = FlatPage.objects.filter(url=url)
+57 |         if self.instance.pk:
+58 |             same_url = same_url.exclude(pk=self.instance.pk)
+59 | 
+60 |         if sites and same_url.filter(sites__in=sites).exists():
+61 |             for site in sites:
+62 |                 if same_url.filter(sites=site).exists():
+63 |                     raise forms.ValidationError(
+64 |                         _('Flatpage with url %(url)s already exists for site %(site)s'),
+65 |                         code='duplicate_url',
+66 |                         params={'url': url, 'site': site},
+67 |                     )
+68 | 
+69 |         return super().clean()
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters`.
+Source: Retrieved code content using keyword search (bm25).
+```
+237 | def expected_parameters(self):
+238 |         return [self.lookup_kwarg, self.lookup_kwarg2]
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.choices`.
+Source: Retrieved code content using keyword search (bm25).
+```
+240 | def choices(self, changelist):
+241 |         for lookup, title in (
+242 |                 (None, _('All')),
+243 |                 ('1', _('Yes')),
+244 |                 ('0', _('No'))):
+245 |             yield {
+246 |                 'selected': self.lookup_val == lookup and not self.lookup_val2,
+247 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg2]),
+248 |                 'display': title,
+249 |             }
+250 |         if self.field.null:
+251 |             yield {
+252 |                 'selected': self.lookup_val2 == 'True',
+253 |                 'query_string': changelist.get_query_string({self.lookup_kwarg2: 'True'}, [self.lookup_kwarg]),
+254 |                 'display': _('Unknown'),
+255 |             }
+```
+
+Found class `django/contrib/admin/filters.py:ChoicesFieldListFilter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+261 | class ChoicesFieldListFilter(FieldListFilter):
+262 |     def __init__(self, field, request, params, model, model_admin, field_path):
+263 |         self.lookup_kwarg = '%s__exact' % field_path
+264 |         self.lookup_kwarg_isnull = '%s__isnull' % field_path
+265 |         self.lookup_val = params.get(self.lookup_kwarg)
+266 |         self.lookup_val_isnull = params.get(self.lookup_kwarg_isnull)
+267 |         super().__init__(field, request, params, model, model_admin, field_path)
+268 | 
+269 |     def expected_parameters(self):
+270 |         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
+271 | 
+272 |     def choices(self, changelist):
+273 |         yield {
+274 |             'selected': self.lookup_val is None,
+275 |             'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+276 |             'display': _('All')
+277 |         }
+278 |         none_title = ''
+279 |         for lookup, title in self.field.flatchoices:
+280 |             if lookup is None:
+281 |                 none_title = title
+282 |                 continue
+283 |             yield {
+284 |                 'selected': str(lookup) == self.lookup_val,
+285 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg_isnull]),
+286 |                 'display': title,
+287 |             }
+288 |         if none_title:
+289 |             yield {
+290 |                 'selected': bool(self.lookup_val_isnull),
+291 |                 'query_string': changelist.get_query_string({self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]),
+292 |                 'display': none_title,
+293 |             }
+```
+
+Found file `django/conf/locale/he/formats.py`.
+Found file `django/conf/locale/he/__init__.py`.
+Found file `django/contrib/auth/hashers.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+2026-08-28 01:46:50 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['DatabaseClient'], 'file_path_or_pattern': 'django/db/backends/*/client.py'}))
+```
+2026-08-28 01:46:50 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:50 __init__.py DEBUG Building index from IDs objects
+2026-08-28 01:46:50 auto_search_main.py INFO OBSERVATION:
+django/contrib/flatpages/forms.py:FlatpageForm.clean
+django/contrib/admin/filters.py:ChoicesFieldListFilter.__init__
+django/contrib/admin/filters.py:impl:2
+django/contrib/admin/filters.py:ChoicesFieldListFilter
+django/contrib/admin/filters.py:ChoicesFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:BooleanFieldListFilter.choices
+django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:impl
+django/contrib/admin/filters.py:BooleanFieldListFilter.__init__
+django/contrib/admin/filters.py:BooleanFieldListFilter
+django/contrib/admin/filters.py:RelatedFieldListFilter.choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.has_output
+django/contrib/admin/filters.py:RelatedFieldListFilter.expected_parameters
+django/contrib/admin/filters.py:RelatedFieldListFilter.__init__
+django/contrib/admin/filters.py:RelatedFieldListFilter.field_choices
+django/contrib/admin/filters.py:RelatedFieldListFilter.include_empty_choice
+django/contrib/admin/filters.py:RelatedFieldListFilter
+django/contrib/admin/filters.py:FieldListFilter.create
+django/contrib/admin/filters.py:FieldListFilter.register
+django/contrib/admin/filters.py:impl:3
+django/contrib/admin/filters.py:ChoicesFieldListFilter.choices
+django/contrib/admin/checks.py:InlineModelAdminChecks._check_exclude_of_parent_model
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.queryset
+No files found for file pattern 'django/db/backends/*/client.py'. Will search all files.
+...
+##Searching for term "DatabaseClient"...
+### Search Result:
+Found function `django/contrib/flatpages/forms.py:FlatpageForm.clean`.
+Source: Retrieved code content using keyword search (bm25).
+```
+52 | def clean(self):
+53 |         url = self.cleaned_data.get('url')
+54 |         sites = self.cleaned_data.get('sites')
+55 | 
+56 |         same_url = FlatPage.objects.filter(url=url)
+57 |         if self.instance.pk:
+58 |             same_url = same_url.exclude(pk=self.instance.pk)
+59 | 
+60 |         if sites and same_url.filter(sites__in=sites).exists():
+61 |             for site in sites:
+62 |                 if same_url.filter(sites=site).exists():
+63 |                     raise forms.ValidationError(
+64 |                         _('Flatpage with url %(url)s already exists for site %(site)s'),
+65 |                         code='duplicate_url',
+66 |                         params={'url': url, 'site': site},
+67 |                     )
+68 | 
+69 |         return super().clean()
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.expected_parameters`.
+Source: Retrieved code content using keyword search (bm25).
+```
+237 | def expected_parameters(self):
+238 |         return [self.lookup_kwarg, self.lookup_kwarg2]
+```
+
+Found function `django/contrib/admin/filters.py:BooleanFieldListFilter.choices`.
+Source: Retrieved code content using keyword search (bm25).
+```
+240 | def choices(self, changelist):
+241 |         for lookup, title in (
+242 |                 (None, _('All')),
+243 |                 ('1', _('Yes')),
+244 |                 ('0', _('No'))):
+245 |             yield {
+246 |                 'selected': self.lookup_val == lookup and not self.lookup_val2,
+247 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg2]),
+248 |                 'display': title,
+249 |             }
+250 |         if self.field.null:
+251 |             yield {
+252 |                 'selected': self.lookup_val2 == 'True',
+253 |                 'query_string': changelist.get_query_string({self.lookup_kwarg2: 'True'}, [self.lookup_kwarg]),
+254 |                 'display': _('Unknown'),
+255 |             }
+```
+
+Found class `django/contrib/admin/filters.py:ChoicesFieldListFilter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+261 | class ChoicesFieldListFilter(FieldListFilter):
+262 |     def __init__(self, field, request, params, model, model_admin, field_path):
+263 |         self.lookup_kwarg = '%s__exact' % field_path
+264 |         self.lookup_kwarg_isnull = '%s__isnull' % field_path
+265 |         self.lookup_val = params.get(self.lookup_kwarg)
+266 |         self.lookup_val_isnull = params.get(self.lookup_kwarg_isnull)
+267 |         super().__init__(field, request, params, model, model_admin, field_path)
+268 | 
+269 |     def expected_parameters(self):
+270 |         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
+271 | 
+272 |     def choices(self, changelist):
+273 |         yield {
+274 |             'selected': self.lookup_val is None,
+275 |             'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+276 |             'display': _('All')
+277 |         }
+278 |         none_title = ''
+279 |         for lookup, title in self.field.flatchoices:
+280 |             if lookup is None:
+281 |                 none_title = title
+282 |                 continue
+283 |             yield {
+284 |                 'selected': str(lookup) == self.lookup_val,
+285 |                 'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg_isnull]),
+286 |                 'display': title,
+287 |             }
+288 |         if none_title:
+289 |             yield {
+290 |                 'selected': bool(self.lookup_val_isnull),
+291 |                 'query_string': changelist.get_query_string({self.lookup_kwarg_isnull: 'True'}, [self.lookup_kwarg]),
+292 |                 'display': none_title,
+293 |             }
+```
+
+Found file `django/contrib/auth/base_user.py`.
+Found file `django/contrib/auth/__init__.py`.
+Found file `django/contrib/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+2026-08-28 01:46:50 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 01:46:57 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 01:46:57 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 01:46:57 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 01:46:57 auto_search_main.py INFO ===============
+2026-08-28 01:46:57 auto_search_main.py INFO Final response generated content_length=333
+2026-08-28 01:46:57 auto_search_main.py INFO ==== localizing django__django-10973 succeed, process multiple loc outputs ====
+2026-08-28 01:46:57 cost_analysis.py INFO input_tokens=245043, output_tokens=1568, cost=0.62
+2026-08-28 01:46:57 auto_search_main.py INFO Total time: 1.6312 min

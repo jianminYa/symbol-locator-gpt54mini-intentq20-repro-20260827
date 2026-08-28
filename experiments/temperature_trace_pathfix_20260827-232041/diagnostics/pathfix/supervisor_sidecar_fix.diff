@@ -1,0 +1,32 @@
+--- /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_study_20260827-152310/night_supervisor.py	2026-08-27 15:53:41.172755897 +0000
++++ /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/night_supervisor.py	2026-08-27 23:32:42.296626164 +0000
+@@ -1086,7 +1086,6 @@
+                 output_ok = self.scan_case_output(face, iid)
+             except PermanentStop as exc:
+                 output_error = str(exc)
+-                raise
+             # LocAgent's wrapper captures the nested agent stdout/stderr. For
+             # the mandatory first-B validation, inspect only redacted signals
+             # in the preserved trace; never copy raw trace text into logs.
+@@ -1111,7 +1110,11 @@
+                 if "find_symbol" in low_trace and re.search(r"found\s+[1-9][0-9]*\s+candidate", low_trace):
+                     flags["find_symbol_seen"] = True
+                     flags["find_symbol_nonempty"] = True
+-            category = "success" if output_ok else ("timeout" if timed_out else "execution_failure")
++            # Preserve the hard output-integrity stop, but defer raising it
++            # until trace_integrity() and the attempt sidecar have completed.
++            # This keeps a complete failure trace auditable without converting
++            # an incomplete payload into a successful trace.
++            category = "output_integrity_failure" if output_error else ("success" if output_ok else ("timeout" if timed_out else "execution_failure"))
+             if flags["warmup_failure"] and not output_ok:
+                 category = "pyright_warmup_failure"
+                 self.pyright_warmup_failures.append(iid)
+@@ -1134,6 +1137,8 @@
+             self.log("case_end", f"face={face} instance={iid} attempt={attempt} elapsed={elapsed} category={category}")
+             if category == "success" and not trace["trace_complete"]:
+                 raise PermanentStop(f"TRACE_INTEGRITY_FAILED_{face}_{iid}")
++            if output_error:
++                raise PermanentStop(output_error)
+             if output_ok:
+                 if PHASE == "formal" and face == "B1" and iid == EXPECTED_IDS[0]:
+                     if not (flags["pyright_seen"] and flags["warmup_success"] and flags["find_symbol_nonempty"]):

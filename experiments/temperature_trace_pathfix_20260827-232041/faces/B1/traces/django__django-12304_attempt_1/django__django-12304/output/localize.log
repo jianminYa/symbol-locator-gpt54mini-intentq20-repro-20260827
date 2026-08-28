@@ -1,0 +1,1644 @@
+2026-08-28 02:42:57 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 02:42:57 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 02:42:57 auto_search_main.py INFO ============================================================
+2026-08-28 02:42:57 auto_search_main.py INFO ==== rank 0 setup localize django__django-12304 ====
+2026-08-28 02:42:57 install.py INFO hook: set_current_issue fired
+2026-08-28 02:42:57 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/b3047fa5-5f29-4874-8cf2-286782b28d4a/django_django and checkout commit HEAD
+2026-08-28 02:42:57 git_repo_manager.py INFO Directory 'playground/b3047fa5-5f29-4874-8cf2-286782b28d4a/django_django' was created.
+2026-08-28 02:42:57 install.py INFO setup_repo returned: playground/b3047fa5-5f29-4874-8cf2-286782b28d4a/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-12304
+2026-08-28 02:43:06 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-12304 files=2000 indexed=2000 failed=0
+2026-08-28 02:46:30 repo_ops.py INFO [0] Processed django__django-12304
+2026-08-28 02:46:30 auto_search_main.py INFO ============================================================
+2026-08-28 02:46:30 auto_search_main.py INFO ==== rank 0 begin localizing django__django-12304 ====
+2026-08-28 02:46:30 auto_search_main.py INFO ============================================================
+2026-08-28 02:46:30 auto_search_main.py INFO ==== django__django-12304 Count down: attempt 1 ====
+2026-08-28 02:46:30 auto_search_main.py INFO ==== django__django-12304 start auto search ====
+2026-08-28 02:46:40 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:48:46 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 524 <none>"
+2026-08-28 02:48:46 _base_client.py INFO Retrying request to /chat/completions in 0.475221 seconds
+2026-08-28 02:50:52 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 524 <none>"
+2026-08-28 02:50:52 _base_client.py INFO Retrying request to /chat/completions in 0.929457 seconds
+2026-08-28 02:50:59 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:50:59 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:50:59 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 02:50:59 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'do_not_call_in_templates', 'context': 'Django template callable handling and enums/choices classes', 'top_k': 10}))
+```
+2026-08-28 02:51:04 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:51:17 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:51:17 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:51:17 auto_search_main.py INFO OBSERVATION:
+Found 5 candidates for `do_not_call_in_templates`. Showing top 5 by relevance:
+1. [score=92] create_reverse_many_to_one_manager.RelatedManager.do_not_call_in_templates
+   django/db/models/fields/related_descriptors.py:573
+   
+       class RelatedManager(superclass):
+           def __init__(self, instance):
+               super().__init__()
+   
+               self.instance = instance
+               self.model = rel.related_model
+               self.field = rel.field
+   
+               self.core_filters = {self.field.name: instance}
+   
+           def __call__(self, *, manager):
+               manager = getattr(self.model, manager)
+               manager_class = create_reverse_many_to_one_manager(manager.__class__, rel)
+               return manager_class(self.instance)
+           do_not_call_in_templates = True
+   
+           def _apply_rel_filters(self, queryset):
+               """
+               Filter the queryset for the instance this manager is bound to.
+               """
+               db = self._db or router.db_for_read(self.model, instance=self.instance)
+               empty_strings_as_null = connections[db].features.interprets_empty_strings_as_nulls
+               queryset._add_hints(instance=self.instance)
+               if self._db:
+                   queryset = queryset.using(self._db)
+               queryset = queryset.filter(**self.core_filters)
+               for field in self.field.foreign_related_fields:
+                   val = getattr(self.instance, field.attname)
+                   if val is None or (val == '' and empty_strings_as_null):
+                       return queryset.none()
+2. [score=89] create_generic_related_manager.GenericRelatedObjectManager.do_not_call_in_templates
+   django/contrib/contenttypes/fields.py:540
+               self.content_type = self.get_content_type(instance)
+               self.content_type_field_name = rel.field.content_type_field_name
+               self.object_id_field_name = rel.field.object_id_field_name
+               self.prefetch_cache_name = rel.field.attname
+               self.pk_val = instance.pk
+   
+               self.core_filters = {
+                   '%s__pk' % self.content_type_field_name: self.content_type.id,
+                   self.object_id_field_name: self.pk_val,
+               }
+   
+           def __call__(self, *, manager):
+               manager = getattr(self.model, manager)
+               manager_class = create_generic_related_manager(manager.__class__, rel)
+               return manager_class(instance=self.instance)
+           do_not_call_in_templates = True
+   
+           def __str__(self):
+               return repr(self)
+   
+           def _apply_rel_filters(self, queryset):
+               """
+               Filter the queryset for the instance this manager is bound to.
+               """
+               db = self._db or router.db_for_read(self.model, instance=self.instance)
+               return queryset.using(db).filter(**self.core_filters)
+   
+           def _remove_prefetched_objects(self):
+               try:
+                   self.instance._prefetched_objects_cache.pop(self.prefetch_cache_name)
+               except (AttributeError, KeyError):
+3. [score=84] create_forward_many_to_many_manager.ManyRelatedManager.do_not_call_in_templates
+   django/db/models/fields/related_descriptors.py:862
+                   raise ValueError('"%r" needs to have a value for field "%s" before '
+                                    'this many-to-many relationship can be used.' %
+                                    (instance, self.pk_field_names[self.source_field_name]))
+               # Even if this relation is not to pk, we require still pk value.
+               # The wish is that the instance has been already saved to DB,
+               # although having a pk value isn't a guarantee of that.
+               if instance.pk is None:
+                   raise ValueError("%r instance needs to have a primary key value before "
+                                    "a many-to-many relationship can be used." %
+                                    instance.__class__.__name__)
+   
+           def __call__(self, *, manager):
+               manager = getattr(self.model, manager)
+               manager_class = create_forward_many_to_many_manager(manager.__class__, rel, reverse)
+               return manager_class(instance=self.instance)
+           do_not_call_in_templates = True
+   
+           def _build_remove_filters(self, removed_vals):
+               filters = Q(**{self.source_field_name: self.related_val})
+               # No need to add a subquery condition if removed_vals is a QuerySet without
+               # filters.
+               removed_vals_filters = (not isinstance(removed_vals, QuerySet) or
+                                       removed_vals._has_filters())
+               if removed_vals_filters:
+                   filters &= Q(**{'%s__in' % self.target_field_name: removed_vals})
+               if self.symmetrical:
+                   symmetrical_filters = Q(**{self.target_field_name: self.related_val})
+                   if removed_vals_filters:
+                       symmetrical_filters &= Q(
+                           **{'%s__in' % self.source_field_name: removed_vals})
+                   filters |= symmetrical_filters
+4. [score=78] CallableVariablesTests.test_do_not_call.Doodad.do_not_call_in_templates
+   tests/template_tests/test_callables.py:72
+   
+           # Since ``my_doodad.alters_data`` is True, the template system will not
+           # try to call our doodad but will use string_if_invalid
+           t = self.engine.from_string('{{ my_doodad.value }}')
+           self.assertEqual(t.render(c), '')
+           t = self.engine.from_string('{{ my_doodad.the_value }}')
+           self.assertEqual(t.render(c), '')
+   
+           # Double-check that the object was really never called during the
+           # template rendering.
+           self.assertEqual(my_doodad.num_calls, 0)
+   
+       def test_do_not_call(self):
+   
+           class Doodad:
+               do_not_call_in_templates = True
+   
+               def __init__(self, value):
+                   self.num_calls = 0
+                   self.value = value
+   
+               def __call__(self):
+                   self.num_calls += 1
+                   return {"the_value": self.value}
+   
+           my_doodad = Doodad(42)
+           c = Context({"my_doodad": my_doodad})
+   
+           # Since ``my_doodad.do_not_call_in_templates`` is True, the template
+           # system will not try to call our doodad.  We can access its attributes
+           # as normal, and we don't have access to the dict that it returns when
+5. [score=76] CallableVariablesTests.test_do_not_call_and_alters_data.Doodad.do_not_call_in_templates
+   tests/template_tests/test_callables.py:104
+           t = self.engine.from_string('{{ my_doodad.value }}')
+           self.assertEqual(t.render(c), '42')
+           t = self.engine.from_string('{{ my_doodad.the_value }}')
+           self.assertEqual(t.render(c), '')
+   
+           # Double-check that the object was really never called during the
+           # template rendering.
+           self.assertEqual(my_doodad.num_calls, 0)
+   
+       def test_do_not_call_and_alters_data(self):
+           # If we combine ``alters_data`` and ``do_not_call_in_templates``, the
+           # ``alters_data`` attribute will not make any difference in the
+           # template system's behavior.
+   
+           class Doodad:
+               do_not_call_in_templates = True
+               alters_data = True
+   
+               def __init__(self, value):
+                   self.num_calls = 0
+                   self.value = value
+   
+               def __call__(self):
+                   self.num_calls += 1
+                   return {"the_value": self.value}
+   
+           my_doodad = Doodad(42)
+           c = Context({"my_doodad": my_doodad})
+   
+           t = self.engine.from_string('{{ my_doodad.value }}')
+           self.assertEqual(t.render(c), '42')
+[symbol-locator] [scorer] usage pid=790192 calls=1 p=11550 c=46
+[symbol-locator] [scorer] parsed 5/5 scores from LLM
+
+2026-08-28 02:51:17 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'Choices', 'context': 'enumeration types / choices classes in django', 'top_k': 10}))
+```
+2026-08-28 02:51:18 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:51:54 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:51:54 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:51:54 auto_search_main.py INFO OBSERVATION:
+Found 376 candidates for `Choices`. Showing top 10 by relevance:
+1. [score=98] ChoiceField.choices
+   django/forms/fields.py:799
+   
+       def _get_choices(self):
+           return self._choices
+   
+       def _set_choices(self, value):
+           # Setting choices also sets the choices on the widget.
+           # choices can be any iterable, but we call list() on it because
+           # it will be consumed more than once.
+           if callable(value):
+               value = CallableChoiceIterator(value)
+           else:
+               value = list(value)
+   
+           self._choices = self.widget.choices = value
+   
+       choices = property(_get_choices, _set_choices)
+   
+       def to_python(self, value):
+           """Return a string."""
+           if value in self.empty_values:
+               return ''
+           return str(value)
+   
+       def validate(self, value):
+           """Validate that the input is in self.choices."""
+           super().validate(value)
+           if value and not self.valid_value(value):
+               raise ValidationError(
+                   self.error_messages['invalid_choice'],
+                   code='invalid_choice',
+                   params={'value': value},
+2. [score=98] ChoiceField._choices
+   django/forms/fields.py:797
+           result._choices = copy.deepcopy(self._choices, memo)
+           return result
+   
+       def _get_choices(self):
+           return self._choices
+   
+       def _set_choices(self, value):
+           # Setting choices also sets the choices on the widget.
+           # choices can be any iterable, but we call list() on it because
+           # it will be consumed more than once.
+           if callable(value):
+               value = CallableChoiceIterator(value)
+           else:
+               value = list(value)
+   
+           self._choices = self.widget.choices = value
+   
+       choices = property(_get_choices, _set_choices)
+   
+       def to_python(self, value):
+           """Return a string."""
+           if value in self.empty_values:
+               return ''
+           return str(value)
+   
+       def validate(self, value):
+           """Validate that the input is in self.choices."""
+           super().validate(value)
+           if value and not self.valid_value(value):
+               raise ValidationError(
+                   self.error_messages['invalid_choice'],
+3. [score=96] ChoiceField.__init__.choices
+   django/forms/fields.py:776
+   
+   class CallableChoiceIterator:
+       def __init__(self, choices_func):
+           self.choices_func = choices_func
+   
+       def __iter__(self):
+           yield from self.choices_func()
+   
+   
+   class ChoiceField(Field):
+       widget = Select
+       default_error_messages = {
+           'invalid_choice': _('Select a valid choice. %(value)s is not one of the available choices.'),
+       }
+   
+       def __init__(self, *, choices=(), **kwargs):
+           super().__init__(**kwargs)
+           self.choices = choices
+   
+       def __deepcopy__(self, memo):
+           result = super().__deepcopy__(memo)
+           result._choices = copy.deepcopy(self._choices, memo)
+           return result
+   
+       def _get_choices(self):
+           return self._choices
+   
+       def _set_choices(self, value):
+           # Setting choices also sets the choices on the widget.
+           # choices can be any iterable, but we call list() on it because
+           # it will be consumed more than once.
+4. [score=88] ModelChoiceField.choices
+   django/forms/models.py:1254
+       def _get_choices(self):
+           # If self._choices is set, then somebody must have manually set
+           # the property self.choices. In this case, just return self._choices.
+           if hasattr(self, '_choices'):
+               return self._choices
+   
+           # Otherwise, execute the QuerySet in self.queryset to determine the
+           # choices dynamically. Return a fresh ModelChoiceIterator that has not been
+           # consumed. Note that we're instantiating a new ModelChoiceIterator *each*
+           # time _get_choices() is called (and, thus, each time self.choices is
+           # accessed) so that we can ensure the QuerySet has not been consumed. This
+           # construct might look complicated but it allows for lazy evaluation of
+           # the queryset.
+           return self.iterator(self)
+   
+       choices = property(_get_choices, ChoiceField._set_choices)
+   
+       def prepare_value(self, value):
+           if hasattr(value, '_meta'):
+               if self.to_field_name:
+                   return value.serializable_value(self.to_field_name)
+               else:
+                   return value.pk
+           return super().prepare_value(value)
+   
+       def to_python(self, value):
+           if value in self.empty_values:
+               return None
+           try:
+               key = self.to_field_name or 'pk'
+               if isinstance(value, self.queryset.model):
+5. [score=82] Field.get_choices.choices
+   django/db/models/fields/__init__.py:841
+           if self.has_default():
+               if callable(self.default):
+                   return self.default
+               return lambda: self.default
+   
+           if not self.empty_strings_allowed or self.null and not connection.features.interprets_empty_strings_as_nulls:
+               return return_None
+           return str  # return empty string
+   
+       def get_choices(self, include_blank=True, blank_choice=BLANK_CHOICE_DASH, limit_choices_to=None, ordering=()):
+           """
+           Return choices with a default blank choices included, for use
+           as <select> choices for this field.
+           """
+           if self.choices is not None:
+               choices = list(self.choices)
+               if include_blank:
+                   blank_defined = any(choice in ('', None) for choice, _ in self.flatchoices)
+                   if not blank_defined:
+                       choices = blank_choice + choices
+               return choices
+           rel_model = self.remote_field.model
+           limit_choices_to = limit_choices_to or self.get_limit_choices_to()
+           choice_func = operator.attrgetter(
+               self.remote_field.get_related_field().attname
+               if hasattr(self.remote_field, 'get_related_field')
+               else 'pk'
+           )
+           qs = rel_model._default_manager.complex_filter(limit_choices_to)
+           if ordering:
+               qs = qs.order_by(*ordering)
+6. [score=70] Field.choices
+   django/db/models/fields/__init__.py:154
+           self.verbose_name = verbose_name  # May be set by set_attributes_from_name
+           self._verbose_name = verbose_name  # Store original for deconstruction
+           self.primary_key = primary_key
+           self.max_length, self._unique = max_length, unique
+           self.blank, self.null = blank, null
+           self.remote_field = rel
+           self.is_relation = self.remote_field is not None
+           self.default = default
+           self.editable = editable
+           self.serialize = serialize
+           self.unique_for_date = unique_for_date
+           self.unique_for_month = unique_for_month
+           self.unique_for_year = unique_for_year
+           if isinstance(choices, collections.abc.Iterator):
+               choices = list(choices)
+           self.choices = choices
+           self.help_text = help_text
+           self.db_index = db_index
+           self.db_column = db_column
+           self._db_tablespace = db_tablespace
+           self.auto_created = auto_created
+   
+           # Adjust the appropriate creation counter, and save our local copy.
+           if auto_created:
+               self.creation_counter = Field.auto_creation_counter
+               Field.auto_creation_counter -= 1
+           else:
+               self.creation_counter = Field.creation_counter
+               Field.creation_counter += 1
+   
+           self._validators = list(validators)  # Store for deconstruction later
+7. [score=55] Field.__init__.choices
+   django/db/models/fields/__init__.py:135
+       related_model = None
+   
+       descriptor_class = DeferredAttribute
+   
+       # Generic field type description, usually overridden by subclasses
+       def _description(self):
+           return _('Field of type: %(field_type)s') % {
+               'field_type': self.__class__.__name__
+           }
+       description = property(_description)
+   
+       def __init__(self, verbose_name=None, name=None, primary_key=False,
+                    max_length=None, unique=False, blank=False, null=False,
+                    db_index=False, rel=None, default=NOT_PROVIDED, editable=True,
+                    serialize=True, unique_for_date=None, unique_for_month=None,
+                    unique_for_year=None, choices=None, help_text='', db_column=None,
+                    db_tablespace=None, auto_created=False, validators=(),
+                    error_messages=None):
+           self.name = name
+           self.verbose_name = verbose_name  # May be set by set_attributes_from_name
+           self._verbose_name = verbose_name  # Store original for deconstruction
+           self.primary_key = primary_key
+           self.max_length, self._unique = max_length, unique
+           self.blank, self.null = blank, null
+           self.remote_field = rel
+           self.is_relation = self.remote_field is not None
+           self.default = default
+           self.editable = editable
+           self.serialize = serialize
+           self.unique_for_date = unique_for_date
+           self.unique_for_month = unique_for_month
+8. [score=45] ChoicesFieldListFilter.choices
+   django/contrib/admin/filters.py:278
+   
+   FieldListFilter.register(lambda f: isinstance(f, models.BooleanField), BooleanFieldListFilter)
+   
+   
+   class ChoicesFieldListFilter(FieldListFilter):
+       def __init__(self, field, request, params, model, model_admin, field_path):
+           self.lookup_kwarg = '%s__exact' % field_path
+           self.lookup_kwarg_isnull = '%s__isnull' % field_path
+           self.lookup_val = params.get(self.lookup_kwarg)
+           self.lookup_val_isnull = params.get(self.lookup_kwarg_isnull)
+           super().__init__(field, request, params, model, model_admin, field_path)
+   
+       def expected_parameters(self):
+           return [self.lookup_kwarg, self.lookup_kwarg_isnull]
+   
+       def choices(self, changelist):
+           yield {
+               'selected': self.lookup_val is None,
+               'query_string': changelist.get_query_string(remove=[self.lookup_kwarg, self.lookup_kwarg_isnull]),
+               'display': _('All')
+           }
+           none_title = ''
+           for lookup, title in self.field.flatchoices:
+               if lookup is None:
+                   none_title = title
+                   continue
+               yield {
+                   'selected': str(lookup) == self.lookup_val,
+                   'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}, [self.lookup_kwarg_isnull]),
+                   'display': title,
+               }
+9. [score=30] EmptyFieldListFilter.choices
+   django/contrib/admin/filters.py:464
+           if self.lookup_val not in ('0', '1'):
+               raise IncorrectLookupParameters
+   
+           lookup_condition = models.Q()
+           if self.field.empty_strings_allowed:
+               lookup_condition |= models.Q(**{self.field_path: ''})
+           if self.field.null:
+               lookup_condition |= models.Q(**{'%s__isnull' % self.field_path: True})
+           if self.lookup_val == '1':
+               return queryset.filter(lookup_condition)
+           return queryset.exclude(lookup_condition)
+   
+       def expected_parameters(self):
+           return [self.lookup_kwarg]
+   
+       def choices(self, changelist):
+           for lookup, title in (
+               (None, _('All')),
+               ('1', _('Empty')),
+               ('0', _('Not empty')),
+           ):
+               yield {
+                   'selected': self.lookup_val == lookup,
+                   'query_string': changelist.get_query_string({self.lookup_kwarg: lookup}),
+                   'display': title,
+               }
+   
+10. [score=28] SimpleListFilter.choices
+   django/contrib/admin/filters.py:104
+           """
+           return self.used_parameters.get(self.parameter_name)
+   
+       def lookups(self, request, model_admin):
+           """
+           Must be overridden to return a list of tuples (value, verbose value)
+           """
+           raise NotImplementedError(
+               'The SimpleListFilter.lookups() method must be overridden to '
+               'return a list of tuples (value, verbose value).'
+           )
+   
+       def expected_parameters(self):
+           return [self.parameter_name]
+   
+       def choices(self, changelist):
+           yield {
+               'selected': self.value() is None,
+               'query_string': changelist.get_query_string(remove=[self.parameter_name]),
+               'display': _('All'),
+           }
+           for lookup, title in self.lookup_choices:
+               yield {
+                   'selected': self.value() == str(lookup),
+                   'query_string': changelist.get_query_string({self.parameter_name: lookup}),
+                   'display': title,
+               }
+   
+   
+   class FieldListFilter(ListFilter):
+       _field_list_filters = []
+
+366 more candidates cached. Call `more_symbols(name="Choices")` for the next batch.
+[symbol-locator] [scorer] usage pid=790192 calls=2 p=31747 c=252
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 02:51:54 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'VariableNode', 'context': 'template variable resolution and callable invocation', 'kind_filter': [5, 12, 6], 'top_k': 10}))
+```
+2026-08-28 02:51:55 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:52:36 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:52:36 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:52:36 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `VariableNode`. Showing top 1 by relevance:
+1. [score=92] VariableNode
+   django/template/base.py:979
+       """
+       Convert any value to a string to become part of a rendered template. This
+       means escaping, if required, and conversion to a string. If value is a
+       string, it's expected to already be translated.
+       """
+       value = template_localtime(value, use_tz=context.use_tz)
+       value = localize(value, use_l10n=context.use_l10n)
+       if context.autoescape:
+           if not issubclass(type(value), str):
+               value = str(value)
+           return conditional_escape(value)
+       else:
+           return str(value)
+   
+   
+   class VariableNode(Node):
+       def __init__(self, filter_expression):
+           self.filter_expression = filter_expression
+   
+       def __repr__(self):
+           return "<Variable Node: %s>" % self.filter_expression
+   
+       def render(self, context):
+           try:
+               output = self.filter_expression.resolve(context)
+           except UnicodeDecodeError:
+               # Unicode conversion can fail sometimes for reasons out of our
+               # control (e.g. exception rendering). In that case, we fail
+               # quietly.
+               return ''
+           return render_value_in_context(output, context)
+[symbol-locator] [scorer] usage pid=790192 calls=3 p=36833 c=259
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 02:52:36 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:52:43 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:52:43 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:52:43 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 02:52:43 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'TextChoices', 'context': 'django enumeration types / choices enums', 'top_k': 10}))
+```
+2026-08-28 02:52:43 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:53:43 _base_client.py INFO Retrying request to /chat/completions in 0.391875 seconds
+2026-08-28 02:54:44 _base_client.py INFO Retrying request to /chat/completions in 0.792618 seconds
+2026-08-28 02:55:18 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:55:18 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:55:18 auto_search_main.py INFO OBSERVATION:
+Found 8 candidates for `TextChoices`. Showing top 8 by relevance:
+1. [score=58] ChoicesTests.test_textchoices_empty_label
+   tests/model_enums/tests.py:107
+           self.assertEqual(YearInSchool.FRESHMAN.label, 'Freshman')
+           self.assertEqual(YearInSchool.FRESHMAN.value, 'FR')
+           self.assertEqual(YearInSchool['FRESHMAN'], YearInSchool.FRESHMAN)
+           self.assertEqual(YearInSchool('FR'), YearInSchool.FRESHMAN)
+   
+           self.assertIsInstance(YearInSchool, type(models.Choices))
+           self.assertIsInstance(YearInSchool.FRESHMAN, YearInSchool)
+           self.assertIsInstance(YearInSchool.FRESHMAN.label, Promise)
+           self.assertIsInstance(YearInSchool.FRESHMAN.value, str)
+   
+       def test_textchoices_auto_label(self):
+           self.assertEqual(Gender.MALE.label, 'Male')
+           self.assertEqual(Gender.FEMALE.label, 'Female')
+           self.assertEqual(Gender.NOT_SPECIFIED.label, 'Not Specified')
+   
+       def test_textchoices_empty_label(self):
+           self.assertEqual(Gender.choices[0], (None, '(Undeclared)'))
+           self.assertEqual(Gender.labels[0], '(Undeclared)')
+           self.assertIsNone(Gender.values[0])
+           self.assertEqual(Gender.names[0], '__empty__')
+   
+       def test_textchoices_functional_api(self):
+           Medal = models.TextChoices('Medal', 'GOLD SILVER BRONZE')
+           self.assertEqual(Medal.labels, ['Gold', 'Silver', 'Bronze'])
+           self.assertEqual(Medal.values, ['GOLD', 'SILVER', 'BRONZE'])
+           self.assertEqual(Medal.names, ['GOLD', 'SILVER', 'BRONZE'])
+   
+       def test_textchoices_containment(self):
+           self.assertIn(YearInSchool.FRESHMAN, YearInSchool)
+           self.assertIn('FR', YearInSchool)
+           self.assertNotIn('XX', YearInSchool)
+2. [score=55] ChoicesTests.test_textchoices_auto_label
+   tests/model_enums/tests.py:102
+           self.assertEqual(YearInSchool.labels, ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate'])
+           self.assertEqual(YearInSchool.values, ['FR', 'SO', 'JR', 'SR', 'GR'])
+           self.assertEqual(YearInSchool.names, ['FRESHMAN', 'SOPHOMORE', 'JUNIOR', 'SENIOR', 'GRADUATE'])
+   
+           self.assertEqual(repr(YearInSchool.FRESHMAN), "<YearInSchool.FRESHMAN: 'FR'>")
+           self.assertEqual(YearInSchool.FRESHMAN.label, 'Freshman')
+           self.assertEqual(YearInSchool.FRESHMAN.value, 'FR')
+           self.assertEqual(YearInSchool['FRESHMAN'], YearInSchool.FRESHMAN)
+           self.assertEqual(YearInSchool('FR'), YearInSchool.FRESHMAN)
+   
+           self.assertIsInstance(YearInSchool, type(models.Choices))
+           self.assertIsInstance(YearInSchool.FRESHMAN, YearInSchool)
+           self.assertIsInstance(YearInSchool.FRESHMAN.label, Promise)
+           self.assertIsInstance(YearInSchool.FRESHMAN.value, str)
+   
+       def test_textchoices_auto_label(self):
+           self.assertEqual(Gender.MALE.label, 'Male')
+           self.assertEqual(Gender.FEMALE.label, 'Female')
+           self.assertEqual(Gender.NOT_SPECIFIED.label, 'Not Specified')
+   
+       def test_textchoices_empty_label(self):
+           self.assertEqual(Gender.choices[0], (None, '(Undeclared)'))
+           self.assertEqual(Gender.labels[0], '(Undeclared)')
+           self.assertIsNone(Gender.values[0])
+           self.assertEqual(Gender.names[0], '__empty__')
+   
+       def test_textchoices_functional_api(self):
+           Medal = models.TextChoices('Medal', 'GOLD SILVER BRONZE')
+           self.assertEqual(Medal.labels, ['Gold', 'Silver', 'Bronze'])
+           self.assertEqual(Medal.values, ['GOLD', 'SILVER', 'BRONZE'])
+           self.assertEqual(Medal.names, ['GOLD', 'SILVER', 'BRONZE'])
+3. [score=52] WriterTests.test_serialize_choices.TextChoices
+   tests/migrations/test_writer.py:354
+               "(b'a-value', migrations.test_writer.BinaryEnum['A']), "
+               "(b'value-b', migrations.test_writer.BinaryEnum['B'])], "
+               "default=migrations.test_writer.BinaryEnum['B'])"
+           )
+           field = models.IntegerField(default=IntEnum.A, choices=[(m.value, m) for m in IntEnum])
+           string = MigrationWriter.serialize(field)[0]
+           self.assertEqual(
+               string,
+               "models.IntegerField(choices=["
+               "(1, migrations.test_writer.IntEnum['A']), "
+               "(2, migrations.test_writer.IntEnum['B'])], "
+               "default=migrations.test_writer.IntEnum['A'])"
+           )
+   
+       def test_serialize_choices(self):
+           class TextChoices(models.TextChoices):
+               A = 'A', 'A value'
+               B = 'B', 'B value'
+   
+           class IntegerChoices(models.IntegerChoices):
+               A = 1, 'One'
+               B = 2, 'Two'
+   
+           class DateChoices(datetime.date, models.Choices):
+               DATE_1 = 1969, 7, 20, 'First date'
+               DATE_2 = 1969, 11, 19, 'Second date'
+   
+           self.assertSerializedResultEqual(TextChoices.A, ("'A'", set()))
+           self.assertSerializedResultEqual(IntegerChoices.A, ('1', set()))
+           self.assertSerializedResultEqual(
+               DateChoices.DATE_1,
+4. [score=41] ChoicesTests.test_textchoices
+   tests/model_enums/tests.py:83
+           self.assertEqual(Vehicle.labels[0], '(Unknown)')
+           self.assertIsNone(Vehicle.values[0])
+           self.assertEqual(Vehicle.names[0], '__empty__')
+   
+       def test_integerchoices_functional_api(self):
+           Place = models.IntegerChoices('Place', 'FIRST SECOND THIRD')
+           self.assertEqual(Place.labels, ['First', 'Second', 'Third'])
+           self.assertEqual(Place.values, [1, 2, 3])
+           self.assertEqual(Place.names, ['FIRST', 'SECOND', 'THIRD'])
+   
+       def test_integerchoices_containment(self):
+           self.assertIn(Suit.DIAMOND, Suit)
+           self.assertIn(1, Suit)
+           self.assertNotIn(0, Suit)
+   
+       def test_textchoices(self):
+           self.assertEqual(YearInSchool.choices, [
+               ('FR', 'Freshman'), ('SO', 'Sophomore'), ('JR', 'Junior'), ('SR', 'Senior'), ('GR', 'Graduate'),
+           ])
+           self.assertEqual(YearInSchool.labels, ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate'])
+           self.assertEqual(YearInSchool.values, ['FR', 'SO', 'JR', 'SR', 'GR'])
+           self.assertEqual(YearInSchool.names, ['FRESHMAN', 'SOPHOMORE', 'JUNIOR', 'SENIOR', 'GRADUATE'])
+   
+           self.assertEqual(repr(YearInSchool.FRESHMAN), "<YearInSchool.FRESHMAN: 'FR'>")
+           self.assertEqual(YearInSchool.FRESHMAN.label, 'Freshman')
+           self.assertEqual(YearInSchool.FRESHMAN.value, 'FR')
+           self.assertEqual(YearInSchool['FRESHMAN'], YearInSchool.FRESHMAN)
+           self.assertEqual(YearInSchool('FR'), YearInSchool.FRESHMAN)
+   
+           self.assertIsInstance(YearInSchool, type(models.Choices))
+           self.assertIsInstance(YearInSchool.FRESHMAN, YearInSchool)
+5. [score=33] ChoicesTests.test_textchoices_functional_api
+   tests/model_enums/tests.py:113
+           self.assertIsInstance(YearInSchool.FRESHMAN, YearInSchool)
+           self.assertIsInstance(YearInSchool.FRESHMAN.label, Promise)
+           self.assertIsInstance(YearInSchool.FRESHMAN.value, str)
+   
+       def test_textchoices_auto_label(self):
+           self.assertEqual(Gender.MALE.label, 'Male')
+           self.assertEqual(Gender.FEMALE.label, 'Female')
+           self.assertEqual(Gender.NOT_SPECIFIED.label, 'Not Specified')
+   
+       def test_textchoices_empty_label(self):
+           self.assertEqual(Gender.choices[0], (None, '(Undeclared)'))
+           self.assertEqual(Gender.labels[0], '(Undeclared)')
+           self.assertIsNone(Gender.values[0])
+           self.assertEqual(Gender.names[0], '__empty__')
+   
+       def test_textchoices_functional_api(self):
+           Medal = models.TextChoices('Medal', 'GOLD SILVER BRONZE')
+           self.assertEqual(Medal.labels, ['Gold', 'Silver', 'Bronze'])
+           self.assertEqual(Medal.values, ['GOLD', 'SILVER', 'BRONZE'])
+           self.assertEqual(Medal.names, ['GOLD', 'SILVER', 'BRONZE'])
+   
+       def test_textchoices_containment(self):
+           self.assertIn(YearInSchool.FRESHMAN, YearInSchool)
+           self.assertIn('FR', YearInSchool)
+           self.assertNotIn('XX', YearInSchool)
+   
+       def test_textchoices_blank_value(self):
+           class BlankStr(models.TextChoices):
+               EMPTY = '', '(Empty)'
+               ONE = 'ONE', 'One'
+   
+6. [score=31] ChoicesTests.test_textchoices_containment
+   tests/model_enums/tests.py:119
+           self.assertEqual(Gender.FEMALE.label, 'Female')
+           self.assertEqual(Gender.NOT_SPECIFIED.label, 'Not Specified')
+   
+       def test_textchoices_empty_label(self):
+           self.assertEqual(Gender.choices[0], (None, '(Undeclared)'))
+           self.assertEqual(Gender.labels[0], '(Undeclared)')
+           self.assertIsNone(Gender.values[0])
+           self.assertEqual(Gender.names[0], '__empty__')
+   
+       def test_textchoices_functional_api(self):
+           Medal = models.TextChoices('Medal', 'GOLD SILVER BRONZE')
+           self.assertEqual(Medal.labels, ['Gold', 'Silver', 'Bronze'])
+           self.assertEqual(Medal.values, ['GOLD', 'SILVER', 'BRONZE'])
+           self.assertEqual(Medal.names, ['GOLD', 'SILVER', 'BRONZE'])
+   
+       def test_textchoices_containment(self):
+           self.assertIn(YearInSchool.FRESHMAN, YearInSchool)
+           self.assertIn('FR', YearInSchool)
+           self.assertNotIn('XX', YearInSchool)
+   
+       def test_textchoices_blank_value(self):
+           class BlankStr(models.TextChoices):
+               EMPTY = '', '(Empty)'
+               ONE = 'ONE', 'One'
+   
+           self.assertEqual(BlankStr.labels, ['(Empty)', 'One'])
+           self.assertEqual(BlankStr.values, ['', 'ONE'])
+           self.assertEqual(BlankStr.names, ['EMPTY', 'ONE'])
+   
+       def test_invalid_definition(self):
+           msg = "'str' object cannot be interpreted as an integer"
+7. [score=22] ChoicesTests.test_textchoices_blank_value
+   tests/model_enums/tests.py:124
+           self.assertEqual(Gender.labels[0], '(Undeclared)')
+           self.assertIsNone(Gender.values[0])
+           self.assertEqual(Gender.names[0], '__empty__')
+   
+       def test_textchoices_functional_api(self):
+           Medal = models.TextChoices('Medal', 'GOLD SILVER BRONZE')
+           self.assertEqual(Medal.labels, ['Gold', 'Silver', 'Bronze'])
+           self.assertEqual(Medal.values, ['GOLD', 'SILVER', 'BRONZE'])
+           self.assertEqual(Medal.names, ['GOLD', 'SILVER', 'BRONZE'])
+   
+       def test_textchoices_containment(self):
+           self.assertIn(YearInSchool.FRESHMAN, YearInSchool)
+           self.assertIn('FR', YearInSchool)
+           self.assertNotIn('XX', YearInSchool)
+   
+       def test_textchoices_blank_value(self):
+           class BlankStr(models.TextChoices):
+               EMPTY = '', '(Empty)'
+               ONE = 'ONE', 'One'
+   
+           self.assertEqual(BlankStr.labels, ['(Empty)', 'One'])
+           self.assertEqual(BlankStr.values, ['', 'ONE'])
+           self.assertEqual(BlankStr.names, ['EMPTY', 'ONE'])
+   
+       def test_invalid_definition(self):
+           msg = "'str' object cannot be interpreted as an integer"
+           with self.assertRaisesMessage(TypeError, msg):
+               class InvalidArgumentEnum(models.IntegerChoices):
+                   # A string is not permitted as the second argument to int().
+                   ONE = 1, 'X', 'Invalid'
+   
+8. [score=12] TextChoices
+   django/db/models/enums.py:77
+       """Class for creating enumerated choices."""
+   
+       def __str__(self):
+           """
+           Use value when cast to str, so that Choices set as model instance
+           attributes are rendered as expected in templates and similar contexts.
+           """
+           return str(self.value)
+   
+   
+   class IntegerChoices(int, Choices):
+       """Class for creating enumerated integer choices."""
+       pass
+   
+   
+   class TextChoices(str, Choices):
+       """Class for creating enumerated string choices."""
+   
+       def _generate_next_value_(name, start, count, last_values):
+           return name
+   
+[symbol-locator] [scorer] usage pid=790192 calls=4 p=44902 c=294
+[symbol-locator] [scorer] parsed 8/8 scores from LLM
+
+2026-08-28 02:55:18 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'ChoicesType', 'context': 'django enumeration types / choices enums', 'top_k': 10}))
+```
+2026-08-28 02:55:19 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:55:25 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:55:25 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:55:25 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `ChoicesType`. Showing top 1 by relevance:
+1. [score=72] OtherModelFormTests.test_choices_type
+   tests/model_forms/tests.py:2392
+           self.assertTrue(form.is_valid())
+           self.assertEqual(form.cleaned_data['url'], 'http://example.com/test')
+   
+   
+   class OtherModelFormTests(TestCase):
+       def test_media_on_modelform(self):
+           # Similar to a regular Form class you can define custom media to be used on
+           # the ModelForm.
+           f = ModelFormWithMedia()
+           self.assertHTMLEqual(
+               str(f.media),
+               '''<link href="/some/form/css" type="text/css" media="all" rel="stylesheet">
+   <script src="/some/form/javascript"></script>'''
+           )
+   
+       def test_choices_type(self):
+           # Choices on CharField and IntegerField
+           f = ArticleForm()
+           with self.assertRaises(ValidationError):
+               f.fields['status'].clean('42')
+   
+           f = ArticleStatusForm()
+           with self.assertRaises(ValidationError):
+               f.fields['status'].clean('z')
+   
+       def test_prefetch_related_queryset(self):
+           """
+           ModelChoiceField should respect a prefetch_related() on its queryset.
+           """
+           blue = Colour.objects.create(name='blue')
+           red = Colour.objects.create(name='red')
+[symbol-locator] [scorer] usage pid=790192 calls=5 p=49994 c=301
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 02:55:25 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'IntegerChoices', 'context': 'django enumeration types / choices enums', 'top_k': 10}))
+```
+2026-08-28 02:55:25 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:55:30 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:55:30 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:55:30 auto_search_main.py INFO OBSERVATION:
+Found 11 candidates for `IntegerChoices`. Showing top 10 by relevance:
+1. [score=95] IntegerChoices
+   django/db/models/enums.py:72
+       def values(cls):
+           return [value for value, _ in cls.choices]
+   
+   
+   class Choices(enum.Enum, metaclass=ChoicesMeta):
+       """Class for creating enumerated choices."""
+   
+       def __str__(self):
+           """
+           Use value when cast to str, so that Choices set as model instance
+           attributes are rendered as expected in templates and similar contexts.
+           """
+           return str(self.value)
+   
+   
+   class IntegerChoices(int, Choices):
+       """Class for creating enumerated integer choices."""
+       pass
+   
+   
+   class TextChoices(str, Choices):
+       """Class for creating enumerated string choices."""
+   
+       def _generate_next_value_(name, start, count, last_values):
+           return name
+   
+2. [score=91] ChoicesTests.test_integerchoices_auto_label
+   tests/model_enums/tests.py:61
+           self.assertEqual(Suit.labels, ['Diamond', 'Spade', 'Heart', 'Club'])
+           self.assertEqual(Suit.values, [1, 2, 3, 4])
+           self.assertEqual(Suit.names, ['DIAMOND', 'SPADE', 'HEART', 'CLUB'])
+   
+           self.assertEqual(repr(Suit.DIAMOND), '<Suit.DIAMOND: 1>')
+           self.assertEqual(Suit.DIAMOND.label, 'Diamond')
+           self.assertEqual(Suit.DIAMOND.value, 1)
+           self.assertEqual(Suit['DIAMOND'], Suit.DIAMOND)
+           self.assertEqual(Suit(1), Suit.DIAMOND)
+   
+           self.assertIsInstance(Suit, type(models.Choices))
+           self.assertIsInstance(Suit.DIAMOND, Suit)
+           self.assertIsInstance(Suit.DIAMOND.label, Promise)
+           self.assertIsInstance(Suit.DIAMOND.value, int)
+   
+       def test_integerchoices_auto_label(self):
+           self.assertEqual(Vehicle.CAR.label, 'Carriage')
+           self.assertEqual(Vehicle.TRUCK.label, 'Truck')
+           self.assertEqual(Vehicle.JET_SKI.label, 'Jet Ski')
+   
+       def test_integerchoices_empty_label(self):
+           self.assertEqual(Vehicle.choices[0], (None, '(Unknown)'))
+           self.assertEqual(Vehicle.labels[0], '(Unknown)')
+           self.assertIsNone(Vehicle.values[0])
+           self.assertEqual(Vehicle.names[0], '__empty__')
+   
+       def test_integerchoices_functional_api(self):
+           Place = models.IntegerChoices('Place', 'FIRST SECOND THIRD')
+           self.assertEqual(Place.labels, ['First', 'Second', 'Third'])
+           self.assertEqual(Place.values, [1, 2, 3])
+           self.assertEqual(Place.names, ['FIRST', 'SECOND', 'THIRD'])
+3. [score=90] WriterTests.test_serialize_choices.IntegerChoices
+   tests/migrations/test_writer.py:358
+           field = models.IntegerField(default=IntEnum.A, choices=[(m.value, m) for m in IntEnum])
+           string = MigrationWriter.serialize(field)[0]
+           self.assertEqual(
+               string,
+               "models.IntegerField(choices=["
+               "(1, migrations.test_writer.IntEnum['A']), "
+               "(2, migrations.test_writer.IntEnum['B'])], "
+               "default=migrations.test_writer.IntEnum['A'])"
+           )
+   
+       def test_serialize_choices(self):
+           class TextChoices(models.TextChoices):
+               A = 'A', 'A value'
+               B = 'B', 'B value'
+   
+           class IntegerChoices(models.IntegerChoices):
+               A = 1, 'One'
+               B = 2, 'Two'
+   
+           class DateChoices(datetime.date, models.Choices):
+               DATE_1 = 1969, 7, 20, 'First date'
+               DATE_2 = 1969, 11, 19, 'Second date'
+   
+           self.assertSerializedResultEqual(TextChoices.A, ("'A'", set()))
+           self.assertSerializedResultEqual(IntegerChoices.A, ('1', set()))
+           self.assertSerializedResultEqual(
+               DateChoices.DATE_1,
+               ('datetime.date(1969, 7, 20)', {'import datetime'}),
+           )
+           field = models.CharField(default=TextChoices.B, choices=TextChoices.choices)
+           string = MigrationWriter.serialize(field)[0]
+4. [score=88] ChoicesTests.test_integerchoices
+   tests/model_enums/tests.py:44
+       TRUCK = 2
+       JET_SKI = 3
+   
+       __empty__ = _('(Unknown)')
+   
+   
+   class Gender(models.TextChoices):
+       MALE = 'M'
+       FEMALE = 'F'
+       NOT_SPECIFIED = 'X'
+   
+       __empty__ = '(Undeclared)'
+   
+   
+   class ChoicesTests(SimpleTestCase):
+       def test_integerchoices(self):
+           self.assertEqual(Suit.choices, [(1, 'Diamond'), (2, 'Spade'), (3, 'Heart'), (4, 'Club')])
+           self.assertEqual(Suit.labels, ['Diamond', 'Spade', 'Heart', 'Club'])
+           self.assertEqual(Suit.values, [1, 2, 3, 4])
+           self.assertEqual(Suit.names, ['DIAMOND', 'SPADE', 'HEART', 'CLUB'])
+   
+           self.assertEqual(repr(Suit.DIAMOND), '<Suit.DIAMOND: 1>')
+           self.assertEqual(Suit.DIAMOND.label, 'Diamond')
+           self.assertEqual(Suit.DIAMOND.value, 1)
+           self.assertEqual(Suit['DIAMOND'], Suit.DIAMOND)
+           self.assertEqual(Suit(1), Suit.DIAMOND)
+   
+           self.assertIsInstance(Suit, type(models.Choices))
+           self.assertIsInstance(Suit.DIAMOND, Suit)
+           self.assertIsInstance(Suit.DIAMOND.label, Promise)
+           self.assertIsInstance(Suit.DIAMOND.value, int)
+5. [score=87] ChoicesTests.test_integerchoices_empty_label
+   tests/model_enums/tests.py:66
+           self.assertEqual(Suit.DIAMOND.label, 'Diamond')
+           self.assertEqual(Suit.DIAMOND.value, 1)
+           self.assertEqual(Suit['DIAMOND'], Suit.DIAMOND)
+           self.assertEqual(Suit(1), Suit.DIAMOND)
+   
+           self.assertIsInstance(Suit, type(models.Choices))
+           self.assertIsInstance(Suit.DIAMOND, Suit)
+           self.assertIsInstance(Suit.DIAMOND.label, Promise)
+           self.assertIsInstance(Suit.DIAMOND.value, int)
+   
+       def test_integerchoices_auto_label(self):
+           self.assertEqual(Vehicle.CAR.label, 'Carriage')
+           self.assertEqual(Vehicle.TRUCK.label, 'Truck')
+           self.assertEqual(Vehicle.JET_SKI.label, 'Jet Ski')
+   
+       def test_integerchoices_empty_label(self):
+           self.assertEqual(Vehicle.choices[0], (None, '(Unknown)'))
+           self.assertEqual(Vehicle.labels[0], '(Unknown)')
+           self.assertIsNone(Vehicle.values[0])
+           self.assertEqual(Vehicle.names[0], '__empty__')
+   
+       def test_integerchoices_functional_api(self):
+           Place = models.IntegerChoices('Place', 'FIRST SECOND THIRD')
+           self.assertEqual(Place.labels, ['First', 'Second', 'Third'])
+           self.assertEqual(Place.values, [1, 2, 3])
+           self.assertEqual(Place.names, ['FIRST', 'SECOND', 'THIRD'])
+   
+       def test_integerchoices_containment(self):
+           self.assertIn(Suit.DIAMOND, Suit)
+           self.assertIn(1, Suit)
+           self.assertNotIn(0, Suit)
+6. [score=86] ChoicesTests.test_integerchoices_functional_api
+   tests/model_enums/tests.py:72
+           self.assertIsInstance(Suit.DIAMOND, Suit)
+           self.assertIsInstance(Suit.DIAMOND.label, Promise)
+           self.assertIsInstance(Suit.DIAMOND.value, int)
+   
+       def test_integerchoices_auto_label(self):
+           self.assertEqual(Vehicle.CAR.label, 'Carriage')
+           self.assertEqual(Vehicle.TRUCK.label, 'Truck')
+           self.assertEqual(Vehicle.JET_SKI.label, 'Jet Ski')
+   
+       def test_integerchoices_empty_label(self):
+           self.assertEqual(Vehicle.choices[0], (None, '(Unknown)'))
+           self.assertEqual(Vehicle.labels[0], '(Unknown)')
+           self.assertIsNone(Vehicle.values[0])
+           self.assertEqual(Vehicle.names[0], '__empty__')
+   
+       def test_integerchoices_functional_api(self):
+           Place = models.IntegerChoices('Place', 'FIRST SECOND THIRD')
+           self.assertEqual(Place.labels, ['First', 'Second', 'Third'])
+           self.assertEqual(Place.values, [1, 2, 3])
+           self.assertEqual(Place.names, ['FIRST', 'SECOND', 'THIRD'])
+   
+       def test_integerchoices_containment(self):
+           self.assertIn(Suit.DIAMOND, Suit)
+           self.assertIn(1, Suit)
+           self.assertNotIn(0, Suit)
+   
+       def test_textchoices(self):
+           self.assertEqual(YearInSchool.choices, [
+               ('FR', 'Freshman'), ('SO', 'Sophomore'), ('JR', 'Junior'), ('SR', 'Senior'), ('GR', 'Graduate'),
+           ])
+           self.assertEqual(YearInSchool.labels, ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate'])
+7. [score=84] ChoicesTests.test_integerchoices_containment
+   tests/model_enums/tests.py:78
+           self.assertEqual(Vehicle.TRUCK.label, 'Truck')
+           self.assertEqual(Vehicle.JET_SKI.label, 'Jet Ski')
+   
+       def test_integerchoices_empty_label(self):
+           self.assertEqual(Vehicle.choices[0], (None, '(Unknown)'))
+           self.assertEqual(Vehicle.labels[0], '(Unknown)')
+           self.assertIsNone(Vehicle.values[0])
+           self.assertEqual(Vehicle.names[0], '__empty__')
+   
+       def test_integerchoices_functional_api(self):
+           Place = models.IntegerChoices('Place', 'FIRST SECOND THIRD')
+           self.assertEqual(Place.labels, ['First', 'Second', 'Third'])
+           self.assertEqual(Place.values, [1, 2, 3])
+           self.assertEqual(Place.names, ['FIRST', 'SECOND', 'THIRD'])
+   
+       def test_integerchoices_containment(self):
+           self.assertIn(Suit.DIAMOND, Suit)
+           self.assertIn(1, Suit)
+           self.assertNotIn(0, Suit)
+   
+       def test_textchoices(self):
+           self.assertEqual(YearInSchool.choices, [
+               ('FR', 'Freshman'), ('SO', 'Sophomore'), ('JR', 'Junior'), ('SR', 'Senior'), ('GR', 'Graduate'),
+           ])
+           self.assertEqual(YearInSchool.labels, ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Graduate'])
+           self.assertEqual(YearInSchool.values, ['FR', 'SO', 'JR', 'SR', 'GR'])
+           self.assertEqual(YearInSchool.names, ['FRESHMAN', 'SOPHOMORE', 'JUNIOR', 'SENIOR', 'GRADUATE'])
+   
+           self.assertEqual(repr(YearInSchool.FRESHMAN), "<YearInSchool.FRESHMAN: 'FR'>")
+           self.assertEqual(YearInSchool.FRESHMAN.label, 'Freshman')
+           self.assertEqual(YearInSchool.FRESHMAN.value, 'FR')
+8. [score=25] ValidationTests.test_integerfield_validates_zero_against_choices
+   tests/model_fields/test_integerfield.py:224
+           f = models.IntegerField(null=True, blank=False)
+           with self.assertRaises(ValidationError):
+               f.clean(None, None)
+   
+       def test_nullable_integerfield_cleans_none_on_null_and_blank_true(self):
+           f = models.IntegerField(null=True, blank=True)
+           self.assertIsNone(f.clean(None, None))
+   
+       def test_integerfield_raises_error_on_empty_input(self):
+           f = models.IntegerField(null=False)
+           with self.assertRaises(ValidationError):
+               f.clean(None, None)
+           with self.assertRaises(ValidationError):
+               f.clean('', None)
+   
+       def test_integerfield_validates_zero_against_choices(self):
+           f = models.IntegerField(choices=((1, 1),))
+           with self.assertRaises(ValidationError):
+               f.clean('0', None)
+   
+       def test_enum_choices_cleans_valid_string(self):
+           f = models.IntegerField(choices=self.Choices.choices)
+           self.assertEqual(f.clean('1', None), 1)
+   
+       def test_enum_choices_invalid_input(self):
+           f = models.IntegerField(choices=self.Choices.choices)
+           with self.assertRaises(ValidationError):
+               f.clean('A', None)
+           with self.assertRaises(ValidationError):
+               f.clean('3', None)
+   
+9. [score=15] SelectTest.test_optgroups_integer_choices
+   tests/forms_tests/widget_tests/test_select.py:356
+               options,
+               [{
+                   'value': 'unknown',
+                   'selected': False,
+                   'template_name': 'django/forms/widgets/select_option.html',
+                   'label': 'Unknown',
+                   'attrs': {},
+                   'index': '2',
+                   'name': 'name',
+                   'type': 'select',
+                   'wrap_label': True,
+               }]
+           )
+           self.assertEqual(index, 2)
+   
+       def test_optgroups_integer_choices(self):
+           """The option 'value' is the same type as what's in `choices`."""
+           groups = list(self.widget(choices=[[0, 'choice text']]).optgroups('name', ['vhs']))
+           label, options, index = groups[0]
+           self.assertEqual(options[0]['value'], 0)
+   
+       def test_deepcopy(self):
+           """
+           __deepcopy__() should copy all attributes properly (#25085).
+           """
+           widget = Select()
+           obj = copy.deepcopy(widget)
+           self.assertIsNot(widget, obj)
+           self.assertEqual(widget.choices, obj.choices)
+           self.assertIsNot(widget.choices, obj.choices)
+           self.assertEqual(widget.attrs, obj.attrs)
+10. [score=10] ChoiceModel.INTEGER_CHOICES
+   tests/forms_tests/models.py:37
+   class Defaults(models.Model):
+       name = models.CharField(max_length=255, default='class default value')
+       def_date = models.DateField(default=datetime.date(1980, 1, 1))
+       value = models.IntegerField(default=42)
+       callable_default = models.IntegerField(default=callable_default)
+   
+   
+   class ChoiceModel(models.Model):
+       """For ModelChoiceField and ModelMultipleChoiceField tests."""
+       CHOICES = [
+           ('', 'No Preference'),
+           ('f', 'Foo'),
+           ('b', 'Bar'),
+       ]
+   
+       INTEGER_CHOICES = [
+           (None, 'No Preference'),
+           (1, 'Foo'),
+           (2, 'Bar'),
+       ]
+   
+       STRING_CHOICES_WITH_NONE = [
+           (None, 'No Preference'),
+           ('f', 'Foo'),
+           ('b', 'Bar'),
+       ]
+   
+       name = models.CharField(max_length=10)
+       choice = models.CharField(max_length=2, blank=True, choices=CHOICES)
+       choice_string_w_none = models.CharField(
+           max_length=2, blank=True, null=True, choices=STRING_CHOICES_WITH_NONE)
+
+1 more candidate cached. Call `more_symbols(name="IntegerChoices")` for the next batch.
+[symbol-locator] [scorer] usage pid=790192 calls=6 p=58873 c=348
+[symbol-locator] [scorer] parsed 11/11 scores from LLM
+
+2026-08-28 02:55:30 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:55:40 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:55:40 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:55:40 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 02:55:40 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'ChoicesMeta', 'context': 'django enumeration types / choices enums metaclass', 'top_k': 10}))
+```
+2026-08-28 02:55:41 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:55:45 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:55:45 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:55:45 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `ChoicesMeta`. Showing top 1 by relevance:
+1. [score=97] ChoicesMeta
+   django/db/models/enums.py:8
+   import enum
+   
+   from django.utils.functional import Promise
+   
+   __all__ = ['Choices', 'IntegerChoices', 'TextChoices']
+   
+   
+   class ChoicesMeta(enum.EnumMeta):
+       """A metaclass for creating a enum choices."""
+   
+       def __new__(metacls, classname, bases, classdict):
+           labels = []
+           for key in classdict._member_names:
+               value = classdict[key]
+               if (
+                   isinstance(value, (list, tuple)) and
+                   len(value) > 1 and
+                   isinstance(value[-1], (Promise, str))
+               ):
+                   *value, label = value
+                   value = tuple(value)
+               else:
+                   label = key.replace('_', ' ').title()
+[symbol-locator] [scorer] usage pid=790192 calls=7 p=63872 c=355
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 02:55:45 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'callable_', 'context': 'template variable resolution callable handling in django/template/base.py', 'top_k': 10}))
+```
+2026-08-28 02:55:46 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:56:46 _base_client.py INFO Retrying request to /chat/completions in 0.385731 seconds
+2026-08-28 02:57:46 _base_client.py INFO Retrying request to /chat/completions in 0.975071 seconds
+2026-08-28 02:58:47 auto_search_main.py INFO OBSERVATION:
+
+[1;31mGive Feedback / Get Help: https://github.com/BerriAI/litellm/issues/new[0m
+LiteLLM.Info: If you need to debug this error, use `litellm.set_verbose=True'.
+
+Found 59 candidates for `callable_`. Showing top 10 by relevance:
+1. [score=50] CallableSettingWrapper.__init__.callable_setting
+   django/views/debug.py:42
+   
+   HIDDEN_SETTINGS = _lazy_re_compile('API|TOKEN|KEY|SECRET|PASS|SIGNATURE', flags=re.IGNORECASE)
+   
+   CLEANSED_SUBSTITUTE = '********************'
+   
+   CURRENT_DIR = Path(__file__).parent
+   
+   
+   class CallableSettingWrapper:
+       """
+       Object to wrap callable appearing in settings.
+       * Not to call in the debug page (#21345).
+       * Not to break the debug page if the callable forbidding to set attributes
+         (#23070).
+       """
+       def __init__(self, callable_setting):
+           self._wrapped = callable_setting
+   
+       def __repr__(self):
+           return repr(self._wrapped)
+   
+   
+   def cleanse_setting(key, value):
+       """
+       Cleanse an individual setting key/value of sensitive content. If the value
+       is a dictionary, recursively cleanse the keys in that dictionary.
+       """
+       try:
+           if HIDDEN_SETTINGS.search(key):
+               cleansed = CLEANSED_SUBSTITUTE
+           else:
+2. [score=50] SimpleTestCase._assertFooMessage.callable_obj
+   django/test/testcases.py:686
+               # Use assertTemplateNotUsed as context manager.
+               return _AssertTemplateNotUsedContext(self, context_mgr_template)
+   
+           self.assertFalse(
+               template_name in template_names,
+               msg_prefix + "Template '%s' was used unexpectedly in rendering the response" % template_name
+           )
+   
+       @contextmanager
+       def _assert_raises_or_warns_cm(self, func, cm_attr, expected_exception, expected_message):
+           with func(expected_exception) as cm:
+               yield cm
+           self.assertIn(expected_message, str(getattr(cm, cm_attr)))
+   
+       def _assertFooMessage(self, func, cm_attr, expected_exception, expected_message, *args, **kwargs):
+           callable_obj = None
+           if args:
+               callable_obj, *args = args
+           cm = self._assert_raises_or_warns_cm(func, cm_attr, expected_exception, expected_message)
+           # Assertion used in context manager fashion.
+           if callable_obj is None:
+               return cm
+           # Assertion was passed a callable.
+           with cm:
+               callable_obj(*args, **kwargs)
+   
+       def assertRaisesMessage(self, expected_exception, expected_message, *args, **kwargs):
+           """
+           Assert that expected_message is found in the message of a raised
+           exception.
+   
+3. [score=50] ErrorHandlerResolutionTests.callable_resolver
+   tests/urlpatterns_reverse/tests.py:1065
+       def test_urlconf_is_reset_after_request(self):
+           """The URLconf is reset after each request."""
+           self.assertIsNone(get_urlconf())
+           with override_settings(MIDDLEWARE=['%s.ChangeURLconfMiddleware' % middleware.__name__]):
+               self.client.get(reverse('inner'))
+           self.assertIsNone(get_urlconf())
+   
+   
+   class ErrorHandlerResolutionTests(SimpleTestCase):
+       """Tests for handler400, handler404 and handler500"""
+   
+       def setUp(self):
+           urlconf = 'urlpatterns_reverse.urls_error_handlers'
+           urlconf_callables = 'urlpatterns_reverse.urls_error_handlers_callables'
+           self.resolver = URLResolver(RegexPattern(r'^$'), urlconf)
+           self.callable_resolver = URLResolver(RegexPattern(r'^$'), urlconf_callables)
+   
+       def test_named_handlers(self):
+           handler = (empty_view, {})
+           for code in [400, 404, 500]:
+               with self.subTest(code=code):
+                   self.assertEqual(self.resolver.resolve_error_handler(code), handler)
+   
+       def test_callable_handlers(self):
+           handler = (empty_view, {})
+           for code in [400, 404, 500]:
+               with self.subTest(code=code):
+                   self.assertEqual(self.callable_resolver.resolve_error_handler(code), handler)
+   
+   
+   @override_settings(ROOT_URLCONF='urlpatterns_reverse.urls_without_handlers')
+4. [score=50] IntegerFieldTests.test_redundant_backend_range_validators.callable_limit
+   tests/model_fields/test_integerfield.py:101
+               expected_message = validators.MaxValueValidator.message % {
+                   'limit_value': max_value,
+               }
+               with self.assertRaisesMessage(ValidationError, expected_message):
+                   instance.full_clean()
+               instance.value = max_value
+               instance.full_clean()
+   
+       def test_redundant_backend_range_validators(self):
+           """
+           If there are stricter validators than the ones from the database
+           backend then the backend validators aren't added.
+           """
+           min_backend_value, max_backend_value = self.backend_range
+   
+           for callable_limit in (True, False):
+               with self.subTest(callable_limit=callable_limit):
+                   if min_backend_value is not None:
+                       min_custom_value = min_backend_value + 1
+                       limit_value = (lambda: min_custom_value) if callable_limit else min_custom_value
+                       ranged_value_field = self.model._meta.get_field('value').__class__(
+                           validators=[validators.MinValueValidator(limit_value)]
+                       )
+                       field_range_message = validators.MinValueValidator.message % {
+                           'limit_value': min_custom_value,
+                       }
+                       with self.assertRaisesMessage(ValidationError, '[%r]' % field_range_message):
+                           ranged_value_field.run_validators(min_backend_value - 1)
+   
+                   if max_backend_value is not None:
+                       max_custom_value = max_backend_value - 1
+5. [score=50] callable_year
+   tests/admin_views/admin.py:51
+       OtherStory, Paper, Parent, ParentWithDependentChildren, ParentWithUUIDPK,
+       Person, Persona, Picture, Pizza, Plot, PlotDetails, PlotProxy,
+       PluggableSearchPerson, Podcast, Post, PrePopulatedPost,
+       PrePopulatedPostLargeSlug, PrePopulatedSubPost, Promo, Question,
+       ReadablePizza, ReadOnlyPizza, Recipe, Recommendation, Recommender,
+       ReferencedByGenRel, ReferencedByInline, ReferencedByParent,
+       RelatedPrepopulated, RelatedWithUUIDPKModel, Report, Reservation,
+       Restaurant, RowLevelChangePermissionModel, Section, ShortMessage, Simple,
+       Sketch, Song, State, Story, StumpJoke, Subscriber, SuperVillain, Telegram,
+       Thing, Topping, UnchangeableObject, UndeletableObject, UnorderedObject,
+       UserMessenger, UserProxy, Villain, Vodcast, Whatsit, Widget, Worker,
+       WorkHour,
+   )
+   
+   
+   def callable_year(dt_value):
+       try:
+           return dt_value.year
+       except AttributeError:
+           return None
+   
+   
+   callable_year.admin_order_field = 'date'
+   
+   
+   class ArticleInline(admin.TabularInline):
+       model = Article
+       fk_name = 'section'
+       prepopulated_fields = {
+           'title': ('content',)
+       }
+6. [score=50] callable_on_unknown
+   tests/admin_views/admin.py:800
+   
+   
+   class UndeletableObjectAdmin(admin.ModelAdmin):
+       def change_view(self, *args, **kwargs):
+           kwargs['extra_context'] = {'show_delete': False}
+           return super().change_view(*args, **kwargs)
+   
+   
+   class UnchangeableObjectAdmin(admin.ModelAdmin):
+       def get_urls(self):
+           # Disable change_view, but leave other urls untouched
+           urlpatterns = super().get_urls()
+           return [p for p in urlpatterns if p.name and not p.name.endswith("_change")]
+   
+   
+   def callable_on_unknown(obj):
+       return obj.unknown
+   
+   
+   class AttributeErrorRaisingAdmin(admin.ModelAdmin):
+       list_display = [callable_on_unknown]
+   
+   
+   class CustomManagerAdmin(admin.ModelAdmin):
+       def get_queryset(self, request):
+           return FilteredManager.objects
+   
+   
+   class MessageTestingAdmin(admin.ModelAdmin):
+       actions = ["message_debug", "message_info", "message_success",
+                  "message_warning", "message_error", "message_extra_tags"]
+7. [score=50] callable_default_counter
+   tests/forms_tests/models.py:8
+   import datetime
+   import itertools
+   import tempfile
+   
+   from django.core.files.storage import FileSystemStorage
+   from django.db import models
+   
+   callable_default_counter = itertools.count()
+   
+   
+   def callable_default():
+       return next(callable_default_counter)
+   
+   
+   temp_storage = FileSystemStorage(location=tempfile.mkdtemp())
+   
+   
+   class BoundaryModel(models.Model):
+       positive_integer = models.PositiveIntegerField(null=True, blank=True)
+   
+   
+   class Defaults(models.Model):
+       name = models.CharField(max_length=255, default='class default value')
+8. [score=50] callable_default
+   tests/forms_tests/models.py:11
+   import datetime
+   import itertools
+   import tempfile
+   
+   from django.core.files.storage import FileSystemStorage
+   from django.db import models
+   
+   callable_default_counter = itertools.count()
+   
+   
+   def callable_default():
+       return next(callable_default_counter)
+   
+   
+   temp_storage = FileSystemStorage(location=tempfile.mkdtemp())
+   
+   
+   class BoundaryModel(models.Model):
+       positive_integer = models.PositiveIntegerField(null=True, blank=True)
+   
+   
+   class Defaults(models.Model):
+       name = models.CharField(max_length=255, default='class default value')
+       def_date = models.DateField(default=datetime.date(1980, 1, 1))
+       value = models.IntegerField(default=42)
+       callable_default = models.IntegerField(default=callable_default)
+9. [score=50] Defaults.callable_default
+   tests/forms_tests/models.py:26
+   def callable_default():
+       return next(callable_default_counter)
+   
+   
+   temp_storage = FileSystemStorage(location=tempfile.mkdtemp())
+   
+   
+   class BoundaryModel(models.Model):
+       positive_integer = models.PositiveIntegerField(null=True, blank=True)
+   
+   
+   class Defaults(models.Model):
+       name = models.CharField(max_length=255, default='class default value')
+       def_date = models.DateField(default=datetime.date(1980, 1, 1))
+       value = models.IntegerField(default=42)
+       callable_default = models.IntegerField(default=callable_default)
+   
+   
+   class ChoiceModel(models.Model):
+       """For ModelChoiceField and ModelMultipleChoiceField tests."""
+       CHOICES = [
+           ('', 'No Preference'),
+           ('f', 'Foo'),
+           ('b', 'Bar'),
+       ]
+   
+       INTEGER_CHOICES = [
+           (None, 'No Preference'),
+           (1, 'Foo'),
+           (2, 'Bar'),
+       ]
+10. [score=50] ExceptionReporterFilterTests.test_callable_settings.callable_setting
+   tests/view_tests/tests/test_debug.py:1136
+           frame, when those variables are passed as keyword arguments to the
+           decorated function.
+           """
+           with self.settings(DEBUG=True):
+               self.verify_unsafe_response(sensitive_kwargs_function_caller)
+               self.verify_unsafe_email(sensitive_kwargs_function_caller)
+   
+           with self.settings(DEBUG=False):
+               self.verify_safe_response(sensitive_kwargs_function_caller, check_for_POST_params=False)
+               self.verify_safe_email(sensitive_kwargs_function_caller, check_for_POST_params=False)
+   
+       def test_callable_settings(self):
+           """
+           Callable settings should not be evaluated in the debug page (#21345).
+           """
+           def callable_setting():
+               return "This should not be displayed"
+           with self.settings(DEBUG=True, FOOBAR=callable_setting):
+               response = self.client.get('/raises500/')
+               self.assertNotContains(response, "This should not be displayed", status_code=500)
+   
+       def test_callable_settings_forbidding_to_set_attributes(self):
+           """
+           Callable settings which forbid to set attributes should not break
+           the debug page (#23070).
+           """
+           class CallableSettingWithSlots:
+               __slots__ = []
+   
+               def __call__(self):
+                   return "This should not be displayed"
+
+49 more candidates cached. Call `more_symbols(name="callable_")` for the next batch.
+[symbol-locator] [scorer] LLM call failed type=Timeout — using score=50
+
+2026-08-28 02:58:47 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'resolve_variable', 'context': 'template variable resolution and callables in django templates', 'top_k': 10}))
+```
+2026-08-28 02:58:48 auto_search_main.py INFO OBSERVATION:
+No symbols named `resolve_variable` found in workspace. Try a partial match or check spelling.
+
+2026-08-28 02:58:48 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:58:58 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:58:58 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:58:58 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 02:58:58 auto_search_main.py INFO ===============
+2026-08-28 02:58:58 auto_search_main.py INFO Final response generated content_length=281
+2026-08-28 02:58:58 auto_search_main.py INFO ==== localizing django__django-12304 succeed, process multiple loc outputs ====
+2026-08-28 02:58:59 cost_analysis.py INFO input_tokens=95208, output_tokens=1558, cost=0.24
+2026-08-28 02:58:59 auto_search_main.py INFO Total time: 16.0419 min

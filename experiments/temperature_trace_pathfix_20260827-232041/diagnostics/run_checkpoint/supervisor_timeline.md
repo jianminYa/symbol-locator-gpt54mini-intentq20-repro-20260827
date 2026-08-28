@@ -1,0 +1,60 @@
+# Supervisor timeline
+
+- 2026-08-28T00:19:56.096521+00:00 supervisor started.
+- 2026-08-28T00:19:56.105293+00:00 event=conflict_scan_pass no running eval_runner/LocAgent/IntentQ20/Pyright process
+- 2026-08-28T00:19:59.621393+00:00 event=temperature_canary_success temperature=1.0
+- 2026-08-28T00:20:02.420231+00:00 event=temperature_canary_success temperature=0.0
+- 2026-08-28T00:20:02.422680+00:00 event=face_start face=A1
+- 2026-08-28T00:25:48.417523+00:00 event=case_end face=A1 instance=django__django-11206 attempt=1 elapsed=345.983 category=success
+- 2026-08-28T00:28:12.114077+00:00 event=case_end face=A1 instance=scikit-learn__scikit-learn-14141 attempt=1 elapsed=143.687 category=success
+- 2026-08-28T00:33:38.737913+00:00 event=case_end face=A1 instance=django__django-11066 attempt=1 elapsed=326.615 category=success
+- 2026-08-28T00:39:22.374842+00:00 event=case_end face=A1 instance=django__django-12304 attempt=1 elapsed=343.627 category=success
+- 2026-08-28T00:45:44.437770+00:00 event=case_end face=A1 instance=django__django-10999 attempt=1 elapsed=382.054 category=success
+- 2026-08-28T00:49:25.252510+00:00 event=case_end face=A1 instance=matplotlib__matplotlib-24026 attempt=1 elapsed=220.802 category=success
+- 2026-08-28T00:56:20.839164+00:00 event=case_end face=A1 instance=django__django-15104 attempt=1 elapsed=415.578 category=success
+- 2026-08-28T00:56:23.152036+00:00 event=api_canary_success reason=before_A1_sympy__sympy-13647_attempt_1
+- 2026-08-28T01:11:49.323895+00:00 event=case_end face=A1 instance=sympy__sympy-13647 attempt=1 elapsed=926.155 category=success
+- 2026-08-28T01:14:03.377084+00:00 event=case_end face=A1 instance=pylint-dev__pylint-7277 attempt=1 elapsed=134.034 category=success
+- 2026-08-28T01:16:17.759277+00:00 event=case_end face=A1 instance=scikit-learn__scikit-learn-10844 attempt=1 elapsed=134.369 category=success
+- 2026-08-28T01:22:14.785989+00:00 event=case_end face=A1 instance=pylint-dev__pylint-4661 attempt=1 elapsed=357.009 category=success
+- 2026-08-28T01:29:12.935568+00:00 event=case_end face=A1 instance=sphinx-doc__sphinx-8621 attempt=1 elapsed=418.127 category=success
+- 2026-08-28T01:29:15.658090+00:00 event=api_canary_success reason=before_A1_django__django-13410_attempt_1
+- 2026-08-28T01:36:23.426554+00:00 event=case_end face=A1 instance=django__django-13410 attempt=1 elapsed=427.759 category=success
+- 2026-08-28T01:41:50.150687+00:00 event=case_end face=A1 instance=django__django-11099 attempt=1 elapsed=326.716 category=success
+- 2026-08-28T01:45:02.740224+00:00 event=case_end face=A1 instance=pytest-dev__pytest-6202 attempt=1 elapsed=192.58 category=success
+- 2026-08-28T01:46:59.898667+00:00 event=case_end face=A1 instance=django__django-10973 attempt=1 elapsed=117.144 category=success
+- 2026-08-28T01:54:27.546782+00:00 event=case_end face=A1 instance=django__django-15572 attempt=1 elapsed=447.637 category=success
+- 2026-08-28T02:04:57.629566+00:00 event=case_end face=A1 instance=django__django-14752 attempt=1 elapsed=630.074 category=success
+- 2026-08-28T02:05:58.418708+00:00 event=api_recovery_wait reason=before_A1_pytest-dev__pytest-5809_attempt_1 seconds=30 retry=1
+- 2026-08-28T02:06:31.317033+00:00 event=api_recovery_success reason=before_A1_pytest-dev__pytest-5809_attempt_1 retry=1
+- 2026-08-28T02:09:06.515530+00:00 event=case_end face=A1 instance=pytest-dev__pytest-5809 attempt=1 elapsed=155.191 category=success
+- 2026-08-28T02:14:55.764114+00:00 event=case_end face=A1 instance=pytest-dev__pytest-7205 attempt=1 elapsed=349.24 category=success
+- 2026-08-28T02:14:55.771015+00:00 event=face_complete face=A1 rows=20
+- 2026-08-28T02:14:55.771960+00:00 event=face_start face=B1
+- 2026-08-28T02:21:40.813356+00:00 event=case_end face=B1 instance=django__django-11206 attempt=1 elapsed=405.034 category=success
+- 2026-08-28T02:35:03.916752+00:00 event=case_end face=B1 instance=scikit-learn__scikit-learn-14141 attempt=1 elapsed=803.086 category=success
+- 2026-08-28T02:42:33.968141+00:00 event=case_end face=B1 instance=django__django-11066 attempt=1 elapsed=450.043 category=success
+- 2026-08-28T02:42:40.643244+00:00 event=api_canary_success reason=before_B1_django__django-12304_attempt_1
+- 2026-08-28T02:59:01.728087+00:00 event=case_end face=B1 instance=django__django-12304 attempt=1 elapsed=981.074 category=success
+- 2026-08-28T03:12:08.598089+00:00 event=case_end face=B1 instance=django__django-10999 attempt=1 elapsed=786.862 category=success
+- 2026-08-28T03:23:50.906700+00:00 event=case_end face=B1 instance=matplotlib__matplotlib-24026 attempt=1 elapsed=702.3 category=success
+- 2026-08-28T03:24:04.804124+00:00 event=api_canary_success reason=before_B1_django__django-15104_attempt_1
+- 2026-08-28T03:35:06.977897+00:00 event=case_end face=B1 instance=django__django-15104 attempt=1 elapsed=662.164 category=success
+- 2026-08-28T04:02:33.045424+00:00 event=case_end face=B1 instance=sympy__sympy-13647 attempt=1 elapsed=1646.055 category=success
+- 2026-08-28T04:02:38.242307+00:00 event=api_canary_success reason=before_B1_pylint-dev__pylint-7277_attempt_1
+- 2026-08-28T04:06:38.423883+00:00 event=case_end face=B1 instance=pylint-dev__pylint-7277 attempt=1 elapsed=240.173 category=success
+- 2026-08-28T04:09:28.042659+00:00 event=case_end face=B1 instance=scikit-learn__scikit-learn-10844 attempt=1 elapsed=169.609 category=success
+- 2026-08-28T04:10:49.942201+00:00 event=case_end face=B1 instance=pylint-dev__pylint-4661 attempt=1 elapsed=81.882 category=success
+- 2026-08-28T04:23:25.882435+00:00 event=case_end face=B1 instance=sphinx-doc__sphinx-8621 attempt=1 elapsed=755.922 category=success
+- 2026-08-28T04:31:29.654412+00:00 event=case_end face=B1 instance=django__django-13410 attempt=1 elapsed=483.76 category=success
+- 2026-08-28T04:38:02.369287+00:00 event=case_end face=B1 instance=django__django-11099 attempt=1 elapsed=392.705 category=success
+- 2026-08-28T04:38:05.264812+00:00 event=api_canary_success reason=before_B1_pytest-dev__pytest-6202_attempt_1
+- 2026-08-28T04:39:12.173294+00:00 event=case_end face=B1 instance=pytest-dev__pytest-6202 attempt=1 elapsed=66.899 category=success
+- 2026-08-28T04:40:42.198926+00:00 event=case_end face=B1 instance=django__django-10973 attempt=1 elapsed=90.013 category=success
+- 2026-08-28T04:53:01.636515+00:00 event=case_end face=B1 instance=django__django-15572 attempt=1 elapsed=739.426 category=success
+- 2026-08-28T05:02:34.044029+00:00 event=case_end face=B1 instance=django__django-14752 attempt=1 elapsed=572.392 category=success
+- 2026-08-28T05:07:44.533096+00:00 event=case_end face=B1 instance=pytest-dev__pytest-5809 attempt=1 elapsed=310.479 category=success
+- 2026-08-28T05:19:29.008440+00:00 event=case_end face=B1 instance=pytest-dev__pytest-7205 attempt=1 elapsed=704.465 category=success
+- 2026-08-28T05:19:29.015794+00:00 event=face_complete face=B1 rows=20
+- 2026-08-28T05:19:29.016522+00:00 event=face_start face=A2
+- 2026-08-28T05:19:31.114355+00:00 event=api_canary_success reason=before_A2_django__django-11206_attempt_1

@@ -1,0 +1,3093 @@
+2026-08-28 04:40:58 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 04:40:58 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 04:40:59 auto_search_main.py INFO ============================================================
+2026-08-28 04:40:59 auto_search_main.py INFO ==== rank 0 setup localize django__django-15572 ====
+2026-08-28 04:40:59 install.py INFO hook: set_current_issue fired
+2026-08-28 04:40:59 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/aa69b439-8b5a-4d89-bac5-fc23ca225131/django_django and checkout commit HEAD
+2026-08-28 04:40:59 git_repo_manager.py INFO Directory 'playground/aa69b439-8b5a-4d89-bac5-fc23ca225131/django_django' was created.
+2026-08-28 04:40:59 install.py INFO setup_repo returned: playground/aa69b439-8b5a-4d89-bac5-fc23ca225131/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-15572
+2026-08-28 04:41:09 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-15572 files=2000 indexed=2000 failed=0
+2026-08-28 04:45:13 repo_ops.py INFO [0] Processed django__django-15572
+2026-08-28 04:45:14 auto_search_main.py INFO ============================================================
+2026-08-28 04:45:14 auto_search_main.py INFO ==== rank 0 begin localizing django__django-15572 ====
+2026-08-28 04:45:14 auto_search_main.py INFO ============================================================
+2026-08-28 04:45:14 auto_search_main.py INFO ==== django__django-15572 Count down: attempt 1 ====
+2026-08-28 04:45:14 auto_search_main.py INFO ==== django__django-15572 start auto search ====
+2026-08-28 04:45:23 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:45:59 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:45:59 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:45:59 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 04:45:59 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'template_changed', 'context': 'django template autoreload regression empty string DIRS', 'top_k': 5}))
+```
+2026-08-28 04:46:02 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:46:35 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:46:35 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:46:35 auto_search_main.py INFO OBSERVATION:
+Found 4 candidates for `template_changed`. Showing top 4 by relevance:
+1. [score=92] template_changed
+   django/template/autoreload.py:48
+   def reset_loaders():
+       for backend in engines.all():
+           if not isinstance(backend, DjangoTemplates):
+               continue
+           for loader in backend.engine.template_loaders:
+               loader.reset()
+   
+   
+   @receiver(autoreload_started, dispatch_uid="template_loaders_watch_changes")
+   def watch_for_template_changes(sender, **kwargs):
+       for directory in get_template_directories():
+           sender.watch_dir(directory, "**/*")
+   
+   
+   @receiver(file_changed, dispatch_uid="template_loaders_file_changed")
+   def template_changed(sender, file_path, **kwargs):
+       if file_path.suffix == ".py":
+           return
+       for template_dir in get_template_directories():
+           if template_dir in file_path.parents:
+               reset_loaders()
+               return True
+   
+2. [score=74] TemplateReloadTests.test_non_template_changed
+   tests/template_tests/test_autoreloader.py:42
+                       "django.template.loaders.filesystem.Loader",
+                       "django.template.loaders.app_directories.Loader",
+                   ],
+               },
+           },
+       ],
+   )
+   class TemplateReloadTests(SimpleTestCase):
+       @mock.patch("django.template.autoreload.reset_loaders")
+       def test_template_changed(self, mock_reset):
+           template_path = Path(__file__).parent / "templates" / "index.html"
+           self.assertTrue(autoreload.template_changed(None, template_path))
+           mock_reset.assert_called_once()
+   
+       @mock.patch("django.template.autoreload.reset_loaders")
+       def test_non_template_changed(self, mock_reset):
+           self.assertIsNone(autoreload.template_changed(None, Path(__file__)))
+           mock_reset.assert_not_called()
+   
+       @override_settings(
+           TEMPLATES=[
+               {
+                   "DIRS": [ROOT],
+                   "BACKEND": "django.template.backends.django.DjangoTemplates",
+               }
+           ]
+       )
+       @mock.patch("django.template.autoreload.reset_loaders")
+       def test_non_template_changed_in_template_directory(self, mock_reset):
+           self.assertIsNone(autoreload.template_changed(None, Path(__file__)))
+           mock_reset.assert_not_called()
+3. [score=68] TemplateReloadTests.test_template_changed
+   tests/template_tests/test_autoreloader.py:36
+               "DIRS": [EXTRA_TEMPLATES_DIR],
+               "OPTIONS": {
+                   "context_processors": [
+                       "django.template.context_processors.request",
+                   ],
+                   "loaders": [
+                       "django.template.loaders.filesystem.Loader",
+                       "django.template.loaders.app_directories.Loader",
+                   ],
+               },
+           },
+       ],
+   )
+   class TemplateReloadTests(SimpleTestCase):
+       @mock.patch("django.template.autoreload.reset_loaders")
+       def test_template_changed(self, mock_reset):
+           template_path = Path(__file__).parent / "templates" / "index.html"
+           self.assertTrue(autoreload.template_changed(None, template_path))
+           mock_reset.assert_called_once()
+   
+       @mock.patch("django.template.autoreload.reset_loaders")
+       def test_non_template_changed(self, mock_reset):
+           self.assertIsNone(autoreload.template_changed(None, Path(__file__)))
+           mock_reset.assert_not_called()
+   
+       @override_settings(
+           TEMPLATES=[
+               {
+                   "DIRS": [ROOT],
+                   "BACKEND": "django.template.backends.django.DjangoTemplates",
+               }
+4. [score=61] TemplateReloadTests.test_non_template_changed_in_template_directory
+   tests/template_tests/test_autoreloader.py:55
+   
+       @mock.patch("django.template.autoreload.reset_loaders")
+       def test_non_template_changed(self, mock_reset):
+           self.assertIsNone(autoreload.template_changed(None, Path(__file__)))
+           mock_reset.assert_not_called()
+   
+       @override_settings(
+           TEMPLATES=[
+               {
+                   "DIRS": [ROOT],
+                   "BACKEND": "django.template.backends.django.DjangoTemplates",
+               }
+           ]
+       )
+       @mock.patch("django.template.autoreload.reset_loaders")
+       def test_non_template_changed_in_template_directory(self, mock_reset):
+           self.assertIsNone(autoreload.template_changed(None, Path(__file__)))
+           mock_reset.assert_not_called()
+   
+       def test_watch_for_template_changes(self):
+           mock_reloader = mock.MagicMock()
+           autoreload.watch_for_template_changes(mock_reloader)
+           self.assertSequenceEqual(
+               sorted(mock_reloader.watch_dir.call_args_list),
+               [
+                   mock.call(ROOT / "templates", "**/*"),
+                   mock.call(ROOT / "templates_extra", "**/*"),
+               ],
+           )
+   
+       def test_get_template_directories(self):
+[symbol-locator] [scorer] usage pid=838347 calls=1 p=5933 c=19
+[symbol-locator] [scorer] parsed 4/4 scores from LLM
+
+2026-08-28 04:46:35 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'get_template_sources', 'context': 'template dirs normalization pathlib.Path autoreload', 'top_k': 5}))
+```
+2026-08-28 04:46:36 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:46:56 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:46:56 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:46:56 auto_search_main.py INFO OBSERVATION:
+Found 4 candidates for `get_template_sources`. Showing top 4 by relevance:
+1. [score=97] Loader.get_template_sources
+   django/template/loaders/filesystem.py:27
+   class Loader(BaseLoader):
+       def __init__(self, engine, dirs=None):
+           super().__init__(engine)
+           self.dirs = dirs
+   
+       def get_dirs(self):
+           return self.dirs if self.dirs is not None else self.engine.dirs
+   
+       def get_contents(self, origin):
+           try:
+               with open(origin.name, encoding=self.engine.file_charset) as fp:
+                   return fp.read()
+           except FileNotFoundError:
+               raise TemplateDoesNotExist(origin)
+   
+       def get_template_sources(self, template_name):
+           """
+           Return an Origin object pointing to an absolute path in each directory
+           in template_dirs. For security reasons, if a path doesn't lie inside
+           one of the template_dirs it is excluded from the result set.
+           """
+           for template_dir in self.get_dirs():
+               try:
+                   name = safe_join(template_dir, template_name)
+               except SuspiciousFileOperation:
+                   # The joined path was located outside of this template_dir
+                   # (it might be inside another one, so this isn't fatal).
+                   continue
+   
+               yield Origin(
+                   name=name,
+2. [score=20] Loader.get_template_sources
+   django/template/loaders/cached.py:68
+                   raise copy_exception(cached)
+               return cached
+   
+           try:
+               template = super().get_template(template_name, skip)
+           except TemplateDoesNotExist as e:
+               self.get_template_cache[key] = (
+                   copy_exception(e) if self.engine.debug else TemplateDoesNotExist
+               )
+               raise
+           else:
+               self.get_template_cache[key] = template
+   
+           return template
+   
+       def get_template_sources(self, template_name):
+           for loader in self.loaders:
+               yield from loader.get_template_sources(template_name)
+   
+       def cache_key(self, template_name, skip=None):
+           """
+           Generate a cache key for the template name and skip.
+   
+           If skip is provided, only origins that match template_name are included
+           in the cache key. This ensures each template is only parsed and cached
+           once if contained in different extend chains like:
+   
+               x -> a -> a
+               y -> a -> a
+               z -> a -> a
+           """
+3. [score=12] Loader.get_template_sources
+   django/template/loaders/locmem.py:21
+   
+   from .base import Loader as BaseLoader
+   
+   
+   class Loader(BaseLoader):
+       def __init__(self, engine, templates_dict):
+           self.templates_dict = templates_dict
+           super().__init__(engine)
+   
+       def get_contents(self, origin):
+           try:
+               return self.templates_dict[origin.name]
+           except KeyError:
+               raise TemplateDoesNotExist(origin)
+   
+       def get_template_sources(self, template_name):
+           yield Origin(
+               name=template_name,
+               template_name=template_name,
+               loader=self,
+           )
+   
+4. [score=8] Loader.get_template_sources
+   django/template/loaders/base.py:37
+               try:
+                   contents = self.get_contents(origin)
+               except TemplateDoesNotExist:
+                   tried.append((origin, "Source does not exist"))
+                   continue
+               else:
+                   return Template(
+                       contents,
+                       origin,
+                       origin.template_name,
+                       self.engine,
+                   )
+   
+           raise TemplateDoesNotExist(template_name, tried=tried)
+   
+       def get_template_sources(self, template_name):
+           """
+           An iterator that yields possible matching template paths for a
+           template name.
+           """
+           raise NotImplementedError(
+               "subclasses of Loader must provide a get_template_sources() method"
+           )
+   
+       def reset(self):
+           """
+           Reset any state maintained by the loader instance (e.g. cached
+           templates or cached loader modules).
+           """
+           pass
+   
+[symbol-locator] [scorer] usage pid=838347 calls=2 p=11704 c=44
+[symbol-locator] [scorer] parsed 4/4 scores from LLM
+
+2026-08-28 04:46:56 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['template_changed', 'pathlib.Path', 'TEMPLATES', 'DIRS', 'autoreload'], 'file_path_or_pattern': '**/*.py'}))
+```
+2026-08-28 04:46:58 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:46:58 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/aa69b439-8b5a-4d89-bac5-fc23ca225131/django_django and checkout commit HEAD
+2026-08-28 04:46:58 install.py INFO setup_repo returned: playground/aa69b439-8b5a-4d89-bac5-fc23ca225131/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-15572
+2026-08-28 04:46:58 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-15572 files=0 indexed=0 failed=0
+2026-08-28 04:47:02 epic_split.py WARNING Skipping code block LANG_INFO._ in django/conf/locale/__init__.py as it has 4246 tokens which is more than chunk size 500. Content: {
+    "af": {
+        "bidi": False,
+        "code": "af",
+        "name": "Afrikaans",
+        "nam...
+2026-08-28 04:48:21 epic_split.py WARNING Parsing file django/db/models/sql/query.py took 1.27 seconds.
+2026-08-28 04:48:40 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:48:42 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:48:43 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:48:45 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:48:45 auto_search_main.py INFO OBSERVATION:
+django/core/checks/caches.py:check_cache_location_not_exposed
+django/db/migrations/serializer.py:ModelFieldSerializer
+django/db/migrations/serializer.py:OperationSerializer.serialize
+django/db/migrations/serializer.py:ModelFieldSerializer.serialize
+django/db/migrations/serializer.py:PathSerializer.serialize
+django/db/migrations/serializer.py:ModelManagerSerializer.serialize
+django/db/migrations/serializer.py:PathSerializer
+django/db/migrations/serializer.py:ModelManagerSerializer
+django/db/migrations/serializer.py:OperationSerializer
+django/db/migrations/serializer.py:PathLikeSerializer
+django/db/migrations/serializer.py:PathLikeSerializer.serialize
+django/core/checks/caches.py:check_file_based_cache_is_absolute
+django/core/files/storage.py:Storage.generate_filename
+django/utils/_os.py:to_path
+django/utils/_os.py:symlinks_supported
+scripts/manage_translations.py:_get_locale_dirs
+django/core/management/commands/loaddata.py:Command.fixture_dirs
+django/template/engine.py:Engine.__repr__
+django/core/management/templates.py:TemplateCommand.handle
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.log
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.clear_dir
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.is_local_storage
+scripts/manage_translations.py:_get_locale_dirs
+django/core/management/commands/loaddata.py:Command.fixture_dirs
+django/core/checks/caches.py:check_cache_location_not_exposed
+django/db/migrations/serializer.py:ModelFieldSerializer
+django/db/migrations/serializer.py:OperationSerializer.serialize
+django/db/migrations/serializer.py:ModelFieldSerializer.serialize
+django/db/migrations/serializer.py:PathSerializer.serialize
+django/db/migrations/serializer.py:ModelManagerSerializer.serialize
+django/db/migrations/serializer.py:PathSerializer
+django/db/migrations/serializer.py:ModelManagerSerializer
+django/db/migrations/serializer.py:OperationSerializer
+django/db/migrations/serializer.py:PathLikeSerializer
+django/db/migrations/serializer.py:PathLikeSerializer.serialize
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.log
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.clear_dir
+django/contrib/staticfiles/management/commands/collectstatic.py:Command.is_local_storage
+##Searching for term "template_changed"...
+### Search Result:
+Found function `django/template/autoreload.py:template_changed`.
+Source: Match found for entity name `template_changed`.
+```
+48 | def template_changed(sender, file_path, **kwargs):
+49 |     if file_path.suffix == ".py":
+50 |         return
+51 |     for template_dir in get_template_directories():
+52 |         if template_dir in file_path.parents:
+53 |             reset_loaders()
+54 |             return True
+```
+
+
+
+##Searching for term "pathlib.Path"...
+### Search Result:
+Found `django/core/files/utils.py:validate_file_name`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import os
+ 2 | import pathlib
+ 3 | 
+ 4 | from django.core.exceptions import SuspiciousFileOperation
+ 5 | 
+ 6 | 
+ 7 | def validate_file_name(name, allow_relative_path=False):
+ 8 |     # Remove potentially dangerous names
+ 9 |     if os.path.basename(name) in {"", ".", ".."}:
+10 |         raise SuspiciousFileOperation("Could not derive file name from '%s'" % name)
+11 | 
+12 |     if allow_relative_path:
+13 |         # Use PurePosixPath() because this branch is checked only in
+14 |         # FileField.generate_filename() where all file paths are expected to be
+15 |         # Unix style (with forward slashes).
+16 |         path = pathlib.PurePosixPath(name)
+17 |         if path.is_absolute() or ".." in path.parts:
+18 |             raise SuspiciousFileOperation(
+19 |                 "Detected path traversal attempt in '%s'" % name
+20 |             )
+21 |     elif name != os.path.basename(name):
+22 |         raise SuspiciousFileOperation("File name '%s' includes path elements" % name)
+23 | 
+24 |     return name
+```
+
+Found function `django/core/checks/caches.py:check_cache_location_not_exposed`.
+Source: Retrieved code content using keyword search (bm25).
+```
+23 | def check_cache_location_not_exposed(app_configs, **kwargs):
+24 |     errors = []
+25 |     for name in ("MEDIA_ROOT", "STATIC_ROOT", "STATICFILES_DIRS"):
+26 |         setting = getattr(settings, name, None)
+27 |         if not setting:
+28 |             continue
+29 |         if name == "STATICFILES_DIRS":
+30 |             paths = set()
+31 |             for staticfiles_dir in setting:
+32 |                 if isinstance(staticfiles_dir, (list, tuple)):
+33 |                     _, staticfiles_dir = staticfiles_dir
+34 |                 paths.add(pathlib.Path(staticfiles_dir).resolve())
+35 |         else:
+36 |             paths = {pathlib.Path(setting).resolve()}
+37 |         for alias in settings.CACHES:
+38 |             cache = caches[alias]
+39 |             if not isinstance(cache, FileBasedCache):
+40 |                 continue
+41 |             cache_path = pathlib.Path(cache._dir).resolve()
+42 |             if any(path == cache_path for path in paths):
+43 |                 relation = "matches"
+44 |             elif any(path in cache_path.parents for path in paths):
+45 |                 relation = "is inside"
+46 |             elif any(cache_path in path.parents for path in paths):
+47 |                 relation = "contains"
+48 |             else:
+49 |                 continue
+50 |             errors.append(
+51 |                 Warning(
+52 |                     f"Your '{alias}' cache configuration might expose your cache "
+53 |                     f"or lead to corruption of your data because its LOCATION "
+54 |                     f"{relation} {name}.",
+55 |                     id="caches.W002",
+56 |                 )
+57 |             )
+58 |     return errors
+```
+
+Found class `django/db/migrations/serializer.py:ModelFieldSerializer`.
+Source: Retrieved code content using keyword search (bm25).
+```
+210 | class ModelFieldSerializer(DeconstructableSerializer):
+211 |     def serialize(self):
+212 |         attr_name, path, args, kwargs = self.value.deconstruct()
+213 |         return self.serialize_deconstructed(path, args, kwargs)
+```
+
+Found function `django/db/migrations/serializer.py:OperationSerializer.serialize`.
+Source: Retrieved code content using keyword search (bm25).
+```
+227 | def serialize(self):
+228 |         from django.db.migrations.writer import OperationWriter
+229 | 
+230 |         string, imports = OperationWriter(self.value, indentation=0).serialize()
+231 |         # Nested operation, trailing comma is handled in upper OperationWriter._write()
+232 |         return string.rstrip(","), imports
+```
+
+Found function `django/core/files/storage.py:Storage.path`.
+Found function `django/core/management/commands/makemessages.py:TranslatableFile.path`.
+Found function `django/core/management/commands/makemessages.py:BuildFile.path`.
+Found function `django/db/models/fields/files.py:FieldFile.path`.
+Source: Match found for entity name `Path`.
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "pathlib.Path", "pathlib.Path DIRS"...
+### Search Result:
+Found function `django/contrib/staticfiles/storage.py:StaticFilesStorage.path`.
+Source: Retrieved entity using keyword search (bm25).
+```
+37 | def path(self, name):
+38 |         if not self.location:
+39 |             raise ImproperlyConfigured(
+40 |                 "You're using the staticfiles app "
+41 |                 "without having set the STATIC_ROOT "
+42 |                 "setting to a filesystem path."
+43 |             )
+44 |         return super().path(name)
+```
+
+Found function `django/core/files/storage.py:FileSystemStorage.path`.
+Source: Retrieved entity using keyword search (bm25).
+```
+374 | def path(self, name):
+375 |         return safe_join(self.location, name)
+```
+
+Found function `django/db/migrations/writer.py:MigrationWriter.path`.
+Source: Retrieved entity using keyword search (bm25).
+```
+277 | def path(self):
+278 |         return os.path.join(self.basedir, self.filename)
+```
+
+
+
+##Searching for term "TEMPLATES"...
+### Search Result:
+Found file `django/core/management/templates.py`.
+Source: Match found for entity name `TEMPLATES`.
+Just show the structure of this file due to response length limitations:
+```
+
+
+class TemplateCommand(BaseCommand):
+
+    requires_system_checks = []
+    # The supported URL schemes
+    url_schemes = ["http", "https", "ftp"]
+    # Rewrite the following suffixes when determining the target filename.
+    rewrite_template_suffixes = (
+        # Allow shipping invalid .py files without byte-compilation.
+        (".py-tpl", ".py"),
+    )
+
+    def add_arguments(self, parser):
+...
+    def handle(self, app_or_project, name, target=None, **options):
+...
+    def handle_template(self, template, subdir):
+...
+    def validate_name(self, name, name_or_dir="name"):
+...
+    def download(self, url):
+...
+    def splitext(self, the_path):
+...
+    def extract(self, filename):
+...
+    def is_url(self, template):
+...
+    def apply_umask(self, old_path, new_path):
+...
+    def make_writeable(self, filename):
+...
+
+```
+Hint: Search `django/core/management/templates.py` to get the full content if needed.
+
+Found file `django/core/checks/templates.py`.
+Source: Match found for entity name `TEMPLATES`.
+```
+ 1 | import copy
+ 2 | from collections import defaultdict
+ 3 | 
+ 4 | from django.conf import settings
+ 5 | from django.template.backends.django import get_template_tag_modules
+ 6 | 
+ 7 | from . import Error, Tags, register
+ 8 | 
+ 9 | E001 = Error(
+10 |     "You have 'APP_DIRS': True in your TEMPLATES but also specify 'loaders' "
+11 |     "in OPTIONS. Either remove APP_DIRS or remove the 'loaders' option.",
+12 |     id="templates.E001",
+13 | )
+14 | E002 = Error(
+15 |     "'string_if_invalid' in TEMPLATES OPTIONS must be a string but got: {} ({}).",
+16 |     id="templates.E002",
+17 | )
+18 | E003 = Error(
+19 |     "{} is used for multiple template tag modules: {}",
+20 |     id="templates.E003",
+21 | )
+22 | 
+23 | 
+24 | @register(Tags.templates)
+25 | def check_setting_app_dirs_loaders(app_configs, **kwargs):
+26 |     return (
+27 |         [E001]
+28 |         if any(
+29 |             conf.get("APP_DIRS") and "loaders" in conf.get("OPTIONS", {})
+30 |             for conf in settings.TEMPLATES
+31 |         )
+32 |         else []
+33 |     )
+34 | 
+35 | 
+36 | @register(Tags.templates)
+37 | def check_string_if_invalid_is_string(app_configs, **kwargs):
+38 |     errors = []
+39 |     for conf in settings.TEMPLATES:
+40 |         string_if_invalid = conf.get("OPTIONS", {}).get("string_if_invalid", "")
+41 |         if not isinstance(string_if_invalid, str):
+42 |             error = copy.copy(E002)
+43 |             error.msg = error.msg.format(
+44 |                 string_if_invalid, type(string_if_invalid).__name__
+45 |             )
+46 |             errors.append(error)
+47 |     return errors
+48 | 
+49 | 
+50 | @register(Tags.templates)
+51 | def check_for_template_tags_with_the_same_name(app_configs, **kwargs):
+52 |     errors = []
+53 |     libraries = defaultdict(list)
+54 | 
+55 |     for conf in settings.TEMPLATES:
+56 |         custom_libraries = conf.get("OPTIONS", {}).get("libraries", {})
+57 |         for module_name, module_path in custom_libraries.items():
+58 |             libraries[module_name].append(module_path)
+59 | 
+60 |     for module_name, module_path in get_template_tag_modules():
+61 |         libraries[module_name].append(module_path)
+62 | 
+63 |     for library_name, items in libraries.items():
+64 |         if len(items) > 1:
+65 |             errors.append(
+66 |                 Error(
+67 |                     E003.msg.format(
+68 |                         repr(library_name),
+69 |                         ", ".join(repr(item) for item in items),
+70 |                     ),
+71 |                     id=E003.id,
+72 |                 )
+73 |             )
+74 | 
+75 |     return errors
+76 | 
+```
+
+Found function `django/template/utils.py:EngineHandler.templates`.
+Source: Match found for entity name `TEMPLATES`.
+```
+26 | def templates(self):
+27 |         if self._templates is None:
+28 |             self._templates = settings.TEMPLATES
+29 | 
+30 |         templates = {}
+31 |         backend_names = []
+32 |         for tpl in self._templates:
+33 |             try:
+34 |                 # This will raise an exception if 'BACKEND' doesn't exist or
+35 |                 # isn't a string containing at least one dot.
+36 |                 default_name = tpl["BACKEND"].rsplit(".", 2)[-2]
+37 |             except Exception:
+38 |                 invalid_backend = tpl.get("BACKEND", "<not defined>")
+39 |                 raise ImproperlyConfigured(
+40 |                     "Invalid BACKEND for a template engine: {}. Check "
+41 |                     "your TEMPLATES setting.".format(invalid_backend)
+42 |                 )
+43 | 
+44 |             tpl = {
+45 |                 "NAME": default_name,
+46 |                 "DIRS": [],
+47 |                 "APP_DIRS": False,
+48 |                 "OPTIONS": {},
+49 |                 **tpl,
+50 |             }
+51 | 
+52 |             templates[tpl["NAME"]] = tpl
+53 |             backend_names.append(tpl["NAME"])
+54 | 
+55 |         counts = Counter(backend_names)
+56 |         duplicates = [alias for alias, count in counts.most_common() if count > 1]
+57 |         if duplicates:
+58 |             raise ImproperlyConfigured(
+59 |                 "Template engine aliases aren't unique, duplicates: {}. "
+60 |                 "Set a unique NAME for each engine in settings.TEMPLATES.".format(
+61 |                     ", ".join(duplicates)
+62 |                 )
+63 |             )
+64 | 
+65 |         return templates
+```
+
+
+
+##Searching for term "DIRS"...
+### Search Result:
+Found `django/contrib/staticfiles/utils.py:matches_patterns`, `django/contrib/staticfiles/utils.py:get_files`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import fnmatch
+ 2 | import os
+ 3 | 
+ 4 | from django.conf import settings
+ 5 | from django.core.exceptions import ImproperlyConfigured
+ 6 | 
+ 7 | 
+ 8 | def matches_patterns(path, patterns):
+ 9 |     """
+10 |     Return True or False depending on whether the ``path`` should be
+11 |     ignored (if it matches any pattern in ``ignore_patterns``).
+12 |     """
+13 |     return any(fnmatch.fnmatchcase(path, pattern) for pattern in patterns)
+14 | 
+15 | 
+16 | def get_files(storage, ignore_patterns=None, location=""):
+17 |     """
+18 |     Recursively walk the storage directories yielding the paths
+19 |     of all files that should be copied.
+20 |     """
+21 |     if ignore_patterns is None:
+22 |         ignore_patterns = []
+23 |     directories, files = storage.listdir(location)
+24 |     for fn in files:
+25 |         # Match only the basename.
+26 |         if matches_patterns(fn, ignore_patterns):
+27 |             continue
+28 |         if location:
+29 |             fn = os.path.join(location, fn)
+30 |             # Match the full file path.
+31 |             if matches_patterns(fn, ignore_patterns):
+32 |                 continue
+33 |         yield fn
+34 |     for dir in directories:
+35 |         if matches_patterns(dir, ignore_patterns):
+36 |             continue
+37 |         if location:
+38 |             dir = os.path.join(location, dir)
+39 |         yield from get_files(storage, ignore_patterns, dir)
+```
+
+Found `django/template/loaders/filesystem.py:Loader`, `django/template/loaders/filesystem.py:Loader.get_dirs`, `django/template/loaders/filesystem.py:Loader.get_contents`, `django/template/loaders/filesystem.py:Loader.get_template_sources`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Wrapper for loading templates from the filesystem.
+ 3 | """
+ 4 | 
+ 5 | from django.core.exceptions import SuspiciousFileOperation
+ 6 | from django.template import Origin, TemplateDoesNotExist
+ 7 | from django.utils._os import safe_join
+ 8 | 
+ 9 | from .base import Loader as BaseLoader
+10 | 
+11 | 
+12 | class Loader(BaseLoader):
+13 |     def __init__(self, engine, dirs=None):
+14 |         super().__init__(engine)
+15 |         self.dirs = dirs
+16 | 
+17 |     def get_dirs(self):
+18 |         return self.dirs if self.dirs is not None else self.engine.dirs
+19 | 
+20 |     def get_contents(self, origin):
+21 |         try:
+22 |             with open(origin.name, encoding=self.engine.file_charset) as fp:
+23 |                 return fp.read()
+24 |         except FileNotFoundError:
+25 |             raise TemplateDoesNotExist(origin)
+26 | 
+27 |     def get_template_sources(self, template_name):
+28 |         """
+29 |         Return an Origin object pointing to an absolute path in each directory
+30 |         in template_dirs. For security reasons, if a path doesn't lie inside
+31 |         one of the template_dirs it is excluded from the result set.
+32 |         """
+33 |         for template_dir in self.get_dirs():
+34 |             try:
+35 |                 name = safe_join(template_dir, template_name)
+36 |             except SuspiciousFileOperation:
+37 |                 # The joined path was located outside of this template_dir
+38 |                 # (it might be inside another one, so this isn't fatal).
+39 |                 continue
+40 | 
+41 |             yield Origin(
+42 |                 name=name,
+43 |                 template_name=template_name,
+44 |                 loader=self,
+45 |             )
+46 | 
+```
+
+Found class `django/db/models/lookups.py:UUIDIStartsWith`.
+Source: Retrieved entity using keyword search (bm25).
+```
+706 | class UUIDIStartsWith(UUIDTextMixin, IStartsWith):
+707 |     pass
+```
+
+Found function `django/core/handlers/asgi.py:ASGIRequest.COOKIES`.
+Source: Retrieved entity using keyword search (bm25).
+```
+128 | def COOKIES(self):
+129 |         return parse_cookie(self.META.get("HTTP_COOKIE", ""))
+```
+
+Found function `django/conf/__init__.py:LazySettings._USE_L10N_INTERNAL`.
+Source: Retrieved entity using keyword search (bm25).
+```
+174 | def _USE_L10N_INTERNAL(self):
+175 |         # Special hook to avoid checking a traceback in internal use on hot
+176 |         # paths.
+177 |         return self.__getattr__("USE_L10N")
+```
+
+Found function `django/template/engine.py:Engine.__repr__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+66 | def __repr__(self):
+67 |         return (
+68 |             "<%s:%s app_dirs=%s%s debug=%s loaders=%s string_if_invalid=%s "
+69 |             "file_charset=%s%s%s autoescape=%s>"
+70 |         ) % (
+71 |             self.__class__.__qualname__,
+72 |             "" if not self.dirs else " dirs=%s" % repr(self.dirs),
+73 |             self.app_dirs,
+74 |             ""
+75 |             if not self.context_processors
+76 |             else " context_processors=%s" % repr(self.context_processors),
+77 |             self.debug,
+78 |             repr(self.loaders),
+79 |             repr(self.string_if_invalid),
+80 |             repr(self.file_charset),
+81 |             "" if not self.libraries else " libraries=%s" % repr(self.libraries),
+82 |             "" if not self.builtins else " builtins=%s" % repr(self.builtins),
+83 |             repr(self.autoescape),
+84 |         )
+```
+
+
+
+##Searching for term "DIRS", "pathlib.Path DIRS"...
+### Search Result:
+Found function `scripts/manage_translations.py:_get_locale_dirs`.
+Source: Retrieved code content using keyword search (bm25).
+```
+32 | def _get_locale_dirs(resources, include_core=True):
+33 |     """
+34 |     Return a tuple (contrib name, absolute path) for all locale directories,
+35 |     optionally including the django core catalog.
+36 |     If resources list is not None, filter directories matching resources content.
+37 |     """
+38 |     contrib_dir = os.path.join(os.getcwd(), "django", "contrib")
+39 |     dirs = []
+40 | 
+41 |     # Collect all locale directories
+42 |     for contrib_name in os.listdir(contrib_dir):
+43 |         path = os.path.join(contrib_dir, contrib_name, "locale")
+44 |         if os.path.isdir(path):
+45 |             dirs.append((contrib_name, path))
+46 |             if contrib_name in HAVE_JS:
+47 |                 dirs.append(("%s-js" % contrib_name, path))
+48 |     if include_core:
+49 |         dirs.insert(0, ("core", os.path.join(os.getcwd(), "django", "conf", "locale")))
+50 | 
+51 |     # Filter by resources, if any
+52 |     if resources is not None:
+53 |         res_names = [d[0] for d in dirs]
+54 |         dirs = [ld for ld in dirs if ld[0] in resources]
+55 |         if len(resources) > len(dirs):
+56 |             print(
+57 |                 "You have specified some unknown resources. "
+58 |                 "Available resource names are: %s" % (", ".join(res_names),)
+59 |             )
+60 |             exit(1)
+61 |     return dirs
+```
+
+Found function `django/core/management/commands/loaddata.py:Command.fixture_dirs`.
+Source: Retrieved code content using keyword search (bm25).
+```
+355 | def fixture_dirs(self):
+356 |         """
+357 |         Return a list of fixture directories.
+358 | 
+359 |         The list contains the 'fixtures' subdirectory of each installed
+360 |         application, if it exists, the directories in FIXTURE_DIRS, and the
+361 |         current directory.
+362 |         """
+363 |         dirs = []
+364 |         fixture_dirs = settings.FIXTURE_DIRS
+365 |         if len(fixture_dirs) != len(set(fixture_dirs)):
+366 |             raise ImproperlyConfigured("settings.FIXTURE_DIRS contains duplicates.")
+367 |         for app_config in apps.get_app_configs():
+368 |             app_label = app_config.label
+369 |             app_dir = os.path.join(app_config.path, "fixtures")
+370 |             if app_dir in fixture_dirs:
+371 |                 raise ImproperlyConfigured(
+372 |                     "'%s' is a default fixture directory for the '%s' app "
+373 |                     "and cannot be listed in settings.FIXTURE_DIRS."
+374 |                     % (app_dir, app_label)
+375 |                 )
+376 | 
+377 |             if self.app_label and app_label != self.app_label:
+378 |                 continue
+379 |             if os.path.isdir(app_dir):
+380 |                 dirs.append(app_dir)
+381 |         dirs.extend(fixture_dirs)
+382 |         dirs.append("")
+383 |         return [os.path.realpath(d) for d in dirs]
+```
+
+
+
+##Searching for term "autoreload"...
+### Search Result:
+Found file `django/utils/autoreload.py`.
+Source: Match found for entity name `autoreload`.
+Just show the structure of this file due to response length limitations:
+```
+
+autoreload_started = Signal()
+file_changed = Signal()
+
+DJANGO_AUTORELOAD_ENV = "RUN_MAIN"
+
+logger = logging.getLogger("django.utils.autoreload")
+
+# If an error is raised while importing a file, it's not placed in sys.modules.
+# This means that any future modifications aren't caught. Keep a list of these
+# file paths to allow watching them in the future.
+_error_files = []
+_exception = None
+
+
+def is_django_module(module):
+...
+
+def is_django_path(path):
+...
+
+def check_errors(fn):
+...
+
+def raise_last_exception():
+...
+
+def ensure_echo_on():
+...
+
+def iter_all_python_module_files():
+...
+
+@functools.lru_cache(maxsize=1)
+def iter_modules_and_files(modules, extra_files):
+...
+
+@functools.lru_cache(maxsize=1)
+def common_roots(paths):
+...
+
+def sys_path_directories():
+...
+
+def get_child_arguments():
+...
+
+def trigger_reload(filename):
+...
+
+def restart_with_reloader():
+...
+
+class BaseReloader:
+    def __init__(self):
+...
+    def watch_dir(self, path, glob):
+...
+    def watched_files(self, include_globs=True):
+...
+    def wait_for_apps_ready(self, app_reg, django_main_thread):
+...
+    def run(self, django_main_thread):
+...
+    def run_loop(self):
+...
+    def tick(self):
+...
+    @classmethod
+    def check_availability(cls):
+...
+    def notify_file_changed(self, path):
+...
+    # These are primarily used for testing.
+    @property
+    def should_stop(self):
+...
+    def stop(self):
+...
+
+class StatReloader(BaseReloader):
+    SLEEP_TIME = 1  # Check for changes once per second.
+
+    def tick(self):
+...
+    def snapshot_files(self):
+...
+    @classmethod
+    def check_availability(cls):
+...
+
+class WatchmanUnavailable(RuntimeError):
+    pass
+
+
+class WatchmanReloader(BaseReloader):
+    def __init__(self):
+...
+    @cached_property
+    def client(self):
+...
+    def _watch_root(self, root):
+...
+    @functools.lru_cache
+    def _get_clock(self, root):
+...
+    def _subscribe(self, directory, name, expression):
+...
+    def _subscribe_dir(self, directory, filenames):
+...
+    def _watch_glob(self, directory, patterns):
+...
+    def watched_roots(self, watched_files):
+...
+    def _update_watches(self):
+...
+    def update_watches(self):
+...
+    def _check_subscription(self, sub):
+...
+    def request_processed(self, **kwargs):
+...
+    def tick(self):
+...
+    def stop(self):
+...
+    def check_server_status(self, inner_ex=None):
+...
+    @classmethod
+    def check_availability(cls):
+...
+
+def get_reloader():
+...
+
+def start_django(reloader, main_func, *args, **kwargs):
+...
+
+def run_with_reloader(main_func, *args, **kwargs):
+...
+
+```
+Hint: Search `django/utils/autoreload.py` to get the full content if needed.
+
+Found file `django/template/autoreload.py`.
+Source: Match found for entity name `autoreload`.
+```
+ 1 | from pathlib import Path
+ 2 | 
+ 3 | from django.dispatch import receiver
+ 4 | from django.template import engines
+ 5 | from django.template.backends.django import DjangoTemplates
+ 6 | from django.utils._os import to_path
+ 7 | from django.utils.autoreload import autoreload_started, file_changed, is_django_path
+ 8 | 
+ 9 | 
+10 | def get_template_directories():
+11 |     # Iterate through each template backend and find
+12 |     # any template_loader that has a 'get_dirs' method.
+13 |     # Collect the directories, filtering out Django templates.
+14 |     cwd = Path.cwd()
+15 |     items = set()
+16 |     for backend in engines.all():
+17 |         if not isinstance(backend, DjangoTemplates):
+18 |             continue
+19 | 
+20 |         items.update(cwd / to_path(dir) for dir in backend.engine.dirs)
+21 | 
+22 |         for loader in backend.engine.template_loaders:
+23 |             if not hasattr(loader, "get_dirs"):
+24 |                 continue
+25 |             items.update(
+26 |                 cwd / to_path(directory)
+27 |                 for directory in loader.get_dirs()
+28 |                 if not is_django_path(directory)
+29 |             )
+30 |     return items
+31 | 
+32 | 
+33 | def reset_loaders():
+34 |     for backend in engines.all():
+35 |         if not isinstance(backend, DjangoTemplates):
+36 |             continue
+37 |         for loader in backend.engine.template_loaders:
+38 |             loader.reset()
+39 | 
+40 | 
+41 | @receiver(autoreload_started, dispatch_uid="template_loaders_watch_changes")
+42 | def watch_for_template_changes(sender, **kwargs):
+43 |     for directory in get_template_directories():
+44 |         sender.watch_dir(directory, "**/*")
+45 | 
+46 | 
+47 | @receiver(file_changed, dispatch_uid="template_loaders_file_changed")
+48 | def template_changed(sender, file_path, **kwargs):
+49 |     if file_path.suffix == ".py":
+50 |         return
+51 |     for template_dir in get_template_directories():
+52 |         if template_dir in file_path.parents:
+53 |             reset_loaders()
+54 |             return True
+55 | 
+```
+
+
+
+##Searching for term "pathlib.Path DIRS"...
+### Search Result:
+Found `django/template/autoreload.py:get_template_directories`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from pathlib import Path
+ 2 | 
+ 3 | from django.dispatch import receiver
+ 4 | from django.template import engines
+ 5 | from django.template.backends.django import DjangoTemplates
+ 6 | from django.utils._os import to_path
+ 7 | from django.utils.autoreload import autoreload_started, file_changed, is_django_path
+ 8 | 
+ 9 | 
+10 | def get_template_directories():
+11 |     # Iterate through each template backend and find
+12 |     # any template_loader that has a 'get_dirs' method.
+13 |     # Collect the directories, filtering out Django templates.
+14 |     cwd = Path.cwd()
+15 |     items = set()
+16 |     for backend in engines.all():
+17 |         if not isinstance(backend, DjangoTemplates):
+18 |             continue
+19 | 
+20 |         items.update(cwd / to_path(dir) for dir in backend.engine.dirs)
+21 | 
+22 |         for loader in backend.engine.template_loaders:
+23 |             if not hasattr(loader, "get_dirs"):
+24 |                 continue
+25 |             items.update(
+26 |                 cwd / to_path(directory)
+27 |                 for directory in loader.get_dirs()
+28 |                 if not is_django_path(directory)
+29 |             )
+30 |     return items
+```
+
+Found `django/utils/_os.py:safe_join`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import os
+ 2 | import tempfile
+ 3 | from os.path import abspath, dirname, join, normcase, sep
+ 4 | from pathlib import Path
+ 5 | 
+ 6 | from django.core.exceptions import SuspiciousFileOperation
+ 7 | 
+ 8 | 
+ 9 | def safe_join(base, *paths):
+10 |     """
+11 |     Join one or more path components to the base path component intelligently.
+12 |     Return a normalized, absolute version of the final path.
+13 | 
+14 |     Raise ValueError if the final path isn't located inside of the base path
+15 |     component.
+16 |     """
+17 |     final_path = abspath(join(base, *paths))
+18 |     base_path = abspath(base)
+19 |     # Ensure final_path starts with base_path (using normcase to ensure we
+20 |     # don't false-negative on case insensitive operating systems like Windows),
+21 |     # further, one of the following conditions must be true:
+22 |     #  a) The next character is the path separator (to prevent conditions like
+23 |     #     safe_join("/dir", "/../d"))
+24 |     #  b) The final path must be the same as the base path.
+25 |     #  c) The base path must be the most root path (meaning either "/" or "C:\\")
+26 |     if (
+27 |         not normcase(final_path).startswith(normcase(base_path + sep))
+28 |         and normcase(final_path) != normcase(base_path)
+29 |         and dirname(normcase(base_path)) != normcase(base_path)
+30 |     ):
+31 |         raise SuspiciousFileOperation(
+32 |             "The joined path ({}) is located outside of the base path "
+33 |             "component ({})".format(final_path, base_path)
+34 |         )
+35 |     return final_path
+```
+
+Found `django/contrib/staticfiles/utils.py:matches_patterns`, `django/contrib/staticfiles/utils.py:get_files`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import fnmatch
+ 2 | import os
+ 3 | 
+ 4 | from django.conf import settings
+ 5 | from django.core.exceptions import ImproperlyConfigured
+ 6 | 
+ 7 | 
+ 8 | def matches_patterns(path, patterns):
+ 9 |     """
+10 |     Return True or False depending on whether the ``path`` should be
+11 |     ignored (if it matches any pattern in ``ignore_patterns``).
+12 |     """
+13 |     return any(fnmatch.fnmatchcase(path, pattern) for pattern in patterns)
+14 | 
+15 | 
+16 | def get_files(storage, ignore_patterns=None, location=""):
+17 |     """
+18 |     Recursively walk the storage directories yielding the paths
+19 |     of all files that should be copied.
+20 |     """
+21 |     if ignore_patterns is None:
+22 |         ignore_patterns = []
+23 |     directories, files = storage.listdir(location)
+24 |     for fn in files:
+25 |         # Match only the basename.
+26 |         if matches_patterns(fn, ignore_patterns):
+27 |             continue
+28 |         if location:
+29 |             fn = os.path.join(location, fn)
+30 |             # Match the full file path.
+31 |             if matches_patterns(fn, ignore_patterns):
+32 |                 continue
+33 |         yield fn
+34 |     for dir in directories:
+35 |         if matches_patterns(dir, ignore_patterns):
+36 |             continue
+37 |         if location:
+38 |             dir = os.path.join(location, dir)
+39 |         yield from get_files(storage, ignore_patterns, dir)
+```
+[symbol-locator] setup_repo returned: playground/aa69b439-8b5a-4d89-bac5-fc23ca225131/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-15572
+[symbol-locator] warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-15572 files=0 indexed=0 failed=0
+Finding newlines for mmindex:   0%|          | 0.00/11.9M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 11.9M/11.9M [00:00<00:00, 359MB/s]
+
+2026-08-28 04:48:45 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:48:59 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:48:59 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:48:59 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 04:48:59 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'Engine', 'context': 'template engine dirs normalization pathlib Path DIRS autoreload', 'kind_filter': [5], 'top_k': 5}))
+```
+2026-08-28 04:49:00 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:49:04 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:49:04 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:49:04 auto_search_main.py INFO OBSERVATION:
+Found 42 candidates for `Engine`. Showing top 5 by relevance:
+1. [score=95] Engine
+   django/template/engine.py:13
+   import functools
+   
+   from django.core.exceptions import ImproperlyConfigured
+   from django.utils.functional import cached_property
+   from django.utils.module_loading import import_string
+   
+   from .base import Template
+   from .context import Context, _builtin_context_processors
+   from .exceptions import TemplateDoesNotExist
+   from .library import import_library
+   
+   
+   class Engine:
+       default_builtins = [
+           "django.template.defaulttags",
+           "django.template.defaultfilters",
+           "django.template.loader_tags",
+       ]
+   
+       def __init__(
+           self,
+           dirs=None,
+           app_dirs=False,
+           context_processors=None,
+           debug=False,
+           loaders=None,
+           string_if_invalid="",
+           file_charset="utf-8",
+2. [score=92] EngineHandler
+   django/template/utils.py:16
+   import functools
+   from collections import Counter
+   from pathlib import Path
+   
+   from django.apps import apps
+   from django.conf import settings
+   from django.core.exceptions import ImproperlyConfigured
+   from django.utils.functional import cached_property
+   from django.utils.module_loading import import_string
+   
+   
+   class InvalidTemplateEngineError(ImproperlyConfigured):
+       pass
+   
+   
+   class EngineHandler:
+       def __init__(self, templates=None):
+           """
+           templates is an optional list of template engine definitions
+           (structured like settings.TEMPLATES).
+           """
+           self._templates = templates
+           self._engines = {}
+   
+       @cached_property
+       def templates(self):
+           if self._templates is None:
+               self._templates = settings.TEMPLATES
+   
+           templates = {}
+           backend_names = []
+3. [score=90] BaseEngine
+   django/template/backends/base.py:7
+   from django.core.exceptions import ImproperlyConfigured, SuspiciousFileOperation
+   from django.template.utils import get_app_template_dirs
+   from django.utils._os import safe_join
+   from django.utils.functional import cached_property
+   
+   
+   class BaseEngine:
+   
+       # Core methods: engines have to provide their own implementation
+       #               (except for from_string which is optional).
+   
+       def __init__(self, params):
+           """
+           Initialize the template engine.
+   
+           `params` is a dict of configuration settings.
+           """
+           params = params.copy()
+           self.name = params.pop("NAME")
+           self.dirs = list(params.pop("DIRS"))
+           self.app_dirs = params.pop("APP_DIRS")
+           if params:
+4. [score=88] InvalidTemplateEngineError
+   django/template/utils.py:12
+   import functools
+   from collections import Counter
+   from pathlib import Path
+   
+   from django.apps import apps
+   from django.conf import settings
+   from django.core.exceptions import ImproperlyConfigured
+   from django.utils.functional import cached_property
+   from django.utils.module_loading import import_string
+   
+   
+   class InvalidTemplateEngineError(ImproperlyConfigured):
+       pass
+   
+   
+   class EngineHandler:
+       def __init__(self, templates=None):
+           """
+           templates is an optional list of template engine definitions
+           (structured like settings.TEMPLATES).
+           """
+           self._templates = templates
+           self._engines = {}
+   
+       @cached_property
+       def templates(self):
+           if self._templates is None:
+5. [score=60] EngineMixin
+   django/forms/renderers.py:26
+   @functools.lru_cache
+   def get_default_renderer():
+       renderer_class = import_string(settings.FORM_RENDERER)
+       return renderer_class()
+   
+   
+   class BaseRenderer:
+       def get_template(self, template_name):
+           raise NotImplementedError("subclasses must implement get_template()")
+   
+       def render(self, template_name, context, request=None):
+           template = self.get_template(template_name)
+           return template.render(context, request=request).strip()
+   
+   
+   class EngineMixin:
+       def get_template(self, template_name):
+           return self.engine.get_template(template_name)
+   
+       @cached_property
+       def engine(self):
+           return self.backend(
+               {
+                   "APP_DIRS": True,
+                   "DIRS": [Path(__file__).parent / self.backend.app_dirname],
+                   "NAME": "djangoforms",
+                   "OPTIONS": {},
+               }
+           )
+   
+   
+
+37 more candidates cached. Call `more_symbols(name="Engine")` for the next batch.
+[symbol-locator] [scorer] usage pid=838347 calls=3 p=23625 c=147
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 04:49:04 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'dirs', 'context': 'django template engine engine.dirs normalization template dirs', 'kind_filter': [13], 'top_k': 10}))
+```
+2026-08-28 04:49:04 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:49:07 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:49:07 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:49:07 auto_search_main.py INFO OBSERVATION:
+Found 267 candidates for `dirs`. Showing top 10 by relevance:
+1. [score=98] Engine.__init__.app_dirs
+   django/template/engine.py:23
+   from .context import Context, _builtin_context_processors
+   from .exceptions import TemplateDoesNotExist
+   from .library import import_library
+   
+   
+   class Engine:
+       default_builtins = [
+           "django.template.defaulttags",
+           "django.template.defaultfilters",
+           "django.template.loader_tags",
+       ]
+   
+       def __init__(
+           self,
+           dirs=None,
+           app_dirs=False,
+           context_processors=None,
+           debug=False,
+           loaders=None,
+           string_if_invalid="",
+           file_charset="utf-8",
+           libraries=None,
+           builtins=None,
+           autoescape=True,
+       ):
+           if dirs is None:
+               dirs = []
+           if context_processors is None:
+               context_processors = []
+           if loaders is None:
+               loaders = ["django.template.loaders.filesystem.Loader"]
+2. [score=97] BaseEngine.template_dirs.template_dirs
+   django/template/backends/base.py:63
+           Raise TemplateDoesNotExist if no such template exists.
+           """
+           raise NotImplementedError(
+               "subclasses of BaseEngine must provide a get_template() method"
+           )
+   
+       # Utility methods: they are provided to minimize code duplication and
+       #                  security issues in third-party backends.
+   
+       @cached_property
+       def template_dirs(self):
+           """
+           Return a list of directories to search for templates.
+           """
+           # Immutable return value because it's cached and shared by callers.
+           template_dirs = tuple(self.dirs)
+           if self.app_dirs:
+               template_dirs += get_app_template_dirs(self.app_dirname)
+           return template_dirs
+   
+       def iter_template_filenames(self, template_name):
+           """
+           Iterate over candidate files for template_name.
+   
+           Ignore files that don't lie inside configured template dirs to avoid
+           directory traversal attacks.
+           """
+           for template_dir in self.template_dirs:
+               try:
+                   yield safe_join(template_dir, template_name)
+               except SuspiciousFileOperation:
+3. [score=95] Engine.dirs
+   django/template/engine.py:53
+               loaders = ["django.template.loaders.filesystem.Loader"]
+               if app_dirs:
+                   loaders += ["django.template.loaders.app_directories.Loader"]
+               if not debug:
+                   loaders = [("django.template.loaders.cached.Loader", loaders)]
+           else:
+               if app_dirs:
+                   raise ImproperlyConfigured(
+                       "app_dirs must not be set when loaders is defined."
+                   )
+           if libraries is None:
+               libraries = {}
+           if builtins is None:
+               builtins = []
+   
+           self.dirs = dirs
+           self.app_dirs = app_dirs
+           self.autoescape = autoescape
+           self.context_processors = context_processors
+           self.debug = debug
+           self.loaders = loaders
+           self.string_if_invalid = string_if_invalid
+           self.file_charset = file_charset
+           self.libraries = libraries
+           self.template_libraries = self.get_template_libraries(libraries)
+           self.builtins = self.default_builtins + builtins
+           self.template_builtins = self.get_template_builtins(self.builtins)
+   
+       def __repr__(self):
+           return (
+               "<%s:%s app_dirs=%s%s debug=%s loaders=%s string_if_invalid=%s "
+4. [score=92] Engine.__init__.dirs
+   django/template/engine.py:22
+   from .base import Template
+   from .context import Context, _builtin_context_processors
+   from .exceptions import TemplateDoesNotExist
+   from .library import import_library
+   
+   
+   class Engine:
+       default_builtins = [
+           "django.template.defaulttags",
+           "django.template.defaultfilters",
+           "django.template.loader_tags",
+       ]
+   
+       def __init__(
+           self,
+           dirs=None,
+           app_dirs=False,
+           context_processors=None,
+           debug=False,
+           loaders=None,
+           string_if_invalid="",
+           file_charset="utf-8",
+           libraries=None,
+           builtins=None,
+           autoescape=True,
+       ):
+           if dirs is None:
+               dirs = []
+           if context_processors is None:
+               context_processors = []
+           if loaders is None:
+5. [score=90] Engine.app_dirs
+   django/template/engine.py:54
+               if app_dirs:
+                   loaders += ["django.template.loaders.app_directories.Loader"]
+               if not debug:
+                   loaders = [("django.template.loaders.cached.Loader", loaders)]
+           else:
+               if app_dirs:
+                   raise ImproperlyConfigured(
+                       "app_dirs must not be set when loaders is defined."
+                   )
+           if libraries is None:
+               libraries = {}
+           if builtins is None:
+               builtins = []
+   
+           self.dirs = dirs
+           self.app_dirs = app_dirs
+           self.autoescape = autoescape
+           self.context_processors = context_processors
+           self.debug = debug
+           self.loaders = loaders
+           self.string_if_invalid = string_if_invalid
+           self.file_charset = file_charset
+           self.libraries = libraries
+           self.template_libraries = self.get_template_libraries(libraries)
+           self.builtins = self.default_builtins + builtins
+           self.template_builtins = self.get_template_builtins(self.builtins)
+   
+       def __repr__(self):
+           return (
+               "<%s:%s app_dirs=%s%s debug=%s loaders=%s string_if_invalid=%s "
+               "file_charset=%s%s%s autoescape=%s>"
+6. [score=88] Loader.__init__.dirs
+   django/template/loaders/filesystem.py:13
+   """
+   Wrapper for loading templates from the filesystem.
+   """
+   
+   from django.core.exceptions import SuspiciousFileOperation
+   from django.template import Origin, TemplateDoesNotExist
+   from django.utils._os import safe_join
+   
+   from .base import Loader as BaseLoader
+   
+   
+   class Loader(BaseLoader):
+       def __init__(self, engine, dirs=None):
+           super().__init__(engine)
+           self.dirs = dirs
+   
+       def get_dirs(self):
+           return self.dirs if self.dirs is not None else self.engine.dirs
+   
+       def get_contents(self, origin):
+           try:
+               with open(origin.name, encoding=self.engine.file_charset) as fp:
+                   return fp.read()
+           except FileNotFoundError:
+               raise TemplateDoesNotExist(origin)
+   
+       def get_template_sources(self, template_name):
+           """
+7. [score=80] Loader.dirs
+   django/template/loaders/filesystem.py:15
+   """
+   Wrapper for loading templates from the filesystem.
+   """
+   
+   from django.core.exceptions import SuspiciousFileOperation
+   from django.template import Origin, TemplateDoesNotExist
+   from django.utils._os import safe_join
+   
+   from .base import Loader as BaseLoader
+   
+   
+   class Loader(BaseLoader):
+       def __init__(self, engine, dirs=None):
+           super().__init__(engine)
+           self.dirs = dirs
+   
+       def get_dirs(self):
+           return self.dirs if self.dirs is not None else self.engine.dirs
+   
+       def get_contents(self, origin):
+           try:
+               with open(origin.name, encoding=self.engine.file_charset) as fp:
+                   return fp.read()
+           except FileNotFoundError:
+               raise TemplateDoesNotExist(origin)
+   
+       def get_template_sources(self, template_name):
+           """
+           Return an Origin object pointing to an absolute path in each directory
+           in template_dirs. For security reasons, if a path doesn't lie inside
+8. [score=65] get_app_template_dirs.template_dirs
+   django/template/utils.py:105
+       def __iter__(self):
+           return iter(self.templates)
+   
+       def all(self):
+           return [self[alias] for alias in self]
+   
+   
+   @functools.lru_cache
+   def get_app_template_dirs(dirname):
+       """
+       Return an iterable of paths of directories to load app templates from.
+   
+       dirname is the name of the subdirectory containing templates inside
+       installed applications.
+       """
+       template_dirs = [
+           Path(app_config.path) / dirname
+           for app_config in apps.get_app_configs()
+           if app_config.path and (Path(app_config.path) / dirname).is_dir()
+       ]
+       # Immutable return value because it will be cached and shared by callers.
+       return tuple(template_dirs)
+   
+9. [score=50] BaseEngine.app_dirs
+   django/template/backends/base.py:21
+   
+   class BaseEngine:
+   
+       # Core methods: engines have to provide their own implementation
+       #               (except for from_string which is optional).
+   
+       def __init__(self, params):
+           """
+           Initialize the template engine.
+   
+           `params` is a dict of configuration settings.
+           """
+           params = params.copy()
+           self.name = params.pop("NAME")
+           self.dirs = list(params.pop("DIRS"))
+           self.app_dirs = params.pop("APP_DIRS")
+           if params:
+               raise ImproperlyConfigured(
+                   "Unknown parameters: {}".format(", ".join(params))
+               )
+   
+       @property
+       def app_dirname(self):
+           raise ImproperlyConfigured(
+               "{} doesn't support loading templates from installed "
+               "applications.".format(self.__class__.__name__)
+           )
+   
+       def from_string(self, template_code):
+           """
+           Create and return a template for the given source code.
+10. [score=35] BaseEngine.dirs
+   django/template/backends/base.py:20
+   
+   
+   class BaseEngine:
+   
+       # Core methods: engines have to provide their own implementation
+       #               (except for from_string which is optional).
+   
+       def __init__(self, params):
+           """
+           Initialize the template engine.
+   
+           `params` is a dict of configuration settings.
+           """
+           params = params.copy()
+           self.name = params.pop("NAME")
+           self.dirs = list(params.pop("DIRS"))
+           self.app_dirs = params.pop("APP_DIRS")
+           if params:
+               raise ImproperlyConfigured(
+                   "Unknown parameters: {}".format(", ".join(params))
+               )
+   
+       @property
+       def app_dirname(self):
+           raise ImproperlyConfigured(
+               "{} doesn't support loading templates from installed "
+               "applications.".format(self.__class__.__name__)
+           )
+   
+       def from_string(self, template_code):
+           """
+
+257 more candidates cached. Call `more_symbols(name="dirs")` for the next batch.
+[symbol-locator] [scorer] usage pid=838347 calls=4 p=35702 c=250
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 04:49:07 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['Path(dir)', 'engine.dirs', 'backend.engine.dirs', 'get_template_directories', 'DIRS'], 'file_path_or_pattern': 'django/template/**/*.py'}))
+```
+2026-08-28 04:49:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:49:10 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:49:12 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:49:13 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:49:14 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:49:16 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:49:17 auto_search_main.py INFO OBSERVATION:
+##Searching for term "Path(dir)"...
+### Search Result:
+Found `django/template/loaders/filesystem.py:Loader`, `django/template/loaders/filesystem.py:Loader.get_dirs`, `django/template/loaders/filesystem.py:Loader.get_contents`, `django/template/loaders/filesystem.py:Loader.get_template_sources`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Wrapper for loading templates from the filesystem.
+ 3 | """
+ 4 | 
+ 5 | from django.core.exceptions import SuspiciousFileOperation
+ 6 | from django.template import Origin, TemplateDoesNotExist
+ 7 | from django.utils._os import safe_join
+ 8 | 
+ 9 | from .base import Loader as BaseLoader
+10 | 
+11 | 
+12 | class Loader(BaseLoader):
+13 |     def __init__(self, engine, dirs=None):
+14 |         super().__init__(engine)
+15 |         self.dirs = dirs
+16 | 
+17 |     def get_dirs(self):
+18 |         return self.dirs if self.dirs is not None else self.engine.dirs
+19 | 
+20 |     def get_contents(self, origin):
+21 |         try:
+22 |             with open(origin.name, encoding=self.engine.file_charset) as fp:
+23 |                 return fp.read()
+24 |         except FileNotFoundError:
+25 |             raise TemplateDoesNotExist(origin)
+26 | 
+27 |     def get_template_sources(self, template_name):
+28 |         """
+29 |         Return an Origin object pointing to an absolute path in each directory
+30 |         in template_dirs. For security reasons, if a path doesn't lie inside
+31 |         one of the template_dirs it is excluded from the result set.
+32 |         """
+33 |         for template_dir in self.get_dirs():
+34 |             try:
+35 |                 name = safe_join(template_dir, template_name)
+36 |             except SuspiciousFileOperation:
+37 |                 # The joined path was located outside of this template_dir
+38 |                 # (it might be inside another one, so this isn't fatal).
+39 |                 continue
+40 | 
+41 |             yield Origin(
+42 |                 name=name,
+43 |                 template_name=template_name,
+44 |                 loader=self,
+45 |             )
+46 | 
+```
+
+Found function `django/db/migrations/writer.py:MigrationWriter.path`.
+Source: Retrieved entity using keyword search (bm25).
+```
+277 | def path(self):
+278 |         return os.path.join(self.basedir, self.filename)
+```
+
+Found function `django/core/files/storage.py:FileSystemStorage.path`.
+Source: Retrieved entity using keyword search (bm25).
+```
+374 | def path(self, name):
+375 |         return safe_join(self.location, name)
+```
+
+Found function `django/contrib/staticfiles/storage.py:StaticFilesStorage.path`.
+Source: Retrieved entity using keyword search (bm25).
+```
+37 | def path(self, name):
+38 |         if not self.location:
+39 |             raise ImproperlyConfigured(
+40 |                 "You're using the staticfiles app "
+41 |                 "without having set the STATIC_ROOT "
+42 |                 "setting to a filesystem path."
+43 |             )
+44 |         return super().path(name)
+```
+
+
+
+##Searching for term "engine.dirs"...
+### Search Result:
+Found `django/template/loaders/filesystem.py:Loader`, `django/template/loaders/filesystem.py:Loader.get_dirs`, `django/template/loaders/filesystem.py:Loader.get_contents`, `django/template/loaders/filesystem.py:Loader.get_template_sources`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Wrapper for loading templates from the filesystem.
+ 3 | """
+ 4 | 
+ 5 | from django.core.exceptions import SuspiciousFileOperation
+ 6 | from django.template import Origin, TemplateDoesNotExist
+ 7 | from django.utils._os import safe_join
+ 8 | 
+ 9 | from .base import Loader as BaseLoader
+10 | 
+11 | 
+12 | class Loader(BaseLoader):
+13 |     def __init__(self, engine, dirs=None):
+14 |         super().__init__(engine)
+15 |         self.dirs = dirs
+16 | 
+17 |     def get_dirs(self):
+18 |         return self.dirs if self.dirs is not None else self.engine.dirs
+19 | 
+20 |     def get_contents(self, origin):
+21 |         try:
+22 |             with open(origin.name, encoding=self.engine.file_charset) as fp:
+23 |                 return fp.read()
+24 |         except FileNotFoundError:
+25 |             raise TemplateDoesNotExist(origin)
+26 | 
+27 |     def get_template_sources(self, template_name):
+28 |         """
+29 |         Return an Origin object pointing to an absolute path in each directory
+30 |         in template_dirs. For security reasons, if a path doesn't lie inside
+31 |         one of the template_dirs it is excluded from the result set.
+32 |         """
+33 |         for template_dir in self.get_dirs():
+34 |             try:
+35 |                 name = safe_join(template_dir, template_name)
+36 |             except SuspiciousFileOperation:
+37 |                 # The joined path was located outside of this template_dir
+38 |                 # (it might be inside another one, so this isn't fatal).
+39 |                 continue
+40 | 
+41 |             yield Origin(
+42 |                 name=name,
+43 |                 template_name=template_name,
+44 |                 loader=self,
+45 |             )
+46 | 
+```
+
+Found `django/template/backends/django.py:DjangoTemplates`, `django/template/backends/django.py:DjangoTemplates.from_string`, `django/template/backends/django.py:DjangoTemplates.get_template`, `django/template/backends/django.py:DjangoTemplates.get_templatetag_libraries`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from importlib import import_module
+  2 | from pkgutil import walk_packages
+  3 | 
+  4 | from django.apps import apps
+  5 | from django.conf import settings
+  6 | from django.template import TemplateDoesNotExist
+  7 | from django.template.context import make_context
+  8 | from django.template.engine import Engine
+  9 | from django.template.library import InvalidTemplateLibrary
+ 10 | 
+ 11 | from .base import BaseEngine
+ 12 | 
+ 13 | 
+ 14 | class DjangoTemplates(BaseEngine):
+ 15 | 
+ 16 |     app_dirname = "templates"
+ 17 | 
+ 18 |     def __init__(self, params):
+ 19 |         params = params.copy()
+ 20 |         options = params.pop("OPTIONS").copy()
+ 21 |         options.setdefault("autoescape", True)
+ 22 |         options.setdefault("debug", settings.DEBUG)
+ 23 |         options.setdefault("file_charset", "utf-8")
+ 24 |         libraries = options.get("libraries", {})
+ 25 |         options["libraries"] = self.get_templatetag_libraries(libraries)
+ 26 |         super().__init__(params)
+ 27 |         self.engine = Engine(self.dirs, self.app_dirs, **options)
+ 28 | 
+ 29 |     def from_string(self, template_code):
+ 30 |         return Template(self.engine.from_string(template_code), self)
+ 31 | 
+ 32 |     def get_template(self, template_name):
+ 33 |         try:
+ 34 |             return Template(self.engine.get_template(template_name), self)
+ 35 |         except TemplateDoesNotExist as exc:
+ 36 |             reraise(exc, self)
+ 37 | 
+ 38 |     def get_templatetag_libraries(self, custom_libraries):
+ 39 |         """
+ 40 |         Return a collation of template tag libraries from installed
+ 41 |         applications and the supplied custom_libraries argument.
+ 42 |         """
+ 43 |         libraries = get_installed_libraries()
+ 44 |         libraries.update(custom_libraries)
+ 45 |         return libraries
+```
+
+Found `django/template/backends/base.py:BaseEngine`, `django/template/backends/base.py:BaseEngine.app_dirname`, `django/template/backends/base.py:BaseEngine.from_string`, `django/template/backends/base.py:BaseEngine.get_template`, `django/template/backends/base.py:BaseEngine.template_dirs`, `django/template/backends/base.py:BaseEngine.iter_template_filenames`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.core.exceptions import ImproperlyConfigured, SuspiciousFileOperation
+ 2 | from django.template.utils import get_app_template_dirs
+ 3 | from django.utils._os import safe_join
+ 4 | from django.utils.functional import cached_property
+ 5 | 
+ 6 | 
+ 7 | class BaseEngine:
+ 8 | 
+ 9 |     # Core methods: engines have to provide their own implementation
+10 |     #               (except for from_string which is optional).
+11 | 
+12 |     def __init__(self, params):
+13 |         """
+14 |         Initialize the template engine.
+15 | 
+16 |         `params` is a dict of configuration settings.
+17 |         """
+18 |         params = params.copy()
+19 |         self.name = params.pop("NAME")
+20 |         self.dirs = list(params.pop("DIRS"))
+21 |         self.app_dirs = params.pop("APP_DIRS")
+22 |         if params:
+23 |             raise ImproperlyConfigured(
+24 |                 "Unknown parameters: {}".format(", ".join(params))
+25 |             )
+26 | 
+27 |     @property
+28 |     def app_dirname(self):
+29 |         raise ImproperlyConfigured(
+30 |             "{} doesn't support loading templates from installed "
+31 |             "applications.".format(self.__class__.__name__)
+32 |         )
+33 | 
+34 |     def from_string(self, template_code):
+35 |         """
+36 |         Create and return a template for the given source code.
+37 | 
+38 |         This method is optional.
+39 |         """
+40 |         raise NotImplementedError(
+41 |             "subclasses of BaseEngine should provide a from_string() method"
+42 |         )
+43 | 
+44 |     def get_template(self, template_name):
+45 |         """
+46 |         Load and return a template for the given name.
+47 | 
+48 |         Raise TemplateDoesNotExist if no such template exists.
+49 |         """
+50 |         raise NotImplementedError(
+51 |             "subclasses of BaseEngine must provide a get_template() method"
+52 |         )
+53 | 
+54 |     # Utility methods: they are provided to minimize code duplication and
+55 |     #                  security issues in third-party backends.
+56 | 
+57 |     @cached_property
+58 |     def template_dirs(self):
+59 |         """
+60 |         Return a list of directories to search for templates.
+61 |         """
+62 |         # Immutable return value because it's cached and shared by callers.
+63 |         template_dirs = tuple(self.dirs)
+64 |         if self.app_dirs:
+65 |             template_dirs += get_app_template_dirs(self.app_dirname)
+66 |         return template_dirs
+67 | 
+68 |     def iter_template_filenames(self, template_name):
+69 |         """
+70 |         Iterate over candidate files for template_name.
+71 | 
+72 |         Ignore files that don't lie inside configured template dirs to avoid
+73 |         directory traversal attacks.
+74 |         """
+75 |         for template_dir in self.template_dirs:
+76 |             try:
+77 |                 yield safe_join(template_dir, template_name)
+78 |             except SuspiciousFileOperation:
+79 |                 # The joined path was located outside of this template_dir
+80 |                 # (it might be inside another one, so this isn't fatal).
+81 |                 pass
+82 | 
+```
+
+Found function `django/template/engine.py:Engine.template_loaders`.
+Source: Retrieved entity using keyword search (bm25).
+```
+129 | def template_loaders(self):
+130 |         return self.get_template_loaders(self.loaders)
+```
+
+Found function `django/template/engine.py:Engine.select_template`.
+Source: Retrieved entity using keyword search (bm25).
+```
+198 | def select_template(self, template_name_list):
+199 |         """
+200 |         Given a list of template names, return the first that can be loaded.
+201 |         """
+202 |         if not template_name_list:
+203 |             raise TemplateDoesNotExist("No template names provided")
+204 |         not_found = []
+205 |         for template_name in template_name_list:
+206 |             try:
+207 |                 return self.get_template(template_name)
+208 |             except TemplateDoesNotExist as exc:
+209 |                 if exc.args[0] not in not_found:
+210 |                     not_found.append(exc.args[0])
+211 |                 continue
+212 |         # If we get here, none of the templates could be loaded
+213 |         raise TemplateDoesNotExist(", ".join(not_found))
+```
+
+
+
+##Searching for term "engine.dirs", "backend.engine.dirs", "Path(dir) engine.dirs backend.engine.dirs DIRS"...
+### Search Result:
+Found class `django/template/engine.py:Engine`.
+Source: Retrieved entity using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class Engine:
+    default_builtins = [
+        "django.template.defaulttags",
+        "django.template.defaultfilters",
+        "django.template.loader_tags",
+    ]
+
+    def __init__(
+        self,
+        dirs=None,
+        app_dirs=False,
+        context_processors=None,
+        debug=False,
+        loaders=None,
+        string_if_invalid="",
+        file_charset="utf-8",
+        libraries=None,
+        builtins=None,
+        autoescape=True,
+    ):
+...
+    def __repr__(self):
+...
+    @staticmethod
+    @functools.lru_cache
+    def get_default():
+...
+    @cached_property
+    def template_context_processors(self):
+...
+    def get_template_builtins(self, builtins):
+...
+    def get_template_libraries(self, libraries):
+...
+    @cached_property
+    def template_loaders(self):
+...
+    def get_template_loaders(self, template_loaders):
+...
+    def find_template_loader(self, loader):
+...
+    def find_template(self, name, dirs=None, skip=None):
+...
+    def from_string(self, template_code):
+...
+    def get_template(self, template_name):
+...
+    def render_to_string(self, template_name, context=None):
+...
+    def select_template(self, template_name_list):
+
+```
+Hint: Search `django/template/engine.py:Engine` to get the full content if needed.
+
+
+
+##Searching for term "backend.engine.dirs"...
+### Search Result:
+Found `django/template/loaders/filesystem.py:Loader`, `django/template/loaders/filesystem.py:Loader.get_dirs`, `django/template/loaders/filesystem.py:Loader.get_contents`, `django/template/loaders/filesystem.py:Loader.get_template_sources`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Wrapper for loading templates from the filesystem.
+ 3 | """
+ 4 | 
+ 5 | from django.core.exceptions import SuspiciousFileOperation
+ 6 | from django.template import Origin, TemplateDoesNotExist
+ 7 | from django.utils._os import safe_join
+ 8 | 
+ 9 | from .base import Loader as BaseLoader
+10 | 
+11 | 
+12 | class Loader(BaseLoader):
+13 |     def __init__(self, engine, dirs=None):
+14 |         super().__init__(engine)
+15 |         self.dirs = dirs
+16 | 
+17 |     def get_dirs(self):
+18 |         return self.dirs if self.dirs is not None else self.engine.dirs
+19 | 
+20 |     def get_contents(self, origin):
+21 |         try:
+22 |             with open(origin.name, encoding=self.engine.file_charset) as fp:
+23 |                 return fp.read()
+24 |         except FileNotFoundError:
+25 |             raise TemplateDoesNotExist(origin)
+26 | 
+27 |     def get_template_sources(self, template_name):
+28 |         """
+29 |         Return an Origin object pointing to an absolute path in each directory
+30 |         in template_dirs. For security reasons, if a path doesn't lie inside
+31 |         one of the template_dirs it is excluded from the result set.
+32 |         """
+33 |         for template_dir in self.get_dirs():
+34 |             try:
+35 |                 name = safe_join(template_dir, template_name)
+36 |             except SuspiciousFileOperation:
+37 |                 # The joined path was located outside of this template_dir
+38 |                 # (it might be inside another one, so this isn't fatal).
+39 |                 continue
+40 | 
+41 |             yield Origin(
+42 |                 name=name,
+43 |                 template_name=template_name,
+44 |                 loader=self,
+45 |             )
+46 | 
+```
+
+Found `django/template/backends/base.py:BaseEngine`, `django/template/backends/base.py:BaseEngine.app_dirname`, `django/template/backends/base.py:BaseEngine.from_string`, `django/template/backends/base.py:BaseEngine.get_template`, `django/template/backends/base.py:BaseEngine.template_dirs`, `django/template/backends/base.py:BaseEngine.iter_template_filenames`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.core.exceptions import ImproperlyConfigured, SuspiciousFileOperation
+ 2 | from django.template.utils import get_app_template_dirs
+ 3 | from django.utils._os import safe_join
+ 4 | from django.utils.functional import cached_property
+ 5 | 
+ 6 | 
+ 7 | class BaseEngine:
+ 8 | 
+ 9 |     # Core methods: engines have to provide their own implementation
+10 |     #               (except for from_string which is optional).
+11 | 
+12 |     def __init__(self, params):
+13 |         """
+14 |         Initialize the template engine.
+15 | 
+16 |         `params` is a dict of configuration settings.
+17 |         """
+18 |         params = params.copy()
+19 |         self.name = params.pop("NAME")
+20 |         self.dirs = list(params.pop("DIRS"))
+21 |         self.app_dirs = params.pop("APP_DIRS")
+22 |         if params:
+23 |             raise ImproperlyConfigured(
+24 |                 "Unknown parameters: {}".format(", ".join(params))
+25 |             )
+26 | 
+27 |     @property
+28 |     def app_dirname(self):
+29 |         raise ImproperlyConfigured(
+30 |             "{} doesn't support loading templates from installed "
+31 |             "applications.".format(self.__class__.__name__)
+32 |         )
+33 | 
+34 |     def from_string(self, template_code):
+35 |         """
+36 |         Create and return a template for the given source code.
+37 | 
+38 |         This method is optional.
+39 |         """
+40 |         raise NotImplementedError(
+41 |             "subclasses of BaseEngine should provide a from_string() method"
+42 |         )
+43 | 
+44 |     def get_template(self, template_name):
+45 |         """
+46 |         Load and return a template for the given name.
+47 | 
+48 |         Raise TemplateDoesNotExist if no such template exists.
+49 |         """
+50 |         raise NotImplementedError(
+51 |             "subclasses of BaseEngine must provide a get_template() method"
+52 |         )
+53 | 
+54 |     # Utility methods: they are provided to minimize code duplication and
+55 |     #                  security issues in third-party backends.
+56 | 
+57 |     @cached_property
+58 |     def template_dirs(self):
+59 |         """
+60 |         Return a list of directories to search for templates.
+61 |         """
+62 |         # Immutable return value because it's cached and shared by callers.
+63 |         template_dirs = tuple(self.dirs)
+64 |         if self.app_dirs:
+65 |             template_dirs += get_app_template_dirs(self.app_dirname)
+66 |         return template_dirs
+67 | 
+68 |     def iter_template_filenames(self, template_name):
+69 |         """
+70 |         Iterate over candidate files for template_name.
+71 | 
+72 |         Ignore files that don't lie inside configured template dirs to avoid
+73 |         directory traversal attacks.
+74 |         """
+75 |         for template_dir in self.template_dirs:
+76 |             try:
+77 |                 yield safe_join(template_dir, template_name)
+78 |             except SuspiciousFileOperation:
+79 |                 # The joined path was located outside of this template_dir
+80 |                 # (it might be inside another one, so this isn't fatal).
+81 |                 pass
+82 | 
+```
+
+Found `django/template/backends/django.py:DjangoTemplates`, `django/template/backends/django.py:DjangoTemplates.from_string`, `django/template/backends/django.py:DjangoTemplates.get_template`, `django/template/backends/django.py:DjangoTemplates.get_templatetag_libraries`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from importlib import import_module
+  2 | from pkgutil import walk_packages
+  3 | 
+  4 | from django.apps import apps
+  5 | from django.conf import settings
+  6 | from django.template import TemplateDoesNotExist
+  7 | from django.template.context import make_context
+  8 | from django.template.engine import Engine
+  9 | from django.template.library import InvalidTemplateLibrary
+ 10 | 
+ 11 | from .base import BaseEngine
+ 12 | 
+ 13 | 
+ 14 | class DjangoTemplates(BaseEngine):
+ 15 | 
+ 16 |     app_dirname = "templates"
+ 17 | 
+ 18 |     def __init__(self, params):
+ 19 |         params = params.copy()
+ 20 |         options = params.pop("OPTIONS").copy()
+ 21 |         options.setdefault("autoescape", True)
+ 22 |         options.setdefault("debug", settings.DEBUG)
+ 23 |         options.setdefault("file_charset", "utf-8")
+ 24 |         libraries = options.get("libraries", {})
+ 25 |         options["libraries"] = self.get_templatetag_libraries(libraries)
+ 26 |         super().__init__(params)
+ 27 |         self.engine = Engine(self.dirs, self.app_dirs, **options)
+ 28 | 
+ 29 |     def from_string(self, template_code):
+ 30 |         return Template(self.engine.from_string(template_code), self)
+ 31 | 
+ 32 |     def get_template(self, template_name):
+ 33 |         try:
+ 34 |             return Template(self.engine.get_template(template_name), self)
+ 35 |         except TemplateDoesNotExist as exc:
+ 36 |             reraise(exc, self)
+ 37 | 
+ 38 |     def get_templatetag_libraries(self, custom_libraries):
+ 39 |         """
+ 40 |         Return a collation of template tag libraries from installed
+ 41 |         applications and the supplied custom_libraries argument.
+ 42 |         """
+ 43 |         libraries = get_installed_libraries()
+ 44 |         libraries.update(custom_libraries)
+ 45 |         return libraries
+```
+
+Found function `django/template/engine.py:Engine.get_default`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 88 | def get_default():
+ 89 |         """
+ 90 |         Return the first DjangoTemplates backend that's configured, or raise
+ 91 |         ImproperlyConfigured if none are configured.
+ 92 | 
+ 93 |         This is required for preserving historical APIs that rely on a
+ 94 |         globally available, implicitly configured engine such as:
+ 95 | 
+ 96 |         >>> from django.template import Context, Template
+ 97 |         >>> template = Template("Hello {{ name }}!")
+ 98 |         >>> context = Context({'name': "world"})
+ 99 |         >>> template.render(context)
+100 |         'Hello world!'
+101 |         """
+102 |         # Since Engine is imported in django.template and since
+103 |         # DjangoTemplates is a wrapper around this Engine class,
+104 |         # local imports are required to avoid import loops.
+105 |         from django.template import engines
+106 |         from django.template.backends.django import DjangoTemplates
+107 | 
+108 |         for engine in engines.all():
+109 |             if isinstance(engine, DjangoTemplates):
+110 |                 return engine.engine
+111 |         raise ImproperlyConfigured("No DjangoTemplates backend is configured.")
+```
+
+Found function `django/template/engine.py:Engine.get_template_builtins`.
+Source: Retrieved entity using keyword search (bm25).
+```
+119 | def get_template_builtins(self, builtins):
+120 |         return [import_library(x) for x in builtins]
+```
+
+
+
+##Searching for term "get_template_directories"...
+### Search Result:
+Found function `django/template/autoreload.py:get_template_directories`.
+Source: Match found for entity name `get_template_directories`.
+```
+10 | def get_template_directories():
+11 |     # Iterate through each template backend and find
+12 |     # any template_loader that has a 'get_dirs' method.
+13 |     # Collect the directories, filtering out Django templates.
+14 |     cwd = Path.cwd()
+15 |     items = set()
+16 |     for backend in engines.all():
+17 |         if not isinstance(backend, DjangoTemplates):
+18 |             continue
+19 | 
+20 |         items.update(cwd / to_path(dir) for dir in backend.engine.dirs)
+21 | 
+22 |         for loader in backend.engine.template_loaders:
+23 |             if not hasattr(loader, "get_dirs"):
+24 |                 continue
+25 |             items.update(
+26 |                 cwd / to_path(directory)
+27 |                 for directory in loader.get_dirs()
+28 |                 if not is_django_path(directory)
+29 |             )
+30 |     return items
+```
+
+
+
+##Searching for term "DIRS"...
+### Search Result:
+Found `django/template/loaders/filesystem.py:Loader`, `django/template/loaders/filesystem.py:Loader.get_dirs`, `django/template/loaders/filesystem.py:Loader.get_contents`, `django/template/loaders/filesystem.py:Loader.get_template_sources`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Wrapper for loading templates from the filesystem.
+ 3 | """
+ 4 | 
+ 5 | from django.core.exceptions import SuspiciousFileOperation
+ 6 | from django.template import Origin, TemplateDoesNotExist
+ 7 | from django.utils._os import safe_join
+ 8 | 
+ 9 | from .base import Loader as BaseLoader
+10 | 
+11 | 
+12 | class Loader(BaseLoader):
+13 |     def __init__(self, engine, dirs=None):
+14 |         super().__init__(engine)
+15 |         self.dirs = dirs
+16 | 
+17 |     def get_dirs(self):
+18 |         return self.dirs if self.dirs is not None else self.engine.dirs
+19 | 
+20 |     def get_contents(self, origin):
+21 |         try:
+22 |             with open(origin.name, encoding=self.engine.file_charset) as fp:
+23 |                 return fp.read()
+24 |         except FileNotFoundError:
+25 |             raise TemplateDoesNotExist(origin)
+26 | 
+27 |     def get_template_sources(self, template_name):
+28 |         """
+29 |         Return an Origin object pointing to an absolute path in each directory
+30 |         in template_dirs. For security reasons, if a path doesn't lie inside
+31 |         one of the template_dirs it is excluded from the result set.
+32 |         """
+33 |         for template_dir in self.get_dirs():
+34 |             try:
+35 |                 name = safe_join(template_dir, template_name)
+36 |             except SuspiciousFileOperation:
+37 |                 # The joined path was located outside of this template_dir
+38 |                 # (it might be inside another one, so this isn't fatal).
+39 |                 continue
+40 | 
+41 |             yield Origin(
+42 |                 name=name,
+43 |                 template_name=template_name,
+44 |                 loader=self,
+45 |             )
+46 | 
+```
+
+Found `django/template/backends/base.py:BaseEngine`, `django/template/backends/base.py:BaseEngine.app_dirname`, `django/template/backends/base.py:BaseEngine.from_string`, `django/template/backends/base.py:BaseEngine.get_template`, `django/template/backends/base.py:BaseEngine.template_dirs`, `django/template/backends/base.py:BaseEngine.iter_template_filenames`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.core.exceptions import ImproperlyConfigured, SuspiciousFileOperation
+ 2 | from django.template.utils import get_app_template_dirs
+ 3 | from django.utils._os import safe_join
+ 4 | from django.utils.functional import cached_property
+ 5 | 
+ 6 | 
+ 7 | class BaseEngine:
+ 8 | 
+ 9 |     # Core methods: engines have to provide their own implementation
+10 |     #               (except for from_string which is optional).
+11 | 
+12 |     def __init__(self, params):
+13 |         """
+14 |         Initialize the template engine.
+15 | 
+16 |         `params` is a dict of configuration settings.
+17 |         """
+18 |         params = params.copy()
+19 |         self.name = params.pop("NAME")
+20 |         self.dirs = list(params.pop("DIRS"))
+21 |         self.app_dirs = params.pop("APP_DIRS")
+22 |         if params:
+23 |             raise ImproperlyConfigured(
+24 |                 "Unknown parameters: {}".format(", ".join(params))
+25 |             )
+26 | 
+27 |     @property
+28 |     def app_dirname(self):
+29 |         raise ImproperlyConfigured(
+30 |             "{} doesn't support loading templates from installed "
+31 |             "applications.".format(self.__class__.__name__)
+32 |         )
+33 | 
+34 |     def from_string(self, template_code):
+35 |         """
+36 |         Create and return a template for the given source code.
+37 | 
+38 |         This method is optional.
+39 |         """
+40 |         raise NotImplementedError(
+41 |             "subclasses of BaseEngine should provide a from_string() method"
+42 |         )
+43 | 
+44 |     def get_template(self, template_name):
+45 |         """
+46 |         Load and return a template for the given name.
+47 | 
+48 |         Raise TemplateDoesNotExist if no such template exists.
+49 |         """
+50 |         raise NotImplementedError(
+51 |             "subclasses of BaseEngine must provide a get_template() method"
+52 |         )
+53 | 
+54 |     # Utility methods: they are provided to minimize code duplication and
+55 |     #                  security issues in third-party backends.
+56 | 
+57 |     @cached_property
+58 |     def template_dirs(self):
+59 |         """
+60 |         Return a list of directories to search for templates.
+61 |         """
+62 |         # Immutable return value because it's cached and shared by callers.
+63 |         template_dirs = tuple(self.dirs)
+64 |         if self.app_dirs:
+65 |             template_dirs += get_app_template_dirs(self.app_dirname)
+66 |         return template_dirs
+67 | 
+68 |     def iter_template_filenames(self, template_name):
+69 |         """
+70 |         Iterate over candidate files for template_name.
+71 | 
+72 |         Ignore files that don't lie inside configured template dirs to avoid
+73 |         directory traversal attacks.
+74 |         """
+75 |         for template_dir in self.template_dirs:
+76 |             try:
+77 |                 yield safe_join(template_dir, template_name)
+78 |             except SuspiciousFileOperation:
+79 |                 # The joined path was located outside of this template_dir
+80 |                 # (it might be inside another one, so this isn't fatal).
+81 |                 pass
+82 | 
+```
+
+Found class `django/db/models/lookups.py:UUIDIStartsWith`.
+Source: Retrieved entity using keyword search (bm25).
+```
+706 | class UUIDIStartsWith(UUIDTextMixin, IStartsWith):
+707 |     pass
+```
+
+Found function `django/core/handlers/asgi.py:ASGIRequest.COOKIES`.
+Source: Retrieved entity using keyword search (bm25).
+```
+128 | def COOKIES(self):
+129 |         return parse_cookie(self.META.get("HTTP_COOKIE", ""))
+```
+
+Found function `django/conf/__init__.py:LazySettings._USE_L10N_INTERNAL`.
+Source: Retrieved entity using keyword search (bm25).
+```
+174 | def _USE_L10N_INTERNAL(self):
+175 |         # Special hook to avoid checking a traceback in internal use on hot
+176 |         # paths.
+177 |         return self.__getattr__("USE_L10N")
+```
+
+
+
+##Searching for term "Path(dir) engine.dirs backend.engine.dirs DIRS"...
+### Search Result:
+Found `django/template/loaders/filesystem.py:Loader`, `django/template/loaders/filesystem.py:Loader.get_dirs`, `django/template/loaders/filesystem.py:Loader.get_contents`, `django/template/loaders/filesystem.py:Loader.get_template_sources`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | """
+ 2 | Wrapper for loading templates from the filesystem.
+ 3 | """
+ 4 | 
+ 5 | from django.core.exceptions import SuspiciousFileOperation
+ 6 | from django.template import Origin, TemplateDoesNotExist
+ 7 | from django.utils._os import safe_join
+ 8 | 
+ 9 | from .base import Loader as BaseLoader
+10 | 
+11 | 
+12 | class Loader(BaseLoader):
+13 |     def __init__(self, engine, dirs=None):
+14 |         super().__init__(engine)
+15 |         self.dirs = dirs
+16 | 
+17 |     def get_dirs(self):
+18 |         return self.dirs if self.dirs is not None else self.engine.dirs
+19 | 
+20 |     def get_contents(self, origin):
+21 |         try:
+22 |             with open(origin.name, encoding=self.engine.file_charset) as fp:
+23 |                 return fp.read()
+24 |         except FileNotFoundError:
+25 |             raise TemplateDoesNotExist(origin)
+26 | 
+27 |     def get_template_sources(self, template_name):
+28 |         """
+29 |         Return an Origin object pointing to an absolute path in each directory
+30 |         in template_dirs. For security reasons, if a path doesn't lie inside
+31 |         one of the template_dirs it is excluded from the result set.
+32 |         """
+33 |         for template_dir in self.get_dirs():
+34 |             try:
+35 |                 name = safe_join(template_dir, template_name)
+36 |             except SuspiciousFileOperation:
+37 |                 # The joined path was located outside of this template_dir
+38 |                 # (it might be inside another one, so this isn't fatal).
+39 |                 continue
+40 | 
+41 |             yield Origin(
+42 |                 name=name,
+43 |                 template_name=template_name,
+44 |                 loader=self,
+45 |             )
+46 | 
+```
+
+Found `django/template/backends/base.py:BaseEngine`, `django/template/backends/base.py:BaseEngine.app_dirname`, `django/template/backends/base.py:BaseEngine.from_string`, `django/template/backends/base.py:BaseEngine.get_template`, `django/template/backends/base.py:BaseEngine.template_dirs`, `django/template/backends/base.py:BaseEngine.iter_template_filenames`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.core.exceptions import ImproperlyConfigured, SuspiciousFileOperation
+ 2 | from django.template.utils import get_app_template_dirs
+ 3 | from django.utils._os import safe_join
+ 4 | from django.utils.functional import cached_property
+ 5 | 
+ 6 | 
+ 7 | class BaseEngine:
+ 8 | 
+ 9 |     # Core methods: engines have to provide their own implementation
+10 |     #               (except for from_string which is optional).
+11 | 
+12 |     def __init__(self, params):
+13 |         """
+14 |         Initialize the template engine.
+15 | 
+16 |         `params` is a dict of configuration settings.
+17 |         """
+18 |         params = params.copy()
+19 |         self.name = params.pop("NAME")
+20 |         self.dirs = list(params.pop("DIRS"))
+21 |         self.app_dirs = params.pop("APP_DIRS")
+22 |         if params:
+23 |             raise ImproperlyConfigured(
+24 |                 "Unknown parameters: {}".format(", ".join(params))
+25 |             )
+26 | 
+27 |     @property
+28 |     def app_dirname(self):
+29 |         raise ImproperlyConfigured(
+30 |             "{} doesn't support loading templates from installed "
+31 |             "applications.".format(self.__class__.__name__)
+32 |         )
+33 | 
+34 |     def from_string(self, template_code):
+35 |         """
+36 |         Create and return a template for the given source code.
+37 | 
+38 |         This method is optional.
+39 |         """
+40 |         raise NotImplementedError(
+41 |             "subclasses of BaseEngine should provide a from_string() method"
+42 |         )
+43 | 
+44 |     def get_template(self, template_name):
+45 |         """
+46 |         Load and return a template for the given name.
+47 | 
+48 |         Raise TemplateDoesNotExist if no such template exists.
+49 |         """
+50 |         raise NotImplementedError(
+51 |             "subclasses of BaseEngine must provide a get_template() method"
+52 |         )
+53 | 
+54 |     # Utility methods: they are provided to minimize code duplication and
+55 |     #                  security issues in third-party backends.
+56 | 
+57 |     @cached_property
+58 |     def template_dirs(self):
+59 |         """
+60 |         Return a list of directories to search for templates.
+61 |         """
+62 |         # Immutable return value because it's cached and shared by callers.
+63 |         template_dirs = tuple(self.dirs)
+64 |         if self.app_dirs:
+65 |             template_dirs += get_app_template_dirs(self.app_dirname)
+66 |         return template_dirs
+67 | 
+68 |     def iter_template_filenames(self, template_name):
+69 |         """
+70 |         Iterate over candidate files for template_name.
+71 | 
+72 |         Ignore files that don't lie inside configured template dirs to avoid
+73 |         directory traversal attacks.
+74 |         """
+75 |         for template_dir in self.template_dirs:
+76 |             try:
+77 |                 yield safe_join(template_dir, template_name)
+78 |             except SuspiciousFileOperation:
+79 |                 # The joined path was located outside of this template_dir
+80 |                 # (it might be inside another one, so this isn't fatal).
+81 |                 pass
+82 | 
+```
+
+Found function `django/template/engine.py:Engine.from_string`.
+Source: Retrieved entity using keyword search (bm25).
+```
+164 | def from_string(self, template_code):
+165 |         """
+166 |         Return a compiled Template object for the given template code,
+167 |         handling template inheritance recursively.
+168 |         """
+169 |         return Template(template_code, engine=self)
+```
+
+Found function `django/template/engine.py:Engine.get_template`.
+Source: Retrieved entity using keyword search (bm25).
+```
+171 | def get_template(self, template_name):
+172 |         """
+173 |         Return a compiled Template object for the given template name,
+174 |         handling template inheritance recursively.
+175 |         """
+176 |         template, origin = self.find_template(template_name)
+177 |         if not hasattr(template, "render"):
+178 |             # template needs to be compiled
+179 |             template = Template(template, origin, template_name, engine=self)
+180 |         return template
+```
+
+2026-08-28 04:49:17 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:51:22 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 524 <none>"
+2026-08-28 04:51:22 _base_client.py INFO Retrying request to /chat/completions in 0.461662 seconds
+2026-08-28 04:52:00 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:52:00 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:52:00 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 04:52:00 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'to_path', 'context': 'django utils path conversion template autoreload pathlib normalization', 'top_k': 5}))
+```
+2026-08-28 04:52:01 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:52:05 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:52:05 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:52:05 auto_search_main.py INFO OBSERVATION:
+Found 177 candidates for `to_path`. Showing top 5 by relevance:
+1. [score=91] ToPathTests.test_to_path
+   tests/utils_tests/test_os_utils.py:33
+               "{}path".format(os.path.sep),
+           )
+   
+           drive, path = os.path.splitdrive(safe_join("/", ""))
+           self.assertEqual(
+               path,
+               os.path.sep,
+           )
+   
+       def test_parent_path(self):
+           with self.assertRaises(SuspiciousFileOperation):
+               safe_join("/abc/", "../def")
+   
+   
+   class ToPathTests(unittest.TestCase):
+       def test_to_path(self):
+           for path in ("/tmp/some_file.txt", Path("/tmp/some_file.txt")):
+               with self.subTest(path):
+                   self.assertEqual(to_path(path), Path("/tmp/some_file.txt"))
+   
+       def test_to_path_invalid_value(self):
+           with self.assertRaises(TypeError):
+               to_path(42)
+   
+2. [score=88] iter_format_modules.format_module_path
+   django/utils/formats.py:62
+       ]
+   )
+   
+   
+   def reset_format_cache():
+       """Clear any cached formats.
+   
+       This method is provided primarily for testing purposes,
+       so that the effects of cached formats can be removed.
+       """
+       global _format_cache, _format_modules_cache
+       _format_cache = {}
+       _format_modules_cache = {}
+   
+   
+   def iter_format_modules(lang, format_module_path=None):
+       """Find format modules."""
+       if not check_for_language(lang):
+           return
+   
+       if format_module_path is None:
+           format_module_path = settings.FORMAT_MODULE_PATH
+   
+       format_locations = []
+       if format_module_path:
+           if isinstance(format_module_path, str):
+               format_module_path = [format_module_path]
+           for path in format_module_path:
+               format_locations.append(path + ".%s")
+       format_locations.append("django.conf.locale.%s")
+       locale = to_locale(lang)
+3. [score=80] watch_for_template_changes
+   django/template/autoreload.py:42
+                   for directory in loader.get_dirs()
+                   if not is_django_path(directory)
+               )
+       return items
+   
+   
+   def reset_loaders():
+       for backend in engines.all():
+           if not isinstance(backend, DjangoTemplates):
+               continue
+           for loader in backend.engine.template_loaders:
+               loader.reset()
+   
+   
+   @receiver(autoreload_started, dispatch_uid="template_loaders_watch_changes")
+   def watch_for_template_changes(sender, **kwargs):
+       for directory in get_template_directories():
+           sender.watch_dir(directory, "**/*")
+   
+   
+   @receiver(file_changed, dispatch_uid="template_loaders_file_changed")
+   def template_changed(sender, file_path, **kwargs):
+       if file_path.suffix == ".py":
+           return
+       for template_dir in get_template_directories():
+           if template_dir in file_path.parents:
+               reset_loaders()
+               return True
+   
+4. [score=72] to_path
+   django/utils/_os.py:56
+       and/or if they are allowed to be created (e.g. on Windows it requires admin
+       permissions).
+       """
+       with tempfile.TemporaryDirectory() as temp_dir:
+           original_path = os.path.join(temp_dir, "original")
+           symlink_path = os.path.join(temp_dir, "symlink")
+           os.makedirs(original_path)
+           try:
+               os.symlink(original_path, symlink_path)
+               supported = True
+           except (OSError, NotImplementedError):
+               supported = False
+           return supported
+   
+   
+   def to_path(value):
+       """Convert value to a pathlib.Path instance, if not already a Path."""
+       if isinstance(value, Path):
+           return value
+       elif not isinstance(value, str):
+           raise TypeError("Invalid path type: %s" % type(value).__name__)
+       return Path(value)
+   
+5. [score=66] ZipArchive.extract.to_path
+   django/utils/archive.py:212
+                   finally:
+                       if extracted:
+                           extracted.close()
+   
+       def close(self):
+           self._archive.close()
+   
+   
+   class ZipArchive(BaseArchive):
+       def __init__(self, file):
+           self._archive = zipfile.ZipFile(file)
+   
+       def list(self, *args, **kwargs):
+           self._archive.printdir(*args, **kwargs)
+   
+       def extract(self, to_path):
+           namelist = self._archive.namelist()
+           leading = self.has_leading_dir(namelist)
+           for name in namelist:
+               data = self._archive.read(name)
+               info = self._archive.getinfo(name)
+               if leading:
+                   name = self.split_leading_dir(name)[1]
+               if not name:
+                   continue
+               filename = self.target_filename(to_path, name)
+               if name.endswith(("/", "\\")):
+                   # A directory
+                   os.makedirs(filename, exist_ok=True)
+               else:
+                   dirname = os.path.dirname(filename)
+
+172 more candidates cached. Call `more_symbols(name="to_path")` for the next batch.
+[symbol-locator] [scorer] usage pid=838347 calls=5 p=47648 c=353
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 04:52:05 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'TemplateReloadTests', 'context': 'autoreload template dirs empty string regression test', 'kind_filter': [5], 'top_k': 5}))
+```
+2026-08-28 04:52:05 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:52:07 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:52:07 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:52:07 auto_search_main.py INFO OBSERVATION:
+Found 2 candidates for `TemplateReloadTests`. Showing top 2 by relevance:
+1. [score=92] TemplateReloadTests
+   tests/template_tests/test_autoreloader.py:34
+           {
+               "BACKEND": "django.template.backends.django.DjangoTemplates",
+               "DIRS": [EXTRA_TEMPLATES_DIR],
+               "OPTIONS": {
+                   "context_processors": [
+                       "django.template.context_processors.request",
+                   ],
+                   "loaders": [
+                       "django.template.loaders.filesystem.Loader",
+                       "django.template.loaders.app_directories.Loader",
+                   ],
+               },
+           },
+       ],
+   )
+   class TemplateReloadTests(SimpleTestCase):
+       @mock.patch("django.template.autoreload.reset_loaders")
+       def test_template_changed(self, mock_reset):
+           template_path = Path(__file__).parent / "templates" / "index.html"
+           self.assertTrue(autoreload.template_changed(None, template_path))
+           mock_reset.assert_called_once()
+   
+       @mock.patch("django.template.autoreload.reset_loaders")
+       def test_non_template_changed(self, mock_reset):
+           self.assertIsNone(autoreload.template_changed(None, Path(__file__)))
+           mock_reset.assert_not_called()
+   
+       @override_settings(
+           TEMPLATES=[
+               {
+                   "DIRS": [ROOT],
+2. [score=18] Jinja2TemplateReloadTests
+   tests/template_tests/test_autoreloader.py:109
+           ]
+       )
+       def test_template_dirs_normalized_to_paths(self):
+           self.assertSetEqual(
+               autoreload.get_template_directories(),
+               {
+                   ROOT / "absolute_str",
+                   Path.cwd() / "template_tests/relative_str",
+                   Path.cwd() / "template_tests/relative_path",
+               },
+           )
+   
+   
+   @require_jinja2
+   @override_settings(INSTALLED_APPS=["template_tests"])
+   class Jinja2TemplateReloadTests(SimpleTestCase):
+       def test_watch_for_template_changes(self):
+           mock_reloader = mock.MagicMock()
+           autoreload.watch_for_template_changes(mock_reloader)
+           self.assertSequenceEqual(
+               sorted(mock_reloader.watch_dir.call_args_list),
+               [
+                   mock.call(ROOT / "templates", "**/*"),
+               ],
+           )
+   
+       def test_get_template_directories(self):
+           self.assertSetEqual(
+               autoreload.get_template_directories(),
+               {
+                   ROOT / "templates",
+[symbol-locator] [scorer] usage pid=838347 calls=6 p=52997 c=364
+[symbol-locator] [scorer] parsed 2/2 scores from LLM
+
+2026-08-28 04:52:07 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['filter(None', "['']", 'TEMPLATES_DIRS', 'template_changed(', 'watch_for_template_changes'], 'file_path_or_pattern': 'tests/**/*.py'}))
+```
+2026-08-28 04:52:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:52:10 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:52:10 repo_ops.py WARNING list index out of range. Probably because the query `['']` is too short.
+2026-08-28 04:52:11 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:52:12 repo_ops.py WARNING list index out of range. Probably because the query `['']` is too short.
+2026-08-28 04:52:12 auto_search_main.py INFO OBSERVATION:
+django/template/library.py:Library.filter
+django/contrib/gis/gdal/layer.py:Layer._set_spatial_filter
+django/db/models/aggregates.py:Aggregate.__init__
+django/db/models/aggregates.py:Aggregate
+django/db/models/aggregates.py:Aggregate.get_source_fields
+django/db/models/aggregates.py:Aggregate.get_source_expressions
+django/db/models/aggregates.py:Aggregate.set_source_expressions
+django/template/base.py:FilterExpression.__init__
+django/template/base.py:FilterExpression
+django/template/defaulttags.py:csrf_token
+django/template/defaulttags.py:do_filter
+django/template/defaulttags.py:debug
+django/db/models/aggregates.py:Aggregate._get_repr_options
+django/db/models/aggregates.py:Aggregate.as_sql
+django/db/models/aggregates.py:Aggregate.default_alias
+django/db/models/aggregates.py:Aggregate.get_group_by_cols
+django/template/defaultfilters.py:time
+django/template/defaultfilters.py:default
+django/template/defaultfilters.py:divisibleby
+django/template/defaultfilters.py:date
+django/template/defaultfilters.py:timeuntil_filter
+django/template/defaultfilters.py:default_if_none
+django/template/defaultfilters.py:get_digit
+django/template/defaultfilters.py:timesince_filter
+django/contrib/admin/filters.py:ListFilter.queryset
+django/contrib/admin/filters.py:ListFilter.has_output
+django/contrib/admin/filters.py:ListFilter
+django/contrib/admin/filters.py:ListFilter.choices
+django/contrib/admin/filters.py:ListFilter.__init__
+django/contrib/admin/filters.py:ListFilter.expected_parameters
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mIndexError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[1], line 1[0m
+[0;32m----> 1[0m [38;5;28mprint[39m([43msearch_code_snippets[49m[43m([49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43m{[49m[38;5;124;43m'[39;49m[38;5;124;43msearch_terms[39;49m[38;5;124;43m'[39;49m[43m:[49m[43m [49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mfilter(None[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43m[[39;49m[38;5;124;43m'[39;49m[38;5;124;43m'[39;49m[38;5;124;43m][39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mTEMPLATES_DIRS[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mtemplate_changed([39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mwatch_for_template_changes[39;49m[38;5;124;43m'[39;49m[43m][49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mfile_path_or_pattern[39;49m[38;5;124;43m'[39;49m[43m:[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mtests/**/*.py[39;49m[38;5;124;43m'[39;49m[43m}[49m[43m)[49m)
+
+File [0;32m/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/third_party/LocAgent/plugins/location_tools/repo_ops/repo_ops.py:586[0m, in [0;36msearch_code_snippets[0;34m(search_terms, line_nums, file_path_or_pattern)[0m
+[1;32m    584[0m [38;5;66;03m# search content[39;00m
+[1;32m    585[0m [38;5;28;01mif[39;00m continue_search:
+[0;32m--> 586[0m     query_results [38;5;241m=[39m [43mbm25_content_retrieve[49m[43m([49m[43mquery_info[49m[38;5;241;43m=[39;49m[43mquery_info[49m[43m,[49m[43m [49m[43minclude_files[49m[38;5;241;43m=[39;49m[43minclude_files[49m[43m)[49m
+[1;32m    587[0m     cur_query_results[38;5;241m.[39mextend(query_results)
+[1;32m    589[0m [38;5;28;01melif[39;00m i [38;5;241m!=[39m ([38;5;28mlen[39m(filter_terms)[38;5;241m-[39m[38;5;241m1[39m):
+
+File [0;32m/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/third_party/LocAgent/plugins/location_tools/repo_ops/repo_ops.py:781[0m, in [0;36mbm25_content_retrieve[0;34m(query_info, include_files, similarity_top_k)[0m
+[1;32m    779[0m [38;5;66;03m# similarity: {score}[39;00m
+[1;32m    780[0m cur_query_results [38;5;241m=[39m []
+[0;32m--> 781[0m retrieved_nodes [38;5;241m=[39m [43mretriever[49m[38;5;241;43m.[39;49m[43mretrieve[49m[43m([49m[43mquery[49m[43m)[49m
+[1;32m    782[0m [38;5;28;01mfor[39;00m node [38;5;129;01min[39;00m retrieved_nodes:
+[1;32m    783[0m     file [38;5;241m=[39m node[38;5;241m.[39mmetadata[[38;5;124m'[39m[38;5;124mfile_path[39m[38;5;124m'[39m]
+
+File [0;32m/data/workspace/miniforge3-symbol-locator-20260823-065758/envs/locagent/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py:311[0m, in [0;36mDispatcher.span.<locals>.wrapper[0;34m(func, instance, args, kwargs)[0m
+[1;32m    308[0m             _logger[38;5;241m.[39mdebug([38;5;124mf[39m[38;5;124m"[39m[38;5;124mFailed to reset active_span_id: [39m[38;5;132;01m{[39;00me[38;5;132;01m}[39;00m[38;5;124m"[39m)
+[1;32m    310[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 311[0m     result [38;5;241m=[39m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    312[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, asyncio[38;5;241m.[39mFuture):
+[1;32m    313[0m         [38;5;66;03m# If the result is a Future, wrap it[39;00m
+[1;32m    314[0m         new_future [38;5;241m=[39m asyncio[38;5;241m.[39mensure_future(result)
+
+File [0;32m/data/workspace/miniforge3-symbol-locator-20260823-065758/envs/locagent/lib/python3.12/site-packages/llama_index/core/base/base_retriever.py:245[0m, in [0;36mBaseRetriever.retrieve[0;34m(self, str_or_query_bundle)[0m
+[1;32m    240[0m [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39mcallback_manager[38;5;241m.[39mas_trace([38;5;124m"[39m[38;5;124mquery[39m[38;5;124m"[39m):
+[1;32m    241[0m     [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39mcallback_manager[38;5;241m.[39mevent(
+[1;32m    242[0m         CBEventType[38;5;241m.[39mRETRIEVE,
+[1;32m    243[0m         payload[38;5;241m=[39m{EventPayload[38;5;241m.[39mQUERY_STR: query_bundle[38;5;241m.[39mquery_str},
+[1;32m    244[0m     ) [38;5;28;01mas[39;00m retrieve_event:
+[0;32m--> 245[0m         nodes [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_retrieve[49m[43m([49m[43mquery_bundle[49m[43m)[49m
+[1;32m    246[0m         nodes [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_handle_recursive_retrieval(query_bundle, nodes)
+[1;32m    247[0m         retrieve_event[38;5;241m.[39mon_end(
+[1;32m    248[0m             payload[38;5;241m=[39m{EventPayload[38;5;241m.[39mNODES: nodes},
+[1;32m    249[0m         )
+
+File [0;32m/data/workspace/miniforge3-symbol-locator-20260823-065758/envs/locagent/lib/python3.12/site-packages/llama_index/core/instrumentation/dispatcher.py:311[0m, in [0;36mDispatcher.span.<locals>.wrapper[0;34m(func, instance, args, kwargs)[0m
+[1;32m    308[0m             _logger[38;5;241m.[39mdebug([38;5;124mf[39m[38;5;124m"[39m[38;5;124mFailed to reset active_span_id: [39m[38;5;132;01m{[39;00me[38;5;132;01m}[39;00m[38;5;124m"[39m)
+[1;32m    310[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 311[0m     result [38;5;241m=[39m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    312[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(result, asyncio[38;5;241m.[39mFuture):
+[1;32m    313[0m         [38;5;66;03m# If the result is a Future, wrap it[39;00m
+[1;32m    314[0m         new_future [38;5;241m=[39m asyncio[38;5;241m.[39mensure_future(result)
+
+File [0;32m/data/workspace/miniforge3-symbol-locator-20260823-065758/envs/locagent/lib/python3.12/site-packages/llama_index/retrievers/bm25/base.py:166[0m, in [0;36mBM25Retriever._retrieve[0;34m(self, query_bundle)[0m
+[1;32m    162[0m query [38;5;241m=[39m query_bundle[38;5;241m.[39mquery_str
+[1;32m    163[0m tokenized_query [38;5;241m=[39m bm25s[38;5;241m.[39mtokenize(
+[1;32m    164[0m     query, stemmer[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mstemmer, show_progress[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39m_verbose
+[1;32m    165[0m )
+[0;32m--> 166[0m indexes, scores [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mbm25[49m[38;5;241;43m.[39;49m[43mretrieve[49m[43m([49m
+[1;32m    167[0m [43m    [49m[43mtokenized_query[49m[43m,[49m[43m [49m[43mk[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msimilarity_top_k[49m[43m,[49m[43m [49m[43mshow_progress[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_verbose[49m
+[1;32m    168[0m [43m[49m[43m)[49m
+[1;32m    170[0m [38;5;66;03m# batched, but only one query[39;00m
+[1;32m    171[0m indexes [38;5;241m=[39m indexes[[38;5;241m0[39m]
+
+File [0;32m/data/workspace/miniforge3-symbol-locator-20260823-065758/envs/locagent/lib/python3.12/site-packages/bm25s/__init__.py:736[0m, in [0;36mBM25.retrieve[0;34m(self, query_tokens, corpus, k, sorted, return_as, show_progress, leave_progress, n_threads, chunksize, backend_selection, weight_mask)[0m
+[1;32m    729[0m         process_map [38;5;241m=[39m executor[38;5;241m.[39mmap(
+[1;32m    730[0m             topk_fn,
+[1;32m    731[0m             query_tokens,
+[1;32m    732[0m             chunksize[38;5;241m=[39mchunksize,
+[1;32m    733[0m         )
+[1;32m    734[0m         out [38;5;241m=[39m [38;5;28mlist[39m(tqdm(process_map, [38;5;241m*[39m[38;5;241m*[39mtqdm_kwargs))
+[0;32m--> 736[0m scores, indices [38;5;241m=[39m [38;5;28;43mzip[39;49m[43m([49m[38;5;241;43m*[39;49m[43mout[49m[43m)[49m
+[1;32m    737[0m scores, indices [38;5;241m=[39m np[38;5;241m.[39marray(scores), np[38;5;241m.[39marray(indices)
+[1;32m    739[0m corpus [38;5;241m=[39m corpus [38;5;28;01mif[39;00m corpus [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m [38;5;28mself[39m[38;5;241m.[39mcorpus
+
+File [0;32m/data/workspace/miniforge3-symbol-locator-20260823-065758/envs/locagent/lib/python3.12/site-packages/tqdm/std.py:1169[0m, in [0;36mtqdm.__iter__[0;34m(self)[0m
+[1;32m   1166[0m [38;5;66;03m# If the bar is disabled, then just walk the iterable[39;00m
+[1;32m   1167[0m [38;5;66;03m# (note: keep this check outside the loop for performance)[39;00m
+[1;32m   1168[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mdisable:
+[0;32m-> 1169[0m [43m    [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43mobj[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43miterable[49m[43m:[49m
+[1;32m   1170[0m [43m        [49m[38;5;28;43;01myield[39;49;00m[43m [49m[43mobj[49m
+[1;32m   1171[0m     [38;5;28;01mreturn[39;00m
+
+File [0;32m/data/workspace/miniforge3-symbol-locator-20260823-065758/envs/locagent/lib/python3.12/site-packages/bm25s/__init__.py:529[0m, in [0;36mBM25._get_top_k_results[0;34m(self, query_tokens_single, k, backend, sorted, weight_mask)[0m
+[1;32m    516[0m [38;5;28;01mdef[39;00m [38;5;21m_get_top_k_results[39m(
+[1;32m    517[0m     [38;5;28mself[39m,
+[1;32m    518[0m     query_tokens_single: List[[38;5;28mstr[39m],
+[0;32m   (...)[0m
+[1;32m    522[0m     weight_mask: np[38;5;241m.[39mndarray [38;5;241m=[39m [38;5;28;01mNone[39;00m,
+[1;32m    523[0m ):
+[1;32m    524[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[1;32m    525[0m [38;5;124;03m    This function is used to retrieve the top-k results for a single query.[39;00m
+[1;32m    526[0m [38;5;124;03m    Since it's a hidden function, the user should not call it directly and[39;00m
+[1;32m    527[0m [38;5;124;03m    may change in the future. Please use the `retrieve` function instead.[39;00m
+[1;32m    528[0m [38;5;124;03m    """[39;00m
+[0;32m--> 529[0m     scores_q [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mget_scores[49m[43m([49m[43mquery_tokens_single[49m[43m,[49m[43m [49m[43mweight_mask[49m[38;5;241;43m=[39;49m[43mweight_mask[49m[43m)[49m
+[1;32m    530[0m     [38;5;28;01mif[39;00m backend[38;5;241m.[39mstartswith([38;5;124m'[39m[38;5;124mnumba[39m[38;5;124m'[39m):
+[1;32m    531[0m         [38;5;28;01mif[39;00m selection_jit [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m/data/workspace/miniforge3-symbol-locator-20260823-065758/envs/locagent/lib/python3.12/site-packages/bm25s/__init__.py:506[0m, in [0;36mBM25.get_scores[0;34m(self, query_tokens_single, weight_mask)[0m
+[1;32m    503[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(query_tokens_single, [38;5;28mlist[39m):
+[1;32m    504[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mThe query_tokens must be a list of tokens.[39m[38;5;124m"[39m)
+[0;32m--> 506[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m([43mquery_tokens_single[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m, [38;5;28mstr[39m):
+[1;32m    507[0m     query_tokens_ids [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mget_tokens_ids(query_tokens_single)
+[1;32m    508[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(query_tokens_single[[38;5;241m0[39m], [38;5;28mint[39m):
+[1;32m    509[0m     [38;5;66;03m# already are token IDs, no need to convert[39;00m
+
+[0;31mIndexError[0m: list index out of range
+
+2026-08-28 04:52:12 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:52:58 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:52:58 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:52:58 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 04:52:58 auto_search_main.py INFO ===============
+2026-08-28 04:52:58 auto_search_main.py INFO Final response generated content_length=258
+2026-08-28 04:52:58 auto_search_main.py INFO ==== localizing django__django-15572 succeed, process multiple loc outputs ====
+2026-08-28 04:52:58 cost_analysis.py INFO input_tokens=91472, output_tokens=658, cost=0.23
+2026-08-28 04:52:59 auto_search_main.py INFO Total time: 12.0110 min

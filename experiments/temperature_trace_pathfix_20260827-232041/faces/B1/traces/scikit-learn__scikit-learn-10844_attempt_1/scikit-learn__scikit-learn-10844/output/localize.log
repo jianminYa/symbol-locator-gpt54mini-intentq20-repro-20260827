@@ -1,0 +1,2128 @@
+2026-08-28 04:06:55 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 04:06:55 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 04:06:55 auto_search_main.py INFO ============================================================
+2026-08-28 04:06:55 auto_search_main.py INFO ==== rank 0 setup localize scikit-learn__scikit-learn-10844 ====
+2026-08-28 04:06:55 install.py INFO hook: set_current_issue fired
+2026-08-28 04:06:55 git_repo_manager.py INFO Clone Github repo https://github.com/scikit-learn/scikit-learn.git to playground/544a99e8-b4ba-4afa-bffe-43a99673348e/scikit-learn_scikit-learn and checkout commit HEAD
+2026-08-28 04:06:55 git_repo_manager.py INFO Directory 'playground/544a99e8-b4ba-4afa-bffe-43a99673348e/scikit-learn_scikit-learn' was created.
+2026-08-28 04:06:55 install.py INFO setup_repo returned: playground/544a99e8-b4ba-4afa-bffe-43a99673348e/scikit-learn_scikit-learn -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844
+2026-08-28 04:07:01 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844 files=693 indexed=693 failed=0
+2026-08-28 04:07:30 repo_ops.py INFO [0] Processed scikit-learn__scikit-learn-10844
+2026-08-28 04:07:30 auto_search_main.py INFO ============================================================
+2026-08-28 04:07:30 auto_search_main.py INFO ==== rank 0 begin localizing scikit-learn__scikit-learn-10844 ====
+2026-08-28 04:07:30 auto_search_main.py INFO ============================================================
+2026-08-28 04:07:30 auto_search_main.py INFO ==== scikit-learn__scikit-learn-10844 Count down: attempt 1 ====
+2026-08-28 04:07:30 auto_search_main.py INFO ==== scikit-learn__scikit-learn-10844 start auto search ====
+2026-08-28 04:07:37 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:07:41 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:07:41 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:07:41 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 04:07:41 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'fowlkes_mallows_score', 'context': 'sklearn metrics cluster supervised overflow RuntimeWarning', 'kind_filter': [12], 'top_k': 5}))
+```
+2026-08-28 04:07:42 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:07:44 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:07:44 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:07:44 auto_search_main.py INFO OBSERVATION:
+Found 3 candidates for `fowlkes_mallows_score`. Showing top 3 by relevance:
+1. [score=95] fowlkes_mallows_score
+   sklearn/metrics/cluster/supervised.py:787
+       if (classes.shape[0] == clusters.shape[0] == 1 or
+               classes.shape[0] == clusters.shape[0] == 0):
+           return 1.0
+       contingency = contingency_matrix(labels_true, labels_pred, sparse=True)
+       contingency = contingency.astype(np.float64)
+       # Calculate the MI for the two clusterings
+       mi = mutual_info_score(labels_true, labels_pred,
+                              contingency=contingency)
+       # Calculate the expected value for the mutual information
+       # Calculate entropy for each labeling
+       h_true, h_pred = entropy(labels_true), entropy(labels_pred)
+       nmi = mi / max(np.sqrt(h_true * h_pred), 1e-10)
+       return nmi
+   
+   
+   def fowlkes_mallows_score(labels_true, labels_pred, sparse=False):
+       """Measure the similarity of two clusterings of a set of points.
+   
+       The Fowlkes-Mallows index (FMI) is defined as the geometric mean between of
+       the precision and recall::
+   
+           FMI = TP / sqrt((TP + FP) * (TP + FN))
+   
+       Where ``TP`` is the number of **True Positive** (i.e. the number of pair of
+       points that belongs in the same clusters in both ``labels_true`` and
+       ``labels_pred``), ``FP`` is the number of **False Positive** (i.e. the
+       number of pair of points that belongs in the same clusters in
+       ``labels_true`` and not in ``labels_pred``) and ``FN`` is the number of
+       **False Negative** (i.e the number of pair of points that belongs in the
+       same clusters in ``labels_pred`` and not in ``labels_True``).
+   
+2. [score=15] test_fowlkes_mallows_score_properties
+   sklearn/metrics/cluster/tests/test_supervised.py:256
+       score = fowlkes_mallows_score([0, 0, 0, 1, 1, 1],
+                                     [0, 0, 1, 1, 2, 2])
+       assert_almost_equal(score, 4. / np.sqrt(12. * 6.))
+   
+       # Perfect match but where the label names changed
+       perfect_score = fowlkes_mallows_score([0, 0, 0, 1, 1, 1],
+                                             [1, 1, 1, 0, 0, 0])
+       assert_almost_equal(perfect_score, 1.)
+   
+       # Worst case
+       worst_score = fowlkes_mallows_score([0, 0, 0, 0, 0, 0],
+                                           [0, 1, 2, 3, 4, 5])
+       assert_almost_equal(worst_score, 0.)
+   
+   
+   def test_fowlkes_mallows_score_properties():
+       # handcrafted example
+       labels_a = np.array([0, 0, 0, 1, 1, 2])
+       labels_b = np.array([1, 1, 2, 2, 0, 0])
+       expected = 1. / np.sqrt((1. + 3.) * (1. + 2.))
+       # FMI = TP / sqrt((TP + FP) * (TP + FN))
+   
+       score_original = fowlkes_mallows_score(labels_a, labels_b)
+       assert_almost_equal(score_original, expected)
+   
+       # symmetric property
+       score_symmetric = fowlkes_mallows_score(labels_b, labels_a)
+       assert_almost_equal(score_symmetric, expected)
+   
+       # permutation property
+       score_permuted = fowlkes_mallows_score((labels_a + 1) % 3, labels_b)
+3. [score=10] test_fowlkes_mallows_score
+   sklearn/metrics/cluster/tests/test_supervised.py:239
+           assert_equal(adjusted_mutual_info_score(labels_a, labels_b), 0.0)
+           assert_equal(normalized_mutual_info_score(labels_a, labels_b), 0.0)
+   
+   
+   def test_v_measure_and_mutual_information(seed=36):
+       # Check relation between v_measure, entropy and mutual information
+       for i in np.logspace(1, 4, 4).astype(np.int):
+           random_state = np.random.RandomState(seed)
+           labels_a, labels_b = (random_state.randint(0, 10, i),
+                                 random_state.randint(0, 10, i))
+           assert_almost_equal(v_measure_score(labels_a, labels_b),
+                               2.0 * mutual_info_score(labels_a, labels_b) /
+                               (entropy(labels_a) + entropy(labels_b)), 0)
+   
+   
+   def test_fowlkes_mallows_score():
+       # General case
+       score = fowlkes_mallows_score([0, 0, 0, 1, 1, 1],
+                                     [0, 0, 1, 1, 2, 2])
+       assert_almost_equal(score, 4. / np.sqrt(12. * 6.))
+   
+       # Perfect match but where the label names changed
+       perfect_score = fowlkes_mallows_score([0, 0, 0, 1, 1, 1],
+                                             [1, 1, 1, 0, 0, 0])
+       assert_almost_equal(perfect_score, 1.)
+   
+       # Worst case
+       worst_score = fowlkes_mallows_score([0, 0, 0, 0, 0, 0],
+                                           [0, 1, 2, 3, 4, 5])
+       assert_almost_equal(worst_score, 0.)
+   
+[symbol-locator] [pyright] [FG] Long operation: checking: file:///data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844/benchmarks/bench_20newsgroups.py (3909ms)
+[symbol-locator] [pyright] [FG] Long operation: analyzing: file:///data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844/benchmarks/bench_20newsgroups.py (3909ms)
+[symbol-locator] [scorer] usage pid=822178 calls=1 p=6179 c=15
+[symbol-locator] [scorer] parsed 3/3 scores from LLM
+
+2026-08-28 04:07:44 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['fowlkes_mallows_score', 'pk * qk', 'RuntimeWarning', 'supervised.py']}))
+```
+2026-08-28 04:07:45 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:07:46 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:07:46 git_repo_manager.py INFO Clone Github repo https://github.com/scikit-learn/scikit-learn.git to playground/544a99e8-b4ba-4afa-bffe-43a99673348e/scikit-learn_scikit-learn and checkout commit HEAD
+2026-08-28 04:07:46 install.py INFO setup_repo returned: playground/544a99e8-b4ba-4afa-bffe-43a99673348e/scikit-learn_scikit-learn -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844
+2026-08-28 04:07:46 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844 files=0 indexed=0 failed=0
+2026-08-28 04:07:52 epic_split.py WARNING Failed to use epic splitter to split doc/tutorial/machine_learning_map/parse_path.py. Fallback to treesitter_split(). Error: Failed to parse code block with type CodeBlockType.COMMENT and content `"""
+Based on: http://wxpsvg.googlecode.com/svn/trunk/svg/pathdata.py
+According to that project, this file is licensed under the LGPL
+"""`. Expected pre_code to only contain spaces and line breaks. Got `
+
+`
+2026-08-28 04:07:52 epic_split.py WARNING Failed to use epic splitter to split doc/tutorial/machine_learning_map/pyparsing.py. Fallback to treesitter_split(). Error: Failed to parse code block with type CodeBlockType.ASSIGNMENT and content `__doc__ =`. Expected pre_code to only contain spaces and line breaks. Got `
+
+`
+2026-08-28 04:07:52 epic_split.py WARNING Failed to use epic splitter to split doc/tutorial/machine_learning_map/svg2imagemap.py. Fallback to treesitter_split(). Error: Failed to parse code block with type CodeBlockType.COMMENT and content `"""
+This script converts a subset of SVG into an HTML imagemap
+
+Note *subset*.  It only handles <path> elements, for which it only pays
+attention to the M and L commands.  Further, it only notices the "translate"
+transform.
+
+It was written to generate the examples in the documentation for maphilight,
+and thus is very squarely aimed at handling several SVG maps from wikipedia.
+It *assumes* that all the <path>s it will need are inside a <g>.  Any <path>
+outside of a <g> will be ignored.
+
+It takes several possible arguments, in the form:
+$ svn2imagemap.py FILENAME [x y [group1 group2 ... groupN]]
+
+FILENAME must be the name of an SVG file.  All other arguments are optional.
+
+x and y, if present, are the dimensions of the image you'll be creating from
+the SVG.  If not present, it assumes the values of the width and height
+attributes in the SVG file.
+
+group1 through groupN are group ids.  If only want particular groups used,
+enter their ids here and all others will be ignored.
+"""`. Expected pre_code to only contain spaces and line breaks. Got `
+
+`
+2026-08-28 04:09:01 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:03 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:03 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:04 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:05 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:05 auto_search_main.py INFO OBSERVATION:
+sklearn/metrics/cluster/supervised.py:fowlkes_mallows_score
+sklearn/utils/optimize.py:_line_search_wolfe12
+sklearn/utils/optimize.py:newton_cg
+sklearn/decomposition/dict_learning.py:MiniBatchDictionaryLearning.__init__
+sklearn/decomposition/dict_learning.py:DictionaryLearning
+sklearn/decomposition/dict_learning.py:SparseCoder
+sklearn/decomposition/dict_learning.py:MiniBatchDictionaryLearning.fit
+sklearn/decomposition/dict_learning.py:DictionaryLearning.fit
+sklearn/decomposition/dict_learning.py:MiniBatchDictionaryLearning
+sklearn/linear_model/omp.py:_cholesky_omp
+sklearn/linear_model/omp.py:_gram_omp
+sklearn/covariance/robust_covariance.py:_c_step
+sklearn/exceptions.py:FitFailedWarning
+sklearn/utils/estimator_checks.py:check_supervised_y_2d
+sklearn/utils/extmath.py:stable_cumsum
+sklearn/model_selection/_search.py:BaseSearchCV.fit
+sklearn/cluster/k_means_.py:_init_centroids
+sklearn/model_selection/_validation.py:_fit_and_predict
+sklearn/metrics/cluster/supervised.py:fowlkes_mallows_score
+sklearn/utils/optimize.py:_line_search_wolfe12
+sklearn/linear_model/omp.py:_cholesky_omp
+sklearn/utils/optimize.py:newton_cg
+sklearn/linear_model/omp.py:_gram_omp
+sklearn/covariance/robust_covariance.py:_c_step
+sklearn/exceptions.py:FitFailedWarning
+sklearn/utils/estimator_checks.py:check_supervised_y_2d
+##Searching for term "fowlkes_mallows_score", "pk * qk", "pk * qk RuntimeWarning"...
+### Search Result:
+Found function `sklearn/metrics/cluster/supervised.py:fowlkes_mallows_score`.
+Source: Match found for entity name `fowlkes_mallows_score`.
+```
+787 | def fowlkes_mallows_score(labels_true, labels_pred, sparse=False):
+788 |     """Measure the similarity of two clusterings of a set of points.
+789 | 
+790 |     The Fowlkes-Mallows index (FMI) is defined as the geometric mean between of
+791 |     the precision and recall::
+792 | 
+793 |         FMI = TP / sqrt((TP + FP) * (TP + FN))
+794 | 
+795 |     Where ``TP`` is the number of **True Positive** (i.e. the number of pair of
+796 |     points that belongs in the same clusters in both ``labels_true`` and
+797 |     ``labels_pred``), ``FP`` is the number of **False Positive** (i.e. the
+798 |     number of pair of points that belongs in the same clusters in
+799 |     ``labels_true`` and not in ``labels_pred``) and ``FN`` is the number of
+800 |     **False Negative** (i.e the number of pair of points that belongs in the
+801 |     same clusters in ``labels_pred`` and not in ``labels_True``).
+802 | 
+803 |     The score ranges from 0 to 1. A high value indicates a good similarity
+804 |     between two clusters.
+805 | 
+806 |     Read more in the :ref:`User Guide <fowlkes_mallows_scores>`.
+807 | 
+808 |     Parameters
+809 |     ----------
+810 |     labels_true : int array, shape = (``n_samples``,)
+811 |         A clustering of the data into disjoint subsets.
+812 | 
+813 |     labels_pred : array, shape = (``n_samples``, )
+814 |         A clustering of the data into disjoint subsets.
+815 | 
+816 |     sparse : bool
+817 |         Compute contingency matrix internally with sparse matrix.
+818 | 
+819 |     Returns
+820 |     -------
+821 |     score : float
+822 |        The resulting Fowlkes-Mallows score.
+823 | 
+824 |     Examples
+825 |     --------
+826 | 
+827 |     Perfect labelings are both homogeneous and complete, hence have
+828 |     score 1.0::
+829 | 
+830 |       >>> from sklearn.metrics.cluster import fowlkes_mallows_score
+831 |       >>> fowlkes_mallows_score([0, 0, 1, 1], [0, 0, 1, 1])
+832 |       1.0
+833 |       >>> fowlkes_mallows_score([0, 0, 1, 1], [1, 1, 0, 0])
+834 |       1.0
+835 | 
+836 |     If classes members are completely split across different clusters,
+837 |     the assignment is totally random, hence the FMI is null::
+838 | 
+839 |       >>> fowlkes_mallows_score([0, 0, 0, 0], [0, 1, 2, 3])
+840 |       0.0
+841 | 
+842 |     References
+843 |     ----------
+844 |     .. [1] `E. B. Fowkles and C. L. Mallows, 1983. "A method for comparing two
+845 |        hierarchical clusterings". Journal of the American Statistical
+846 |        Association
+847 |        <http://wildfire.stat.ucla.edu/pdflibrary/fowlkes.pdf>`_
+848 | 
+849 |     .. [2] `Wikipedia entry for the Fowlkes-Mallows Index
+850 |            <https://en.wikipedia.org/wiki/Fowlkes-Mallows_index>`_
+851 |     """
+852 |     labels_true, labels_pred = check_clusterings(labels_true, labels_pred)
+853 |     n_samples, = labels_true.shape
+854 | 
+855 |     c = contingency_matrix(labels_true, labels_pred, sparse=True)
+856 |     tk = np.dot(c.data, c.data) - n_samples
+857 |     pk = np.sum(np.asarray(c.sum(axis=0)).ravel() ** 2) - n_samples
+858 |     qk = np.sum(np.asarray(c.sum(axis=1)).ravel() ** 2) - n_samples
+859 |     return tk / np.sqrt(pk * qk) if tk != 0. else 0.
+```
+
+
+
+##Searching for term "pk * qk"...
+### Search Result:
+Found `sklearn/utils/_scipy_sparse_lsqr_backport.py:_sym_ortho`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 52 | from __future__ import division, print_function, absolute_import
+ 53 | 
+ 54 | __all__ = ['lsqr']
+ 55 | 
+ 56 | import numpy as np
+ 57 | from math import sqrt
+ 58 | from scipy.sparse.linalg.interface import aslinearoperator
+ 59 | 
+ 60 | eps = np.finfo(np.float64).eps
+ 61 | 
+ 62 | 
+ 63 | def _sym_ortho(a, b):
+ 64 |     """
+ 65 |     Stable implementation of Givens rotation.
+ 66 | 
+ 67 |     Notes
+ 68 |     -----
+ 69 |     The routine 'SymOrtho' was added for numerical stability. This is
+ 70 |     recommended by S.-C. Choi in [1]_.  It removes the unpleasant potential of
+ 71 |     ``1/eps`` in some important places (see, for example text following
+ 72 |     "Compute the next plane rotation Qk" in minres.py).
+ 73 | 
+ 74 |     References
+ 75 |     ----------
+ 76 |     .. [1] S.-C. Choi, "Iterative Methods for Singular Linear Equations
+ 77 |            and Least-Squares Problems", Dissertation,
+ 78 |            http://www.stanford.edu/group/SOL/dissertations/sou-cheng-choi-thesis.pdf
+ 79 | 
+ 80 |     """
+ 81 |     if b == 0:
+ 82 |         return np.sign(a), 0, abs(a)
+ 83 |     elif a == 0:
+ 84 |         return 0, np.sign(b), abs(b)
+ 85 |     elif abs(b) > abs(a):
+ 86 |         tau = a / b
+ 87 |         s = np.sign(b) / sqrt(1 + tau * tau)
+ 88 |         c = s * tau
+ 89 |         r = b / s
+ 90 |     else:
+ 91 |         tau = b / a
+ 92 |         c = np.sign(a) / sqrt(1+tau*tau)
+ 93 |         s = c * tau
+ 94 |         r = a / c
+ 95 |     return c, s, r
+```
+
+Found class `sklearn/decomposition/dict_learning.py:DictionaryLearning`.
+Source: Retrieved code content using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class DictionaryLearning(BaseEstimator, SparseCodingMixin):
+    def __init__(self, n_components=None, alpha=1, max_iter=1000, tol=1e-8,
+                 fit_algorithm='lars', transform_algorithm='omp',
+                 transform_n_nonzero_coefs=None, transform_alpha=None,
+                 n_jobs=1, code_init=None, dict_init=None, verbose=False,
+                 split_sign=False, random_state=None):
+...
+    def fit(self, X, y=None):
+
+```
+Hint: Search `sklearn/decomposition/dict_learning.py:DictionaryLearning` to get the full content if needed.
+
+Found file `setup.py`.
+Found file `sklearn/base.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "pk * qk", "RuntimeWarning"...
+### Search Result:
+Found file `sklearn/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `sklearn/__init__.py` for the full content if needed.
+
+
+
+##Searching for term "pk * qk", "pk * qk RuntimeWarning"...
+### Search Result:
+Found function `sklearn/utils/optimize.py:_line_search_wolfe12`.
+Source: Retrieved code content using keyword search (bm25).
+```
+27 | def _line_search_wolfe12(f, fprime, xk, pk, gfk, old_fval, old_old_fval,
+28 |                          **kwargs):
+29 |     """
+30 |     Same as line_search_wolfe1, but fall back to line_search_wolfe2 if
+31 |     suitable step length is not found, and raise an exception if a
+32 |     suitable step length is not found.
+33 | 
+34 |     Raises
+35 |     ------
+36 |     _LineSearchError
+37 |         If no suitable step size is found
+38 | 
+39 |     """
+40 |     ret = line_search_wolfe1(f, fprime, xk, pk, gfk,
+41 |                              old_fval, old_old_fval,
+42 |                              **kwargs)
+43 | 
+44 |     if ret[0] is None:
+45 |         # line search failed: try different one.
+46 |         ret = line_search_wolfe2(f, fprime, xk, pk, gfk,
+47 |                                  old_fval, old_old_fval, **kwargs)
+48 | 
+49 |     if ret[0] is None:
+50 |         raise _LineSearchError()
+51 | 
+52 |     return ret
+```
+
+Found function `sklearn/utils/optimize.py:newton_cg`.
+Source: Retrieved code content using keyword search (bm25).
+```
+114 | def newton_cg(grad_hess, func, grad, x0, args=(), tol=1e-4,
+115 |               maxiter=100, maxinner=200, line_search=True, warn=True):
+116 |     """
+117 |     Minimization of scalar function of one or more variables using the
+118 |     Newton-CG algorithm.
+119 | 
+120 |     Parameters
+121 |     ----------
+122 |     grad_hess : callable
+123 |         Should return the gradient and a callable returning the matvec product
+124 |         of the Hessian.
+125 | 
+126 |     func : callable
+127 |         Should return the value of the function.
+128 | 
+129 |     grad : callable
+130 |         Should return the function value and the gradient. This is used
+131 |         by the linesearch functions.
+132 | 
+133 |     x0 : array of float
+134 |         Initial guess.
+135 | 
+136 |     args : tuple, optional
+137 |         Arguments passed to func_grad_hess, func and grad.
+138 | 
+139 |     tol : float
+140 |         Stopping criterion. The iteration will stop when
+141 |         ``max{|g_i | i = 1, ..., n} <= tol``
+142 |         where ``g_i`` is the i-th component of the gradient.
+143 | 
+144 |     maxiter : int
+145 |         Number of Newton iterations.
+146 | 
+147 |     maxinner : int
+148 |         Number of CG iterations.
+149 | 
+150 |     line_search : boolean
+151 |         Whether to use a line search or not.
+152 | 
+153 |     warn : boolean
+154 |         Whether to warn when didn't converge.
+155 | 
+156 |     Returns
+157 |     -------
+158 |     xk : ndarray of float
+159 |         Estimated minimum.
+160 |     """
+161 |     x0 = np.asarray(x0).flatten()
+162 |     xk = x0
+163 |     k = 0
+164 | 
+165 |     if line_search:
+166 |         old_fval = func(x0, *args)
+167 |         old_old_fval = None
+168 | 
+169 |     # Outer loop: our Newton iteration
+170 |     while k < maxiter:
+171 |         # Compute a search direction pk by applying the CG method to
+172 |         #  del2 f(xk) p = - fgrad f(xk) starting from 0.
+173 |         fgrad, fhess_p = grad_hess(xk, *args)
+174 | 
+175 |         absgrad = np.abs(fgrad)
+176 |         if np.max(absgrad) < tol:
+177 |             break
+178 | 
+179 |         maggrad = np.sum(absgrad)
+180 |         eta = min([0.5, np.sqrt(maggrad)])
+181 |         termcond = eta * maggrad
+182 | 
+183 |         # Inner loop: solve the Newton update by conjugate gradient, to
+184 |         # avoid inverting the Hessian
+185 |         xsupi = _cg(fhess_p, fgrad, maxiter=maxinner, tol=termcond)
+186 | 
+187 |         alphak = 1.0
+188 | 
+189 |         if line_search:
+190 |             try:
+191 |                 alphak, fc, gc, old_fval, old_old_fval, gfkp1 = \
+192 |                     _line_search_wolfe12(func, grad, xk, xsupi, fgrad,
+193 |                                          old_fval, old_old_fval, args=args)
+194 |             except _LineSearchError:
+195 |                 warnings.warn('Line Search failed')
+196 |                 break
+197 | 
+198 |         xk = xk + alphak * xsupi        # upcast if necessary
+199 |         k += 1
+200 | 
+201 |     if warn and k >= maxiter:
+202 |         warnings.warn("newton-cg failed to converge. Increase the "
+203 |                       "number of iterations.", ConvergenceWarning)
+204 |     return xk, k
+```
+
+
+
+##Searching for term "RuntimeWarning", "pk * qk RuntimeWarning"...
+### Search Result:
+Found function `sklearn/learning_curve.py:learning_curve`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 28 | def learning_curve(estimator, X, y, train_sizes=np.linspace(0.1, 1.0, 5),
+ 29 |                    cv=None, scoring=None, exploit_incremental_learning=False,
+ 30 |                    n_jobs=1, pre_dispatch="all", verbose=0,
+ 31 |                    error_score='raise'):
+ 32 |     """Learning curve.
+ 33 | 
+ 34 |     .. deprecated:: 0.18
+ 35 |         This module will be removed in 0.20.
+ 36 |         Use :func:`sklearn.model_selection.learning_curve` instead.
+ 37 | 
+ 38 |     Determines cross-validated training and test scores for different training
+ 39 |     set sizes.
+ 40 | 
+ 41 |     A cross-validation generator splits the whole dataset k times in training
+ 42 |     and test data. Subsets of the training set with varying sizes will be used
+ 43 |     to train the estimator and a score for each training subset size and the
+ 44 |     test set will be computed. Afterwards, the scores will be averaged over
+ 45 |     all k runs for each training subset size.
+ 46 | 
+ 47 |     Read more in the :ref:`User Guide <learning_curves>`.
+ 48 | 
+ 49 |     Parameters
+ 50 |     ----------
+ 51 |     estimator : object type that implements the "fit" and "predict" methods
+ 52 |         An object of that type which is cloned for each validation.
+ 53 | 
+ 54 |     X : array-like, shape (n_samples, n_features)
+ 55 |         Training vector, where n_samples is the number of samples and
+ 56 |         n_features is the number of features.
+ 57 | 
+ 58 |     y : array-like, shape (n_samples) or (n_samples, n_features), optional
+ 59 |         Target relative to X for classification or regression;
+ 60 |         None for unsupervised learning.
+ 61 | 
+ 62 |     train_sizes : array-like, shape (n_ticks,), dtype float or int
+ 63 |         Relative or absolute numbers of training examples that will be used to
+ 64 |         generate the learning curve. If the dtype is float, it is regarded as a
+ 65 |         fraction of the maximum size of the training set (that is determined
+ 66 |         by the selected validation method), i.e. it has to be within (0, 1].
+ 67 |         Otherwise it is interpreted as absolute sizes of the training sets.
+ 68 |         Note that for classification the number of samples usually have to
+ 69 |         be big enough to contain at least one sample from each class.
+ 70 |         (default: np.linspace(0.1, 1.0, 5))
+ 71 | 
+ 72 |     cv : int, cross-validation generator or an iterable, optional
+ 73 |         Determines the cross-validation splitting strategy.
+ 74 |         Possible inputs for cv are:
+ 75 | 
+ 76 |         - None, to use the default 3-fold cross-validation,
+ 77 |         - integer, to specify the number of folds.
+ 78 |         - An object to be used as a cross-validation generator.
+ 79 |         - An iterable yielding train/test splits.
+ 80 | 
+ 81 |         For integer/None inputs, if the estimator is a classifier and ``y`` is
+ 82 |         either binary or multiclass,
+ 83 |         :class:`sklearn.model_selection.StratifiedKFold` is used. In all
+ 84 |         other cases, :class:`sklearn.model_selection.KFold` is used.
+ 85 | 
+ 86 |         Refer :ref:`User Guide <cross_validation>` for the various
+ 87 |         cross-validation strategies that can be used here.
+ 88 | 
+ 89 |     scoring : string, callable or None, optional, default: None
+ 90 |         A string (see model evaluation documentation) or
+ 91 |         a scorer callable object / function with signature
+ 92 |         ``scorer(estimator, X, y)``.
+ 93 | 
+ 94 |     exploit_incremental_learning : boolean, optional, default: False
+ 95 |         If the estimator supports incremental learning, this will be
+ 96 |         used to speed up fitting for different training set sizes.
+ 97 | 
+ 98 |     n_jobs : integer, optional
+ 99 |         Number of jobs to run in parallel (default 1).
+100 | 
+101 |     pre_dispatch : integer or string, optional
+102 |         Number of predispatched jobs for parallel execution (default is
+103 |         all). The option can reduce the allocated memory. The string can
+104 |         be an expression like '2*n_jobs'.
+105 | 
+106 |     verbose : integer, optional
+107 |         Controls the verbosity: the higher, the more messages.
+108 | 
+109 |     error_score : 'raise' (default) or numeric
+110 |         Value to assign to the score if an error occurs in estimator fitting.
+111 |         If set to 'raise', the error is raised. If a numeric value is given,
+112 |         FitFailedWarning is raised. This parameter does not affect the refit
+113 |         step, which will always raise the error.
+114 | 
+115 |     Returns
+116 |     -------
+117 |     train_sizes_abs : array, shape = (n_unique_ticks,), dtype int
+118 |         Numbers of training examples that has been used to generate the
+119 |         learning curve. Note that the number of ticks might be less
+120 |         than n_ticks because duplicate entries will be removed.
+121 | 
+122 |     train_scores : array, shape (n_ticks, n_cv_folds)
+123 |         Scores on training sets.
+124 | 
+125 |     test_scores : array, shape (n_ticks, n_cv_folds)
+126 |         Scores on test set.
+127 | 
+128 |     Notes
+129 |     -----
+130 |     See :ref:`examples/model_selection/plot_learning_curve.py
+131 |     <sphx_glr_auto_examples_model_selection_plot_learning_curve.py>`
+132 |     """
+133 |     if exploit_incremental_learning and not hasattr(estimator, "partial_fit"):
+134 |         raise ValueError("An estimator must support the partial_fit interface "
+135 |                          "to exploit incremental learning")
+136 | 
+137 |     X, y = indexable(X, y)
+138 |     # Make a list since we will be iterating multiple times over the folds
+139 |     cv = list(check_cv(cv, X, y, classifier=is_classifier(estimator)))
+140 |     scorer = check_scoring(estimator, scoring=scoring)
+141 | 
+142 |     # HACK as long as boolean indices are allowed in cv generators
+143 |     if cv[0][0].dtype == bool:
+144 |         new_cv = []
+145 |         for i in range(len(cv)):
+146 |             new_cv.append((np.nonzero(cv[i][0])[0], np.nonzero(cv[i][1])[0]))
+147 |         cv = new_cv
+148 | 
+149 |     n_max_training_samples = len(cv[0][0])
+150 |     # Because the lengths of folds can be significantly different, it is
+151 |     # not guaranteed that we use all of the available training data when we
+152 |     # use the first 'n_max_training_samples' samples.
+153 |     train_sizes_abs = _translate_train_sizes(train_sizes,
+154 |                                              n_max_training_samples)
+155 |     n_unique_ticks = train_sizes_abs.shape[0]
+156 |     if verbose > 0:
+157 |         print("[learning_curve] Training set sizes: " + str(train_sizes_abs))
+158 | 
+159 |     parallel = Parallel(n_jobs=n_jobs, pre_dispatch=pre_dispatch,
+160 |                         verbose=verbose)
+161 |     if exploit_incremental_learning:
+162 |         classes = np.unique(y) if is_classifier(estimator) else None
+163 |         out = parallel(delayed(_incremental_fit_estimator)(
+164 |             clone(estimator), X, y, classes, train, test, train_sizes_abs,
+165 |             scorer, verbose) for train, test in cv)
+166 |     else:
+167 |         out = parallel(delayed(_fit_and_score)(
+168 |             clone(estimator), X, y, scorer, train[:n_train_samples], test,
+169 |             verbose, parameters=None, fit_params=None, return_train_score=True,
+170 |             error_score=error_score)
+171 |             for train, test in cv for n_train_samples in train_sizes_abs)
+172 |         out = np.array(out)[:, :2]
+173 |         n_cv_folds = out.shape[0] // n_unique_ticks
+174 |         out = out.reshape(n_cv_folds, n_unique_ticks, 2)
+175 | 
+176 |     out = np.asarray(out).transpose((2, 1, 0))
+177 | 
+178 |     return train_sizes_abs, out[0], out[1]
+```
+
+Found function `sklearn/linear_model/omp.py:_cholesky_omp`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 26 | def _cholesky_omp(X, y, n_nonzero_coefs, tol=None, copy_X=True,
+ 27 |                   return_path=False):
+ 28 |     """Orthogonal Matching Pursuit step using the Cholesky decomposition.
+ 29 | 
+ 30 |     Parameters
+ 31 |     ----------
+ 32 |     X : array, shape (n_samples, n_features)
+ 33 |         Input dictionary. Columns are assumed to have unit norm.
+ 34 | 
+ 35 |     y : array, shape (n_samples,)
+ 36 |         Input targets
+ 37 | 
+ 38 |     n_nonzero_coefs : int
+ 39 |         Targeted number of non-zero elements
+ 40 | 
+ 41 |     tol : float
+ 42 |         Targeted squared error, if not None overrides n_nonzero_coefs.
+ 43 | 
+ 44 |     copy_X : bool, optional
+ 45 |         Whether the design matrix X must be copied by the algorithm. A false
+ 46 |         value is only helpful if X is already Fortran-ordered, otherwise a
+ 47 |         copy is made anyway.
+ 48 | 
+ 49 |     return_path : bool, optional. Default: False
+ 50 |         Whether to return every value of the nonzero coefficients along the
+ 51 |         forward path. Useful for cross-validation.
+ 52 | 
+ 53 |     Returns
+ 54 |     -------
+ 55 |     gamma : array, shape (n_nonzero_coefs,)
+ 56 |         Non-zero elements of the solution
+ 57 | 
+ 58 |     idx : array, shape (n_nonzero_coefs,)
+ 59 |         Indices of the positions of the elements in gamma within the solution
+ 60 |         vector
+ 61 | 
+ 62 |     coef : array, shape (n_features, n_nonzero_coefs)
+ 63 |         The first k values of column k correspond to the coefficient value
+ 64 |         for the active features at that step. The lower left triangle contains
+ 65 |         garbage. Only returned if ``return_path=True``.
+ 66 | 
+ 67 |     n_active : int
+ 68 |         Number of active features at convergence.
+ 69 |     """
+ 70 |     if copy_X:
+ 71 |         X = X.copy('F')
+ 72 |     else:  # even if we are allowed to overwrite, still copy it if bad order
+ 73 |         X = np.asfortranarray(X)
+ 74 | 
+ 75 |     min_float = np.finfo(X.dtype).eps
+ 76 |     nrm2, swap = linalg.get_blas_funcs(('nrm2', 'swap'), (X,))
+ 77 |     potrs, = get_lapack_funcs(('potrs',), (X,))
+ 78 | 
+ 79 |     alpha = np.dot(X.T, y)
+ 80 |     residual = y
+ 81 |     gamma = np.empty(0)
+ 82 |     n_active = 0
+ 83 |     indices = np.arange(X.shape[1])  # keeping track of swapping
+ 84 | 
+ 85 |     max_features = X.shape[1] if tol is not None else n_nonzero_coefs
+ 86 | 
+ 87 |     L = np.empty((max_features, max_features), dtype=X.dtype)
+ 88 | 
+ 89 |     if return_path:
+ 90 |         coefs = np.empty_like(L)
+ 91 | 
+ 92 |     while True:
+ 93 |         lam = np.argmax(np.abs(np.dot(X.T, residual)))
+ 94 |         if lam < n_active or alpha[lam] ** 2 < min_float:
+ 95 |             # atom already selected or inner product too small
+ 96 |             warnings.warn(premature, RuntimeWarning, stacklevel=2)
+ 97 |             break
+ 98 | 
+ 99 |         if n_active > 0:
+100 |             # Updates the Cholesky decomposition of X' X
+101 |             L[n_active, :n_active] = np.dot(X[:, :n_active].T, X[:, lam])
+102 |             linalg.solve_triangular(L[:n_active, :n_active],
+103 |                                     L[n_active, :n_active],
+104 |                                     trans=0, lower=1,
+105 |                                     overwrite_b=True,
+106 |                                     check_finite=False)
+107 |             v = nrm2(L[n_active, :n_active]) ** 2
+108 |             Lkk = linalg.norm(X[:, lam]) ** 2 - v
+109 |             if Lkk <= min_float:  # selected atoms are dependent
+110 |                 warnings.warn(premature, RuntimeWarning, stacklevel=2)
+111 |                 break
+112 |             L[n_active, n_active] = sqrt(Lkk)
+113 |         else:
+114 |             L[0, 0] = linalg.norm(X[:, lam])
+115 | 
+116 |         X.T[n_active], X.T[lam] = swap(X.T[n_active], X.T[lam])
+117 |         alpha[n_active], alpha[lam] = alpha[lam], alpha[n_active]
+118 |         indices[n_active], indices[lam] = indices[lam], indices[n_active]
+119 |         n_active += 1
+120 | 
+121 |         # solves LL'x = X'y as a composition of two triangular systems
+122 |         gamma, _ = potrs(L[:n_active, :n_active], alpha[:n_active], lower=True,
+123 |                          overwrite_b=False)
+124 | 
+125 |         if return_path:
+126 |             coefs[:n_active, n_active - 1] = gamma
+127 |         residual = y - np.dot(X[:, :n_active], gamma)
+128 |         if tol is not None and nrm2(residual) ** 2 <= tol:
+129 |             break
+130 |         elif n_active == max_features:
+131 |             break
+132 | 
+133 |     if return_path:
+134 |         return gamma, indices[:n_active], coefs[:, :n_active], n_active
+135 |     else:
+136 |         return gamma, indices[:n_active], n_active
+```
+
+Found class `sklearn/exceptions.py:FitFailedWarning`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 99 | class FitFailedWarning(RuntimeWarning):
+100 |     """Warning class used if there is an error while fitting the estimator.
+101 | 
+102 |     This Warning is used in meta estimators GridSearchCV and RandomizedSearchCV
+103 |     and the cross-validation helper function cross_val_score to warn when there
+104 |     is an error while fitting the estimator.
+105 | 
+106 |     Examples
+107 |     --------
+108 |     >>> from sklearn.model_selection import GridSearchCV
+109 |     >>> from sklearn.svm import LinearSVC
+110 |     >>> from sklearn.exceptions import FitFailedWarning
+111 |     >>> import warnings
+112 |     >>> warnings.simplefilter('always', FitFailedWarning)
+113 |     >>> gs = GridSearchCV(LinearSVC(), {'C': [-1, -2]}, error_score=0, cv=2)
+114 |     >>> X, y = [[1, 2], [3, 4], [5, 6], [7, 8]], [0, 0, 1, 1]
+115 |     >>> with warnings.catch_warnings(record=True) as w:
+116 |     ...     try:
+117 |     ...         gs.fit(X, y)   # This will raise a ValueError since C is < 0
+118 |     ...     except ValueError:
+119 |     ...         pass
+120 |     ...     print(repr(w[-1].message))
+121 |     ... # doctest: +NORMALIZE_WHITESPACE
+122 |     FitFailedWarning('Estimator fit failed. The score on this train-test
+123 |     partition for these parameters will be set to 0.000000.
+124 |     Details: \\nValueError: Penalty term must be positive; got (C=-2)\\n',)
+125 | 
+126 |     .. versionchanged:: 0.18
+127 |        Moved from sklearn.cross_validation.
+128 |     """
+```
+
+Found file `sklearn/learning_curve.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `sklearn/learning_curve.py` for the full content if needed.
+
+
+
+##Searching for term "RuntimeWarning"...
+### Search Result:
+Found function `sklearn/linear_model/omp.py:_gram_omp`.
+Source: Retrieved code content using keyword search (bm25).
+```
+139 | def _gram_omp(Gram, Xy, n_nonzero_coefs, tol_0=None, tol=None,
+140 |               copy_Gram=True, copy_Xy=True, return_path=False):
+141 |     """Orthogonal Matching Pursuit step on a precomputed Gram matrix.
+142 | 
+143 |     This function uses the Cholesky decomposition method.
+144 | 
+145 |     Parameters
+146 |     ----------
+147 |     Gram : array, shape (n_features, n_features)
+148 |         Gram matrix of the input data matrix
+149 | 
+150 |     Xy : array, shape (n_features,)
+151 |         Input targets
+152 | 
+153 |     n_nonzero_coefs : int
+154 |         Targeted number of non-zero elements
+155 | 
+156 |     tol_0 : float
+157 |         Squared norm of y, required if tol is not None.
+158 | 
+159 |     tol : float
+160 |         Targeted squared error, if not None overrides n_nonzero_coefs.
+161 | 
+162 |     copy_Gram : bool, optional
+163 |         Whether the gram matrix must be copied by the algorithm. A false
+164 |         value is only helpful if it is already Fortran-ordered, otherwise a
+165 |         copy is made anyway.
+166 | 
+167 |     copy_Xy : bool, optional
+168 |         Whether the covariance vector Xy must be copied by the algorithm.
+169 |         If False, it may be overwritten.
+170 | 
+171 |     return_path : bool, optional. Default: False
+172 |         Whether to return every value of the nonzero coefficients along the
+173 |         forward path. Useful for cross-validation.
+174 | 
+175 |     Returns
+176 |     -------
+177 |     gamma : array, shape (n_nonzero_coefs,)
+178 |         Non-zero elements of the solution
+179 | 
+180 |     idx : array, shape (n_nonzero_coefs,)
+181 |         Indices of the positions of the elements in gamma within the solution
+182 |         vector
+183 | 
+184 |     coefs : array, shape (n_features, n_nonzero_coefs)
+185 |         The first k values of column k correspond to the coefficient value
+186 |         for the active features at that step. The lower left triangle contains
+187 |         garbage. Only returned if ``return_path=True``.
+188 | 
+189 |     n_active : int
+190 |         Number of active features at convergence.
+191 |     """
+192 |     Gram = Gram.copy('F') if copy_Gram else np.asfortranarray(Gram)
+193 | 
+194 |     if copy_Xy:
+195 |         Xy = Xy.copy()
+196 | 
+197 |     min_float = np.finfo(Gram.dtype).eps
+198 |     nrm2, swap = linalg.get_blas_funcs(('nrm2', 'swap'), (Gram,))
+199 |     potrs, = get_lapack_funcs(('potrs',), (Gram,))
+200 | 
+201 |     indices = np.arange(len(Gram))  # keeping track of swapping
+202 |     alpha = Xy
+203 |     tol_curr = tol_0
+204 |     delta = 0
+205 |     gamma = np.empty(0)
+206 |     n_active = 0
+207 | 
+208 |     max_features = len(Gram) if tol is not None else n_nonzero_coefs
+209 | 
+210 |     L = np.empty((max_features, max_features), dtype=Gram.dtype)
+211 | 
+212 |     L[0, 0] = 1.
+213 |     if return_path:
+214 |         coefs = np.empty_like(L)
+215 | 
+216 |     while True:
+217 |         lam = np.argmax(np.abs(alpha))
+218 |         if lam < n_active or alpha[lam] ** 2 < min_float:
+219 |             # selected same atom twice, or inner product too small
+220 |             warnings.warn(premature, RuntimeWarning, stacklevel=3)
+221 |             break
+222 |         if n_active > 0:
+223 |             L[n_active, :n_active] = Gram[lam, :n_active]
+224 |             linalg.solve_triangular(L[:n_active, :n_active],
+225 |                                     L[n_active, :n_active],
+226 |                                     trans=0, lower=1,
+227 |                                     overwrite_b=True,
+228 |                                     check_finite=False)
+229 |             v = nrm2(L[n_active, :n_active]) ** 2
+230 |             Lkk = Gram[lam, lam] - v
+231 |             if Lkk <= min_float:  # selected atoms are dependent
+232 |                 warnings.warn(premature, RuntimeWarning, stacklevel=3)
+233 |                 break
+234 |             L[n_active, n_active] = sqrt(Lkk)
+235 |         else:
+236 |             L[0, 0] = sqrt(Gram[lam, lam])
+237 | 
+238 |         Gram[n_active], Gram[lam] = swap(Gram[n_active], Gram[lam])
+239 |         Gram.T[n_active], Gram.T[lam] = swap(Gram.T[n_active], Gram.T[lam])
+240 |         indices[n_active], indices[lam] = indices[lam], indices[n_active]
+241 |         Xy[n_active], Xy[lam] = Xy[lam], Xy[n_active]
+242 |         n_active += 1
+243 |         # solves LL'x = X'y as a composition of two triangular systems
+244 |         gamma, _ = potrs(L[:n_active, :n_active], Xy[:n_active], lower=True,
+245 |                          overwrite_b=False)
+246 |         if return_path:
+247 |             coefs[:n_active, n_active - 1] = gamma
+248 |         beta = np.dot(Gram[:, :n_active], gamma)
+249 |         alpha = Xy - beta
+250 |         if tol is not None:
+251 |             tol_curr += delta
+252 |             delta = np.inner(gamma, beta[:n_active])
+253 |             tol_curr -= delta
+254 |             if abs(tol_curr) <= tol:
+255 |                 break
+256 |         elif n_active == max_features:
+257 |             break
+258 | 
+259 |     if return_path:
+260 |         return gamma, indices[:n_active], coefs[:, :n_active], n_active
+261 |     else:
+262 |         return gamma, indices[:n_active], n_active
+```
+
+Found function `sklearn/covariance/robust_covariance.py:_c_step`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 95 | def _c_step(X, n_support, random_state, remaining_iterations=30,
+ 96 |             initial_estimates=None, verbose=False,
+ 97 |             cov_computation_method=empirical_covariance):
+ 98 |     n_samples, n_features = X.shape
+ 99 |     dist = np.inf
+100 | 
+101 |     # Initialisation
+102 |     support = np.zeros(n_samples, dtype=bool)
+103 |     if initial_estimates is None:
+104 |         # compute initial robust estimates from a random subset
+105 |         support[random_state.permutation(n_samples)[:n_support]] = True
+106 |     else:
+107 |         # get initial robust estimates from the function parameters
+108 |         location = initial_estimates[0]
+109 |         covariance = initial_estimates[1]
+110 |         # run a special iteration for that case (to get an initial support)
+111 |         precision = linalg.pinvh(covariance)
+112 |         X_centered = X - location
+113 |         dist = (np.dot(X_centered, precision) * X_centered).sum(1)
+114 |         # compute new estimates
+115 |         support[np.argsort(dist)[:n_support]] = True
+116 | 
+117 |     X_support = X[support]
+118 |     location = X_support.mean(0)
+119 |     covariance = cov_computation_method(X_support)
+120 | 
+121 |     # Iterative procedure for Minimum Covariance Determinant computation
+122 |     det = fast_logdet(covariance)
+123 |     # If the data already has singular covariance, calculate the precision,
+124 |     # as the loop below will not be entered.
+125 |     if np.isinf(det):
+126 |         precision = linalg.pinvh(covariance)
+127 | 
+128 |     previous_det = np.inf
+129 |     while (det < previous_det and remaining_iterations > 0
+130 |             and not np.isinf(det)):
+131 |         # save old estimates values
+132 |         previous_location = location
+133 |         previous_covariance = covariance
+134 |         previous_det = det
+135 |         previous_support = support
+136 |         # compute a new support from the full data set mahalanobis distances
+137 |         precision = linalg.pinvh(covariance)
+138 |         X_centered = X - location
+139 |         dist = (np.dot(X_centered, precision) * X_centered).sum(axis=1)
+140 |         # compute new estimates
+141 |         support = np.zeros(n_samples, dtype=bool)
+142 |         support[np.argsort(dist)[:n_support]] = True
+143 |         X_support = X[support]
+144 |         location = X_support.mean(axis=0)
+145 |         covariance = cov_computation_method(X_support)
+146 |         det = fast_logdet(covariance)
+147 |         # update remaining iterations for early stopping
+148 |         remaining_iterations -= 1
+149 | 
+150 |     previous_dist = dist
+151 |     dist = (np.dot(X - location, precision) * (X - location)).sum(axis=1)
+152 |     # Check if best fit already found (det => 0, logdet => -inf)
+153 |     if np.isinf(det):
+154 |         results = location, covariance, det, support, dist
+155 |     # Check convergence
+156 |     if np.allclose(det, previous_det):
+157 |         # c_step procedure converged
+158 |         if verbose:
+159 |             print("Optimal couple (location, covariance) found before"
+160 |                   " ending iterations (%d left)" % (remaining_iterations))
+161 |         results = location, covariance, det, support, dist
+162 |     elif det > previous_det:
+163 |         # determinant has increased (should not happen)
+164 |         warnings.warn("Warning! det > previous_det (%.15f > %.15f)"
+165 |                       % (det, previous_det), RuntimeWarning)
+166 |         results = previous_location, previous_covariance, \
+167 |             previous_det, previous_support, previous_dist
+168 | 
+169 |     # Check early stopping
+170 |     if remaining_iterations == 0:
+171 |         if verbose:
+172 |             print('Maximum number of iterations reached')
+173 |         results = location, covariance, det, support, dist
+174 | 
+175 |     return results
+```
+
+Found function `sklearn/utils/estimator_checks.py:check_supervised_y_2d`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1495 | def check_supervised_y_2d(name, estimator_orig):
+1496 |     if "MultiTask" in name:
+1497 |         # These only work on 2d, so this test makes no sense
+1498 |         return
+1499 |     rnd = np.random.RandomState(0)
+1500 |     X = pairwise_estimator_convert_X(rnd.uniform(size=(10, 3)), estimator_orig)
+1501 |     y = np.arange(10) % 3
+1502 |     estimator = clone(estimator_orig)
+1503 |     set_random_state(estimator)
+1504 |     # fit
+1505 |     estimator.fit(X, y)
+1506 |     y_pred = estimator.predict(X)
+1507 | 
+1508 |     set_random_state(estimator)
+1509 |     # Check that when a 2D y is given, a DataConversionWarning is
+1510 |     # raised
+1511 |     with warnings.catch_warnings(record=True) as w:
+1512 |         warnings.simplefilter("always", DataConversionWarning)
+1513 |         warnings.simplefilter("ignore", RuntimeWarning)
+1514 |         estimator.fit(X, y[:, np.newaxis])
+1515 |     y_pred_2d = estimator.predict(X)
+1516 |     msg = "expected 1 DataConversionWarning, got: %s" % (
+1517 |         ", ".join([str(w_x) for w_x in w]))
+1518 |     if name not in MULTI_OUTPUT:
+1519 |         # check that we warned if we don't support multi-output
+1520 |         assert_greater(len(w), 0, msg)
+1521 |         assert_true("DataConversionWarning('A column-vector y"
+1522 |                     " was passed when a 1d array was expected" in msg)
+1523 |     assert_allclose(y_pred.ravel(), y_pred_2d.ravel())
+```
+
+
+
+##Searching for term "supervised.py"...
+### Search Result:
+Found file `sklearn/metrics/cluster/supervised.py`.
+Source: Match found for entity name `supervised.py`.
+Just show the structure of this file due to response length limitations:
+```
+
+
+def comb2(n):
+...
+
+def check_clusterings(labels_true, labels_pred):
+...
+
+def contingency_matrix(labels_true, labels_pred, eps=None, sparse=False):
+...
+
+# clustering measures
+
+def adjusted_rand_score(labels_true, labels_pred):
+...
+
+def homogeneity_completeness_v_measure(labels_true, labels_pred):
+...
+
+def homogeneity_score(labels_true, labels_pred):
+...
+
+def completeness_score(labels_true, labels_pred):
+...
+
+def v_measure_score(labels_true, labels_pred):
+...
+
+def mutual_info_score(labels_true, labels_pred, contingency=None):
+...
+
+def adjusted_mutual_info_score(labels_true, labels_pred):
+...
+
+def normalized_mutual_info_score(labels_true, labels_pred):
+...
+
+def fowlkes_mallows_score(labels_true, labels_pred, sparse=False):
+...
+
+def entropy(labels):
+...
+
+```
+Hint: Search `sklearn/metrics/cluster/supervised.py` to get the full content if needed.
+
+
+
+##Searching for term "pk * qk RuntimeWarning"...
+### Search Result:
+Found `sklearn/utils/_scipy_sparse_lsqr_backport.py:_sym_ortho`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 52 | from __future__ import division, print_function, absolute_import
+ 53 | 
+ 54 | __all__ = ['lsqr']
+ 55 | 
+ 56 | import numpy as np
+ 57 | from math import sqrt
+ 58 | from scipy.sparse.linalg.interface import aslinearoperator
+ 59 | 
+ 60 | eps = np.finfo(np.float64).eps
+ 61 | 
+ 62 | 
+ 63 | def _sym_ortho(a, b):
+ 64 |     """
+ 65 |     Stable implementation of Givens rotation.
+ 66 | 
+ 67 |     Notes
+ 68 |     -----
+ 69 |     The routine 'SymOrtho' was added for numerical stability. This is
+ 70 |     recommended by S.-C. Choi in [1]_.  It removes the unpleasant potential of
+ 71 |     ``1/eps`` in some important places (see, for example text following
+ 72 |     "Compute the next plane rotation Qk" in minres.py).
+ 73 | 
+ 74 |     References
+ 75 |     ----------
+ 76 |     .. [1] S.-C. Choi, "Iterative Methods for Singular Linear Equations
+ 77 |            and Least-Squares Problems", Dissertation,
+ 78 |            http://www.stanford.edu/group/SOL/dissertations/sou-cheng-choi-thesis.pdf
+ 79 | 
+ 80 |     """
+ 81 |     if b == 0:
+ 82 |         return np.sign(a), 0, abs(a)
+ 83 |     elif a == 0:
+ 84 |         return 0, np.sign(b), abs(b)
+ 85 |     elif abs(b) > abs(a):
+ 86 |         tau = a / b
+ 87 |         s = np.sign(b) / sqrt(1 + tau * tau)
+ 88 |         c = s * tau
+ 89 |         r = b / s
+ 90 |     else:
+ 91 |         tau = b / a
+ 92 |         c = np.sign(a) / sqrt(1+tau*tau)
+ 93 |         s = c * tau
+ 94 |         r = a / c
+ 95 |     return c, s, r
+```
+[symbol-locator] setup_repo returned: playground/544a99e8-b4ba-4afa-bffe-43a99673348e/scikit-learn_scikit-learn -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844
+[symbol-locator] warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844 files=0 indexed=0 failed=0
+[symbol-locator] [pyright] [FG] Long operation: checking: file:///data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844/sklearn/linear_model/tests/test_logistic.py (2232ms)
+[symbol-locator] [pyright] [FG] Long operation: analyzing: file:///data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844/sklearn/linear_model/tests/test_logistic.py (2232ms)
+[symbol-locator] [pyright] [FG] Long operation: checking: file:///data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844/sklearn/metrics/tests/test_classification.py (3309ms)
+[symbol-locator] [pyright] [FG] Long operation: analyzing: file:///data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/scikit-learn__scikit-learn-10844/sklearn/metrics/tests/test_classification.py (3309ms)
+Finding newlines for mmindex:   0%|          | 0.00/10.8M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 10.8M/10.8M [00:00<00:00, 324MB/s]
+
+2026-08-28 04:09:05 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:09:10 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:09:10 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:09:10 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 04:09:10 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['sklearn/metrics/cluster/supervised.py:fowlkes_mallows_score']}))
+```
+2026-08-28 04:09:10 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `sklearn/metrics/cluster/supervised.py:fowlkes_mallows_score`...
+### Search Result:
+Found function `sklearn/metrics/cluster/supervised.py:fowlkes_mallows_score`.
+Source: Exact match found for entity name `sklearn/metrics/cluster/supervised.py:fowlkes_mallows_score`.
+```
+787 | def fowlkes_mallows_score(labels_true, labels_pred, sparse=False):
+788 |     """Measure the similarity of two clusterings of a set of points.
+789 | 
+790 |     The Fowlkes-Mallows index (FMI) is defined as the geometric mean between of
+791 |     the precision and recall::
+792 | 
+793 |         FMI = TP / sqrt((TP + FP) * (TP + FN))
+794 | 
+795 |     Where ``TP`` is the number of **True Positive** (i.e. the number of pair of
+796 |     points that belongs in the same clusters in both ``labels_true`` and
+797 |     ``labels_pred``), ``FP`` is the number of **False Positive** (i.e. the
+798 |     number of pair of points that belongs in the same clusters in
+799 |     ``labels_true`` and not in ``labels_pred``) and ``FN`` is the number of
+800 |     **False Negative** (i.e the number of pair of points that belongs in the
+801 |     same clusters in ``labels_pred`` and not in ``labels_True``).
+802 | 
+803 |     The score ranges from 0 to 1. A high value indicates a good similarity
+804 |     between two clusters.
+805 | 
+806 |     Read more in the :ref:`User Guide <fowlkes_mallows_scores>`.
+807 | 
+808 |     Parameters
+809 |     ----------
+810 |     labels_true : int array, shape = (``n_samples``,)
+811 |         A clustering of the data into disjoint subsets.
+812 | 
+813 |     labels_pred : array, shape = (``n_samples``, )
+814 |         A clustering of the data into disjoint subsets.
+815 | 
+816 |     sparse : bool
+817 |         Compute contingency matrix internally with sparse matrix.
+818 | 
+819 |     Returns
+820 |     -------
+821 |     score : float
+822 |        The resulting Fowlkes-Mallows score.
+823 | 
+824 |     Examples
+825 |     --------
+826 | 
+827 |     Perfect labelings are both homogeneous and complete, hence have
+828 |     score 1.0::
+829 | 
+830 |       >>> from sklearn.metrics.cluster import fowlkes_mallows_score
+831 |       >>> fowlkes_mallows_score([0, 0, 1, 1], [0, 0, 1, 1])
+832 |       1.0
+833 |       >>> fowlkes_mallows_score([0, 0, 1, 1], [1, 1, 0, 0])
+834 |       1.0
+835 | 
+836 |     If classes members are completely split across different clusters,
+837 |     the assignment is totally random, hence the FMI is null::
+838 | 
+839 |       >>> fowlkes_mallows_score([0, 0, 0, 0], [0, 1, 2, 3])
+840 |       0.0
+841 | 
+842 |     References
+843 |     ----------
+844 |     .. [1] `E. B. Fowkles and C. L. Mallows, 1983. "A method for comparing two
+845 |        hierarchical clusterings". Journal of the American Statistical
+846 |        Association
+847 |        <http://wildfire.stat.ucla.edu/pdflibrary/fowlkes.pdf>`_
+848 | 
+849 |     .. [2] `Wikipedia entry for the Fowlkes-Mallows Index
+850 |            <https://en.wikipedia.org/wiki/Fowlkes-Mallows_index>`_
+851 |     """
+852 |     labels_true, labels_pred = check_clusterings(labels_true, labels_pred)
+853 |     n_samples, = labels_true.shape
+854 | 
+855 |     c = contingency_matrix(labels_true, labels_pred, sparse=True)
+856 |     tk = np.dot(c.data, c.data) - n_samples
+857 |     pk = np.sum(np.asarray(c.sum(axis=0)).ravel() ** 2) - n_samples
+858 |     qk = np.sum(np.asarray(c.sum(axis=1)).ravel() ** 2) - n_samples
+859 |     return tk / np.sqrt(pk * qk) if tk != 0. else 0.
+```
+
+2026-08-28 04:09:10 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['sklearn/metrics/cluster/tests/test_supervised.py:test_fowlkes_mallows_score', 'sklearn/metrics/cluster/tests/test_supervised.py:test_fowlkes_mallows_score_properties']}))
+```
+2026-08-28 04:09:10 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `sklearn/metrics/cluster/tests/test_supervised.py:test_fowlkes_mallows_score`...
+### Search Result:
+Invalid name. 
+Hint: Valid entity name should be formatted as "file_path:QualifiedName" or just "file_path".
+
+##Searching for entity `sklearn/metrics/cluster/tests/test_supervised.py:test_fowlkes_mallows_score_properties`...
+### Search Result:
+Invalid name. 
+Hint: Valid entity name should be formatted as "file_path:QualifiedName" or just "file_path".
+
+2026-08-28 04:09:10 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:09:14 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:09:14 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:09:14 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 04:09:14 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['sklearn/metrics/cluster/tests/test_supervised.py']}))
+```
+2026-08-28 04:09:14 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `sklearn/metrics/cluster/tests/test_supervised.py`...
+### Search Result:
+Invalid name. 
+Hint: Valid entity name should be formatted as "file_path:QualifiedName" or just "file_path".
+
+2026-08-28 04:09:14 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'file_path_or_pattern': 'sklearn/metrics/cluster/tests/test_supervised.py', 'search_terms': ['fowlkes_mallows_score', 'properties', 'RuntimeWarning']}))
+```
+2026-08-28 04:09:15 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:15 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:16 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:17 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:17 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:18 __init__.py DEBUG Building index from IDs objects
+2026-08-28 04:09:18 auto_search_main.py INFO OBSERVATION:
+sklearn/multiclass.py:OneVsRestClassifier.multilabel_
+sklearn/multiclass.py:OneVsRestClassifier._first_estimator
+sklearn/multiclass.py:OneVsRestClassifier._pairwise
+sklearn/multiclass.py:OneVsRestClassifier.coef_
+sklearn/multiclass.py:OneVsRestClassifier.n_classes_
+sklearn/multiclass.py:OneVsRestClassifier.intercept_
+sklearn/ensemble/bagging.py:BaseBagging.estimators_samples_
+sklearn/feature_extraction/text.py:TfidfVectorizer.__init__
+sklearn/feature_extraction/text.py:TfidfVectorizer.norm_1
+sklearn/feature_extraction/text.py:TfidfVectorizer.use_idf_3
+sklearn/feature_extraction/text.py:TfidfVectorizer.sublinear_tf_7
+sklearn/feature_extraction/text.py:TfidfVectorizer.idf_
+sklearn/feature_extraction/text.py:TfidfVectorizer.use_idf
+sklearn/feature_extraction/text.py:TfidfVectorizer.sublinear_tf
+sklearn/feature_extraction/text.py:TfidfVectorizer.norm
+sklearn/feature_extraction/text.py:TfidfVectorizer.smooth_idf_5
+sklearn/feature_extraction/text.py:TfidfVectorizer.smooth_idf
+sklearn/linear_model/least_angle.py:LarsCV.alpha
+sklearn/linear_model/least_angle.py:LarsCV.cv_mse_path_
+sklearn/naive_bayes.py:BaseDiscreteNB._get_intercept
+sklearn/naive_bayes.py:BaseDiscreteNB.fit
+sklearn/naive_bayes.py:BaseDiscreteNB._get_coef
+sklearn/naive_bayes.py:BaseDiscreteNB:3
+sklearn/pipeline.py:Pipeline._validate_steps
+sklearn/pipeline.py:Pipeline.named_steps
+sklearn/pipeline.py:Pipeline._final_estimator
+sklearn/pipeline.py:Pipeline._estimator_type
+sklearn/gaussian_process/kernels.py:Kernel.clone_with_theta
+sklearn/gaussian_process/kernels.py:Kernel.n_dims
+sklearn/gaussian_process/kernels.py:Kernel.hyperparameters
+sklearn/externals/funcsigs.py:Parameter.name
+sklearn/externals/funcsigs.py:Parameter
+sklearn/externals/funcsigs.py:Parameter.annotation
+sklearn/externals/funcsigs.py:Parameter.kind
+sklearn/externals/funcsigs.py:Parameter.default
+sklearn/externals/funcsigs.py:Parameter.__init__
+sklearn/svm/base.py:BaseLibSVM.coef_
+sklearn/svm/base.py:BaseLibSVM._get_coef
+sklearn/gaussian_process/gpr.py:GaussianProcessRegressor.y_train_mean
+sklearn/gaussian_process/gpr.py:GaussianProcessRegressor.__init__
+sklearn/gaussian_process/gpr.py:GaussianProcessRegressor.rng
+sklearn/linear_model/omp.py:_cholesky_omp
+sklearn/linear_model/omp.py:_gram_omp
+sklearn/covariance/robust_covariance.py:_c_step
+sklearn/exceptions.py:FitFailedWarning
+sklearn/utils/estimator_checks.py:check_supervised_y_2d
+sklearn/utils/extmath.py:stable_cumsum
+sklearn/model_selection/_search.py:BaseSearchCV.fit
+sklearn/cluster/k_means_.py:_init_centroids
+sklearn/model_selection/_validation.py:_fit_and_predict
+sklearn/linear_model/omp.py:_cholesky_omp
+sklearn/multiclass.py:OneVsRestClassifier.multilabel_
+sklearn/multiclass.py:OneVsRestClassifier._first_estimator
+sklearn/multiclass.py:OneVsRestClassifier._pairwise
+sklearn/multiclass.py:OneVsRestClassifier.coef_
+sklearn/multiclass.py:OneVsRestClassifier.n_classes_
+sklearn/multiclass.py:OneVsRestClassifier.intercept_
+sklearn/linear_model/omp.py:_gram_omp
+sklearn/ensemble/bagging.py:BaseBagging.estimators_samples_
+sklearn/covariance/robust_covariance.py:_c_step
+sklearn/exceptions.py:FitFailedWarning
+sklearn/utils/estimator_checks.py:check_supervised_y_2d
+sklearn/feature_extraction/text.py:TfidfVectorizer.__init__
+sklearn/feature_extraction/text.py:TfidfVectorizer.norm_1
+sklearn/feature_extraction/text.py:TfidfVectorizer.use_idf_3
+sklearn/feature_extraction/text.py:TfidfVectorizer.sublinear_tf_7
+sklearn/feature_extraction/text.py:TfidfVectorizer.idf_
+sklearn/feature_extraction/text.py:TfidfVectorizer.use_idf
+sklearn/feature_extraction/text.py:TfidfVectorizer.sublinear_tf
+sklearn/feature_extraction/text.py:TfidfVectorizer.norm
+sklearn/feature_extraction/text.py:TfidfVectorizer.smooth_idf_5
+sklearn/feature_extraction/text.py:TfidfVectorizer.smooth_idf
+sklearn/linear_model/least_angle.py:LarsCV.alpha
+sklearn/linear_model/least_angle.py:LarsCV.cv_mse_path_
+No files found for file pattern 'sklearn/metrics/cluster/tests/test_supervised.py'. Will search all files.
+...
+##Searching for term "fowlkes_mallows_score"...
+### Search Result:
+Found function `sklearn/metrics/cluster/supervised.py:fowlkes_mallows_score`.
+Source: Match found for entity name `fowlkes_mallows_score`.
+```
+787 | def fowlkes_mallows_score(labels_true, labels_pred, sparse=False):
+788 |     """Measure the similarity of two clusterings of a set of points.
+789 | 
+790 |     The Fowlkes-Mallows index (FMI) is defined as the geometric mean between of
+791 |     the precision and recall::
+792 | 
+793 |         FMI = TP / sqrt((TP + FP) * (TP + FN))
+794 | 
+795 |     Where ``TP`` is the number of **True Positive** (i.e. the number of pair of
+796 |     points that belongs in the same clusters in both ``labels_true`` and
+797 |     ``labels_pred``), ``FP`` is the number of **False Positive** (i.e. the
+798 |     number of pair of points that belongs in the same clusters in
+799 |     ``labels_true`` and not in ``labels_pred``) and ``FN`` is the number of
+800 |     **False Negative** (i.e the number of pair of points that belongs in the
+801 |     same clusters in ``labels_pred`` and not in ``labels_True``).
+802 | 
+803 |     The score ranges from 0 to 1. A high value indicates a good similarity
+804 |     between two clusters.
+805 | 
+806 |     Read more in the :ref:`User Guide <fowlkes_mallows_scores>`.
+807 | 
+808 |     Parameters
+809 |     ----------
+810 |     labels_true : int array, shape = (``n_samples``,)
+811 |         A clustering of the data into disjoint subsets.
+812 | 
+813 |     labels_pred : array, shape = (``n_samples``, )
+814 |         A clustering of the data into disjoint subsets.
+815 | 
+816 |     sparse : bool
+817 |         Compute contingency matrix internally with sparse matrix.
+818 | 
+819 |     Returns
+820 |     -------
+821 |     score : float
+822 |        The resulting Fowlkes-Mallows score.
+823 | 
+824 |     Examples
+825 |     --------
+826 | 
+827 |     Perfect labelings are both homogeneous and complete, hence have
+828 |     score 1.0::
+829 | 
+830 |       >>> from sklearn.metrics.cluster import fowlkes_mallows_score
+831 |       >>> fowlkes_mallows_score([0, 0, 1, 1], [0, 0, 1, 1])
+832 |       1.0
+833 |       >>> fowlkes_mallows_score([0, 0, 1, 1], [1, 1, 0, 0])
+834 |       1.0
+835 | 
+836 |     If classes members are completely split across different clusters,
+837 |     the assignment is totally random, hence the FMI is null::
+838 | 
+839 |       >>> fowlkes_mallows_score([0, 0, 0, 0], [0, 1, 2, 3])
+840 |       0.0
+841 | 
+842 |     References
+843 |     ----------
+844 |     .. [1] `E. B. Fowkles and C. L. Mallows, 1983. "A method for comparing two
+845 |        hierarchical clusterings". Journal of the American Statistical
+846 |        Association
+847 |        <http://wildfire.stat.ucla.edu/pdflibrary/fowlkes.pdf>`_
+848 | 
+849 |     .. [2] `Wikipedia entry for the Fowlkes-Mallows Index
+850 |            <https://en.wikipedia.org/wiki/Fowlkes-Mallows_index>`_
+851 |     """
+852 |     labels_true, labels_pred = check_clusterings(labels_true, labels_pred)
+853 |     n_samples, = labels_true.shape
+854 | 
+855 |     c = contingency_matrix(labels_true, labels_pred, sparse=True)
+856 |     tk = np.dot(c.data, c.data) - n_samples
+857 |     pk = np.sum(np.asarray(c.sum(axis=0)).ravel() ** 2) - n_samples
+858 |     qk = np.sum(np.asarray(c.sum(axis=1)).ravel() ** 2) - n_samples
+859 |     return tk / np.sqrt(pk * qk) if tk != 0. else 0.
+```
+
+
+
+##Searching for term "properties"...
+### Search Result:
+Found function `sklearn/multiclass.py:OneVsRestClassifier.n_classes_`.
+Source: Retrieved code content using keyword search (bm25).
+```
+381 | def n_classes_(self):
+382 |         return len(self.classes_)
+```
+
+Found file `sklearn/utils/random.py`.
+Found file `sklearn/utils/deprecation.py`.
+Found file `sklearn/tree/export.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "properties", "properties RuntimeWarning"...
+### Search Result:
+Found function `sklearn/multiclass.py:OneVsRestClassifier.multilabel_`.
+Source: Retrieved code content using keyword search (bm25).
+```
+376 | def multilabel_(self):
+377 |         """Whether this is a multilabel classifier"""
+378 |         return self.label_binarizer_.y_type_.startswith('multilabel')
+```
+
+Found function `sklearn/multiclass.py:OneVsRestClassifier.coef_`.
+Source: Retrieved code content using keyword search (bm25).
+```
+385 | def coef_(self):
+386 |         check_is_fitted(self, 'estimators_')
+387 |         if not hasattr(self.estimators_[0], "coef_"):
+388 |             raise AttributeError(
+389 |                 "Base estimator doesn't have a coef_ attribute.")
+390 |         coefs = [e.coef_ for e in self.estimators_]
+391 |         if sp.issparse(coefs[0]):
+392 |             return sp.vstack(coefs)
+393 |         return np.vstack(coefs)
+```
+
+Found function `sklearn/multiclass.py:OneVsRestClassifier._pairwise`.
+Source: Retrieved code content using keyword search (bm25).
+```
+404 | def _pairwise(self):
+405 |         """Indicate if wrapped estimator is using a precomputed Gram matrix"""
+406 |         return getattr(self.estimator, "_pairwise", False)
+```
+
+Found function `sklearn/multiclass.py:OneVsRestClassifier._first_estimator`.
+Source: Retrieved code content using keyword search (bm25).
+```
+409 | def _first_estimator(self):
+410 |         return self.estimators_[0]
+```
+
+
+
+##Searching for term "RuntimeWarning"...
+### Search Result:
+Found function `sklearn/learning_curve.py:learning_curve`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 28 | def learning_curve(estimator, X, y, train_sizes=np.linspace(0.1, 1.0, 5),
+ 29 |                    cv=None, scoring=None, exploit_incremental_learning=False,
+ 30 |                    n_jobs=1, pre_dispatch="all", verbose=0,
+ 31 |                    error_score='raise'):
+ 32 |     """Learning curve.
+ 33 | 
+ 34 |     .. deprecated:: 0.18
+ 35 |         This module will be removed in 0.20.
+ 36 |         Use :func:`sklearn.model_selection.learning_curve` instead.
+ 37 | 
+ 38 |     Determines cross-validated training and test scores for different training
+ 39 |     set sizes.
+ 40 | 
+ 41 |     A cross-validation generator splits the whole dataset k times in training
+ 42 |     and test data. Subsets of the training set with varying sizes will be used
+ 43 |     to train the estimator and a score for each training subset size and the
+ 44 |     test set will be computed. Afterwards, the scores will be averaged over
+ 45 |     all k runs for each training subset size.
+ 46 | 
+ 47 |     Read more in the :ref:`User Guide <learning_curves>`.
+ 48 | 
+ 49 |     Parameters
+ 50 |     ----------
+ 51 |     estimator : object type that implements the "fit" and "predict" methods
+ 52 |         An object of that type which is cloned for each validation.
+ 53 | 
+ 54 |     X : array-like, shape (n_samples, n_features)
+ 55 |         Training vector, where n_samples is the number of samples and
+ 56 |         n_features is the number of features.
+ 57 | 
+ 58 |     y : array-like, shape (n_samples) or (n_samples, n_features), optional
+ 59 |         Target relative to X for classification or regression;
+ 60 |         None for unsupervised learning.
+ 61 | 
+ 62 |     train_sizes : array-like, shape (n_ticks,), dtype float or int
+ 63 |         Relative or absolute numbers of training examples that will be used to
+ 64 |         generate the learning curve. If the dtype is float, it is regarded as a
+ 65 |         fraction of the maximum size of the training set (that is determined
+ 66 |         by the selected validation method), i.e. it has to be within (0, 1].
+ 67 |         Otherwise it is interpreted as absolute sizes of the training sets.
+ 68 |         Note that for classification the number of samples usually have to
+ 69 |         be big enough to contain at least one sample from each class.
+ 70 |         (default: np.linspace(0.1, 1.0, 5))
+ 71 | 
+ 72 |     cv : int, cross-validation generator or an iterable, optional
+ 73 |         Determines the cross-validation splitting strategy.
+ 74 |         Possible inputs for cv are:
+ 75 | 
+ 76 |         - None, to use the default 3-fold cross-validation,
+ 77 |         - integer, to specify the number of folds.
+ 78 |         - An object to be used as a cross-validation generator.
+ 79 |         - An iterable yielding train/test splits.
+ 80 | 
+ 81 |         For integer/None inputs, if the estimator is a classifier and ``y`` is
+ 82 |         either binary or multiclass,
+ 83 |         :class:`sklearn.model_selection.StratifiedKFold` is used. In all
+ 84 |         other cases, :class:`sklearn.model_selection.KFold` is used.
+ 85 | 
+ 86 |         Refer :ref:`User Guide <cross_validation>` for the various
+ 87 |         cross-validation strategies that can be used here.
+ 88 | 
+ 89 |     scoring : string, callable or None, optional, default: None
+ 90 |         A string (see model evaluation documentation) or
+ 91 |         a scorer callable object / function with signature
+ 92 |         ``scorer(estimator, X, y)``.
+ 93 | 
+ 94 |     exploit_incremental_learning : boolean, optional, default: False
+ 95 |         If the estimator supports incremental learning, this will be
+ 96 |         used to speed up fitting for different training set sizes.
+ 97 | 
+ 98 |     n_jobs : integer, optional
+ 99 |         Number of jobs to run in parallel (default 1).
+100 | 
+101 |     pre_dispatch : integer or string, optional
+102 |         Number of predispatched jobs for parallel execution (default is
+103 |         all). The option can reduce the allocated memory. The string can
+104 |         be an expression like '2*n_jobs'.
+105 | 
+106 |     verbose : integer, optional
+107 |         Controls the verbosity: the higher, the more messages.
+108 | 
+109 |     error_score : 'raise' (default) or numeric
+110 |         Value to assign to the score if an error occurs in estimator fitting.
+111 |         If set to 'raise', the error is raised. If a numeric value is given,
+112 |         FitFailedWarning is raised. This parameter does not affect the refit
+113 |         step, which will always raise the error.
+114 | 
+115 |     Returns
+116 |     -------
+117 |     train_sizes_abs : array, shape = (n_unique_ticks,), dtype int
+118 |         Numbers of training examples that has been used to generate the
+119 |         learning curve. Note that the number of ticks might be less
+120 |         than n_ticks because duplicate entries will be removed.
+121 | 
+122 |     train_scores : array, shape (n_ticks, n_cv_folds)
+123 |         Scores on training sets.
+124 | 
+125 |     test_scores : array, shape (n_ticks, n_cv_folds)
+126 |         Scores on test set.
+127 | 
+128 |     Notes
+129 |     -----
+130 |     See :ref:`examples/model_selection/plot_learning_curve.py
+131 |     <sphx_glr_auto_examples_model_selection_plot_learning_curve.py>`
+132 |     """
+133 |     if exploit_incremental_learning and not hasattr(estimator, "partial_fit"):
+134 |         raise ValueError("An estimator must support the partial_fit interface "
+135 |                          "to exploit incremental learning")
+136 | 
+137 |     X, y = indexable(X, y)
+138 |     # Make a list since we will be iterating multiple times over the folds
+139 |     cv = list(check_cv(cv, X, y, classifier=is_classifier(estimator)))
+140 |     scorer = check_scoring(estimator, scoring=scoring)
+141 | 
+142 |     # HACK as long as boolean indices are allowed in cv generators
+143 |     if cv[0][0].dtype == bool:
+144 |         new_cv = []
+145 |         for i in range(len(cv)):
+146 |             new_cv.append((np.nonzero(cv[i][0])[0], np.nonzero(cv[i][1])[0]))
+147 |         cv = new_cv
+148 | 
+149 |     n_max_training_samples = len(cv[0][0])
+150 |     # Because the lengths of folds can be significantly different, it is
+151 |     # not guaranteed that we use all of the available training data when we
+152 |     # use the first 'n_max_training_samples' samples.
+153 |     train_sizes_abs = _translate_train_sizes(train_sizes,
+154 |                                              n_max_training_samples)
+155 |     n_unique_ticks = train_sizes_abs.shape[0]
+156 |     if verbose > 0:
+157 |         print("[learning_curve] Training set sizes: " + str(train_sizes_abs))
+158 | 
+159 |     parallel = Parallel(n_jobs=n_jobs, pre_dispatch=pre_dispatch,
+160 |                         verbose=verbose)
+161 |     if exploit_incremental_learning:
+162 |         classes = np.unique(y) if is_classifier(estimator) else None
+163 |         out = parallel(delayed(_incremental_fit_estimator)(
+164 |             clone(estimator), X, y, classes, train, test, train_sizes_abs,
+165 |             scorer, verbose) for train, test in cv)
+166 |     else:
+167 |         out = parallel(delayed(_fit_and_score)(
+168 |             clone(estimator), X, y, scorer, train[:n_train_samples], test,
+169 |             verbose, parameters=None, fit_params=None, return_train_score=True,
+170 |             error_score=error_score)
+171 |             for train, test in cv for n_train_samples in train_sizes_abs)
+172 |         out = np.array(out)[:, :2]
+173 |         n_cv_folds = out.shape[0] // n_unique_ticks
+174 |         out = out.reshape(n_cv_folds, n_unique_ticks, 2)
+175 | 
+176 |     out = np.asarray(out).transpose((2, 1, 0))
+177 | 
+178 |     return train_sizes_abs, out[0], out[1]
+```
+
+Found function `sklearn/linear_model/omp.py:_gram_omp`.
+Source: Retrieved code content using keyword search (bm25).
+```
+139 | def _gram_omp(Gram, Xy, n_nonzero_coefs, tol_0=None, tol=None,
+140 |               copy_Gram=True, copy_Xy=True, return_path=False):
+141 |     """Orthogonal Matching Pursuit step on a precomputed Gram matrix.
+142 | 
+143 |     This function uses the Cholesky decomposition method.
+144 | 
+145 |     Parameters
+146 |     ----------
+147 |     Gram : array, shape (n_features, n_features)
+148 |         Gram matrix of the input data matrix
+149 | 
+150 |     Xy : array, shape (n_features,)
+151 |         Input targets
+152 | 
+153 |     n_nonzero_coefs : int
+154 |         Targeted number of non-zero elements
+155 | 
+156 |     tol_0 : float
+157 |         Squared norm of y, required if tol is not None.
+158 | 
+159 |     tol : float
+160 |         Targeted squared error, if not None overrides n_nonzero_coefs.
+161 | 
+162 |     copy_Gram : bool, optional
+163 |         Whether the gram matrix must be copied by the algorithm. A false
+164 |         value is only helpful if it is already Fortran-ordered, otherwise a
+165 |         copy is made anyway.
+166 | 
+167 |     copy_Xy : bool, optional
+168 |         Whether the covariance vector Xy must be copied by the algorithm.
+169 |         If False, it may be overwritten.
+170 | 
+171 |     return_path : bool, optional. Default: False
+172 |         Whether to return every value of the nonzero coefficients along the
+173 |         forward path. Useful for cross-validation.
+174 | 
+175 |     Returns
+176 |     -------
+177 |     gamma : array, shape (n_nonzero_coefs,)
+178 |         Non-zero elements of the solution
+179 | 
+180 |     idx : array, shape (n_nonzero_coefs,)
+181 |         Indices of the positions of the elements in gamma within the solution
+182 |         vector
+183 | 
+184 |     coefs : array, shape (n_features, n_nonzero_coefs)
+185 |         The first k values of column k correspond to the coefficient value
+186 |         for the active features at that step. The lower left triangle contains
+187 |         garbage. Only returned if ``return_path=True``.
+188 | 
+189 |     n_active : int
+190 |         Number of active features at convergence.
+191 |     """
+192 |     Gram = Gram.copy('F') if copy_Gram else np.asfortranarray(Gram)
+193 | 
+194 |     if copy_Xy:
+195 |         Xy = Xy.copy()
+196 | 
+197 |     min_float = np.finfo(Gram.dtype).eps
+198 |     nrm2, swap = linalg.get_blas_funcs(('nrm2', 'swap'), (Gram,))
+199 |     potrs, = get_lapack_funcs(('potrs',), (Gram,))
+200 | 
+201 |     indices = np.arange(len(Gram))  # keeping track of swapping
+202 |     alpha = Xy
+203 |     tol_curr = tol_0
+204 |     delta = 0
+205 |     gamma = np.empty(0)
+206 |     n_active = 0
+207 | 
+208 |     max_features = len(Gram) if tol is not None else n_nonzero_coefs
+209 | 
+210 |     L = np.empty((max_features, max_features), dtype=Gram.dtype)
+211 | 
+212 |     L[0, 0] = 1.
+213 |     if return_path:
+214 |         coefs = np.empty_like(L)
+215 | 
+216 |     while True:
+217 |         lam = np.argmax(np.abs(alpha))
+218 |         if lam < n_active or alpha[lam] ** 2 < min_float:
+219 |             # selected same atom twice, or inner product too small
+220 |             warnings.warn(premature, RuntimeWarning, stacklevel=3)
+221 |             break
+222 |         if n_active > 0:
+223 |             L[n_active, :n_active] = Gram[lam, :n_active]
+224 |             linalg.solve_triangular(L[:n_active, :n_active],
+225 |                                     L[n_active, :n_active],
+226 |                                     trans=0, lower=1,
+227 |                                     overwrite_b=True,
+228 |                                     check_finite=False)
+229 |             v = nrm2(L[n_active, :n_active]) ** 2
+230 |             Lkk = Gram[lam, lam] - v
+231 |             if Lkk <= min_float:  # selected atoms are dependent
+232 |                 warnings.warn(premature, RuntimeWarning, stacklevel=3)
+233 |                 break
+234 |             L[n_active, n_active] = sqrt(Lkk)
+235 |         else:
+236 |             L[0, 0] = sqrt(Gram[lam, lam])
+237 | 
+238 |         Gram[n_active], Gram[lam] = swap(Gram[n_active], Gram[lam])
+239 |         Gram.T[n_active], Gram.T[lam] = swap(Gram.T[n_active], Gram.T[lam])
+240 |         indices[n_active], indices[lam] = indices[lam], indices[n_active]
+241 |         Xy[n_active], Xy[lam] = Xy[lam], Xy[n_active]
+242 |         n_active += 1
+243 |         # solves LL'x = X'y as a composition of two triangular systems
+244 |         gamma, _ = potrs(L[:n_active, :n_active], Xy[:n_active], lower=True,
+245 |                          overwrite_b=False)
+246 |         if return_path:
+247 |             coefs[:n_active, n_active - 1] = gamma
+248 |         beta = np.dot(Gram[:, :n_active], gamma)
+249 |         alpha = Xy - beta
+250 |         if tol is not None:
+251 |             tol_curr += delta
+252 |             delta = np.inner(gamma, beta[:n_active])
+253 |             tol_curr -= delta
+254 |             if abs(tol_curr) <= tol:
+255 |                 break
+256 |         elif n_active == max_features:
+257 |             break
+258 | 
+259 |     if return_path:
+260 |         return gamma, indices[:n_active], coefs[:, :n_active], n_active
+261 |     else:
+262 |         return gamma, indices[:n_active], n_active
+```
+
+Found function `sklearn/covariance/robust_covariance.py:_c_step`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 95 | def _c_step(X, n_support, random_state, remaining_iterations=30,
+ 96 |             initial_estimates=None, verbose=False,
+ 97 |             cov_computation_method=empirical_covariance):
+ 98 |     n_samples, n_features = X.shape
+ 99 |     dist = np.inf
+100 | 
+101 |     # Initialisation
+102 |     support = np.zeros(n_samples, dtype=bool)
+103 |     if initial_estimates is None:
+104 |         # compute initial robust estimates from a random subset
+105 |         support[random_state.permutation(n_samples)[:n_support]] = True
+106 |     else:
+107 |         # get initial robust estimates from the function parameters
+108 |         location = initial_estimates[0]
+109 |         covariance = initial_estimates[1]
+110 |         # run a special iteration for that case (to get an initial support)
+111 |         precision = linalg.pinvh(covariance)
+112 |         X_centered = X - location
+113 |         dist = (np.dot(X_centered, precision) * X_centered).sum(1)
+114 |         # compute new estimates
+115 |         support[np.argsort(dist)[:n_support]] = True
+116 | 
+117 |     X_support = X[support]
+118 |     location = X_support.mean(0)
+119 |     covariance = cov_computation_method(X_support)
+120 | 
+121 |     # Iterative procedure for Minimum Covariance Determinant computation
+122 |     det = fast_logdet(covariance)
+123 |     # If the data already has singular covariance, calculate the precision,
+124 |     # as the loop below will not be entered.
+125 |     if np.isinf(det):
+126 |         precision = linalg.pinvh(covariance)
+127 | 
+128 |     previous_det = np.inf
+129 |     while (det < previous_det and remaining_iterations > 0
+130 |             and not np.isinf(det)):
+131 |         # save old estimates values
+132 |         previous_location = location
+133 |         previous_covariance = covariance
+134 |         previous_det = det
+135 |         previous_support = support
+136 |         # compute a new support from the full data set mahalanobis distances
+137 |         precision = linalg.pinvh(covariance)
+138 |         X_centered = X - location
+139 |         dist = (np.dot(X_centered, precision) * X_centered).sum(axis=1)
+140 |         # compute new estimates
+141 |         support = np.zeros(n_samples, dtype=bool)
+142 |         support[np.argsort(dist)[:n_support]] = True
+143 |         X_support = X[support]
+144 |         location = X_support.mean(axis=0)
+145 |         covariance = cov_computation_method(X_support)
+146 |         det = fast_logdet(covariance)
+147 |         # update remaining iterations for early stopping
+148 |         remaining_iterations -= 1
+149 | 
+150 |     previous_dist = dist
+151 |     dist = (np.dot(X - location, precision) * (X - location)).sum(axis=1)
+152 |     # Check if best fit already found (det => 0, logdet => -inf)
+153 |     if np.isinf(det):
+154 |         results = location, covariance, det, support, dist
+155 |     # Check convergence
+156 |     if np.allclose(det, previous_det):
+157 |         # c_step procedure converged
+158 |         if verbose:
+159 |             print("Optimal couple (location, covariance) found before"
+160 |                   " ending iterations (%d left)" % (remaining_iterations))
+161 |         results = location, covariance, det, support, dist
+162 |     elif det > previous_det:
+163 |         # determinant has increased (should not happen)
+164 |         warnings.warn("Warning! det > previous_det (%.15f > %.15f)"
+165 |                       % (det, previous_det), RuntimeWarning)
+166 |         results = previous_location, previous_covariance, \
+167 |             previous_det, previous_support, previous_dist
+168 | 
+169 |     # Check early stopping
+170 |     if remaining_iterations == 0:
+171 |         if verbose:
+172 |             print('Maximum number of iterations reached')
+173 |         results = location, covariance, det, support, dist
+174 | 
+175 |     return results
+```
+
+Found function `sklearn/utils/estimator_checks.py:check_supervised_y_2d`.
+Source: Retrieved code content using keyword search (bm25).
+```
+1495 | def check_supervised_y_2d(name, estimator_orig):
+1496 |     if "MultiTask" in name:
+1497 |         # These only work on 2d, so this test makes no sense
+1498 |         return
+1499 |     rnd = np.random.RandomState(0)
+1500 |     X = pairwise_estimator_convert_X(rnd.uniform(size=(10, 3)), estimator_orig)
+1501 |     y = np.arange(10) % 3
+1502 |     estimator = clone(estimator_orig)
+1503 |     set_random_state(estimator)
+1504 |     # fit
+1505 |     estimator.fit(X, y)
+1506 |     y_pred = estimator.predict(X)
+1507 | 
+1508 |     set_random_state(estimator)
+1509 |     # Check that when a 2D y is given, a DataConversionWarning is
+1510 |     # raised
+1511 |     with warnings.catch_warnings(record=True) as w:
+1512 |         warnings.simplefilter("always", DataConversionWarning)
+1513 |         warnings.simplefilter("ignore", RuntimeWarning)
+1514 |         estimator.fit(X, y[:, np.newaxis])
+1515 |     y_pred_2d = estimator.predict(X)
+1516 |     msg = "expected 1 DataConversionWarning, got: %s" % (
+1517 |         ", ".join([str(w_x) for w_x in w]))
+1518 |     if name not in MULTI_OUTPUT:
+1519 |         # check that we warned if we don't support multi-output
+1520 |         assert_greater(len(w), 0, msg)
+1521 |         assert_true("DataConversionWarning('A column-vector y"
+1522 |                     " was passed when a 1d array was expected" in msg)
+1523 |     assert_allclose(y_pred.ravel(), y_pred_2d.ravel())
+```
+
+Found file `sklearn/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `sklearn/__init__.py` for the full content if needed.
+
+
+
+##Searching for term "RuntimeWarning", "properties RuntimeWarning"...
+### Search Result:
+Found function `sklearn/linear_model/omp.py:_cholesky_omp`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 26 | def _cholesky_omp(X, y, n_nonzero_coefs, tol=None, copy_X=True,
+ 27 |                   return_path=False):
+ 28 |     """Orthogonal Matching Pursuit step using the Cholesky decomposition.
+ 29 | 
+ 30 |     Parameters
+ 31 |     ----------
+ 32 |     X : array, shape (n_samples, n_features)
+ 33 |         Input dictionary. Columns are assumed to have unit norm.
+ 34 | 
+ 35 |     y : array, shape (n_samples,)
+ 36 |         Input targets
+ 37 | 
+ 38 |     n_nonzero_coefs : int
+ 39 |         Targeted number of non-zero elements
+ 40 | 
+ 41 |     tol : float
+ 42 |         Targeted squared error, if not None overrides n_nonzero_coefs.
+ 43 | 
+ 44 |     copy_X : bool, optional
+ 45 |         Whether the design matrix X must be copied by the algorithm. A false
+ 46 |         value is only helpful if X is already Fortran-ordered, otherwise a
+ 47 |         copy is made anyway.
+ 48 | 
+ 49 |     return_path : bool, optional. Default: False
+ 50 |         Whether to return every value of the nonzero coefficients along the
+ 51 |         forward path. Useful for cross-validation.
+ 52 | 
+ 53 |     Returns
+ 54 |     -------
+ 55 |     gamma : array, shape (n_nonzero_coefs,)
+ 56 |         Non-zero elements of the solution
+ 57 | 
+ 58 |     idx : array, shape (n_nonzero_coefs,)
+ 59 |         Indices of the positions of the elements in gamma within the solution
+ 60 |         vector
+ 61 | 
+ 62 |     coef : array, shape (n_features, n_nonzero_coefs)
+ 63 |         The first k values of column k correspond to the coefficient value
+ 64 |         for the active features at that step. The lower left triangle contains
+ 65 |         garbage. Only returned if ``return_path=True``.
+ 66 | 
+ 67 |     n_active : int
+ 68 |         Number of active features at convergence.
+ 69 |     """
+ 70 |     if copy_X:
+ 71 |         X = X.copy('F')
+ 72 |     else:  # even if we are allowed to overwrite, still copy it if bad order
+ 73 |         X = np.asfortranarray(X)
+ 74 | 
+ 75 |     min_float = np.finfo(X.dtype).eps
+ 76 |     nrm2, swap = linalg.get_blas_funcs(('nrm2', 'swap'), (X,))
+ 77 |     potrs, = get_lapack_funcs(('potrs',), (X,))
+ 78 | 
+ 79 |     alpha = np.dot(X.T, y)
+ 80 |     residual = y
+ 81 |     gamma = np.empty(0)
+ 82 |     n_active = 0
+ 83 |     indices = np.arange(X.shape[1])  # keeping track of swapping
+ 84 | 
+ 85 |     max_features = X.shape[1] if tol is not None else n_nonzero_coefs
+ 86 | 
+ 87 |     L = np.empty((max_features, max_features), dtype=X.dtype)
+ 88 | 
+ 89 |     if return_path:
+ 90 |         coefs = np.empty_like(L)
+ 91 | 
+ 92 |     while True:
+ 93 |         lam = np.argmax(np.abs(np.dot(X.T, residual)))
+ 94 |         if lam < n_active or alpha[lam] ** 2 < min_float:
+ 95 |             # atom already selected or inner product too small
+ 96 |             warnings.warn(premature, RuntimeWarning, stacklevel=2)
+ 97 |             break
+ 98 | 
+ 99 |         if n_active > 0:
+100 |             # Updates the Cholesky decomposition of X' X
+101 |             L[n_active, :n_active] = np.dot(X[:, :n_active].T, X[:, lam])
+102 |             linalg.solve_triangular(L[:n_active, :n_active],
+103 |                                     L[n_active, :n_active],
+104 |                                     trans=0, lower=1,
+105 |                                     overwrite_b=True,
+106 |                                     check_finite=False)
+107 |             v = nrm2(L[n_active, :n_active]) ** 2
+108 |             Lkk = linalg.norm(X[:, lam]) ** 2 - v
+109 |             if Lkk <= min_float:  # selected atoms are dependent
+110 |                 warnings.warn(premature, RuntimeWarning, stacklevel=2)
+111 |                 break
+112 |             L[n_active, n_active] = sqrt(Lkk)
+113 |         else:
+114 |             L[0, 0] = linalg.norm(X[:, lam])
+115 | 
+116 |         X.T[n_active], X.T[lam] = swap(X.T[n_active], X.T[lam])
+117 |         alpha[n_active], alpha[lam] = alpha[lam], alpha[n_active]
+118 |         indices[n_active], indices[lam] = indices[lam], indices[n_active]
+119 |         n_active += 1
+120 | 
+121 |         # solves LL'x = X'y as a composition of two triangular systems
+122 |         gamma, _ = potrs(L[:n_active, :n_active], alpha[:n_active], lower=True,
+123 |                          overwrite_b=False)
+124 | 
+125 |         if return_path:
+126 |             coefs[:n_active, n_active - 1] = gamma
+127 |         residual = y - np.dot(X[:, :n_active], gamma)
+128 |         if tol is not None and nrm2(residual) ** 2 <= tol:
+129 |             break
+130 |         elif n_active == max_features:
+131 |             break
+132 | 
+133 |     if return_path:
+134 |         return gamma, indices[:n_active], coefs[:, :n_active], n_active
+135 |     else:
+136 |         return gamma, indices[:n_active], n_active
+```
+
+Found class `sklearn/exceptions.py:FitFailedWarning`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 99 | class FitFailedWarning(RuntimeWarning):
+100 |     """Warning class used if there is an error while fitting the estimator.
+101 | 
+102 |     This Warning is used in meta estimators GridSearchCV and RandomizedSearchCV
+103 |     and the cross-validation helper function cross_val_score to warn when there
+104 |     is an error while fitting the estimator.
+105 | 
+106 |     Examples
+107 |     --------
+108 |     >>> from sklearn.model_selection import GridSearchCV
+109 |     >>> from sklearn.svm import LinearSVC
+110 |     >>> from sklearn.exceptions import FitFailedWarning
+111 |     >>> import warnings
+112 |     >>> warnings.simplefilter('always', FitFailedWarning)
+113 |     >>> gs = GridSearchCV(LinearSVC(), {'C': [-1, -2]}, error_score=0, cv=2)
+114 |     >>> X, y = [[1, 2], [3, 4], [5, 6], [7, 8]], [0, 0, 1, 1]
+115 |     >>> with warnings.catch_warnings(record=True) as w:
+116 |     ...     try:
+117 |     ...         gs.fit(X, y)   # This will raise a ValueError since C is < 0
+118 |     ...     except ValueError:
+119 |     ...         pass
+120 |     ...     print(repr(w[-1].message))
+121 |     ... # doctest: +NORMALIZE_WHITESPACE
+122 |     FitFailedWarning('Estimator fit failed. The score on this train-test
+123 |     partition for these parameters will be set to 0.000000.
+124 |     Details: \\nValueError: Penalty term must be positive; got (C=-2)\\n',)
+125 | 
+126 |     .. versionchanged:: 0.18
+127 |        Moved from sklearn.cross_validation.
+128 |     """
+```
+
+Found file `sklearn/learning_curve.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `sklearn/learning_curve.py` for the full content if needed.
+
+
+
+##Searching for term "properties RuntimeWarning"...
+### Search Result:
+Found class `sklearn/exceptions.py:SkipTestWarning`.
+Source: Retrieved entity using keyword search (bm25).
+```
+142 | class SkipTestWarning(UserWarning):
+143 |     """Warning class used to notify the user of a test that was skipped.
+144 | 
+145 |     For example, one of the estimator checks requires a pandas import.
+146 |     If the pandas package cannot be imported, the test will be skipped rather
+147 |     than register as a failure.
+148 |     """
+```
+
+2026-08-28 04:09:18 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:09:24 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:09:24 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:09:24 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 04:09:24 auto_search_main.py INFO ===============
+2026-08-28 04:09:24 auto_search_main.py INFO Final response generated content_length=335
+2026-08-28 04:09:25 auto_search_main.py INFO ==== localizing scikit-learn__scikit-learn-10844 succeed, process multiple loc outputs ====
+2026-08-28 04:09:25 cost_analysis.py INFO input_tokens=81901, output_tokens=586, cost=0.21
+2026-08-28 04:09:25 auto_search_main.py INFO Total time: 2.5114 min

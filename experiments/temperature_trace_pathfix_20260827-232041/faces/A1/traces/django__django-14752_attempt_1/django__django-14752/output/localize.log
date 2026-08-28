@@ -1,0 +1,1600 @@
+2026-08-28 01:54:44 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 01:54:44 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 01:54:44 auto_search_main.py INFO ============================================================
+2026-08-28 01:54:44 auto_search_main.py INFO ==== rank 0 setup localize django__django-14752 ====
+2026-08-28 01:54:44 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/2a827f77-83b4-45a5-aa28-1cc28de57913/django_django and checkout commit HEAD
+2026-08-28 01:54:44 git_repo_manager.py INFO Directory 'playground/2a827f77-83b4-45a5-aa28-1cc28de57913/django_django' was created.
+2026-08-28 01:58:24 repo_ops.py INFO [0] Processed django__django-14752
+2026-08-28 01:58:24 auto_search_main.py INFO ============================================================
+2026-08-28 01:58:24 auto_search_main.py INFO ==== rank 0 begin localizing django__django-14752 ====
+2026-08-28 01:58:24 auto_search_main.py INFO ============================================================
+2026-08-28 01:58:24 auto_search_main.py INFO ==== django__django-14752 Count down: attempt 1 ====
+2026-08-28 01:58:24 auto_search_main.py INFO ==== django__django-14752 start auto search ====
+2026-08-28 01:58:24 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:00:30 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 524 <none>"
+2026-08-28 02:00:30 _base_client.py INFO Retrying request to /chat/completions in 0.479719 seconds
+2026-08-28 02:02:35 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 524 <none>"
+2026-08-28 02:02:35 _base_client.py INFO Retrying request to /chat/completions in 0.897128 seconds
+2026-08-28 02:02:43 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:02:43 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:02:43 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 02:02:43 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'file_path_or_pattern': '**/*.py', 'search_terms': ['AutocompleteJsonView', 'serialize_result', 'autocomplete']}))
+```
+2026-08-28 02:02:45 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:02:47 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:02:48 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/2a827f77-83b4-45a5-aa28-1cc28de57913/django_django and checkout commit HEAD
+2026-08-28 02:02:52 epic_split.py WARNING Skipping code block LANG_INFO._ in django/conf/locale/__init__.py as it has 4205 tokens which is more than chunk size 500. Content: {
+    'af': {
+        'bidi': False,
+        'code': 'af',
+        'name': 'Afrikaans',
+        'nam...
+2026-08-28 02:04:09 epic_split.py WARNING Parsing file django/db/models/sql/query.py took 1.29 seconds.
+2026-08-28 02:04:29 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:29 auto_search_main.py INFO OBSERVATION:
+django/contrib/staticfiles/storage.py:impl
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.stored_name
+django/contrib/staticfiles/storage.py:ManifestStaticFilesStorage
+django/contrib/staticfiles/storage.py:ConfiguredStorage
+django/contrib/staticfiles/storage.py:ConfiguredStorage._setup
+django/contrib/staticfiles/storage.py:ManifestFilesMixin
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.post_process
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.__init__
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.read_manifest
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.save_manifest
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.load_manifest
+django/contrib/syndication/views.py:Feed._get_dynamic_attr
+django/contrib/staticfiles/utils.py:check_settings
+django/contrib/syndication/views.py:Feed
+django/contrib/syndication/views.py:Feed.__call__
+##Searching for term "AutocompleteJsonView"...
+### Search Result:
+Found class `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`.
+Source: Match found for entity name `AutocompleteJsonView`.
+```
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+ 34 | 
+ 35 |     def get_paginator(self, *args, **kwargs):
+ 36 |         """Use the ModelAdmin's paginator."""
+ 37 |         return self.model_admin.get_paginator(self.request, *args, **kwargs)
+ 38 | 
+ 39 |     def get_queryset(self):
+ 40 |         """Return queryset based on ModelAdmin.get_search_results()."""
+ 41 |         qs = self.model_admin.get_queryset(self.request)
+ 42 |         qs = qs.complex_filter(self.source_field.get_limit_choices_to())
+ 43 |         qs, search_use_distinct = self.model_admin.get_search_results(self.request, qs, self.term)
+ 44 |         if search_use_distinct:
+ 45 |             qs = qs.distinct()
+ 46 |         return qs
+ 47 | 
+ 48 |     def process_request(self, request):
+ 49 |         """
+ 50 |         Validate request integrity, extract and return request parameters.
+ 51 | 
+ 52 |         Since the subsequent view permission check requires the target model
+ 53 |         admin, which is determined here, raise PermissionDenied if the
+ 54 |         requested app, model or field are malformed.
+ 55 | 
+ 56 |         Raise Http404 if the target model admin is not configured properly with
+ 57 |         search_fields.
+ 58 |         """
+ 59 |         term = request.GET.get('term', '')
+ 60 |         try:
+ 61 |             app_label = request.GET['app_label']
+ 62 |             model_name = request.GET['model_name']
+ 63 |             field_name = request.GET['field_name']
+ 64 |         except KeyError as e:
+ 65 |             raise PermissionDenied from e
+ 66 | 
+ 67 |         # Retrieve objects from parameters.
+ 68 |         try:
+ 69 |             source_model = apps.get_model(app_label, model_name)
+ 70 |         except LookupError as e:
+ 71 |             raise PermissionDenied from e
+ 72 | 
+ 73 |         try:
+ 74 |             source_field = source_model._meta.get_field(field_name)
+ 75 |         except FieldDoesNotExist as e:
+ 76 |             raise PermissionDenied from e
+ 77 |         try:
+ 78 |             remote_model = source_field.remote_field.model
+ 79 |         except AttributeError as e:
+ 80 |             raise PermissionDenied from e
+ 81 |         try:
+ 82 |             model_admin = self.admin_site._registry[remote_model]
+ 83 |         except KeyError as e:
+ 84 |             raise PermissionDenied from e
+ 85 | 
+ 86 |         # Validate suitability of objects.
+ 87 |         if not model_admin.get_search_fields(request):
+ 88 |             raise Http404(
+ 89 |                 '%s must have search_fields for the autocomplete_view.' %
+ 90 |                 type(model_admin).__qualname__
+ 91 |             )
+ 92 | 
+ 93 |         to_field_name = getattr(source_field.remote_field, 'field_name', remote_model._meta.pk.attname)
+ 94 |         to_field_name = remote_model._meta.get_field(to_field_name).attname
+ 95 |         if not model_admin.to_field_allowed(request, to_field_name):
+ 96 |             raise PermissionDenied
+ 97 | 
+ 98 |         return term, model_admin, source_field, to_field_name
+ 99 | 
+100 |     def has_perm(self, request, obj=None):
+101 |         """Check if user has permission to access the related model."""
+102 |         return self.model_admin.has_view_permission(request, obj=obj)
+```
+
+
+
+##Searching for term "serialize_result"...
+### Search Result:
+Found `django/contrib/staticfiles/urls.py:staticfiles_urlpatterns`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.conf import settings
+ 2 | from django.conf.urls.static import static
+ 3 | from django.contrib.staticfiles.views import serve
+ 4 | 
+ 5 | urlpatterns = []
+ 6 | 
+ 7 | 
+ 8 | def staticfiles_urlpatterns(prefix=None):
+ 9 |     """
+10 |     Helper function to return a URL pattern for serving static files.
+11 |     """
+12 |     if prefix is None:
+13 |         prefix = settings.STATIC_URL
+14 |     return static(prefix, view=serve)
+15 | 
+16 | 
+17 | # Only append if urlpatterns are empty
+18 | if settings.DEBUG and not urlpatterns:
+19 |     urlpatterns += staticfiles_urlpatterns()
+20 | 
+```
+
+Found function `django/contrib/postgres/serializers.py:RangeSerializer.serialize`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 5 | def serialize(self):
+ 6 |         module = self.value.__class__.__module__
+ 7 |         # Ranges are implemented in psycopg2._range but the public import
+ 8 |         # location is psycopg2.extras.
+ 9 |         module = 'psycopg2.extras' if module == 'psycopg2._range' else module
+10 |         return '%s.%r' % (module, self.value), {'import %s' % module}
+```
+
+Found function `django/contrib/messages/storage/session.py:SessionStorage.serialize_messages`.
+Source: Retrieved entity using keyword search (bm25).
+```
+43 | def serialize_messages(self, messages):
+44 |         encoder = MessageEncoder()
+45 |         return encoder.encode(messages)
+```
+
+Found function `django/contrib/gis/forms/widgets.py:BaseGeometryWidget.serialize`.
+Source: Retrieved entity using keyword search (bm25).
+```
+34 | def serialize(self, value):
+35 |         return value.wkt if value else ''
+```
+
+Found function `django/contrib/staticfiles/storage.py:ManifestFilesMixin.stored_name`.
+Source: Retrieved code content using keyword search (bm25).
+```
+446 | def stored_name(self, name):
+447 |         parsed_name = urlsplit(unquote(name))
+448 |         clean_name = parsed_name.path.strip()
+449 |         hash_key = self.hash_key(clean_name)
+450 |         cache_name = self.hashed_files.get(hash_key)
+451 |         if cache_name is None:
+452 |             if self.manifest_strict:
+453 |                 raise ValueError("Missing staticfiles manifest entry for '%s'" % clean_name)
+454 |             cache_name = self.clean_name(self.hashed_name(name))
+455 |         unparsed_name = list(parsed_name)
+456 |         unparsed_name[2] = cache_name
+457 |         # Special casing for a @font-face hack, like url(myfont.eot?#iefix")
+458 |         # http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax
+459 |         if '?#' in name and not unparsed_name[3]:
+460 |             unparsed_name[2] += '?'
+461 |         return urlunsplit(unparsed_name)
+```
+
+Found class `django/contrib/staticfiles/storage.py:ManifestStaticFilesStorage`.
+Source: Retrieved code content using keyword search (bm25).
+```
+464 | class ManifestStaticFilesStorage(ManifestFilesMixin, StaticFilesStorage):
+465 |     """
+466 |     A static file system storage backend which also saves
+467 |     hashed copies of the files it saves.
+468 |     """
+469 |     pass
+```
+
+Found class `django/contrib/staticfiles/storage.py:ConfiguredStorage`.
+Source: Retrieved code content using keyword search (bm25).
+```
+472 | class ConfiguredStorage(LazyObject):
+473 |     def _setup(self):
+474 |         self._wrapped = get_storage_class(settings.STATICFILES_STORAGE)()
+```
+
+
+
+##Searching for term "autocomplete"...
+### Search Result:
+Found file `django/contrib/admin/views/autocomplete.py`.
+Source: Match found for entity name `autocomplete`.
+Just show the structure of this file due to response length limitations:
+```
+
+
+class AutocompleteJsonView(BaseListView):
+    paginate_by = 20
+    admin_site = None
+
+    def get(self, request, *args, **kwargs):
+...
+    def get_paginator(self, *args, **kwargs):
+...
+    def get_queryset(self):
+...
+    def process_request(self, request):
+...
+    def has_perm(self, request, obj=None):
+...
+
+```
+Hint: Search `django/contrib/admin/views/autocomplete.py` to get the full content if needed.
+
+Found function `django/core/management/__init__.py:ManagementUtility.autocomplete`.
+Source: Match found for entity name `autocomplete`.
+```
+260 | def autocomplete(self):
+261 |         """
+262 |         Output completion suggestions for BASH.
+263 | 
+264 |         The output of this function is passed to BASH's `COMREPLY` variable and
+265 |         treated as completion suggestions. `COMREPLY` expects a space
+266 |         separated string as the result.
+267 | 
+268 |         The `COMP_WORDS` and `COMP_CWORD` BASH environment variables are used
+269 |         to get information about the cli input. Please refer to the BASH
+270 |         man-page for more information about this variables.
+271 | 
+272 |         Subcommand options are saved as pairs. A pair consists of
+273 |         the long option string (e.g. '--exclude') and a boolean
+274 |         value indicating if the option requires arguments. When printing to
+275 |         stdout, an equal sign is appended to options which require arguments.
+276 | 
+277 |         Note: If debugging this function, it is recommended to write the debug
+278 |         output in a separate file. Otherwise the debug output will be treated
+279 |         and formatted as potential completion suggestions.
+280 |         """
+281 |         # Don't complete if user hasn't sourced bash_completion file.
+282 |         if 'DJANGO_AUTO_COMPLETE' not in os.environ:
+283 |             return
+284 | 
+285 |         cwords = os.environ['COMP_WORDS'].split()[1:]
+286 |         cword = int(os.environ['COMP_CWORD'])
+287 | 
+288 |         try:
+289 |             curr = cwords[cword - 1]
+290 |         except IndexError:
+291 |             curr = ''
+292 | 
+293 |         subcommands = [*get_commands(), 'help']
+294 |         options = [('--help', False)]
+295 | 
+296 |         # subcommand
+297 |         if cword == 1:
+298 |             print(' '.join(sorted(filter(lambda x: x.startswith(curr), subcommands))))
+299 |         # subcommand options
+300 |         # special case: the 'help' subcommand has no options
+301 |         elif cwords[0] in subcommands and cwords[0] != 'help':
+302 |             subcommand_cls = self.fetch_command(cwords[0])
+303 |             # special case: add the names of installed apps to options
+304 |             if cwords[0] in ('dumpdata', 'sqlmigrate', 'sqlsequencereset', 'test'):
+305 |                 try:
+306 |                     app_configs = apps.get_app_configs()
+307 |                     # Get the last part of the dotted path as the app name.
+308 |                     options.extend((app_config.label, 0) for app_config in app_configs)
+309 |                 except ImportError:
+310 |                     # Fail silently if DJANGO_SETTINGS_MODULE isn't set. The
+311 |                     # user will find out once they execute the command.
+312 |                     pass
+313 |             parser = subcommand_cls.create_parser('', cwords[0])
+314 |             options.extend(
+315 |                 (min(s_opt.option_strings), s_opt.nargs != 0)
+316 |                 for s_opt in parser._actions if s_opt.option_strings
+317 |             )
+318 |             # filter out previously specified options from available options
+319 |             prev_opts = {x.split('=')[0] for x in cwords[1:cword - 1]}
+320 |             options = (opt for opt in options if opt[0] not in prev_opts)
+321 | 
+322 |             # filter options by current input
+323 |             options = sorted((k, v) for k, v in options if k.startswith(curr))
+324 |             for opt_label, require_arg in options:
+325 |                 # append '=' to options which require args
+326 |                 if require_arg:
+327 |                     opt_label += '='
+328 |                 print(opt_label)
+329 |         # Exit code of the bash completion function is never passed back to
+330 |         # the user, so it's safe to always exit with 0.
+331 |         # For more details see #25420.
+332 |         sys.exit(0)
+```
+Finding newlines for mmindex:   0%|          | 0.00/11.3M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 11.3M/11.3M [00:00<00:00, 352MB/s]
+
+2026-08-28 02:04:29 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'file_path_or_pattern': '**/*.py', 'search_terms': ['JsonResponse({', "'results': [", 'page_obj.has_next']}))
+```
+2026-08-28 02:04:31 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:32 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:34 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:35 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:35 auto_search_main.py INFO OBSERVATION:
+django/http/response.py:JsonResponse.__init__
+django/http/response.py:JsonResponse
+django/views/i18n.py:JSONCatalog.render_to_response
+django/views/i18n.py:JSONCatalog
+django/contrib/staticfiles/storage.py:HashedFilesMixin.stored_name
+django/contrib/staticfiles/storage.py:ManifestFilesMixin
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.post_process
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.__init__
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.read_manifest
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.save_manifest
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.load_manifest
+django/contrib/staticfiles/storage.py:HashedFilesMixin.hash_key
+django/contrib/staticfiles/storage.py:HashedFilesMixin.clean_name
+django/contrib/staticfiles/storage.py:HashedFilesMixin._stored_name
+django/contrib/staticfiles/storage.py:HashedFilesMixin._post_process
+django/contrib/gis/gdal/prototypes/errcheck.py:check_geom
+django/contrib/gis/gdal/prototypes/errcheck.py:check_string
+django/contrib/gis/gdal/prototypes/errcheck.py:check_arg_errcode
+django/contrib/gis/gdal/prototypes/errcheck.py:check_pointer
+django/contrib/gis/gdal/prototypes/errcheck.py:check_str_arg
+django/contrib/gis/gdal/prototypes/errcheck.py:check_geom_offset
+django/contrib/gis/gdal/prototypes/errcheck.py:check_errcode
+django/contrib/gis/gdal/prototypes/errcheck.py:check_envelope
+django/contrib/gis/gdal/prototypes/errcheck.py:check_srs
+django/db/migrations/questioner.py:InteractiveMigrationQuestioner._boolean_input
+django/db/migrations/questioner.py:InteractiveMigrationQuestioner._choice_input
+django/db/migrations/questioner.py:InteractiveMigrationQuestioner
+django/templatetags/tz.py:do_timezone
+django/contrib/gis/geos/prototypes/errcheck.py:check_sized_string
+django/contrib/gis/geos/prototypes/errcheck.py:check_string
+django/contrib/staticfiles/finders.py:find
+django/utils/translation/trans_real.py:do_ntranslate
+django/utils/translation/trans_real.py:npgettext
+django/utils/translation/trans_real.py:gettext_noop
+django/utils/translation/trans_real.py:ngettext
+django/utils/translation/trans_real.py:pgettext
+django/utils/decorators.py:make_middleware_decorator
+django/db/models/sql/compiler.py:SQLInsertCompiler.as_sql
+django/views/generic/list.py:MultipleObjectMixin.get_context_data
+django/core/paginator.py:Page.end_index
+django/core/paginator.py:Page.previous_page_number
+django/core/paginator.py:Page.next_page_number
+django/core/paginator.py:Page.start_index
+django/core/paginator.py:Page
+django/core/paginator.py:Page.__len__
+django/core/paginator.py:Page.has_other_pages
+django/core/paginator.py:Page.has_next
+django/core/paginator.py:Page.__repr__
+django/core/paginator.py:Page.__init__
+django/core/paginator.py:Page.__getitem__
+django/core/paginator.py:Page.has_previous
+django/contrib/syndication/views.py:Feed
+django/contrib/syndication/views.py:Feed.__call__
+django/contrib/staticfiles/storage.py:impl
+django/contrib/staticfiles/storage.py:ManifestFilesMixin.stored_name
+django/contrib/staticfiles/storage.py:ManifestStaticFilesStorage
+django/contrib/staticfiles/storage.py:ConfiguredStorage
+django/contrib/staticfiles/storage.py:ConfiguredStorage._setup
+django/contrib/syndication/views.py:Feed._get_dynamic_attr
+django/contrib/staticfiles/utils.py:check_settings
+django/contrib/syndication/views.py:Feed.item_description
+django/contrib/syndication/views.py:Feed.item_enclosures
+django/contrib/syndication/views.py:Feed.item_title
+django/contrib/syndication/views.py:Feed.item_link
+django/views/generic/list.py:MultipleObjectMixin.get_context_data
+django/http/response.py:JsonResponse.__init__
+django/http/response.py:JsonResponse
+django/core/paginator.py:Page.end_index
+django/core/paginator.py:Page.previous_page_number
+django/core/paginator.py:Page.next_page_number
+django/core/paginator.py:Page.start_index
+django/core/paginator.py:Page
+django/core/paginator.py:Page.__len__
+django/core/paginator.py:Page.has_other_pages
+django/core/paginator.py:Page.has_next
+django/core/paginator.py:Page.__repr__
+django/core/paginator.py:Page.__init__
+django/core/paginator.py:Page.__getitem__
+django/core/paginator.py:Page.has_previous
+django/views/i18n.py:JSONCatalog.render_to_response
+django/views/i18n.py:JSONCatalog
+django/contrib/gis/gdal/prototypes/errcheck.py:check_geom
+django/contrib/gis/gdal/prototypes/errcheck.py:check_string
+django/contrib/gis/gdal/prototypes/errcheck.py:check_arg_errcode
+django/contrib/gis/gdal/prototypes/errcheck.py:check_pointer
+django/contrib/gis/gdal/prototypes/errcheck.py:check_str_arg
+django/contrib/gis/gdal/prototypes/errcheck.py:check_geom_offset
+django/contrib/gis/gdal/prototypes/errcheck.py:check_errcode
+django/contrib/gis/gdal/prototypes/errcheck.py:check_envelope
+django/contrib/gis/gdal/prototypes/errcheck.py:check_srs
+django/db/migrations/questioner.py:InteractiveMigrationQuestioner._boolean_input
+django/db/migrations/questioner.py:InteractiveMigrationQuestioner._choice_input
+django/db/migrations/questioner.py:InteractiveMigrationQuestioner
+django/templatetags/tz.py:do_timezone
+django/contrib/gis/geos/prototypes/errcheck.py:check_sized_string
+django/contrib/gis/geos/prototypes/errcheck.py:check_string
+##Searching for term "JsonResponse({"...
+### Search Result:
+Found `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`, `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+```
+
+Found code snippet in file `django/http/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.http.cookie import SimpleCookie, parse_cookie
+ 2 | from django.http.request import (
+ 3 |     HttpRequest, QueryDict, RawPostDataException, UnreadablePostError,
+ 4 | )
+ 5 | from django.http.response import (
+ 6 |     BadHeaderError, FileResponse, Http404, HttpResponse,
+ 7 |     HttpResponseBadRequest, HttpResponseForbidden, HttpResponseGone,
+ 8 |     HttpResponseNotAllowed, HttpResponseNotFound, HttpResponseNotModified,
+ 9 |     HttpResponsePermanentRedirect, HttpResponseRedirect,
+10 |     HttpResponseServerError, JsonResponse, StreamingHttpResponse,
+11 | )
+12 | 
+13 | __all__ = [
+14 |     'SimpleCookie', 'parse_cookie', 'HttpRequest', 'QueryDict',
+15 |     'RawPostDataException', 'UnreadablePostError',
+16 |     'HttpResponse', 'StreamingHttpResponse', 'HttpResponseRedirect',
+17 |     'HttpResponsePermanentRedirect', 'HttpResponseNotModified',
+18 |     'HttpResponseBadRequest', 'HttpResponseForbidden', 'HttpResponseNotFound',
+19 |     'HttpResponseNotAllowed', 'HttpResponseGone', 'HttpResponseServerError',
+20 |     'Http404', 'BadHeaderError', 'JsonResponse', 'FileResponse',
+21 | ]
+22 | 
+```
+
+Found class `django/views/i18n.py:JSONCatalog`.
+Source: Retrieved code content using keyword search (bm25).
+```
+297 | class JSONCatalog(JavaScriptCatalog):
+298 |     """
+299 |     Return the selected language catalog as a JSON object.
+300 | 
+301 |     Receive the same parameters as JavaScriptCatalog and return a response
+302 |     with a JSON object of the following format:
+303 | 
+304 |         {
+305 |             "catalog": {
+306 |                 # Translations catalog
+307 |             },
+308 |             "formats": {
+309 |                 # Language formats for date, time, etc.
+310 |             },
+311 |             "plural": '...'  # Expression for plural forms, or null.
+312 |         }
+313 |     """
+314 |     def render_to_response(self, context, **response_kwargs):
+315 |         return JsonResponse(context)
+```
+
+
+
+##Searching for term "JsonResponse({", "JsonResponse({ 'results': [ page_obj.has_next"...
+### Search Result:
+Found class `django/http/response.py:JsonResponse`.
+Source: Retrieved entity using keyword search (bm25).
+```
+582 | class JsonResponse(HttpResponse):
+583 |     """
+584 |     An HTTP response class that consumes data to be serialized to JSON.
+585 | 
+586 |     :param data: Data to be dumped into json. By default only ``dict`` objects
+587 |       are allowed to be passed due to a security flaw before ECMAScript 5. See
+588 |       the ``safe`` parameter for more information.
+589 |     :param encoder: Should be a json encoder class. Defaults to
+590 |       ``django.core.serializers.json.DjangoJSONEncoder``.
+591 |     :param safe: Controls if only ``dict`` objects may be serialized. Defaults
+592 |       to ``True``.
+593 |     :param json_dumps_params: A dictionary of kwargs passed to json.dumps().
+594 |     """
+595 | 
+596 |     def __init__(self, data, encoder=DjangoJSONEncoder, safe=True,
+597 |                  json_dumps_params=None, **kwargs):
+598 |         if safe and not isinstance(data, dict):
+599 |             raise TypeError(
+600 |                 'In order to allow non-dict objects to be serialized set the '
+601 |                 'safe parameter to False.'
+602 |             )
+603 |         if json_dumps_params is None:
+604 |             json_dumps_params = {}
+605 |         kwargs.setdefault('content_type', 'application/json')
+606 |         data = json.dumps(data, cls=encoder, **json_dumps_params)
+607 |         super().__init__(content=data, **kwargs)
+```
+
+
+
+##Searching for term "'results': [", "JsonResponse({ 'results': [ page_obj.has_next"...
+### Search Result:
+Found function `django/contrib/admin/templatetags/admin_list.py:results`.
+Source: Retrieved entity using keyword search (bm25).
+```
+278 | def results(cl):
+279 |     if cl.formset:
+280 |         for res, form in zip(cl.result_list, cl.formset.forms):
+281 |             yield ResultList(form, items_for_result(cl, res, form))
+282 |     else:
+283 |         for res in cl.result_list:
+284 |             yield ResultList(None, items_for_result(cl, res, None))
+```
+
+
+
+##Searching for term "'results': ["...
+### Search Result:
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_string`.
+Source: Retrieved code content using keyword search (bm25).
+```
+38 | def check_string(result, func, cargs, offset=-1, str_result=False):
+39 |     """
+40 |     Check the string output returned from the given function, and free
+41 |     the string pointer allocated by OGR.  The `str_result` keyword
+42 |     may be used when the result is the string pointer, otherwise
+43 |     the OGR error code is assumed.  The `offset` keyword may be used
+44 |     to extract the string pointer passed in by-reference at the given
+45 |     slice offset in the function arguments.
+46 |     """
+47 |     if str_result:
+48 |         # For routines that return a string.
+49 |         ptr = result
+50 |         if not ptr:
+51 |             s = None
+52 |         else:
+53 |             s = string_at(result)
+54 |     else:
+55 |         # Error-code return specified.
+56 |         check_err(result)
+57 |         ptr = ptr_byref(cargs, offset)
+58 |         # Getting the string value
+59 |         s = ptr.value
+60 |     # Correctly freeing the allocated memory behind GDAL pointer
+61 |     # with the VSIFree routine.
+62 |     if ptr:
+63 |         lgdal.VSIFree(ptr)
+64 |     return s
+```
+
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_geom`.
+Source: Retrieved code content using keyword search (bm25).
+```
+76 | def check_geom(result, func, cargs):
+77 |     "Check a function that returns a geometry."
+78 |     # OGR_G_Clone may return an integer, even though the
+79 |     # restype is set to c_void_p
+80 |     if isinstance(result, int):
+81 |         result = c_void_p(result)
+82 |     if not result:
+83 |         raise GDALException('Invalid geometry pointer returned from "%s".' % func.__name__)
+84 |     return result
+```
+
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_arg_errcode`.
+Source: Retrieved code content using keyword search (bm25).
+```
+104 | def check_arg_errcode(result, func, cargs, cpl=False):
+105 |     """
+106 |     The error code is returned in the last argument, by reference.
+107 |     Check its value with `check_err` before returning the result.
+108 |     """
+109 |     check_err(arg_byref(cargs), cpl=cpl)
+110 |     return result
+```
+
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_pointer`.
+Source: Retrieved code content using keyword search (bm25).
+```
+120 | def check_pointer(result, func, cargs):
+121 |     "Make sure the result pointer is valid."
+122 |     if isinstance(result, int):
+123 |         result = c_void_p(result)
+124 |     if result:
+125 |         return result
+126 |     else:
+127 |         raise GDALException('Invalid pointer returned from "%s"' % func.__name__)
+```
+
+Found function `django/contrib/gis/gdal/prototypes/errcheck.py:check_str_arg`.
+Source: Retrieved code content using keyword search (bm25).
+```
+130 | def check_str_arg(result, func, cargs):
+131 |     """
+132 |     This is for the OSRGet[Angular|Linear]Units functions, which
+133 |     require that the returned string pointer not be freed.  This
+134 |     returns both the double and string values.
+135 |     """
+136 |     dbl = result
+137 |     ptr = cargs[-1]._obj
+138 |     return dbl, ptr.value.decode()
+```
+
+
+
+##Searching for term "page_obj.has_next"...
+### Search Result:
+Found `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`, `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+```
+
+Found function `django/core/paginator.py:Page.next_page_number`.
+Source: Retrieved code content using keyword search (bm25).
+```
+200 | def next_page_number(self):
+201 |         return self.paginator.validate_number(self.number + 1)
+```
+
+Found function `django/core/paginator.py:Page.previous_page_number`.
+Source: Retrieved code content using keyword search (bm25).
+```
+203 | def previous_page_number(self):
+204 |         return self.paginator.validate_number(self.number - 1)
+```
+
+
+
+##Searching for term "page_obj.has_next", "JsonResponse({ 'results': [ page_obj.has_next"...
+### Search Result:
+Found function `django/core/paginator.py:Page.has_next`.
+Source: Match found for entity name `has_next`.
+```
+191 | def has_next(self):
+192 |         return self.number < self.paginator.num_pages
+```
+
+Found function `django/core/paginator.py:Page.end_index`.
+Source: Retrieved code content using keyword search (bm25).
+```
+216 | def end_index(self):
+217 |         """
+218 |         Return the 1-based index of the last object on this page,
+219 |         relative to total objects found (hits).
+220 |         """
+221 |         # Special case for the last page because there can be orphans.
+222 |         if self.number == self.paginator.num_pages:
+223 |             return self.paginator.count
+224 |         return self.number * self.paginator.per_page
+```
+
+Found function `django/views/generic/list.py:MultipleObjectMixin.get_context_data`.
+Source: Retrieved code content using keyword search (bm25).
+```
+113 | def get_context_data(self, *, object_list=None, **kwargs):
+114 |         """Get the context for this view."""
+115 |         queryset = object_list if object_list is not None else self.object_list
+116 |         page_size = self.get_paginate_by(queryset)
+117 |         context_object_name = self.get_context_object_name(queryset)
+118 |         if page_size:
+119 |             paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+120 |             context = {
+121 |                 'paginator': paginator,
+122 |                 'page_obj': page,
+123 |                 'is_paginated': is_paginated,
+124 |                 'object_list': queryset
+125 |             }
+126 |         else:
+127 |             context = {
+128 |                 'paginator': None,
+129 |                 'page_obj': None,
+130 |                 'is_paginated': False,
+131 |                 'object_list': queryset
+132 |             }
+133 |         if context_object_name is not None:
+134 |             context[context_object_name] = queryset
+135 |         context.update(kwargs)
+136 |         return super().get_context_data(**context)
+```
+
+
+
+##Searching for term "JsonResponse({ 'results': [ page_obj.has_next"...
+### Search Result:
+Found `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`, `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+```
+
+Found code snippet in file `django/http/__init__.py`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.http.cookie import SimpleCookie, parse_cookie
+ 2 | from django.http.request import (
+ 3 |     HttpRequest, QueryDict, RawPostDataException, UnreadablePostError,
+ 4 | )
+ 5 | from django.http.response import (
+ 6 |     BadHeaderError, FileResponse, Http404, HttpResponse,
+ 7 |     HttpResponseBadRequest, HttpResponseForbidden, HttpResponseGone,
+ 8 |     HttpResponseNotAllowed, HttpResponseNotFound, HttpResponseNotModified,
+ 9 |     HttpResponsePermanentRedirect, HttpResponseRedirect,
+10 |     HttpResponseServerError, JsonResponse, StreamingHttpResponse,
+11 | )
+12 | 
+13 | __all__ = [
+14 |     'SimpleCookie', 'parse_cookie', 'HttpRequest', 'QueryDict',
+15 |     'RawPostDataException', 'UnreadablePostError',
+16 |     'HttpResponse', 'StreamingHttpResponse', 'HttpResponseRedirect',
+17 |     'HttpResponsePermanentRedirect', 'HttpResponseNotModified',
+18 |     'HttpResponseBadRequest', 'HttpResponseForbidden', 'HttpResponseNotFound',
+19 |     'HttpResponseNotAllowed', 'HttpResponseGone', 'HttpResponseServerError',
+20 |     'Http404', 'BadHeaderError', 'JsonResponse', 'FileResponse',
+21 | ]
+22 | 
+```
+
+2026-08-28 02:04:35 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:04:41 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:04:41 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:04:41 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 02:04:41 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'file_path_or_pattern': 'django/contrib/admin/**/*.py', 'search_terms': ['AutocompleteJsonView.as_view', 'autocomplete/', 'autocomplete_view']}))
+```
+2026-08-28 02:04:43 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:45 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:46 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:46 auto_search_main.py INFO OBSERVATION:
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_paginator
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_queryset
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.process_request
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.has_perm
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_paginator
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_queryset
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_paginator
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get_queryset
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.process_request
+django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.has_perm
+##Searching for term "AutocompleteJsonView.as_view"...
+### Search Result:
+Found `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`, `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+```
+
+Found function `django/views/generic/base.py:View.as_view`.
+Source: Match found for entity name `as_view`.
+```
+48 | def as_view(cls, **initkwargs):
+49 |         """Main entry point for a request-response process."""
+50 |         for key in initkwargs:
+51 |             if key in cls.http_method_names:
+52 |                 raise TypeError(
+53 |                     'The method name %s is not accepted as a keyword argument '
+54 |                     'to %s().' % (key, cls.__name__)
+55 |                 )
+56 |             if not hasattr(cls, key):
+57 |                 raise TypeError("%s() received an invalid keyword %r. as_view "
+58 |                                 "only accepts arguments that are already "
+59 |                                 "attributes of the class." % (cls.__name__, key))
+60 | 
+61 |         def view(request, *args, **kwargs):
+62 |             self = cls(**initkwargs)
+63 |             self.setup(request, *args, **kwargs)
+64 |             if not hasattr(self, 'request'):
+65 |                 raise AttributeError(
+66 |                     "%s instance has no 'request' attribute. Did you override "
+67 |                     "setup() and forget to call super()?" % cls.__name__
+68 |                 )
+69 |             return self.dispatch(request, *args, **kwargs)
+70 |         view.view_class = cls
+71 |         view.view_initkwargs = initkwargs
+72 | 
+73 |         # __name__ and __qualname__ are intentionally left unchanged as
+74 |         # view_class should be used to robustly determine the name of the view
+75 |         # instead.
+76 |         view.__doc__ = cls.__doc__
+77 |         view.__module__ = cls.__module__
+78 |         view.__annotations__ = cls.dispatch.__annotations__
+79 |         # Copy possible attributes set by decorators, e.g. @csrf_exempt, from
+80 |         # the dispatch method.
+81 |         view.__dict__.update(cls.dispatch.__dict__)
+82 | 
+83 |         return view
+```
+
+
+
+##Searching for term "AutocompleteJsonView.as_view", "autocomplete/", "AutocompleteJsonView.as_view autocomplete/"...
+### Search Result:
+Found class `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`.
+Source: Retrieved entity using keyword search (bm25).
+```
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+ 34 | 
+ 35 |     def get_paginator(self, *args, **kwargs):
+ 36 |         """Use the ModelAdmin's paginator."""
+ 37 |         return self.model_admin.get_paginator(self.request, *args, **kwargs)
+ 38 | 
+ 39 |     def get_queryset(self):
+ 40 |         """Return queryset based on ModelAdmin.get_search_results()."""
+ 41 |         qs = self.model_admin.get_queryset(self.request)
+ 42 |         qs = qs.complex_filter(self.source_field.get_limit_choices_to())
+ 43 |         qs, search_use_distinct = self.model_admin.get_search_results(self.request, qs, self.term)
+ 44 |         if search_use_distinct:
+ 45 |             qs = qs.distinct()
+ 46 |         return qs
+ 47 | 
+ 48 |     def process_request(self, request):
+ 49 |         """
+ 50 |         Validate request integrity, extract and return request parameters.
+ 51 | 
+ 52 |         Since the subsequent view permission check requires the target model
+ 53 |         admin, which is determined here, raise PermissionDenied if the
+ 54 |         requested app, model or field are malformed.
+ 55 | 
+ 56 |         Raise Http404 if the target model admin is not configured properly with
+ 57 |         search_fields.
+ 58 |         """
+ 59 |         term = request.GET.get('term', '')
+ 60 |         try:
+ 61 |             app_label = request.GET['app_label']
+ 62 |             model_name = request.GET['model_name']
+ 63 |             field_name = request.GET['field_name']
+ 64 |         except KeyError as e:
+ 65 |             raise PermissionDenied from e
+ 66 | 
+ 67 |         # Retrieve objects from parameters.
+ 68 |         try:
+ 69 |             source_model = apps.get_model(app_label, model_name)
+ 70 |         except LookupError as e:
+ 71 |             raise PermissionDenied from e
+ 72 | 
+ 73 |         try:
+ 74 |             source_field = source_model._meta.get_field(field_name)
+ 75 |         except FieldDoesNotExist as e:
+ 76 |             raise PermissionDenied from e
+ 77 |         try:
+ 78 |             remote_model = source_field.remote_field.model
+ 79 |         except AttributeError as e:
+ 80 |             raise PermissionDenied from e
+ 81 |         try:
+ 82 |             model_admin = self.admin_site._registry[remote_model]
+ 83 |         except KeyError as e:
+ 84 |             raise PermissionDenied from e
+ 85 | 
+ 86 |         # Validate suitability of objects.
+ 87 |         if not model_admin.get_search_fields(request):
+ 88 |             raise Http404(
+ 89 |                 '%s must have search_fields for the autocomplete_view.' %
+ 90 |                 type(model_admin).__qualname__
+ 91 |             )
+ 92 | 
+ 93 |         to_field_name = getattr(source_field.remote_field, 'field_name', remote_model._meta.pk.attname)
+ 94 |         to_field_name = remote_model._meta.get_field(to_field_name).attname
+ 95 |         if not model_admin.to_field_allowed(request, to_field_name):
+ 96 |             raise PermissionDenied
+ 97 | 
+ 98 |         return term, model_admin, source_field, to_field_name
+ 99 | 
+100 |     def has_perm(self, request, obj=None):
+101 |         """Check if user has permission to access the related model."""
+102 |         return self.model_admin.has_view_permission(request, obj=obj)
+```
+
+
+
+##Searching for term "AutocompleteJsonView.as_view", "AutocompleteJsonView.as_view autocomplete/"...
+### Search Result:
+Found function `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.process_request`.
+Source: Retrieved code content using keyword search (bm25).
+```
+48 | def process_request(self, request):
+49 |         """
+50 |         Validate request integrity, extract and return request parameters.
+51 | 
+52 |         Since the subsequent view permission check requires the target model
+53 |         admin, which is determined here, raise PermissionDenied if the
+54 |         requested app, model or field are malformed.
+55 | 
+56 |         Raise Http404 if the target model admin is not configured properly with
+57 |         search_fields.
+58 |         """
+59 |         term = request.GET.get('term', '')
+60 |         try:
+61 |             app_label = request.GET['app_label']
+62 |             model_name = request.GET['model_name']
+63 |             field_name = request.GET['field_name']
+64 |         except KeyError as e:
+65 |             raise PermissionDenied from e
+66 | 
+67 |         # Retrieve objects from parameters.
+68 |         try:
+69 |             source_model = apps.get_model(app_label, model_name)
+70 |         except LookupError as e:
+71 |             raise PermissionDenied from e
+72 | 
+73 |         try:
+74 |             source_field = source_model._meta.get_field(field_name)
+75 |         except FieldDoesNotExist as e:
+76 |             raise PermissionDenied from e
+77 |         try:
+78 |             remote_model = source_field.remote_field.model
+79 |         except AttributeError as e:
+80 |             raise PermissionDenied from e
+81 |         try:
+82 |             model_admin = self.admin_site._registry[remote_model]
+83 |         except KeyError as e:
+84 |             raise PermissionDenied from e
+85 | 
+86 |         # Validate suitability of objects.
+87 |         if not model_admin.get_search_fields(request):
+88 |             raise Http404(
+89 |                 '%s must have search_fields for the autocomplete_view.' %
+90 |                 type(model_admin).__qualname__
+91 |             )
+92 | 
+93 |         to_field_name = getattr(source_field.remote_field, 'field_name', remote_model._meta.pk.attname)
+94 |         to_field_name = remote_model._meta.get_field(to_field_name).attname
+95 |         if not model_admin.to_field_allowed(request, to_field_name):
+96 |             raise PermissionDenied
+97 | 
+98 |         return term, model_admin, source_field, to_field_name
+```
+
+
+
+##Searching for term "autocomplete/"...
+### Search Result:
+Found file `django/contrib/admin/views/autocomplete.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/contrib/admin/views/autocomplete.py` for the full content if needed.
+
+
+
+##Searching for term "autocomplete_view"...
+### Search Result:
+Found function `django/contrib/admin/sites.py:AdminSite.autocomplete_view`.
+Source: Match found for entity name `autocomplete_view`.
+```
+419 | def autocomplete_view(self, request):
+420 |         return AutocompleteJsonView.as_view(admin_site=self)(request)
+```
+
+
+
+##Searching for term "AutocompleteJsonView.as_view autocomplete/"...
+### Search Result:
+Found `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`, `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView.get`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+```
+
+2026-08-28 02:04:46 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'file_path_or_pattern': 'django/contrib/admin/tests/**/*.py', 'search_terms': ['autocomplete', 'AutocompleteJsonView', 'notes']}))
+```
+2026-08-28 02:04:48 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:49 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:04:49 auto_search_main.py INFO OBSERVATION:
+django/conf/global_settings.py:impl:131
+django/core/management/__init__.py:ManagementUtility.__init__
+django/core/management/__init__.py:ManagementUtility.main_help_text
+django/core/management/__init__.py:ManagementUtility
+django/db/models/fields/related.py:ForeignObject.get_extra_restriction
+django/middleware/csrf.py:_get_new_csrf_token
+django/middleware/csrf.py:_unmask_cipher_token
+django/contrib/admin/options.py:ModelAdmin.save_related
+django/dispatch/dispatcher.py:Signal._live_receivers
+django/dispatch/dispatcher.py:Signal._remove_receiver
+django/contrib/contenttypes/models.py:ContentTypeManager._add_to_cache
+django/contrib/contenttypes/models.py:ContentTypeManager.clear_cache
+django/utils/html.py:strip_spaces_between_tags
+django/utils/html.py:strip_tags
+No files found for file pattern 'django/contrib/admin/tests/**/*.py'. Will search all files.
+...
+##Searching for term "autocomplete"...
+### Search Result:
+Found file `django/contrib/admin/views/autocomplete.py`.
+Source: Match found for entity name `autocomplete`.
+Just show the structure of this file due to response length limitations:
+```
+
+
+class AutocompleteJsonView(BaseListView):
+    paginate_by = 20
+    admin_site = None
+
+    def get(self, request, *args, **kwargs):
+...
+    def get_paginator(self, *args, **kwargs):
+...
+    def get_queryset(self):
+...
+    def process_request(self, request):
+...
+    def has_perm(self, request, obj=None):
+...
+
+```
+Hint: Search `django/contrib/admin/views/autocomplete.py` to get the full content if needed.
+
+Found function `django/core/management/__init__.py:ManagementUtility.autocomplete`.
+Source: Match found for entity name `autocomplete`.
+```
+260 | def autocomplete(self):
+261 |         """
+262 |         Output completion suggestions for BASH.
+263 | 
+264 |         The output of this function is passed to BASH's `COMREPLY` variable and
+265 |         treated as completion suggestions. `COMREPLY` expects a space
+266 |         separated string as the result.
+267 | 
+268 |         The `COMP_WORDS` and `COMP_CWORD` BASH environment variables are used
+269 |         to get information about the cli input. Please refer to the BASH
+270 |         man-page for more information about this variables.
+271 | 
+272 |         Subcommand options are saved as pairs. A pair consists of
+273 |         the long option string (e.g. '--exclude') and a boolean
+274 |         value indicating if the option requires arguments. When printing to
+275 |         stdout, an equal sign is appended to options which require arguments.
+276 | 
+277 |         Note: If debugging this function, it is recommended to write the debug
+278 |         output in a separate file. Otherwise the debug output will be treated
+279 |         and formatted as potential completion suggestions.
+280 |         """
+281 |         # Don't complete if user hasn't sourced bash_completion file.
+282 |         if 'DJANGO_AUTO_COMPLETE' not in os.environ:
+283 |             return
+284 | 
+285 |         cwords = os.environ['COMP_WORDS'].split()[1:]
+286 |         cword = int(os.environ['COMP_CWORD'])
+287 | 
+288 |         try:
+289 |             curr = cwords[cword - 1]
+290 |         except IndexError:
+291 |             curr = ''
+292 | 
+293 |         subcommands = [*get_commands(), 'help']
+294 |         options = [('--help', False)]
+295 | 
+296 |         # subcommand
+297 |         if cword == 1:
+298 |             print(' '.join(sorted(filter(lambda x: x.startswith(curr), subcommands))))
+299 |         # subcommand options
+300 |         # special case: the 'help' subcommand has no options
+301 |         elif cwords[0] in subcommands and cwords[0] != 'help':
+302 |             subcommand_cls = self.fetch_command(cwords[0])
+303 |             # special case: add the names of installed apps to options
+304 |             if cwords[0] in ('dumpdata', 'sqlmigrate', 'sqlsequencereset', 'test'):
+305 |                 try:
+306 |                     app_configs = apps.get_app_configs()
+307 |                     # Get the last part of the dotted path as the app name.
+308 |                     options.extend((app_config.label, 0) for app_config in app_configs)
+309 |                 except ImportError:
+310 |                     # Fail silently if DJANGO_SETTINGS_MODULE isn't set. The
+311 |                     # user will find out once they execute the command.
+312 |                     pass
+313 |             parser = subcommand_cls.create_parser('', cwords[0])
+314 |             options.extend(
+315 |                 (min(s_opt.option_strings), s_opt.nargs != 0)
+316 |                 for s_opt in parser._actions if s_opt.option_strings
+317 |             )
+318 |             # filter out previously specified options from available options
+319 |             prev_opts = {x.split('=')[0] for x in cwords[1:cword - 1]}
+320 |             options = (opt for opt in options if opt[0] not in prev_opts)
+321 | 
+322 |             # filter options by current input
+323 |             options = sorted((k, v) for k, v in options if k.startswith(curr))
+324 |             for opt_label, require_arg in options:
+325 |                 # append '=' to options which require args
+326 |                 if require_arg:
+327 |                     opt_label += '='
+328 |                 print(opt_label)
+329 |         # Exit code of the bash completion function is never passed back to
+330 |         # the user, so it's safe to always exit with 0.
+331 |         # For more details see #25420.
+332 |         sys.exit(0)
+```
+
+
+
+##Searching for term "AutocompleteJsonView"...
+### Search Result:
+Found class `django/contrib/admin/views/autocomplete.py:AutocompleteJsonView`.
+Source: Match found for entity name `AutocompleteJsonView`.
+```
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+ 22 |         if not self.has_perm(request):
+ 23 |             raise PermissionDenied
+ 24 | 
+ 25 |         self.object_list = self.get_queryset()
+ 26 |         context = self.get_context_data()
+ 27 |         return JsonResponse({
+ 28 |             'results': [
+ 29 |                 {'id': str(getattr(obj, to_field_name)), 'text': str(obj)}
+ 30 |                 for obj in context['object_list']
+ 31 |             ],
+ 32 |             'pagination': {'more': context['page_obj'].has_next()},
+ 33 |         })
+ 34 | 
+ 35 |     def get_paginator(self, *args, **kwargs):
+ 36 |         """Use the ModelAdmin's paginator."""
+ 37 |         return self.model_admin.get_paginator(self.request, *args, **kwargs)
+ 38 | 
+ 39 |     def get_queryset(self):
+ 40 |         """Return queryset based on ModelAdmin.get_search_results()."""
+ 41 |         qs = self.model_admin.get_queryset(self.request)
+ 42 |         qs = qs.complex_filter(self.source_field.get_limit_choices_to())
+ 43 |         qs, search_use_distinct = self.model_admin.get_search_results(self.request, qs, self.term)
+ 44 |         if search_use_distinct:
+ 45 |             qs = qs.distinct()
+ 46 |         return qs
+ 47 | 
+ 48 |     def process_request(self, request):
+ 49 |         """
+ 50 |         Validate request integrity, extract and return request parameters.
+ 51 | 
+ 52 |         Since the subsequent view permission check requires the target model
+ 53 |         admin, which is determined here, raise PermissionDenied if the
+ 54 |         requested app, model or field are malformed.
+ 55 | 
+ 56 |         Raise Http404 if the target model admin is not configured properly with
+ 57 |         search_fields.
+ 58 |         """
+ 59 |         term = request.GET.get('term', '')
+ 60 |         try:
+ 61 |             app_label = request.GET['app_label']
+ 62 |             model_name = request.GET['model_name']
+ 63 |             field_name = request.GET['field_name']
+ 64 |         except KeyError as e:
+ 65 |             raise PermissionDenied from e
+ 66 | 
+ 67 |         # Retrieve objects from parameters.
+ 68 |         try:
+ 69 |             source_model = apps.get_model(app_label, model_name)
+ 70 |         except LookupError as e:
+ 71 |             raise PermissionDenied from e
+ 72 | 
+ 73 |         try:
+ 74 |             source_field = source_model._meta.get_field(field_name)
+ 75 |         except FieldDoesNotExist as e:
+ 76 |             raise PermissionDenied from e
+ 77 |         try:
+ 78 |             remote_model = source_field.remote_field.model
+ 79 |         except AttributeError as e:
+ 80 |             raise PermissionDenied from e
+ 81 |         try:
+ 82 |             model_admin = self.admin_site._registry[remote_model]
+ 83 |         except KeyError as e:
+ 84 |             raise PermissionDenied from e
+ 85 | 
+ 86 |         # Validate suitability of objects.
+ 87 |         if not model_admin.get_search_fields(request):
+ 88 |             raise Http404(
+ 89 |                 '%s must have search_fields for the autocomplete_view.' %
+ 90 |                 type(model_admin).__qualname__
+ 91 |             )
+ 92 | 
+ 93 |         to_field_name = getattr(source_field.remote_field, 'field_name', remote_model._meta.pk.attname)
+ 94 |         to_field_name = remote_model._meta.get_field(to_field_name).attname
+ 95 |         if not model_admin.to_field_allowed(request, to_field_name):
+ 96 |             raise PermissionDenied
+ 97 | 
+ 98 |         return term, model_admin, source_field, to_field_name
+ 99 | 
+100 |     def has_perm(self, request, obj=None):
+101 |         """Check if user has permission to access the related model."""
+102 |         return self.model_admin.has_view_permission(request, obj=obj)
+```
+
+
+
+##Searching for term "notes"...
+### Search Result:
+Found `django/core/checks/compatibility/django_4_0.py:check_csrf_trusted_origins`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.conf import settings
+ 2 | 
+ 3 | from .. import Error, Tags, register
+ 4 | 
+ 5 | 
+ 6 | @register(Tags.compatibility)
+ 7 | def check_csrf_trusted_origins(app_configs, **kwargs):
+ 8 |     errors = []
+ 9 |     for origin in settings.CSRF_TRUSTED_ORIGINS:
+10 |         if '://' not in origin:
+11 |             errors.append(Error(
+12 |                 'As of Django 4.0, the values in the CSRF_TRUSTED_ORIGINS '
+13 |                 'setting must start with a scheme (usually http:// or '
+14 |                 'https://) but found %s. See the release notes for details.'
+15 |                 % origin,
+16 |                 id='4_0.E001',
+17 |             ))
+18 |     return errors
+19 | 
+```
+
+Found class `django/core/management/__init__.py:ManagementUtility`.
+Source: Retrieved code content using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class ManagementUtility:
+    def __init__(self, argv=None):
+...
+    def main_help_text(self, commands_only=False):
+...
+    def fetch_command(self, subcommand):
+...
+    def autocomplete(self):
+...
+    def execute(self):
+
+```
+Hint: Search `django/core/management/__init__.py:ManagementUtility` to get the full content if needed.
+
+Found function `django/core/management/__init__.py:ManagementUtility.main_help_text`.
+Source: Retrieved code content using keyword search (bm25).
+```
+195 | def main_help_text(self, commands_only=False):
+196 |         """Return the script's main help text, as a string."""
+197 |         if commands_only:
+198 |             usage = sorted(get_commands())
+199 |         else:
+200 |             usage = [
+201 |                 "",
+202 |                 "Type '%s help <subcommand>' for help on a specific subcommand." % self.prog_name,
+203 |                 "",
+204 |                 "Available subcommands:",
+205 |             ]
+206 |             commands_dict = defaultdict(lambda: [])
+207 |             for name, app in get_commands().items():
+208 |                 if app == 'django.core':
+209 |                     app = 'django'
+210 |                 else:
+211 |                     app = app.rpartition('.')[-1]
+212 |                 commands_dict[app].append(name)
+213 |             style = color_style()
+214 |             for app in sorted(commands_dict):
+215 |                 usage.append("")
+216 |                 usage.append(style.NOTICE("[%s]" % app))
+217 |                 for name in sorted(commands_dict[app]):
+218 |                     usage.append("    %s" % name)
+219 |             # Output an extra note if settings are not properly configured
+220 |             if self.settings_exception is not None:
+221 |                 usage.append(style.NOTICE(
+222 |                     "Note that only Django core commands are listed "
+223 |                     "as settings are not properly configured (error: %s)."
+224 |                     % self.settings_exception))
+225 | 
+226 |         return '\n'.join(usage)
+```
+
+Found function `django/db/models/fields/related.py:ForeignObject.get_extra_restriction`.
+Source: Retrieved code content using keyword search (bm25).
+```
+714 | def get_extra_restriction(self, alias, related_alias):
+715 |         """
+716 |         Return a pair condition used for joining and subquery pushdown. The
+717 |         condition is something that responds to as_sql(compiler, connection)
+718 |         method.
+719 | 
+720 |         Note that currently referring both the 'alias' and 'related_alias'
+721 |         will not work in some conditions, like subquery pushdown.
+722 | 
+723 |         A parallel method is get_extra_descriptor_filter() which is used in
+724 |         instance.fieldname related object fetching.
+725 |         """
+726 |         return None
+```
+
+Found function `django/middleware/csrf.py:_get_new_csrf_token`.
+Source: Retrieved code content using keyword search (bm25).
+```
+82 | def _get_new_csrf_token():
+83 |     return _mask_cipher_secret(_get_new_csrf_string())
+```
+
+Found file `django/views/__init__.py`.
+Found file `django/utils/text.py`.
+Found file `django/utils/tree.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+2026-08-28 02:04:49 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'file_path_or_pattern': 'django/contrib/admin/views/autocomplete.py', 'line_nums': [1, 120]}))
+```
+2026-08-28 02:04:49 auto_search_main.py INFO OBSERVATION:
+##Searching for term "django/contrib/admin/views/autocomplete.py:line 1, 120"...
+### Search Result:
+Found code snippet in file `django/contrib/admin/views/autocomplete.py`.
+Source: Retrieved code context including django/contrib/admin/views/autocomplete.py:line 1, 120.
+```
+  1 | from django.apps import apps
+  2 | from django.core.exceptions import FieldDoesNotExist, PermissionDenied
+  3 | from django.http import Http404, JsonResponse
+  4 | from django.views.generic.list import BaseListView
+  5 | 
+  6 | 
+  7 | class AutocompleteJsonView(BaseListView):
+  8 |     """Handle AutocompleteWidget's AJAX requests for data."""
+  9 |     paginate_by = 20
+ 10 |     admin_site = None
+ 11 | 
+ 12 |     def get(self, request, *args, **kwargs):
+ 13 |         """
+ 14 |         Return a JsonResponse with search results of the form:
+ 15 |         {
+ 16 |             results: [{id: "123" text: "foo"}],
+ 17 |             pagination: {more: true}
+ 18 |         }
+ 19 |         """
+ 20 |         self.term, self.model_admin, self.source_field, to_field_name = self.process_request(request)
+ 21 | 
+```
+
+Found code snippet in file `django/contrib/admin/views/autocomplete.py`.
+Source: Retrieved code context including django/contrib/admin/views/autocomplete.py:line 1, 120.
+```
+100 |     def has_perm(self, request, obj=None):
+101 |         """Check if user has permission to access the related model."""
+102 |         return self.model_admin.has_view_permission(request, obj=obj)
+103 | 
+```
+
+2026-08-28 02:04:49 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:04:53 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:04:53 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:04:53 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 02:04:53 auto_search_main.py INFO ===============
+2026-08-28 02:04:53 auto_search_main.py INFO Final response generated content_length=319
+2026-08-28 02:04:54 auto_search_main.py INFO ==== localizing django__django-14752 succeed, process multiple loc outputs ====
+2026-08-28 02:04:54 cost_analysis.py INFO input_tokens=79518, output_tokens=874, cost=0.20
+2026-08-28 02:04:55 auto_search_main.py INFO Total time: 10.1895 min

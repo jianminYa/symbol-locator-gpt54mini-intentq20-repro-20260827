@@ -1,0 +1,856 @@
+2026-08-28 02:09:22 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 02:09:22 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 02:09:22 auto_search_main.py INFO ============================================================
+2026-08-28 02:09:22 auto_search_main.py INFO ==== rank 0 setup localize pytest-dev__pytest-7205 ====
+2026-08-28 02:09:22 git_repo_manager.py INFO Clone Github repo https://github.com/pytest-dev/pytest.git to playground/3e8d991e-c5b5-4a70-bb0c-7480c3a5268e/pytest-dev_pytest and checkout commit HEAD
+2026-08-28 02:09:22 git_repo_manager.py INFO Directory 'playground/3e8d991e-c5b5-4a70-bb0c-7480c3a5268e/pytest-dev_pytest' was created.
+2026-08-28 02:09:31 repo_ops.py INFO [0] Processed pytest-dev__pytest-7205
+2026-08-28 02:09:31 auto_search_main.py INFO ============================================================
+2026-08-28 02:09:31 auto_search_main.py INFO ==== rank 0 begin localizing pytest-dev__pytest-7205 ====
+2026-08-28 02:09:31 auto_search_main.py INFO ============================================================
+2026-08-28 02:09:31 auto_search_main.py INFO ==== pytest-dev__pytest-7205 Count down: attempt 1 ====
+2026-08-28 02:09:31 auto_search_main.py INFO ==== pytest-dev__pytest-7205 start auto search ====
+2026-08-28 02:09:31 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:11:37 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 524 <none>"
+2026-08-28 02:11:37 _base_client.py INFO Retrying request to /chat/completions in 0.432864 seconds
+2026-08-28 02:13:42 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 524 <none>"
+2026-08-28 02:13:42 _base_client.py INFO Retrying request to /chat/completions in 0.769100 seconds
+2026-08-28 02:13:52 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:13:52 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:13:52 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 02:13:52 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['_show_fixture_action', 'cached_param', 'setup-show', 'saferepr'], 'file_path_or_pattern': 'src/_pytest/**/*.py'}))
+```
+2026-08-28 02:13:52 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:13:53 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:13:53 git_repo_manager.py INFO Clone Github repo https://github.com/pytest-dev/pytest.git to playground/3e8d991e-c5b5-4a70-bb0c-7480c3a5268e/pytest-dev_pytest and checkout commit HEAD
+2026-08-28 02:14:08 epic_split.py INFO Splitting file testing/python/fixtures.py in 134 chunks
+2026-08-28 02:14:09 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:09 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:09 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:09 auto_search_main.py INFO OBSERVATION:
+##Searching for term "_show_fixture_action"...
+### Search Result:
+Found function `src/_pytest/setuponly.py:_show_fixture_action`.
+Source: Match found for entity name `_show_fixture_action`.
+```
+46 | def _show_fixture_action(fixturedef, msg):
+47 |     config = fixturedef._fixturemanager.config
+48 |     capman = config.pluginmanager.getplugin("capturemanager")
+49 |     if capman:
+50 |         capman.suspend_global_capture()
+51 | 
+52 |     tw = config.get_terminal_writer()
+53 |     tw.line()
+54 |     tw.write(" " * 2 * fixturedef.scopenum)
+55 |     tw.write(
+56 |         "{step} {scope} {fixture}".format(
+57 |             step=msg.ljust(8),  # align the output to TEARDOWN
+58 |             scope=fixturedef.scope[0].upper(),
+59 |             fixture=fixturedef.argname,
+60 |         )
+61 |     )
+62 | 
+63 |     if msg == "SETUP":
+64 |         deps = sorted(arg for arg in fixturedef.argnames if arg != "request")
+65 |         if deps:
+66 |             tw.write(" (fixtures used: {})".format(", ".join(deps)))
+67 | 
+68 |     if hasattr(fixturedef, "cached_param"):
+69 |         tw.write("[{}]".format(fixturedef.cached_param))
+70 | 
+71 |     tw.flush()
+72 | 
+73 |     if capman:
+74 |         capman.resume_global_capture()
+```
+
+
+
+##Searching for term "cached_param"...
+### Search Result:
+Found class `src/_pytest/compat.py:cached_property`.
+Source: Retrieved entity using keyword search (bm25).
+```
+360 | class cached_property(Generic[_S, _T]):
+361 |         __slots__ = ("func", "__doc__")
+362 | 
+363 |         def __init__(self, func: Callable[[_S], _T]) -> None:
+364 |             self.func = func
+365 |             self.__doc__ = func.__doc__
+366 | 
+367 |         @overload
+368 |         def __get__(
+369 |             self, instance: None, owner: Optional["Type[_S]"] = ...
+370 |         ) -> "cached_property[_S, _T]":
+371 |             raise NotImplementedError()
+372 | 
+373 |         @overload  # noqa: F811
+374 |         def __get__(  # noqa: F811
+375 |             self, instance: _S, owner: Optional["Type[_S]"] = ...
+376 |         ) -> _T:
+377 |             raise NotImplementedError()
+378 | 
+379 |         def __get__(self, instance, owner=None):  # noqa: F811
+380 |             if instance is None:
+381 |                 return self
+382 |             value = instance.__dict__[self.func.__name__] = self.func(instance)
+383 |             return value
+```
+
+Found function `src/_pytest/mark/evaluate.py:cached_eval`.
+Source: Retrieved entity using keyword search (bm25).
+```
+17 | def cached_eval(config: Config, expr: str, d: Dict[str, object]) -> Any:
+18 |     default = {}  # type: Dict[str, object]
+19 |     evalcache = config._store.setdefault(evalcache_key, default)
+20 |     try:
+21 |         return evalcache[expr]
+22 |     except KeyError:
+23 |         import _pytest._code
+24 | 
+25 |         exprcode = _pytest._code.compile(expr, mode="eval")
+26 |         evalcache[expr] = x = eval(exprcode, d)
+27 |         return x
+```
+
+
+
+##Searching for term "setup-show", "cached_param setup-show"...
+### Search Result:
+Found function `setup.py:main`.
+Source: Retrieved entity using keyword search (bm25).
+```
+19 | def main():
+20 |     setup(
+21 |         use_scm_version={"write_to": "src/_pytest/_version.py"},
+22 |         setup_requires=["setuptools-scm", "setuptools>=40.0"],
+23 |         package_dir={"": "src"},
+24 |         extras_require={
+25 |             "testing": [
+26 |                 "argcomplete",
+27 |                 "hypothesis>=3.56",
+28 |                 "mock",
+29 |                 "nose",
+30 |                 "requests",
+31 |                 "xmlschema",
+32 |             ],
+33 |             "checkqa-mypy": [
+34 |                 "mypy==v0.770",  # keep this in sync with .pre-commit-config.yaml.
+35 |             ],
+36 |         },
+37 |         install_requires=INSTALL_REQUIRES,
+38 |     )
+```
+
+Found function `doc/en/conf.py:setup`.
+Source: Retrieved entity using keyword search (bm25).
+```
+375 | def setup(app: "sphinx.application.Sphinx") -> None:
+376 |     # from sphinx.ext.autodoc import cut_lines
+377 |     # app.connect('autodoc-process-docstring', cut_lines(4, what=['module']))
+378 |     app.add_crossref_type(
+379 |         "fixture",
+380 |         "fixture",
+381 |         objname="built-in fixture",
+382 |         indextemplate="pair: %s; fixture",
+383 |     )
+384 | 
+385 |     app.add_object_type(
+386 |         "confval",
+387 |         "confval",
+388 |         objname="configuration value",
+389 |         indextemplate="pair: %s; configuration value",
+390 |     )
+391 | 
+392 |     configure_logging(app)
+```
+
+Found file `setup.py`.
+Found file `extra/setup-py.test/setup.py`.
+Found directory `extra/setup-py.test`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "saferepr"...
+### Search Result:
+Found file `src/_pytest/_io/saferepr.py`.
+Source: Match found for entity name `saferepr`.
+Just show the structure of this file due to response length limitations:
+```
+
+
+def _try_repr_or_str(obj):
+...
+
+def _format_repr_exception(exc: BaseException, obj: Any) -> str:
+...
+
+def _ellipsize(s: str, maxsize: int) -> str:
+...
+
+class SafeRepr(reprlib.Repr):
+
+    def __init__(self, maxsize: int) -> None:
+...
+    def repr(self, x: Any) -> str:
+...
+    def repr_instance(self, x: Any, level: int) -> str:
+...
+
+def safeformat(obj: Any) -> str:
+...
+
+def saferepr(obj: Any, maxsize: int = 240) -> str:
+...
+
+class AlwaysDispatchingPrettyPrinter(pprint.PrettyPrinter):
+
+    def _format(self, object, stream, indent, allowance, context, level):
+...
+
+def _pformat_dispatch(object, indent=1, width=80, depth=None, *, compact=False):
+...
+
+```
+Hint: Search `src/_pytest/_io/saferepr.py` to get the full content if needed.
+
+Found function `src/_pytest/_io/saferepr.py:saferepr`.
+Source: Match found for entity name `saferepr`.
+```
+75 | def saferepr(obj: Any, maxsize: int = 240) -> str:
+76 |     """return a size-limited safe repr-string for the given object.
+77 |     Failing __repr__ functions of user instances will be represented
+78 |     with a short exception info and 'saferepr' generally takes
+79 |     care to never raise exceptions itself.  This function is a wrapper
+80 |     around the Repr/reprlib functionality of the standard 2.6 lib.
+81 |     """
+82 |     return SafeRepr(maxsize).repr(obj)
+```
+Finding newlines for mmindex:   0%|          | 0.00/3.11M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 3.11M/3.11M [00:00<00:00, 342MB/s]
+
+2026-08-28 02:14:09 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['pytest_fixture_setup', 'pytest_fixture_setup', 'fixturedef.cached_param'], 'file_path_or_pattern': 'src/_pytest/**/*.py'}))
+```
+2026-08-28 02:14:10 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:10 auto_search_main.py INFO OBSERVATION:
+##Searching for term "pytest_fixture_setup", "pytest_fixture_setup"...
+### Search Result:
+Found function `src/_pytest/setuponly.py:pytest_fixture_setup`.
+Found function `src/_pytest/fixtures.py:pytest_fixture_setup`.
+Found function `src/_pytest/setupplan.py:pytest_fixture_setup`.
+Found function `src/_pytest/hookspec.py:pytest_fixture_setup`.
+Source: Match found for entity name `pytest_fixture_setup`.
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "fixturedef.cached_param"...
+### Search Result:
+Found class `src/_pytest/fixtures.py:FixtureDef`.
+Source: Retrieved entity using keyword search (bm25).
+```
+839 | class FixtureDef:
+840 |     """ A container for a factory definition. """
+841 | 
+842 |     def __init__(
+843 |         self,
+844 |         fixturemanager,
+845 |         baseid,
+846 |         argname,
+847 |         func,
+848 |         scope,
+849 |         params,
+850 |         unittest=False,
+851 |         ids=None,
+852 |     ):
+853 |         self._fixturemanager = fixturemanager
+854 |         self.baseid = baseid or ""
+855 |         self.has_location = baseid is not None
+856 |         self.func = func
+857 |         self.argname = argname
+858 |         if callable(scope):
+859 |             scope = _eval_scope_callable(scope, argname, fixturemanager.config)
+860 |         self.scope = scope
+861 |         self.scopenum = scope2index(
+862 |             scope or "function",
+863 |             descr="Fixture '{}'".format(func.__name__),
+864 |             where=baseid,
+865 |         )
+866 |         self.params = params
+867 |         self.argnames = getfuncargnames(func, name=argname, is_method=unittest)
+868 |         self.unittest = unittest
+869 |         self.ids = ids
+870 |         self.cached_result = None
+871 |         self._finalizers = []
+872 | 
+873 |     def addfinalizer(self, finalizer):
+874 |         self._finalizers.append(finalizer)
+875 | 
+876 |     def finish(self, request):
+877 |         exc = None
+878 |         try:
+879 |             while self._finalizers:
+880 |                 try:
+881 |                     func = self._finalizers.pop()
+882 |                     func()
+883 |                 except BaseException as e:
+884 |                     # XXX Only first exception will be seen by user,
+885 |                     #     ideally all should be reported.
+886 |                     if exc is None:
+887 |                         exc = e
+888 |             if exc:
+889 |                 raise exc
+890 |         finally:
+891 |             hook = self._fixturemanager.session.gethookproxy(request.node.fspath)
+892 |             hook.pytest_fixture_post_finalizer(fixturedef=self, request=request)
+893 |             # even if finalization fails, we invalidate
+894 |             # the cached fixture value and remove
+895 |             # all finalizers because they may be bound methods which will
+896 |             # keep instances alive
+897 |             self.cached_result = None
+898 |             self._finalizers = []
+899 | 
+900 |     def execute(self, request):
+901 |         # get required arguments and register our own finish()
+902 |         # with their finalization
+903 |         for argname in self.argnames:
+904 |             fixturedef = request._get_active_fixturedef(argname)
+905 |             if argname != "request":
+906 |                 fixturedef.addfinalizer(functools.partial(self.finish, request=request))
+907 | 
+908 |         my_cache_key = self.cache_key(request)
+909 |         if self.cached_result is not None:
+910 |             result, cache_key, err = self.cached_result
+911 |             # note: comparison with `==` can fail (or be expensive) for e.g.
+912 |             # numpy arrays (#6497)
+913 |             if my_cache_key is cache_key:
+914 |                 if err is not None:
+915 |                     _, val, tb = err
+916 |                     raise val.with_traceback(tb)
+917 |                 else:
+918 |                     return result
+919 |             # we have a previous but differently parametrized fixture instance
+920 |             # so we need to tear it down before creating a new one
+921 |             self.finish(request)
+922 |             assert self.cached_result is None
+923 | 
+924 |         hook = self._fixturemanager.session.gethookproxy(request.node.fspath)
+925 |         return hook.pytest_fixture_setup(fixturedef=self, request=request)
+926 | 
+927 |     def cache_key(self, request):
+928 |         return request.param_index if not hasattr(request, "param") else request.param
+929 | 
+930 |     def __repr__(self):
+931 |         return "<FixtureDef argname={!r} scope={!r} baseid={!r}>".format(
+932 |             self.argname, self.scope, self.baseid
+933 |         )
+```
+
+2026-08-28 02:14:10 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:14:15 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:14:15 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:14:15 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 02:14:15 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['src/_pytest/setuponly.py', 'src/_pytest/fixtures.py:FixtureDef', 'src/_pytest/setupplan.py:pytest_fixture_setup', 'src/_pytest/setuponly.py:pytest_fixture_setup', 'src/_pytest/_io/saferepr.py:saferepr']}))
+```
+2026-08-28 02:14:15 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `src/_pytest/setuponly.py`...
+### Search Result:
+Found file `src/_pytest/setuponly.py`.
+Source: Exact match found for entity name `src/_pytest/setuponly.py`.
+```
+ 1 | import pytest
+ 2 | 
+ 3 | 
+ 4 | def pytest_addoption(parser):
+ 5 |     group = parser.getgroup("debugconfig")
+ 6 |     group.addoption(
+ 7 |         "--setuponly",
+ 8 |         "--setup-only",
+ 9 |         action="store_true",
+10 |         help="only setup fixtures, do not execute tests.",
+11 |     )
+12 |     group.addoption(
+13 |         "--setupshow",
+14 |         "--setup-show",
+15 |         action="store_true",
+16 |         help="show setup of fixtures while executing tests.",
+17 |     )
+18 | 
+19 | 
+20 | @pytest.hookimpl(hookwrapper=True)
+21 | def pytest_fixture_setup(fixturedef, request):
+22 |     yield
+23 |     if request.config.option.setupshow:
+24 |         if hasattr(request, "param"):
+25 |             # Save the fixture parameter so ._show_fixture_action() can
+26 |             # display it now and during the teardown (in .finish()).
+27 |             if fixturedef.ids:
+28 |                 if callable(fixturedef.ids):
+29 |                     fixturedef.cached_param = fixturedef.ids(request.param)
+30 |                 else:
+31 |                     fixturedef.cached_param = fixturedef.ids[request.param_index]
+32 |             else:
+33 |                 fixturedef.cached_param = request.param
+34 |         _show_fixture_action(fixturedef, "SETUP")
+35 | 
+36 | 
+37 | def pytest_fixture_post_finalizer(fixturedef) -> None:
+38 |     if fixturedef.cached_result is not None:
+39 |         config = fixturedef._fixturemanager.config
+40 |         if config.option.setupshow:
+41 |             _show_fixture_action(fixturedef, "TEARDOWN")
+42 |             if hasattr(fixturedef, "cached_param"):
+43 |                 del fixturedef.cached_param
+44 | 
+45 | 
+46 | def _show_fixture_action(fixturedef, msg):
+47 |     config = fixturedef._fixturemanager.config
+48 |     capman = config.pluginmanager.getplugin("capturemanager")
+49 |     if capman:
+50 |         capman.suspend_global_capture()
+51 | 
+52 |     tw = config.get_terminal_writer()
+53 |     tw.line()
+54 |     tw.write(" " * 2 * fixturedef.scopenum)
+55 |     tw.write(
+56 |         "{step} {scope} {fixture}".format(
+57 |             step=msg.ljust(8),  # align the output to TEARDOWN
+58 |             scope=fixturedef.scope[0].upper(),
+59 |             fixture=fixturedef.argname,
+60 |         )
+61 |     )
+62 | 
+63 |     if msg == "SETUP":
+64 |         deps = sorted(arg for arg in fixturedef.argnames if arg != "request")
+65 |         if deps:
+66 |             tw.write(" (fixtures used: {})".format(", ".join(deps)))
+67 | 
+68 |     if hasattr(fixturedef, "cached_param"):
+69 |         tw.write("[{}]".format(fixturedef.cached_param))
+70 | 
+71 |     tw.flush()
+72 | 
+73 |     if capman:
+74 |         capman.resume_global_capture()
+75 | 
+76 | 
+77 | @pytest.hookimpl(tryfirst=True)
+78 | def pytest_cmdline_main(config):
+79 |     if config.option.setuponly:
+80 |         config.option.setupshow = True
+81 | 
+```
+
+
+##Searching for entity `src/_pytest/fixtures.py:FixtureDef`...
+### Search Result:
+Found class `src/_pytest/fixtures.py:FixtureDef`.
+Source: Exact match found for entity name `src/_pytest/fixtures.py:FixtureDef`.
+```
+839 | class FixtureDef:
+840 |     """ A container for a factory definition. """
+841 | 
+842 |     def __init__(
+843 |         self,
+844 |         fixturemanager,
+845 |         baseid,
+846 |         argname,
+847 |         func,
+848 |         scope,
+849 |         params,
+850 |         unittest=False,
+851 |         ids=None,
+852 |     ):
+853 |         self._fixturemanager = fixturemanager
+854 |         self.baseid = baseid or ""
+855 |         self.has_location = baseid is not None
+856 |         self.func = func
+857 |         self.argname = argname
+858 |         if callable(scope):
+859 |             scope = _eval_scope_callable(scope, argname, fixturemanager.config)
+860 |         self.scope = scope
+861 |         self.scopenum = scope2index(
+862 |             scope or "function",
+863 |             descr="Fixture '{}'".format(func.__name__),
+864 |             where=baseid,
+865 |         )
+866 |         self.params = params
+867 |         self.argnames = getfuncargnames(func, name=argname, is_method=unittest)
+868 |         self.unittest = unittest
+869 |         self.ids = ids
+870 |         self.cached_result = None
+871 |         self._finalizers = []
+872 | 
+873 |     def addfinalizer(self, finalizer):
+874 |         self._finalizers.append(finalizer)
+875 | 
+876 |     def finish(self, request):
+877 |         exc = None
+878 |         try:
+879 |             while self._finalizers:
+880 |                 try:
+881 |                     func = self._finalizers.pop()
+882 |                     func()
+883 |                 except BaseException as e:
+884 |                     # XXX Only first exception will be seen by user,
+885 |                     #     ideally all should be reported.
+886 |                     if exc is None:
+887 |                         exc = e
+888 |             if exc:
+889 |                 raise exc
+890 |         finally:
+891 |             hook = self._fixturemanager.session.gethookproxy(request.node.fspath)
+892 |             hook.pytest_fixture_post_finalizer(fixturedef=self, request=request)
+893 |             # even if finalization fails, we invalidate
+894 |             # the cached fixture value and remove
+895 |             # all finalizers because they may be bound methods which will
+896 |             # keep instances alive
+897 |             self.cached_result = None
+898 |             self._finalizers = []
+899 | 
+900 |     def execute(self, request):
+901 |         # get required arguments and register our own finish()
+902 |         # with their finalization
+903 |         for argname in self.argnames:
+904 |             fixturedef = request._get_active_fixturedef(argname)
+905 |             if argname != "request":
+906 |                 fixturedef.addfinalizer(functools.partial(self.finish, request=request))
+907 | 
+908 |         my_cache_key = self.cache_key(request)
+909 |         if self.cached_result is not None:
+910 |             result, cache_key, err = self.cached_result
+911 |             # note: comparison with `==` can fail (or be expensive) for e.g.
+912 |             # numpy arrays (#6497)
+913 |             if my_cache_key is cache_key:
+914 |                 if err is not None:
+915 |                     _, val, tb = err
+916 |                     raise val.with_traceback(tb)
+917 |                 else:
+918 |                     return result
+919 |             # we have a previous but differently parametrized fixture instance
+920 |             # so we need to tear it down before creating a new one
+921 |             self.finish(request)
+922 |             assert self.cached_result is None
+923 | 
+924 |         hook = self._fixturemanager.session.gethookproxy(request.node.fspath)
+925 |         return hook.pytest_fixture_setup(fixturedef=self, request=request)
+926 | 
+927 |     def cache_key(self, request):
+928 |         return request.param_index if not hasattr(request, "param") else request.param
+929 | 
+930 |     def __repr__(self):
+931 |         return "<FixtureDef argname={!r} scope={!r} baseid={!r}>".format(
+932 |             self.argname, self.scope, self.baseid
+933 |         )
+```
+
+
+##Searching for entity `src/_pytest/setupplan.py:pytest_fixture_setup`...
+### Search Result:
+Found function `src/_pytest/setupplan.py:pytest_fixture_setup`.
+Source: Exact match found for entity name `src/_pytest/setupplan.py:pytest_fixture_setup`.
+```
+16 | def pytest_fixture_setup(fixturedef, request):
+17 |     # Will return a dummy fixture if the setuponly option is provided.
+18 |     if request.config.option.setupplan:
+19 |         my_cache_key = fixturedef.cache_key(request)
+20 |         fixturedef.cached_result = (None, my_cache_key, None)
+21 |         return fixturedef.cached_result
+```
+
+
+##Searching for entity `src/_pytest/setuponly.py:pytest_fixture_setup`...
+### Search Result:
+Found function `src/_pytest/setuponly.py:pytest_fixture_setup`.
+Source: Exact match found for entity name `src/_pytest/setuponly.py:pytest_fixture_setup`.
+```
+21 | def pytest_fixture_setup(fixturedef, request):
+22 |     yield
+23 |     if request.config.option.setupshow:
+24 |         if hasattr(request, "param"):
+25 |             # Save the fixture parameter so ._show_fixture_action() can
+26 |             # display it now and during the teardown (in .finish()).
+27 |             if fixturedef.ids:
+28 |                 if callable(fixturedef.ids):
+29 |                     fixturedef.cached_param = fixturedef.ids(request.param)
+30 |                 else:
+31 |                     fixturedef.cached_param = fixturedef.ids[request.param_index]
+32 |             else:
+33 |                 fixturedef.cached_param = request.param
+34 |         _show_fixture_action(fixturedef, "SETUP")
+```
+
+
+##Searching for entity `src/_pytest/_io/saferepr.py:saferepr`...
+### Search Result:
+Found function `src/_pytest/_io/saferepr.py:saferepr`.
+Source: Exact match found for entity name `src/_pytest/_io/saferepr.py:saferepr`.
+```
+75 | def saferepr(obj: Any, maxsize: int = 240) -> str:
+76 |     """return a size-limited safe repr-string for the given object.
+77 |     Failing __repr__ functions of user instances will be represented
+78 |     with a short exception info and 'saferepr' generally takes
+79 |     care to never raise exceptions itself.  This function is a wrapper
+80 |     around the Repr/reprlib functionality of the standard 2.6 lib.
+81 |     """
+82 |     return SafeRepr(maxsize).repr(obj)
+```
+
+2026-08-28 02:14:15 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['cached_param =', 'cached_param', 'param_index', 'param'], 'file_path_or_pattern': 'src/_pytest/fixtures.py'}))
+```
+2026-08-28 02:14:15 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:16 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:16 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:16 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:17 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:17 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:17 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:17 __init__.py DEBUG Building index from IDs objects
+2026-08-28 02:14:17 auto_search_main.py INFO OBSERVATION:
+src/_pytest/fixtures.py:get_parametrized_fixture_keys
+src/_pytest/fixtures.py:getfixturemarker
+src/_pytest/fixtures.py:SubRequest.addfinalizer
+src/_pytest/fixtures.py:SubRequest.__init__
+src/_pytest/fixtures.py:SubRequest._schedule_finalizers
+src/_pytest/fixtures.py:SubRequest
+src/_pytest/fixtures.py:SubRequest.__repr__
+src/_pytest/fixtures.py:FixtureRequest._compute_fixture_value
+src/_pytest/fixtures.py:FixtureDef.__repr__
+src/_pytest/fixtures.py:FixtureDef.execute
+src/_pytest/fixtures.py:FixtureDef.cache_key
+src/_pytest/fixtures.py:get_parametrized_fixture_keys
+src/_pytest/fixtures.py:getfixturemarker
+src/_pytest/fixtures.py:SubRequest.addfinalizer
+src/_pytest/fixtures.py:SubRequest.__init__
+src/_pytest/fixtures.py:SubRequest._schedule_finalizers
+src/_pytest/fixtures.py:SubRequest
+src/_pytest/fixtures.py:SubRequest.__repr__
+src/_pytest/fixtures.py:FixtureRequest._compute_fixture_value
+src/_pytest/fixtures.py:FixtureDef.__repr__
+src/_pytest/fixtures.py:FixtureDef.execute
+src/_pytest/fixtures.py:FixtureDef.cache_key
+##Searching for term "cached_param =", "cached_param", "cached_param = cached_param param_index"...
+### Search Result:
+Found class `src/_pytest/compat.py:cached_property`.
+Source: Retrieved entity using keyword search (bm25).
+```
+360 | class cached_property(Generic[_S, _T]):
+361 |         __slots__ = ("func", "__doc__")
+362 | 
+363 |         def __init__(self, func: Callable[[_S], _T]) -> None:
+364 |             self.func = func
+365 |             self.__doc__ = func.__doc__
+366 | 
+367 |         @overload
+368 |         def __get__(
+369 |             self, instance: None, owner: Optional["Type[_S]"] = ...
+370 |         ) -> "cached_property[_S, _T]":
+371 |             raise NotImplementedError()
+372 | 
+373 |         @overload  # noqa: F811
+374 |         def __get__(  # noqa: F811
+375 |             self, instance: _S, owner: Optional["Type[_S]"] = ...
+376 |         ) -> _T:
+377 |             raise NotImplementedError()
+378 | 
+379 |         def __get__(self, instance, owner=None):  # noqa: F811
+380 |             if instance is None:
+381 |                 return self
+382 |             value = instance.__dict__[self.func.__name__] = self.func(instance)
+383 |             return value
+```
+
+Found function `src/_pytest/mark/evaluate.py:cached_eval`.
+Source: Retrieved entity using keyword search (bm25).
+```
+17 | def cached_eval(config: Config, expr: str, d: Dict[str, object]) -> Any:
+18 |     default = {}  # type: Dict[str, object]
+19 |     evalcache = config._store.setdefault(evalcache_key, default)
+20 |     try:
+21 |         return evalcache[expr]
+22 |     except KeyError:
+23 |         import _pytest._code
+24 | 
+25 |         exprcode = _pytest._code.compile(expr, mode="eval")
+26 |         evalcache[expr] = x = eval(exprcode, d)
+27 |         return x
+```
+
+
+
+##Searching for term "param_index"...
+### Search Result:
+Found function `src/_pytest/fixtures.py:get_direct_param_fixture_func`.
+Source: Retrieved entity using keyword search (bm25).
+```
+303 | def get_direct_param_fixture_func(request):
+304 |     return request.param
+```
+
+Found function `src/_pytest/junitxml.py:_check_record_param_type`.
+Source: Retrieved entity using keyword search (bm25).
+```
+327 | def _check_record_param_type(param, v):
+328 |     """Used by record_testsuite_property to check that the given parameter name is of the proper
+329 |     type"""
+330 |     __tracebackhide__ = True
+331 |     if not isinstance(v, str):
+332 |         msg = "{param} parameter needs to be a string, but {g} given"
+333 |         raise TypeError(msg.format(param=param, g=type(v).__name__))
+```
+
+
+
+##Searching for term "param_index", "param"...
+### Search Result:
+Found function `src/_pytest/mark/structures.py:ParameterSet.param`.
+Source: Retrieved entity using keyword search (bm25).
+```
+61 | def param(cls, *values, marks=(), id=None):
+62 |         if isinstance(marks, MarkDecorator):
+63 |             marks = (marks,)
+64 |         else:
+65 |             assert isinstance(marks, (tuple, list, set))
+66 | 
+67 |         if id is not None:
+68 |             if not isinstance(id, str):
+69 |                 raise TypeError(
+70 |                     "Expected id to be a string, got {}: {!r}".format(type(id), id)
+71 |                 )
+72 |             id = ascii_escaped(id)
+73 |         return cls(values, marks, id)
+```
+
+
+
+##Searching for term "param_index", "cached_param = cached_param param_index"...
+### Search Result:
+Found function `src/_pytest/fixtures.py:getfixturemarker`.
+Source: Retrieved code content using keyword search (bm25).
+```
+173 | def getfixturemarker(obj):
+174 |     """ return fixturemarker or None if it doesn't exist or raised
+175 |     exceptions."""
+176 |     try:
+177 |         return getattr(obj, "_pytestfixturefunction", None)
+178 |     except TEST_OUTCOME:
+179 |         # some objects raise errors like request (from flask import request)
+180 |         # we don't expect them to be fixture functions
+181 |         return None
+```
+
+Found function `src/_pytest/fixtures.py:get_parametrized_fixture_keys`.
+Source: Retrieved code content using keyword search (bm25).
+```
+184 | def get_parametrized_fixture_keys(item, scopenum):
+185 |     """ return list of keys for all parametrized arguments which match
+186 |     the specified scope. """
+187 |     assert scopenum < scopenum_function  # function
+188 |     try:
+189 |         cs = item.callspec
+190 |     except AttributeError:
+191 |         pass
+192 |     else:
+193 |         # cs.indices.items() is random order of argnames.  Need to
+194 |         # sort this so that different calls to
+195 |         # get_parametrized_fixture_keys will be deterministic.
+196 |         for argname, param_index in sorted(cs.indices.items()):
+197 |             if cs._arg2scopenum[argname] != scopenum:
+198 |                 continue
+199 |             if scopenum == 0:  # session
+200 |                 key = (argname, param_index)
+201 |             elif scopenum == 1:  # package
+202 |                 key = (argname, param_index, item.fspath.dirpath())
+203 |             elif scopenum == 2:  # module
+204 |                 key = (argname, param_index, item.fspath)
+205 |             elif scopenum == 3:  # class
+206 |                 key = (argname, param_index, item.fspath, item.cls)
+207 |             yield key
+```
+
+Found class `src/_pytest/fixtures.py:SubRequest`.
+Source: Retrieved code content using keyword search (bm25).
+```
+644 | class SubRequest(FixtureRequest):
+645 |     """ a sub request for handling getting a fixture from a
+646 |     test function/fixture. """
+647 | 
+648 |     def __init__(self, request, scope, param, param_index, fixturedef):
+649 |         self._parent_request = request
+650 |         self.fixturename = fixturedef.argname
+651 |         if param is not NOTSET:
+652 |             self.param = param
+653 |         self.param_index = param_index
+654 |         self.scope = scope
+655 |         self._fixturedef = fixturedef
+656 |         self._pyfuncitem = request._pyfuncitem
+657 |         self._fixture_defs = request._fixture_defs
+658 |         self._arg2fixturedefs = request._arg2fixturedefs
+659 |         self._arg2index = request._arg2index
+660 |         self._fixturemanager = request._fixturemanager
+661 | 
+662 |     def __repr__(self):
+663 |         return "<SubRequest {!r} for {!r}>".format(self.fixturename, self._pyfuncitem)
+664 | 
+665 |     def addfinalizer(self, finalizer):
+666 |         self._fixturedef.addfinalizer(finalizer)
+667 | 
+668 |     def _schedule_finalizers(self, fixturedef, subrequest):
+669 |         # if the executing fixturedef was not explicitly requested in the argument list (via
+670 |         # getfixturevalue inside the fixture call) then ensure this fixture def will be finished
+671 |         # first
+672 |         if fixturedef.argname not in self.fixturenames:
+673 |             fixturedef.addfinalizer(
+674 |                 functools.partial(self._fixturedef.finish, request=self)
+675 |             )
+676 |         super()._schedule_finalizers(fixturedef, subrequest)
+```
+
+
+
+##Searching for term "param"...
+### Search Result:
+Found function `src/_pytest/mark/__init__.py:param`.
+Source: Match found for entity name `param`.
+```
+24 | def param(*values, **kw):
+25 |     """Specify a parameter in `pytest.mark.parametrize`_ calls or
+26 |     :ref:`parametrized fixtures <fixture-parametrize-marks>`.
+27 | 
+28 |     .. code-block:: python
+29 | 
+30 |         @pytest.mark.parametrize(
+31 |             "test_input,expected",
+32 |             [("3+5", 8), pytest.param("6*9", 42, marks=pytest.mark.xfail),],
+33 |         )
+34 |         def test_eval(test_input, expected):
+35 |             assert eval(test_input) == expected
+36 | 
+37 |     :param values: variable args of the values of the parameter set, in order.
+38 |     :keyword marks: a single mark or a list of marks to be applied to this parameter set.
+39 |     :keyword str id: the id to attribute to this parameter set.
+40 |     """
+41 |     return ParameterSet.param(*values, **kw)
+```
+
+2026-08-28 02:14:17 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 02:14:53 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 02:14:53 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 02:14:53 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 02:14:53 auto_search_main.py INFO ===============
+2026-08-28 02:14:53 auto_search_main.py INFO Final response generated content_length=206
+2026-08-28 02:14:53 auto_search_main.py INFO ==== localizing pytest-dev__pytest-7205 succeed, process multiple loc outputs ====
+2026-08-28 02:14:53 cost_analysis.py INFO input_tokens=57886, output_tokens=904, cost=0.15
+2026-08-28 02:14:53 auto_search_main.py INFO Total time: 5.5177 min

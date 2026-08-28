@@ -1,0 +1,1549 @@
+2026-08-28 03:24:21 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 03:24:22 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 03:24:22 auto_search_main.py INFO ============================================================
+2026-08-28 03:24:22 auto_search_main.py INFO ==== rank 0 setup localize django__django-15104 ====
+2026-08-28 03:24:22 install.py INFO hook: set_current_issue fired
+2026-08-28 03:24:22 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/f25c7d36-d0fe-466e-b0df-fde75f352e09/django_django and checkout commit HEAD
+2026-08-28 03:24:22 git_repo_manager.py INFO Directory 'playground/f25c7d36-d0fe-466e-b0df-fde75f352e09/django_django' was created.
+2026-08-28 03:24:22 install.py INFO setup_repo returned: playground/f25c7d36-d0fe-466e-b0df-fde75f352e09/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-15104
+2026-08-28 03:24:32 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-15104 files=2000 indexed=2000 failed=0
+2026-08-28 03:28:27 repo_ops.py INFO [0] Processed django__django-15104
+2026-08-28 03:28:28 auto_search_main.py INFO ============================================================
+2026-08-28 03:28:28 auto_search_main.py INFO ==== rank 0 begin localizing django__django-15104 ====
+2026-08-28 03:28:28 auto_search_main.py INFO ============================================================
+2026-08-28 03:28:28 auto_search_main.py INFO ==== django__django-15104 Count down: attempt 1 ====
+2026-08-28 03:28:28 auto_search_main.py INFO ==== django__django-15104 start auto search ====
+2026-08-28 03:28:37 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:28:43 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:28:43 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:28:43 auto_search_main.py INFO agent response received content_present=True tool_calls=4
+2026-08-28 03:28:43 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'only_relation_agnostic_fields', 'context': 'migration autodetector relation-agnostic deconstruction to pop to key', 'kind_filter': [12, 6, 5], 'top_k': 5}))
+```
+2026-08-28 03:28:46 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:28:48 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:28:48 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:28:48 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `only_relation_agnostic_fields`. Showing top 1 by relevance:
+1. [score=96] MigrationAutodetector.only_relation_agnostic_fields
+   django/db/migrations/autodetector.py:89
+               if isinstance(obj, models.Field):
+                   # we have a field which also returns a name
+                   deconstructed = deconstructed[1:]
+               path, args, kwargs = deconstructed
+               return (
+                   path,
+                   [self.deep_deconstruct(value) for value in args],
+                   {
+                       key: self.deep_deconstruct(value)
+                       for key, value in kwargs.items()
+                   },
+               )
+           else:
+               return obj
+   
+       def only_relation_agnostic_fields(self, fields):
+           """
+           Return a definition of the fields that ignores field names and
+           what related fields actually relate to. Used for detecting renames (as
+           the related fields change during renames).
+           """
+           fields_def = []
+           for name, field in sorted(fields.items()):
+               deconstruction = self.deep_deconstruct(field)
+               if field.remote_field and field.remote_field.model:
+                   del deconstruction[2]['to']
+               fields_def.append(deconstruction)
+           return fields_def
+   
+       def _detect_changes(self, convert_apps=None, graph=None):
+           """
+[symbol-locator] [scorer] usage pid=806294 calls=1 p=5083 c=7
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 03:28:48 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'generate_renamed_models', 'context': 'migration autodetector renamed models deconstruction fields', 'kind_filter': [12, 6, 5], 'top_k': 5}))
+```
+2026-08-28 03:28:49 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:28:50 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:28:50 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:28:50 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `generate_renamed_models`. Showing top 1 by relevance:
+1. [score=97] MigrationAutodetector.generate_renamed_models
+   django/db/migrations/autodetector.py:466
+                   base if isinstance(base, str) else base.__name__
+                   for base in model_state.bases
+               }
+               string_version = "%s.%s" % (item[0], item[1])
+               if (
+                   model_state.options.get('swappable') or
+                   "AbstractUser" in base_names or
+                   "AbstractBaseUser" in base_names or
+                   settings.AUTH_USER_MODEL.lower() == string_version.lower()
+               ):
+                   return ("___" + item[0], "___" + item[1])
+           except LookupError:
+               pass
+           return item
+   
+       def generate_renamed_models(self):
+           """
+           Find any renamed models, generate the operations for them, and remove
+           the old entry from the model lists. Must be run before other
+           model-level generation.
+           """
+           self.renamed_models = {}
+           self.renamed_models_rel = {}
+           added_models = self.new_model_keys - self.old_model_keys
+           for app_label, model_name in sorted(added_models):
+               model_state = self.to_state.models[app_label, model_name]
+               model_fields_def = self.only_relation_agnostic_fields(model_state.fields)
+   
+               removed_models = self.old_model_keys - self.new_model_keys
+               for rem_app_label, rem_model_name in removed_models:
+                   if rem_app_label == app_label:
+[symbol-locator] [scorer] usage pid=806294 calls=2 p=10226 c=14
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 03:28:50 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'MigrationAutodetector', 'context': 'django db migrations autodetector class', 'kind_filter': [5], 'top_k': 5}))
+```
+2026-08-28 03:28:51 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:29:51 _base_client.py INFO Retrying request to /chat/completions in 0.441642 seconds
+2026-08-28 03:30:52 _base_client.py INFO Retrying request to /chat/completions in 0.755992 seconds
+2026-08-28 03:31:18 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:31:18 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:31:18 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `MigrationAutodetector`. Showing top 1 by relevance:
+1. [score=99] MigrationAutodetector
+   django/db/migrations/autodetector.py:18
+   from itertools import chain
+   
+   from django.conf import settings
+   from django.db import models
+   from django.db.migrations import operations
+   from django.db.migrations.migration import Migration
+   from django.db.migrations.operations.models import AlterModelOptions
+   from django.db.migrations.optimizer import MigrationOptimizer
+   from django.db.migrations.questioner import MigrationQuestioner
+   from django.db.migrations.utils import (
+       COMPILED_REGEX_TYPE, RegexObject, resolve_relation,
+   )
+   from django.utils.topological_sort import stable_topological_sort
+   
+   
+   class MigrationAutodetector:
+       """
+       Take a pair of ProjectStates and compare them to see what the first would
+       need doing to make it match the second (the second usually being the
+       project's current state).
+   
+       Note that this naturally operates on entire projects at a time,
+       as it's likely that changes interact (for example, you can't
+       add a ForeignKey without having a migration to add the table it
+       depends on first). A user interface may offer single-app usage
+       if it wishes, with the caveat that it may not always be possible.
+       """
+   
+       def __init__(self, from_state, to_state, questioner=None):
+           self.from_state = from_state
+           self.to_state = to_state
+[symbol-locator] [scorer] usage pid=806294 calls=3 p=19499 c=28
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 03:31:18 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'deconstruct', 'context': 'ForeignKey field deconstruct to kwarg hardcoded reference', 'kind_filter': [12, 6, 5], 'top_k': 10}))
+```
+2026-08-28 03:31:19 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:31:45 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:31:45 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:31:45 auto_search_main.py INFO OBSERVATION:
+Found 154 candidates for `deconstruct`. Showing top 10 by relevance:
+1. [score=99] ForeignKey.deconstruct
+   django/db/models/fields/related.py:914
+                   )
+               ]
+           else:
+               return []
+   
+       def _check_unique(self, **kwargs):
+           return [
+               checks.Warning(
+                   'Setting unique=True on a ForeignKey has the same effect as using a OneToOneField.',
+                   hint='ForeignKey(unique=True) is usually better served by a OneToOneField.',
+                   obj=self,
+                   id='fields.W342',
+               )
+           ] if self.unique else []
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           del kwargs['to_fields']
+           del kwargs['from_fields']
+           # Handle the simpler arguments
+           if self.db_index:
+               del kwargs['db_index']
+           else:
+               kwargs['db_index'] = False
+           if self.db_constraint is not True:
+               kwargs['db_constraint'] = self.db_constraint
+           # Rel needs more work.
+           to_meta = getattr(self.remote_field.model, "_meta", None)
+           if self.remote_field.field_name and (
+                   not to_meta or (to_meta.pk and self.remote_field.field_name != to_meta.pk.name)):
+               kwargs['to_field'] = self.remote_field.field_name
+2. [score=25] ManyToManyField.deconstruct
+   django/db/models/fields/related.py:1517
+                   )
+               else:
+                   error_class, error_id = checks.Error, 'fields.E340'
+                   error_hint = None
+               return [
+                   error_class(
+                       "The field's intermediary table '%s' clashes with the "
+                       "table name of '%s'." % (m2m_db_table, clashing_obj),
+                       obj=self,
+                       hint=error_hint,
+                       id=error_id,
+                   )
+               ]
+           return []
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           # Handle the simpler arguments.
+           if self.db_table is not None:
+               kwargs['db_table'] = self.db_table
+           if self.remote_field.db_constraint is not True:
+               kwargs['db_constraint'] = self.remote_field.db_constraint
+           # Rel needs more work.
+           if isinstance(self.remote_field.model, str):
+               kwargs['to'] = self.remote_field.model
+           else:
+               kwargs['to'] = self.remote_field.model._meta.label
+           if getattr(self.remote_field, 'through', None) is not None:
+               if isinstance(self.remote_field.through, str):
+                   kwargs['through'] = self.remote_field.through
+               elif not self.remote_field.through._meta.auto_created:
+3. [score=12] OneToOneField.deconstruct
+   django/db/models/fields/related.py:1091
+       many_to_many = False
+       many_to_one = False
+       one_to_many = False
+       one_to_one = True
+   
+       related_accessor_class = ReverseOneToOneDescriptor
+       forward_related_accessor_class = ForwardOneToOneDescriptor
+       rel_class = OneToOneRel
+   
+       description = _("One-to-one relationship")
+   
+       def __init__(self, to, on_delete, to_field=None, **kwargs):
+           kwargs['unique'] = True
+           super().__init__(to, on_delete, to_field=to_field, **kwargs)
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           if "unique" in kwargs:
+               del kwargs['unique']
+           return name, path, args, kwargs
+   
+       def formfield(self, **kwargs):
+           if self.remote_field.parent_link:
+               return None
+           return super().formfield(**kwargs)
+   
+       def save_form_data(self, instance, data):
+           if isinstance(data, self.remote_field.model):
+               setattr(instance, self.name, data)
+           else:
+               setattr(instance, self.attname, data)
+4. [score=10] RelatedField.deconstruct
+   django/db/models/fields/related.py:336
+                   }
+                   self.remote_field.related_name = related_name
+   
+               if self.remote_field.related_query_name:
+                   related_query_name = self.remote_field.related_query_name % {
+                       'class': cls.__name__.lower(),
+                       'app_label': cls._meta.app_label.lower(),
+                   }
+                   self.remote_field.related_query_name = related_query_name
+   
+               def resolve_related_class(model, related, field):
+                   field.remote_field.model = related
+                   field.do_related_class(related, model)
+               lazy_related_operation(resolve_related_class, cls, self.remote_field.model, field=self)
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           if self._limit_choices_to:
+               kwargs['limit_choices_to'] = self._limit_choices_to
+           if self._related_name is not None:
+               kwargs['related_name'] = self._related_name
+           if self._related_query_name is not None:
+               kwargs['related_query_name'] = self._related_query_name
+           return name, path, args, kwargs
+   
+       def get_forward_related_filter(self, obj):
+           """
+           Return the keyword arguments that when supplied to
+           self.model.object.filter(), would select all instances related through
+           this field to the remote obj. This is used to build the querysets
+           returned by related descriptors. obj is an instance of
+5. [score=6] ForeignObject.deconstruct
+   django/db/models/fields/related.py:605
+                   checks.Error(
+                       "'%s.%s' must be unique because it is referenced by "
+                       "a foreign key." % (model_name, field_name),
+                       hint=(
+                           'Add unique=True to this field or add a '
+                           'UniqueConstraint (without condition) in the model '
+                           'Meta.constraints.'
+                       ),
+                       obj=self,
+                       id='fields.E311',
+                   )
+               ]
+           else:
+               return []
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           kwargs['on_delete'] = self.remote_field.on_delete
+           kwargs['from_fields'] = self.from_fields
+           kwargs['to_fields'] = self.to_fields
+   
+           if self.remote_field.parent_link:
+               kwargs['parent_link'] = self.remote_field.parent_link
+           if isinstance(self.remote_field.model, str):
+               if '.' in self.remote_field.model:
+                   app_label, model_name = self.remote_field.model.split('.')
+                   kwargs['to'] = '%s.%s' % (app_label, model_name.lower())
+               else:
+                   kwargs['to'] = self.remote_field.model.lower()
+           else:
+               kwargs['to'] = self.remote_field.model._meta.label_lower
+6. [score=4] CharField.deconstruct
+   django/db/models/fields/__init__.py:1084
+       def get_prep_value(self, value):
+           value = super().get_prep_value(value)
+           return self.to_python(value)
+   
+       def formfield(self, **kwargs):
+           # Passing max_length to forms.CharField means that the value's length
+           # will be validated twice. This is considered acceptable since we want
+           # the value in the form field (to pass into widget for example).
+           defaults = {'max_length': self.max_length}
+           # TODO: Handle multiple backends with different feature flags.
+           if self.null and not connection.features.interprets_empty_strings_as_nulls:
+               defaults['empty_value'] = None
+           defaults.update(kwargs)
+           return super().formfield(**defaults)
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           if self.db_collation:
+               kwargs['db_collation'] = self.db_collation
+           return name, path, args, kwargs
+   
+   
+   class CommaSeparatedIntegerField(CharField):
+       default_validators = [validators.validate_comma_separated_integer_list]
+       description = _("Comma-separated integers")
+       system_check_removed_details = {
+           'msg': (
+               'CommaSeparatedIntegerField is removed except for support in '
+               'historical migrations.'
+           ),
+           'hint': (
+7. [score=3] AutoFieldMixin.deconstruct
+   django/db/models/fields/__init__.py:2450
+               *self._check_primary_key(),
+           ]
+   
+       def _check_primary_key(self):
+           if not self.primary_key:
+               return [
+                   checks.Error(
+                       'AutoFields must set primary_key=True.',
+                       obj=self,
+                       id='fields.E100',
+                   ),
+               ]
+           else:
+               return []
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           del kwargs['blank']
+           kwargs['primary_key'] = True
+           return name, path, args, kwargs
+   
+       def validate(self, value, model_instance):
+           pass
+   
+       def get_db_prep_value(self, value, connection, prepared=False):
+           if not prepared:
+               value = self.get_prep_value(value)
+               value = connection.ops.validate_autopk_value(value)
+           return value
+   
+       def contribute_to_class(self, cls, name, **kwargs):
+8. [score=2] ArrayField.deconstruct
+   django/contrib/postgres/fields/array.py:101
+           size = self.size or ''
+           return '%s[%s]' % (self.base_field.db_type(connection), size)
+   
+       def cast_db_type(self, connection):
+           size = self.size or ''
+           return '%s[%s]' % (self.base_field.cast_db_type(connection), size)
+   
+       def get_placeholder(self, value, compiler, connection):
+           return '%s::{}'.format(self.db_type(connection))
+   
+       def get_db_prep_value(self, value, connection, prepared=False):
+           if isinstance(value, (list, tuple)):
+               return [self.base_field.get_db_prep_value(i, connection, prepared=False) for i in value]
+           return value
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           if path == 'django.contrib.postgres.fields.array.ArrayField':
+               path = 'django.contrib.postgres.fields.ArrayField'
+           kwargs.update({
+               'base_field': self.base_field.clone(),
+               'size': self.size,
+           })
+           return name, path, args, kwargs
+   
+       def to_python(self, value):
+           if isinstance(value, str):
+               # Assume we're deserializing
+               vals = json.loads(value)
+               value = [self.base_field.to_python(val) for val in vals]
+           return value
+9. [score=2] BaseSpatialField.deconstruct
+   django/contrib/gis/db/models/fields.py:95
+           """
+   
+           # Setting the index flag with the value of the `spatial_index` keyword.
+           self.spatial_index = spatial_index
+   
+           # Setting the SRID and getting the units.  Unit information must be
+           # easily available in the field instance for distance queries.
+           self.srid = srid
+   
+           # Setting the verbose_name keyword argument with the positional
+           # first parameter, so this works like normal fields.
+           kwargs['verbose_name'] = verbose_name
+   
+           super().__init__(**kwargs)
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           # Always include SRID for less fragility; include spatial index if it's
+           # not the default value.
+           kwargs['srid'] = self.srid
+           if self.spatial_index is not True:
+               kwargs['spatial_index'] = self.spatial_index
+           return name, path, args, kwargs
+   
+       def db_type(self, connection):
+           return connection.ops.geo_db_type(self)
+   
+       def spheroid(self, connection):
+           return get_srid_info(self.srid, connection).spheroid
+   
+       def units(self, connection):
+10. [score=2] SlugField.deconstruct
+   django/db/models/fields/__init__.py:2087
+               'min_value': 0,
+               **kwargs,
+           })
+   
+   
+   class SlugField(CharField):
+       default_validators = [validators.validate_slug]
+       description = _("Slug (up to %(max_length)s)")
+   
+       def __init__(self, *args, max_length=50, db_index=True, allow_unicode=False, **kwargs):
+           self.allow_unicode = allow_unicode
+           if self.allow_unicode:
+               self.default_validators = [validators.validate_unicode_slug]
+           super().__init__(*args, max_length=max_length, db_index=db_index, **kwargs)
+   
+       def deconstruct(self):
+           name, path, args, kwargs = super().deconstruct()
+           if kwargs.get("max_length") == 50:
+               del kwargs['max_length']
+           if self.db_index is False:
+               kwargs['db_index'] = False
+           else:
+               del kwargs['db_index']
+           if self.allow_unicode is not False:
+               kwargs['allow_unicode'] = self.allow_unicode
+           return name, path, args, kwargs
+   
+       def get_internal_type(self):
+           return "SlugField"
+   
+       def formfield(self, **kwargs):
+
+144 more candidates cached. Call `more_symbols(name="deconstruct")` for the next batch.
+[symbol-locator] [scorer] usage pid=806294 calls=4 p=32120 c=131
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 03:31:45 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:31:50 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:31:50 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:31:50 auto_search_main.py INFO agent response received content_present=True tool_calls=4
+2026-08-28 03:31:50 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'ProjectState', 'context': 'django db migrations state projectstate modelstate add_model model_states', 'kind_filter': [5], 'top_k': 10}))
+```
+2026-08-28 03:31:51 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:32:32 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:32:32 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:32:32 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `ProjectState`. Showing top 1 by relevance:
+1. [score=94] ProjectState
+   django/db/migrations/state.py:84
+       model (a superclass is related to its subclasses, but not vice versa). Note,
+       however, that a model inheriting from a concrete model is also related to
+       its superclass through the implicit *_ptr OneToOneField on the subclass.
+       """
+       seen = set()
+       queue = _get_related_models(model)
+       for rel_mod in queue:
+           rel_app_label, rel_model_name = rel_mod._meta.app_label, rel_mod._meta.model_name
+           if (rel_app_label, rel_model_name) in seen:
+               continue
+           seen.add((rel_app_label, rel_model_name))
+           queue.extend(_get_related_models(rel_mod))
+       return seen - {(model._meta.app_label, model._meta.model_name)}
+   
+   
+   class ProjectState:
+       """
+       Represent the entire project's overall state. This is the item that is
+       passed around - do it here rather than at the app level so that cross-app
+       FKs/etc. resolve properly.
+       """
+   
+       def __init__(self, models=None, real_apps=None):
+           self.models = models or {}
+           # Apps to include from main registry, usually unmigrated ones
+           if real_apps is None:
+               real_apps = set()
+           else:
+               assert isinstance(real_apps, set)
+           self.real_apps = real_apps
+           self.is_delayed = False
+[symbol-locator] [scorer] usage pid=806294 calls=5 p=37258 c=138
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 03:32:32 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'ModelState', 'context': 'django db migrations state modelstate fields add_model', 'kind_filter': [5], 'top_k': 10}))
+```
+2026-08-28 03:32:34 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:33:34 _base_client.py INFO Retrying request to /chat/completions in 0.447935 seconds
+2026-08-28 03:34:34 _base_client.py INFO Retrying request to /chat/completions in 0.787232 seconds
+2026-08-28 03:34:42 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:34:42 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:34:42 auto_search_main.py INFO OBSERVATION:
+Found 9 candidates for `ModelState`. Showing top 9 by relevance:
+1. [score=98] ModelState
+   django/db/migrations/state.py:638
+           if app_label not in self.app_configs:
+               self.app_configs[app_label] = AppConfigStub(app_label)
+               self.app_configs[app_label].apps = self
+           self.app_configs[app_label].models[model._meta.model_name] = model
+           self.do_pending_operations(model)
+           self.clear_cache()
+   
+       def unregister_model(self, app_label, model_name):
+           try:
+               del self.all_models[app_label][model_name]
+               del self.app_configs[app_label].models[model_name]
+           except KeyError:
+               pass
+   
+   
+   class ModelState:
+       """
+       Represent a Django Model. Don't use the actual Model class as it's not
+       designed to have its options changed - instead, mutate this one and then
+       render it into a Model as required.
+   
+       Note that while you are allowed to mutate .fields, you are not allowed
+       to mutate the Field instances inside there themselves - you must instead
+       assign new ones, as these are not detached during a clone.
+       """
+   
+       def __init__(self, app_label, name, fields, options=None, bases=None, managers=None):
+           self.app_label = app_label
+           self.name = name
+           self.fields = dict(fields)
+           self.options = options or {}
+2. [score=90] ModelStateTests
+   tests/migrations/test_state.py:1416
+               [('tests', 'comment'), ('tests', 'post')],
+           )
+           comment_rels = project_state.relations['tests', 'user']['tests', 'comment']
+           # Two foreign keys to the same model.
+           self.assertEqual(len(comment_rels), 2)
+           self.assertEqual(comment_rels['reviewer'], new_field)
+           # Rename the second foreign key.
+           project_state.rename_field('tests', 'comment', 'reviewer', 'supervisor')
+           self.assertEqual(len(comment_rels), 2)
+           self.assertEqual(comment_rels['supervisor'], new_field)
+           # Remove the first foreign key.
+           project_state.remove_field('tests', 'comment', 'user')
+           self.assertEqual(comment_rels, {'supervisor': new_field})
+   
+   
+   class ModelStateTests(SimpleTestCase):
+       def test_custom_model_base(self):
+           state = ModelState.from_model(ModelWithCustomBase)
+           self.assertEqual(state.bases, (models.Model,))
+   
+       def test_bound_field_sanity_check(self):
+           field = models.CharField(max_length=1)
+           field.model = models.Model
+           with self.assertRaisesMessage(ValueError, 'ModelState.fields cannot be bound to a model - "field" is.'):
+               ModelState('app', 'Model', [('field', field)])
+   
+       def test_sanity_check_to(self):
+           field = models.ForeignKey(UnicodeModel, models.CASCADE)
+           with self.assertRaisesMessage(
+               ValueError,
+               'ModelState.fields cannot refer to a model class - "field.to" does. '
+3. [score=24] ModelStateTests
+   tests/model_regress/test_state.py:5
+   from django.db.models.base import ModelState, ModelStateCacheDescriptor
+   from django.test import SimpleTestCase
+   
+   
+   class ModelStateTests(SimpleTestCase):
+   
+       def test_fields_cache_descriptor(self):
+           self.assertIsInstance(ModelState.fields_cache, ModelStateCacheDescriptor)
+   
+       def test_related_managers_descriptor(self):
+           self.assertIsInstance(ModelState.related_managers_cache, ModelStateCacheDescriptor)
+   
+4. [score=18] ModelStateCacheDescriptor
+   django/db/models/base.py:385
+           for index in cls._meta.indexes:
+               if not index.name:
+                   index.set_name_with_model(cls)
+   
+           class_prepared.send(sender=cls)
+   
+       @property
+       def _base_manager(cls):
+           return cls._meta.base_manager
+   
+       @property
+       def _default_manager(cls):
+           return cls._meta.default_manager
+   
+   
+   class ModelStateCacheDescriptor:
+       """
+       Upon first access, replace itself with an empty dictionary on the instance.
+       """
+   
+       def __set_name__(self, owner, name):
+           self.attribute_name = name
+   
+       def __get__(self, instance, cls=None):
+           if instance is None:
+               return self
+           res = instance.__dict__[self.attribute_name] = {}
+           return res
+   
+   
+   class ModelState:
+5. [score=12] ModelState
+   django/db/models/base.py:400
+   class ModelStateCacheDescriptor:
+       """
+       Upon first access, replace itself with an empty dictionary on the instance.
+       """
+   
+       def __set_name__(self, owner, name):
+           self.attribute_name = name
+   
+       def __get__(self, instance, cls=None):
+           if instance is None:
+               return self
+           res = instance.__dict__[self.attribute_name] = {}
+           return res
+   
+   
+   class ModelState:
+       """Store model instance state."""
+       db = None
+       # If true, uniqueness validation checks will consider this a new, unsaved
+       # object. Necessary for correct validation of new instances of objects with
+       # explicit (non-auto) PKs. This impacts validation only; it has no effect
+       # on the actual save.
+       adding = True
+       fields_cache = ModelStateCacheDescriptor()
+       related_managers_cache = ModelStateCacheDescriptor()
+   
+       def __getstate__(self):
+           state = self.__dict__.copy()
+           if 'fields_cache' in state:
+               state['fields_cache'] = self.fields_cache.copy()
+           # Manager instances stored in related_managers_cache won't necessarily
+6. [score=8] TestManagerInheritance.test_implicit_inheritance.ModelWithAbstractParent
+   tests/managers_regress/tests.py:178
+           class CustomManager(models.Manager):
+               pass
+   
+           class AbstractModel(models.Model):
+               custom_manager = CustomManager()
+   
+               class Meta:
+                   abstract = True
+   
+           class PlainModel(models.Model):
+               custom_manager = CustomManager()
+   
+           self.assertIsInstance(PlainModel._base_manager, models.Manager)
+           self.assertIsInstance(PlainModel._default_manager, CustomManager)
+   
+           class ModelWithAbstractParent(AbstractModel):
+               pass
+   
+           self.assertIsInstance(ModelWithAbstractParent._base_manager, models.Manager)
+           self.assertIsInstance(ModelWithAbstractParent._default_manager, CustomManager)
+   
+           class ProxyModel(PlainModel):
+               class Meta:
+                   proxy = True
+   
+           self.assertIsInstance(ProxyModel._base_manager, models.Manager)
+           self.assertIsInstance(ProxyModel._default_manager, CustomManager)
+   
+           class MTIModel(PlainModel):
+               pass
+   
+7. [score=8] TestManagerInheritance.test_default_manager_inheritance.ModelWithAbstractParent
+   tests/managers_regress/tests.py:218
+               custom_manager = CustomManager()
+   
+               class Meta:
+                   default_manager_name = 'custom_manager'
+                   abstract = True
+   
+           class PlainModel(models.Model):
+               another_manager = models.Manager()
+               custom_manager = CustomManager()
+   
+               class Meta:
+                   default_manager_name = 'custom_manager'
+   
+           self.assertIsInstance(PlainModel._default_manager, CustomManager)
+   
+           class ModelWithAbstractParent(AbstractModel):
+               pass
+   
+           self.assertIsInstance(ModelWithAbstractParent._default_manager, CustomManager)
+   
+           class ProxyModel(PlainModel):
+               class Meta:
+                   proxy = True
+   
+           self.assertIsInstance(ProxyModel._default_manager, CustomManager)
+   
+           class MTIModel(PlainModel):
+               pass
+   
+           self.assertIsInstance(MTIModel._default_manager, CustomManager)
+   
+8. [score=8] TestManagerInheritance.test_base_manager_inheritance.ModelWithAbstractParent
+   tests/managers_regress/tests.py:255
+               custom_manager = CustomManager()
+   
+               class Meta:
+                   base_manager_name = 'custom_manager'
+                   abstract = True
+   
+           class PlainModel(models.Model):
+               another_manager = models.Manager()
+               custom_manager = CustomManager()
+   
+               class Meta:
+                   base_manager_name = 'custom_manager'
+   
+           self.assertIsInstance(PlainModel._base_manager, CustomManager)
+   
+           class ModelWithAbstractParent(AbstractModel):
+               pass
+   
+           self.assertIsInstance(ModelWithAbstractParent._base_manager, CustomManager)
+   
+           class ProxyModel(PlainModel):
+               class Meta:
+                   proxy = True
+   
+           self.assertIsInstance(ProxyModel._base_manager, CustomManager)
+   
+           class MTIModel(PlainModel):
+               pass
+   
+           self.assertIsInstance(MTIModel._base_manager, CustomManager)
+   
+9. [score=3] ModelInstanceCreationTests
+   tests/basic/tests.py:20
+   from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+   from django.db import DEFAULT_DB_ALIAS, DatabaseError, connections, models
+   from django.db.models.manager import BaseManager
+   from django.db.models.query import MAX_GET_RESULTS, EmptyQuerySet
+   from django.test import (
+       SimpleTestCase, TestCase, TransactionTestCase, skipUnlessDBFeature,
+   )
+   from django.utils.translation import gettext_lazy
+   
+   from .models import (
+       Article, ArticleSelectOnSave, ChildPrimaryKeyWithDefault, FeaturedArticle,
+       PrimaryKeyWithDefault, SelfRef,
+   )
+   
+   
+   class ModelInstanceCreationTests(TestCase):
+   
+       def test_object_is_not_written_to_database_until_save_was_called(self):
+           a = Article(
+               id=None,
+               headline='Parrot programs in Python',
+               pub_date=datetime(2005, 7, 28),
+           )
+           self.assertIsNone(a.id)
+           self.assertEqual(Article.objects.all().count(), 0)
+   
+           # Save it into the database. You have to call save() explicitly.
+           a.save()
+           self.assertIsNotNone(a.id)
+           self.assertEqual(Article.objects.all().count(), 1)
+   
+[symbol-locator] [scorer] usage pid=806294 calls=6 p=49862 c=216
+[symbol-locator] [scorer] parsed 9/9 scores from LLM
+
+2026-08-28 03:34:42 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'handle', 'context': 'django core management commands migrate autodetector changes graph executor loader', 'kind_filter': [12, 6], 'top_k': 10}))
+```
+2026-08-28 03:34:43 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:34:51 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:34:51 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:34:51 auto_search_main.py INFO OBSERVATION:
+Found 286 candidates for `handle`. Showing top 10 by relevance:
+1. [score=97] Command.handle
+   django/core/management/commands/migrate.py:72
+           )
+           parser.add_argument(
+               '--plan', action='store_true',
+               help='Shows a list of the migration actions that will be performed.',
+           )
+           parser.add_argument(
+               '--run-syncdb', action='store_true',
+               help='Creates tables for apps without migrations.',
+           )
+           parser.add_argument(
+               '--check', action='store_true', dest='check_unapplied',
+               help='Exits with a non-zero status if unapplied migrations exist.',
+           )
+   
+       @no_translations
+       def handle(self, *args, **options):
+           database = options['database']
+           if not options['skip_checks']:
+               self.check(databases=[database])
+   
+           self.verbosity = options['verbosity']
+           self.interactive = options['interactive']
+   
+           # Import the 'management' module within each installed app, to register
+           # dispatcher events.
+           for app_config in apps.get_app_configs():
+               if module_has_submodule(app_config.module, "management"):
+                   import_module('.management', app_config.name)
+   
+           # Get the database we're operating from
+           connection = connections[database]
+2. [score=95] Command.handle
+   django/core/management/commands/makemigrations.py:65
+               help="Use this name for migration file(s).",
+           )
+           parser.add_argument(
+               '--no-header', action='store_false', dest='include_header',
+               help='Do not add header comments to new migration file(s).',
+           )
+           parser.add_argument(
+               '--check', action='store_true', dest='check_changes',
+               help='Exit with a non-zero status if model changes are missing migrations.',
+           )
+   
+       def log(self, msg):
+           self.stdout.write(msg)
+   
+       @no_translations
+       def handle(self, *app_labels, **options):
+           self.verbosity = options['verbosity']
+           self.interactive = options['interactive']
+           self.dry_run = options['dry_run']
+           self.merge = options['merge']
+           self.empty = options['empty']
+           self.migration_name = options['name']
+           if self.migration_name and not self.migration_name.isidentifier():
+               raise CommandError('The migration name must be a valid Python identifier.')
+           self.include_header = options['include_header']
+           check_changes = options['check_changes']
+   
+           # Make sure the app they asked for exists
+           app_labels = set(app_labels)
+           has_bad_labels = False
+           for app_label in app_labels:
+3. [score=92] Command.handle
+   django/core/management/commands/sqlmigrate.py:31
+               '--database', default=DEFAULT_DB_ALIAS,
+               help='Nominates a database to create SQL for. Defaults to the "default" database.',
+           )
+           parser.add_argument(
+               '--backwards', action='store_true',
+               help='Creates SQL to unapply the migration, rather than to apply it',
+           )
+   
+       def execute(self, *args, **options):
+           # sqlmigrate doesn't support coloring its output but we need to force
+           # no_color=True so that the BEGIN/COMMIT statements added by
+           # output_transaction don't get colored either.
+           options['no_color'] = True
+           return super().execute(*args, **options)
+   
+       def handle(self, *args, **options):
+           # Get the database we're operating from
+           connection = connections[options['database']]
+   
+           # Load up a loader to get all the migration data, but don't replace
+           # migrations.
+           loader = MigrationLoader(connection, replace_migrations=False)
+   
+           # Resolve command-line arguments into a migration
+           app_label, migration_name = options['app_label'], options['migration_name']
+           # Validate app_label
+           try:
+               apps.get_app_config(app_label)
+           except LookupError as err:
+               raise CommandError(str(err))
+           if app_label not in loader.migrated_apps:
+4. [score=88] Command.handle
+   django/core/management/commands/squashmigrations.py:47
+               help='Do not try to optimize the squashed operations.',
+           )
+           parser.add_argument(
+               '--noinput', '--no-input', action='store_false', dest='interactive',
+               help='Tells Django to NOT prompt the user for input of any kind.',
+           )
+           parser.add_argument(
+               '--squashed-name',
+               help='Sets the name of the new squashed migration.',
+           )
+           parser.add_argument(
+               '--no-header', action='store_false', dest='include_header',
+               help='Do not add a header comment to the new squashed migration.',
+           )
+   
+       def handle(self, **options):
+   
+           self.verbosity = options['verbosity']
+           self.interactive = options['interactive']
+           app_label = options['app_label']
+           start_migration_name = options['start_migration_name']
+           migration_name = options['migration_name']
+           no_optimize = options['no_optimize']
+           squashed_name = options['squashed_name']
+           include_header = options['include_header']
+           # Validate app_label.
+           try:
+               apps.get_app_config(app_label)
+           except LookupError as err:
+               raise CommandError(str(err))
+           # Load the current graph state, check the app and migration they asked for exists
+5. [score=85] Command.handle
+   django/core/management/commands/showmigrations.py:46
+                   'With a verbosity level of 2 or above, the applied datetimes '
+                   'will be included.'
+               ),
+           )
+           formats.add_argument(
+               '--plan', '-p', action='store_const', dest='format', const='plan',
+               help=(
+                   'Shows all migrations in the order they will be applied. '
+                   'With a verbosity level of 2 or above all direct migration dependencies '
+                   'and reverse dependencies (run_before) will be included.'
+               )
+           )
+   
+           parser.set_defaults(format='list')
+   
+       def handle(self, *args, **options):
+           self.verbosity = options['verbosity']
+   
+           # Get the database we're operating from
+           db = options['database']
+           connection = connections[db]
+   
+           if options['format'] == "plan":
+               return self.show_plan(connection, options['app_label'])
+           else:
+               return self.show_list(connection, options['app_label'])
+   
+       def _validate_app_names(self, loader, app_names):
+           has_bad_names = False
+           for app_name in app_names:
+               try:
+6. [score=72] BaseCommand.handle
+   django/core/management/base.py:515
+           plan = executor.migration_plan(executor.loader.graph.leaf_nodes())
+           if plan:
+               apps_waiting_migration = sorted({migration.app_label for migration, backwards in plan})
+               self.stdout.write(
+                   self.style.NOTICE(
+                       "\nYou have %(unapplied_migration_count)s unapplied migration(s). "
+                       "Your project may not work properly until you apply the "
+                       "migrations for app(s): %(apps_waiting_migration)s." % {
+                           "unapplied_migration_count": len(plan),
+                           "apps_waiting_migration": ", ".join(apps_waiting_migration),
+                       }
+                   )
+               )
+               self.stdout.write(self.style.NOTICE("Run 'python manage.py migrate' to apply them."))
+   
+       def handle(self, *args, **options):
+           """
+           The actual logic of the command. Subclasses must implement
+           this method.
+           """
+           raise NotImplementedError('subclasses of BaseCommand must provide a handle() method')
+   
+   
+   class AppCommand(BaseCommand):
+       """
+       A management command which takes one or more installed application labels
+       as arguments, and does something with each of them.
+   
+       Rather than implementing ``handle()``, subclasses must implement
+       ``handle_app_config()``, which will be called once for each application.
+       """
+7. [score=55] AppCommand.handle
+   django/core/management/base.py:536
+   
+   
+   class AppCommand(BaseCommand):
+       """
+       A management command which takes one or more installed application labels
+       as arguments, and does something with each of them.
+   
+       Rather than implementing ``handle()``, subclasses must implement
+       ``handle_app_config()``, which will be called once for each application.
+       """
+       missing_args_message = "Enter at least one application label."
+   
+       def add_arguments(self, parser):
+           parser.add_argument('args', metavar='app_label', nargs='+', help='One or more application label.')
+   
+       def handle(self, *app_labels, **options):
+           from django.apps import apps
+           try:
+               app_configs = [apps.get_app_config(app_label) for app_label in app_labels]
+           except (LookupError, ImportError) as e:
+               raise CommandError("%s. Are you sure your INSTALLED_APPS setting is correct?" % e)
+           output = []
+           for app_config in app_configs:
+               app_output = self.handle_app_config(app_config, **options)
+               if app_output:
+                   output.append(app_output)
+           return '\n'.join(output)
+   
+       def handle_app_config(self, app_config, **options):
+           """
+           Perform the command's actions for app_config, an AppConfig instance
+8. [score=40] Command.handle
+   django/core/management/commands/check.py:40
+           )
+           parser.add_argument(
+               '--fail-level',
+               default='ERROR',
+               choices=['CRITICAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG'],
+               help=(
+                   'Message level that will cause the command to exit with a '
+                   'non-zero status. Default is ERROR.'
+               ),
+           )
+           parser.add_argument(
+               '--database', action='append', dest='databases',
+               help='Run database related checks against these aliases.',
+           )
+   
+       def handle(self, *app_labels, **options):
+           include_deployment_checks = options['deploy']
+           if options['list_tags']:
+               self.stdout.write('\n'.join(sorted(registry.tags_available(include_deployment_checks))))
+               return
+   
+           if app_labels:
+               app_configs = [apps.get_app_config(app_label) for app_label in app_labels]
+           else:
+               app_configs = None
+   
+           tags = options['tags']
+           if tags:
+               try:
+                   invalid_tag = next(
+                       tag for tag in tags if not checks.tag_exists(tag, include_deployment_checks)
+9. [score=34] Command.handle
+   django/core/management/commands/flush.py:27
+           'Removes ALL DATA from the database, including data added during '
+           'migrations. Does not achieve a "fresh install" state.'
+       )
+       stealth_options = ('reset_sequences', 'allow_cascade', 'inhibit_post_migrate')
+   
+       def add_arguments(self, parser):
+           parser.add_argument(
+               '--noinput', '--no-input', action='store_false', dest='interactive',
+               help='Tells Django to NOT prompt the user for input of any kind.',
+           )
+           parser.add_argument(
+               '--database', default=DEFAULT_DB_ALIAS,
+               help='Nominates a database to flush. Defaults to the "default" database.',
+           )
+   
+       def handle(self, **options):
+           database = options['database']
+           connection = connections[database]
+           verbosity = options['verbosity']
+           interactive = options['interactive']
+           # The following are stealth options used by Django's internals.
+           reset_sequences = options.get('reset_sequences', True)
+           allow_cascade = options.get('allow_cascade', False)
+           inhibit_post_migrate = options.get('inhibit_post_migrate', False)
+   
+           self.style = no_style()
+   
+           # Import the 'management' module within each installed app, to register
+           # dispatcher events.
+           for app_config in apps.get_app_configs():
+               try:
+10. [score=30] Command.handle
+   django/core/management/commands/loaddata.py:69
+           )
+           parser.add_argument(
+               '--ignorenonexistent', '-i', action='store_true', dest='ignore',
+               help='Ignores entries in the serialized data for fields that do not '
+                    'currently exist on the model.',
+           )
+           parser.add_argument(
+               '-e', '--exclude', action='append', default=[],
+               help='An app_label or app_label.ModelName to exclude. Can be used multiple times.',
+           )
+           parser.add_argument(
+               '--format',
+               help='Format of serialized data when reading from stdin.',
+           )
+   
+       def handle(self, *fixture_labels, **options):
+           self.ignore = options['ignore']
+           self.using = options['database']
+           self.app_label = options['app_label']
+           self.verbosity = options['verbosity']
+           self.excluded_models, self.excluded_apps = parse_apps_and_model_labels(options['exclude'])
+           self.format = options['format']
+   
+           with transaction.atomic(using=self.using):
+               self.loaddata(fixture_labels)
+   
+           # Close the DB connection -- unless we're still in a transaction. This
+           # is required as a workaround for an edge case in MySQL: if the same
+           # connection is used to create tables, load data, and query, the query
+           # can return incorrect results. See Django #7572, MySQL #37735.
+           if transaction.get_autocommit(self.using):
+
+276 more candidates cached. Call `more_symbols(name="handle")` for the next batch.
+[symbol-locator] [scorer] usage pid=806294 calls=7 p=62604 c=319
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 03:34:51 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'create_test_db', 'context': 'django db backends base creation migrate run_syncdb test db creation', 'kind_filter': [12, 6], 'top_k': 10}))
+```
+2026-08-28 03:34:51 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:34:58 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:34:58 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:34:58 auto_search_main.py INFO OBSERVATION:
+Found 12 candidates for `create_test_db`. Showing top 10 by relevance:
+1. [score=98] BaseDatabaseCreation.create_test_db
+   django/db/backends/base/creation.py:32
+   
+   class BaseDatabaseCreation:
+       """
+       Encapsulate backend-specific differences pertaining to creation and
+       destruction of the test database.
+       """
+       def __init__(self, connection):
+           self.connection = connection
+   
+       def _nodb_cursor(self):
+           return self.connection._nodb_cursor()
+   
+       def log(self, msg):
+           sys.stderr.write(msg + os.linesep)
+   
+       def create_test_db(self, verbosity=1, autoclobber=False, serialize=True, keepdb=False):
+           """
+           Create a test database, prompting the user for confirmation if the
+           database already exists. Return the name of the test database created.
+           """
+           # Don't import django.core.management if it isn't needed.
+           from django.core.management import call_command
+   
+           test_database_name = self._get_test_db_name()
+   
+           if verbosity >= 1:
+               action = 'Creating'
+               if keepdb:
+                   action = "Using existing"
+   
+               self.log('%s test database for alias %s...' % (
+2. [score=95] BaseDatabaseCreation._create_test_db
+   django/db/backends/base/creation.py:181
+   
+       def _get_test_db_name(self):
+           """
+           Internal implementation - return the name of the test DB that will be
+           created. Only useful when called from create_test_db() and
+           _create_test_db() and when no external munging is done with the 'NAME'
+           settings.
+           """
+           if self.connection.settings_dict['TEST']['NAME']:
+               return self.connection.settings_dict['TEST']['NAME']
+           return TEST_DATABASE_PREFIX + self.connection.settings_dict['NAME']
+   
+       def _execute_create_test_db(self, cursor, parameters, keepdb=False):
+           cursor.execute('CREATE DATABASE %(dbname)s %(suffix)s' % parameters)
+   
+       def _create_test_db(self, verbosity, autoclobber, keepdb=False):
+           """
+           Internal implementation - create the test db tables.
+           """
+           test_database_name = self._get_test_db_name()
+           test_db_params = {
+               'dbname': self.connection.ops.quote_name(test_database_name),
+               'suffix': self.sql_table_creation_suffix(),
+           }
+           # Create the test database and connect to it.
+           with self._nodb_cursor() as cursor:
+               try:
+                   self._execute_create_test_db(cursor, test_db_params, keepdb)
+               except Exception as e:
+                   # if we want to keep the db, then no need to do any of the below,
+                   # just return and skip it all.
+3. [score=94] BaseDatabaseCreation._execute_create_test_db
+   django/db/backends/base/creation.py:178
+               self.connection.alias,
+               (" ('%s')" % database_name) if verbosity >= 2 else '',
+           )
+   
+       def _get_test_db_name(self):
+           """
+           Internal implementation - return the name of the test DB that will be
+           created. Only useful when called from create_test_db() and
+           _create_test_db() and when no external munging is done with the 'NAME'
+           settings.
+           """
+           if self.connection.settings_dict['TEST']['NAME']:
+               return self.connection.settings_dict['TEST']['NAME']
+           return TEST_DATABASE_PREFIX + self.connection.settings_dict['NAME']
+   
+       def _execute_create_test_db(self, cursor, parameters, keepdb=False):
+           cursor.execute('CREATE DATABASE %(dbname)s %(suffix)s' % parameters)
+   
+       def _create_test_db(self, verbosity, autoclobber, keepdb=False):
+           """
+           Internal implementation - create the test db tables.
+           """
+           test_database_name = self._get_test_db_name()
+           test_db_params = {
+               'dbname': self.connection.ops.quote_name(test_database_name),
+               'suffix': self.sql_table_creation_suffix(),
+           }
+           # Create the test database and connect to it.
+           with self._nodb_cursor() as cursor:
+               try:
+                   self._execute_create_test_db(cursor, test_db_params, keepdb)
+4. [score=86] DatabaseCreation._execute_create_test_db
+   django/db/backends/mysql/creation.py:21
+   
+   from .client import DatabaseClient
+   
+   
+   class DatabaseCreation(BaseDatabaseCreation):
+   
+       def sql_table_creation_suffix(self):
+           suffix = []
+           test_settings = self.connection.settings_dict['TEST']
+           if test_settings['CHARSET']:
+               suffix.append('CHARACTER SET %s' % test_settings['CHARSET'])
+           if test_settings['COLLATION']:
+               suffix.append('COLLATE %s' % test_settings['COLLATION'])
+           return ' '.join(suffix)
+   
+       def _execute_create_test_db(self, cursor, parameters, keepdb=False):
+           try:
+               super()._execute_create_test_db(cursor, parameters, keepdb)
+           except Exception as e:
+               if len(e.args) < 1 or e.args[0] != 1007:
+                   # All errors except "database exists" (1007) cancel tests.
+                   self.log('Got an error creating the test database: %s' % e)
+                   sys.exit(2)
+               else:
+                   raise
+   
+       def _clone_test_db(self, suffix, verbosity, keepdb=False):
+           source_database_name = self.connection.settings_dict['NAME']
+           target_database_name = self.get_test_db_clone_settings(suffix)['NAME']
+           test_db_params = {
+               'dbname': self.connection.ops.quote_name(target_database_name),
+5. [score=81] DatabaseCreation._execute_create_test_db
+   django/db/backends/postgresql/creation.py:39
+           test_settings = self.connection.settings_dict['TEST']
+           if test_settings.get('COLLATION') is not None:
+               raise ImproperlyConfigured(
+                   'PostgreSQL does not support collation setting at database '
+                   'creation time.'
+               )
+           return self._get_database_create_suffix(
+               encoding=test_settings['CHARSET'],
+               template=test_settings.get('TEMPLATE'),
+           )
+   
+       def _database_exists(self, cursor, database_name):
+           cursor.execute('SELECT 1 FROM pg_catalog.pg_database WHERE datname = %s', [strip_quotes(database_name)])
+           return cursor.fetchone() is not None
+   
+       def _execute_create_test_db(self, cursor, parameters, keepdb=False):
+           try:
+               if keepdb and self._database_exists(cursor, parameters['dbname']):
+                   # If the database should be kept and it already exists, don't
+                   # try to create a new one.
+                   return
+               super()._execute_create_test_db(cursor, parameters, keepdb)
+           except Exception as e:
+               if getattr(e.__cause__, 'pgcode', '') != errorcodes.DUPLICATE_DATABASE:
+                   # All errors except "database already exists" cancel tests.
+                   self.log('Got an error creating the test database: %s' % e)
+                   sys.exit(2)
+               elif not keepdb:
+                   # If the database should be kept, ignore "database already
+                   # exists".
+                   raise
+6. [score=27] DatabaseCreationTests.test_create_test_db
+   tests/backends/postgresql/test_creation.py:89
+       def _execute_raise_database_already_exists(self, cursor, parameters, keepdb=False):
+           error = DatabaseError('database %s already exists' % parameters['dbname'])
+           error.pgcode = errorcodes.DUPLICATE_DATABASE
+           raise DatabaseError() from error
+   
+       def _execute_raise_permission_denied(self, cursor, parameters, keepdb=False):
+           error = DatabaseError('permission denied to create database')
+           error.pgcode = errorcodes.INSUFFICIENT_PRIVILEGE
+           raise DatabaseError() from error
+   
+       def patch_test_db_creation(self, execute_create_test_db):
+           return mock.patch.object(BaseDatabaseCreation, '_execute_create_test_db', execute_create_test_db)
+   
+       @mock.patch('sys.stdout', new_callable=StringIO)
+       @mock.patch('sys.stderr', new_callable=StringIO)
+       def test_create_test_db(self, *mocked_objects):
+           creation = DatabaseCreation(connection)
+           # Simulate test database creation raising "database already exists"
+           with self.patch_test_db_creation(self._execute_raise_database_already_exists):
+               with mock.patch('builtins.input', return_value='no'):
+                   with self.assertRaises(SystemExit):
+                       # SystemExit is raised if the user answers "no" to the
+                       # prompt asking if it's okay to delete the test database.
+                       creation._create_test_db(verbosity=0, autoclobber=False, keepdb=False)
+               # "Database already exists" error is ignored when keepdb is on
+               creation._create_test_db(verbosity=0, autoclobber=False, keepdb=True)
+           # Simulate test database creation raising unexpected error
+           with self.patch_test_db_creation(self._execute_raise_permission_denied):
+               with mock.patch.object(DatabaseCreation, '_database_exists', return_value=False):
+                   with self.assertRaises(SystemExit):
+                       creation._create_test_db(verbosity=0, autoclobber=False, keepdb=False)
+7. [score=22] DatabaseCreation._create_test_db
+   django/db/backends/sqlite3/creation.py:23
+   
+   class DatabaseCreation(BaseDatabaseCreation):
+   
+       @staticmethod
+       def is_in_memory_db(database_name):
+           return not isinstance(database_name, Path) and (
+               database_name == ':memory:' or 'mode=memory' in database_name
+           )
+   
+       def _get_test_db_name(self):
+           test_database_name = self.connection.settings_dict['TEST']['NAME'] or ':memory:'
+           if test_database_name == ':memory:':
+               return 'file:memorydb_%s?mode=memory&cache=shared' % self.connection.alias
+           return test_database_name
+   
+       def _create_test_db(self, verbosity, autoclobber, keepdb=False):
+           test_database_name = self._get_test_db_name()
+   
+           if keepdb:
+               return test_database_name
+           if not self.is_in_memory_db(test_database_name):
+               # Erase the old test database
+               if verbosity >= 1:
+                   self.log('Destroying old test database for alias %s...' % (
+                       self._get_database_display_str(verbosity, test_database_name),
+                   ))
+               if os.access(test_database_name, os.F_OK):
+                   if not autoclobber:
+                       confirm = input(
+                           "Type 'yes' if you would like to try deleting the test "
+                           "database '%s', or 'no' to cancel: " % test_database_name
+8. [score=20] DatabaseCreationTests.test_create_test_db
+   tests/backends/oracle/test_creation.py:39
+           raise DatabaseError("ORA-01543: tablespace 'string' already exists")
+   
+       def _execute_raise_insufficient_privileges(
+           self, cursor, statements, parameters, verbosity, allow_quiet_fail=False
+       ):
+           raise DatabaseError("ORA-01031: insufficient privileges")
+   
+       def _test_database_passwd(self):
+           # Mocked to avoid test user password changed
+           return connection.settings_dict['SAVED_PASSWORD']
+   
+       def patch_execute_statements(self, execute_statements):
+           return mock.patch.object(DatabaseCreation, '_execute_statements', execute_statements)
+   
+       @mock.patch.object(DatabaseCreation, '_test_user_create', return_value=False)
+       def test_create_test_db(self, *mocked_objects):
+           creation = DatabaseCreation(connection)
+           # Simulate test database creation raising "tablespace already exists"
+           with self.patch_execute_statements(self._execute_raise_tablespace_already_exists):
+               with mock.patch('builtins.input', return_value='no'):
+                   with self.assertRaises(SystemExit):
+                       # SystemExit is raised if the user answers "no" to the
+                       # prompt asking if it's okay to delete the test tablespace.
+                       creation._create_test_db(verbosity=0, keepdb=False)
+               # "Tablespace already exists" error is ignored when keepdb is on
+               creation._create_test_db(verbosity=0, keepdb=True)
+           # Simulate test database creation raising unexpected error
+           with self.patch_execute_statements(self._execute_raise_insufficient_privileges):
+               with self.assertRaises(SystemExit):
+                   creation._create_test_db(verbosity=0, keepdb=False)
+               with self.assertRaises(SystemExit):
+9. [score=18] DatabaseCreation._create_test_db
+   django/db/backends/oracle/creation.py:30
+       def _maindb_connection(self):
+           """
+           This is analogous to other backends' `_nodb_connection` property,
+           which allows access to an "administrative" connection which can
+           be used to manage the test databases.
+           For Oracle, the only connection that can be used for that purpose
+           is the main (non-test) connection.
+           """
+           settings_dict = settings.DATABASES[self.connection.alias]
+           user = settings_dict.get('SAVED_USER') or settings_dict['USER']
+           password = settings_dict.get('SAVED_PASSWORD') or settings_dict['PASSWORD']
+           settings_dict = {**settings_dict, 'USER': user, 'PASSWORD': password}
+           DatabaseWrapper = type(self.connection)
+           return DatabaseWrapper(settings_dict, alias=self.connection.alias)
+   
+       def _create_test_db(self, verbosity=1, autoclobber=False, keepdb=False):
+           parameters = self._get_test_db_params()
+           with self._maindb_connection.cursor() as cursor:
+               if self._test_database_create():
+                   try:
+                       self._execute_test_db_creation(cursor, parameters, verbosity, keepdb)
+                   except Exception as e:
+                       if 'ORA-01543' not in str(e):
+                           # All errors except "tablespace already exists" cancel tests
+                           self.log('Got an error creating the test database: %s' % e)
+                           sys.exit(2)
+                       if not autoclobber:
+                           confirm = input(
+                               "It appears the test database, %s, already exists. "
+                               "Type 'yes' to delete it, or 'no' to cancel: " % parameters['user'])
+                       if autoclobber or confirm == 'yes':
+10. [score=14] DatabaseCreationTests.test_create_test_db_database_exists
+   tests/backends/mysql/test_creation.py:26
+   
+   @unittest.skipUnless(connection.vendor == 'mysql', 'MySQL tests')
+   class DatabaseCreationTests(SimpleTestCase):
+   
+       def _execute_raise_database_exists(self, cursor, parameters, keepdb=False):
+           raise DatabaseError(1007, "Can't create database '%s'; database exists" % parameters['dbname'])
+   
+       def _execute_raise_access_denied(self, cursor, parameters, keepdb=False):
+           raise DatabaseError(1044, "Access denied for user")
+   
+       def patch_test_db_creation(self, execute_create_test_db):
+           return mock.patch.object(BaseDatabaseCreation, '_execute_create_test_db', execute_create_test_db)
+   
+       @mock.patch('sys.stdout', new_callable=StringIO)
+       @mock.patch('sys.stderr', new_callable=StringIO)
+       def test_create_test_db_database_exists(self, *mocked_objects):
+           # Simulate test database creation raising "database exists"
+           creation = DatabaseCreation(connection)
+           with self.patch_test_db_creation(self._execute_raise_database_exists):
+               with mock.patch('builtins.input', return_value='no'):
+                   with self.assertRaises(SystemExit):
+                       # SystemExit is raised if the user answers "no" to the
+                       # prompt asking if it's okay to delete the test database.
+                       creation._create_test_db(verbosity=0, autoclobber=False, keepdb=False)
+               # "Database exists" shouldn't appear when keepdb is on
+               creation._create_test_db(verbosity=0, autoclobber=False, keepdb=True)
+   
+       @mock.patch('sys.stdout', new_callable=StringIO)
+       @mock.patch('sys.stderr', new_callable=StringIO)
+       def test_create_test_db_unexpected_error(self, *mocked_objects):
+           # Simulate test database creation raising unexpected error
+
+2 more candidates cached. Call `more_symbols(name="create_test_db")` for the next batch.
+[symbol-locator] [scorer] usage pid=806294 calls=8 p=71972 c=370
+[symbol-locator] [scorer] parsed 12/12 scores from LLM
+
+2026-08-28 03:34:58 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 03:35:02 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 03:35:02 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 03:35:02 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 03:35:02 auto_search_main.py INFO ===============
+2026-08-28 03:35:02 auto_search_main.py INFO Final response generated content_length=341
+2026-08-28 03:35:02 auto_search_main.py INFO ==== localizing django__django-15104 succeed, process multiple loc outputs ====
+2026-08-28 03:35:04 cost_analysis.py INFO input_tokens=41904, output_tokens=613, cost=0.11
+2026-08-28 03:35:04 auto_search_main.py INFO Total time: 10.7157 min

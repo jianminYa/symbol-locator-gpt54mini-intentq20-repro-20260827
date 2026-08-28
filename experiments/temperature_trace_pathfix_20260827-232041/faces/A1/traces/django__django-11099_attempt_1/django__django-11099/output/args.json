@@ -1,0 +1,23 @@
+{
+    "localize": true,
+    "merge": true,
+    "use_example": false,
+    "ranking_method": "mrr",
+    "dataset": "/tmp/sx2_93f3af90bd/locagent_9x1zuk9n/instance.jsonl",
+    "split": "train",
+    "eval_n_limit": 1,
+    "used_list": "selected_ids",
+    "output_folder": "/tmp/sx2_93f3af90bd/locagent_9x1zuk9n/output",
+    "output_file": "/tmp/sx2_93f3af90bd/locagent_9x1zuk9n/output/loc_outputs.jsonl",
+    "merge_file": "merged_loc_outputs.jsonl",
+    "model": "openai/gpt-5.4-mini",
+    "use_function_calling": true,
+    "simple_desc": true,
+    "max_attempt_num": 1,
+    "num_samples": 1,
+    "num_processes": 1,
+    "log_level": "INFO",
+    "timeout": 3540,
+    "rerun_empty_location": false,
+    "locagent_temperature": 0.0
+}

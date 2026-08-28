@@ -1,0 +1,52 @@
+{
+  "face": "B1",
+  "instance_id": "pylint-dev__pylint-7277",
+  "attempt": 1,
+  "trace_root": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/B1/traces/pylint-dev__pylint-7277_attempt_1",
+  "payload_root": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/B1/traces/pylint-dev__pylint-7277_attempt_1/pylint-dev__pylint-7277",
+  "category": "success",
+  "return_code": 0,
+  "timed_out": false,
+  "instance_id_correct": true,
+  "jsonl_valid": true,
+  "jsonl_files": [
+    {
+      "path": "pylint-dev__pylint-7277/instance.jsonl",
+      "size": 1785,
+      "valid": true,
+      "records": 1
+    },
+    {
+      "path": "pylint-dev__pylint-7277/output/loc_outputs.jsonl",
+      "size": 2089,
+      "valid": true,
+      "records": 1
+    },
+    {
+      "path": "pylint-dev__pylint-7277/output/loc_trajs.jsonl",
+      "size": 62813,
+      "valid": true,
+      "records": 1
+    },
+    {
+      "path": "pylint-dev__pylint-7277/output/merged_loc_outputs_mrr.jsonl",
+      "size": 2083,
+      "valid": true,
+      "records": 1
+    }
+  ],
+  "jsonl_records": 4,
+  "expected_files": {
+    "instance.jsonl": true,
+    "output/args.json": true,
+    "output/loc_trajs.jsonl": true,
+    "output/loc_outputs.jsonl": true,
+    "output/localize.log": true,
+    "output/merged_output": true,
+    "output/scorer_usage.json": true
+  },
+  "trajectory_present": true,
+  "structured_result": false,
+  "structured_failure": false,
+  "trace_complete": true
+}

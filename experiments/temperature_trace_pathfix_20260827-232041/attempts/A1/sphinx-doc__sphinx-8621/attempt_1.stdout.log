@@ -1,0 +1,15 @@
+top_k values: [5]
+
+▶ locagent  (1 to run, 11 resumed, top_k=[5])
+[LOCAGENT_KEEP_TMP] copied tmpdir -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/A1/traces/sphinx-doc__sphinx-8621_attempt_1/sphinx-doc__sphinx-8621
+  locagent done in 414s  (eval=12, skip=0, resumed=11)
+                                locagent Results                                
+┏━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┓
+┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ n… ┃ … ┃ r… ┃ … ┃ r… ┃ … ┃
+┡━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━┩
+│ 5 │ … │ … │ … │ … │ … │ … │ … │ … │ … │ … │ … │ … │ 0… │ … │ 0… │ … │ 0… │ … │
+└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────┴───┴────┴───┴────┴───┘
+  Saved 
+/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_tr
+ace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/A1/output/locagent_top5.
+jsonl (12 records)

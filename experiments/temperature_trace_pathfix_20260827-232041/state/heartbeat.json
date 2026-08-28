@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-08-28T05:33:57.044218+00:00",
+  "stage": "case",
+  "face": "A2",
+  "completed_id_count": 0,
+  "last_successful_api_time": "2026-08-28T05:19:31.113746+00:00",
+  "current_retry_count": 0,
+  "disk_summary": {
+    "data_free_bytes": 79097704448,
+    "data_free_gib": 73.67
+  },
+  "memory_summary": {
+    "MemAvailable": "9273784 kB",
+    "MemTotal": "12251928 kB",
+    "SwapTotal": "4194300 kB",
+    "SwapFree": "3190760 kB"
+  },
+  "active_case": "django__django-11206",
+  "active_pgid": 852745,
+  "status": "RUNNING"
+}

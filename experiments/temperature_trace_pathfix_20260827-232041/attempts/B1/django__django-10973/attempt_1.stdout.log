@@ -1,0 +1,15 @@
+top_k values: [5]
+
+▶ locagent  (1 to run, 15 resumed, top_k=[5])
+[LOCAGENT_KEEP_TMP] copied tmpdir -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/B1/traces/django__django-10973_attempt_1/django__django-10973
+  locagent done in 86s  (eval=16, skip=0, resumed=15)
+                                locagent Results                                
+┏━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┳━━━━┳━━━┓
+┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ … ┃ n… ┃ … ┃ r… ┃ … ┃ r… ┃ … ┃
+┡━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━╇━━━━╇━━━┩
+│ 5 │ … │ … │ … │ … │ … │ … │ … │ … │ … │ … │ … │ … │ 0… │ … │ 0… │ … │ 0… │ … │
+└───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴───┴────┴───┴────┴───┴────┴───┘
+  Saved 
+/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_tr
+ace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/B1/output/locagent_top5.
+jsonl (16 records)

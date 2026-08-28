@@ -1,0 +1,1259 @@
+2026-08-28 04:31:45 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 04:31:46 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 04:31:46 auto_search_main.py INFO ============================================================
+2026-08-28 04:31:46 auto_search_main.py INFO ==== rank 0 setup localize django__django-11099 ====
+2026-08-28 04:31:46 install.py INFO hook: set_current_issue fired
+2026-08-28 04:31:46 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/59bb0252-7e6b-4f01-8f48-746637c197b8/django_django and checkout commit HEAD
+2026-08-28 04:31:46 git_repo_manager.py INFO Directory 'playground/59bb0252-7e6b-4f01-8f48-746637c197b8/django_django' was created.
+2026-08-28 04:31:46 install.py INFO setup_repo returned: playground/59bb0252-7e6b-4f01-8f48-746637c197b8/django_django -> /data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-11099
+2026-08-28 04:31:55 install.py INFO warmup: workspace=/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/source/SWE-Explore-Bench/repos/django__django-11099 files=2000 indexed=2000 failed=0
+2026-08-28 04:34:57 repo_ops.py INFO [0] Processed django__django-11099
+2026-08-28 04:34:58 auto_search_main.py INFO ============================================================
+2026-08-28 04:34:58 auto_search_main.py INFO ==== rank 0 begin localizing django__django-11099 ====
+2026-08-28 04:34:58 auto_search_main.py INFO ============================================================
+2026-08-28 04:34:58 auto_search_main.py INFO ==== django__django-11099 Count down: attempt 1 ====
+2026-08-28 04:34:58 auto_search_main.py INFO ==== django__django-11099 start auto search ====
+2026-08-28 04:35:07 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:35:15 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:35:15 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:35:15 auto_search_main.py INFO agent response received content_present=False tool_calls=3
+2026-08-28 04:35:15 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'ASCIIUsernameValidator', 'context': 'django contrib.auth validators username regex newline issue', 'kind_filter': [5, 12, 6], 'top_k': 5}))
+```
+2026-08-28 04:35:17 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:35:19 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:35:19 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:35:19 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `ASCIIUsernameValidator`. Showing top 1 by relevance:
+1. [score=98] ASCIIUsernameValidator
+   django/contrib/auth/validators.py:9
+   import re
+   
+   from django.core import validators
+   from django.utils.deconstruct import deconstructible
+   from django.utils.translation import gettext_lazy as _
+   
+   
+   @deconstructible
+   class ASCIIUsernameValidator(validators.RegexValidator):
+       regex = r'^[\w.@+-]+$'
+       message = _(
+           'Enter a valid username. This value may contain only English letters, '
+           'numbers, and @/./+/-/_ characters.'
+       )
+       flags = re.ASCII
+   
+   
+   @deconstructible
+   class UnicodeUsernameValidator(validators.RegexValidator):
+       regex = r'^[\w.@+-]+$'
+       message = _(
+           'Enter a valid username. This value may contain only letters, '
+           'numbers, and @/./+/-/_ characters.'
+       )
+[symbol-locator] [scorer] usage pid=833796 calls=1 p=5017 c=7
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 04:35:19 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'UnicodeUsernameValidator', 'context': 'django contrib.auth validators username regex newline issue', 'kind_filter': [5, 12, 6], 'top_k': 5}))
+```
+2026-08-28 04:35:20 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:35:21 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:35:21 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:35:21 auto_search_main.py INFO OBSERVATION:
+Found 1 candidate for `UnicodeUsernameValidator`. Showing top 1 by relevance:
+1. [score=92] UnicodeUsernameValidator
+   django/contrib/auth/validators.py:19
+   from django.utils.deconstruct import deconstructible
+   from django.utils.translation import gettext_lazy as _
+   
+   
+   @deconstructible
+   class ASCIIUsernameValidator(validators.RegexValidator):
+       regex = r'^[\w.@+-]+$'
+       message = _(
+           'Enter a valid username. This value may contain only English letters, '
+           'numbers, and @/./+/-/_ characters.'
+       )
+       flags = re.ASCII
+   
+   
+   @deconstructible
+   class UnicodeUsernameValidator(validators.RegexValidator):
+       regex = r'^[\w.@+-]+$'
+       message = _(
+           'Enter a valid username. This value may contain only letters, '
+           'numbers, and @/./+/-/_ characters.'
+       )
+       flags = 0
+   
+[symbol-locator] [scorer] usage pid=833796 calls=2 p=10031 c=20
+[symbol-locator] [scorer] parsed 1/1 scores from LLM
+
+2026-08-28 04:35:21 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'validators', 'context': 'django contrib.auth validators module', 'kind_filter': [5, 12, 6], 'top_k': 10}))
+```
+2026-08-28 04:35:22 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:35:26 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:35:26 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:35:26 auto_search_main.py INFO OBSERVATION:
+Found 66 candidates for `validators`. Showing top 10 by relevance:
+1. [score=92] get_default_password_validators
+   django/contrib/auth/password_validation.py:18
+   import re
+   from difflib import SequenceMatcher
+   from pathlib import Path
+   
+   from django.conf import settings
+   from django.core.exceptions import (
+       FieldDoesNotExist, ImproperlyConfigured, ValidationError,
+   )
+   from django.utils.functional import lazy
+   from django.utils.html import format_html, format_html_join
+   from django.utils.module_loading import import_string
+   from django.utils.translation import gettext as _, ngettext
+   
+   
+   @functools.lru_cache(maxsize=None)
+   def get_default_password_validators():
+       return get_password_validators(settings.AUTH_PASSWORD_VALIDATORS)
+   
+   
+   def get_password_validators(validator_config):
+       validators = []
+       for validator in validator_config:
+           try:
+               klass = import_string(validator['NAME'])
+           except ImportError:
+               msg = "The module in NAME could not be imported: %s. Check your AUTH_PASSWORD_VALIDATORS setting."
+               raise ImproperlyConfigured(msg % validator['NAME'])
+           validators.append(klass(**validator.get('OPTIONS', {})))
+   
+       return validators
+   
+2. [score=88] get_password_validators
+   django/contrib/auth/password_validation.py:22
+   from django.conf import settings
+   from django.core.exceptions import (
+       FieldDoesNotExist, ImproperlyConfigured, ValidationError,
+   )
+   from django.utils.functional import lazy
+   from django.utils.html import format_html, format_html_join
+   from django.utils.module_loading import import_string
+   from django.utils.translation import gettext as _, ngettext
+   
+   
+   @functools.lru_cache(maxsize=None)
+   def get_default_password_validators():
+       return get_password_validators(settings.AUTH_PASSWORD_VALIDATORS)
+   
+   
+   def get_password_validators(validator_config):
+       validators = []
+       for validator in validator_config:
+           try:
+               klass = import_string(validator['NAME'])
+           except ImportError:
+               msg = "The module in NAME could not be imported: %s. Check your AUTH_PASSWORD_VALIDATORS setting."
+               raise ImproperlyConfigured(msg % validator['NAME'])
+           validators.append(klass(**validator.get('OPTIONS', {})))
+   
+       return validators
+   
+   
+   def validate_password(password, user=None, password_validators=None):
+       """
+       Validate whether the password meets all validator requirements.
+3. [score=86] _password_validators_help_text_html
+   django/contrib/auth/password_validation.py:78
+           password_changed(password, user)
+   
+   
+   def password_validators_help_texts(password_validators=None):
+       """
+       Return a list of all help texts of all configured validators.
+       """
+       help_texts = []
+       if password_validators is None:
+           password_validators = get_default_password_validators()
+       for validator in password_validators:
+           help_texts.append(validator.get_help_text())
+       return help_texts
+   
+   
+   def _password_validators_help_text_html(password_validators=None):
+       """
+       Return an HTML string with all help texts of all configured validators
+       in an <ul>.
+       """
+       help_texts = password_validators_help_texts(password_validators)
+       help_items = format_html_join('', '<li>{}</li>', ((help_text,) for help_text in help_texts))
+       return format_html('<ul>{}</ul>', help_items) if help_items else ''
+   
+   
+   password_validators_help_text_html = lazy(_password_validators_help_text_html, str)
+   
+   
+   class MinimumLengthValidator:
+       """
+       Validate whether the password is of a minimum length.
+4. [score=84] password_validators_help_texts
+   django/contrib/auth/password_validation.py:66
+           raise ValidationError(errors)
+   
+   
+   def password_changed(password, user=None, password_validators=None):
+       """
+       Inform all validators that have implemented a password_changed() method
+       that the password has been changed.
+       """
+       if password_validators is None:
+           password_validators = get_default_password_validators()
+       for validator in password_validators:
+           password_changed = getattr(validator, 'password_changed', lambda *a: None)
+           password_changed(password, user)
+   
+   
+   def password_validators_help_texts(password_validators=None):
+       """
+       Return a list of all help texts of all configured validators.
+       """
+       help_texts = []
+       if password_validators is None:
+           password_validators = get_default_password_validators()
+       for validator in password_validators:
+           help_texts.append(validator.get_help_text())
+       return help_texts
+   
+   
+   def _password_validators_help_text_html(password_validators=None):
+       """
+       Return an HTML string with all help texts of all configured validators
+       in an <ul>.
+5. [score=45] PasswordValidationTest.test_get_default_password_validators
+   tests/auth_tests/test_validators.py:26
+   )
+   from django.core.exceptions import ValidationError
+   from django.db import models
+   from django.test import SimpleTestCase, TestCase, override_settings
+   from django.test.utils import isolate_apps
+   from django.utils.html import conditional_escape
+   
+   
+   @override_settings(AUTH_PASSWORD_VALIDATORS=[
+       {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+       {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', 'OPTIONS': {
+           'min_length': 12,
+       }},
+   ])
+   class PasswordValidationTest(SimpleTestCase):
+       def test_get_default_password_validators(self):
+           validators = get_default_password_validators()
+           self.assertEqual(len(validators), 2)
+           self.assertEqual(validators[0].__class__.__name__, 'CommonPasswordValidator')
+           self.assertEqual(validators[1].__class__.__name__, 'MinimumLengthValidator')
+           self.assertEqual(validators[1].min_length, 12)
+   
+       def test_get_password_validators_custom(self):
+           validator_config = [{'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'}]
+           validators = get_password_validators(validator_config)
+           self.assertEqual(len(validators), 1)
+           self.assertEqual(validators[0].__class__.__name__, 'CommonPasswordValidator')
+   
+           self.assertEqual(get_password_validators([]), [])
+   
+       def test_validate_password(self):
+6. [score=40] auth_password_validators_changed
+   django/test/signals.py:175
+           from django.contrib.staticfiles.storage import staticfiles_storage
+           staticfiles_storage._wrapped = empty
+   
+   
+   @receiver(setting_changed)
+   def static_finders_changed(**kwargs):
+       if kwargs['setting'] in {
+           'STATICFILES_DIRS',
+           'STATIC_ROOT',
+       }:
+           from django.contrib.staticfiles.finders import get_finder
+           get_finder.cache_clear()
+   
+   
+   @receiver(setting_changed)
+   def auth_password_validators_changed(**kwargs):
+       if kwargs['setting'] == 'AUTH_PASSWORD_VALIDATORS':
+           from django.contrib.auth.password_validation import get_default_password_validators
+           get_default_password_validators.cache_clear()
+   
+   
+   @receiver(setting_changed)
+   def user_model_swapped(**kwargs):
+       if kwargs['setting'] == 'AUTH_USER_MODEL':
+           apps.clear_cache()
+           try:
+               from django.contrib.auth import get_user_model
+               UserModel = get_user_model()
+           except ImproperlyConfigured:
+               # Some tests set an invalid AUTH_USER_MODEL.
+               pass
+7. [score=30] ip_address_validators
+   django/core/validators.py:280
+           validate_ipv4_address(value)
+       except ValidationError:
+           try:
+               validate_ipv6_address(value)
+           except ValidationError:
+               raise ValidationError(_('Enter a valid IPv4 or IPv6 address.'), code='invalid')
+   
+   
+   ip_address_validator_map = {
+       'both': ([validate_ipv46_address], _('Enter a valid IPv4 or IPv6 address.')),
+       'ipv4': ([validate_ipv4_address], _('Enter a valid IPv4 address.')),
+       'ipv6': ([validate_ipv6_address], _('Enter a valid IPv6 address.')),
+   }
+   
+   
+   def ip_address_validators(protocol, unpack_ipv4):
+       """
+       Depending on the given parameters, return the appropriate validators for
+       the GenericIPAddressField.
+       """
+       if protocol != 'both' and unpack_ipv4:
+           raise ValueError(
+               "You can only use `unpack_ipv4` if `protocol` is set to 'both'")
+       try:
+           return ip_address_validator_map[protocol.lower()]
+       except KeyError:
+           raise ValueError("The protocol '%s' is unknown. Supported: %s"
+                            % (protocol, list(ip_address_validator_map)))
+   
+   
+   def int_list_validator(sep=',', message=None, code='invalid', allow_negative=False):
+8. [score=20] Field.run_validators
+   django/db/models/fields/__init__.py:576
+           """
+           Convert the input value into the expected Python data type, raising
+           django.core.exceptions.ValidationError if the data can't be converted.
+           Return the converted value. Subclasses should override this.
+           """
+           return value
+   
+       @cached_property
+       def validators(self):
+           """
+           Some validators can't be created at field initialization time.
+           This method provides a way to delay their creation until required.
+           """
+           return [*self.default_validators, *self._validators]
+   
+       def run_validators(self, value):
+           if value in self.empty_values:
+               return
+   
+           errors = []
+           for v in self.validators:
+               try:
+                   v(value)
+               except exceptions.ValidationError as e:
+                   if hasattr(e, 'code') and e.code in self.error_messages:
+                       e.message = self.error_messages[e.code]
+                   errors.extend(e.error_list)
+   
+           if errors:
+               raise exceptions.ValidationError(errors)
+   
+9. [score=18] Field.validators
+   django/db/models/fields/__init__.py:569
+           the new instance.
+           """
+           if self.default:
+               return self.get_default()
+           return None
+   
+       def to_python(self, value):
+           """
+           Convert the input value into the expected Python data type, raising
+           django.core.exceptions.ValidationError if the data can't be converted.
+           Return the converted value. Subclasses should override this.
+           """
+           return value
+   
+       @cached_property
+       def validators(self):
+           """
+           Some validators can't be created at field initialization time.
+           This method provides a way to delay their creation until required.
+           """
+           return [*self.default_validators, *self._validators]
+   
+       def run_validators(self, value):
+           if value in self.empty_values:
+               return
+   
+           errors = []
+           for v in self.validators:
+               try:
+                   v(value)
+               except exceptions.ValidationError as e:
+10. [score=15] IntegerField.validators
+   django/db/models/fields/__init__.py:1789
+           ]
+   
+       def _check_max_length_warning(self):
+           if self.max_length is not None:
+               return [
+                   checks.Warning(
+                       "'max_length' is ignored when used with %s." % self.__class__.__name__,
+                       hint="Remove 'max_length' from field",
+                       obj=self,
+                       id='fields.W122',
+                   )
+               ]
+           return []
+   
+       @cached_property
+       def validators(self):
+           # These validators can't be added at field initialization time since
+           # they're based on values retrieved from `connection`.
+           validators_ = super().validators
+           internal_type = self.get_internal_type()
+           min_value, max_value = connection.ops.integer_field_range(internal_type)
+           if (min_value is not None and not
+               any(isinstance(validator, validators.MinValueValidator) and
+                   validator.limit_value >= min_value for validator in validators_)):
+               validators_.append(validators.MinValueValidator(min_value))
+           if (max_value is not None and not
+               any(isinstance(validator, validators.MaxValueValidator) and
+                   validator.limit_value <= max_value for validator in validators_)):
+               validators_.append(validators.MaxValueValidator(max_value))
+           return validators_
+   
+
+56 more candidates cached. Call `more_symbols(name="validators")` for the next batch.
+[symbol-locator] [scorer] usage pid=833796 calls=3 p=22335 c=123
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 04:35:26 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:35:30 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:35:30 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:35:30 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 04:35:30 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'RegexValidator', 'context': 'django core validators regex anchor newline username issue', 'kind_filter': [5, 12, 6], 'top_k': 5}))
+```
+2026-08-28 04:35:31 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:36:31 _base_client.py INFO Retrying request to /chat/completions in 0.386350 seconds
+2026-08-28 04:37:32 _base_client.py INFO Retrying request to /chat/completions in 0.861492 seconds
+2026-08-28 04:37:37 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:37:37 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:37:37 auto_search_main.py INFO OBSERVATION:
+Found 2 candidates for `RegexValidator`. Showing top 2 by relevance:
+1. [score=92] RegexValidator
+   django/core/validators.py:29
+   
+   
+   def _lazy_re_compile(regex, flags=0):
+       """Lazily compile a regex with flags."""
+       def _compile():
+           # Compile the regex if it was not passed pre-compiled.
+           if isinstance(regex, str):
+               return re.compile(regex, flags)
+           else:
+               assert not flags, "flags must be empty if regex is passed pre-compiled"
+               return regex
+       return SimpleLazyObject(_compile)
+   
+   
+   @deconstructible
+   class RegexValidator:
+       regex = ''
+       message = _('Enter a valid value.')
+       code = 'invalid'
+       inverse_match = False
+       flags = 0
+   
+       def __init__(self, regex=None, message=None, code=None, inverse_match=None, flags=None):
+           if regex is not None:
+               self.regex = regex
+           if message is not None:
+               self.message = message
+           if code is not None:
+               self.code = code
+           if inverse_match is not None:
+               self.inverse_match = inverse_match
+2. [score=18] TestValidators.test_regex_validator_flags
+   tests/validators/tests.py:343
+       def test_single_message(self):
+           v = ValidationError('Not Valid')
+           self.assertEqual(str(v), "['Not Valid']")
+           self.assertEqual(repr(v), "ValidationError(['Not Valid'])")
+   
+       def test_message_list(self):
+           v = ValidationError(['First Problem', 'Second Problem'])
+           self.assertEqual(str(v), "['First Problem', 'Second Problem']")
+           self.assertEqual(repr(v), "ValidationError(['First Problem', 'Second Problem'])")
+   
+       def test_message_dict(self):
+           v = ValidationError({'first': ['First Problem']})
+           self.assertEqual(str(v), "{'first': ['First Problem']}")
+           self.assertEqual(repr(v), "ValidationError({'first': ['First Problem']})")
+   
+       def test_regex_validator_flags(self):
+           msg = 'If the flags are set, regex must be a regular expression string.'
+           with self.assertRaisesMessage(TypeError, msg):
+               RegexValidator(re.compile('a'), flags=re.IGNORECASE)
+   
+       def test_max_length_validator_message(self):
+           v = MaxLengthValidator(16, message='"%(value)s" has more than %(limit_value)d characters.')
+           with self.assertRaisesMessage(ValidationError, '"djangoproject.com" has more than 16 characters.'):
+               v('djangoproject.com')
+   
+   
+   class TestValidatorEquality(TestCase):
+       """
+       Validators have valid equality operators (#21638)
+       """
+   
+[symbol-locator] [scorer] usage pid=833796 calls=4 p=27762 c=134
+[symbol-locator] [scorer] parsed 2/2 scores from LLM
+
+2026-08-28 04:37:37 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'UsernameField', 'context': 'django auth forms models username validation', 'kind_filter': [5, 12, 6], 'top_k': 5}))
+```
+2026-08-28 04:37:37 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:37:43 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:37:43 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:37:43 auto_search_main.py INFO OBSERVATION:
+Found 9 candidates for `UsernameField`. Showing top 5 by relevance:
+1. [score=95] UsernameField
+   django/contrib/auth/forms.py:60
+       widget = ReadOnlyPasswordHashWidget
+   
+       def __init__(self, *args, **kwargs):
+           kwargs.setdefault("required", False)
+           super().__init__(*args, **kwargs)
+   
+       def bound_data(self, data, initial):
+           # Always return initial because the widget doesn't
+           # render an input field.
+           return initial
+   
+       def has_changed(self, initial, data):
+           return False
+   
+   
+   class UsernameField(forms.CharField):
+       def to_python(self, value):
+           return unicodedata.normalize('NFKC', super().to_python(value))
+   
+   
+   class UserCreationForm(forms.ModelForm):
+       """
+       A form that creates a user, with no privileges, from the given username and
+       password.
+       """
+       error_messages = {
+           'password_mismatch': _("The two password fields didn't match."),
+       }
+       password1 = forms.CharField(
+           label=_("Password"),
+           strip=False,
+2. [score=75] UserCreationFormTest.test_custom_form_with_different_username_field
+   tests/auth_tests/test_forms.py:192
+       def test_custom_form(self):
+           class CustomUserCreationForm(UserCreationForm):
+               class Meta(UserCreationForm.Meta):
+                   model = ExtensionUser
+                   fields = UserCreationForm.Meta.fields + ('date_of_birth',)
+   
+           data = {
+               'username': 'testclient',
+               'password1': 'testclient',
+               'password2': 'testclient',
+               'date_of_birth': '1988-02-24',
+           }
+           form = CustomUserCreationForm(data)
+           self.assertTrue(form.is_valid())
+   
+       def test_custom_form_with_different_username_field(self):
+           class CustomUserCreationForm(UserCreationForm):
+               class Meta(UserCreationForm.Meta):
+                   model = CustomUser
+                   fields = ('email', 'date_of_birth')
+   
+           data = {
+               'email': 'test@client222.com',
+               'password1': 'testclient',
+               'password2': 'testclient',
+               'date_of_birth': '1988-02-24',
+           }
+           form = CustomUserCreationForm(data)
+           self.assertTrue(form.is_valid())
+   
+       def test_custom_form_hidden_username_field(self):
+3. [score=70] AuthenticationFormTest.test_username_field_max_length_matches_user_model
+   tests/auth_tests/test_forms.py:401
+           form = AuthenticationForm(None, data)
+           self.assertTrue(form.is_valid())
+           self.assertEqual(form.non_field_errors(), [])
+   
+       def test_unicode_username(self):
+           User.objects.create_user(username='Σαρα', password='pwd')
+           data = {
+               'username': 'Σαρα',
+               'password': 'pwd',
+           }
+           form = AuthenticationForm(None, data)
+           self.assertTrue(form.is_valid())
+           self.assertEqual(form.non_field_errors(), [])
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.CustomEmailField')
+       def test_username_field_max_length_matches_user_model(self):
+           self.assertEqual(CustomEmailField._meta.get_field('username').max_length, 255)
+           data = {
+               'username': 'u' * 255,
+               'password': 'pwd',
+               'email': 'test@example.com',
+           }
+           CustomEmailField.objects.create_user(**data)
+           form = AuthenticationForm(None, data)
+           self.assertEqual(form.fields['username'].max_length, 255)
+           self.assertEqual(form.errors, {})
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.IntegerUsernameUser')
+       def test_username_field_max_length_defaults_to_254(self):
+           self.assertIsNone(IntegerUsernameUser._meta.get_field('username').max_length)
+           data = {
+4. [score=65] AuthenticationFormTest.test_username_field_max_length_defaults_to_254
+   tests/auth_tests/test_forms.py:414
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.CustomEmailField')
+       def test_username_field_max_length_matches_user_model(self):
+           self.assertEqual(CustomEmailField._meta.get_field('username').max_length, 255)
+           data = {
+               'username': 'u' * 255,
+               'password': 'pwd',
+               'email': 'test@example.com',
+           }
+           CustomEmailField.objects.create_user(**data)
+           form = AuthenticationForm(None, data)
+           self.assertEqual(form.fields['username'].max_length, 255)
+           self.assertEqual(form.errors, {})
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.IntegerUsernameUser')
+       def test_username_field_max_length_defaults_to_254(self):
+           self.assertIsNone(IntegerUsernameUser._meta.get_field('username').max_length)
+           data = {
+               'username': '0123456',
+               'password': 'password',
+           }
+           IntegerUsernameUser.objects.create_user(**data)
+           form = AuthenticationForm(None, data)
+           self.assertEqual(form.fields['username'].max_length, 254)
+           self.assertEqual(form.errors, {})
+   
+       def test_username_field_label(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField(label="Name", max_length=75)
+   
+5. [score=60] AuthenticationFormTest.test_username_field_label
+   tests/auth_tests/test_forms.py:425
+           self.assertEqual(form.fields['username'].max_length, 255)
+           self.assertEqual(form.errors, {})
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.IntegerUsernameUser')
+       def test_username_field_max_length_defaults_to_254(self):
+           self.assertIsNone(IntegerUsernameUser._meta.get_field('username').max_length)
+           data = {
+               'username': '0123456',
+               'password': 'password',
+           }
+           IntegerUsernameUser.objects.create_user(**data)
+           form = AuthenticationForm(None, data)
+           self.assertEqual(form.fields['username'].max_length, 254)
+           self.assertEqual(form.errors, {})
+   
+       def test_username_field_label(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField(label="Name", max_length=75)
+   
+           form = CustomAuthenticationForm()
+           self.assertEqual(form['username'].label, "Name")
+   
+       def test_username_field_label_not_set(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField()
+   
+           form = CustomAuthenticationForm()
+           username_field = User._meta.get_field(User.USERNAME_FIELD)
+           self.assertEqual(form.fields['username'].label, capfirst(username_field.verbose_name))
+
+4 more candidates cached. Call `more_symbols(name="UsernameField")` for the next batch.
+[symbol-locator] [scorer] usage pid=833796 calls=5 p=35334 c=179
+[symbol-locator] [scorer] parsed 9/9 scores from LLM
+
+2026-08-28 04:37:43 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'test_username', 'context': 'django auth validators tests username newline issue', 'kind_filter': [5, 12, 6], 'top_k': 10}))
+```
+2026-08-28 04:37:43 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:37:47 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:37:47 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:37:47 auto_search_main.py INFO OBSERVATION:
+Found 62 candidates for `test_username`. Showing top 10 by relevance:
+1. [score=90] UserCreationFormTest.test_normalize_username
+   tests/auth_tests/test_forms.py:120
+           u = form.save()
+           self.assertEqual(password_changed.call_count, 1)
+           self.assertEqual(repr(u), '<User: jsmith@example.com>')
+   
+       def test_unicode_username(self):
+           data = {
+               'username': '宝',
+               'password1': 'test123',
+               'password2': 'test123',
+           }
+           form = UserCreationForm(data)
+           self.assertTrue(form.is_valid())
+           u = form.save()
+           self.assertEqual(u.username, '宝')
+   
+       def test_normalize_username(self):
+           # The normalization happens in AbstractBaseUser.clean() and ModelForm
+           # validation calls Model.clean().
+           ohm_username = 'testΩ'  # U+2126 OHM SIGN
+           data = {
+               'username': ohm_username,
+               'password1': 'pwd2',
+               'password2': 'pwd2',
+           }
+           form = UserCreationForm(data)
+           self.assertTrue(form.is_valid())
+           user = form.save()
+           self.assertNotEqual(user.username, ohm_username)
+           self.assertEqual(user.username, 'testΩ')  # U+03A9 GREEK CAPITAL LETTER OMEGA
+   
+       def test_duplicate_normalized_unicode(self):
+2. [score=88] UserCreationFormTest.test_unicode_username
+   tests/auth_tests/test_forms.py:109
+       def test_success(self, password_changed):
+           # The success case.
+           data = {
+               'username': 'jsmith@example.com',
+               'password1': 'test123',
+               'password2': 'test123',
+           }
+           form = UserCreationForm(data)
+           self.assertTrue(form.is_valid())
+           form.save(commit=False)
+           self.assertEqual(password_changed.call_count, 0)
+           u = form.save()
+           self.assertEqual(password_changed.call_count, 1)
+           self.assertEqual(repr(u), '<User: jsmith@example.com>')
+   
+       def test_unicode_username(self):
+           data = {
+               'username': '宝',
+               'password1': 'test123',
+               'password2': 'test123',
+           }
+           form = UserCreationForm(data)
+           self.assertTrue(form.is_valid())
+           u = form.save()
+           self.assertEqual(u.username, '宝')
+   
+       def test_normalize_username(self):
+           # The normalization happens in AbstractBaseUser.clean() and ModelForm
+           # validation calls Model.clean().
+           ohm_username = 'testΩ'  # U+2126 OHM SIGN
+           data = {
+3. [score=80] BasicTestCase.test_unicode_username
+   tests/auth_tests/test_basic.py:44
+   
+           # Check username getter
+           self.assertEqual(u.get_username(), 'testuser')
+   
+           # Check authentication/permissions
+           self.assertFalse(u.is_anonymous)
+           self.assertTrue(u.is_authenticated)
+           self.assertFalse(u.is_staff)
+           self.assertTrue(u.is_active)
+           self.assertFalse(u.is_superuser)
+   
+           # Check API-based user creation with no password
+           u2 = User.objects.create_user('testuser2', 'test2@example.com')
+           self.assertFalse(u2.has_usable_password())
+   
+       def test_unicode_username(self):
+           User.objects.create_user('jörg')
+           User.objects.create_user('Григорий')
+           # Two equivalent unicode normalized usernames should be duplicates
+           omega_username = 'iamtheΩ'  # U+03A9 GREEK CAPITAL LETTER OMEGA
+           ohm_username = 'iamtheΩ'  # U+2126 OHM SIGN
+           User.objects.create_user(ohm_username)
+           with self.assertRaises(IntegrityError):
+               User.objects.create_user(omega_username)
+   
+       def test_user_no_email(self):
+           "Users can be created without an email"
+           u = User.objects.create_user('testuser1')
+           self.assertEqual(u.email, '')
+   
+           u2 = User.objects.create_user('testuser2', email='')
+4. [score=72] UserModelChecksTests.test_username_not_in_required_fields
+   tests/auth_tests/test_checks.py:38
+               date_of_birth = models.DateField()
+   
+               USERNAME_FIELD = 'username'
+               REQUIRED_FIELDS = 'date_of_birth'
+   
+           errors = checks.run_checks(app_configs=self.apps.get_app_configs())
+           self.assertEqual(errors, [
+               checks.Error(
+                   "'REQUIRED_FIELDS' must be a list or tuple.",
+                   obj=CustomUserNonListRequiredFields,
+                   id='auth.E001',
+               ),
+           ])
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.CustomUserBadRequiredFields')
+       def test_username_not_in_required_fields(self):
+           """USERNAME_FIELD should not appear in REQUIRED_FIELDS."""
+           class CustomUserBadRequiredFields(AbstractBaseUser):
+               username = models.CharField(max_length=30, unique=True)
+               date_of_birth = models.DateField()
+   
+               USERNAME_FIELD = 'username'
+               REQUIRED_FIELDS = ['username', 'date_of_birth']
+   
+           errors = checks.run_checks(self.apps.get_app_configs())
+           self.assertEqual(errors, [
+               checks.Error(
+                   "The field named as the 'USERNAME_FIELD' for a custom user model "
+                   "must not be included in 'REQUIRED_FIELDS'.",
+                   obj=CustomUserBadRequiredFields,
+                   id='auth.E002',
+5. [score=58] AuthenticationFormTest.test_username_field_max_length_matches_user_model
+   tests/auth_tests/test_forms.py:401
+           form = AuthenticationForm(None, data)
+           self.assertTrue(form.is_valid())
+           self.assertEqual(form.non_field_errors(), [])
+   
+       def test_unicode_username(self):
+           User.objects.create_user(username='Σαρα', password='pwd')
+           data = {
+               'username': 'Σαρα',
+               'password': 'pwd',
+           }
+           form = AuthenticationForm(None, data)
+           self.assertTrue(form.is_valid())
+           self.assertEqual(form.non_field_errors(), [])
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.CustomEmailField')
+       def test_username_field_max_length_matches_user_model(self):
+           self.assertEqual(CustomEmailField._meta.get_field('username').max_length, 255)
+           data = {
+               'username': 'u' * 255,
+               'password': 'pwd',
+               'email': 'test@example.com',
+           }
+           CustomEmailField.objects.create_user(**data)
+           form = AuthenticationForm(None, data)
+           self.assertEqual(form.fields['username'].max_length, 255)
+           self.assertEqual(form.errors, {})
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.IntegerUsernameUser')
+       def test_username_field_max_length_defaults_to_254(self):
+           self.assertIsNone(IntegerUsernameUser._meta.get_field('username').max_length)
+           data = {
+6. [score=55] UserModelChecksTests.test_username_non_unique
+   tests/auth_tests/test_checks.py:58
+   
+               USERNAME_FIELD = 'username'
+               REQUIRED_FIELDS = ['username', 'date_of_birth']
+   
+           errors = checks.run_checks(self.apps.get_app_configs())
+           self.assertEqual(errors, [
+               checks.Error(
+                   "The field named as the 'USERNAME_FIELD' for a custom user model "
+                   "must not be included in 'REQUIRED_FIELDS'.",
+                   obj=CustomUserBadRequiredFields,
+                   id='auth.E002',
+               ),
+           ])
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.CustomUserNonUniqueUsername')
+       def test_username_non_unique(self):
+           """
+           A non-unique USERNAME_FIELD raises an error only if the default
+           authentication backend is used. Otherwise, a warning is raised.
+           """
+           errors = checks.run_checks()
+           self.assertEqual(errors, [
+               checks.Error(
+                   "'CustomUserNonUniqueUsername.username' must be "
+                   "unique because it is named as the 'USERNAME_FIELD'.",
+                   obj=CustomUserNonUniqueUsername,
+                   id='auth.E003',
+               ),
+           ])
+           with self.settings(AUTHENTICATION_BACKENDS=['my.custom.backend']):
+               errors = checks.run_checks()
+7. [score=50] AuthenticationFormTest.test_username_field_max_length_defaults_to_254
+   tests/auth_tests/test_forms.py:414
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.CustomEmailField')
+       def test_username_field_max_length_matches_user_model(self):
+           self.assertEqual(CustomEmailField._meta.get_field('username').max_length, 255)
+           data = {
+               'username': 'u' * 255,
+               'password': 'pwd',
+               'email': 'test@example.com',
+           }
+           CustomEmailField.objects.create_user(**data)
+           form = AuthenticationForm(None, data)
+           self.assertEqual(form.fields['username'].max_length, 255)
+           self.assertEqual(form.errors, {})
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.IntegerUsernameUser')
+       def test_username_field_max_length_defaults_to_254(self):
+           self.assertIsNone(IntegerUsernameUser._meta.get_field('username').max_length)
+           data = {
+               'username': '0123456',
+               'password': 'password',
+           }
+           IntegerUsernameUser.objects.create_user(**data)
+           form = AuthenticationForm(None, data)
+           self.assertEqual(form.fields['username'].max_length, 254)
+           self.assertEqual(form.errors, {})
+   
+       def test_username_field_label(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField(label="Name", max_length=75)
+   
+8. [score=48] AuthenticationFormTest.test_username_field_label
+   tests/auth_tests/test_forms.py:425
+           self.assertEqual(form.fields['username'].max_length, 255)
+           self.assertEqual(form.errors, {})
+   
+       @override_settings(AUTH_USER_MODEL='auth_tests.IntegerUsernameUser')
+       def test_username_field_max_length_defaults_to_254(self):
+           self.assertIsNone(IntegerUsernameUser._meta.get_field('username').max_length)
+           data = {
+               'username': '0123456',
+               'password': 'password',
+           }
+           IntegerUsernameUser.objects.create_user(**data)
+           form = AuthenticationForm(None, data)
+           self.assertEqual(form.fields['username'].max_length, 254)
+           self.assertEqual(form.errors, {})
+   
+       def test_username_field_label(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField(label="Name", max_length=75)
+   
+           form = CustomAuthenticationForm()
+           self.assertEqual(form['username'].label, "Name")
+   
+       def test_username_field_label_not_set(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField()
+   
+           form = CustomAuthenticationForm()
+           username_field = User._meta.get_field(User.USERNAME_FIELD)
+           self.assertEqual(form.fields['username'].label, capfirst(username_field.verbose_name))
+9. [score=44] AuthenticationFormTest.test_username_field_label_not_set
+   tests/auth_tests/test_forms.py:433
+               'password': 'password',
+           }
+           IntegerUsernameUser.objects.create_user(**data)
+           form = AuthenticationForm(None, data)
+           self.assertEqual(form.fields['username'].max_length, 254)
+           self.assertEqual(form.errors, {})
+   
+       def test_username_field_label(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField(label="Name", max_length=75)
+   
+           form = CustomAuthenticationForm()
+           self.assertEqual(form['username'].label, "Name")
+   
+       def test_username_field_label_not_set(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField()
+   
+           form = CustomAuthenticationForm()
+           username_field = User._meta.get_field(User.USERNAME_FIELD)
+           self.assertEqual(form.fields['username'].label, capfirst(username_field.verbose_name))
+   
+       def test_username_field_label_empty_string(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField(label='')
+   
+           form = CustomAuthenticationForm()
+           self.assertEqual(form.fields['username'].label, "")
+10. [score=42] AuthenticationFormTest.test_username_field_label_empty_string
+   tests/auth_tests/test_forms.py:442
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField(label="Name", max_length=75)
+   
+           form = CustomAuthenticationForm()
+           self.assertEqual(form['username'].label, "Name")
+   
+       def test_username_field_label_not_set(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField()
+   
+           form = CustomAuthenticationForm()
+           username_field = User._meta.get_field(User.USERNAME_FIELD)
+           self.assertEqual(form.fields['username'].label, capfirst(username_field.verbose_name))
+   
+       def test_username_field_label_empty_string(self):
+   
+           class CustomAuthenticationForm(AuthenticationForm):
+               username = CharField(label='')
+   
+           form = CustomAuthenticationForm()
+           self.assertEqual(form.fields['username'].label, "")
+   
+       def test_password_whitespace_not_stripped(self):
+           data = {
+               'username': 'testuser',
+               'password': ' pass ',
+           }
+           form = AuthenticationForm(None, data)
+           form.is_valid()  # Not necessary to have valid credentails for the test.
+           self.assertEqual(form.cleaned_data['password'], data['password'])
+
+52 more candidates cached. Call `more_symbols(name="test_username")` for the next batch.
+[symbol-locator] [scorer] usage pid=833796 calls=6 p=47972 c=282
+[symbol-locator] [scorer] parsed 25/25 scores from LLM
+
+2026-08-28 04:37:47 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:37:53 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:37:53 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:37:53 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 04:37:53 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['django/contrib/auth/validators.py', 'django/core/validators.py:RegexValidator', 'tests/auth_tests/test_validators.py']}))
+```
+2026-08-28 04:37:53 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `django/contrib/auth/validators.py`...
+### Search Result:
+Found file `django/contrib/auth/validators.py`.
+Source: Exact match found for entity name `django/contrib/auth/validators.py`.
+```
+ 1 | import re
+ 2 | 
+ 3 | from django.core import validators
+ 4 | from django.utils.deconstruct import deconstructible
+ 5 | from django.utils.translation import gettext_lazy as _
+ 6 | 
+ 7 | 
+ 8 | @deconstructible
+ 9 | class ASCIIUsernameValidator(validators.RegexValidator):
+10 |     regex = r'^[\w.@+-]+$'
+11 |     message = _(
+12 |         'Enter a valid username. This value may contain only English letters, '
+13 |         'numbers, and @/./+/-/_ characters.'
+14 |     )
+15 |     flags = re.ASCII
+16 | 
+17 | 
+18 | @deconstructible
+19 | class UnicodeUsernameValidator(validators.RegexValidator):
+20 |     regex = r'^[\w.@+-]+$'
+21 |     message = _(
+22 |         'Enter a valid username. This value may contain only letters, '
+23 |         'numbers, and @/./+/-/_ characters.'
+24 |     )
+25 |     flags = 0
+26 | 
+```
+
+
+##Searching for entity `django/core/validators.py:RegexValidator`...
+### Search Result:
+Found class `django/core/validators.py:RegexValidator`.
+Source: Exact match found for entity name `django/core/validators.py:RegexValidator`.
+```
+29 | class RegexValidator:
+30 |     regex = ''
+31 |     message = _('Enter a valid value.')
+32 |     code = 'invalid'
+33 |     inverse_match = False
+34 |     flags = 0
+35 | 
+36 |     def __init__(self, regex=None, message=None, code=None, inverse_match=None, flags=None):
+37 |         if regex is not None:
+38 |             self.regex = regex
+39 |         if message is not None:
+40 |             self.message = message
+41 |         if code is not None:
+42 |             self.code = code
+43 |         if inverse_match is not None:
+44 |             self.inverse_match = inverse_match
+45 |         if flags is not None:
+46 |             self.flags = flags
+47 |         if self.flags and not isinstance(self.regex, str):
+48 |             raise TypeError("If the flags are set, regex must be a regular expression string.")
+49 | 
+50 |         self.regex = _lazy_re_compile(self.regex, self.flags)
+51 | 
+52 |     def __call__(self, value):
+53 |         """
+54 |         Validate that the input contains (or does *not* contain, if
+55 |         inverse_match is True) a match for the regular expression.
+56 |         """
+57 |         regex_matches = self.regex.search(str(value))
+58 |         invalid_input = regex_matches if self.inverse_match else not regex_matches
+59 |         if invalid_input:
+60 |             raise ValidationError(self.message, code=self.code)
+61 | 
+62 |     def __eq__(self, other):
+63 |         return (
+64 |             isinstance(other, RegexValidator) and
+65 |             self.regex.pattern == other.regex.pattern and
+66 |             self.regex.flags == other.regex.flags and
+67 |             (self.message == other.message) and
+68 |             (self.code == other.code) and
+69 |             (self.inverse_match == other.inverse_match)
+70 |         )
+```
+
+
+##Searching for entity `tests/auth_tests/test_validators.py`...
+### Search Result:
+Invalid name. 
+Hint: Valid entity name should be formatted as "file_path:QualifiedName" or just "file_path".
+
+2026-08-28 04:37:53 auto_search_main.py INFO Executing code:
+```
+print(find_symbol(**{'name': 'UsernameValidator', 'context': 'django auth validators username validator tests regex newline issue', 'kind_filter': [5, 12, 6], 'top_k': 10}))
+```
+2026-08-28 04:37:53 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:37:55 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:37:55 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:37:55 auto_search_main.py INFO OBSERVATION:
+Found 3 candidates for `UsernameValidator`. Showing top 3 by relevance:
+1. [score=96] ASCIIUsernameValidator
+   django/contrib/auth/validators.py:9
+   import re
+   
+   from django.core import validators
+   from django.utils.deconstruct import deconstructible
+   from django.utils.translation import gettext_lazy as _
+   
+   
+   @deconstructible
+   class ASCIIUsernameValidator(validators.RegexValidator):
+       regex = r'^[\w.@+-]+$'
+       message = _(
+           'Enter a valid username. This value may contain only English letters, '
+           'numbers, and @/./+/-/_ characters.'
+       )
+       flags = re.ASCII
+   
+   
+   @deconstructible
+   class UnicodeUsernameValidator(validators.RegexValidator):
+       regex = r'^[\w.@+-]+$'
+       message = _(
+           'Enter a valid username. This value may contain only letters, '
+           'numbers, and @/./+/-/_ characters.'
+       )
+2. [score=74] UsernameValidatorsTests
+   tests/auth_tests/test_validators.py:234
+           expected_error = "This password is entirely numeric."
+           self.assertIsNone(NumericPasswordValidator().validate('a-safe-password'))
+   
+           with self.assertRaises(ValidationError) as cm:
+               NumericPasswordValidator().validate('42424242')
+           self.assertEqual(cm.exception.messages, [expected_error])
+           self.assertEqual(cm.exception.error_list[0].code, 'password_entirely_numeric')
+   
+       def test_help_text(self):
+           self.assertEqual(
+               NumericPasswordValidator().get_help_text(),
+               "Your password can't be entirely numeric."
+           )
+   
+   
+   class UsernameValidatorsTests(SimpleTestCase):
+       def test_unicode_validator(self):
+           valid_usernames = ['joe', 'René', 'ᴮᴵᴳᴮᴵᴿᴰ', 'أحمد']
+           invalid_usernames = [
+               "o'connell", "عبد ال",
+               "zerowidth\u200Bspace", "nonbreaking\u00A0space",
+               "en\u2013dash",
+           ]
+           v = validators.UnicodeUsernameValidator()
+           for valid in valid_usernames:
+               with self.subTest(valid=valid):
+                   v(valid)
+           for invalid in invalid_usernames:
+               with self.subTest(invalid=invalid):
+                   with self.assertRaises(ValidationError):
+                       v(invalid)
+3. [score=28] UnicodeUsernameValidator
+   django/contrib/auth/validators.py:19
+   from django.utils.deconstruct import deconstructible
+   from django.utils.translation import gettext_lazy as _
+   
+   
+   @deconstructible
+   class ASCIIUsernameValidator(validators.RegexValidator):
+       regex = r'^[\w.@+-]+$'
+       message = _(
+           'Enter a valid username. This value may contain only English letters, '
+           'numbers, and @/./+/-/_ characters.'
+       )
+       flags = re.ASCII
+   
+   
+   @deconstructible
+   class UnicodeUsernameValidator(validators.RegexValidator):
+       regex = r'^[\w.@+-]+$'
+       message = _(
+           'Enter a valid username. This value may contain only letters, '
+           'numbers, and @/./+/-/_ characters.'
+       )
+       flags = 0
+   
+[symbol-locator] [scorer] usage pid=833796 calls=7 p=53569 c=297
+[symbol-locator] [scorer] parsed 3/3 scores from LLM
+
+2026-08-28 04:37:55 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 04:37:58 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 04:37:58 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 04:37:58 auto_search_main.py INFO agent response received content_present=False tool_calls=1
+2026-08-28 04:37:58 auto_search_main.py INFO ===============
+2026-08-28 04:37:58 auto_search_main.py INFO Final response generated content_length=250
+2026-08-28 04:37:59 auto_search_main.py INFO ==== localizing django__django-11099 succeed, process multiple loc outputs ====
+2026-08-28 04:37:59 cost_analysis.py INFO input_tokens=50626, output_tokens=538, cost=0.13
+2026-08-28 04:37:59 auto_search_main.py INFO Total time: 6.2384 min

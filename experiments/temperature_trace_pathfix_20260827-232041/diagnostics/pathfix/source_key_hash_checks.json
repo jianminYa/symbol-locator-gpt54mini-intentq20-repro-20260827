@@ -1,0 +1,93 @@
+[
+  {
+    "path": "SWE-Explore-Bench/eval_runner.py",
+    "exists": true,
+    "sha256": "0e1bb81675467e4a586bbdedbae640a13cf4cdf9f002c3739915ec880c7ee75f",
+    "expected_sha256": "0e1bb81675467e4a586bbdedbae640a13cf4cdf9f002c3739915ec880c7ee75f",
+    "match": true
+  },
+  {
+    "path": "SWE-Explore-Bench/explorers/locagent_explorer.py",
+    "exists": true,
+    "sha256": "4d6d63303db1718815e043a67db7980d08734260e373e1a1a1613a973b9c494a",
+    "expected_sha256": "4d6d63303db1718815e043a67db7980d08734260e373e1a1a1613a973b9c494a",
+    "match": true
+  },
+  {
+    "path": "SWE-Explore-Bench/explorers/parsing.py",
+    "exists": true,
+    "sha256": "4d9942b06ef2f58fbee60c838576ef2c653af8fe8f7f324d9fe5415ac81f3c44",
+    "expected_sha256": "4d9942b06ef2f58fbee60c838576ef2c653af8fe8f7f324d9fe5415ac81f3c44",
+    "match": true
+  },
+  {
+    "path": "SWE-Explore-Bench/explorers/_locagent_shim.py",
+    "exists": true,
+    "sha256": "b488f22bba36381416f52b605017dda56ed2ada0683dc85b2924fde5a9208e22",
+    "expected_sha256": "b488f22bba36381416f52b605017dda56ed2ada0683dc85b2924fde5a9208e22",
+    "match": true
+  },
+  {
+    "path": "SWE-Explore-Bench/third_party/LocAgent/auto_search_main.py",
+    "exists": true,
+    "sha256": "64a271fb3bed6f92554318b7c9ccb8eb13bb00a5070d4abedc4089b24b61fea7",
+    "expected_sha256": "64a271fb3bed6f92554318b7c9ccb8eb13bb00a5070d4abedc4089b24b61fea7",
+    "match": true
+  },
+  {
+    "path": "SWE-Explore-Bench/third_party/LocAgent/util/runtime/function_calling.py",
+    "exists": true,
+    "sha256": "522b001485570e2ca2c0e391a64fa6ca2524534f951099f4df18f369fba7be04",
+    "expected_sha256": "522b001485570e2ca2c0e391a64fa6ca2524534f951099f4df18f369fba7be04",
+    "match": true
+  },
+  {
+    "path": "SWE-Explore-Bench/third_party/LocAgent/util/runtime/process_control.py",
+    "exists": true,
+    "sha256": "0f54fc2402f6ec7db8fc3d064e54e66e16fa73c39fcd2b45e00d2de059b28dd2",
+    "expected_sha256": "0f54fc2402f6ec7db8fc3d064e54e66e16fa73c39fcd2b45e00d2de059b28dd2",
+    "match": true
+  },
+  {
+    "path": "SWE-Explore-Bench/third_party/LocAgent/util/runtime/finish.py",
+    "exists": true,
+    "sha256": "9e5d34d89ce8888bf82c0e45f3b323d9fe3b46c7b67252eb62c818b7019fafc5",
+    "expected_sha256": "9e5d34d89ce8888bf82c0e45f3b323d9fe3b46c7b67252eb62c818b7019fafc5",
+    "match": true
+  },
+  {
+    "path": "SWE-Explore-Bench/third_party/LocAgent/util/actions/action_parser.py",
+    "exists": true,
+    "sha256": "1c7bbba5149b984bb37dcd19a0eabd021dfdc3afe56d7c89842feeb2f90fad1f",
+    "expected_sha256": "1c7bbba5149b984bb37dcd19a0eabd021dfdc3afe56d7c89842feeb2f90fad1f",
+    "match": true
+  },
+  {
+    "path": "symbol-locator-locagent/symbol_locator/core.py",
+    "exists": true,
+    "sha256": "0794087e88d08b308c690a1ea39a01ebbec3619e0073ab5da0821b794ac2c6d0",
+    "expected_sha256": "0794087e88d08b308c690a1ea39a01ebbec3619e0073ab5da0821b794ac2c6d0",
+    "match": true
+  },
+  {
+    "path": "symbol-locator-locagent/symbol_locator/lsp.py",
+    "exists": true,
+    "sha256": "bf1adaa003038e9c019778010cb966accadf48c51713596e14ee3dc29996698c",
+    "expected_sha256": "bf1adaa003038e9c019778010cb966accadf48c51713596e14ee3dc29996698c",
+    "match": true
+  },
+  {
+    "path": "symbol-locator-locagent/symbol_locator/scorer.py",
+    "exists": true,
+    "sha256": "7dde8cfdcefbc5106585591ad65d621a6c882496c2082ba896fa8e132b569bd6",
+    "expected_sha256": "7dde8cfdcefbc5106585591ad65d621a6c882496c2082ba896fa8e132b569bd6",
+    "match": true
+  },
+  {
+    "path": "symbol-locator-locagent/symbol_locator/install.py",
+    "exists": true,
+    "sha256": "274d91bc379ece9feffb2e60882fe833f1b0caa392bed8bf3e4b56d28613f627",
+    "expected_sha256": "274d91bc379ece9feffb2e60882fe833f1b0caa392bed8bf3e4b56d28613f627",
+    "match": true
+  }
+]

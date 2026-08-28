@@ -1,0 +1,52 @@
+{
+  "face": "B1",
+  "instance_id": "scikit-learn__scikit-learn-10844",
+  "attempt": 1,
+  "trace_root": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/B1/traces/scikit-learn__scikit-learn-10844_attempt_1",
+  "payload_root": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/B1/traces/scikit-learn__scikit-learn-10844_attempt_1/scikit-learn__scikit-learn-10844",
+  "category": "success",
+  "return_code": 0,
+  "timed_out": false,
+  "instance_id_correct": true,
+  "jsonl_valid": true,
+  "jsonl_files": [
+    {
+      "path": "scikit-learn__scikit-learn-10844/instance.jsonl",
+      "size": 3176,
+      "valid": true,
+      "records": 1
+    },
+    {
+      "path": "scikit-learn__scikit-learn-10844/output/loc_outputs.jsonl",
+      "size": 3622,
+      "valid": true,
+      "records": 1
+    },
+    {
+      "path": "scikit-learn__scikit-learn-10844/output/loc_trajs.jsonl",
+      "size": 112219,
+      "valid": true,
+      "records": 1
+    },
+    {
+      "path": "scikit-learn__scikit-learn-10844/output/merged_loc_outputs_mrr.jsonl",
+      "size": 3616,
+      "valid": true,
+      "records": 1
+    }
+  ],
+  "jsonl_records": 4,
+  "expected_files": {
+    "instance.jsonl": true,
+    "output/args.json": true,
+    "output/loc_trajs.jsonl": true,
+    "output/loc_outputs.jsonl": true,
+    "output/localize.log": true,
+    "output/merged_output": true,
+    "output/scorer_usage.json": true
+  },
+  "trajectory_present": true,
+  "structured_result": false,
+  "structured_failure": false,
+  "trace_complete": true
+}

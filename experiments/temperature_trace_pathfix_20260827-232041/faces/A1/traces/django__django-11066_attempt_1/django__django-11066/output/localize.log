@@ -1,0 +1,1885 @@
+2026-08-28 00:28:28 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 00:28:28 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 00:28:28 auto_search_main.py INFO ============================================================
+2026-08-28 00:28:28 auto_search_main.py INFO ==== rank 0 setup localize django__django-11066 ====
+2026-08-28 00:28:28 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/f2adb4f6-a30c-43bc-81a3-ade4475588f2/django_django and checkout commit HEAD
+2026-08-28 00:28:28 git_repo_manager.py INFO Directory 'playground/f2adb4f6-a30c-43bc-81a3-ade4475588f2/django_django' was created.
+2026-08-28 00:31:25 repo_ops.py INFO [0] Processed django__django-11066
+2026-08-28 00:31:25 auto_search_main.py INFO ============================================================
+2026-08-28 00:31:25 auto_search_main.py INFO ==== rank 0 begin localizing django__django-11066 ====
+2026-08-28 00:31:25 auto_search_main.py INFO ============================================================
+2026-08-28 00:31:25 auto_search_main.py INFO ==== django__django-11066 Count down: attempt 1 ====
+2026-08-28 00:31:25 auto_search_main.py INFO ==== django__django-11066 start auto search ====
+2026-08-28 00:31:25 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:31:39 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:31:39 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:31:39 auto_search_main.py INFO agent response received content_present=True tool_calls=3
+2026-08-28 00:31:39 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['RenameContentType', "content_type.save(update_fields={'model'})", 'RenameModel', 'django_content_types'], 'file_path_or_pattern': '**/*.py'}))
+```
+2026-08-28 00:31:41 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:31:41 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/f2adb4f6-a30c-43bc-81a3-ade4475588f2/django_django and checkout commit HEAD
+2026-08-28 00:31:45 epic_split.py WARNING Skipping code block LANG_INFO._ in django/conf/locale/__init__.py as it has 3926 tokens which is more than chunk size 500. Content: {
+    'af': {
+        'bidi': False,
+        'code': 'af',
+        'name': 'Afrikaans',
+        'nam...
+2026-08-28 00:32:50 epic_split.py WARNING Parsing file django/db/models/base.py took 1.11 seconds.
+2026-08-28 00:33:15 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:33:17 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:33:18 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:33:20 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:33:20 auto_search_main.py INFO OBSERVATION:
+django/db/models/base.py:Model.save
+django/db/models/base.py:Model:4
+django/db/models/base.py:Model.save_base
+django/db/models/base.py:Model._save_table
+django/db/models/base.py:Model._save_parents
+django/db/models/base.py:Model:6
+django/db/models/base.py:Model.save
+django/db/models/base.py:Model._do_update
+django/contrib/contenttypes/fields.py:create_generic_related_manager
+django/db/models/signals.py:impl:3
+django/contrib/contenttypes/models.py:ContentType.get_all_objects_for_this_type
+django/contrib/contenttypes/models.py:ContentType.name
+django/contrib/contenttypes/models.py:ContentType.app_labeled_name
+django/contrib/contenttypes/models.py:ContentType.__str__
+django/contrib/contenttypes/models.py:ContentType.Meta
+django/contrib/contenttypes/models.py:ContentType.get_object_for_this_type
+django/contrib/contenttypes/models.py:ContentType.natural_key
+django/contrib/contenttypes/models.py:ContentType.model_class
+django/contrib/contenttypes/models.py:ContentType
+django/contrib/sites/requests.py:RequestSite.__str__
+django/contrib/sites/requests.py:RequestSite.__init__
+django/contrib/sites/requests.py:RequestSite
+django/contrib/sites/requests.py:RequestSite.delete
+django/contrib/sites/requests.py:RequestSite.save
+django/contrib/staticfiles/__init__.py:impl
+django/contrib/sites/models.py:impl:3
+django/contrib/sites/models.py:clear_site_cache
+django/contrib/staticfiles/finders.py:FileSystemFinder.check
+django/db/models/base.py:Model.save
+django/db/models/base.py:Model:4
+django/db/models/base.py:Model.save_base
+django/db/models/base.py:Model._save_table
+django/db/models/base.py:Model._save_parents
+django/db/models/base.py:Model:6
+django/db/models/base.py:Model.save
+django/db/models/base.py:Model._do_update
+django/contrib/contenttypes/fields.py:create_generic_related_manager
+django/db/models/signals.py:impl:3
+##Searching for term "RenameContentType"...
+### Search Result:
+Found class `django/contrib/contenttypes/management/__init__.py:RenameContentType`.
+Source: Match found for entity name `RenameContentType`.
+```
+ 6 | class RenameContentType(migrations.RunPython):
+ 7 |     def __init__(self, app_label, old_model, new_model):
+ 8 |         self.app_label = app_label
+ 9 |         self.old_model = old_model
+10 |         self.new_model = new_model
+11 |         super().__init__(self.rename_forward, self.rename_backward)
+12 | 
+13 |     def _rename(self, apps, schema_editor, old_model, new_model):
+14 |         ContentType = apps.get_model('contenttypes', 'ContentType')
+15 |         db = schema_editor.connection.alias
+16 |         if not router.allow_migrate_model(db, ContentType):
+17 |             return
+18 | 
+19 |         try:
+20 |             content_type = ContentType.objects.db_manager(db).get_by_natural_key(self.app_label, old_model)
+21 |         except ContentType.DoesNotExist:
+22 |             pass
+23 |         else:
+24 |             content_type.model = new_model
+25 |             try:
+26 |                 with transaction.atomic(using=db):
+27 |                     content_type.save(update_fields={'model'})
+28 |             except IntegrityError:
+29 |                 # Gracefully fallback if a stale content type causes a
+30 |                 # conflict as remove_stale_contenttypes will take care of
+31 |                 # asking the user what should be done next.
+32 |                 content_type.model = old_model
+33 |             else:
+34 |                 # Clear the cache as the `get_by_natual_key()` call will cache
+35 |                 # the renamed ContentType instance by its old model name.
+36 |                 ContentType.objects.clear_cache()
+37 | 
+38 |     def rename_forward(self, apps, schema_editor):
+39 |         self._rename(apps, schema_editor, self.old_model, self.new_model)
+40 | 
+41 |     def rename_backward(self, apps, schema_editor):
+42 |         self._rename(apps, schema_editor, self.new_model, self.old_model)
+```
+
+
+
+##Searching for term "content_type.save(update_fields={'model'})"...
+### Search Result:
+Found `django/contrib/contenttypes/management/__init__.py:RenameContentType`, `django/contrib/contenttypes/management/__init__.py:RenameContentType._rename`, `django/contrib/contenttypes/management/__init__.py:RenameContentType.rename_forward`, `django/contrib/contenttypes/management/__init__.py:RenameContentType.rename_backward`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps as global_apps
+  2 | from django.db import DEFAULT_DB_ALIAS, migrations, router, transaction
+  3 | from django.db.utils import IntegrityError
+  4 | 
+  5 | 
+  6 | class RenameContentType(migrations.RunPython):
+  7 |     def __init__(self, app_label, old_model, new_model):
+  8 |         self.app_label = app_label
+  9 |         self.old_model = old_model
+ 10 |         self.new_model = new_model
+ 11 |         super().__init__(self.rename_forward, self.rename_backward)
+ 12 | 
+ 13 |     def _rename(self, apps, schema_editor, old_model, new_model):
+ 14 |         ContentType = apps.get_model('contenttypes', 'ContentType')
+ 15 |         db = schema_editor.connection.alias
+ 16 |         if not router.allow_migrate_model(db, ContentType):
+ 17 |             return
+ 18 | 
+ 19 |         try:
+ 20 |             content_type = ContentType.objects.db_manager(db).get_by_natural_key(self.app_label, old_model)
+ 21 |         except ContentType.DoesNotExist:
+ 22 |             pass
+ 23 |         else:
+ 24 |             content_type.model = new_model
+ 25 |             try:
+ 26 |                 with transaction.atomic(using=db):
+ 27 |                     content_type.save(update_fields={'model'})
+ 28 |             except IntegrityError:
+ 29 |                 # Gracefully fallback if a stale content type causes a
+ 30 |                 # conflict as remove_stale_contenttypes will take care of
+ 31 |                 # asking the user what should be done next.
+ 32 |                 content_type.model = old_model
+ 33 |             else:
+ 34 |                 # Clear the cache as the `get_by_natual_key()` call will cache
+ 35 |                 # the renamed ContentType instance by its old model name.
+ 36 |                 ContentType.objects.clear_cache()
+ 37 | 
+ 38 |     def rename_forward(self, apps, schema_editor):
+ 39 |         self._rename(apps, schema_editor, self.old_model, self.new_model)
+ 40 | 
+ 41 |     def rename_backward(self, apps, schema_editor):
+ 42 |         self._rename(apps, schema_editor, self.new_model, self.old_model)
+```
+
+
+
+##Searching for term "content_type.save(update_fields={'model'})", "content_type.save(update_fields={'model'}) django_content_types"...
+### Search Result:
+Found function `django/db/models/base.py:Model.save`.
+Source: Retrieved entity using keyword search (bm25).
+```
+663 | def save(self, force_insert=False, force_update=False, using=None,
+664 |              update_fields=None):
+665 |         """
+666 |         Save the current instance. Override this in a subclass if you want to
+667 |         control the saving process.
+668 | 
+669 |         The 'force_insert' and 'force_update' parameters can be used to insist
+670 |         that the "save" must be an SQL insert or update (or equivalent for
+671 |         non-SQL backends), respectively. Normally, they should not be set.
+672 |         """
+673 |         # Ensure that a model instance without a PK hasn't been assigned to
+674 |         # a ForeignKey or OneToOneField on this model. If the field is
+675 |         # nullable, allowing the save() would result in silent data loss.
+676 |         for field in self._meta.concrete_fields:
+677 |             # If the related field isn't cached, then an instance hasn't
+678 |             # been assigned and there's no need to worry about this check.
+679 |             if field.is_relation and field.is_cached(self):
+680 |                 obj = getattr(self, field.name, None)
+681 |                 if not obj:
+682 |                     continue
+683 |                 # A pk may have been assigned manually to a model instance not
+684 |                 # saved to the database (or auto-generated in a case like
+685 |                 # UUIDField), but we allow the save to proceed and rely on the
+686 |                 # database to raise an IntegrityError if applicable. If
+687 |                 # constraints aren't supported by the database, there's the
+688 |                 # unavoidable risk of data corruption.
+689 |                 if obj.pk is None:
+690 |                     # Remove the object from a related instance cache.
+691 |                     if not field.remote_field.multiple:
+692 |                         field.remote_field.delete_cached_value(obj)
+693 |                     raise ValueError(
+694 |                         "save() prohibited to prevent data loss due to "
+695 |                         "unsaved related object '%s'." % field.name
+696 |                     )
+697 |                 elif getattr(self, field.attname) is None:
+698 |                     # Use pk from related object if it has been saved after
+699 |                     # an assignment.
+700 |                     setattr(self, field.attname, obj.pk)
+701 |                 # If the relationship's pk/to_field was changed, clear the
+702 |                 # cached relationship.
+703 |                 if getattr(obj, field.target_field.attname) != getattr(self, field.attname):
+704 |                     field.delete_cached_value(self)
+705 | 
+706 |         using = using or router.db_for_write(self.__class__, instance=self)
+707 |         if force_insert and (force_update or update_fields):
+708 |             raise ValueError("Cannot force both insert and updating in model saving.")
+709 | 
+710 |         deferred_fields = self.get_deferred_fields()
+711 |         if update_fields is not None:
+712 |             # If update_fields is empty, skip the save. We do also check for
+713 |             # no-op saves later on for inheritance cases. This bailout is
+714 |             # still needed for skipping signal sending.
+715 |             if not update_fields:
+716 |                 return
+717 | 
+718 |             update_fields = frozenset(update_fields)
+719 |             field_names = set()
+720 | 
+721 |             for field in self._meta.fields:
+722 |                 if not field.primary_key:
+723 |                     field_names.add(field.name)
+724 | 
+725 |                     if field.name != field.attname:
+726 |                         field_names.add(field.attname)
+727 | 
+728 |             non_model_fields = update_fields.difference(field_names)
+729 | 
+730 |             if non_model_fields:
+731 |                 raise ValueError("The following fields do not exist in this "
+732 |                                  "model or are m2m fields: %s"
+733 |                                  % ', '.join(non_model_fields))
+734 | 
+735 |         # If saving to the same database, and this model is deferred, then
+736 |         # automatically do an "update_fields" save on the loaded fields.
+737 |         elif not force_insert and deferred_fields and using == self._state.db:
+738 |             field_names = set()
+739 |             for field in self._meta.concrete_fields:
+740 |                 if not field.primary_key and not hasattr(field, 'through'):
+741 |                     field_names.add(field.attname)
+742 |             loaded_fields = field_names.difference(deferred_fields)
+743 |             if loaded_fields:
+744 |                 update_fields = frozenset(loaded_fields)
+745 | 
+746 |         self.save_base(using=using, force_insert=force_insert,
+747 |                        force_update=force_update, update_fields=update_fields)
+```
+
+Found function `django/db/models/base.py:Model.save_base`.
+Source: Retrieved code content using keyword search (bm25).
+```
+750 | def save_base(self, raw=False, force_insert=False,
+751 |                   force_update=False, using=None, update_fields=None):
+752 |         """
+753 |         Handle the parts of saving which should be done only once per save,
+754 |         yet need to be done in raw saves, too. This includes some sanity
+755 |         checks and signal sending.
+756 | 
+757 |         The 'raw' argument is telling save_base not to save any parent
+758 |         models and not to do any changes to the values before save. This
+759 |         is used by fixture loading.
+760 |         """
+761 |         using = using or router.db_for_write(self.__class__, instance=self)
+762 |         assert not (force_insert and (force_update or update_fields))
+763 |         assert update_fields is None or update_fields
+764 |         cls = origin = self.__class__
+765 |         # Skip proxies, but keep the origin as the proxy model.
+766 |         if cls._meta.proxy:
+767 |             cls = cls._meta.concrete_model
+768 |         meta = cls._meta
+769 |         if not meta.auto_created:
+770 |             pre_save.send(
+771 |                 sender=origin, instance=self, raw=raw, using=using,
+772 |                 update_fields=update_fields,
+773 |             )
+774 |         # A transaction isn't needed if one query is issued.
+775 |         if meta.parents:
+776 |             context_manager = transaction.atomic(using=using, savepoint=False)
+777 |         else:
+778 |             context_manager = transaction.mark_for_rollback_on_error(using=using)
+779 |         with context_manager:
+780 |             parent_inserted = False
+781 |             if not raw:
+782 |                 parent_inserted = self._save_parents(cls, using, update_fields)
+783 |             updated = self._save_table(
+784 |                 raw, cls, force_insert or parent_inserted,
+785 |                 force_update, using, update_fields,
+786 |             )
+787 |         # Store the database on which the object was saved
+788 |         self._state.db = using
+789 |         # Once saved, this is no longer a to-be-added instance.
+790 |         self._state.adding = False
+791 | 
+792 |         # Signal that the save is complete
+793 |         if not meta.auto_created:
+794 |             post_save.send(
+795 |                 sender=origin, instance=self, created=(not updated),
+796 |                 update_fields=update_fields, raw=raw, using=using,
+797 |             )
+```
+
+Found function `django/db/models/base.py:Model._save_parents`.
+Source: Retrieved code content using keyword search (bm25).
+```
+801 | def _save_parents(self, cls, using, update_fields):
+802 |         """Save all the parents of cls using values from self."""
+803 |         meta = cls._meta
+804 |         inserted = False
+805 |         for parent, field in meta.parents.items():
+806 |             # Make sure the link fields are synced between parent and self.
+807 |             if (field and getattr(self, parent._meta.pk.attname) is None and
+808 |                     getattr(self, field.attname) is not None):
+809 |                 setattr(self, parent._meta.pk.attname, getattr(self, field.attname))
+810 |             parent_inserted = self._save_parents(cls=parent, using=using, update_fields=update_fields)
+811 |             updated = self._save_table(
+812 |                 cls=parent, using=using, update_fields=update_fields,
+813 |                 force_insert=parent_inserted,
+814 |             )
+815 |             if not updated:
+816 |                 inserted = True
+817 |             # Set the parent's PK value to self.
+818 |             if field:
+819 |                 setattr(self, field.attname, self._get_pk_val(parent._meta))
+820 |                 # Since we didn't have an instance of the parent handy set
+821 |                 # attname directly, bypassing the descriptor. Invalidate
+822 |                 # the related object cache, in case it's been accidentally
+823 |                 # populated. A fresh instance will be re-built from the
+824 |                 # database if necessary.
+825 |                 if field.is_cached(self):
+826 |                     field.delete_cached_value(self)
+827 |         return inserted
+```
+
+Found function `django/db/models/base.py:Model._save_table`.
+Source: Retrieved code content using keyword search (bm25).
+```
+829 | def _save_table(self, raw=False, cls=None, force_insert=False,
+830 |                     force_update=False, using=None, update_fields=None):
+831 |         """
+832 |         Do the heavy-lifting involved in saving. Update or insert the data
+833 |         for a single table.
+834 |         """
+835 |         meta = cls._meta
+836 |         non_pks = [f for f in meta.local_concrete_fields if not f.primary_key]
+837 | 
+838 |         if update_fields:
+839 |             non_pks = [f for f in non_pks
+840 |                        if f.name in update_fields or f.attname in update_fields]
+841 | 
+842 |         pk_val = self._get_pk_val(meta)
+843 |         if pk_val is None:
+844 |             pk_val = meta.pk.get_pk_value_on_save(self)
+845 |             setattr(self, meta.pk.attname, pk_val)
+846 |         pk_set = pk_val is not None
+847 |         if not pk_set and (force_update or update_fields):
+848 |             raise ValueError("Cannot force an update in save() with no primary key.")
+849 |         updated = False
+850 |         # If possible, try an UPDATE. If that doesn't update anything, do an INSERT.
+851 |         if pk_set and not force_insert:
+852 |             base_qs = cls._base_manager.using(using)
+853 |             values = [(f, None, (getattr(self, f.attname) if raw else f.pre_save(self, False)))
+854 |                       for f in non_pks]
+855 |             forced_update = update_fields or force_update
+856 |             updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+857 |                                       forced_update)
+858 |             if force_update and not updated:
+859 |                 raise DatabaseError("Forced update did not affect any rows.")
+860 |             if update_fields and not updated:
+861 |                 raise DatabaseError("Save with update_fields did not affect any rows.")
+862 |         if not updated:
+863 |             if meta.order_with_respect_to:
+864 |                 # If this is a model with an order_with_respect_to
+865 |                 # autopopulate the _order field
+866 |                 field = meta.order_with_respect_to
+867 |                 filter_args = field.get_filter_kwargs_for_object(self)
+868 |                 order_value = cls._base_manager.using(using).filter(**filter_args).count()
+869 |                 self._order = order_value
+870 | 
+871 |             fields = meta.local_concrete_fields
+872 |             if not pk_set:
+873 |                 fields = [f for f in fields if f is not meta.auto_field]
+874 | 
+875 |             update_pk = meta.auto_field and not pk_set
+876 |             result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+877 |             if update_pk:
+878 |                 setattr(self, meta.pk.attname, result)
+879 |         return updated
+```
+
+Found function `django/forms/models.py:BaseModelForm.save`.
+Source: Retrieved entity using keyword search (bm25).
+```
+444 | def save(self, commit=True):
+445 |         """
+446 |         Save this form's self.instance object if commit=True. Otherwise, add
+447 |         a save_m2m() method to the form which can be called after the instance
+448 |         is saved manually at a later time. Return the model instance.
+449 |         """
+450 |         if self.errors:
+451 |             raise ValueError(
+452 |                 "The %s could not be %s because the data didn't validate." % (
+453 |                     self.instance._meta.object_name,
+454 |                     'created' if self.instance._state.adding else 'changed',
+455 |                 )
+456 |             )
+457 |         if commit:
+458 |             # If committing, save the instance and the m2m data immediately.
+459 |             self.instance.save()
+460 |             self._save_m2m()
+461 |         else:
+462 |             # If not committing, add a method to the form to allow deferred
+463 |             # saving of m2m data.
+464 |             self.save_m2m = self._save_m2m
+465 |         return self.instance
+```
+
+Found function `django/forms/models.py:BaseModelFormSet.save`.
+Source: Retrieved entity using keyword search (bm25).
+```
+658 | def save(self, commit=True):
+659 |         """
+660 |         Save model instances for every form, adding and changing instances
+661 |         as necessary, and return the list of instances.
+662 |         """
+663 |         if not commit:
+664 |             self.saved_forms = []
+665 | 
+666 |             def save_m2m():
+667 |                 for form in self.saved_forms:
+668 |                     form.save_m2m()
+669 |             self.save_m2m = save_m2m
+670 |         return self.save_existing_objects(commit) + self.save_new_objects(commit)
+```
+
+
+
+##Searching for term "RenameModel"...
+### Search Result:
+Found class `django/db/migrations/operations/models.py:RenameModel`.
+Source: Match found for entity name `RenameModel`.
+Just show the structure of this class due to response length limitations:
+```
+class RenameModel(ModelOperation):
+
+    def __init__(self, old_name, new_name):
+...
+    @cached_property
+    def old_name_lower(self):
+...
+    @cached_property
+    def new_name_lower(self):
+...
+    def deconstruct(self):
+...
+    def state_forwards(self, app_label, state):
+...
+    def database_forwards(self, app_label, schema_editor, from_state, to_state):
+...
+    def database_backwards(self, app_label, schema_editor, from_state, to_state):
+...
+    def references_model(self, name, app_label=None):
+...
+    def describe(self):
+...
+    def reduce(self, operation, app_label=None):
+
+```
+Hint: Search `django/db/migrations/operations/models.py:RenameModel` to get the full content if needed.
+
+
+
+##Searching for term "django_content_types"...
+### Search Result:
+Found `django/contrib/contenttypes/migrations/0001_initial.py:Migration`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import django.contrib.contenttypes.models
+ 2 | from django.db import migrations, models
+ 3 | 
+ 4 | 
+ 5 | class Migration(migrations.Migration):
+ 6 | 
+ 7 |     dependencies = [
+ 8 |     ]
+ 9 | 
+10 |     operations = [
+11 |         migrations.CreateModel(
+12 |             name='ContentType',
+13 |             fields=[
+14 |                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+15 |                 ('name', models.CharField(max_length=100)),
+16 |                 ('app_label', models.CharField(max_length=100)),
+17 |                 ('model', models.CharField(max_length=100, verbose_name='python model class name')),
+18 |             ],
+19 |             options={
+20 |                 'ordering': ('name',),
+21 |                 'db_table': 'django_content_type',
+22 |                 'verbose_name': 'content type',
+23 |                 'verbose_name_plural': 'content types',
+24 |             },
+25 |             bases=(models.Model,),
+26 |             managers=[
+27 |                 ('objects', django.contrib.contenttypes.models.ContentTypeManager()),
+28 |             ],
+29 |         ),
+30 |         migrations.AlterUniqueTogether(
+31 |             name='contenttype',
+32 |             unique_together={('app_label', 'model')},
+33 |         ),
+34 |     ]
+35 | 
+```
+
+Found function `django/contrib/admin/options.py:get_content_type_for_model`.
+Source: Retrieved entity using keyword search (bm25).
+```
+60 | def get_content_type_for_model(obj):
+61 |     # Since this module gets imported in the application's root package,
+62 |     # it cannot import models from other applications at the module level.
+63 |     from django.contrib.contenttypes.models import ContentType
+64 |     return ContentType.objects.get_for_model(obj, for_concrete_model=False)
+```
+
+Found function `django/contrib/contenttypes/fields.py:GenericForeignKey._check_content_type_field`.
+Source: Retrieved entity using keyword search (bm25).
+```
+111 | def _check_content_type_field(self):
+112 |         """
+113 |         Check if field named `field_name` in model `model` exists and is a
+114 |         valid content_type field (is a ForeignKey to ContentType).
+115 |         """
+116 |         try:
+117 |             field = self.model._meta.get_field(self.ct_field)
+118 |         except FieldDoesNotExist:
+119 |             return [
+120 |                 checks.Error(
+121 |                     "The GenericForeignKey content type references the "
+122 |                     "nonexistent field '%s.%s'." % (
+123 |                         self.model._meta.object_name, self.ct_field
+124 |                     ),
+125 |                     obj=self,
+126 |                     id='contenttypes.E002',
+127 |                 )
+128 |             ]
+129 |         else:
+130 |             if not isinstance(field, models.ForeignKey):
+131 |                 return [
+132 |                     checks.Error(
+133 |                         "'%s.%s' is not a ForeignKey." % (
+134 |                             self.model._meta.object_name, self.ct_field
+135 |                         ),
+136 |                         hint=(
+137 |                             "GenericForeignKeys must use a ForeignKey to "
+138 |                             "'contenttypes.ContentType' as the 'content_type' field."
+139 |                         ),
+140 |                         obj=self,
+141 |                         id='contenttypes.E003',
+142 |                     )
+143 |                 ]
+144 |             elif field.remote_field.model != ContentType:
+145 |                 return [
+146 |                     checks.Error(
+147 |                         "'%s.%s' is not a ForeignKey to 'contenttypes.ContentType'." % (
+148 |                             self.model._meta.object_name, self.ct_field
+149 |                         ),
+150 |                         hint=(
+151 |                             "GenericForeignKeys must use a ForeignKey to "
+152 |                             "'contenttypes.ContentType' as the 'content_type' field."
+153 |                         ),
+154 |                         obj=self,
+155 |                         id='contenttypes.E004',
+156 |                     )
+157 |                 ]
+158 |             else:
+159 |                 return []
+```
+
+Found function `django/contrib/contenttypes/fields.py:GenericForeignKey.get_content_type`.
+Source: Retrieved entity using keyword search (bm25).
+```
+164 | def get_content_type(self, obj=None, id=None, using=None):
+165 |         if obj is not None:
+166 |             return ContentType.objects.db_manager(obj._state.db).get_for_model(
+167 |                 obj, for_concrete_model=self.for_concrete_model)
+168 |         elif id is not None:
+169 |             return ContentType.objects.db_manager(using).get_for_id(id)
+170 |         else:
+171 |             # This should never happen. I love comments like this, don't you?
+172 |             raise Exception("Impossible arguments to GFK.get_content_type!")
+```
+
+Found function `django/contrib/contenttypes/models.py:ContentType.__str__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+144 | def __str__(self):
+145 |         return self.app_labeled_name
+```
+
+Found function `django/contrib/contenttypes/models.py:ContentType.name`.
+Source: Retrieved code content using keyword search (bm25).
+```
+148 | def name(self):
+149 |         model = self.model_class()
+150 |         if not model:
+151 |             return self.model
+152 |         return str(model._meta.verbose_name)
+```
+
+Found function `django/contrib/contenttypes/models.py:ContentType.app_labeled_name`.
+Source: Retrieved code content using keyword search (bm25).
+```
+155 | def app_labeled_name(self):
+156 |         model = self.model_class()
+157 |         if not model:
+158 |             return self.model
+159 |         return '%s | %s' % (model._meta.app_label, model._meta.verbose_name)
+```
+
+Found function `django/contrib/contenttypes/models.py:ContentType.get_all_objects_for_this_type`.
+Source: Retrieved code content using keyword search (bm25).
+```
+177 | def get_all_objects_for_this_type(self, **kwargs):
+178 |         """
+179 |         Return all objects of this type for the keyword arguments given.
+180 |         """
+181 |         return self.model_class()._base_manager.using(self._state.db).filter(**kwargs)
+```
+
+
+
+##Searching for term "content_type.save(update_fields={'model'}) django_content_types"...
+### Search Result:
+Found `django/contrib/contenttypes/management/__init__.py:RenameContentType`, `django/contrib/contenttypes/management/__init__.py:RenameContentType._rename`, `django/contrib/contenttypes/management/__init__.py:RenameContentType.rename_forward`, `django/contrib/contenttypes/management/__init__.py:RenameContentType.rename_backward`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | from django.apps import apps as global_apps
+  2 | from django.db import DEFAULT_DB_ALIAS, migrations, router, transaction
+  3 | from django.db.utils import IntegrityError
+  4 | 
+  5 | 
+  6 | class RenameContentType(migrations.RunPython):
+  7 |     def __init__(self, app_label, old_model, new_model):
+  8 |         self.app_label = app_label
+  9 |         self.old_model = old_model
+ 10 |         self.new_model = new_model
+ 11 |         super().__init__(self.rename_forward, self.rename_backward)
+ 12 | 
+ 13 |     def _rename(self, apps, schema_editor, old_model, new_model):
+ 14 |         ContentType = apps.get_model('contenttypes', 'ContentType')
+ 15 |         db = schema_editor.connection.alias
+ 16 |         if not router.allow_migrate_model(db, ContentType):
+ 17 |             return
+ 18 | 
+ 19 |         try:
+ 20 |             content_type = ContentType.objects.db_manager(db).get_by_natural_key(self.app_label, old_model)
+ 21 |         except ContentType.DoesNotExist:
+ 22 |             pass
+ 23 |         else:
+ 24 |             content_type.model = new_model
+ 25 |             try:
+ 26 |                 with transaction.atomic(using=db):
+ 27 |                     content_type.save(update_fields={'model'})
+ 28 |             except IntegrityError:
+ 29 |                 # Gracefully fallback if a stale content type causes a
+ 30 |                 # conflict as remove_stale_contenttypes will take care of
+ 31 |                 # asking the user what should be done next.
+ 32 |                 content_type.model = old_model
+ 33 |             else:
+ 34 |                 # Clear the cache as the `get_by_natual_key()` call will cache
+ 35 |                 # the renamed ContentType instance by its old model name.
+ 36 |                 ContentType.objects.clear_cache()
+ 37 | 
+ 38 |     def rename_forward(self, apps, schema_editor):
+ 39 |         self._rename(apps, schema_editor, self.old_model, self.new_model)
+ 40 | 
+ 41 |     def rename_backward(self, apps, schema_editor):
+ 42 |         self._rename(apps, schema_editor, self.new_model, self.old_model)
+```
+Finding newlines for mmindex:   0%|          | 0.00/10.5M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 10.5M/10.5M [00:00<00:00, 360MB/s]
+
+2026-08-28 00:33:20 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['class RenameContentType', 'def _rename', 'schema_editor.connection.alias', 'transaction.atomic(using=db)'], 'file_path_or_pattern': 'django/**/*.py'}))
+```
+2026-08-28 00:33:21 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:33:23 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:33:24 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:33:25 auto_search_main.py INFO OBSERVATION:
+django/db/migrations/operations/fields.py:AddField.describe
+django/db/migrations/operations/fields.py:AddField.database_backwards
+django/db/migrations/operations/fields.py:AddField.database_forwards
+django/db/migrations/operations/fields.py:RemoveField.reduce
+django/db/migrations/operations/fields.py:RemoveField.database_backwards
+django/db/migrations/operations/fields.py:RemoveField.database_forwards
+django/db/migrations/operations/fields.py:RemoveField.describe
+django/db/migrations/operations/special.py:RunPython.database_backwards
+django/db/migrations/operations/special.py:RunPython.database_forwards
+django/db/migrations/operations/special.py:RunPython.noop
+django/db/migrations/operations/special.py:RunPython.describe
+django/db/migrations/operations/models.py:DeleteModel.references_model
+django/db/migrations/operations/models.py:DeleteModel.state_forwards
+django/db/migrations/operations/models.py:DeleteModel.deconstruct
+django/db/migrations/operations/models.py:DeleteModel.database_forwards
+django/db/migrations/operations/models.py:DeleteModel.describe
+django/db/migrations/operations/models.py:DeleteModel.database_backwards
+django/db/migrations/operations/models.py:DeleteModel
+django/db/migrations/operations/fields.py:RenameField.database_backwards
+django/db/migrations/operations/fields.py:RenameField.describe
+django/db/migrations/operations/fields.py:RenameField.database_forwards
+django/db/migrations/operations/fields.py:RenameField.references_field
+django/db/migrations/operations/models.py:AddConstraint.deconstruct
+django/db/migrations/operations/models.py:AddConstraint.database_forwards
+django/db/migrations/operations/models.py:AddConstraint.database_backwards
+django/db/migrations/operations/models.py:AddConstraint.describe
+django/db/migrations/operations/models.py:AddConstraint.__init__
+django/db/migrations/operations/models.py:AddConstraint.state_forwards
+django/db/migrations/operations/models.py:AddConstraint
+django/db/migrations/operations/models.py:AlterTogetherOptionOperation.database_forwards
+django/db/migrations/operations/models.py:RemoveConstraint.deconstruct
+django/db/migrations/operations/models.py:RemoveConstraint.describe
+django/db/migrations/operations/models.py:RemoveConstraint
+django/db/migrations/operations/models.py:RemoveConstraint.state_forwards
+django/db/migrations/operations/models.py:RemoveConstraint.database_forwards
+django/db/migrations/operations/models.py:RemoveConstraint.__init__
+django/db/migrations/operations/models.py:RemoveConstraint.database_backwards
+django/db/migrations/operations/models.py:AddIndex.deconstruct
+django/db/migrations/operations/models.py:AddIndex
+django/db/migrations/operations/models.py:AddIndex.__init__
+django/db/migrations/operations/models.py:AddIndex.describe
+django/db/migrations/operations/models.py:AddIndex.database_backwards
+django/db/migrations/operations/models.py:AddIndex.database_forwards
+django/db/migrations/operations/models.py:AddIndex.state_forwards
+django/db/migrations/operations/models.py:RemoveIndex.__init__
+django/db/migrations/operations/models.py:RemoveIndex.deconstruct
+django/db/migrations/operations/models.py:RemoveIndex.describe
+django/db/migrations/operations/models.py:RemoveIndex.database_forwards
+django/db/migrations/operations/models.py:RemoveIndex
+django/db/migrations/operations/models.py:RemoveIndex.state_forwards
+django/db/migrations/operations/models.py:RemoveIndex.database_backwards
+django/db/transaction.py:Atomic.__init__
+django/db/transaction.py:on_commit
+django/db/transaction.py:Atomic
+django/db/transaction.py:atomic
+django/db/transaction.py:_non_atomic_requests
+django/db/transaction.py:non_atomic_requests
+django/db/transaction.py:Atomic.__enter__
+django/db/transaction.py:mark_for_rollback_on_error
+django/db/transaction.py:on_commit
+django/db/transaction.py:set_rollback
+django/core/management/commands/loaddata.py:Command.handle
+django/db/migrations/migration.py:Migration.apply
+django/contrib/contenttypes/fields.py:create_generic_related_manager
+django/db/models/query.py:QuerySet._create_object_from_params
+django/db/migrations/migration.py:Migration.apply
+django/db/migrations/migration.py:Migration.unapply
+django/db/migrations/migration.py:swappable_dependency
+django/db/migrations/migration.py:SwappableTuple.__new__
+django/db/migrations/migration.py:SwappableTuple
+django/db/backends/base/base.py:BaseDatabaseWrapper.schema_editor
+django/db/backends/base/base.py:BaseDatabaseWrapper.run_and_clear_commit_hooks
+django/db/backends/base/base.py:BaseDatabaseWrapper.copy
+django/db/backends/base/base.py:BaseDatabaseWrapper.on_commit
+django/db/backends/base/base.py:BaseDatabaseWrapper.execute_wrapper
+django/db/transaction.py:Atomic.__init__
+django/db/transaction.py:on_commit
+django/db/transaction.py:Atomic
+django/db/transaction.py:Atomic.__enter__
+django/core/handlers/base.py:BaseHandler.get_response
+django/core/handlers/base.py:BaseHandler.make_view_atomic
+django/db/transaction.py:mark_for_rollback_on_error
+django/db/transaction.py:on_commit
+django/db/backends/base/base.py:BaseDatabaseWrapper.__init__
+django/db/migrations/executor.py:MigrationExecutor.collect_sql
+##Searching for term "class RenameContentType"...
+### Search Result:
+Found class `django/contrib/contenttypes/management/__init__.py:RenameContentType`.
+Source: Match found for entity name `class RenameContentType`.
+```
+ 6 | class RenameContentType(migrations.RunPython):
+ 7 |     def __init__(self, app_label, old_model, new_model):
+ 8 |         self.app_label = app_label
+ 9 |         self.old_model = old_model
+10 |         self.new_model = new_model
+11 |         super().__init__(self.rename_forward, self.rename_backward)
+12 | 
+13 |     def _rename(self, apps, schema_editor, old_model, new_model):
+14 |         ContentType = apps.get_model('contenttypes', 'ContentType')
+15 |         db = schema_editor.connection.alias
+16 |         if not router.allow_migrate_model(db, ContentType):
+17 |             return
+18 | 
+19 |         try:
+20 |             content_type = ContentType.objects.db_manager(db).get_by_natural_key(self.app_label, old_model)
+21 |         except ContentType.DoesNotExist:
+22 |             pass
+23 |         else:
+24 |             content_type.model = new_model
+25 |             try:
+26 |                 with transaction.atomic(using=db):
+27 |                     content_type.save(update_fields={'model'})
+28 |             except IntegrityError:
+29 |                 # Gracefully fallback if a stale content type causes a
+30 |                 # conflict as remove_stale_contenttypes will take care of
+31 |                 # asking the user what should be done next.
+32 |                 content_type.model = old_model
+33 |             else:
+34 |                 # Clear the cache as the `get_by_natual_key()` call will cache
+35 |                 # the renamed ContentType instance by its old model name.
+36 |                 ContentType.objects.clear_cache()
+37 | 
+38 |     def rename_forward(self, apps, schema_editor):
+39 |         self._rename(apps, schema_editor, self.old_model, self.new_model)
+40 | 
+41 |     def rename_backward(self, apps, schema_editor):
+42 |         self._rename(apps, schema_editor, self.new_model, self.old_model)
+```
+
+
+
+##Searching for term "def _rename"...
+### Search Result:
+Found function `django/contrib/contenttypes/management/__init__.py:RenameContentType._rename`.
+Source: Match found for entity name `def _rename`.
+```
+13 | def _rename(self, apps, schema_editor, old_model, new_model):
+14 |         ContentType = apps.get_model('contenttypes', 'ContentType')
+15 |         db = schema_editor.connection.alias
+16 |         if not router.allow_migrate_model(db, ContentType):
+17 |             return
+18 | 
+19 |         try:
+20 |             content_type = ContentType.objects.db_manager(db).get_by_natural_key(self.app_label, old_model)
+21 |         except ContentType.DoesNotExist:
+22 |             pass
+23 |         else:
+24 |             content_type.model = new_model
+25 |             try:
+26 |                 with transaction.atomic(using=db):
+27 |                     content_type.save(update_fields={'model'})
+28 |             except IntegrityError:
+29 |                 # Gracefully fallback if a stale content type causes a
+30 |                 # conflict as remove_stale_contenttypes will take care of
+31 |                 # asking the user what should be done next.
+32 |                 content_type.model = old_model
+33 |             else:
+34 |                 # Clear the cache as the `get_by_natual_key()` call will cache
+35 |                 # the renamed ContentType instance by its old model name.
+36 |                 ContentType.objects.clear_cache()
+```
+
+
+
+##Searching for term "schema_editor.connection.alias"...
+### Search Result:
+Found function `django/db/backends/base/base.py:BaseDatabaseWrapper.schema_editor`.
+Source: Retrieved entity using keyword search (bm25).
+```
+610 | def schema_editor(self, *args, **kwargs):
+611 |         """
+612 |         Return a new instance of this backend's SchemaEditor.
+613 |         """
+614 |         if self.SchemaEditorClass is None:
+615 |             raise NotImplementedError(
+616 |                 'The SchemaEditorClass attribute of this database wrapper is still None')
+617 |         return self.SchemaEditorClass(self, *args, **kwargs)
+```
+
+Found function `django/dispatch/dispatcher.py:Signal.connect`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 49 | def connect(self, receiver, sender=None, weak=True, dispatch_uid=None):
+ 50 |         """
+ 51 |         Connect receiver to sender for signal.
+ 52 | 
+ 53 |         Arguments:
+ 54 | 
+ 55 |             receiver
+ 56 |                 A function or an instance method which is to receive signals.
+ 57 |                 Receivers must be hashable objects.
+ 58 | 
+ 59 |                 If weak is True, then receiver must be weak referenceable.
+ 60 | 
+ 61 |                 Receivers must be able to accept keyword arguments.
+ 62 | 
+ 63 |                 If a receiver is connected with a dispatch_uid argument, it
+ 64 |                 will not be added if another receiver was already connected
+ 65 |                 with that dispatch_uid.
+ 66 | 
+ 67 |             sender
+ 68 |                 The sender to which the receiver should respond. Must either be
+ 69 |                 a Python object, or None to receive events from any sender.
+ 70 | 
+ 71 |             weak
+ 72 |                 Whether to use weak references to the receiver. By default, the
+ 73 |                 module will attempt to use weak references to the receiver
+ 74 |                 objects. If this parameter is false, then strong references will
+ 75 |                 be used.
+ 76 | 
+ 77 |             dispatch_uid
+ 78 |                 An identifier used to uniquely identify a particular instance of
+ 79 |                 a receiver. This will usually be a string, though it may be
+ 80 |                 anything hashable.
+ 81 |         """
+ 82 |         from django.conf import settings
+ 83 | 
+ 84 |         # If DEBUG is on, check that we got a good receiver
+ 85 |         if settings.configured and settings.DEBUG:
+ 86 |             assert callable(receiver), "Signal receivers must be callable."
+ 87 | 
+ 88 |             # Check for **kwargs
+ 89 |             if not func_accepts_kwargs(receiver):
+ 90 |                 raise ValueError("Signal receivers must accept keyword arguments (**kwargs).")
+ 91 | 
+ 92 |         if dispatch_uid:
+ 93 |             lookup_key = (dispatch_uid, _make_id(sender))
+ 94 |         else:
+ 95 |             lookup_key = (_make_id(receiver), _make_id(sender))
+ 96 | 
+ 97 |         if weak:
+ 98 |             ref = weakref.ref
+ 99 |             receiver_object = receiver
+100 |             # Check for bound methods
+101 |             if hasattr(receiver, '__self__') and hasattr(receiver, '__func__'):
+102 |                 ref = weakref.WeakMethod
+103 |                 receiver_object = receiver.__self__
+104 |             receiver = ref(receiver)
+105 |             weakref.finalize(receiver_object, self._remove_receiver)
+106 | 
+107 |         with self.lock:
+108 |             self._clear_dead_receivers()
+109 |             if not any(r_key == lookup_key for r_key, _ in self.receivers):
+110 |                 self.receivers.append((lookup_key, receiver))
+111 |             self.sender_receivers_cache.clear()
+```
+
+Found function `django/utils/log.py:AdminEmailHandler.connection`.
+Source: Retrieved entity using keyword search (bm25).
+```
+127 | def connection(self):
+128 |         return get_connection(backend=self.email_backend, fail_silently=True)
+```
+
+Found function `django/db/migrations/operations/fields.py:AddField.database_forwards`.
+Source: Retrieved code content using keyword search (bm25).
+```
+103 | def database_forwards(self, app_label, schema_editor, from_state, to_state):
+104 |         to_model = to_state.apps.get_model(app_label, self.model_name)
+105 |         if self.allow_migrate_model(schema_editor.connection.alias, to_model):
+106 |             from_model = from_state.apps.get_model(app_label, self.model_name)
+107 |             field = to_model._meta.get_field(self.name)
+108 |             if not self.preserve_default:
+109 |                 field.default = self.field.default
+110 |             schema_editor.add_field(
+111 |                 from_model,
+112 |                 field,
+113 |             )
+114 |             if not self.preserve_default:
+115 |                 field.default = NOT_PROVIDED
+```
+
+Found function `django/db/migrations/operations/fields.py:AddField.database_backwards`.
+Source: Retrieved code content using keyword search (bm25).
+```
+117 | def database_backwards(self, app_label, schema_editor, from_state, to_state):
+118 |         from_model = from_state.apps.get_model(app_label, self.model_name)
+119 |         if self.allow_migrate_model(schema_editor.connection.alias, from_model):
+120 |             schema_editor.remove_field(from_model, from_model._meta.get_field(self.name))
+```
+
+Found function `django/db/migrations/operations/fields.py:AddField.describe`.
+Source: Retrieved code content using keyword search (bm25).
+```
+122 | def describe(self):
+123 |         return "Add field %s to %s" % (self.name, self.model_name)
+```
+
+Found function `django/db/migrations/operations/fields.py:RemoveField.database_backwards`.
+Source: Retrieved code content using keyword search (bm25).
+```
+180 | def database_backwards(self, app_label, schema_editor, from_state, to_state):
+181 |         to_model = to_state.apps.get_model(app_label, self.model_name)
+182 |         if self.allow_migrate_model(schema_editor.connection.alias, to_model):
+183 |             from_model = from_state.apps.get_model(app_label, self.model_name)
+184 |             schema_editor.add_field(from_model, to_model._meta.get_field(self.name))
+```
+
+Found function `django/db/migrations/operations/fields.py:RemoveField.reduce`.
+Source: Retrieved code content using keyword search (bm25).
+```
+189 | def reduce(self, operation, app_label=None):
+190 |         from .models import DeleteModel
+191 |         if isinstance(operation, DeleteModel) and operation.name_lower == self.model_name_lower:
+192 |             return [operation]
+193 |         return super().reduce(operation, app_label=app_label)
+```
+
+
+
+##Searching for term "transaction.atomic(using=db)", "schema_editor.connection.alias transaction.atomic(using=db)"...
+### Search Result:
+Found class `django/db/transaction.py:Atomic`.
+Source: Retrieved entity using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class Atomic(ContextDecorator):
+
+    def __init__(self, using, savepoint):
+...
+    def __enter__(self):
+...
+    def __exit__(self, exc_type, exc_value, traceback):
+
+```
+Hint: Search `django/db/transaction.py:Atomic` to get the full content if needed.
+
+Found function `django/db/transaction.py:atomic`.
+Source: Retrieved entity using keyword search (bm25).
+```
+285 | def atomic(using=None, savepoint=True):
+286 |     # Bare decorator: @atomic -- although the first argument is called
+287 |     # `using`, it's actually the function being decorated.
+288 |     if callable(using):
+289 |         return Atomic(DEFAULT_DB_ALIAS, savepoint)(using)
+290 |     # Decorator: @atomic(...) or context manager: with atomic(...): ...
+291 |     else:
+292 |         return Atomic(using, savepoint)
+```
+
+
+
+##Searching for term "transaction.atomic(using=db)"...
+### Search Result:
+Found function `django/db/transaction.py:on_commit`.
+Source: Retrieved code content using keyword search (bm25).
+```
+123 | def on_commit(func, using=None):
+124 |     """
+125 |     Register `func` to be called when the current transaction is committed.
+126 |     If the current transaction is rolled back, `func` will not be called.
+127 |     """
+128 |     get_connection(using).on_commit(func)
+```
+
+Found function `django/db/transaction.py:Atomic.__exit__`.
+Source: Retrieved entity using keyword search (bm25).
+```
+196 | def __exit__(self, exc_type, exc_value, traceback):
+197 |         connection = get_connection(self.using)
+198 | 
+199 |         if connection.savepoint_ids:
+200 |             sid = connection.savepoint_ids.pop()
+201 |         else:
+202 |             # Prematurely unset this flag to allow using commit or rollback.
+203 |             connection.in_atomic_block = False
+204 | 
+205 |         try:
+206 |             if connection.closed_in_transaction:
+207 |                 # The database will perform a rollback by itself.
+208 |                 # Wait until we exit the outermost block.
+209 |                 pass
+210 | 
+211 |             elif exc_type is None and not connection.needs_rollback:
+212 |                 if connection.in_atomic_block:
+213 |                     # Release savepoint if there is one
+214 |                     if sid is not None:
+215 |                         try:
+216 |                             connection.savepoint_commit(sid)
+217 |                         except DatabaseError:
+218 |                             try:
+219 |                                 connection.savepoint_rollback(sid)
+220 |                                 # The savepoint won't be reused. Release it to
+221 |                                 # minimize overhead for the database server.
+222 |                                 connection.savepoint_commit(sid)
+223 |                             except Error:
+224 |                                 # If rolling back to a savepoint fails, mark for
+225 |                                 # rollback at a higher level and avoid shadowing
+226 |                                 # the original exception.
+227 |                                 connection.needs_rollback = True
+228 |                             raise
+229 |                 else:
+230 |                     # Commit transaction
+231 |                     try:
+232 |                         connection.commit()
+233 |                     except DatabaseError:
+234 |                         try:
+235 |                             connection.rollback()
+236 |                         except Error:
+237 |                             # An error during rollback means that something
+238 |                             # went wrong with the connection. Drop it.
+239 |                             connection.close()
+240 |                         raise
+241 |             else:
+242 |                 # This flag will be set to True again if there isn't a savepoint
+243 |                 # allowing to perform the rollback at this level.
+244 |                 connection.needs_rollback = False
+245 |                 if connection.in_atomic_block:
+246 |                     # Roll back to savepoint if there is one, mark for rollback
+247 |                     # otherwise.
+248 |                     if sid is None:
+249 |                         connection.needs_rollback = True
+250 |                     else:
+251 |                         try:
+252 |                             connection.savepoint_rollback(sid)
+253 |                             # The savepoint won't be reused. Release it to
+254 |                             # minimize overhead for the database server.
+255 |                             connection.savepoint_commit(sid)
+256 |                         except Error:
+257 |                             # If rolling back to a savepoint fails, mark for
+258 |                             # rollback at a higher level and avoid shadowing
+259 |                             # the original exception.
+260 |                             connection.needs_rollback = True
+261 |                 else:
+262 |                     # Roll back transaction
+263 |                     try:
+264 |                         connection.rollback()
+265 |                     except Error:
+266 |                         # An error during rollback means that something
+267 |                         # went wrong with the connection. Drop it.
+268 |                         connection.close()
+269 | 
+270 |         finally:
+271 |             # Outermost block exit when autocommit was enabled.
+272 |             if not connection.in_atomic_block:
+273 |                 if connection.closed_in_transaction:
+274 |                     connection.connection = None
+275 |                 else:
+276 |                     connection.set_autocommit(True)
+277 |             # Outermost block exit when autocommit was disabled.
+278 |             elif not connection.savepoint_ids and not connection.commit_on_exit:
+279 |                 if connection.closed_in_transaction:
+280 |                     connection.connection = None
+281 |                 else:
+282 |                     connection.in_atomic_block = False
+```
+
+Found function `django/db/transaction.py:_non_atomic_requests`.
+Source: Retrieved code content using keyword search (bm25).
+```
+295 | def _non_atomic_requests(view, using):
+296 |     try:
+297 |         view._non_atomic_requests.add(using)
+298 |     except AttributeError:
+299 |         view._non_atomic_requests = {using}
+300 |     return view
+```
+
+Found function `django/db/transaction.py:non_atomic_requests`.
+Source: Retrieved code content using keyword search (bm25).
+```
+303 | def non_atomic_requests(using=None):
+304 |     if callable(using):
+305 |         return _non_atomic_requests(using, DEFAULT_DB_ALIAS)
+306 |     else:
+307 |         if using is None:
+308 |             using = DEFAULT_DB_ALIAS
+309 |         return lambda view: _non_atomic_requests(view, using)
+```
+
+
+
+##Searching for term "schema_editor.connection.alias transaction.atomic(using=db)"...
+### Search Result:
+Found function `django/db/transaction.py:Atomic.__enter__`.
+Source: Retrieved entity using keyword search (bm25).
+```
+168 | def __enter__(self):
+169 |         connection = get_connection(self.using)
+170 | 
+171 |         if not connection.in_atomic_block:
+172 |             # Reset state when entering an outermost atomic block.
+173 |             connection.commit_on_exit = True
+174 |             connection.needs_rollback = False
+175 |             if not connection.get_autocommit():
+176 |                 # Pretend we're already in an atomic block to bypass the code
+177 |                 # that disables autocommit to enter a transaction, and make a
+178 |                 # note to deal with this case in __exit__.
+179 |                 connection.in_atomic_block = True
+180 |                 connection.commit_on_exit = False
+181 | 
+182 |         if connection.in_atomic_block:
+183 |             # We're already in a transaction; create a savepoint, unless we
+184 |             # were told not to or we're already waiting for a rollback. The
+185 |             # second condition avoids creating useless savepoints and prevents
+186 |             # overwriting needs_rollback until the rollback is performed.
+187 |             if self.savepoint and not connection.needs_rollback:
+188 |                 sid = connection.savepoint()
+189 |                 connection.savepoint_ids.append(sid)
+190 |             else:
+191 |                 connection.savepoint_ids.append(None)
+192 |         else:
+193 |             connection.set_autocommit(False, force_begin_transaction_with_broken_autocommit=True)
+194 |             connection.in_atomic_block = True
+```
+
+Found function `django/db/migrations/migration.py:Migration.apply`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 90 | def apply(self, project_state, schema_editor, collect_sql=False):
+ 91 |         """
+ 92 |         Take a project_state representing all migrations prior to this one
+ 93 |         and a schema_editor for a live database and apply the migration
+ 94 |         in a forwards order.
+ 95 | 
+ 96 |         Return the resulting project state for efficient reuse by following
+ 97 |         Migrations.
+ 98 |         """
+ 99 |         for operation in self.operations:
+100 |             # If this operation cannot be represented as SQL, place a comment
+101 |             # there instead
+102 |             if collect_sql:
+103 |                 schema_editor.collected_sql.append("--")
+104 |                 if not operation.reduces_to_sql:
+105 |                     schema_editor.collected_sql.append(
+106 |                         "-- MIGRATION NOW PERFORMS OPERATION THAT CANNOT BE WRITTEN AS SQL:"
+107 |                     )
+108 |                 schema_editor.collected_sql.append("-- %s" % operation.describe())
+109 |                 schema_editor.collected_sql.append("--")
+110 |                 if not operation.reduces_to_sql:
+111 |                     continue
+112 |             # Save the state before the operation has run
+113 |             old_state = project_state.clone()
+114 |             operation.state_forwards(self.app_label, project_state)
+115 |             # Run the operation
+116 |             atomic_operation = operation.atomic or (self.atomic and operation.atomic is not False)
+117 |             if not schema_editor.atomic_migration and atomic_operation:
+118 |                 # Force a transaction on a non-transactional-DDL backend or an
+119 |                 # atomic operation inside a non-atomic migration.
+120 |                 with atomic(schema_editor.connection.alias):
+121 |                     operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+122 |             else:
+123 |                 # Normal behaviour
+124 |                 operation.database_forwards(self.app_label, schema_editor, old_state, project_state)
+125 |         return project_state
+```
+
+Found function `django/db/migrations/migration.py:Migration.unapply`.
+Source: Retrieved code content using keyword search (bm25).
+```
+127 | def unapply(self, project_state, schema_editor, collect_sql=False):
+128 |         """
+129 |         Take a project_state representing all migrations prior to this one
+130 |         and a schema_editor for a live database and apply the migration
+131 |         in a reverse order.
+132 | 
+133 |         The backwards migration process consists of two phases:
+134 | 
+135 |         1. The intermediate states from right before the first until right
+136 |            after the last operation inside this migration are preserved.
+137 |         2. The operations are applied in reverse order using the states
+138 |            recorded in step 1.
+139 |         """
+140 |         # Construct all the intermediate states we need for a reverse migration
+141 |         to_run = []
+142 |         new_state = project_state
+143 |         # Phase 1
+144 |         for operation in self.operations:
+145 |             # If it's irreversible, error out
+146 |             if not operation.reversible:
+147 |                 raise IrreversibleError("Operation %s in %s is not reversible" % (operation, self))
+148 |             # Preserve new state from previous run to not tamper the same state
+149 |             # over all operations
+150 |             new_state = new_state.clone()
+151 |             old_state = new_state.clone()
+152 |             operation.state_forwards(self.app_label, new_state)
+153 |             to_run.insert(0, (operation, old_state, new_state))
+154 | 
+155 |         # Phase 2
+156 |         for operation, to_state, from_state in to_run:
+157 |             if collect_sql:
+158 |                 schema_editor.collected_sql.append("--")
+159 |                 if not operation.reduces_to_sql:
+160 |                     schema_editor.collected_sql.append(
+161 |                         "-- MIGRATION NOW PERFORMS OPERATION THAT CANNOT BE WRITTEN AS SQL:"
+162 |                     )
+163 |                 schema_editor.collected_sql.append("-- %s" % operation.describe())
+164 |                 schema_editor.collected_sql.append("--")
+165 |                 if not operation.reduces_to_sql:
+166 |                     continue
+167 |             atomic_operation = operation.atomic or (self.atomic and operation.atomic is not False)
+168 |             if not schema_editor.atomic_migration and atomic_operation:
+169 |                 # Force a transaction on a non-transactional-DDL backend or an
+170 |                 # atomic operation inside a non-atomic migration.
+171 |                 with atomic(schema_editor.connection.alias):
+172 |                     operation.database_backwards(self.app_label, schema_editor, from_state, to_state)
+173 |             else:
+174 |                 # Normal behaviour
+175 |                 operation.database_backwards(self.app_label, schema_editor, from_state, to_state)
+176 |         return project_state
+```
+
+Found class `django/db/migrations/migration.py:SwappableTuple`.
+Source: Retrieved code content using keyword search (bm25).
+```
+179 | class SwappableTuple(tuple):
+180 |     """
+181 |     Subclass of tuple so Django can tell this was originally a swappable
+182 |     dependency when it reads the migration file.
+183 |     """
+184 | 
+185 |     def __new__(cls, value, setting):
+186 |         self = tuple.__new__(cls, value)
+187 |         self.setting = setting
+188 |         return self
+```
+
+Found function `django/db/migrations/migration.py:swappable_dependency`.
+Source: Retrieved code content using keyword search (bm25).
+```
+191 | def swappable_dependency(value):
+192 |     """Turn a setting value into a dependency."""
+193 |     return SwappableTuple((value.split(".", 1)[0], "__first__"), value)
+```
+
+2026-08-28 00:33:25 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['RenameModel', 'contenttypes', 'RenameContentType'], 'file_path_or_pattern': 'django/db/migrations/**/*.py'}))
+```
+2026-08-28 00:33:25 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:33:26 auto_search_main.py INFO OBSERVATION:
+##Searching for term "RenameModel"...
+### Search Result:
+Found class `django/db/migrations/operations/models.py:RenameModel`.
+Source: Match found for entity name `RenameModel`.
+Just show the structure of this class due to response length limitations:
+```
+class RenameModel(ModelOperation):
+
+    def __init__(self, old_name, new_name):
+...
+    @cached_property
+    def old_name_lower(self):
+...
+    @cached_property
+    def new_name_lower(self):
+...
+    def deconstruct(self):
+...
+    def state_forwards(self, app_label, state):
+...
+    def database_forwards(self, app_label, schema_editor, from_state, to_state):
+...
+    def database_backwards(self, app_label, schema_editor, from_state, to_state):
+...
+    def references_model(self, name, app_label=None):
+...
+    def describe(self):
+...
+    def reduce(self, operation, app_label=None):
+
+```
+Hint: Search `django/db/migrations/operations/models.py:RenameModel` to get the full content if needed.
+
+
+
+##Searching for term "contenttypes"...
+### Search Result:
+Found class `django/contrib/contenttypes/models.py:ContentType`.
+Source: Retrieved entity using keyword search (bm25).
+```
+133 | class ContentType(models.Model):
+134 |     app_label = models.CharField(max_length=100)
+135 |     model = models.CharField(_('python model class name'), max_length=100)
+136 |     objects = ContentTypeManager()
+137 | 
+138 |     class Meta:
+139 |         verbose_name = _('content type')
+140 |         verbose_name_plural = _('content types')
+141 |         db_table = 'django_content_type'
+142 |         unique_together = (('app_label', 'model'),)
+143 | 
+144 |     def __str__(self):
+145 |         return self.app_labeled_name
+146 | 
+147 |     @property
+148 |     def name(self):
+149 |         model = self.model_class()
+150 |         if not model:
+151 |             return self.model
+152 |         return str(model._meta.verbose_name)
+153 | 
+154 |     @property
+155 |     def app_labeled_name(self):
+156 |         model = self.model_class()
+157 |         if not model:
+158 |             return self.model
+159 |         return '%s | %s' % (model._meta.app_label, model._meta.verbose_name)
+160 | 
+161 |     def model_class(self):
+162 |         """Return the model class for this type of content."""
+163 |         try:
+164 |             return apps.get_model(self.app_label, self.model)
+165 |         except LookupError:
+166 |             return None
+167 | 
+168 |     def get_object_for_this_type(self, **kwargs):
+169 |         """
+170 |         Return an object of this type for the keyword arguments given.
+171 |         Basically, this is a proxy around this object_type's get_object() model
+172 |         method. The ObjectNotExist exception, if thrown, will not be caught,
+173 |         so code that calls this method should catch it.
+174 |         """
+175 |         return self.model_class()._base_manager.using(self._state.db).get(**kwargs)
+176 | 
+177 |     def get_all_objects_for_this_type(self, **kwargs):
+178 |         """
+179 |         Return all objects of this type for the keyword arguments given.
+180 |         """
+181 |         return self.model_class()._base_manager.using(self._state.db).filter(**kwargs)
+182 | 
+183 |     def natural_key(self):
+184 |         return (self.app_label, self.model)
+```
+
+
+
+##Searching for term "RenameContentType"...
+### Search Result:
+Found class `django/contrib/contenttypes/management/__init__.py:RenameContentType`.
+Source: Match found for entity name `RenameContentType`.
+```
+ 6 | class RenameContentType(migrations.RunPython):
+ 7 |     def __init__(self, app_label, old_model, new_model):
+ 8 |         self.app_label = app_label
+ 9 |         self.old_model = old_model
+10 |         self.new_model = new_model
+11 |         super().__init__(self.rename_forward, self.rename_backward)
+12 | 
+13 |     def _rename(self, apps, schema_editor, old_model, new_model):
+14 |         ContentType = apps.get_model('contenttypes', 'ContentType')
+15 |         db = schema_editor.connection.alias
+16 |         if not router.allow_migrate_model(db, ContentType):
+17 |             return
+18 | 
+19 |         try:
+20 |             content_type = ContentType.objects.db_manager(db).get_by_natural_key(self.app_label, old_model)
+21 |         except ContentType.DoesNotExist:
+22 |             pass
+23 |         else:
+24 |             content_type.model = new_model
+25 |             try:
+26 |                 with transaction.atomic(using=db):
+27 |                     content_type.save(update_fields={'model'})
+28 |             except IntegrityError:
+29 |                 # Gracefully fallback if a stale content type causes a
+30 |                 # conflict as remove_stale_contenttypes will take care of
+31 |                 # asking the user what should be done next.
+32 |                 content_type.model = old_model
+33 |             else:
+34 |                 # Clear the cache as the `get_by_natual_key()` call will cache
+35 |                 # the renamed ContentType instance by its old model name.
+36 |                 ContentType.objects.clear_cache()
+37 | 
+38 |     def rename_forward(self, apps, schema_editor):
+39 |         self._rename(apps, schema_editor, self.old_model, self.new_model)
+40 | 
+41 |     def rename_backward(self, apps, schema_editor):
+42 |         self._rename(apps, schema_editor, self.new_model, self.old_model)
+```
+
+2026-08-28 00:33:26 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:33:31 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:33:31 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:33:31 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 00:33:31 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['django/db/migrations/operations/models.py:RenameModel', 'django/db/migrations/operations/special.py:RunPython.database_forwards', 'django/db/migrations/operations/special.py:RunPython.database_backwards']}))
+```
+2026-08-28 00:33:31 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `django/db/migrations/operations/models.py:RenameModel`...
+### Search Result:
+Found class `django/db/migrations/operations/models.py:RenameModel`.
+Source: Exact match found for entity name `django/db/migrations/operations/models.py:RenameModel`.
+```
+277 | class RenameModel(ModelOperation):
+278 |     """Rename a model."""
+279 | 
+280 |     def __init__(self, old_name, new_name):
+281 |         self.old_name = old_name
+282 |         self.new_name = new_name
+283 |         super().__init__(old_name)
+284 | 
+285 |     @cached_property
+286 |     def old_name_lower(self):
+287 |         return self.old_name.lower()
+288 | 
+289 |     @cached_property
+290 |     def new_name_lower(self):
+291 |         return self.new_name.lower()
+292 | 
+293 |     def deconstruct(self):
+294 |         kwargs = {
+295 |             'old_name': self.old_name,
+296 |             'new_name': self.new_name,
+297 |         }
+298 |         return (
+299 |             self.__class__.__qualname__,
+300 |             [],
+301 |             kwargs
+302 |         )
+303 | 
+304 |     def state_forwards(self, app_label, state):
+305 |         # Add a new model.
+306 |         renamed_model = state.models[app_label, self.old_name_lower].clone()
+307 |         renamed_model.name = self.new_name
+308 |         state.models[app_label, self.new_name_lower] = renamed_model
+309 |         # Repoint all fields pointing to the old model to the new one.
+310 |         old_model_tuple = ModelTuple(app_label, self.old_name_lower)
+311 |         new_remote_model = '%s.%s' % (app_label, self.new_name)
+312 |         to_reload = []
+313 |         for (model_app_label, model_name), model_state in state.models.items():
+314 |             model_changed = False
+315 |             for index, (name, field) in enumerate(model_state.fields):
+316 |                 changed_field = None
+317 |                 remote_field = field.remote_field
+318 |                 if remote_field:
+319 |                     remote_model_tuple = ModelTuple.from_model(
+320 |                         remote_field.model, model_app_label, model_name
+321 |                     )
+322 |                     if remote_model_tuple == old_model_tuple:
+323 |                         changed_field = field.clone()
+324 |                         changed_field.remote_field.model = new_remote_model
+325 |                     through_model = getattr(remote_field, 'through', None)
+326 |                     if through_model:
+327 |                         through_model_tuple = ModelTuple.from_model(
+328 |                             through_model, model_app_label, model_name
+329 |                         )
+330 |                         if through_model_tuple == old_model_tuple:
+331 |                             if changed_field is None:
+332 |                                 changed_field = field.clone()
+333 |                             changed_field.remote_field.through = new_remote_model
+334 |                 if changed_field:
+335 |                     model_state.fields[index] = name, changed_field
+336 |                     model_changed = True
+337 |             if model_changed:
+338 |                 to_reload.append((model_app_label, model_name))
+339 |         # Reload models related to old model before removing the old model.
+340 |         state.reload_models(to_reload, delay=True)
+341 |         # Remove the old model.
+342 |         state.remove_model(app_label, self.old_name_lower)
+343 |         state.reload_model(app_label, self.new_name_lower, delay=True)
+344 | 
+345 |     def database_forwards(self, app_label, schema_editor, from_state, to_state):
+346 |         new_model = to_state.apps.get_model(app_label, self.new_name)
+347 |         if self.allow_migrate_model(schema_editor.connection.alias, new_model):
+348 |             old_model = from_state.apps.get_model(app_label, self.old_name)
+349 |             # Move the main table
+350 |             schema_editor.alter_db_table(
+351 |                 new_model,
+352 |                 old_model._meta.db_table,
+353 |                 new_model._meta.db_table,
+354 |             )
+355 |             # Alter the fields pointing to us
+356 |             for related_object in old_model._meta.related_objects:
+357 |                 if related_object.related_model == old_model:
+358 |                     model = new_model
+359 |                     related_key = (app_label, self.new_name_lower)
+360 |                 else:
+361 |                     model = related_object.related_model
+362 |                     related_key = (
+363 |                         related_object.related_model._meta.app_label,
+364 |                         related_object.related_model._meta.model_name,
+365 |                     )
+366 |                 to_field = to_state.apps.get_model(
+367 |                     *related_key
+368 |                 )._meta.get_field(related_object.field.name)
+369 |                 schema_editor.alter_field(
+370 |                     model,
+371 |                     related_object.field,
+372 |                     to_field,
+373 |                 )
+374 |             # Rename M2M fields whose name is based on this model's name.
+375 |             fields = zip(old_model._meta.local_many_to_many, new_model._meta.local_many_to_many)
+376 |             for (old_field, new_field) in fields:
+377 |                 # Skip self-referential fields as these are renamed above.
+378 |                 if new_field.model == new_field.related_model or not new_field.remote_field.through._meta.auto_created:
+379 |                     continue
+380 |                 # Rename the M2M table that's based on this model's name.
+381 |                 old_m2m_model = old_field.remote_field.through
+382 |                 new_m2m_model = new_field.remote_field.through
+383 |                 schema_editor.alter_db_table(
+384 |                     new_m2m_model,
+385 |                     old_m2m_model._meta.db_table,
+386 |                     new_m2m_model._meta.db_table,
+387 |                 )
+388 |                 # Rename the column in the M2M table that's based on this
+389 |                 # model's name.
+390 |                 schema_editor.alter_field(
+391 |                     new_m2m_model,
+392 |                     old_m2m_model._meta.get_field(old_model._meta.model_name),
+393 |                     new_m2m_model._meta.get_field(new_model._meta.model_name),
+394 |                 )
+395 | 
+396 |     def database_backwards(self, app_label, schema_editor, from_state, to_state):
+397 |         self.new_name_lower, self.old_name_lower = self.old_name_lower, self.new_name_lower
+398 |         self.new_name, self.old_name = self.old_name, self.new_name
+399 | 
+400 |         self.database_forwards(app_label, schema_editor, from_state, to_state)
+401 | 
+402 |         self.new_name_lower, self.old_name_lower = self.old_name_lower, self.new_name_lower
+403 |         self.new_name, self.old_name = self.old_name, self.new_name
+404 | 
+405 |     def references_model(self, name, app_label=None):
+406 |         return (
+407 |             name.lower() == self.old_name_lower or
+408 |             name.lower() == self.new_name_lower
+409 |         )
+410 | 
+411 |     def describe(self):
+412 |         return "Rename model %s to %s" % (self.old_name, self.new_name)
+413 | 
+414 |     def reduce(self, operation, app_label=None):
+415 |         if (isinstance(operation, RenameModel) and
+416 |                 self.new_name_lower == operation.old_name_lower):
+417 |             return [
+418 |                 RenameModel(
+419 |                     self.old_name,
+420 |                     operation.new_name,
+421 |                 ),
+422 |             ]
+423 |         # Skip `ModelOperation.reduce` as we want to run `references_model`
+424 |         # against self.new_name.
+425 |         return (
+426 |             super(ModelOperation, self).reduce(operation, app_label=app_label) or
+427 |             not operation.references_model(self.new_name, app_label)
+428 |         )
+```
+
+
+##Searching for entity `django/db/migrations/operations/special.py:RunPython.database_forwards`...
+### Search Result:
+Found function `django/db/migrations/operations/special.py:RunPython.database_forwards`.
+Source: Exact match found for entity name `django/db/migrations/operations/special.py:RunPython.database_forwards`.
+```
+181 | def database_forwards(self, app_label, schema_editor, from_state, to_state):
+182 |         # RunPython has access to all models. Ensure that all models are
+183 |         # reloaded in case any are delayed.
+184 |         from_state.clear_delayed_apps_cache()
+185 |         if router.allow_migrate(schema_editor.connection.alias, app_label, **self.hints):
+186 |             # We now execute the Python code in a context that contains a 'models'
+187 |             # object, representing the versioned models as an app registry.
+188 |             # We could try to override the global cache, but then people will still
+189 |             # use direct imports, so we go with a documentation approach instead.
+190 |             self.code(from_state.apps, schema_editor)
+```
+
+
+##Searching for entity `django/db/migrations/operations/special.py:RunPython.database_backwards`...
+### Search Result:
+Found function `django/db/migrations/operations/special.py:RunPython.database_backwards`.
+Source: Exact match found for entity name `django/db/migrations/operations/special.py:RunPython.database_backwards`.
+```
+192 | def database_backwards(self, app_label, schema_editor, from_state, to_state):
+193 |         if self.reverse_code is None:
+194 |             raise NotImplementedError("You cannot reverse this operation")
+195 |         if router.allow_migrate(schema_editor.connection.alias, app_label, **self.hints):
+196 |             self.reverse_code(from_state.apps, schema_editor)
+```
+
+2026-08-28 00:33:31 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['django/contrib/contenttypes/management/__init__.py:RenameContentType', 'django/contrib/contenttypes/models.py:ContentType', 'django/db/models/base.py:Model.save']}))
+```
+2026-08-28 00:33:31 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `django/contrib/contenttypes/management/__init__.py:RenameContentType`...
+### Search Result:
+Found class `django/contrib/contenttypes/management/__init__.py:RenameContentType`.
+Source: Exact match found for entity name `django/contrib/contenttypes/management/__init__.py:RenameContentType`.
+```
+ 6 | class RenameContentType(migrations.RunPython):
+ 7 |     def __init__(self, app_label, old_model, new_model):
+ 8 |         self.app_label = app_label
+ 9 |         self.old_model = old_model
+10 |         self.new_model = new_model
+11 |         super().__init__(self.rename_forward, self.rename_backward)
+12 | 
+13 |     def _rename(self, apps, schema_editor, old_model, new_model):
+14 |         ContentType = apps.get_model('contenttypes', 'ContentType')
+15 |         db = schema_editor.connection.alias
+16 |         if not router.allow_migrate_model(db, ContentType):
+17 |             return
+18 | 
+19 |         try:
+20 |             content_type = ContentType.objects.db_manager(db).get_by_natural_key(self.app_label, old_model)
+21 |         except ContentType.DoesNotExist:
+22 |             pass
+23 |         else:
+24 |             content_type.model = new_model
+25 |             try:
+26 |                 with transaction.atomic(using=db):
+27 |                     content_type.save(update_fields={'model'})
+28 |             except IntegrityError:
+29 |                 # Gracefully fallback if a stale content type causes a
+30 |                 # conflict as remove_stale_contenttypes will take care of
+31 |                 # asking the user what should be done next.
+32 |                 content_type.model = old_model
+33 |             else:
+34 |                 # Clear the cache as the `get_by_natual_key()` call will cache
+35 |                 # the renamed ContentType instance by its old model name.
+36 |                 ContentType.objects.clear_cache()
+37 | 
+38 |     def rename_forward(self, apps, schema_editor):
+39 |         self._rename(apps, schema_editor, self.old_model, self.new_model)
+40 | 
+41 |     def rename_backward(self, apps, schema_editor):
+42 |         self._rename(apps, schema_editor, self.new_model, self.old_model)
+```
+
+
+##Searching for entity `django/contrib/contenttypes/models.py:ContentType`...
+### Search Result:
+Found class `django/contrib/contenttypes/models.py:ContentType`.
+Source: Exact match found for entity name `django/contrib/contenttypes/models.py:ContentType`.
+```
+133 | class ContentType(models.Model):
+134 |     app_label = models.CharField(max_length=100)
+135 |     model = models.CharField(_('python model class name'), max_length=100)
+136 |     objects = ContentTypeManager()
+137 | 
+138 |     class Meta:
+139 |         verbose_name = _('content type')
+140 |         verbose_name_plural = _('content types')
+141 |         db_table = 'django_content_type'
+142 |         unique_together = (('app_label', 'model'),)
+143 | 
+144 |     def __str__(self):
+145 |         return self.app_labeled_name
+146 | 
+147 |     @property
+148 |     def name(self):
+149 |         model = self.model_class()
+150 |         if not model:
+151 |             return self.model
+152 |         return str(model._meta.verbose_name)
+153 | 
+154 |     @property
+155 |     def app_labeled_name(self):
+156 |         model = self.model_class()
+157 |         if not model:
+158 |             return self.model
+159 |         return '%s | %s' % (model._meta.app_label, model._meta.verbose_name)
+160 | 
+161 |     def model_class(self):
+162 |         """Return the model class for this type of content."""
+163 |         try:
+164 |             return apps.get_model(self.app_label, self.model)
+165 |         except LookupError:
+166 |             return None
+167 | 
+168 |     def get_object_for_this_type(self, **kwargs):
+169 |         """
+170 |         Return an object of this type for the keyword arguments given.
+171 |         Basically, this is a proxy around this object_type's get_object() model
+172 |         method. The ObjectNotExist exception, if thrown, will not be caught,
+173 |         so code that calls this method should catch it.
+174 |         """
+175 |         return self.model_class()._base_manager.using(self._state.db).get(**kwargs)
+176 | 
+177 |     def get_all_objects_for_this_type(self, **kwargs):
+178 |         """
+179 |         Return all objects of this type for the keyword arguments given.
+180 |         """
+181 |         return self.model_class()._base_manager.using(self._state.db).filter(**kwargs)
+182 | 
+183 |     def natural_key(self):
+184 |         return (self.app_label, self.model)
+```
+
+
+##Searching for entity `django/db/models/base.py:Model.save`...
+### Search Result:
+Found function `django/db/models/base.py:Model.save`.
+Source: Exact match found for entity name `django/db/models/base.py:Model.save`.
+```
+663 | def save(self, force_insert=False, force_update=False, using=None,
+664 |              update_fields=None):
+665 |         """
+666 |         Save the current instance. Override this in a subclass if you want to
+667 |         control the saving process.
+668 | 
+669 |         The 'force_insert' and 'force_update' parameters can be used to insist
+670 |         that the "save" must be an SQL insert or update (or equivalent for
+671 |         non-SQL backends), respectively. Normally, they should not be set.
+672 |         """
+673 |         # Ensure that a model instance without a PK hasn't been assigned to
+674 |         # a ForeignKey or OneToOneField on this model. If the field is
+675 |         # nullable, allowing the save() would result in silent data loss.
+676 |         for field in self._meta.concrete_fields:
+677 |             # If the related field isn't cached, then an instance hasn't
+678 |             # been assigned and there's no need to worry about this check.
+679 |             if field.is_relation and field.is_cached(self):
+680 |                 obj = getattr(self, field.name, None)
+681 |                 if not obj:
+682 |                     continue
+683 |                 # A pk may have been assigned manually to a model instance not
+684 |                 # saved to the database (or auto-generated in a case like
+685 |                 # UUIDField), but we allow the save to proceed and rely on the
+686 |                 # database to raise an IntegrityError if applicable. If
+687 |                 # constraints aren't supported by the database, there's the
+688 |                 # unavoidable risk of data corruption.
+689 |                 if obj.pk is None:
+690 |                     # Remove the object from a related instance cache.
+691 |                     if not field.remote_field.multiple:
+692 |                         field.remote_field.delete_cached_value(obj)
+693 |                     raise ValueError(
+694 |                         "save() prohibited to prevent data loss due to "
+695 |                         "unsaved related object '%s'." % field.name
+696 |                     )
+697 |                 elif getattr(self, field.attname) is None:
+698 |                     # Use pk from related object if it has been saved after
+699 |                     # an assignment.
+700 |                     setattr(self, field.attname, obj.pk)
+701 |                 # If the relationship's pk/to_field was changed, clear the
+702 |                 # cached relationship.
+703 |                 if getattr(obj, field.target_field.attname) != getattr(self, field.attname):
+704 |                     field.delete_cached_value(self)
+705 | 
+706 |         using = using or router.db_for_write(self.__class__, instance=self)
+707 |         if force_insert and (force_update or update_fields):
+708 |             raise ValueError("Cannot force both insert and updating in model saving.")
+709 | 
+710 |         deferred_fields = self.get_deferred_fields()
+711 |         if update_fields is not None:
+712 |             # If update_fields is empty, skip the save. We do also check for
+713 |             # no-op saves later on for inheritance cases. This bailout is
+714 |             # still needed for skipping signal sending.
+715 |             if not update_fields:
+716 |                 return
+717 | 
+718 |             update_fields = frozenset(update_fields)
+719 |             field_names = set()
+720 | 
+721 |             for field in self._meta.fields:
+722 |                 if not field.primary_key:
+723 |                     field_names.add(field.name)
+724 | 
+725 |                     if field.name != field.attname:
+726 |                         field_names.add(field.attname)
+727 | 
+728 |             non_model_fields = update_fields.difference(field_names)
+729 | 
+730 |             if non_model_fields:
+731 |                 raise ValueError("The following fields do not exist in this "
+732 |                                  "model or are m2m fields: %s"
+733 |                                  % ', '.join(non_model_fields))
+734 | 
+735 |         # If saving to the same database, and this model is deferred, then
+736 |         # automatically do an "update_fields" save on the loaded fields.
+737 |         elif not force_insert and deferred_fields and using == self._state.db:
+738 |             field_names = set()
+739 |             for field in self._meta.concrete_fields:
+740 |                 if not field.primary_key and not hasattr(field, 'through'):
+741 |                     field_names.add(field.attname)
+742 |             loaded_fields = field_names.difference(deferred_fields)
+743 |             if loaded_fields:
+744 |                 update_fields = frozenset(loaded_fields)
+745 | 
+746 |         self.save_base(using=using, force_insert=force_insert,
+747 |                        force_update=force_update, update_fields=update_fields)
+```
+
+2026-08-28 00:33:31 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:33:35 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:33:35 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:33:35 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 00:33:35 auto_search_main.py INFO ===============
+2026-08-28 00:33:35 auto_search_main.py INFO Final response generated content_length=328
+2026-08-28 00:33:35 auto_search_main.py INFO ==== localizing django__django-11066 succeed, process multiple loc outputs ====
+2026-08-28 00:33:36 cost_analysis.py INFO input_tokens=55131, output_tokens=526, cost=0.14
+2026-08-28 00:33:36 auto_search_main.py INFO Total time: 5.1365 min

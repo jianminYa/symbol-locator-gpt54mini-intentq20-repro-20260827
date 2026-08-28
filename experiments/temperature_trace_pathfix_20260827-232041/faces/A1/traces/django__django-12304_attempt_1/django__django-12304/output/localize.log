@@ -1,0 +1,2212 @@
+2026-08-28 00:33:54 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 00:33:54 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 00:33:54 auto_search_main.py INFO ============================================================
+2026-08-28 00:33:54 auto_search_main.py INFO ==== rank 0 setup localize django__django-12304 ====
+2026-08-28 00:33:54 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/207e0d0a-a222-4151-bd88-6037cebd0ba5/django_django and checkout commit HEAD
+2026-08-28 00:33:54 git_repo_manager.py INFO Directory 'playground/207e0d0a-a222-4151-bd88-6037cebd0ba5/django_django' was created.
+2026-08-28 00:37:04 repo_ops.py INFO [0] Processed django__django-12304
+2026-08-28 00:37:04 auto_search_main.py INFO ============================================================
+2026-08-28 00:37:04 auto_search_main.py INFO ==== rank 0 begin localizing django__django-12304 ====
+2026-08-28 00:37:04 auto_search_main.py INFO ============================================================
+2026-08-28 00:37:04 auto_search_main.py INFO ==== django__django-12304 Count down: attempt 1 ====
+2026-08-28 00:37:04 auto_search_main.py INFO ==== django__django-12304 start auto search ====
+2026-08-28 00:37:04 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:37:09 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:37:09 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:37:09 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 00:37:09 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['do_not_call_in_templates', 'Choices', 'enum', 'callables always call'], 'file_path_or_pattern': '**/*.py'}))
+```
+2026-08-28 00:37:11 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:37:13 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:37:13 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/207e0d0a-a222-4151-bd88-6037cebd0ba5/django_django and checkout commit HEAD
+2026-08-28 00:37:17 epic_split.py WARNING Skipping code block LANG_INFO._ in django/conf/locale/__init__.py as it has 4022 tokens which is more than chunk size 500. Content: {
+    'af': {
+        'bidi': False,
+        'code': 'af',
+        'name': 'Afrikaans',
+        'nam...
+2026-08-28 00:38:15 epic_split.py WARNING Parsing file django/db/backends/base/validation.py took 1.04 seconds.
+2026-08-28 00:38:26 epic_split.py WARNING Parsing file django/db/models/fields/related.py took 1.06 seconds.
+2026-08-28 00:38:50 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:38:51 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:38:53 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:38:54 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:38:55 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:38:56 auto_search_main.py INFO OBSERVATION:
+django/contrib/contenttypes/fields.py:create_generic_related_manager
+django/db/models/fields/related_descriptors.py:create_reverse_many_to_one_manager
+django/template/base.py:Variable._resolve_lookup
+django/db/models/fields/related_descriptors.py:create_forward_many_to_many_manager
+django/contrib/staticfiles/finders.py:FileSystemFinder.check
+django/contrib/staticfiles/finders.py:FileSystemFinder.list
+django/contrib/staticfiles/finders.py:FileSystemFinder.find
+django/contrib/staticfiles/finders.py:FileSystemFinder.find_location
+django/contrib/staticfiles/finders.py:BaseFinder.find
+django/contrib/staticfiles/finders.py:BaseFinder.check
+django/contrib/staticfiles/finders.py:BaseFinder.list
+django/contrib/staticfiles/finders.py:BaseFinder
+django/db/models/enums.py:ChoicesMeta.labels
+django/db/models/enums.py:ChoicesMeta.values
+django/db/models/enums.py:ChoicesMeta.names
+django/db/models/enums.py:ChoicesMeta.__contains__
+django/db/models/enums.py:ChoicesMeta.choices
+django/db/models/enums.py:TextChoices._generate_next_value_
+django/db/models/enums.py:Choices
+django/db/models/enums.py:IntegerChoices
+django/db/models/enums.py:TextChoices
+django/db/models/enums.py:Choices.__str__
+django/db/migrations/serializer.py:Serializer.register
+django/db/migrations/serializer.py:Serializer.unregister
+django/db/migrations/serializer.py:Serializer
+django/utils/jslex.py:JsLexer
+django/template/base.py:VariableDoesNotExist
+django/template/base.py:TokenType
+django/template/base.py:VariableDoesNotExist.__str__
+django/template/base.py:imports:9
+django/template/base.py:VariableDoesNotExist.__init__
+django/contrib/sites/requests.py:RequestSite.save
+django/contrib/sites/requests.py:RequestSite
+django/contrib/sites/requests.py:RequestSite.__str__
+django/contrib/sites/requests.py:RequestSite.__init__
+django/contrib/sites/requests.py:RequestSite.delete
+django/contrib/admin/options.py:ModelAdmin.get_action
+django/utils/functional.py:Promise
+django/utils/functional.py:classproperty.getter
+django/utils/functional.py:classproperty.__get__
+django/utils/functional.py:classproperty.__init__
+django/utils/functional.py:classproperty
+django/utils/functional.py:lazy
+django/db/transaction.py:non_atomic_requests
+django/db/transaction.py:atomic
+django/db/transaction.py:_non_atomic_requests
+django/core/serializers/base.py:Serializer.end_object
+django/core/serializers/base.py:Serializer.handle_field
+django/core/serializers/base.py:Serializer.handle_m2m_field
+django/core/serializers/base.py:Serializer.handle_fk_field
+django/core/serializers/base.py:Serializer.start_object
+django/core/serializers/base.py:Serializer.getvalue
+django/core/serializers/base.py:Serializer.end_serialization
+django/core/serializers/base.py:Serializer.start_serialization
+django/shortcuts.py:resolve_url
+django/core/management/__init__.py:get_commands
+django/utils/safestring.py:impl
+django/utils/safestring.py:_safety_decorator
+django/utils/safestring.py:mark_safe
+django/views/decorators/debug.py:sensitive_post_parameters
+django/contrib/admin/options.py:ModelAdmin._filter_actions_by_permissions
+django/db/models/enums.py:ChoicesMeta.labels
+django/db/models/enums.py:ChoicesMeta.values
+django/db/models/enums.py:ChoicesMeta.names
+django/db/models/enums.py:ChoicesMeta.__contains__
+django/db/models/enums.py:ChoicesMeta.choices
+django/template/base.py:Variable._resolve_lookup
+django/db/models/enums.py:TextChoices._generate_next_value_
+django/db/models/enums.py:Choices
+django/db/models/enums.py:IntegerChoices
+django/db/models/enums.py:TextChoices
+django/db/models/enums.py:Choices.__str__
+django/contrib/admin/options.py:ModelAdmin.get_action
+django/utils/functional.py:Promise
+django/utils/functional.py:classproperty.getter
+django/utils/functional.py:classproperty.__get__
+django/utils/functional.py:classproperty.__init__
+django/utils/functional.py:classproperty
+django/utils/functional.py:lazy
+django/db/transaction.py:non_atomic_requests
+django/db/transaction.py:atomic
+django/db/transaction.py:_non_atomic_requests
+django/db/migrations/serializer.py:Serializer.register
+django/db/migrations/serializer.py:Serializer.unregister
+django/db/migrations/serializer.py:Serializer
+django/core/serializers/base.py:Serializer.end_object
+django/core/serializers/base.py:Serializer.handle_field
+django/core/serializers/base.py:Serializer.handle_m2m_field
+django/core/serializers/base.py:Serializer.handle_fk_field
+django/core/serializers/base.py:Serializer.start_object
+django/core/serializers/base.py:Serializer.getvalue
+django/core/serializers/base.py:Serializer.end_serialization
+django/core/serializers/base.py:Serializer.start_serialization
+##Searching for term "do_not_call_in_templates"...
+### Search Result:
+Found function `django/contrib/contenttypes/fields.py:create_generic_related_manager`.
+Source: Retrieved code content using keyword search (bm25).
+```
+507 | def create_generic_related_manager(superclass, rel):
+508 |     """
+509 |     Factory function to create a manager that subclasses another manager
+510 |     (generally the default manager of a given model) and adds behaviors
+511 |     specific to generic relations.
+512 |     """
+513 | 
+514 |     class GenericRelatedObjectManager(superclass):
+515 |         def __init__(self, instance=None):
+516 |             super().__init__()
+517 | 
+518 |             self.instance = instance
+519 | 
+520 |             self.model = rel.model
+521 |             self.get_content_type = functools.partial(
+522 |                 ContentType.objects.db_manager(instance._state.db).get_for_model,
+523 |                 for_concrete_model=rel.field.for_concrete_model,
+524 |             )
+525 |             self.content_type = self.get_content_type(instance)
+526 |             self.content_type_field_name = rel.field.content_type_field_name
+527 |             self.object_id_field_name = rel.field.object_id_field_name
+528 |             self.prefetch_cache_name = rel.field.attname
+529 |             self.pk_val = instance.pk
+530 | 
+531 |             self.core_filters = {
+532 |                 '%s__pk' % self.content_type_field_name: self.content_type.id,
+533 |                 self.object_id_field_name: self.pk_val,
+534 |             }
+535 | 
+536 |         def __call__(self, *, manager):
+537 |             manager = getattr(self.model, manager)
+538 |             manager_class = create_generic_related_manager(manager.__class__, rel)
+539 |             return manager_class(instance=self.instance)
+540 |         do_not_call_in_templates = True
+541 | 
+542 |         def __str__(self):
+543 |             return repr(self)
+544 | 
+545 |         def _apply_rel_filters(self, queryset):
+546 |             """
+547 |             Filter the queryset for the instance this manager is bound to.
+548 |             """
+549 |             db = self._db or router.db_for_read(self.model, instance=self.instance)
+550 |             return queryset.using(db).filter(**self.core_filters)
+551 | 
+552 |         def _remove_prefetched_objects(self):
+553 |             try:
+554 |                 self.instance._prefetched_objects_cache.pop(self.prefetch_cache_name)
+555 |             except (AttributeError, KeyError):
+556 |                 pass  # nothing to clear from cache
+557 | 
+558 |         def get_queryset(self):
+559 |             try:
+560 |                 return self.instance._prefetched_objects_cache[self.prefetch_cache_name]
+561 |             except (AttributeError, KeyError):
+562 |                 queryset = super().get_queryset()
+563 |                 return self._apply_rel_filters(queryset)
+564 | 
+565 |         def get_prefetch_queryset(self, instances, queryset=None):
+566 |             if queryset is None:
+567 |                 queryset = super().get_queryset()
+568 | 
+569 |             queryset._add_hints(instance=instances[0])
+570 |             queryset = queryset.using(queryset._db or self._db)
+571 |             # Group instances by content types.
+572 |             content_type_queries = (
+573 |                 models.Q(**{
+574 |                     '%s__pk' % self.content_type_field_name: content_type_id,
+575 |                     '%s__in' % self.object_id_field_name: {obj.pk for obj in objs}
+576 |                 })
+577 |                 for content_type_id, objs in itertools.groupby(
+578 |                     sorted(instances, key=lambda obj: self.get_content_type(obj).pk),
+579 |                     lambda obj: self.get_content_type(obj).pk,
+580 |                 )
+581 |             )
+582 |             query = functools.reduce(operator.or_, content_type_queries)
+583 |             # We (possibly) need to convert object IDs to the type of the
+584 |             # instances' PK in order to match up instances:
+585 |             object_id_converter = instances[0]._meta.pk.to_python
+586 |             return (
+587 |                 queryset.filter(query),
+588 |                 lambda relobj: (
+589 |                     object_id_converter(getattr(relobj, self.object_id_field_name)),
+590 |                     relobj.content_type_id
+591 |                 ),
+592 |                 lambda obj: (obj.pk, self.get_content_type(obj).pk),
+593 |                 False,
+594 |                 self.prefetch_cache_name,
+595 |                 False,
+596 |             )
+597 | 
+598 |         def add(self, *objs, bulk=True):
+599 |             self._remove_prefetched_objects()
+600 |             db = router.db_for_write(self.model, instance=self.instance)
+601 | 
+602 |             def check_and_update_obj(obj):
+603 |                 if not isinstance(obj, self.model):
+604 |                     raise TypeError("'%s' instance expected, got %r" % (
+605 |                         self.model._meta.object_name, obj
+606 |                     ))
+607 |                 setattr(obj, self.content_type_field_name, self.content_type)
+608 |                 setattr(obj, self.object_id_field_name, self.pk_val)
+609 | 
+610 |             if bulk:
+611 |                 pks = []
+612 |                 for obj in objs:
+613 |                     if obj._state.adding or obj._state.db != db:
+614 |                         raise ValueError(
+615 |                             "%r instance isn't saved. Use bulk=False or save "
+616 |                             "the object first." % obj
+617 |                         )
+618 |                     check_and_update_obj(obj)
+619 |                     pks.append(obj.pk)
+620 | 
+621 |                 self.model._base_manager.using(db).filter(pk__in=pks).update(**{
+622 |                     self.content_type_field_name: self.content_type,
+623 |                     self.object_id_field_name: self.pk_val,
+624 |                 })
+625 |             else:
+626 |                 with transaction.atomic(using=db, savepoint=False):
+627 |                     for obj in objs:
+628 |                         check_and_update_obj(obj)
+629 |                         obj.save()
+630 |         add.alters_data = True
+631 | 
+632 |         def remove(self, *objs, bulk=True):
+633 |             if not objs:
+634 |                 return
+635 |             self._clear(self.filter(pk__in=[o.pk for o in objs]), bulk)
+636 |         remove.alters_data = True
+637 | 
+638 |         def clear(self, *, bulk=True):
+639 |             self._clear(self, bulk)
+640 |         clear.alters_data = True
+641 | 
+642 |         def _clear(self, queryset, bulk):
+643 |             self._remove_prefetched_objects()
+644 |             db = router.db_for_write(self.model, instance=self.instance)
+645 |             queryset = queryset.using(db)
+646 |             if bulk:
+647 |                 # `QuerySet.delete()` creates its own atomic block which
+648 |                 # contains the `pre_delete` and `post_delete` signal handlers.
+649 |                 queryset.delete()
+650 |             else:
+651 |                 with transaction.atomic(using=db, savepoint=False):
+652 |                     for obj in queryset:
+653 |                         obj.delete()
+654 |         _clear.alters_data = True
+655 | 
+656 |         def set(self, objs, *, bulk=True, clear=False):
+657 |             # Force evaluation of `objs` in case it's a queryset whose value
+658 |             # could be affected by `manager.clear()`. Refs #19816.
+659 |             objs = tuple(objs)
+660 | 
+661 |             db = router.db_for_write(self.model, instance=self.instance)
+662 |             with transaction.atomic(using=db, savepoint=False):
+663 |                 if clear:
+664 |                     self.clear()
+665 |                     self.add(*objs, bulk=bulk)
+666 |                 else:
+667 |                     old_objs = set(self.using(db).all())
+668 |                     new_objs = []
+669 |                     for obj in objs:
+670 |                         if obj in old_objs:
+671 |                             old_objs.remove(obj)
+672 |                         else:
+673 |                             new_objs.append(obj)
+674 | 
+675 |                     self.remove(*old_objs)
+676 |                     self.add(*new_objs, bulk=bulk)
+677 |         set.alters_data = True
+678 | 
+679 |         def create(self, **kwargs):
+680 |             self._remove_prefetched_objects()
+681 |             kwargs[self.content_type_field_name] = self.content_type
+682 |             kwargs[self.object_id_field_name] = self.pk_val
+683 |             db = router.db_for_write(self.model, instance=self.instance)
+684 |             return super().using(db).create(**kwargs)
+685 |         create.alters_data = True
+686 | 
+687 |         def get_or_create(self, **kwargs):
+688 |             kwargs[self.content_type_field_name] = self.content_type
+689 |             kwargs[self.object_id_field_name] = self.pk_val
+690 |             db = router.db_for_write(self.model, instance=self.instance)
+691 |             return super().using(db).get_or_create(**kwargs)
+692 |         get_or_create.alters_data = True
+693 | 
+694 |         def update_or_create(self, **kwargs):
+695 |             kwargs[self.content_type_field_name] = self.content_type
+696 |             kwargs[self.object_id_field_name] = self.pk_val
+697 |             db = router.db_for_write(self.model, instance=self.instance)
+698 |             return super().using(db).update_or_create(**kwargs)
+699 |         update_or_create.alters_data = True
+700 | 
+701 |     return GenericRelatedObjectManager
+```
+
+Found function `django/db/models/fields/related_descriptors.py:create_reverse_many_to_one_manager`.
+Source: Retrieved code content using keyword search (bm25).
+```
+551 | def create_reverse_many_to_one_manager(superclass, rel):
+552 |     """
+553 |     Create a manager for the reverse side of a many-to-one relation.
+554 | 
+555 |     This manager subclasses another manager, generally the default manager of
+556 |     the related model, and adds behaviors specific to many-to-one relations.
+557 |     """
+558 | 
+559 |     class RelatedManager(superclass):
+560 |         def __init__(self, instance):
+561 |             super().__init__()
+562 | 
+563 |             self.instance = instance
+564 |             self.model = rel.related_model
+565 |             self.field = rel.field
+566 | 
+567 |             self.core_filters = {self.field.name: instance}
+568 | 
+569 |         def __call__(self, *, manager):
+570 |             manager = getattr(self.model, manager)
+571 |             manager_class = create_reverse_many_to_one_manager(manager.__class__, rel)
+572 |             return manager_class(self.instance)
+573 |         do_not_call_in_templates = True
+574 | 
+575 |         def _apply_rel_filters(self, queryset):
+576 |             """
+577 |             Filter the queryset for the instance this manager is bound to.
+578 |             """
+579 |             db = self._db or router.db_for_read(self.model, instance=self.instance)
+580 |             empty_strings_as_null = connections[db].features.interprets_empty_strings_as_nulls
+581 |             queryset._add_hints(instance=self.instance)
+582 |             if self._db:
+583 |                 queryset = queryset.using(self._db)
+584 |             queryset = queryset.filter(**self.core_filters)
+585 |             for field in self.field.foreign_related_fields:
+586 |                 val = getattr(self.instance, field.attname)
+587 |                 if val is None or (val == '' and empty_strings_as_null):
+588 |                     return queryset.none()
+589 |             if self.field.many_to_one:
+590 |                 # Guard against field-like objects such as GenericRelation
+591 |                 # that abuse create_reverse_many_to_one_manager() with reverse
+592 |                 # one-to-many relationships instead and break known related
+593 |                 # objects assignment.
+594 |                 try:
+595 |                     target_field = self.field.target_field
+596 |                 except FieldError:
+597 |                     # The relationship has multiple target fields. Use a tuple
+598 |                     # for related object id.
+599 |                     rel_obj_id = tuple([
+600 |                         getattr(self.instance, target_field.attname)
+601 |                         for target_field in self.field.get_path_info()[-1].target_fields
+602 |                     ])
+603 |                 else:
+604 |                     rel_obj_id = getattr(self.instance, target_field.attname)
+605 |                 queryset._known_related_objects = {self.field: {rel_obj_id: self.instance}}
+606 |             return queryset
+607 | 
+608 |         def _remove_prefetched_objects(self):
+609 |             try:
+610 |                 self.instance._prefetched_objects_cache.pop(self.field.remote_field.get_cache_name())
+611 |             except (AttributeError, KeyError):
+612 |                 pass  # nothing to clear from cache
+613 | 
+614 |         def get_queryset(self):
+615 |             try:
+616 |                 return self.instance._prefetched_objects_cache[self.field.remote_field.get_cache_name()]
+617 |             except (AttributeError, KeyError):
+618 |                 queryset = super().get_queryset()
+619 |                 return self._apply_rel_filters(queryset)
+620 | 
+621 |         def get_prefetch_queryset(self, instances, queryset=None):
+622 |             if queryset is None:
+623 |                 queryset = super().get_queryset()
+624 | 
+625 |             queryset._add_hints(instance=instances[0])
+626 |             queryset = queryset.using(queryset._db or self._db)
+627 | 
+628 |             rel_obj_attr = self.field.get_local_related_value
+629 |             instance_attr = self.field.get_foreign_related_value
+630 |             instances_dict = {instance_attr(inst): inst for inst in instances}
+631 |             query = {'%s__in' % self.field.name: instances}
+632 |             queryset = queryset.filter(**query)
+633 | 
+634 |             # Since we just bypassed this class' get_queryset(), we must manage
+635 |             # the reverse relation manually.
+636 |             for rel_obj in queryset:
+637 |                 instance = instances_dict[rel_obj_attr(rel_obj)]
+638 |                 setattr(rel_obj, self.field.name, instance)
+639 |             cache_name = self.field.remote_field.get_cache_name()
+640 |             return queryset, rel_obj_attr, instance_attr, False, cache_name, False
+641 | 
+642 |         def add(self, *objs, bulk=True):
+643 |             self._remove_prefetched_objects()
+644 |             objs = list(objs)
+645 |             db = router.db_for_write(self.model, instance=self.instance)
+646 | 
+647 |             def check_and_update_obj(obj):
+648 |                 if not isinstance(obj, self.model):
+649 |                     raise TypeError("'%s' instance expected, got %r" % (
+650 |                         self.model._meta.object_name, obj,
+651 |                     ))
+652 |                 setattr(obj, self.field.name, self.instance)
+653 | 
+654 |             if bulk:
+655 |                 pks = []
+656 |                 for obj in objs:
+657 |                     check_and_update_obj(obj)
+658 |                     if obj._state.adding or obj._state.db != db:
+659 |                         raise ValueError(
+660 |                             "%r instance isn't saved. Use bulk=False or save "
+661 |                             "the object first." % obj
+662 |                         )
+663 |                     pks.append(obj.pk)
+664 |                 self.model._base_manager.using(db).filter(pk__in=pks).update(**{
+665 |                     self.field.name: self.instance,
+666 |                 })
+667 |             else:
+668 |                 with transaction.atomic(using=db, savepoint=False):
+669 |                     for obj in objs:
+670 |                         check_and_update_obj(obj)
+671 |                         obj.save()
+672 |         add.alters_data = True
+673 | 
+674 |         def create(self, **kwargs):
+675 |             kwargs[self.field.name] = self.instance
+676 |             db = router.db_for_write(self.model, instance=self.instance)
+677 |             return super(RelatedManager, self.db_manager(db)).create(**kwargs)
+678 |         create.alters_data = True
+679 | 
+680 |         def get_or_create(self, **kwargs):
+681 |             kwargs[self.field.name] = self.instance
+682 |             db = router.db_for_write(self.model, instance=self.instance)
+683 |             return super(RelatedManager, self.db_manager(db)).get_or_create(**kwargs)
+684 |         get_or_create.alters_data = True
+685 | 
+686 |         def update_or_create(self, **kwargs):
+687 |             kwargs[self.field.name] = self.instance
+688 |             db = router.db_for_write(self.model, instance=self.instance)
+689 |             return super(RelatedManager, self.db_manager(db)).update_or_create(**kwargs)
+690 |         update_or_create.alters_data = True
+691 | 
+692 |         # remove() and clear() are only provided if the ForeignKey can have a value of null.
+693 |         if rel.field.null:
+694 |             def remove(self, *objs, bulk=True):
+695 |                 if not objs:
+696 |                     return
+697 |                 val = self.field.get_foreign_related_value(self.instance)
+698 |                 old_ids = set()
+699 |                 for obj in objs:
+700 |                     # Is obj actually part of this descriptor set?
+701 |                     if self.field.get_local_related_value(obj) == val:
+702 |                         old_ids.add(obj.pk)
+703 |                     else:
+704 |                         raise self.field.remote_field.model.DoesNotExist(
+705 |                             "%r is not related to %r." % (obj, self.instance)
+706 |                         )
+707 |                 self._clear(self.filter(pk__in=old_ids), bulk)
+708 |             remove.alters_data = True
+709 | 
+710 |             def clear(self, *, bulk=True):
+711 |                 self._clear(self, bulk)
+712 |             clear.alters_data = True
+713 | 
+714 |             def _clear(self, queryset, bulk):
+715 |                 self._remove_prefetched_objects()
+716 |                 db = router.db_for_write(self.model, instance=self.instance)
+717 |                 queryset = queryset.using(db)
+718 |                 if bulk:
+719 |                     # `QuerySet.update()` is intrinsically atomic.
+720 |                     queryset.update(**{self.field.name: None})
+721 |                 else:
+722 |                     with transaction.atomic(using=db, savepoint=False):
+723 |                         for obj in queryset:
+724 |                             setattr(obj, self.field.name, None)
+725 |                             obj.save(update_fields=[self.field.name])
+726 |             _clear.alters_data = True
+727 | 
+728 |         def set(self, objs, *, bulk=True, clear=False):
+729 |             # Force evaluation of `objs` in case it's a queryset whose value
+730 |             # could be affected by `manager.clear()`. Refs #19816.
+731 |             objs = tuple(objs)
+732 | 
+733 |             if self.field.null:
+734 |                 db = router.db_for_write(self.model, instance=self.instance)
+735 |                 with transaction.atomic(using=db, savepoint=False):
+736 |                     if clear:
+737 |                         self.clear(bulk=bulk)
+738 |                         self.add(*objs, bulk=bulk)
+739 |                     else:
+740 |                         old_objs = set(self.using(db).all())
+741 |                         new_objs = []
+742 |                         for obj in objs:
+743 |                             if obj in old_objs:
+744 |                                 old_objs.remove(obj)
+745 |                             else:
+746 |                                 new_objs.append(obj)
+747 | 
+748 |                         self.remove(*old_objs, bulk=bulk)
+749 |                         self.add(*new_objs, bulk=bulk)
+750 |             else:
+751 |                 self.add(*objs, bulk=bulk)
+752 |         set.alters_data = True
+753 | 
+754 |     return RelatedManager
+```
+
+Found function `django/db/models/fields/related_descriptors.py:create_forward_many_to_many_manager`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 803 | def create_forward_many_to_many_manager(superclass, rel, reverse):
+ 804 |     """
+ 805 |     Create a manager for the either side of a many-to-many relation.
+ 806 | 
+ 807 |     This manager subclasses another manager, generally the default manager of
+ 808 |     the related model, and adds behaviors specific to many-to-many relations.
+ 809 |     """
+ 810 | 
+ 811 |     class ManyRelatedManager(superclass):
+ 812 |         def __init__(self, instance=None):
+ 813 |             super().__init__()
+ 814 | 
+ 815 |             self.instance = instance
+ 816 | 
+ 817 |             if not reverse:
+ 818 |                 self.model = rel.model
+ 819 |                 self.query_field_name = rel.field.related_query_name()
+ 820 |                 self.prefetch_cache_name = rel.field.name
+ 821 |                 self.source_field_name = rel.field.m2m_field_name()
+ 822 |                 self.target_field_name = rel.field.m2m_reverse_field_name()
+ 823 |                 self.symmetrical = rel.symmetrical
+ 824 |             else:
+ 825 |                 self.model = rel.related_model
+ 826 |                 self.query_field_name = rel.field.name
+ 827 |                 self.prefetch_cache_name = rel.field.related_query_name()
+ 828 |                 self.source_field_name = rel.field.m2m_reverse_field_name()
+ 829 |                 self.target_field_name = rel.field.m2m_field_name()
+ 830 |                 self.symmetrical = False
+ 831 | 
+ 832 |             self.through = rel.through
+ 833 |             self.reverse = reverse
+ 834 | 
+ 835 |             self.source_field = self.through._meta.get_field(self.source_field_name)
+ 836 |             self.target_field = self.through._meta.get_field(self.target_field_name)
+ 837 | 
+ 838 |             self.core_filters = {}
+ 839 |             self.pk_field_names = {}
+ 840 |             for lh_field, rh_field in self.source_field.related_fields:
+ 841 |                 core_filter_key = '%s__%s' % (self.query_field_name, rh_field.name)
+ 842 |                 self.core_filters[core_filter_key] = getattr(instance, rh_field.attname)
+ 843 |                 self.pk_field_names[lh_field.name] = rh_field.name
+ 844 | 
+ 845 |             self.related_val = self.source_field.get_foreign_related_value(instance)
+ 846 |             if None in self.related_val:
+ 847 |                 raise ValueError('"%r" needs to have a value for field "%s" before '
+ 848 |                                  'this many-to-many relationship can be used.' %
+ 849 |                                  (instance, self.pk_field_names[self.source_field_name]))
+ 850 |             # Even if this relation is not to pk, we require still pk value.
+ 851 |             # The wish is that the instance has been already saved to DB,
+ 852 |             # although having a pk value isn't a guarantee of that.
+ 853 |             if instance.pk is None:
+ 854 |                 raise ValueError("%r instance needs to have a primary key value before "
+ 855 |                                  "a many-to-many relationship can be used." %
+ 856 |                                  instance.__class__.__name__)
+ 857 | 
+ 858 |         def __call__(self, *, manager):
+ 859 |             manager = getattr(self.model, manager)
+ 860 |             manager_class = create_forward_many_to_many_manager(manager.__class__, rel, reverse)
+ 861 |             return manager_class(instance=self.instance)
+ 862 |         do_not_call_in_templates = True
+ 863 | 
+ 864 |         def _build_remove_filters(self, removed_vals):
+ 865 |             filters = Q(**{self.source_field_name: self.related_val})
+ 866 |             # No need to add a subquery condition if removed_vals is a QuerySet without
+ 867 |             # filters.
+ 868 |             removed_vals_filters = (not isinstance(removed_vals, QuerySet) or
+ 869 |                                     removed_vals._has_filters())
+ 870 |             if removed_vals_filters:
+ 871 |                 filters &= Q(**{'%s__in' % self.target_field_name: removed_vals})
+ 872 |             if self.symmetrical:
+ 873 |                 symmetrical_filters = Q(**{self.target_field_name: self.related_val})
+ 874 |                 if removed_vals_filters:
+ 875 |                     symmetrical_filters &= Q(
+ 876 |                         **{'%s__in' % self.source_field_name: removed_vals})
+ 877 |                 filters |= symmetrical_filters
+ 878 |             return filters
+ 879 | 
+ 880 |         def _apply_rel_filters(self, queryset):
+ 881 |             """
+ 882 |             Filter the queryset for the instance this manager is bound to.
+ 883 |             """
+ 884 |             queryset._add_hints(instance=self.instance)
+ 885 |             if self._db:
+ 886 |                 queryset = queryset.using(self._db)
+ 887 |             queryset._defer_next_filter = True
+ 888 |             return queryset._next_is_sticky().filter(**self.core_filters)
+ 889 | 
+ 890 |         def _remove_prefetched_objects(self):
+ 891 |             try:
+ 892 |                 self.instance._prefetched_objects_cache.pop(self.prefetch_cache_name)
+ 893 |             except (AttributeError, KeyError):
+ 894 |                 pass  # nothing to clear from cache
+ 895 | 
+ 896 |         def get_queryset(self):
+ 897 |             try:
+ 898 |                 return self.instance._prefetched_objects_cache[self.prefetch_cache_name]
+ 899 |             except (AttributeError, KeyError):
+ 900 |                 queryset = super().get_queryset()
+ 901 |                 return self._apply_rel_filters(queryset)
+ 902 | 
+ 903 |         def get_prefetch_queryset(self, instances, queryset=None):
+ 904 |             if queryset is None:
+ 905 |                 queryset = super().get_queryset()
+ 906 | 
+ 907 |             queryset._add_hints(instance=instances[0])
+ 908 |             queryset = queryset.using(queryset._db or self._db)
+ 909 | 
+ 910 |             query = {'%s__in' % self.query_field_name: instances}
+ 911 |             queryset = queryset._next_is_sticky().filter(**query)
+ 912 | 
+ 913 |             # M2M: need to annotate the query in order to get the primary model
+ 914 |             # that the secondary model was actually related to. We know that
+ 915 |             # there will already be a join on the join table, so we can just add
+ 916 |             # the select.
+ 917 | 
+ 918 |             # For non-autocreated 'through' models, can't assume we are
+ 919 |             # dealing with PK values.
+ 920 |             fk = self.through._meta.get_field(self.source_field_name)
+ 921 |             join_table = fk.model._meta.db_table
+ 922 |             connection = connections[queryset.db]
+ 923 |             qn = connection.ops.quote_name
+ 924 |             queryset = queryset.extra(select={
+ 925 |                 '_prefetch_related_val_%s' % f.attname:
+ 926 |                 '%s.%s' % (qn(join_table), qn(f.column)) for f in fk.local_related_fields})
+ 927 |             return (
+ 928 |                 queryset,
+ 929 |                 lambda result: tuple(
+ 930 |                     getattr(result, '_prefetch_related_val_%s' % f.attname)
+ 931 |                     for f in fk.local_related_fields
+ 932 |                 ),
+ 933 |                 lambda inst: tuple(
+ 934 |                     f.get_db_prep_value(getattr(inst, f.attname), connection)
+ 935 |                     for f in fk.foreign_related_fields
+ 936 |                 ),
+ 937 |                 False,
+ 938 |                 self.prefetch_cache_name,
+ 939 |                 False,
+ 940 |             )
+ 941 | 
+ 942 |         def add(self, *objs, through_defaults=None):
+ 943 |             self._remove_prefetched_objects()
+ 944 |             db = router.db_for_write(self.through, instance=self.instance)
+ 945 |             with transaction.atomic(using=db, savepoint=False):
+ 946 |                 self._add_items(
+ 947 |                     self.source_field_name, self.target_field_name, *objs,
+ 948 |                     through_defaults=through_defaults,
+ 949 |                 )
+ 950 |                 # If this is a symmetrical m2m relation to self, add the mirror
+ 951 |                 # entry in the m2m table.
+ 952 |                 if self.symmetrical:
+ 953 |                     self._add_items(
+ 954 |                         self.target_field_name,
+ 955 |                         self.source_field_name,
+ 956 |                         *objs,
+ 957 |                         through_defaults=through_defaults,
+ 958 |                     )
+ 959 |         add.alters_data = True
+ 960 | 
+ 961 |         def remove(self, *objs):
+ 962 |             self._remove_prefetched_objects()
+ 963 |             self._remove_items(self.source_field_name, self.target_field_name, *objs)
+ 964 |         remove.alters_data = True
+ 965 | 
+ 966 |         def clear(self):
+ 967 |             db = router.db_for_write(self.through, instance=self.instance)
+ 968 |             with transaction.atomic(using=db, savepoint=False):
+ 969 |                 signals.m2m_changed.send(
+ 970 |                     sender=self.through, action="pre_clear",
+ 971 |                     instance=self.instance, reverse=self.reverse,
+ 972 |                     model=self.model, pk_set=None, using=db,
+ 973 |                 )
+ 974 |                 self._remove_prefetched_objects()
+ 975 |                 filters = self._build_remove_filters(super().get_queryset().using(db))
+ 976 |                 self.through._default_manager.using(db).filter(filters).delete()
+ 977 | 
+ 978 |                 signals.m2m_changed.send(
+ 979 |                     sender=self.through, action="post_clear",
+ 980 |                     instance=self.instance, reverse=self.reverse,
+ 981 |                     model=self.model, pk_set=None, using=db,
+ 982 |                 )
+ 983 |         clear.alters_data = True
+ 984 | 
+ 985 |         def set(self, objs, *, clear=False, through_defaults=None):
+ 986 |             # Force evaluation of `objs` in case it's a queryset whose value
+ 987 |             # could be affected by `manager.clear()`. Refs #19816.
+ 988 |             objs = tuple(objs)
+ 989 | 
+ 990 |             db = router.db_for_write(self.through, instance=self.instance)
+ 991 |             with transaction.atomic(using=db, savepoint=False):
+ 992 |                 if clear:
+ 993 |                     self.clear()
+ 994 |                     self.add(*objs, through_defaults=through_defaults)
+ 995 |                 else:
+ 996 |                     old_ids = set(self.using(db).values_list(self.target_field.target_field.attname, flat=True))
+ 997 | 
+ 998 |                     new_objs = []
+ 999 |                     for obj in objs:
+1000 |                         fk_val = (
+1001 |                             self.target_field.get_foreign_related_value(obj)[0]
+1002 |                             if isinstance(obj, self.model)
+1003 |                             else self.target_field.get_prep_value(obj)
+1004 |                         )
+1005 |                         if fk_val in old_ids:
+1006 |                             old_ids.remove(fk_val)
+1007 |                         else:
+1008 |                             new_objs.append(obj)
+1009 | 
+1010 |                     self.remove(*old_ids)
+1011 |                     self.add(*new_objs, through_defaults=through_defaults)
+1012 |         set.alters_data = True
+1013 | 
+1014 |         def create(self, *, through_defaults=None, **kwargs):
+1015 |             db = router.db_for_write(self.instance.__class__, instance=self.instance)
+1016 |             new_obj = super(ManyRelatedManager, self.db_manager(db)).create(**kwargs)
+1017 |             self.add(new_obj, through_defaults=through_defaults)
+1018 |             return new_obj
+1019 |         create.alters_data = True
+1020 | 
+1021 |         def get_or_create(self, *, through_defaults=None, **kwargs):
+1022 |             db = router.db_for_write(self.instance.__class__, instance=self.instance)
+1023 |             obj, created = super(ManyRelatedManager, self.db_manager(db)).get_or_create(**kwargs)
+1024 |             # We only need to add() if created because if we got an object back
+1025 |             # from get() then the relationship already exists.
+1026 |             if created:
+1027 |                 self.add(obj, through_defaults=through_defaults)
+1028 |             return obj, created
+1029 |         get_or_create.alters_data = True
+1030 | 
+1031 |         def update_or_create(self, *, through_defaults=None, **kwargs):
+1032 |             db = router.db_for_write(self.instance.__class__, instance=self.instance)
+1033 |             obj, created = super(ManyRelatedManager, self.db_manager(db)).update_or_create(**kwargs)
+1034 |             # We only need to add() if created because if we got an object back
+1035 |             # from get() then the relationship already exists.
+1036 |             if created:
+1037 |                 self.add(obj, through_defaults=through_defaults)
+1038 |             return obj, created
+1039 |         update_or_create.alters_data = True
+1040 | 
+1041 |         def _get_target_ids(self, target_field_name, objs):
+1042 |             """
+1043 |             Return the set of ids of `objs` that the target field references.
+1044 |             """
+1045 |             from django.db.models import Model
+1046 |             target_ids = set()
+1047 |             target_field = self.through._meta.get_field(target_field_name)
+1048 |             for obj in objs:
+1049 |                 if isinstance(obj, self.model):
+1050 |                     if not router.allow_relation(obj, self.instance):
+1051 |                         raise ValueError(
+1052 |                             'Cannot add "%r": instance is on database "%s", '
+1053 |                             'value is on database "%s"' %
+1054 |                             (obj, self.instance._state.db, obj._state.db)
+1055 |                         )
+1056 |                     target_id = target_field.get_foreign_related_value(obj)[0]
+1057 |                     if target_id is None:
+1058 |                         raise ValueError(
+1059 |                             'Cannot add "%r": the value for field "%s" is None' %
+1060 |                             (obj, target_field_name)
+1061 |                         )
+1062 |                     target_ids.add(target_id)
+1063 |                 elif isinstance(obj, Model):
+1064 |                     raise TypeError(
+1065 |                         "'%s' instance expected, got %r" %
+1066 |                         (self.model._meta.object_name, obj)
+1067 |                     )
+1068 |                 else:
+1069 |                     target_ids.add(target_field.get_prep_value(obj))
+1070 |             return target_ids
+1071 | 
+1072 |         def _get_missing_target_ids(self, source_field_name, target_field_name, db, target_ids):
+1073 |             """
+1074 |             Return the subset of ids of `objs` that aren't already assigned to
+1075 |             this relationship.
+1076 |             """
+1077 |             vals = self.through._default_manager.using(db).values_list(
+1078 |                 target_field_name, flat=True
+1079 |             ).filter(**{
+1080 |                 source_field_name: self.related_val[0],
+1081 |                 '%s__in' % target_field_name: target_ids,
+1082 |             })
+1083 |             return target_ids.difference(vals)
+1084 | 
+1085 |         def _get_add_plan(self, db, source_field_name):
+1086 |             """
+1087 |             Return a boolean triple of the way the add should be performed.
+1088 | 
+1089 |             The first element is whether or not bulk_create(ignore_conflicts)
+1090 |             can be used, the second whether or not signals must be sent, and
+1091 |             the third element is whether or not the immediate bulk insertion
+1092 |             with conflicts ignored can be performed.
+1093 |             """
+1094 |             # Conflicts can be ignored when the intermediary model is
+1095 |             # auto-created as the only possible collision is on the
+1096 |             # (source_id, target_id) tuple. The same assertion doesn't hold for
+1097 |             # user-defined intermediary models as they could have other fields
+1098 |             # causing conflicts which must be surfaced.
+1099 |             can_ignore_conflicts = (
+1100 |                 connections[db].features.supports_ignore_conflicts and
+1101 |                 self.through._meta.auto_created is not False
+1102 |             )
+1103 |             # Don't send the signal when inserting duplicate data row
+1104 |             # for symmetrical reverse entries.
+1105 |             must_send_signals = (self.reverse or source_field_name == self.source_field_name) and (
+1106 |                 signals.m2m_changed.has_listeners(self.through)
+1107 |             )
+1108 |             # Fast addition through bulk insertion can only be performed
+1109 |             # if no m2m_changed listeners are connected for self.through
+1110 |             # as they require the added set of ids to be provided via
+1111 |             # pk_set.
+1112 |             return can_ignore_conflicts, must_send_signals, (can_ignore_conflicts and not must_send_signals)
+1113 | 
+1114 |         def _add_items(self, source_field_name, target_field_name, *objs, through_defaults=None):
+1115 |             # source_field_name: the PK fieldname in join table for the source object
+1116 |             # target_field_name: the PK fieldname in join table for the target object
+1117 |             # *objs - objects to add. Either object instances, or primary keys of object instances.
+1118 |             if not objs:
+1119 |                 return
+1120 | 
+1121 |             through_defaults = dict(resolve_callables(through_defaults or {}))
+1122 |             target_ids = self._get_target_ids(target_field_name, objs)
+1123 |             db = router.db_for_write(self.through, instance=self.instance)
+1124 |             can_ignore_conflicts, must_send_signals, can_fast_add = self._get_add_plan(db, source_field_name)
+1125 |             if can_fast_add:
+1126 |                 self.through._default_manager.using(db).bulk_create([
+1127 |                     self.through(**{
+1128 |                         '%s_id' % source_field_name: self.related_val[0],
+1129 |                         '%s_id' % target_field_name: target_id,
+1130 |                     })
+1131 |                     for target_id in target_ids
+1132 |                 ], ignore_conflicts=True)
+1133 |                 return
+1134 | 
+1135 |             missing_target_ids = self._get_missing_target_ids(
+1136 |                 source_field_name, target_field_name, db, target_ids
+1137 |             )
+1138 |             with transaction.atomic(using=db, savepoint=False):
+1139 |                 if must_send_signals:
+1140 |                     signals.m2m_changed.send(
+1141 |                         sender=self.through, action='pre_add',
+1142 |                         instance=self.instance, reverse=self.reverse,
+1143 |                         model=self.model, pk_set=missing_target_ids, using=db,
+1144 |                     )
+1145 |                 # Add the ones that aren't there already.
+1146 |                 self.through._default_manager.using(db).bulk_create([
+1147 |                     self.through(**through_defaults, **{
+1148 |                         '%s_id' % source_field_name: self.related_val[0],
+1149 |                         '%s_id' % target_field_name: target_id,
+1150 |                     })
+1151 |                     for target_id in missing_target_ids
+1152 |                 ], ignore_conflicts=can_ignore_conflicts)
+1153 | 
+1154 |                 if must_send_signals:
+1155 |                     signals.m2m_changed.send(
+1156 |                         sender=self.through, action='post_add',
+1157 |                         instance=self.instance, reverse=self.reverse,
+1158 |                         model=self.model, pk_set=missing_target_ids, using=db,
+1159 |                     )
+1160 | 
+1161 |         def _remove_items(self, source_field_name, target_field_name, *objs):
+1162 |             # source_field_name: the PK colname in join table for the source object
+1163 |             # target_field_name: the PK colname in join table for the target object
+1164 |             # *objs - objects to remove. Either object instances, or primary
+1165 |             # keys of object instances.
+1166 |             if not objs:
+1167 |                 return
+1168 | 
+1169 |             # Check that all the objects are of the right type
+1170 |             old_ids = set()
+1171 |             for obj in objs:
+1172 |                 if isinstance(obj, self.model):
+1173 |                     fk_val = self.target_field.get_foreign_related_value(obj)[0]
+1174 |                     old_ids.add(fk_val)
+1175 |                 else:
+1176 |                     old_ids.add(obj)
+1177 | 
+1178 |             db = router.db_for_write(self.through, instance=self.instance)
+1179 |             with transaction.atomic(using=db, savepoint=False):
+1180 |                 # Send a signal to the other end if need be.
+1181 |                 signals.m2m_changed.send(
+1182 |                     sender=self.through, action="pre_remove",
+1183 |                     instance=self.instance, reverse=self.reverse,
+1184 |                     model=self.model, pk_set=old_ids, using=db,
+1185 |                 )
+1186 |                 target_model_qs = super().get_queryset()
+1187 |                 if target_model_qs._has_filters():
+1188 |                     old_vals = target_model_qs.using(db).filter(**{
+1189 |                         '%s__in' % self.target_field.target_field.attname: old_ids})
+1190 |                 else:
+1191 |                     old_vals = old_ids
+1192 |                 filters = self._build_remove_filters(old_vals)
+1193 |                 self.through._default_manager.using(db).filter(filters).delete()
+1194 | 
+1195 |                 signals.m2m_changed.send(
+1196 |                     sender=self.through, action="post_remove",
+1197 |                     instance=self.instance, reverse=self.reverse,
+1198 |                     model=self.model, pk_set=old_ids, using=db,
+1199 |                 )
+1200 | 
+1201 |     return ManyRelatedManager
+```
+
+Found function `django/templatetags/cache.py:do_cache`.
+Source: Retrieved entity using keyword search (bm25).
+```
+53 | def do_cache(parser, token):
+54 |     """
+55 |     This will cache the contents of a template fragment for a given amount
+56 |     of time.
+57 | 
+58 |     Usage::
+59 | 
+60 |         {% load cache %}
+61 |         {% cache [expire_time] [fragment_name] %}
+62 |             .. some expensive processing ..
+63 |         {% endcache %}
+64 | 
+65 |     This tag also supports varying by a list of arguments::
+66 | 
+67 |         {% load cache %}
+68 |         {% cache [expire_time] [fragment_name] [var1] [var2] .. %}
+69 |             .. some expensive processing ..
+70 |         {% endcache %}
+71 | 
+72 |     Optionally the cache to use may be specified thus::
+73 | 
+74 |         {% cache ....  using="cachename" %}
+75 | 
+76 |     Each unique set of arguments will result in a unique cache entry.
+77 |     """
+78 |     nodelist = parser.parse(('endcache',))
+79 |     parser.delete_first_token()
+80 |     tokens = token.split_contents()
+81 |     if len(tokens) < 3:
+82 |         raise TemplateSyntaxError("'%r' tag requires at least 2 arguments." % tokens[0])
+83 |     if len(tokens) > 3 and tokens[-1].startswith('using='):
+84 |         cache_name = parser.compile_filter(tokens[-1][len('using='):])
+85 |         tokens = tokens[:-1]
+86 |     else:
+87 |         cache_name = None
+88 |     return CacheNode(
+89 |         nodelist, parser.compile_filter(tokens[1]),
+90 |         tokens[2],  # fragment_name can't be a variable.
+91 |         [parser.compile_filter(t) for t in tokens[3:]],
+92 |         cache_name,
+93 |     )
+```
+
+Found function `django/template/base.py:Variable._resolve_lookup`.
+Source: Retrieved code content using keyword search (bm25).
+```
+816 | def _resolve_lookup(self, context):
+817 |         """
+818 |         Perform resolution of a real variable (i.e. not a literal) against the
+819 |         given context.
+820 | 
+821 |         As indicated by the method's name, this method is an implementation
+822 |         detail and shouldn't be called by external code. Use Variable.resolve()
+823 |         instead.
+824 |         """
+825 |         current = context
+826 |         try:  # catch-all for silent variable failures
+827 |             for bit in self.lookups:
+828 |                 try:  # dictionary lookup
+829 |                     current = current[bit]
+830 |                     # ValueError/IndexError are for numpy.array lookup on
+831 |                     # numpy < 1.9 and 1.9+ respectively
+832 |                 except (TypeError, AttributeError, KeyError, ValueError, IndexError):
+833 |                     try:  # attribute lookup
+834 |                         # Don't return class attributes if the class is the context:
+835 |                         if isinstance(current, BaseContext) and getattr(type(current), bit):
+836 |                             raise AttributeError
+837 |                         current = getattr(current, bit)
+838 |                     except (TypeError, AttributeError):
+839 |                         # Reraise if the exception was raised by a @property
+840 |                         if not isinstance(current, BaseContext) and bit in dir(current):
+841 |                             raise
+842 |                         try:  # list-index lookup
+843 |                             current = current[int(bit)]
+844 |                         except (IndexError,  # list index out of range
+845 |                                 ValueError,  # invalid literal for int()
+846 |                                 KeyError,    # current is a dict without `int(bit)` key
+847 |                                 TypeError):  # unsubscriptable object
+848 |                             raise VariableDoesNotExist("Failed lookup for key "
+849 |                                                        "[%s] in %r",
+850 |                                                        (bit, current))  # missing attribute
+851 |                 if callable(current):
+852 |                     if getattr(current, 'do_not_call_in_templates', False):
+853 |                         pass
+854 |                     elif getattr(current, 'alters_data', False):
+855 |                         current = context.template.engine.string_if_invalid
+856 |                     else:
+857 |                         try:  # method call (assuming no args required)
+858 |                             current = current()
+859 |                         except TypeError:
+860 |                             signature = inspect.signature(current)
+861 |                             try:
+862 |                                 signature.bind()
+863 |                             except TypeError:  # arguments *were* required
+864 |                                 current = context.template.engine.string_if_invalid  # invalid method call
+865 |                             else:
+866 |                                 raise
+867 |         except Exception as e:
+868 |             template_name = getattr(context, 'template_name', None) or 'unknown'
+869 |             logger.debug(
+870 |                 "Exception while resolving variable '%s' in template '%s'.",
+871 |                 bit,
+872 |                 template_name,
+873 |                 exc_info=True,
+874 |             )
+875 | 
+876 |             if getattr(e, 'silent_variable_failure', False):
+877 |                 current = context.template.engine.string_if_invalid
+878 |             else:
+879 |                 raise
+880 | 
+881 |         return current
+```
+
+Found function `django/contrib/staticfiles/finders.py:FileSystemFinder.check`.
+Source: Retrieved code content using keyword search (bm25).
+```
+70 | def check(self, **kwargs):
+71 |         errors = []
+72 |         if not isinstance(settings.STATICFILES_DIRS, (list, tuple)):
+73 |             errors.append(Error(
+74 |                 'The STATICFILES_DIRS setting is not a tuple or list.',
+75 |                 hint='Perhaps you forgot a trailing comma?',
+76 |                 id='staticfiles.E001',
+77 |             ))
+78 |         for root in settings.STATICFILES_DIRS:
+79 |             if isinstance(root, (list, tuple)):
+80 |                 prefix, root = root
+81 |                 if prefix.endswith('/'):
+82 |                     errors.append(Error(
+83 |                         'The prefix %r in the STATICFILES_DIRS setting must '
+84 |                         'not end with a slash.' % prefix,
+85 |                         id='staticfiles.E003',
+86 |                     ))
+87 |             if settings.STATIC_ROOT and os.path.abspath(settings.STATIC_ROOT) == os.path.abspath(root):
+88 |                 errors.append(Error(
+89 |                     'The STATICFILES_DIRS setting should not contain the '
+90 |                     'STATIC_ROOT setting.',
+91 |                     id='staticfiles.E002',
+92 |                 ))
+93 |         return errors
+```
+
+Found file `django/template/__init__.py`.
+Found file `django/templatetags/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "Choices", "enum", "do_not_call_in_templates enum callables always call"...
+### Search Result:
+Found class `django/db/models/enums.py:Choices`.
+Source: Match found for entity name `Choices`.
+```
+61 | class Choices(enum.Enum, metaclass=ChoicesMeta):
+62 |     """Class for creating enumerated choices."""
+63 | 
+64 |     def __str__(self):
+65 |         """
+66 |         Use value when cast to str, so that Choices set as model instance
+67 |         attributes are rendered as expected in templates and similar contexts.
+68 |         """
+69 |         return str(self.value)
+```
+
+
+
+##Searching for term "enum"...
+### Search Result:
+Found `django/db/models/enums.py:ChoicesMeta`, `django/db/models/enums.py:ChoicesMeta.__new__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import enum
+ 2 | 
+ 3 | from django.utils.functional import Promise
+ 4 | 
+ 5 | __all__ = ['Choices', 'IntegerChoices', 'TextChoices']
+ 6 | 
+ 7 | 
+ 8 | class ChoicesMeta(enum.EnumMeta):
+ 9 |     """A metaclass for creating a enum choices."""
+10 | 
+11 |     def __new__(metacls, classname, bases, classdict):
+12 |         labels = []
+13 |         for key in classdict._member_names:
+14 |             value = classdict[key]
+15 |             if (
+16 |                 isinstance(value, (list, tuple)) and
+17 |                 len(value) > 1 and
+18 |                 isinstance(value[-1], (Promise, str))
+19 |             ):
+20 |                 *value, label = value
+21 |                 value = tuple(value)
+22 |             else:
+23 |                 label = key.replace('_', ' ').title()
+24 |             labels.append(label)
+25 |             # Use dict.__setitem__() to suppress defenses against double
+26 |             # assignment in enum's classdict.
+27 |             dict.__setitem__(classdict, key, value)
+28 |         cls = super().__new__(metacls, classname, bases, classdict)
+29 |         cls._value2label_map_ = dict(zip(cls._value2member_map_, labels))
+30 |         # Add a label property to instances of enum which uses the enum member
+31 |         # that is passed in as "self" as the value to use when looking up the
+32 |         # label in the choices.
+33 |         cls.label = property(lambda self: cls._value2label_map_.get(self.value))
+34 |         return enum.unique(cls)
+```
+
+
+
+##Searching for term "enum", "do_not_call_in_templates enum callables always call"...
+### Search Result:
+Found class `django/db/models/enums.py:ChoicesMeta`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 8 | class ChoicesMeta(enum.EnumMeta):
+ 9 |     """A metaclass for creating a enum choices."""
+10 | 
+11 |     def __new__(metacls, classname, bases, classdict):
+12 |         labels = []
+13 |         for key in classdict._member_names:
+14 |             value = classdict[key]
+15 |             if (
+16 |                 isinstance(value, (list, tuple)) and
+17 |                 len(value) > 1 and
+18 |                 isinstance(value[-1], (Promise, str))
+19 |             ):
+20 |                 *value, label = value
+21 |                 value = tuple(value)
+22 |             else:
+23 |                 label = key.replace('_', ' ').title()
+24 |             labels.append(label)
+25 |             # Use dict.__setitem__() to suppress defenses against double
+26 |             # assignment in enum's classdict.
+27 |             dict.__setitem__(classdict, key, value)
+28 |         cls = super().__new__(metacls, classname, bases, classdict)
+29 |         cls._value2label_map_ = dict(zip(cls._value2member_map_, labels))
+30 |         # Add a label property to instances of enum which uses the enum member
+31 |         # that is passed in as "self" as the value to use when looking up the
+32 |         # label in the choices.
+33 |         cls.label = property(lambda self: cls._value2label_map_.get(self.value))
+34 |         return enum.unique(cls)
+35 | 
+36 |     def __contains__(cls, member):
+37 |         if not isinstance(member, enum.Enum):
+38 |             # Allow non-enums to match against member values.
+39 |             return any(x.value == member for x in cls)
+40 |         return super().__contains__(member)
+41 | 
+42 |     @property
+43 |     def names(cls):
+44 |         empty = ['__empty__'] if hasattr(cls, '__empty__') else []
+45 |         return empty + [member.name for member in cls]
+46 | 
+47 |     @property
+48 |     def choices(cls):
+49 |         empty = [(None, cls.__empty__)] if hasattr(cls, '__empty__') else []
+50 |         return empty + [(member.value, member.label) for member in cls]
+51 | 
+52 |     @property
+53 |     def labels(cls):
+54 |         return [label for _, label in cls.choices]
+55 | 
+56 |     @property
+57 |     def values(cls):
+58 |         return [value for value, _ in cls.choices]
+```
+
+Found class `django/db/models/enums.py:IntegerChoices`.
+Source: Retrieved entity using keyword search (bm25).
+```
+72 | class IntegerChoices(int, Choices):
+73 |     """Class for creating enumerated integer choices."""
+74 |     pass
+```
+
+Found file `django/db/models/enums.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/db/models/enums.py` for the full content if needed.
+
+
+
+##Searching for term "callables always call"...
+### Search Result:
+Found function `django/db/models/utils.py:resolve_callables`.
+Source: Retrieved entity using keyword search (bm25).
+```
+24 | def resolve_callables(mapping):
+25 |     """
+26 |     Generate key/value pairs for the given mapping where the values are
+27 |     evaluated if they're callable.
+28 |     """
+29 |     for k, v in mapping.items():
+30 |         yield k, v() if callable(v) else v
+```
+
+Found function `django/core/handlers/asgi.py:ASGIHandler.__call__`.
+Source: Retrieved entity using keyword search (bm25).
+```
+137 | async def __call__(self, scope, receive, send):
+138 |         """
+139 |         Async entrypoint - parses the request and hands off to get_response.
+140 |         """
+141 |         # Serve only HTTP connections.
+142 |         # FIXME: Allow to override this.
+143 |         if scope['type'] != 'http':
+144 |             raise ValueError(
+145 |                 'Django can only handle ASGI/HTTP connections, not %s.'
+146 |                 % scope['type']
+147 |             )
+148 |         # Receive the HTTP request body as a stream object.
+149 |         try:
+150 |             body_file = await self.read_body(receive)
+151 |         except RequestAborted:
+152 |             return
+153 |         # Request is complete and can be served.
+154 |         set_script_prefix(self.get_script_prefix(scope))
+155 |         await sync_to_async(signals.request_started.send)(sender=self.__class__, scope=scope)
+156 |         # Get the request and check for basic issues.
+157 |         request, error_response = self.create_request(scope, body_file)
+158 |         if request is None:
+159 |             await self.send_response(error_response, send)
+160 |             return
+161 |         # Get the response, using a threadpool via sync_to_async, if needed.
+162 |         if asyncio.iscoroutinefunction(self.get_response):
+163 |             response = await self.get_response(request)
+164 |         else:
+165 |             # If get_response is synchronous, run it non-blocking.
+166 |             response = await sync_to_async(self.get_response)(request)
+167 |         response._handler_class = self.__class__
+168 |         # Increase chunk size on file responses (ASGI servers handles low-level
+169 |         # chunking).
+170 |         if isinstance(response, FileResponse):
+171 |             response.block_size = self.chunk_size
+172 |         # Send the response.
+173 |         await self.send_response(response, send)
+```
+
+Found function `django/core/validators.py:URLValidator.__call__`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 99 | def __call__(self, value):
+100 |         # Check first if the scheme is valid
+101 |         scheme = value.split('://')[0].lower()
+102 |         if scheme not in self.schemes:
+103 |             raise ValidationError(self.message, code=self.code)
+104 | 
+105 |         # Then check full URL
+106 |         try:
+107 |             super().__call__(value)
+108 |         except ValidationError as e:
+109 |             # Trivial case failed. Try for possible IDN domain
+110 |             if value:
+111 |                 try:
+112 |                     scheme, netloc, path, query, fragment = urlsplit(value)
+113 |                 except ValueError:  # for example, "Invalid IPv6 URL"
+114 |                     raise ValidationError(self.message, code=self.code)
+115 |                 try:
+116 |                     netloc = punycode(netloc)  # IDN -> ACE
+117 |                 except UnicodeError:  # invalid domain part
+118 |                     raise e
+119 |                 url = urlunsplit((scheme, netloc, path, query, fragment))
+120 |                 super().__call__(url)
+121 |             else:
+122 |                 raise
+123 |         else:
+124 |             # Now verify IPv6 in the netloc part
+125 |             host_match = re.search(r'^\[(.+)\](?::\d{2,5})?$', urlsplit(value).netloc)
+126 |             if host_match:
+127 |                 potential_ip = host_match.groups()[0]
+128 |                 try:
+129 |                     validate_ipv6_address(potential_ip)
+130 |                 except ValidationError:
+131 |                     raise ValidationError(self.message, code=self.code)
+132 | 
+133 |         # The maximum length of a full host name is 253 characters per RFC 1034
+134 |         # section 3.1. It's defined to be 255 bytes or less, but this includes
+135 |         # one byte for the length of the name and one byte for the trailing dot
+136 |         # that's used to indicate absolute names in DNS.
+137 |         if len(urlsplit(value).netloc) > 253:
+138 |             raise ValidationError(self.message, code=self.code)
+```
+
+Found function `django/contrib/admin/options.py:ModelAdmin.get_action`.
+Source: Retrieved code content using keyword search (bm25).
+```
+903 | def get_action(self, action):
+904 |         """
+905 |         Return a given action from a parameter, which can either be a callable,
+906 |         or the name of a method on the ModelAdmin.  Return is a tuple of
+907 |         (callable, name, description).
+908 |         """
+909 |         # If the action is a callable, just use it.
+910 |         if callable(action):
+911 |             func = action
+912 |             action = action.__name__
+913 | 
+914 |         # Next, look for a method. Grab it off self.__class__ to get an unbound
+915 |         # method instead of a bound one; this ensures that the calling
+916 |         # conventions are the same for functions and methods.
+917 |         elif hasattr(self.__class__, action):
+918 |             func = getattr(self.__class__, action)
+919 | 
+920 |         # Finally, look for a named method on the admin site
+921 |         else:
+922 |             try:
+923 |                 func = self.admin_site.get_action(action)
+924 |             except KeyError:
+925 |                 return None
+926 | 
+927 |         if hasattr(func, 'short_description'):
+928 |             description = func.short_description
+929 |         else:
+930 |             description = capfirst(action.replace('_', ' '))
+931 |         return func, action, description
+```
+
+Found class `django/utils/functional.py:classproperty`.
+Source: Retrieved code content using keyword search (bm25).
+```
+52 | class classproperty:
+53 |     def __init__(self, method=None):
+54 |         self.fget = method
+55 | 
+56 |     def __get__(self, instance, cls=None):
+57 |         return self.fget(cls)
+58 | 
+59 |     def getter(self, method):
+60 |         self.fget = method
+61 |         return self
+```
+
+Found class `django/utils/functional.py:Promise`.
+Source: Retrieved code content using keyword search (bm25).
+```
+64 | class Promise:
+65 |     """
+66 |     Base class for the proxy class created in the closure of the lazy function.
+67 |     It's used to recognize promises in code.
+68 |     """
+69 |     pass
+```
+
+
+
+##Searching for term "do_not_call_in_templates enum callables always call"...
+### Search Result:
+Found `django/db/models/enums.py:ChoicesMeta`, `django/db/models/enums.py:ChoicesMeta.__new__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import enum
+ 2 | 
+ 3 | from django.utils.functional import Promise
+ 4 | 
+ 5 | __all__ = ['Choices', 'IntegerChoices', 'TextChoices']
+ 6 | 
+ 7 | 
+ 8 | class ChoicesMeta(enum.EnumMeta):
+ 9 |     """A metaclass for creating a enum choices."""
+10 | 
+11 |     def __new__(metacls, classname, bases, classdict):
+12 |         labels = []
+13 |         for key in classdict._member_names:
+14 |             value = classdict[key]
+15 |             if (
+16 |                 isinstance(value, (list, tuple)) and
+17 |                 len(value) > 1 and
+18 |                 isinstance(value[-1], (Promise, str))
+19 |             ):
+20 |                 *value, label = value
+21 |                 value = tuple(value)
+22 |             else:
+23 |                 label = key.replace('_', ' ').title()
+24 |             labels.append(label)
+25 |             # Use dict.__setitem__() to suppress defenses against double
+26 |             # assignment in enum's classdict.
+27 |             dict.__setitem__(classdict, key, value)
+28 |         cls = super().__new__(metacls, classname, bases, classdict)
+29 |         cls._value2label_map_ = dict(zip(cls._value2member_map_, labels))
+30 |         # Add a label property to instances of enum which uses the enum member
+31 |         # that is passed in as "self" as the value to use when looking up the
+32 |         # label in the choices.
+33 |         cls.label = property(lambda self: cls._value2label_map_.get(self.value))
+34 |         return enum.unique(cls)
+```
+Finding newlines for mmindex:   0%|          | 0.00/10.7M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 10.7M/10.7M [00:00<00:00, 354MB/s]
+
+2026-08-28 00:38:56 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['class Choices', 'TextChoices', 'IntegerChoices', 'Callable'], 'file_path_or_pattern': '**/*.py'}))
+```
+2026-08-28 00:38:57 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:38:58 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:38:59 auto_search_main.py INFO OBSERVATION:
+django/contrib/admin/options.py:ModelAdmin._filter_actions_by_permissions
+django/contrib/admin/options.py:ModelAdmin.get_action
+django/db/models/fields/mixins.py:CheckFieldDefaultMixin._check_default
+django/db/models/fields/mixins.py:CheckFieldDefaultMixin
+django/db/models/fields/mixins.py:CheckFieldDefaultMixin.check
+django/contrib/admin/utils.py:lookup_field
+django/core/checks/model_checks.py:_check_lazy_references
+django/db/migrations/operations/special.py:RunPython
+django/db/migrations/operations/special.py:RunPython.__init__
+django/db/migrations/operations/special.py:RunPython.deconstruct
+django/db/migrations/operations/special.py:RunPython.reversible
+django/db/migrations/operations/special.py:RunPython.state_forwards
+django/contrib/admin/templatetags/admin_list.py:_boolean_icon
+django/contrib/admin/templatetags/admin_list.py:_coerce_field_name
+django/contrib/admin/checks.py:BaseModelAdminChecks._check_readonly_fields_item
+django/contrib/admin/utils.py:label_for_field
+##Searching for term "class Choices"...
+### Search Result:
+Found class `django/db/models/enums.py:Choices`.
+Source: Match found for entity name `class Choices`.
+```
+61 | class Choices(enum.Enum, metaclass=ChoicesMeta):
+62 |     """Class for creating enumerated choices."""
+63 | 
+64 |     def __str__(self):
+65 |         """
+66 |         Use value when cast to str, so that Choices set as model instance
+67 |         attributes are rendered as expected in templates and similar contexts.
+68 |         """
+69 |         return str(self.value)
+```
+
+
+
+##Searching for term "TextChoices"...
+### Search Result:
+Found class `django/db/models/enums.py:TextChoices`.
+Source: Match found for entity name `TextChoices`.
+```
+77 | class TextChoices(str, Choices):
+78 |     """Class for creating enumerated string choices."""
+79 | 
+80 |     def _generate_next_value_(name, start, count, last_values):
+81 |         return name
+```
+
+
+
+##Searching for term "IntegerChoices"...
+### Search Result:
+Found class `django/db/models/enums.py:IntegerChoices`.
+Source: Match found for entity name `IntegerChoices`.
+```
+72 | class IntegerChoices(int, Choices):
+73 |     """Class for creating enumerated integer choices."""
+74 |     pass
+```
+
+
+
+##Searching for term "Callable"...
+### Search Result:
+Found `django/urls/utils.py:get_callable`, `django/urls/utils.py:get_mod_func`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import functools
+ 2 | from importlib import import_module
+ 3 | 
+ 4 | from django.core.exceptions import ViewDoesNotExist
+ 5 | from django.utils.module_loading import module_has_submodule
+ 6 | 
+ 7 | 
+ 8 | @functools.lru_cache(maxsize=None)
+ 9 | def get_callable(lookup_view):
+10 |     """
+11 |     Return a callable corresponding to lookup_view.
+12 |     * If lookup_view is already a callable, return it.
+13 |     * If lookup_view is a string import path that can be resolved to a callable,
+14 |       import that callable and return it, otherwise raise an exception
+15 |       (ImportError or ViewDoesNotExist).
+16 |     """
+17 |     if callable(lookup_view):
+18 |         return lookup_view
+19 | 
+20 |     if not isinstance(lookup_view, str):
+21 |         raise ViewDoesNotExist("'%s' is not a callable or a dot-notation path" % lookup_view)
+22 | 
+23 |     mod_name, func_name = get_mod_func(lookup_view)
+24 |     if not func_name:  # No '.' in lookup_view
+25 |         raise ImportError("Could not import '%s'. The path must be fully qualified." % lookup_view)
+26 | 
+27 |     try:
+28 |         mod = import_module(mod_name)
+29 |     except ImportError:
+30 |         parentmod, submod = get_mod_func(mod_name)
+31 |         if submod and not module_has_submodule(import_module(parentmod), submod):
+32 |             raise ViewDoesNotExist(
+33 |                 "Could not import '%s'. Parent module %s does not exist." %
+34 |                 (lookup_view, mod_name)
+35 |             )
+36 |         else:
+37 |             raise
+38 |     else:
+39 |         try:
+40 |             view_func = getattr(mod, func_name)
+41 |         except AttributeError:
+42 |             raise ViewDoesNotExist(
+43 |                 "Could not import '%s'. View does not exist in module %s." %
+44 |                 (lookup_view, mod_name)
+45 |             )
+46 |         else:
+47 |             if not callable(view_func):
+48 |                 raise ViewDoesNotExist(
+49 |                     "Could not import '%s.%s'. View is not callable." %
+50 |                     (mod_name, func_name)
+51 |                 )
+52 |             return view_func
+53 | 
+54 | 
+55 | def get_mod_func(callback):
+56 |     # Convert 'django.views.news.stories.story_detail' to
+57 |     # ['django.views.news.stories', 'story_detail']
+58 |     try:
+59 |         dot = callback.rindex('.')
+60 |     except ValueError:
+61 |         return callback, ''
+62 |     return callback[:dot], callback[dot + 1:]
+63 | 
+```
+
+Found function `django/urls/utils.py:get_callable`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 9 | def get_callable(lookup_view):
+10 |     """
+11 |     Return a callable corresponding to lookup_view.
+12 |     * If lookup_view is already a callable, return it.
+13 |     * If lookup_view is a string import path that can be resolved to a callable,
+14 |       import that callable and return it, otherwise raise an exception
+15 |       (ImportError or ViewDoesNotExist).
+16 |     """
+17 |     if callable(lookup_view):
+18 |         return lookup_view
+19 | 
+20 |     if not isinstance(lookup_view, str):
+21 |         raise ViewDoesNotExist("'%s' is not a callable or a dot-notation path" % lookup_view)
+22 | 
+23 |     mod_name, func_name = get_mod_func(lookup_view)
+24 |     if not func_name:  # No '.' in lookup_view
+25 |         raise ImportError("Could not import '%s'. The path must be fully qualified." % lookup_view)
+26 | 
+27 |     try:
+28 |         mod = import_module(mod_name)
+29 |     except ImportError:
+30 |         parentmod, submod = get_mod_func(mod_name)
+31 |         if submod and not module_has_submodule(import_module(parentmod), submod):
+32 |             raise ViewDoesNotExist(
+33 |                 "Could not import '%s'. Parent module %s does not exist." %
+34 |                 (lookup_view, mod_name)
+35 |             )
+36 |         else:
+37 |             raise
+38 |     else:
+39 |         try:
+40 |             view_func = getattr(mod, func_name)
+41 |         except AttributeError:
+42 |             raise ViewDoesNotExist(
+43 |                 "Could not import '%s'. View does not exist in module %s." %
+44 |                 (lookup_view, mod_name)
+45 |             )
+46 |         else:
+47 |             if not callable(view_func):
+48 |                 raise ViewDoesNotExist(
+49 |                     "Could not import '%s.%s'. View is not callable." %
+50 |                     (mod_name, func_name)
+51 |                 )
+52 |             return view_func
+```
+
+Found class `django/utils/log.py:CallbackFilter`.
+Source: Retrieved entity using keyword search (bm25).
+```
+137 | class CallbackFilter(logging.Filter):
+138 |     """
+139 |     A logging filter that checks the return value of a given callable (which
+140 |     takes the record-to-be-logged as its only parameter) to decide whether to
+141 |     log a record.
+142 |     """
+143 |     def __init__(self, callback):
+144 |         self.callback = callback
+145 | 
+146 |     def filter(self, record):
+147 |         if self.callback(record):
+148 |             return 1
+149 |         return 0
+```
+
+Found function `django/contrib/admin/options.py:ModelAdmin._filter_actions_by_permissions`.
+Source: Retrieved code content using keyword search (bm25).
+```
+864 | def _filter_actions_by_permissions(self, request, actions):
+865 |         """Filter out any actions that the user doesn't have access to."""
+866 |         filtered_actions = []
+867 |         for action in actions:
+868 |             callable = action[0]
+869 |             if not hasattr(callable, 'allowed_permissions'):
+870 |                 filtered_actions.append(action)
+871 |                 continue
+872 |             permission_checks = (
+873 |                 getattr(self, 'has_%s_permission' % permission)
+874 |                 for permission in callable.allowed_permissions
+875 |             )
+876 |             if any(has_permission(request) for has_permission in permission_checks):
+877 |                 filtered_actions.append(action)
+878 |         return filtered_actions
+```
+
+Found function `django/contrib/admin/options.py:ModelAdmin.get_action`.
+Source: Retrieved code content using keyword search (bm25).
+```
+903 | def get_action(self, action):
+904 |         """
+905 |         Return a given action from a parameter, which can either be a callable,
+906 |         or the name of a method on the ModelAdmin.  Return is a tuple of
+907 |         (callable, name, description).
+908 |         """
+909 |         # If the action is a callable, just use it.
+910 |         if callable(action):
+911 |             func = action
+912 |             action = action.__name__
+913 | 
+914 |         # Next, look for a method. Grab it off self.__class__ to get an unbound
+915 |         # method instead of a bound one; this ensures that the calling
+916 |         # conventions are the same for functions and methods.
+917 |         elif hasattr(self.__class__, action):
+918 |             func = getattr(self.__class__, action)
+919 | 
+920 |         # Finally, look for a named method on the admin site
+921 |         else:
+922 |             try:
+923 |                 func = self.admin_site.get_action(action)
+924 |             except KeyError:
+925 |                 return None
+926 | 
+927 |         if hasattr(func, 'short_description'):
+928 |             description = func.short_description
+929 |         else:
+930 |             description = capfirst(action.replace('_', ' '))
+931 |         return func, action, description
+```
+
+Found class `django/db/models/fields/mixins.py:CheckFieldDefaultMixin`.
+Source: Retrieved code content using keyword search (bm25).
+```
+31 | class CheckFieldDefaultMixin:
+32 |     _default_hint = ('<valid default>', '<invalid default>')
+33 | 
+34 |     def _check_default(self):
+35 |         if self.has_default() and self.default is not None and not callable(self.default):
+36 |             return [
+37 |                 checks.Warning(
+38 |                     "%s default should be a callable instead of an instance "
+39 |                     "so that it's not shared between all field instances." % (
+40 |                         self.__class__.__name__,
+41 |                     ),
+42 |                     hint=(
+43 |                         'Use a callable instead, e.g., use `%s` instead of '
+44 |                         '`%s`.' % self._default_hint
+45 |                     ),
+46 |                     obj=self,
+47 |                     id='fields.E010',
+48 |                 )
+49 |             ]
+50 |         else:
+51 |             return []
+52 | 
+53 |     def check(self, **kwargs):
+54 |         errors = super().check(**kwargs)
+55 |         errors.extend(self._check_default())
+56 |         return errors
+```
+
+Found file `django/conf/locale/gl/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Search `django/conf/locale/gl/__init__.py` for the full content if needed.
+
+2026-08-28 00:38:59 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:39:04 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:39:04 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:39:04 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 00:39:04 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['django/db/models/enums.py']}))
+```
+2026-08-28 00:39:04 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `django/db/models/enums.py`...
+### Search Result:
+Found file `django/db/models/enums.py`.
+Source: Exact match found for entity name `django/db/models/enums.py`.
+```
+ 1 | import enum
+ 2 | 
+ 3 | from django.utils.functional import Promise
+ 4 | 
+ 5 | __all__ = ['Choices', 'IntegerChoices', 'TextChoices']
+ 6 | 
+ 7 | 
+ 8 | class ChoicesMeta(enum.EnumMeta):
+ 9 |     """A metaclass for creating a enum choices."""
+10 | 
+11 |     def __new__(metacls, classname, bases, classdict):
+12 |         labels = []
+13 |         for key in classdict._member_names:
+14 |             value = classdict[key]
+15 |             if (
+16 |                 isinstance(value, (list, tuple)) and
+17 |                 len(value) > 1 and
+18 |                 isinstance(value[-1], (Promise, str))
+19 |             ):
+20 |                 *value, label = value
+21 |                 value = tuple(value)
+22 |             else:
+23 |                 label = key.replace('_', ' ').title()
+24 |             labels.append(label)
+25 |             # Use dict.__setitem__() to suppress defenses against double
+26 |             # assignment in enum's classdict.
+27 |             dict.__setitem__(classdict, key, value)
+28 |         cls = super().__new__(metacls, classname, bases, classdict)
+29 |         cls._value2label_map_ = dict(zip(cls._value2member_map_, labels))
+30 |         # Add a label property to instances of enum which uses the enum member
+31 |         # that is passed in as "self" as the value to use when looking up the
+32 |         # label in the choices.
+33 |         cls.label = property(lambda self: cls._value2label_map_.get(self.value))
+34 |         return enum.unique(cls)
+35 | 
+36 |     def __contains__(cls, member):
+37 |         if not isinstance(member, enum.Enum):
+38 |             # Allow non-enums to match against member values.
+39 |             return any(x.value == member for x in cls)
+40 |         return super().__contains__(member)
+41 | 
+42 |     @property
+43 |     def names(cls):
+44 |         empty = ['__empty__'] if hasattr(cls, '__empty__') else []
+45 |         return empty + [member.name for member in cls]
+46 | 
+47 |     @property
+48 |     def choices(cls):
+49 |         empty = [(None, cls.__empty__)] if hasattr(cls, '__empty__') else []
+50 |         return empty + [(member.value, member.label) for member in cls]
+51 | 
+52 |     @property
+53 |     def labels(cls):
+54 |         return [label for _, label in cls.choices]
+55 | 
+56 |     @property
+57 |     def values(cls):
+58 |         return [value for value, _ in cls.choices]
+59 | 
+60 | 
+61 | class Choices(enum.Enum, metaclass=ChoicesMeta):
+62 |     """Class for creating enumerated choices."""
+63 | 
+64 |     def __str__(self):
+65 |         """
+66 |         Use value when cast to str, so that Choices set as model instance
+67 |         attributes are rendered as expected in templates and similar contexts.
+68 |         """
+69 |         return str(self.value)
+70 | 
+71 | 
+72 | class IntegerChoices(int, Choices):
+73 |     """Class for creating enumerated integer choices."""
+74 |     pass
+75 | 
+76 | 
+77 | class TextChoices(str, Choices):
+78 |     """Class for creating enumerated string choices."""
+79 | 
+80 |     def _generate_next_value_(name, start, count, last_values):
+81 |         return name
+82 | 
+```
+
+2026-08-28 00:39:04 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['do_not_call_in_templates = True', 'class ChoicesMeta(enum.EnumMeta)', 'class Choices(enum.Enum, metaclass=ChoicesMeta)', 'class TextChoices(str, Choices)'], 'file_path_or_pattern': 'django/db/models/enums.py'}))
+```
+2026-08-28 00:39:05 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:39:07 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:39:08 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:39:10 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:39:11 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:39:13 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:39:13 auto_search_main.py INFO OBSERVATION:
+django/db/models/enums.py:ChoicesMeta.labels
+django/db/models/enums.py:ChoicesMeta.values
+django/db/models/enums.py:ChoicesMeta.names
+django/db/models/enums.py:ChoicesMeta.__contains__
+django/db/models/enums.py:ChoicesMeta.choices
+django/db/models/enums.py:TextChoices._generate_next_value_
+django/db/models/enums.py:Choices
+django/db/models/enums.py:IntegerChoices
+django/db/models/enums.py:TextChoices
+django/db/models/enums.py:Choices.__str__
+django/db/models/enums.py:ChoicesMeta.labels
+django/db/models/enums.py:ChoicesMeta.values
+django/db/models/enums.py:ChoicesMeta.names
+django/db/models/enums.py:ChoicesMeta.__contains__
+django/db/models/enums.py:ChoicesMeta.choices
+django/db/models/enums.py:TextChoices._generate_next_value_
+django/db/models/enums.py:Choices
+django/db/models/enums.py:IntegerChoices
+django/db/models/enums.py:TextChoices
+django/db/models/enums.py:Choices.__str__
+django/db/models/enums.py:TextChoices._generate_next_value_
+django/db/models/enums.py:Choices
+django/db/models/enums.py:IntegerChoices
+django/db/models/enums.py:TextChoices
+django/db/models/enums.py:Choices.__str__
+django/db/models/enums.py:TextChoices._generate_next_value_
+django/db/models/enums.py:Choices
+django/db/models/enums.py:IntegerChoices
+django/db/models/enums.py:TextChoices
+django/db/models/enums.py:Choices.__str__
+django/db/models/enums.py:ChoicesMeta.labels
+django/db/models/enums.py:ChoicesMeta.values
+django/db/models/enums.py:ChoicesMeta.names
+django/db/models/enums.py:ChoicesMeta.__contains__
+django/db/models/enums.py:ChoicesMeta.choices
+##Searching for term "do_not_call_in_templates = True"...
+### Search Result:
+Found function `django/template/base.py:Token.__str__`.
+Source: Retrieved entity using keyword search (bm25).
+```
+311 | def __str__(self):
+312 |         token_name = self.token_type.name.capitalize()
+313 |         return ('<%s token: "%s...">' %
+314 |                 (token_name, self.contents[:20].replace('\n', '')))
+```
+
+Found class `django/templatetags/i18n.py:TranslateNode`.
+Source: Retrieved entity using keyword search (bm25).
+```
+68 | class TranslateNode(Node):
+69 |     def __init__(self, filter_expression, noop, asvar=None,
+70 |                  message_context=None):
+71 |         self.noop = noop
+72 |         self.asvar = asvar
+73 |         self.message_context = message_context
+74 |         self.filter_expression = filter_expression
+75 |         if isinstance(self.filter_expression.var, str):
+76 |             self.filter_expression.var = Variable("'%s'" %
+77 |                                                   self.filter_expression.var)
+78 | 
+79 |     def render(self, context):
+80 |         self.filter_expression.var.translate = not self.noop
+81 |         if self.message_context:
+82 |             self.filter_expression.var.message_context = (
+83 |                 self.message_context.resolve(context))
+84 |         output = self.filter_expression.resolve(context)
+85 |         value = render_value_in_context(output, context)
+86 |         # Restore percent signs. Percent signs in template text are doubled
+87 |         # so they are not interpreted as string format flags.
+88 |         is_safe = isinstance(value, SafeData)
+89 |         value = value.replace('%%', '%')
+90 |         value = mark_safe(value) if is_safe else value
+91 |         if self.asvar:
+92 |             context[self.asvar] = value
+93 |             return ''
+94 |         else:
+95 |             return value
+```
+
+Found function `django/templatetags/cache.py:do_cache`.
+Source: Retrieved entity using keyword search (bm25).
+```
+53 | def do_cache(parser, token):
+54 |     """
+55 |     This will cache the contents of a template fragment for a given amount
+56 |     of time.
+57 | 
+58 |     Usage::
+59 | 
+60 |         {% load cache %}
+61 |         {% cache [expire_time] [fragment_name] %}
+62 |             .. some expensive processing ..
+63 |         {% endcache %}
+64 | 
+65 |     This tag also supports varying by a list of arguments::
+66 | 
+67 |         {% load cache %}
+68 |         {% cache [expire_time] [fragment_name] [var1] [var2] .. %}
+69 |             .. some expensive processing ..
+70 |         {% endcache %}
+71 | 
+72 |     Optionally the cache to use may be specified thus::
+73 | 
+74 |         {% cache ....  using="cachename" %}
+75 | 
+76 |     Each unique set of arguments will result in a unique cache entry.
+77 |     """
+78 |     nodelist = parser.parse(('endcache',))
+79 |     parser.delete_first_token()
+80 |     tokens = token.split_contents()
+81 |     if len(tokens) < 3:
+82 |         raise TemplateSyntaxError("'%r' tag requires at least 2 arguments." % tokens[0])
+83 |     if len(tokens) > 3 and tokens[-1].startswith('using='):
+84 |         cache_name = parser.compile_filter(tokens[-1][len('using='):])
+85 |         tokens = tokens[:-1]
+86 |     else:
+87 |         cache_name = None
+88 |     return CacheNode(
+89 |         nodelist, parser.compile_filter(tokens[1]),
+90 |         tokens[2],  # fragment_name can't be a variable.
+91 |         [parser.compile_filter(t) for t in tokens[3:]],
+92 |         cache_name,
+93 |     )
+```
+
+
+
+##Searching for term "class ChoicesMeta(enum.EnumMeta)", "class Choices(enum.Enum, metaclass=ChoicesMeta)", "do_not_call_in_templates = True class ChoicesMeta(enum.EnumMeta) class Choices(enum.Enum, metaclass=ChoicesMeta) class TextChoices(str, Choices)"...
+### Search Result:
+Found class `django/db/models/enums.py:ChoicesMeta`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 8 | class ChoicesMeta(enum.EnumMeta):
+ 9 |     """A metaclass for creating a enum choices."""
+10 | 
+11 |     def __new__(metacls, classname, bases, classdict):
+12 |         labels = []
+13 |         for key in classdict._member_names:
+14 |             value = classdict[key]
+15 |             if (
+16 |                 isinstance(value, (list, tuple)) and
+17 |                 len(value) > 1 and
+18 |                 isinstance(value[-1], (Promise, str))
+19 |             ):
+20 |                 *value, label = value
+21 |                 value = tuple(value)
+22 |             else:
+23 |                 label = key.replace('_', ' ').title()
+24 |             labels.append(label)
+25 |             # Use dict.__setitem__() to suppress defenses against double
+26 |             # assignment in enum's classdict.
+27 |             dict.__setitem__(classdict, key, value)
+28 |         cls = super().__new__(metacls, classname, bases, classdict)
+29 |         cls._value2label_map_ = dict(zip(cls._value2member_map_, labels))
+30 |         # Add a label property to instances of enum which uses the enum member
+31 |         # that is passed in as "self" as the value to use when looking up the
+32 |         # label in the choices.
+33 |         cls.label = property(lambda self: cls._value2label_map_.get(self.value))
+34 |         return enum.unique(cls)
+35 | 
+36 |     def __contains__(cls, member):
+37 |         if not isinstance(member, enum.Enum):
+38 |             # Allow non-enums to match against member values.
+39 |             return any(x.value == member for x in cls)
+40 |         return super().__contains__(member)
+41 | 
+42 |     @property
+43 |     def names(cls):
+44 |         empty = ['__empty__'] if hasattr(cls, '__empty__') else []
+45 |         return empty + [member.name for member in cls]
+46 | 
+47 |     @property
+48 |     def choices(cls):
+49 |         empty = [(None, cls.__empty__)] if hasattr(cls, '__empty__') else []
+50 |         return empty + [(member.value, member.label) for member in cls]
+51 | 
+52 |     @property
+53 |     def labels(cls):
+54 |         return [label for _, label in cls.choices]
+55 | 
+56 |     @property
+57 |     def values(cls):
+58 |         return [value for value, _ in cls.choices]
+```
+
+
+
+##Searching for term "class ChoicesMeta(enum.EnumMeta)", "class Choices(enum.Enum, metaclass=ChoicesMeta)"...
+### Search Result:
+Found function `django/db/models/enums.py:ChoicesMeta.__contains__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+36 | def __contains__(cls, member):
+37 |         if not isinstance(member, enum.Enum):
+38 |             # Allow non-enums to match against member values.
+39 |             return any(x.value == member for x in cls)
+40 |         return super().__contains__(member)
+```
+
+Found function `django/db/models/enums.py:ChoicesMeta.names`.
+Source: Retrieved entity using keyword search (bm25).
+```
+43 | def names(cls):
+44 |         empty = ['__empty__'] if hasattr(cls, '__empty__') else []
+45 |         return empty + [member.name for member in cls]
+```
+
+Found function `django/db/models/enums.py:ChoicesMeta.labels`.
+Source: Retrieved code content using keyword search (bm25).
+```
+53 | def labels(cls):
+54 |         return [label for _, label in cls.choices]
+```
+
+Found function `django/db/models/enums.py:ChoicesMeta.values`.
+Source: Retrieved entity using keyword search (bm25).
+```
+57 | def values(cls):
+58 |         return [value for value, _ in cls.choices]
+```
+
+
+
+##Searching for term "class Choices(enum.Enum, metaclass=ChoicesMeta)"...
+### Search Result:
+Found `django/db/models/enums.py:ChoicesMeta`, `django/db/models/enums.py:ChoicesMeta.__new__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import enum
+ 2 | 
+ 3 | from django.utils.functional import Promise
+ 4 | 
+ 5 | __all__ = ['Choices', 'IntegerChoices', 'TextChoices']
+ 6 | 
+ 7 | 
+ 8 | class ChoicesMeta(enum.EnumMeta):
+ 9 |     """A metaclass for creating a enum choices."""
+10 | 
+11 |     def __new__(metacls, classname, bases, classdict):
+12 |         labels = []
+13 |         for key in classdict._member_names:
+14 |             value = classdict[key]
+15 |             if (
+16 |                 isinstance(value, (list, tuple)) and
+17 |                 len(value) > 1 and
+18 |                 isinstance(value[-1], (Promise, str))
+19 |             ):
+20 |                 *value, label = value
+21 |                 value = tuple(value)
+22 |             else:
+23 |                 label = key.replace('_', ' ').title()
+24 |             labels.append(label)
+25 |             # Use dict.__setitem__() to suppress defenses against double
+26 |             # assignment in enum's classdict.
+27 |             dict.__setitem__(classdict, key, value)
+28 |         cls = super().__new__(metacls, classname, bases, classdict)
+29 |         cls._value2label_map_ = dict(zip(cls._value2member_map_, labels))
+30 |         # Add a label property to instances of enum which uses the enum member
+31 |         # that is passed in as "self" as the value to use when looking up the
+32 |         # label in the choices.
+33 |         cls.label = property(lambda self: cls._value2label_map_.get(self.value))
+34 |         return enum.unique(cls)
+```
+
+
+
+##Searching for term "class Choices(enum.Enum, metaclass=ChoicesMeta)", "class TextChoices(str, Choices)", "do_not_call_in_templates = True class ChoicesMeta(enum.EnumMeta) class Choices(enum.Enum, metaclass=ChoicesMeta) class TextChoices(str, Choices)"...
+### Search Result:
+Found class `django/db/models/enums.py:Choices`.
+Source: Retrieved entity using keyword search (bm25).
+```
+61 | class Choices(enum.Enum, metaclass=ChoicesMeta):
+62 |     """Class for creating enumerated choices."""
+63 | 
+64 |     def __str__(self):
+65 |         """
+66 |         Use value when cast to str, so that Choices set as model instance
+67 |         attributes are rendered as expected in templates and similar contexts.
+68 |         """
+69 |         return str(self.value)
+```
+
+
+
+##Searching for term "class TextChoices(str, Choices)", "do_not_call_in_templates = True class ChoicesMeta(enum.EnumMeta) class Choices(enum.Enum, metaclass=ChoicesMeta) class TextChoices(str, Choices)"...
+### Search Result:
+Found class `django/db/models/enums.py:IntegerChoices`.
+Source: Retrieved code content using keyword search (bm25).
+```
+72 | class IntegerChoices(int, Choices):
+73 |     """Class for creating enumerated integer choices."""
+74 |     pass
+```
+
+Found class `django/db/models/enums.py:TextChoices`.
+Source: Retrieved entity using keyword search (bm25).
+```
+77 | class TextChoices(str, Choices):
+78 |     """Class for creating enumerated string choices."""
+79 | 
+80 |     def _generate_next_value_(name, start, count, last_values):
+81 |         return name
+```
+
+
+
+##Searching for term "class TextChoices(str, Choices)"...
+### Search Result:
+Found function `django/db/models/enums.py:Choices.__str__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+64 | def __str__(self):
+65 |         """
+66 |         Use value when cast to str, so that Choices set as model instance
+67 |         attributes are rendered as expected in templates and similar contexts.
+68 |         """
+69 |         return str(self.value)
+```
+
+
+
+##Searching for term "do_not_call_in_templates = True class ChoicesMeta(enum.EnumMeta) class Choices(enum.Enum, metaclass=ChoicesMeta) class TextChoices(str, Choices)"...
+### Search Result:
+Found `django/db/models/enums.py:ChoicesMeta`, `django/db/models/enums.py:ChoicesMeta.__new__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import enum
+ 2 | 
+ 3 | from django.utils.functional import Promise
+ 4 | 
+ 5 | __all__ = ['Choices', 'IntegerChoices', 'TextChoices']
+ 6 | 
+ 7 | 
+ 8 | class ChoicesMeta(enum.EnumMeta):
+ 9 |     """A metaclass for creating a enum choices."""
+10 | 
+11 |     def __new__(metacls, classname, bases, classdict):
+12 |         labels = []
+13 |         for key in classdict._member_names:
+14 |             value = classdict[key]
+15 |             if (
+16 |                 isinstance(value, (list, tuple)) and
+17 |                 len(value) > 1 and
+18 |                 isinstance(value[-1], (Promise, str))
+19 |             ):
+20 |                 *value, label = value
+21 |                 value = tuple(value)
+22 |             else:
+23 |                 label = key.replace('_', ' ').title()
+24 |             labels.append(label)
+25 |             # Use dict.__setitem__() to suppress defenses against double
+26 |             # assignment in enum's classdict.
+27 |             dict.__setitem__(classdict, key, value)
+28 |         cls = super().__new__(metacls, classname, bases, classdict)
+29 |         cls._value2label_map_ = dict(zip(cls._value2member_map_, labels))
+30 |         # Add a label property to instances of enum which uses the enum member
+31 |         # that is passed in as "self" as the value to use when looking up the
+32 |         # label in the choices.
+33 |         cls.label = property(lambda self: cls._value2label_map_.get(self.value))
+34 |         return enum.unique(cls)
+```
+
+2026-08-28 00:39:13 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:39:18 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:39:18 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:39:18 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 00:39:18 auto_search_main.py INFO ===============
+2026-08-28 00:39:18 auto_search_main.py INFO Final response generated content_length=199
+2026-08-28 00:39:18 auto_search_main.py INFO ==== localizing django__django-12304 succeed, process multiple loc outputs ====
+2026-08-28 00:39:19 cost_analysis.py INFO input_tokens=60617, output_tokens=416, cost=0.15
+2026-08-28 00:39:19 auto_search_main.py INFO Total time: 5.4214 min

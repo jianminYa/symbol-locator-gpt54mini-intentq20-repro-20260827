@@ -1,0 +1,23 @@
+{
+  "timestamp": "2026-08-28T02:14:55.763849+00:00",
+  "face": "A1",
+  "instance_id": "pytest-dev__pytest-7205",
+  "attempt": 1,
+  "elapsed_seconds": 349.24,
+  "return_code": 0,
+  "category": "success",
+  "timeout": false,
+  "output_written": true,
+  "pyright_seen": false,
+  "pyright_warmup_success": false,
+  "pyright_warmup_failure": false,
+  "find_symbol_seen": false,
+  "find_symbol_nonempty": false,
+  "symbol_locator_installed": false,
+  "trace_root": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/faces/A1/traces/pytest-dev__pytest-7205_attempt_1",
+  "trace_complete": true,
+  "trace_jsonl_valid": true,
+  "trace_instance_id_correct": true,
+  "stdout_path": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/attempts/A1/pytest-dev__pytest-7205/attempt_1.stdout.log",
+  "stderr_path": "/data/workspace/symbol-locator-repair-20260826-083933/experiments/temperature_trace_pathfix_20260827-232041/t0_x2_fresh/attempt_1/attempts/A1/pytest-dev__pytest-7205/attempt_1.stderr.log"
+}

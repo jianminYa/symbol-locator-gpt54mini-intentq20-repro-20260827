@@ -1,0 +1,2 @@
+2026-08-28T04:38:05.266504+00:00 case_start face=B1 instance=pytest-dev__pytest-6202 attempt=1
+2026-08-28T04:39:12.173263+00:00 case_end face=B1 instance=pytest-dev__pytest-6202 attempt=1 elapsed=66.899 category=success

@@ -1,0 +1,2662 @@
+2026-08-28 00:20:19 _client.py INFO HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/json/json.py "HTTP/1.1 200 OK"
+2026-08-28 00:20:19 auto_search_main.py INFO Limiting evaluation to first 1 instances.
+2026-08-28 00:20:19 auto_search_main.py INFO ============================================================
+2026-08-28 00:20:19 auto_search_main.py INFO ==== rank 0 setup localize django__django-11206 ====
+2026-08-28 00:20:19 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/725b9323-d65a-4600-99db-2f4ee93683a4/django_django and checkout commit HEAD
+2026-08-28 00:20:19 git_repo_manager.py INFO Directory 'playground/725b9323-d65a-4600-99db-2f4ee93683a4/django_django' was created.
+2026-08-28 00:23:28 repo_ops.py INFO [0] Processed django__django-11206
+2026-08-28 00:23:29 auto_search_main.py INFO ============================================================
+2026-08-28 00:23:29 auto_search_main.py INFO ==== rank 0 begin localizing django__django-11206 ====
+2026-08-28 00:23:29 auto_search_main.py INFO ============================================================
+2026-08-28 00:23:29 auto_search_main.py INFO ==== django__django-11206 Count down: attempt 1 ====
+2026-08-28 00:23:29 auto_search_main.py INFO ==== django__django-11206 start auto search ====
+2026-08-28 00:23:29 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:23:34 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:23:34 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:23:34 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 00:23:34 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['numberformat format', "Decimal('1e-200')", 'decimal_pos', 'exponential notation'], 'file_path_or_pattern': '**/*.py'}))
+```
+2026-08-28 00:23:35 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:23:35 git_repo_manager.py INFO Clone Github repo https://github.com/django/django.git to playground/725b9323-d65a-4600-99db-2f4ee93683a4/django_django and checkout commit HEAD
+2026-08-28 00:23:40 epic_split.py WARNING Skipping code block LANG_INFO._ in django/conf/locale/__init__.py as it has 3922 tokens which is more than chunk size 500. Content: {
+    'af': {
+        'bidi': False,
+        'code': 'af',
+        'name': 'Afrikaans',
+        'nam...
+2026-08-28 00:24:48 epic_split.py WARNING Parsing file django/db/models/fields/__init__.py took 1.29 seconds.
+2026-08-28 00:24:57 epic_split.py WARNING Parsing file django/forms/widgets.py took 1.08 seconds.
+2026-08-28 00:25:13 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:15 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:16 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:17 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:19 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:21 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:22 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:24 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:24 auto_search_main.py INFO OBSERVATION:
+django/utils/formats.py:number_format
+django/utils/numberformat.py:format
+django/db/backends/mysql/operations.py:DatabaseOperations.explain_query_prefix
+django/core/serializers/__init__.py:unregister_serializer
+django/core/serializers/__init__.py:get_serializer_formats
+django/core/serializers/__init__.py:get_serializer
+django/core/serializers/__init__.py:serialize
+django/core/serializers/__init__.py:get_deserializer
+django/core/serializers/__init__.py:deserialize
+django/core/serializers/__init__.py:get_public_serializer_formats
+django/utils/formats.py:date_format
+django/utils/formats.py:time_format
+django/utils/formats.py:impl:9
+django/core/serializers/__init__.py:_load_serializers
+django/utils/formats.py:localize_input
+django/views/generic/dates.py:_date_from_string
+django/views/generic/dates.py:DateDetailView
+django/db/backends/oracle/base.py:FormatStylePlaceholderCursor._output_number_converter
+django/db/backends/oracle/base.py:FormatStylePlaceholderCursor
+django/db/backends/oracle/base.py:FormatStylePlaceholderCursor._get_decimal_converter
+django/db/backends/oracle/base.py:FormatStylePlaceholderCursor.__init__
+django/db/models/fields/__init__.py:URLField
+django/db/models/fields/__init__.py:URLField.formfield
+django/db/models/fields/__init__.py:URLField.__init__
+django/db/models/fields/__init__.py:URLField.deconstruct
+django/template/defaultfilters.py:floatformat
+django/utils/formats.py:sanitize_separators
+django/db/backends/oracle/base.py:FormatStylePlaceholderCursor._output_type_handler
+django/core/validators.py:DecimalValidator
+django/core/validators.py:DecimalValidator.__init__
+django/db/backends/utils.py:strip_quotes
+django/db/backends/utils.py:format_number
+django/db/backends/utils.py:names_digest
+django/utils/formats.py:number_format
+django/utils/numberformat.py:format
+django/contrib/sites/requests.py:RequestSite.delete
+django/contrib/sites/requests.py:RequestSite.__str__
+django/contrib/sites/requests.py:RequestSite.__init__
+django/contrib/sites/requests.py:RequestSite
+django/contrib/sites/requests.py:RequestSite.save
+django/contrib/sites/models.py:impl:3
+django/contrib/sites/models.py:clear_site_cache
+django/contrib/staticfiles/finders.py:FileSystemFinder.check
+django/contrib/staticfiles/__init__.py:impl
+django/forms/fields.py:DecimalField.validate
+django/forms/fields.py:DecimalField.widget_attrs
+django/contrib/gis/db/backends/postgis/pgraster.py:to_pgraster
+django/template/base.py:Variable.__init__
+django/template/base.py:Variable
+django/template/defaultfilters.py:floatformat
+django/contrib/sites/models.py:Site.Meta
+django/contrib/sites/models.py:Site.__str__
+django/contrib/sites/models.py:Site.natural_key
+django/contrib/sites/models.py:Site
+django/contrib/staticfiles/__init__.py:impl
+django/contrib/sites/models.py:impl:3
+django/contrib/sites/models.py:clear_site_cache
+django/utils/formats.py:number_format
+django/forms/fields.py:DecimalField.validate
+django/forms/fields.py:DecimalField.widget_attrs
+django/utils/numberformat.py:format
+django/template/defaultfilters.py:floatformat
+django/db/backends/oracle/base.py:FormatStylePlaceholderCursor._output_number_converter
+django/db/backends/oracle/base.py:FormatStylePlaceholderCursor
+django/db/backends/oracle/base.py:FormatStylePlaceholderCursor._get_decimal_converter
+django/db/backends/oracle/base.py:FormatStylePlaceholderCursor.__init__
+django/db/backends/utils.py:strip_quotes
+django/db/backends/utils.py:format_number
+django/db/backends/utils.py:names_digest
+django/utils/formats.py:localize_input
+django/utils/log.py:ServerFormatter.format
+django/utils/log.py:ServerFormatter
+django/utils/log.py:ServerFormatter.__init__
+django/utils/log.py:ServerFormatter.uses_server_time
+##Searching for term "numberformat format"...
+### Search Result:
+Found `django/utils/formats.py:reset_format_cache`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | import datetime
+  2 | import decimal
+  3 | import unicodedata
+  4 | from importlib import import_module
+  5 | 
+  6 | from django.conf import settings
+  7 | from django.utils import dateformat, datetime_safe, numberformat
+  8 | from django.utils.functional import lazy
+  9 | from django.utils.translation import (
+ 10 |     check_for_language, get_language, to_locale,
+ 11 | )
+ 12 | 
+ 13 | # format_cache is a mapping from (format_type, lang) to the format string.
+ 14 | # By using the cache, it is possible to avoid running get_format_modules
+ 15 | # repeatedly.
+ 16 | _format_cache = {}
+ 17 | _format_modules_cache = {}
+ 18 | 
+ 19 | ISO_INPUT_FORMATS = {
+ 20 |     'DATE_INPUT_FORMATS': ['%Y-%m-%d'],
+ 21 |     'TIME_INPUT_FORMATS': ['%H:%M:%S', '%H:%M:%S.%f', '%H:%M'],
+ 22 |     'DATETIME_INPUT_FORMATS': [
+ 23 |         '%Y-%m-%d %H:%M:%S',
+ 24 |         '%Y-%m-%d %H:%M:%S.%f',
+ 25 |         '%Y-%m-%d %H:%M',
+ 26 |         '%Y-%m-%d'
+ 27 |     ],
+ 28 | }
+ 29 | 
+ 30 | 
+ 31 | FORMAT_SETTINGS = frozenset([
+ 32 |     'DECIMAL_SEPARATOR',
+ 33 |     'THOUSAND_SEPARATOR',
+ 34 |     'NUMBER_GROUPING',
+ 35 |     'FIRST_DAY_OF_WEEK',
+ 36 |     'MONTH_DAY_FORMAT',
+ 37 |     'TIME_FORMAT',
+ 38 |     'DATE_FORMAT',
+ 39 |     'DATETIME_FORMAT',
+ 40 |     'SHORT_DATE_FORMAT',
+ 41 |     'SHORT_DATETIME_FORMAT',
+ 42 |     'YEAR_MONTH_FORMAT',
+ 43 |     'DATE_INPUT_FORMATS',
+ 44 |     'TIME_INPUT_FORMATS',
+ 45 |     'DATETIME_INPUT_FORMATS',
+ 46 | ])
+ 47 | 
+ 48 | 
+ 49 | def reset_format_cache():
+ 50 |     """Clear any cached formats.
+ 51 | 
+ 52 |     This method is provided primarily for testing purposes,
+ 53 |     so that the effects of cached formats can be removed.
+ 54 |     """
+ 55 |     global _format_cache, _format_modules_cache
+ 56 |     _format_cache = {}
+ 57 |     _format_modules_cache = {}
+```
+
+Found `django/utils/numberformat.py:format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+```
+Hint: 
+The code for function `django/utils/numberformat.py:format` is incomplete; search `django/utils/numberformat.py:format` for the full content if needed.
+
+Found function `django/db/backends/mysql/operations.py:DatabaseOperations.explain_query_prefix`.
+Source: Retrieved code content using keyword search (bm25).
+```
+282 | def explain_query_prefix(self, format=None, **options):
+283 |         # Alias MySQL's TRADITIONAL to TEXT for consistency with other backends.
+284 |         if format and format.upper() == 'TEXT':
+285 |             format = 'TRADITIONAL'
+286 |         prefix = super().explain_query_prefix(format, **options)
+287 |         if format:
+288 |             prefix += ' FORMAT=%s' % format
+289 |         if self.connection.features.needs_explain_extended and format is None:
+290 |             # EXTENDED and FORMAT are mutually exclusive options.
+291 |             prefix += ' EXTENDED'
+292 |         return prefix
+```
+
+
+
+##Searching for term "numberformat format", "decimal_pos", "numberformat format Decimal('1e-200') decimal_pos exponential notation"...
+### Search Result:
+Found function `django/utils/numberformat.py:format`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+58 |     dec_part = dec_part and decimal_sep + dec_part
+59 |     # grouping
+60 |     if use_grouping:
+61 |         try:
+62 |             # if grouping is a sequence
+63 |             intervals = list(grouping)
+64 |         except TypeError:
+65 |             # grouping is a single value
+66 |             intervals = [grouping, 0]
+67 |         active_interval = intervals.pop(0)
+68 |         int_part_gd = ''
+69 |         cnt = 0
+70 |         for digit in int_part[::-1]:
+71 |             if cnt and cnt == active_interval:
+72 |                 if intervals:
+73 |                     active_interval = intervals.pop(0) or active_interval
+74 |                 int_part_gd += thousand_sep[::-1]
+75 |                 cnt = 0
+76 |             int_part_gd += digit
+77 |             cnt += 1
+78 |         int_part = int_part_gd[::-1]
+79 |     return sign + int_part + dec_part
+```
+
+Found function `django/utils/formats.py:number_format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+165 | def number_format(value, decimal_pos=None, use_l10n=None, force_grouping=False):
+166 |     """
+167 |     Format a numeric value using localization settings.
+168 | 
+169 |     If use_l10n is provided and is not None, it forces the value to
+170 |     be localized (or not), overriding the value of settings.USE_L10N.
+171 |     """
+172 |     if use_l10n or (use_l10n is None and settings.USE_L10N):
+173 |         lang = get_language()
+174 |     else:
+175 |         lang = None
+176 |     return numberformat.format(
+177 |         value,
+178 |         get_format('DECIMAL_SEPARATOR', lang, use_l10n=use_l10n),
+179 |         decimal_pos,
+180 |         get_format('NUMBER_GROUPING', lang, use_l10n=use_l10n),
+181 |         get_format('THOUSAND_SEPARATOR', lang, use_l10n=use_l10n),
+182 |         force_grouping=force_grouping,
+183 |         use_l10n=use_l10n,
+184 |     )
+```
+
+
+
+##Searching for term "numberformat format", "numberformat format Decimal('1e-200') decimal_pos exponential notation"...
+### Search Result:
+Found function `django/utils/formats.py:time_format`.
+Source: Retrieved entity using keyword search (bm25).
+```
+155 | def time_format(value, format=None, use_l10n=None):
+156 |     """
+157 |     Format a datetime.time object using a localizable format.
+158 | 
+159 |     If use_l10n is provided and is not None, it forces the value to
+160 |     be localized (or not), overriding the value of settings.USE_L10N.
+161 |     """
+162 |     return dateformat.time_format(value, get_format(format or 'TIME_FORMAT', use_l10n=use_l10n))
+```
+
+Found function `django/utils/formats.py:localize_input`.
+Source: Retrieved entity using keyword search (bm25).
+```
+210 | def localize_input(value, default=None):
+211 |     """
+212 |     Check if an input value is a localizable type and return it
+213 |     formatted with the appropriate formatting string of the current locale.
+214 |     """
+215 |     if isinstance(value, str):  # Handle strings first for performance reasons.
+216 |         return value
+217 |     elif isinstance(value, bool):  # Don't treat booleans as numbers.
+218 |         return str(value)
+219 |     elif isinstance(value, (decimal.Decimal, float, int)):
+220 |         return number_format(value)
+221 |     elif isinstance(value, datetime.datetime):
+222 |         value = datetime_safe.new_datetime(value)
+223 |         format = default or get_format('DATETIME_INPUT_FORMATS')[0]
+224 |         return value.strftime(format)
+225 |     elif isinstance(value, datetime.date):
+226 |         value = datetime_safe.new_date(value)
+227 |         format = default or get_format('DATE_INPUT_FORMATS')[0]
+228 |         return value.strftime(format)
+229 |     elif isinstance(value, datetime.time):
+230 |         format = default or get_format('TIME_INPUT_FORMATS')[0]
+231 |         return value.strftime(format)
+232 |     return value
+```
+
+Found file `django/utils/numberformat.py`.
+Found file `django/utils/formats.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "Decimal('1e-200')"...
+### Search Result:
+Found `django/utils/numberformat.py:format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+```
+Hint: 
+The code for function `django/utils/numberformat.py:format` is incomplete; search `django/utils/numberformat.py:format` for the full content if needed.
+
+Found class `django/db/backends/oracle/base.py:FormatStylePlaceholderCursor`.
+Source: Retrieved code content using keyword search (bm25).
+Just show the structure of this class due to response length limitations:
+```
+class FormatStylePlaceholderCursor:
+    charset = 'utf-8'
+
+    def __init__(self, connection):
+...
+    @staticmethod
+    def _output_number_converter(value):
+...
+    @staticmethod
+    def _get_decimal_converter(precision, scale):
+...
+    @staticmethod
+    def _output_type_handler(cursor, name, defaultType, length, precision, scale):
+...
+    def _format_params(self, params):
+...
+    def _guess_input_sizes(self, params_list):
+...
+    def _param_generator(self, params):
+...
+    def _fix_for_params(self, query, params, unify_by_values=False):
+...
+    def execute(self, query, params=None):
+...
+    def executemany(self, query, params=None):
+...
+    def close(self):
+...
+    def var(self, *args):
+...
+    def arrayvar(self, *args):
+...
+    def __getattr__(self, attr):
+...
+    def __iter__(self):
+
+```
+Hint: Search `django/db/backends/oracle/base.py:FormatStylePlaceholderCursor` to get the full content if needed.
+
+Found function `django/utils/encoding.py:smart_bytes`.
+Source: Retrieved entity using keyword search (bm25).
+```
+70 | def smart_bytes(s, encoding='utf-8', strings_only=False, errors='strict'):
+71 |     """
+72 |     Return a bytestring version of 's', encoded as specified in 'encoding'.
+73 | 
+74 |     If strings_only is True, don't convert (some) non-string-like objects.
+75 |     """
+76 |     if isinstance(s, Promise):
+77 |         # The input is the result of a gettext_lazy() call.
+78 |         return s
+79 |     return force_bytes(s, encoding, strings_only, errors)
+```
+
+Found function `django/db/backends/oracle/base.py:FormatStylePlaceholderCursor._output_number_converter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+398 | def _output_number_converter(value):
+399 |         return decimal.Decimal(value) if '.' in value else int(value)
+```
+
+Found function `django/db/backends/oracle/base.py:FormatStylePlaceholderCursor._get_decimal_converter`.
+Source: Retrieved code content using keyword search (bm25).
+```
+402 | def _get_decimal_converter(precision, scale):
+403 |         if scale == 0:
+404 |             return int
+405 |         context = decimal.Context(prec=precision)
+406 |         quantize_value = decimal.Decimal(1).scaleb(-scale)
+407 |         return lambda v: decimal.Decimal(v).quantize(quantize_value, context=context)
+```
+
+Found class `django/db/models/fields/__init__.py:URLField`.
+Source: Retrieved code content using keyword search (bm25).
+```
+2222 | class URLField(CharField):
+2223 |     default_validators = [validators.URLValidator()]
+2224 |     description = _("URL")
+2225 | 
+2226 |     def __init__(self, verbose_name=None, name=None, **kwargs):
+2227 |         kwargs.setdefault('max_length', 200)
+2228 |         super().__init__(verbose_name, name, **kwargs)
+2229 | 
+2230 |     def deconstruct(self):
+2231 |         name, path, args, kwargs = super().deconstruct()
+2232 |         if kwargs.get("max_length") == 200:
+2233 |             del kwargs['max_length']
+2234 |         return name, path, args, kwargs
+2235 | 
+2236 |     def formfield(self, **kwargs):
+2237 |         # As with CharField, this will cause URL validation to be performed
+2238 |         # twice.
+2239 |         return super().formfield(**{
+2240 |             'form_class': forms.URLField,
+2241 |             **kwargs,
+2242 |         })
+```
+
+Found file `django/core/mail/__init__.py`.
+Found file `django/core/files/images.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "decimal_pos"...
+### Search Result:
+Found `django/utils/numberformat.py:format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+```
+Hint: 
+The code for function `django/utils/numberformat.py:format` is incomplete; search `django/utils/numberformat.py:format` for the full content if needed.
+
+Found function `django/core/serializers/pyyaml.py:DjangoSafeDumper.represent_decimal`.
+Source: Retrieved entity using keyword search (bm25).
+```
+28 | def represent_decimal(self, data):
+29 |         return self.represent_scalar('tag:yaml.org,2002:str', str(data))
+```
+
+Found function `django/db/models/fields/__init__.py:DecimalField._check_decimal_places`.
+Source: Retrieved entity using keyword search (bm25).
+```
+1470 | def _check_decimal_places(self):
+1471 |         try:
+1472 |             decimal_places = int(self.decimal_places)
+1473 |             if decimal_places < 0:
+1474 |                 raise ValueError()
+1475 |         except TypeError:
+1476 |             return [
+1477 |                 checks.Error(
+1478 |                     "DecimalFields must define a 'decimal_places' attribute.",
+1479 |                     obj=self,
+1480 |                     id='fields.E130',
+1481 |                 )
+1482 |             ]
+1483 |         except ValueError:
+1484 |             return [
+1485 |                 checks.Error(
+1486 |                     "'decimal_places' must be a non-negative integer.",
+1487 |                     obj=self,
+1488 |                     id='fields.E131',
+1489 |                 )
+1490 |             ]
+1491 |         else:
+1492 |             return []
+```
+
+Found function `django/db/models/fields/__init__.py:DecimalField._check_decimal_places_and_max_digits`.
+Source: Retrieved entity using keyword search (bm25).
+```
+1518 | def _check_decimal_places_and_max_digits(self, **kwargs):
+1519 |         if int(self.decimal_places) > int(self.max_digits):
+1520 |             return [
+1521 |                 checks.Error(
+1522 |                     "'max_digits' must be greater or equal to 'decimal_places'.",
+1523 |                     obj=self,
+1524 |                     id='fields.E134',
+1525 |                 )
+1526 |             ]
+1527 |         return []
+```
+
+Found function `django/contrib/sites/requests.py:RequestSite.__str__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+12 | def __str__(self):
+13 |         return self.domain
+```
+
+Found function `django/contrib/sites/requests.py:RequestSite.delete`.
+Source: Retrieved code content using keyword search (bm25).
+```
+18 | def delete(self):
+19 |         raise NotImplementedError('RequestSite cannot be deleted.')
+```
+
+
+
+##Searching for term "exponential notation"...
+### Search Result:
+Found `django/urls/utils.py:get_callable`, `django/urls/utils.py:get_mod_func`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | import functools
+ 2 | from importlib import import_module
+ 3 | 
+ 4 | from django.core.exceptions import ViewDoesNotExist
+ 5 | from django.utils.module_loading import module_has_submodule
+ 6 | 
+ 7 | 
+ 8 | @functools.lru_cache(maxsize=None)
+ 9 | def get_callable(lookup_view):
+10 |     """
+11 |     Return a callable corresponding to lookup_view.
+12 |     * If lookup_view is already a callable, return it.
+13 |     * If lookup_view is a string import path that can be resolved to a callable,
+14 |       import that callable and return it, otherwise raise an exception
+15 |       (ImportError or ViewDoesNotExist).
+16 |     """
+17 |     if callable(lookup_view):
+18 |         return lookup_view
+19 | 
+20 |     if not isinstance(lookup_view, str):
+21 |         raise ViewDoesNotExist("'%s' is not a callable or a dot-notation path" % lookup_view)
+22 | 
+23 |     mod_name, func_name = get_mod_func(lookup_view)
+24 |     if not func_name:  # No '.' in lookup_view
+25 |         raise ImportError("Could not import '%s'. The path must be fully qualified." % lookup_view)
+26 | 
+27 |     try:
+28 |         mod = import_module(mod_name)
+29 |     except ImportError:
+30 |         parentmod, submod = get_mod_func(mod_name)
+31 |         if submod and not module_has_submodule(import_module(parentmod), submod):
+32 |             raise ViewDoesNotExist(
+33 |                 "Could not import '%s'. Parent module %s does not exist." %
+34 |                 (lookup_view, mod_name)
+35 |             )
+36 |         else:
+37 |             raise
+38 |     else:
+39 |         try:
+40 |             view_func = getattr(mod, func_name)
+41 |         except AttributeError:
+42 |             raise ViewDoesNotExist(
+43 |                 "Could not import '%s'. View does not exist in module %s." %
+44 |                 (lookup_view, mod_name)
+45 |             )
+46 |         else:
+47 |             if not callable(view_func):
+48 |                 raise ViewDoesNotExist(
+49 |                     "Could not import '%s.%s'. View is not callable." %
+50 |                     (mod_name, func_name)
+51 |                 )
+52 |             return view_func
+53 | 
+54 | 
+55 | def get_mod_func(callback):
+56 |     # Convert 'django.views.news.stories.story_detail' to
+57 |     # ['django.views.news.stories', 'story_detail']
+58 |     try:
+59 |         dot = callback.rindex('.')
+60 |     except ValueError:
+61 |         return callback, ''
+62 |     return callback[:dot], callback[dot + 1:]
+63 | 
+```
+
+Found `django/utils/numberformat.py:format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+```
+Hint: 
+The code for function `django/utils/numberformat.py:format` is incomplete; search `django/utils/numberformat.py:format` for the full content if needed.
+
+Found function `django/db/transaction.py:get_connection`.
+Source: Retrieved entity using keyword search (bm25).
+```
+13 | def get_connection(using=None):
+14 |     """
+15 |     Get a database connection by name, or the default database connection
+16 |     if no name is provided. This is a private API.
+17 |     """
+18 |     if using is None:
+19 |         using = DEFAULT_DB_ALIAS
+20 |     return connections[using]
+```
+
+Found function `django/contrib/gis/db/backends/postgis/pgraster.py:to_pgraster`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 98 | def to_pgraster(rast):
+ 99 |     """
+100 |     Convert a GDALRaster into PostGIS Raster format.
+101 |     """
+102 |     # Prepare the raster header data as a tuple. The first two numbers are
+103 |     # the endianness and the PostGIS Raster Version, both are fixed by
+104 |     # PostGIS at the moment.
+105 |     rasterheader = (
+106 |         1, 0, len(rast.bands), rast.scale.x, rast.scale.y,
+107 |         rast.origin.x, rast.origin.y, rast.skew.x, rast.skew.y,
+108 |         rast.srs.srid, rast.width, rast.height,
+109 |     )
+110 | 
+111 |     # Pack raster header.
+112 |     result = pack(POSTGIS_HEADER_STRUCTURE, rasterheader)
+113 | 
+114 |     for band in rast.bands:
+115 |         # The PostGIS raster band header has exactly two elements, a 8BUI byte
+116 |         # and the nodata value.
+117 |         #
+118 |         # The 8BUI stores both the PostGIS pixel data type and a nodata flag.
+119 |         # It is composed as the datatype integer plus 64 as a flag for existing
+120 |         # nodata values:
+121 |         # 8BUI_VALUE = PG_PIXEL_TYPE (0-11) + FLAG (0 or 64)
+122 |         #
+123 |         # For example, if the byte value is 71, then the datatype is
+124 |         # 71-64 = 7 (32BSI) and the nodata value is True.
+125 |         structure = 'B' + GDAL_TO_STRUCT[band.datatype()]
+126 | 
+127 |         # Get band pixel type in PostGIS notation
+128 |         pixeltype = GDAL_TO_POSTGIS[band.datatype()]
+129 | 
+130 |         # Set the nodata flag
+131 |         if band.nodata_value is not None:
+132 |             pixeltype += 64
+133 | 
+134 |         # Pack band header
+135 |         bandheader = pack(structure, (pixeltype, band.nodata_value or 0))
+136 | 
+137 |         # Add packed header and band data to result
+138 |         result += bandheader + band.data(as_memoryview=True)
+139 | 
+140 |     # Convert raster to hex string before passing it to the DB.
+141 |     return result.hex()
+```
+
+Found file `django/contrib/syndication/apps.py`.
+Found file `django/contrib/syndication/__init__.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "exponential notation", "numberformat format Decimal('1e-200') decimal_pos exponential notation"...
+### Search Result:
+Found function `django/forms/fields.py:DecimalField.validate`.
+Source: Retrieved code content using keyword search (bm25).
+```
+351 | def validate(self, value):
+352 |         super().validate(value)
+353 |         if value in self.empty_values:
+354 |             return
+355 |         if not value.is_finite():
+356 |             raise ValidationError(self.error_messages['invalid'], code='invalid')
+```
+
+Found function `django/forms/fields.py:DecimalField.widget_attrs`.
+Source: Retrieved code content using keyword search (bm25).
+```
+358 | def widget_attrs(self, widget):
+359 |         attrs = super().widget_attrs(widget)
+360 |         if isinstance(widget, NumberInput) and 'step' not in widget.attrs:
+361 |             if self.decimal_places is not None:
+362 |                 # Use exponential notation for small values since they might
+363 |                 # be parsed as 0 otherwise. ref #20765
+364 |                 step = str(Decimal(1).scaleb(-self.decimal_places)).lower()
+365 |             else:
+366 |                 step = 'any'
+367 |             attrs.setdefault('step', step)
+368 |         return attrs
+```
+
+
+
+##Searching for term "numberformat format Decimal('1e-200') decimal_pos exponential notation"...
+### Search Result:
+Found `django/utils/numberformat.py:format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+```
+Hint: 
+The code for function `django/utils/numberformat.py:format` is incomplete; search `django/utils/numberformat.py:format` for the full content if needed.
+Finding newlines for mmindex:   0%|          | 0.00/10.5M [00:00<?, ?B/s]Finding newlines for mmindex: 100%|##########| 10.5M/10.5M [00:00<00:00, 316MB/s]
+
+2026-08-28 00:25:24 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['utils.numberformat', 'def format(', 'cutoff', 'number_format'], 'file_path_or_pattern': 'django/**/*.py'}))
+```
+2026-08-28 00:25:25 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:27 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:28 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:30 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:30 auto_search_main.py INFO OBSERVATION:
+django/core/serializers/__init__.py:unregister_serializer
+django/core/serializers/__init__.py:get_serializer_formats
+django/core/serializers/__init__.py:get_serializer
+django/core/serializers/__init__.py:serialize
+django/core/serializers/__init__.py:get_deserializer
+django/core/serializers/__init__.py:deserialize
+django/core/serializers/__init__.py:get_public_serializer_formats
+django/db/backends/mysql/operations.py:DatabaseOperations.explain_query_prefix
+django/utils/formats.py:date_format
+django/utils/formats.py:time_format
+django/utils/formats.py:impl:9
+django/core/serializers/__init__.py:_load_serializers
+django/utils/formats.py:localize_input
+django/db/backends/postgresql/operations.py:DatabaseOperations.ignore_conflicts_suffix_sql
+django/db/backends/postgresql/operations.py:DatabaseOperations.explain_query_prefix
+django/views/generic/dates.py:_date_from_string
+django/views/generic/dates.py:DateDetailView
+django/contrib/admin/widgets.py:AdminDateWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.Media
+django/contrib/admin/widgets.py:AdminTimeWidget
+django/contrib/admin/widgets.py:AdminDateWidget
+django/contrib/admin/widgets.py:AdminTimeWidget.__init__
+django/template/defaultfilters.py:stringformat
+django/contrib/staticfiles/__init__.py:impl
+django/contrib/sites/requests.py:RequestSite.delete
+django/contrib/sites/requests.py:RequestSite.__str__
+django/contrib/sites/requests.py:RequestSite.__init__
+django/contrib/sites/requests.py:RequestSite
+django/contrib/sites/requests.py:RequestSite.save
+django/contrib/staticfiles/finders.py:AppDirectoriesFinder.find_in_app
+django/contrib/staticfiles/finders.py:AppDirectoriesFinder.list
+django/contrib/staticfiles/finders.py:AppDirectoriesFinder
+django/contrib/staticfiles/finders.py:AppDirectoriesFinder.find
+django/contrib/staticfiles/finders.py:AppDirectoriesFinder.__init__
+django/contrib/staticfiles/finders.py:BaseFinder
+django/contrib/staticfiles/finders.py:BaseFinder.find
+django/contrib/staticfiles/finders.py:BaseFinder.check
+django/contrib/staticfiles/finders.py:BaseFinder.list
+django/contrib/staticfiles/finders.py:FileSystemFinder.check
+django/core/serializers/__init__.py:unregister_serializer
+django/core/serializers/__init__.py:get_serializer_formats
+django/core/serializers/__init__.py:get_serializer
+django/core/serializers/__init__.py:serialize
+django/core/serializers/__init__.py:get_deserializer
+django/core/serializers/__init__.py:deserialize
+django/core/serializers/__init__.py:get_public_serializer_formats
+django/db/backends/mysql/operations.py:DatabaseOperations.explain_query_prefix
+django/utils/formats.py:date_format
+django/utils/formats.py:time_format
+django/utils/formats.py:impl:9
+django/core/serializers/__init__.py:_load_serializers
+django/utils/formats.py:localize_input
+django/db/backends/postgresql/operations.py:DatabaseOperations.ignore_conflicts_suffix_sql
+django/db/backends/postgresql/operations.py:DatabaseOperations.explain_query_prefix
+django/views/generic/dates.py:_date_from_string
+django/views/generic/dates.py:DateDetailView
+django/contrib/admin/widgets.py:AdminDateWidget.Media
+django/contrib/admin/widgets.py:AdminDateWidget.__init__
+django/contrib/admin/widgets.py:AdminTimeWidget.Media
+django/contrib/admin/widgets.py:AdminTimeWidget
+django/contrib/admin/widgets.py:AdminDateWidget
+django/contrib/admin/widgets.py:AdminTimeWidget.__init__
+django/template/defaultfilters.py:stringformat
+##Searching for term "utils.numberformat"...
+### Search Result:
+Found file `django/utils/numberformat.py`.
+Source: Match found for entity name `numberformat`.
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+58 |     dec_part = dec_part and decimal_sep + dec_part
+59 |     # grouping
+60 |     if use_grouping:
+61 |         try:
+62 |             # if grouping is a sequence
+63 |             intervals = list(grouping)
+64 |         except TypeError:
+65 |             # grouping is a single value
+66 |             intervals = [grouping, 0]
+67 |         active_interval = intervals.pop(0)
+68 |         int_part_gd = ''
+69 |         cnt = 0
+70 |         for digit in int_part[::-1]:
+71 |             if cnt and cnt == active_interval:
+72 |                 if intervals:
+73 |                     active_interval = intervals.pop(0) or active_interval
+74 |                 int_part_gd += thousand_sep[::-1]
+75 |                 cnt = 0
+76 |             int_part_gd += digit
+77 |             cnt += 1
+78 |         int_part = int_part_gd[::-1]
+79 |     return sign + int_part + dec_part
+80 | 
+```
+
+
+
+##Searching for term "def format(", "def format( cutoff"...
+### Search Result:
+Found function `django/utils/dateformat.py:format`.
+Source: Retrieved entity using keyword search (bm25).
+```
+358 | def format(value, format_string):
+359 |     "Convenience function"
+360 |     df = DateFormat(value)
+361 |     return df.format(format_string)
+```
+
+Found function `django/utils/formats.py:get_format`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 99 | def get_format(format_type, lang=None, use_l10n=None):
+100 |     """
+101 |     For a specific format type, return the format for the current
+102 |     language (locale). Default to the format in the settings.
+103 |     format_type is the name of the format, e.g. 'DATE_FORMAT'.
+104 | 
+105 |     If use_l10n is provided and is not None, it forces the value to
+106 |     be localized (or not), overriding the value of settings.USE_L10N.
+107 |     """
+108 |     use_l10n = use_l10n or (use_l10n is None and settings.USE_L10N)
+109 |     if use_l10n and lang is None:
+110 |         lang = get_language()
+111 |     cache_key = (format_type, lang)
+112 |     try:
+113 |         return _format_cache[cache_key]
+114 |     except KeyError:
+115 |         pass
+116 | 
+117 |     # The requested format_type has not been cached yet. Try to find it in any
+118 |     # of the format_modules for the given lang if l10n is enabled. If it's not
+119 |     # there or if l10n is disabled, fall back to the project settings.
+120 |     val = None
+121 |     if use_l10n:
+122 |         for module in get_format_modules(lang):
+123 |             val = getattr(module, format_type, None)
+124 |             if val is not None:
+125 |                 break
+126 |     if val is None:
+127 |         if format_type not in FORMAT_SETTINGS:
+128 |             return format_type
+129 |         val = getattr(settings, format_type)
+130 |     elif format_type in ISO_INPUT_FORMATS:
+131 |         # If a list of input formats from one of the format_modules was
+132 |         # retrieved, make sure the ISO_INPUT_FORMATS are in this list.
+133 |         val = list(val)
+134 |         for iso_input in ISO_INPUT_FORMATS.get(format_type, ()):
+135 |             if iso_input not in val:
+136 |                 val.append(iso_input)
+137 |     _format_cache[cache_key] = val
+138 |     return val
+```
+
+Found function `django/utils/formats.py:date_format`.
+Source: Retrieved entity using keyword search (bm25).
+```
+144 | def date_format(value, format=None, use_l10n=None):
+145 |     """
+146 |     Format a datetime.date or datetime.datetime object using a
+147 |     localizable format.
+148 | 
+149 |     If use_l10n is provided and is not None, that will force the value to
+150 |     be localized (or not), overriding the value of settings.USE_L10N.
+151 |     """
+152 |     return dateformat.format(value, get_format(format or 'DATE_FORMAT', use_l10n=use_l10n))
+```
+
+Found function `django/core/serializers/__init__.py:unregister_serializer`.
+Source: Retrieved code content using keyword search (bm25).
+```
+85 | def unregister_serializer(format):
+86 |     "Unregister a given serializer. This is not a thread-safe operation."
+87 |     if not _serializers:
+88 |         _load_serializers()
+89 |     if format not in _serializers:
+90 |         raise SerializerDoesNotExist(format)
+91 |     del _serializers[format]
+```
+
+Found function `django/core/serializers/__init__.py:get_serializer`.
+Source: Retrieved code content using keyword search (bm25).
+```
+94 | def get_serializer(format):
+95 |     if not _serializers:
+96 |         _load_serializers()
+97 |     if format not in _serializers:
+98 |         raise SerializerDoesNotExist(format)
+99 |     return _serializers[format].Serializer
+```
+
+Found function `django/core/serializers/__init__.py:get_serializer_formats`.
+Source: Retrieved code content using keyword search (bm25).
+```
+102 | def get_serializer_formats():
+103 |     if not _serializers:
+104 |         _load_serializers()
+105 |     return list(_serializers)
+```
+
+Found function `django/core/serializers/__init__.py:serialize`.
+Source: Retrieved code content using keyword search (bm25).
+```
+122 | def serialize(format, queryset, **options):
+123 |     """
+124 |     Serialize a queryset (or any iterator that returns database objects) using
+125 |     a certain serializer.
+126 |     """
+127 |     s = get_serializer(format)()
+128 |     s.serialize(queryset, **options)
+129 |     return s.getvalue()
+```
+
+Found file `django/utils/formats.py`.
+Found file `django/conf/locale/is/formats.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "def format("...
+### Search Result:
+Found function `django/core/serializers/__init__.py:get_deserializer`.
+Source: Retrieved code content using keyword search (bm25).
+```
+114 | def get_deserializer(format):
+115 |     if not _serializers:
+116 |         _load_serializers()
+117 |     if format not in _serializers:
+118 |         raise SerializerDoesNotExist(format)
+119 |     return _serializers[format].Deserializer
+```
+
+
+
+##Searching for term "cutoff"...
+### Search Result:
+Found `django/utils/numberformat.py:format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+```
+Hint: 
+The code for function `django/utils/numberformat.py:format` is incomplete; search `django/utils/numberformat.py:format` for the full content if needed.
+
+Found `django/contrib/sites/shortcuts.py:get_current_site`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.apps import apps
+ 2 | 
+ 3 | 
+ 4 | def get_current_site(request):
+ 5 |     """
+ 6 |     Check if contrib.sites is installed and return either the current
+ 7 |     ``Site`` object or a ``RequestSite`` object based on the request.
+ 8 |     """
+ 9 |     # Imports are inside the function because its point is to avoid importing
+10 |     # the Site models when django.contrib.sites isn't installed.
+11 |     if apps.is_installed('django.contrib.sites'):
+12 |         from .models import Site
+13 |         return Site.objects.get_current(request)
+14 |     else:
+15 |         from .requests import RequestSite
+16 |         return RequestSite(request)
+17 | 
+```
+
+Found `django/contrib/staticfiles/apps.py:StaticFilesConfig`, `django/contrib/staticfiles/apps.py:StaticFilesConfig.ready`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from django.apps import AppConfig
+ 2 | from django.contrib.staticfiles.checks import check_finders
+ 3 | from django.core import checks
+ 4 | from django.utils.translation import gettext_lazy as _
+ 5 | 
+ 6 | 
+ 7 | class StaticFilesConfig(AppConfig):
+ 8 |     name = 'django.contrib.staticfiles'
+ 9 |     verbose_name = _("Static Files")
+10 |     ignore_patterns = ['CVS', '.*', '*~']
+11 | 
+12 |     def ready(self):
+13 |         checks.register(check_finders, 'staticfiles')
+14 | 
+```
+
+Found function `django/contrib/sites/requests.py:RequestSite.__str__`.
+Source: Retrieved code content using keyword search (bm25).
+```
+12 | def __str__(self):
+13 |         return self.domain
+```
+
+Found function `django/contrib/sites/requests.py:RequestSite.delete`.
+Source: Retrieved code content using keyword search (bm25).
+```
+18 | def delete(self):
+19 |         raise NotImplementedError('RequestSite cannot be deleted.')
+```
+
+Found file `docs/conf.py`.
+Found file `django/contrib/flatpages/forms.py`.
+Found file `django/contrib/gis/forms/fields.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "number_format"...
+### Search Result:
+Found function `django/utils/formats.py:number_format`.
+Source: Match found for entity name `number_format`.
+```
+165 | def number_format(value, decimal_pos=None, use_l10n=None, force_grouping=False):
+166 |     """
+167 |     Format a numeric value using localization settings.
+168 | 
+169 |     If use_l10n is provided and is not None, it forces the value to
+170 |     be localized (or not), overriding the value of settings.USE_L10N.
+171 |     """
+172 |     if use_l10n or (use_l10n is None and settings.USE_L10N):
+173 |         lang = get_language()
+174 |     else:
+175 |         lang = None
+176 |     return numberformat.format(
+177 |         value,
+178 |         get_format('DECIMAL_SEPARATOR', lang, use_l10n=use_l10n),
+179 |         decimal_pos,
+180 |         get_format('NUMBER_GROUPING', lang, use_l10n=use_l10n),
+181 |         get_format('THOUSAND_SEPARATOR', lang, use_l10n=use_l10n),
+182 |         force_grouping=force_grouping,
+183 |         use_l10n=use_l10n,
+184 |     )
+```
+
+
+
+##Searching for term "def format( cutoff"...
+### Search Result:
+Found `django/utils/numberformat.py:format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+```
+Hint: 
+The code for function `django/utils/numberformat.py:format` is incomplete; search `django/utils/numberformat.py:format` for the full content if needed.
+
+2026-08-28 00:25:30 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:25:36 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:25:36 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:25:36 auto_search_main.py INFO agent response received content_present=True tool_calls=2
+2026-08-28 00:25:36 auto_search_main.py INFO Executing code:
+```
+print(search_code_snippets(**{'search_terms': ['numberformat.format(', 'localize_input(', 'DecimalField.widget_attrs', 'floatformat'], 'file_path_or_pattern': 'django/**/*.py'}))
+```
+2026-08-28 00:25:37 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:38 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:40 __init__.py DEBUG Building index from IDs objects
+2026-08-28 00:25:40 auto_search_main.py INFO OBSERVATION:
+django/utils/formats.py:number_format
+django/utils/numberformat.py:format
+django/db/backends/mysql/operations.py:DatabaseOperations.explain_query_prefix
+django/core/serializers/__init__.py:unregister_serializer
+django/core/serializers/__init__.py:get_serializer_formats
+django/core/serializers/__init__.py:get_serializer
+django/core/serializers/__init__.py:serialize
+django/core/serializers/__init__.py:get_deserializer
+django/core/serializers/__init__.py:deserialize
+django/core/serializers/__init__.py:get_public_serializer_formats
+django/utils/formats.py:date_format
+django/utils/formats.py:time_format
+django/utils/formats.py:impl:9
+django/core/serializers/__init__.py:_load_serializers
+django/utils/formats.py:localize_input
+django/views/generic/dates.py:_date_from_string
+django/views/generic/dates.py:DateDetailView
+django/utils/formats.py:localize_input
+django/forms/widgets.py:TimeInput
+django/forms/widgets.py:DateTimeBaseInput
+django/forms/widgets.py:Textarea
+django/forms/widgets.py:DateTimeInput
+django/forms/widgets.py:Textarea.__init__
+django/forms/widgets.py:DateTimeBaseInput.__init__
+django/forms/widgets.py:boolean_check
+django/forms/widgets.py:DateTimeBaseInput.format_value
+django/forms/widgets.py:DateInput
+django/forms/widgets.py:Widget.render
+django/forms/widgets.py:Widget.subwidgets
+django/forms/widgets.py:Widget.build_attrs
+django/forms/widgets.py:Widget.format_value
+django/forms/widgets.py:Widget._render
+django/forms/widgets.py:Widget.is_hidden
+django/forms/widgets.py:Widget.value_from_datadict
+django/forms/widgets.py:Widget.__init__
+django/forms/widgets.py:Widget.get_context
+django/forms/widgets.py:Widget.value_omitted_from_data
+django/forms/widgets.py:Widget.__deepcopy__
+django/forms/widgets.py:Widget
+django/contrib/sites/models.py:Site.Meta
+django/contrib/sites/models.py:Site.__str__
+django/contrib/sites/models.py:Site.natural_key
+django/contrib/sites/models.py:Site
+django/contrib/sites/models.py:impl:3
+django/contrib/sites/models.py:clear_site_cache
+django/contrib/sites/requests.py:RequestSite.delete
+django/contrib/sites/requests.py:RequestSite.__str__
+django/contrib/sites/requests.py:RequestSite.__init__
+django/contrib/sites/requests.py:RequestSite
+django/contrib/sites/requests.py:RequestSite.save
+django/contrib/sites/models.py:SiteManager.clear_cache
+django/contrib/sites/models.py:SiteManager.get_by_natural_key
+django/contrib/sites/models.py:SiteManager.get_current
+django/contrib/sites/models.py:SiteManager._get_site_by_id
+django/contrib/sites/models.py:SiteManager._get_site_by_request
+django/contrib/sites/models.py:SiteManager
+django/utils/formats.py:localize_input
+django/utils/formats.py:number_format
+django/utils/numberformat.py:format
+django/forms/widgets.py:TimeInput
+django/forms/widgets.py:DateTimeBaseInput
+django/forms/widgets.py:Textarea
+django/forms/widgets.py:DateTimeInput
+django/forms/widgets.py:Textarea.__init__
+django/forms/widgets.py:DateTimeBaseInput.__init__
+django/forms/widgets.py:boolean_check
+django/forms/widgets.py:DateTimeBaseInput.format_value
+django/forms/widgets.py:DateInput
+django/forms/widgets.py:Widget.render
+django/forms/widgets.py:Widget.subwidgets
+django/forms/widgets.py:Widget.build_attrs
+django/forms/widgets.py:Widget.format_value
+django/forms/widgets.py:Widget._render
+django/forms/widgets.py:Widget.is_hidden
+django/forms/widgets.py:Widget.value_from_datadict
+django/forms/widgets.py:Widget.__init__
+django/forms/widgets.py:Widget.get_context
+django/forms/widgets.py:Widget.value_omitted_from_data
+django/forms/widgets.py:Widget.__deepcopy__
+django/forms/widgets.py:Widget
+django/db/backends/mysql/operations.py:DatabaseOperations.explain_query_prefix
+django/core/serializers/__init__.py:unregister_serializer
+django/core/serializers/__init__.py:get_serializer_formats
+django/core/serializers/__init__.py:get_serializer
+django/core/serializers/__init__.py:serialize
+django/core/serializers/__init__.py:get_deserializer
+django/core/serializers/__init__.py:deserialize
+django/core/serializers/__init__.py:get_public_serializer_formats
+django/utils/formats.py:date_format
+django/utils/formats.py:time_format
+django/utils/formats.py:impl:9
+##Searching for term "numberformat.format("...
+### Search Result:
+Found `django/utils/formats.py:reset_format_cache`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | import datetime
+  2 | import decimal
+  3 | import unicodedata
+  4 | from importlib import import_module
+  5 | 
+  6 | from django.conf import settings
+  7 | from django.utils import dateformat, datetime_safe, numberformat
+  8 | from django.utils.functional import lazy
+  9 | from django.utils.translation import (
+ 10 |     check_for_language, get_language, to_locale,
+ 11 | )
+ 12 | 
+ 13 | # format_cache is a mapping from (format_type, lang) to the format string.
+ 14 | # By using the cache, it is possible to avoid running get_format_modules
+ 15 | # repeatedly.
+ 16 | _format_cache = {}
+ 17 | _format_modules_cache = {}
+ 18 | 
+ 19 | ISO_INPUT_FORMATS = {
+ 20 |     'DATE_INPUT_FORMATS': ['%Y-%m-%d'],
+ 21 |     'TIME_INPUT_FORMATS': ['%H:%M:%S', '%H:%M:%S.%f', '%H:%M'],
+ 22 |     'DATETIME_INPUT_FORMATS': [
+ 23 |         '%Y-%m-%d %H:%M:%S',
+ 24 |         '%Y-%m-%d %H:%M:%S.%f',
+ 25 |         '%Y-%m-%d %H:%M',
+ 26 |         '%Y-%m-%d'
+ 27 |     ],
+ 28 | }
+ 29 | 
+ 30 | 
+ 31 | FORMAT_SETTINGS = frozenset([
+ 32 |     'DECIMAL_SEPARATOR',
+ 33 |     'THOUSAND_SEPARATOR',
+ 34 |     'NUMBER_GROUPING',
+ 35 |     'FIRST_DAY_OF_WEEK',
+ 36 |     'MONTH_DAY_FORMAT',
+ 37 |     'TIME_FORMAT',
+ 38 |     'DATE_FORMAT',
+ 39 |     'DATETIME_FORMAT',
+ 40 |     'SHORT_DATE_FORMAT',
+ 41 |     'SHORT_DATETIME_FORMAT',
+ 42 |     'YEAR_MONTH_FORMAT',
+ 43 |     'DATE_INPUT_FORMATS',
+ 44 |     'TIME_INPUT_FORMATS',
+ 45 |     'DATETIME_INPUT_FORMATS',
+ 46 | ])
+ 47 | 
+ 48 | 
+ 49 | def reset_format_cache():
+ 50 |     """Clear any cached formats.
+ 51 | 
+ 52 |     This method is provided primarily for testing purposes,
+ 53 |     so that the effects of cached formats can be removed.
+ 54 |     """
+ 55 |     global _format_cache, _format_modules_cache
+ 56 |     _format_cache = {}
+ 57 |     _format_modules_cache = {}
+```
+
+Found `django/utils/numberformat.py:format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+```
+Hint: 
+The code for function `django/utils/numberformat.py:format` is incomplete; search `django/utils/numberformat.py:format` for the full content if needed.
+
+Found function `django/utils/formats.py:time_format`.
+Source: Retrieved entity using keyword search (bm25).
+```
+155 | def time_format(value, format=None, use_l10n=None):
+156 |     """
+157 |     Format a datetime.time object using a localizable format.
+158 | 
+159 |     If use_l10n is provided and is not None, it forces the value to
+160 |     be localized (or not), overriding the value of settings.USE_L10N.
+161 |     """
+162 |     return dateformat.time_format(value, get_format(format or 'TIME_FORMAT', use_l10n=use_l10n))
+```
+
+Found function `django/db/backends/mysql/operations.py:DatabaseOperations.explain_query_prefix`.
+Source: Retrieved code content using keyword search (bm25).
+```
+282 | def explain_query_prefix(self, format=None, **options):
+283 |         # Alias MySQL's TRADITIONAL to TEXT for consistency with other backends.
+284 |         if format and format.upper() == 'TEXT':
+285 |             format = 'TRADITIONAL'
+286 |         prefix = super().explain_query_prefix(format, **options)
+287 |         if format:
+288 |             prefix += ' FORMAT=%s' % format
+289 |         if self.connection.features.needs_explain_extended and format is None:
+290 |             # EXTENDED and FORMAT are mutually exclusive options.
+291 |             prefix += ' EXTENDED'
+292 |         return prefix
+```
+
+
+
+##Searching for term "numberformat.format(", "numberformat.format( localize_input("...
+### Search Result:
+Found function `django/utils/numberformat.py:format`.
+Source: Retrieved entity using keyword search (bm25).
+```
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+58 |     dec_part = dec_part and decimal_sep + dec_part
+59 |     # grouping
+60 |     if use_grouping:
+61 |         try:
+62 |             # if grouping is a sequence
+63 |             intervals = list(grouping)
+64 |         except TypeError:
+65 |             # grouping is a single value
+66 |             intervals = [grouping, 0]
+67 |         active_interval = intervals.pop(0)
+68 |         int_part_gd = ''
+69 |         cnt = 0
+70 |         for digit in int_part[::-1]:
+71 |             if cnt and cnt == active_interval:
+72 |                 if intervals:
+73 |                     active_interval = intervals.pop(0) or active_interval
+74 |                 int_part_gd += thousand_sep[::-1]
+75 |                 cnt = 0
+76 |             int_part_gd += digit
+77 |             cnt += 1
+78 |         int_part = int_part_gd[::-1]
+79 |     return sign + int_part + dec_part
+```
+
+Found function `django/utils/formats.py:number_format`.
+Source: Retrieved code content using keyword search (bm25).
+```
+165 | def number_format(value, decimal_pos=None, use_l10n=None, force_grouping=False):
+166 |     """
+167 |     Format a numeric value using localization settings.
+168 | 
+169 |     If use_l10n is provided and is not None, it forces the value to
+170 |     be localized (or not), overriding the value of settings.USE_L10N.
+171 |     """
+172 |     if use_l10n or (use_l10n is None and settings.USE_L10N):
+173 |         lang = get_language()
+174 |     else:
+175 |         lang = None
+176 |     return numberformat.format(
+177 |         value,
+178 |         get_format('DECIMAL_SEPARATOR', lang, use_l10n=use_l10n),
+179 |         decimal_pos,
+180 |         get_format('NUMBER_GROUPING', lang, use_l10n=use_l10n),
+181 |         get_format('THOUSAND_SEPARATOR', lang, use_l10n=use_l10n),
+182 |         force_grouping=force_grouping,
+183 |         use_l10n=use_l10n,
+184 |     )
+```
+
+Found file `django/utils/numberformat.py`.
+Found file `django/utils/formats.py`.
+Source: Retrieved entity using keyword search (bm25).
+Hint: Use more detailed query to get the full content of some if needed.
+
+
+
+##Searching for term "numberformat.format(", "localize_input(", "numberformat.format( localize_input("...
+### Search Result:
+Found function `django/utils/formats.py:localize_input`.
+Source: Retrieved entity using keyword search (bm25).
+```
+210 | def localize_input(value, default=None):
+211 |     """
+212 |     Check if an input value is a localizable type and return it
+213 |     formatted with the appropriate formatting string of the current locale.
+214 |     """
+215 |     if isinstance(value, str):  # Handle strings first for performance reasons.
+216 |         return value
+217 |     elif isinstance(value, bool):  # Don't treat booleans as numbers.
+218 |         return str(value)
+219 |     elif isinstance(value, (decimal.Decimal, float, int)):
+220 |         return number_format(value)
+221 |     elif isinstance(value, datetime.datetime):
+222 |         value = datetime_safe.new_datetime(value)
+223 |         format = default or get_format('DATETIME_INPUT_FORMATS')[0]
+224 |         return value.strftime(format)
+225 |     elif isinstance(value, datetime.date):
+226 |         value = datetime_safe.new_date(value)
+227 |         format = default or get_format('DATE_INPUT_FORMATS')[0]
+228 |         return value.strftime(format)
+229 |     elif isinstance(value, datetime.time):
+230 |         format = default or get_format('TIME_INPUT_FORMATS')[0]
+231 |         return value.strftime(format)
+232 |     return value
+```
+
+
+
+##Searching for term "localize_input(", "numberformat.format( localize_input("...
+### Search Result:
+Found class `django/forms/widgets.py:TimeInput`.
+Source: Retrieved code content using keyword search (bm25).
+```
+497 | class TimeInput(DateTimeBaseInput):
+498 |     format_key = 'TIME_INPUT_FORMATS'
+499 |     template_name = 'django/forms/widgets/time.html'
+```
+
+
+
+##Searching for term "localize_input("...
+### Search Result:
+Found class `django/forms/widgets.py:Textarea`.
+Source: Retrieved code content using keyword search (bm25).
+```
+464 | class Textarea(Widget):
+465 |     template_name = 'django/forms/widgets/textarea.html'
+466 | 
+467 |     def __init__(self, attrs=None):
+468 |         # Use slightly better defaults than HTML's 20x2 box
+469 |         default_attrs = {'cols': '40', 'rows': '10'}
+470 |         if attrs:
+471 |             default_attrs.update(attrs)
+472 |         super().__init__(default_attrs)
+```
+
+Found class `django/forms/widgets.py:DateTimeBaseInput`.
+Source: Retrieved code content using keyword search (bm25).
+```
+475 | class DateTimeBaseInput(TextInput):
+476 |     format_key = ''
+477 |     supports_microseconds = False
+478 | 
+479 |     def __init__(self, attrs=None, format=None):
+480 |         super().__init__(attrs)
+481 |         self.format = format or None
+482 | 
+483 |     def format_value(self, value):
+484 |         return formats.localize_input(value, self.format or formats.get_format(self.format_key)[0])
+```
+
+Found class `django/forms/widgets.py:DateTimeInput`.
+Source: Retrieved code content using keyword search (bm25).
+```
+492 | class DateTimeInput(DateTimeBaseInput):
+493 |     format_key = 'DATETIME_INPUT_FORMATS'
+494 |     template_name = 'django/forms/widgets/datetime.html'
+```
+
+
+
+##Searching for term "DecimalField.widget_attrs"...
+### Search Result:
+Found function `django/forms/fields.py:DecimalField.widget_attrs`.
+Source: Match found for entity name `widget_attrs`.
+```
+358 | def widget_attrs(self, widget):
+359 |         attrs = super().widget_attrs(widget)
+360 |         if isinstance(widget, NumberInput) and 'step' not in widget.attrs:
+361 |             if self.decimal_places is not None:
+362 |                 # Use exponential notation for small values since they might
+363 |                 # be parsed as 0 otherwise. ref #20765
+364 |                 step = str(Decimal(1).scaleb(-self.decimal_places)).lower()
+365 |             else:
+366 |                 step = 'any'
+367 |             attrs.setdefault('step', step)
+368 |         return attrs
+```
+
+
+
+##Searching for term "floatformat"...
+### Search Result:
+Found function `django/template/defaultfilters.py:floatformat`.
+Source: Match found for entity name `floatformat`.
+```
+ 95 | def floatformat(text, arg=-1):
+ 96 |     """
+ 97 |     Display a float to a specified number of decimal places.
+ 98 | 
+ 99 |     If called without an argument, display the floating point number with one
+100 |     decimal place -- but only if there's a decimal place to be displayed:
+101 | 
+102 |     * num1 = 34.23234
+103 |     * num2 = 34.00000
+104 |     * num3 = 34.26000
+105 |     * {{ num1|floatformat }} displays "34.2"
+106 |     * {{ num2|floatformat }} displays "34"
+107 |     * {{ num3|floatformat }} displays "34.3"
+108 | 
+109 |     If arg is positive, always display exactly arg number of decimal places:
+110 | 
+111 |     * {{ num1|floatformat:3 }} displays "34.232"
+112 |     * {{ num2|floatformat:3 }} displays "34.000"
+113 |     * {{ num3|floatformat:3 }} displays "34.260"
+114 | 
+115 |     If arg is negative, display arg number of decimal places -- but only if
+116 |     there are places to be displayed:
+117 | 
+118 |     * {{ num1|floatformat:"-3" }} displays "34.232"
+119 |     * {{ num2|floatformat:"-3" }} displays "34"
+120 |     * {{ num3|floatformat:"-3" }} displays "34.260"
+121 | 
+122 |     If the input float is infinity or NaN, display the string representation
+123 |     of that value.
+124 |     """
+125 |     try:
+126 |         input_val = repr(text)
+127 |         d = Decimal(input_val)
+128 |     except InvalidOperation:
+129 |         try:
+130 |             d = Decimal(str(float(text)))
+131 |         except (ValueError, InvalidOperation, TypeError):
+132 |             return ''
+133 |     try:
+134 |         p = int(arg)
+135 |     except ValueError:
+136 |         return input_val
+137 | 
+138 |     try:
+139 |         m = int(d) - d
+140 |     except (ValueError, OverflowError, InvalidOperation):
+141 |         return input_val
+142 | 
+143 |     if not m and p < 0:
+144 |         return mark_safe(formats.number_format('%d' % (int(d)), 0))
+145 | 
+146 |     exp = Decimal(1).scaleb(-abs(p))
+147 |     # Set the precision high enough to avoid an exception (#15789).
+148 |     tupl = d.as_tuple()
+149 |     units = len(tupl[1])
+150 |     units += -tupl[2] if m else tupl[2]
+151 |     prec = abs(p) + units + 1
+152 | 
+153 |     # Avoid conversion to scientific notation by accessing `sign`, `digits`,
+154 |     # and `exponent` from Decimal.as_tuple() directly.
+155 |     sign, digits, exponent = d.quantize(exp, ROUND_HALF_UP, Context(prec=prec)).as_tuple()
+156 |     digits = [str(digit) for digit in reversed(digits)]
+157 |     while len(digits) <= abs(exponent):
+158 |         digits.append('0')
+159 |     digits.insert(-exponent, '.')
+160 |     if sign:
+161 |         digits.append('-')
+162 |     number = ''.join(reversed(digits))
+163 |     return mark_safe(formats.number_format(number, abs(p)))
+```
+
+
+
+##Searching for term "numberformat.format( localize_input("...
+### Search Result:
+Found `django/utils/formats.py:reset_format_cache`.
+Source: Retrieved code content using keyword search (bm25).
+```
+  1 | import datetime
+  2 | import decimal
+  3 | import unicodedata
+  4 | from importlib import import_module
+  5 | 
+  6 | from django.conf import settings
+  7 | from django.utils import dateformat, datetime_safe, numberformat
+  8 | from django.utils.functional import lazy
+  9 | from django.utils.translation import (
+ 10 |     check_for_language, get_language, to_locale,
+ 11 | )
+ 12 | 
+ 13 | # format_cache is a mapping from (format_type, lang) to the format string.
+ 14 | # By using the cache, it is possible to avoid running get_format_modules
+ 15 | # repeatedly.
+ 16 | _format_cache = {}
+ 17 | _format_modules_cache = {}
+ 18 | 
+ 19 | ISO_INPUT_FORMATS = {
+ 20 |     'DATE_INPUT_FORMATS': ['%Y-%m-%d'],
+ 21 |     'TIME_INPUT_FORMATS': ['%H:%M:%S', '%H:%M:%S.%f', '%H:%M'],
+ 22 |     'DATETIME_INPUT_FORMATS': [
+ 23 |         '%Y-%m-%d %H:%M:%S',
+ 24 |         '%Y-%m-%d %H:%M:%S.%f',
+ 25 |         '%Y-%m-%d %H:%M',
+ 26 |         '%Y-%m-%d'
+ 27 |     ],
+ 28 | }
+ 29 | 
+ 30 | 
+ 31 | FORMAT_SETTINGS = frozenset([
+ 32 |     'DECIMAL_SEPARATOR',
+ 33 |     'THOUSAND_SEPARATOR',
+ 34 |     'NUMBER_GROUPING',
+ 35 |     'FIRST_DAY_OF_WEEK',
+ 36 |     'MONTH_DAY_FORMAT',
+ 37 |     'TIME_FORMAT',
+ 38 |     'DATE_FORMAT',
+ 39 |     'DATETIME_FORMAT',
+ 40 |     'SHORT_DATE_FORMAT',
+ 41 |     'SHORT_DATETIME_FORMAT',
+ 42 |     'YEAR_MONTH_FORMAT',
+ 43 |     'DATE_INPUT_FORMATS',
+ 44 |     'TIME_INPUT_FORMATS',
+ 45 |     'DATETIME_INPUT_FORMATS',
+ 46 | ])
+ 47 | 
+ 48 | 
+ 49 | def reset_format_cache():
+ 50 |     """Clear any cached formats.
+ 51 | 
+ 52 |     This method is provided primarily for testing purposes,
+ 53 |     so that the effects of cached formats can be removed.
+ 54 |     """
+ 55 |     global _format_cache, _format_modules_cache
+ 56 |     _format_cache = {}
+ 57 |     _format_modules_cache = {}
+```
+
+Found function `django/utils/formats.py:sanitize_separators`.
+Source: Retrieved entity using keyword search (bm25).
+```
+235 | def sanitize_separators(value):
+236 |     """
+237 |     Sanitize a value according to the current decimal and
+238 |     thousand separator setting. Used with form field input.
+239 |     """
+240 |     if isinstance(value, str):
+241 |         parts = []
+242 |         decimal_separator = get_format('DECIMAL_SEPARATOR')
+243 |         if decimal_separator in value:
+244 |             value, decimals = value.split(decimal_separator, 1)
+245 |             parts.append(decimals)
+246 |         if settings.USE_THOUSAND_SEPARATOR:
+247 |             thousand_sep = get_format('THOUSAND_SEPARATOR')
+248 |             if thousand_sep == '.' and value.count('.') == 1 and len(value.split('.')[-1]) != 3:
+249 |                 # Special case where we suspect a dot meant decimal separator (see #22171)
+250 |                 pass
+251 |             else:
+252 |                 for replacement in {
+253 |                         thousand_sep, unicodedata.normalize('NFKD', thousand_sep)}:
+254 |                     value = value.replace(replacement, '')
+255 |         parts.append(value)
+256 |         value = '.'.join(reversed(parts))
+257 |     return value
+```
+
+2026-08-28 00:25:40 auto_search_main.py INFO Executing code:
+```
+print(get_entity_contents(**{'entity_names': ['django/utils/numberformat.py', 'django/utils/formats.py', 'django/forms/fields.py:DecimalField.widget_attrs', 'django/template/defaultfilters.py:floatformat']}))
+```
+2026-08-28 00:25:40 auto_search_main.py INFO OBSERVATION:
+##Searching for entity `django/utils/numberformat.py`...
+### Search Result:
+Found file `django/utils/numberformat.py`.
+Source: Exact match found for entity name `django/utils/numberformat.py`.
+```
+ 1 | from decimal import Decimal
+ 2 | 
+ 3 | from django.conf import settings
+ 4 | from django.utils.safestring import mark_safe
+ 5 | 
+ 6 | 
+ 7 | def format(number, decimal_sep, decimal_pos=None, grouping=0, thousand_sep='',
+ 8 |            force_grouping=False, use_l10n=None):
+ 9 |     """
+10 |     Get a number (as a number or string), and return it as a string,
+11 |     using formats defined as arguments:
+12 | 
+13 |     * decimal_sep: Decimal separator symbol (for example ".")
+14 |     * decimal_pos: Number of decimal positions
+15 |     * grouping: Number of digits in every group limited by thousand separator.
+16 |         For non-uniform digit grouping, it can be a sequence with the number
+17 |         of digit group sizes following the format used by the Python locale
+18 |         module in locale.localeconv() LC_NUMERIC grouping (e.g. (3, 2, 0)).
+19 |     * thousand_sep: Thousand separator symbol (for example ",")
+20 |     """
+21 |     use_grouping = (use_l10n or (use_l10n is None and settings.USE_L10N)) and settings.USE_THOUSAND_SEPARATOR
+22 |     use_grouping = use_grouping or force_grouping
+23 |     use_grouping = use_grouping and grouping != 0
+24 |     # Make the common case fast
+25 |     if isinstance(number, int) and not use_grouping and not decimal_pos:
+26 |         return mark_safe(number)
+27 |     # sign
+28 |     sign = ''
+29 |     if isinstance(number, Decimal):
+30 |         # Format values with more than 200 digits (an arbitrary cutoff) using
+31 |         # scientific notation to avoid high memory usage in {:f}'.format().
+32 |         _, digits, exponent = number.as_tuple()
+33 |         if abs(exponent) + len(digits) > 200:
+34 |             number = '{:e}'.format(number)
+35 |             coefficient, exponent = number.split('e')
+36 |             # Format the coefficient.
+37 |             coefficient = format(
+38 |                 coefficient, decimal_sep, decimal_pos, grouping,
+39 |                 thousand_sep, force_grouping, use_l10n,
+40 |             )
+41 |             return '{}e{}'.format(coefficient, exponent)
+42 |         else:
+43 |             str_number = '{:f}'.format(number)
+44 |     else:
+45 |         str_number = str(number)
+46 |     if str_number[0] == '-':
+47 |         sign = '-'
+48 |         str_number = str_number[1:]
+49 |     # decimal part
+50 |     if '.' in str_number:
+51 |         int_part, dec_part = str_number.split('.')
+52 |         if decimal_pos is not None:
+53 |             dec_part = dec_part[:decimal_pos]
+54 |     else:
+55 |         int_part, dec_part = str_number, ''
+56 |     if decimal_pos is not None:
+57 |         dec_part = dec_part + ('0' * (decimal_pos - len(dec_part)))
+58 |     dec_part = dec_part and decimal_sep + dec_part
+59 |     # grouping
+60 |     if use_grouping:
+61 |         try:
+62 |             # if grouping is a sequence
+63 |             intervals = list(grouping)
+64 |         except TypeError:
+65 |             # grouping is a single value
+66 |             intervals = [grouping, 0]
+67 |         active_interval = intervals.pop(0)
+68 |         int_part_gd = ''
+69 |         cnt = 0
+70 |         for digit in int_part[::-1]:
+71 |             if cnt and cnt == active_interval:
+72 |                 if intervals:
+73 |                     active_interval = intervals.pop(0) or active_interval
+74 |                 int_part_gd += thousand_sep[::-1]
+75 |                 cnt = 0
+76 |             int_part_gd += digit
+77 |             cnt += 1
+78 |         int_part = int_part_gd[::-1]
+79 |     return sign + int_part + dec_part
+80 | 
+```
+
+
+##Searching for entity `django/utils/formats.py`...
+### Search Result:
+Found file `django/utils/formats.py`.
+Source: Exact match found for entity name `django/utils/formats.py`.
+```
+  1 | import datetime
+  2 | import decimal
+  3 | import unicodedata
+  4 | from importlib import import_module
+  5 | 
+  6 | from django.conf import settings
+  7 | from django.utils import dateformat, datetime_safe, numberformat
+  8 | from django.utils.functional import lazy
+  9 | from django.utils.translation import (
+ 10 |     check_for_language, get_language, to_locale,
+ 11 | )
+ 12 | 
+ 13 | # format_cache is a mapping from (format_type, lang) to the format string.
+ 14 | # By using the cache, it is possible to avoid running get_format_modules
+ 15 | # repeatedly.
+ 16 | _format_cache = {}
+ 17 | _format_modules_cache = {}
+ 18 | 
+ 19 | ISO_INPUT_FORMATS = {
+ 20 |     'DATE_INPUT_FORMATS': ['%Y-%m-%d'],
+ 21 |     'TIME_INPUT_FORMATS': ['%H:%M:%S', '%H:%M:%S.%f', '%H:%M'],
+ 22 |     'DATETIME_INPUT_FORMATS': [
+ 23 |         '%Y-%m-%d %H:%M:%S',
+ 24 |         '%Y-%m-%d %H:%M:%S.%f',
+ 25 |         '%Y-%m-%d %H:%M',
+ 26 |         '%Y-%m-%d'
+ 27 |     ],
+ 28 | }
+ 29 | 
+ 30 | 
+ 31 | FORMAT_SETTINGS = frozenset([
+ 32 |     'DECIMAL_SEPARATOR',
+ 33 |     'THOUSAND_SEPARATOR',
+ 34 |     'NUMBER_GROUPING',
+ 35 |     'FIRST_DAY_OF_WEEK',
+ 36 |     'MONTH_DAY_FORMAT',
+ 37 |     'TIME_FORMAT',
+ 38 |     'DATE_FORMAT',
+ 39 |     'DATETIME_FORMAT',
+ 40 |     'SHORT_DATE_FORMAT',
+ 41 |     'SHORT_DATETIME_FORMAT',
+ 42 |     'YEAR_MONTH_FORMAT',
+ 43 |     'DATE_INPUT_FORMATS',
+ 44 |     'TIME_INPUT_FORMATS',
+ 45 |     'DATETIME_INPUT_FORMATS',
+ 46 | ])
+ 47 | 
+ 48 | 
+ 49 | def reset_format_cache():
+ 50 |     """Clear any cached formats.
+ 51 | 
+ 52 |     This method is provided primarily for testing purposes,
+ 53 |     so that the effects of cached formats can be removed.
+ 54 |     """
+ 55 |     global _format_cache, _format_modules_cache
+ 56 |     _format_cache = {}
+ 57 |     _format_modules_cache = {}
+ 58 | 
+ 59 | 
+ 60 | def iter_format_modules(lang, format_module_path=None):
+ 61 |     """Find format modules."""
+ 62 |     if not check_for_language(lang):
+ 63 |         return
+ 64 | 
+ 65 |     if format_module_path is None:
+ 66 |         format_module_path = settings.FORMAT_MODULE_PATH
+ 67 | 
+ 68 |     format_locations = []
+ 69 |     if format_module_path:
+ 70 |         if isinstance(format_module_path, str):
+ 71 |             format_module_path = [format_module_path]
+ 72 |         for path in format_module_path:
+ 73 |             format_locations.append(path + '.%s')
+ 74 |     format_locations.append('django.conf.locale.%s')
+ 75 |     locale = to_locale(lang)
+ 76 |     locales = [locale]
+ 77 |     if '_' in locale:
+ 78 |         locales.append(locale.split('_')[0])
+ 79 |     for location in format_locations:
+ 80 |         for loc in locales:
+ 81 |             try:
+ 82 |                 yield import_module('%s.formats' % (location % loc))
+ 83 |             except ImportError:
+ 84 |                 pass
+ 85 | 
+ 86 | 
+ 87 | def get_format_modules(lang=None, reverse=False):
+ 88 |     """Return a list of the format modules found."""
+ 89 |     if lang is None:
+ 90 |         lang = get_language()
+ 91 |     if lang not in _format_modules_cache:
+ 92 |         _format_modules_cache[lang] = list(iter_format_modules(lang, settings.FORMAT_MODULE_PATH))
+ 93 |     modules = _format_modules_cache[lang]
+ 94 |     if reverse:
+ 95 |         return list(reversed(modules))
+ 96 |     return modules
+ 97 | 
+ 98 | 
+ 99 | def get_format(format_type, lang=None, use_l10n=None):
+100 |     """
+101 |     For a specific format type, return the format for the current
+102 |     language (locale). Default to the format in the settings.
+103 |     format_type is the name of the format, e.g. 'DATE_FORMAT'.
+104 | 
+105 |     If use_l10n is provided and is not None, it forces the value to
+106 |     be localized (or not), overriding the value of settings.USE_L10N.
+107 |     """
+108 |     use_l10n = use_l10n or (use_l10n is None and settings.USE_L10N)
+109 |     if use_l10n and lang is None:
+110 |         lang = get_language()
+111 |     cache_key = (format_type, lang)
+112 |     try:
+113 |         return _format_cache[cache_key]
+114 |     except KeyError:
+115 |         pass
+116 | 
+117 |     # The requested format_type has not been cached yet. Try to find it in any
+118 |     # of the format_modules for the given lang if l10n is enabled. If it's not
+119 |     # there or if l10n is disabled, fall back to the project settings.
+120 |     val = None
+121 |     if use_l10n:
+122 |         for module in get_format_modules(lang):
+123 |             val = getattr(module, format_type, None)
+124 |             if val is not None:
+125 |                 break
+126 |     if val is None:
+127 |         if format_type not in FORMAT_SETTINGS:
+128 |             return format_type
+129 |         val = getattr(settings, format_type)
+130 |     elif format_type in ISO_INPUT_FORMATS:
+131 |         # If a list of input formats from one of the format_modules was
+132 |         # retrieved, make sure the ISO_INPUT_FORMATS are in this list.
+133 |         val = list(val)
+134 |         for iso_input in ISO_INPUT_FORMATS.get(format_type, ()):
+135 |             if iso_input not in val:
+136 |                 val.append(iso_input)
+137 |     _format_cache[cache_key] = val
+138 |     return val
+139 | 
+140 | 
+141 | get_format_lazy = lazy(get_format, str, list, tuple)
+142 | 
+143 | 
+144 | def date_format(value, format=None, use_l10n=None):
+145 |     """
+146 |     Format a datetime.date or datetime.datetime object using a
+147 |     localizable format.
+148 | 
+149 |     If use_l10n is provided and is not None, that will force the value to
+150 |     be localized (or not), overriding the value of settings.USE_L10N.
+151 |     """
+152 |     return dateformat.format(value, get_format(format or 'DATE_FORMAT', use_l10n=use_l10n))
+153 | 
+154 | 
+155 | def time_format(value, format=None, use_l10n=None):
+156 |     """
+157 |     Format a datetime.time object using a localizable format.
+158 | 
+159 |     If use_l10n is provided and is not None, it forces the value to
+160 |     be localized (or not), overriding the value of settings.USE_L10N.
+161 |     """
+162 |     return dateformat.time_format(value, get_format(format or 'TIME_FORMAT', use_l10n=use_l10n))
+163 | 
+164 | 
+165 | def number_format(value, decimal_pos=None, use_l10n=None, force_grouping=False):
+166 |     """
+167 |     Format a numeric value using localization settings.
+168 | 
+169 |     If use_l10n is provided and is not None, it forces the value to
+170 |     be localized (or not), overriding the value of settings.USE_L10N.
+171 |     """
+172 |     if use_l10n or (use_l10n is None and settings.USE_L10N):
+173 |         lang = get_language()
+174 |     else:
+175 |         lang = None
+176 |     return numberformat.format(
+177 |         value,
+178 |         get_format('DECIMAL_SEPARATOR', lang, use_l10n=use_l10n),
+179 |         decimal_pos,
+180 |         get_format('NUMBER_GROUPING', lang, use_l10n=use_l10n),
+181 |         get_format('THOUSAND_SEPARATOR', lang, use_l10n=use_l10n),
+182 |         force_grouping=force_grouping,
+183 |         use_l10n=use_l10n,
+184 |     )
+185 | 
+186 | 
+187 | def localize(value, use_l10n=None):
+188 |     """
+189 |     Check if value is a localizable type (date, number...) and return it
+190 |     formatted as a string using current locale format.
+191 | 
+192 |     If use_l10n is provided and is not None, it forces the value to
+193 |     be localized (or not), overriding the value of settings.USE_L10N.
+194 |     """
+195 |     if isinstance(value, str):  # Handle strings first for performance reasons.
+196 |         return value
+197 |     elif isinstance(value, bool):  # Make sure booleans don't get treated as numbers
+198 |         return str(value)
+199 |     elif isinstance(value, (decimal.Decimal, float, int)):
+200 |         return number_format(value, use_l10n=use_l10n)
+201 |     elif isinstance(value, datetime.datetime):
+202 |         return date_format(value, 'DATETIME_FORMAT', use_l10n=use_l10n)
+203 |     elif isinstance(value, datetime.date):
+204 |         return date_format(value, use_l10n=use_l10n)
+205 |     elif isinstance(value, datetime.time):
+206 |         return time_format(value, 'TIME_FORMAT', use_l10n=use_l10n)
+207 |     return value
+208 | 
+209 | 
+210 | def localize_input(value, default=None):
+211 |     """
+212 |     Check if an input value is a localizable type and return it
+213 |     formatted with the appropriate formatting string of the current locale.
+214 |     """
+215 |     if isinstance(value, str):  # Handle strings first for performance reasons.
+216 |         return value
+217 |     elif isinstance(value, bool):  # Don't treat booleans as numbers.
+218 |         return str(value)
+219 |     elif isinstance(value, (decimal.Decimal, float, int)):
+220 |         return number_format(value)
+221 |     elif isinstance(value, datetime.datetime):
+222 |         value = datetime_safe.new_datetime(value)
+223 |         format = default or get_format('DATETIME_INPUT_FORMATS')[0]
+224 |         return value.strftime(format)
+225 |     elif isinstance(value, datetime.date):
+226 |         value = datetime_safe.new_date(value)
+227 |         format = default or get_format('DATE_INPUT_FORMATS')[0]
+228 |         return value.strftime(format)
+229 |     elif isinstance(value, datetime.time):
+230 |         format = default or get_format('TIME_INPUT_FORMATS')[0]
+231 |         return value.strftime(format)
+232 |     return value
+233 | 
+234 | 
+235 | def sanitize_separators(value):
+236 |     """
+237 |     Sanitize a value according to the current decimal and
+238 |     thousand separator setting. Used with form field input.
+239 |     """
+240 |     if isinstance(value, str):
+241 |         parts = []
+242 |         decimal_separator = get_format('DECIMAL_SEPARATOR')
+243 |         if decimal_separator in value:
+244 |             value, decimals = value.split(decimal_separator, 1)
+245 |             parts.append(decimals)
+246 |         if settings.USE_THOUSAND_SEPARATOR:
+247 |             thousand_sep = get_format('THOUSAND_SEPARATOR')
+248 |             if thousand_sep == '.' and value.count('.') == 1 and len(value.split('.')[-1]) != 3:
+249 |                 # Special case where we suspect a dot meant decimal separator (see #22171)
+250 |                 pass
+251 |             else:
+252 |                 for replacement in {
+253 |                         thousand_sep, unicodedata.normalize('NFKD', thousand_sep)}:
+254 |                     value = value.replace(replacement, '')
+255 |         parts.append(value)
+256 |         value = '.'.join(reversed(parts))
+257 |     return value
+258 | 
+```
+
+
+##Searching for entity `django/forms/fields.py:DecimalField.widget_attrs`...
+### Search Result:
+Found function `django/forms/fields.py:DecimalField.widget_attrs`.
+Source: Exact match found for entity name `django/forms/fields.py:DecimalField.widget_attrs`.
+```
+358 | def widget_attrs(self, widget):
+359 |         attrs = super().widget_attrs(widget)
+360 |         if isinstance(widget, NumberInput) and 'step' not in widget.attrs:
+361 |             if self.decimal_places is not None:
+362 |                 # Use exponential notation for small values since they might
+363 |                 # be parsed as 0 otherwise. ref #20765
+364 |                 step = str(Decimal(1).scaleb(-self.decimal_places)).lower()
+365 |             else:
+366 |                 step = 'any'
+367 |             attrs.setdefault('step', step)
+368 |         return attrs
+```
+
+
+##Searching for entity `django/template/defaultfilters.py:floatformat`...
+### Search Result:
+Found function `django/template/defaultfilters.py:floatformat`.
+Source: Exact match found for entity name `django/template/defaultfilters.py:floatformat`.
+```
+ 95 | def floatformat(text, arg=-1):
+ 96 |     """
+ 97 |     Display a float to a specified number of decimal places.
+ 98 | 
+ 99 |     If called without an argument, display the floating point number with one
+100 |     decimal place -- but only if there's a decimal place to be displayed:
+101 | 
+102 |     * num1 = 34.23234
+103 |     * num2 = 34.00000
+104 |     * num3 = 34.26000
+105 |     * {{ num1|floatformat }} displays "34.2"
+106 |     * {{ num2|floatformat }} displays "34"
+107 |     * {{ num3|floatformat }} displays "34.3"
+108 | 
+109 |     If arg is positive, always display exactly arg number of decimal places:
+110 | 
+111 |     * {{ num1|floatformat:3 }} displays "34.232"
+112 |     * {{ num2|floatformat:3 }} displays "34.000"
+113 |     * {{ num3|floatformat:3 }} displays "34.260"
+114 | 
+115 |     If arg is negative, display arg number of decimal places -- but only if
+116 |     there are places to be displayed:
+117 | 
+118 |     * {{ num1|floatformat:"-3" }} displays "34.232"
+119 |     * {{ num2|floatformat:"-3" }} displays "34"
+120 |     * {{ num3|floatformat:"-3" }} displays "34.260"
+121 | 
+122 |     If the input float is infinity or NaN, display the string representation
+123 |     of that value.
+124 |     """
+125 |     try:
+126 |         input_val = repr(text)
+127 |         d = Decimal(input_val)
+128 |     except InvalidOperation:
+129 |         try:
+130 |             d = Decimal(str(float(text)))
+131 |         except (ValueError, InvalidOperation, TypeError):
+132 |             return ''
+133 |     try:
+134 |         p = int(arg)
+135 |     except ValueError:
+136 |         return input_val
+137 | 
+138 |     try:
+139 |         m = int(d) - d
+140 |     except (ValueError, OverflowError, InvalidOperation):
+141 |         return input_val
+142 | 
+143 |     if not m and p < 0:
+144 |         return mark_safe(formats.number_format('%d' % (int(d)), 0))
+145 | 
+146 |     exp = Decimal(1).scaleb(-abs(p))
+147 |     # Set the precision high enough to avoid an exception (#15789).
+148 |     tupl = d.as_tuple()
+149 |     units = len(tupl[1])
+150 |     units += -tupl[2] if m else tupl[2]
+151 |     prec = abs(p) + units + 1
+152 | 
+153 |     # Avoid conversion to scientific notation by accessing `sign`, `digits`,
+154 |     # and `exponent` from Decimal.as_tuple() directly.
+155 |     sign, digits, exponent = d.quantize(exp, ROUND_HALF_UP, Context(prec=prec)).as_tuple()
+156 |     digits = [str(digit) for digit in reversed(digits)]
+157 |     while len(digits) <= abs(exponent):
+158 |         digits.append('0')
+159 |     digits.insert(-exponent, '.')
+160 |     if sign:
+161 |         digits.append('-')
+162 |     number = ''.join(reversed(digits))
+163 |     return mark_safe(formats.number_format(number, abs(p)))
+```
+
+2026-08-28 00:25:40 utils.py INFO 
+LiteLLM completion() model= gpt-5.4-mini; provider = openai
+2026-08-28 00:25:44 _client.py INFO HTTP Request: POST https://api.86gamestore.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-28 00:25:44 utils.py INFO Wrapper: Completed Call, calling success_handler
+2026-08-28 00:25:44 auto_search_main.py INFO agent response received content_present=True tool_calls=1
+2026-08-28 00:25:44 auto_search_main.py INFO ===============
+2026-08-28 00:25:44 auto_search_main.py INFO Final response generated content_length=207
+2026-08-28 00:25:44 auto_search_main.py INFO ==== localizing django__django-11206 succeed, process multiple loc outputs ====
+2026-08-28 00:25:45 cost_analysis.py INFO input_tokens=63561, output_tokens=430, cost=0.16
+2026-08-28 00:25:45 auto_search_main.py INFO Total time: 5.4396 min
